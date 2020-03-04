@@ -19,7 +19,7 @@ const path = require('path');
 const compression = require('compression');
 
 const app = express();
-const port = process.env.PORT || 9000;
+const port = process.env.PORT || 3000;
 
 //body parser middlewares
 app.use(bodyParser.json({ limit: '20mb' }));

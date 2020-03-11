@@ -18,6 +18,21 @@ const hsts = require('hsts');
 const path = require('path');
 const compression = require('compression');
 
+const mongoose = require('mongoose');
+const url = require('./connection');
+
+mongoose.connect(url,
+    {
+      useNewUrlParser: true,
+      useFindAndModify: false,
+      useUnifiedTopology: true,
+     
+    })
+    mongoose.set('useNewUrlParser', true);
+    mongoose.set('useFindAndModify', false);
+    mongoose.set('useCreateIndex', true);
+  
+
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -30,6 +45,10 @@ app.use(hsts({ maxAge: 5184000 }));
 app.use(compression());
 
 app.use(express.static(path.join(__dirname, 'HTML')));
+
+
+const registerRoutes = require('./routes/register');
+app.use('/register',registerRoutes);
 
 //start server
 app.listen(port, function () {

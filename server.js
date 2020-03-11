@@ -101,11 +101,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(hsts({ maxAge: 5184000 }));
 app.use(compression());
 
-app.use(express.static(path.join(__dirname, 'HTML')));
+// app.use(express.static(path.join(__dirname, 'HTML')));
 
-app.get('/', function(req, res, next){
-    res.sendStatus(200);
-});
+app.use('/', express.static(path.join(__dirname, 'HTML')))
+// app.use("/api", api);
 
 const registerRoutes = require('./routes/register');
 app.use('/register',registerRoutes);

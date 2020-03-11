@@ -103,6 +103,10 @@ app.use(compression());
 
 app.use(express.static(path.join(__dirname, 'HTML')));
 
+app.get('/', function(req, res, next){
+    res.sendStatus(200);
+});
+
 const registerRoutes = require('./routes/register');
 app.use('/register',registerRoutes);
 

@@ -73,15 +73,38 @@ const compression = require('compression');
 const app = express();
 const port = process.env.PORT || 3000;
 
+
+
+const mongoose = require('mongoose');
+const url = require('./connection');
+
+mongoose.connect(url,
+    {
+      useNewUrlParser: true,
+      useFindAndModify: false,
+      useUnifiedTopology: true,
+     
+    })
+    mongoose.set('useNewUrlParser', true);
+    mongoose.set('useFindAndModify', false);
+    mongoose.set('useCreateIndex', true);
+  
+
 //body parser middlewares
 app.use(bodyParser.json({ limit: '20mb' }));
 app.use(bodyParser.urlencoded({ extended: false }));
+
+
+
 
 
 app.use(hsts({ maxAge: 5184000 }));
 app.use(compression());
 
 app.use(express.static(path.join(__dirname, 'HTML')));
+
+const registerRoutes = require('./routes/register');
+app.use('/register',registerRoutes);
 
 //start server
 app.listen(port, function () {

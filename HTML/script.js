@@ -2160,7 +2160,7 @@ async function loopThroughSplittedNotifications(splittedUrls, rule, notification
             await httpGetAsync(url, function (res) {
                 response = JSON.parse(res);
                 responseNotifications = response.message;
-                if (!rule.loopNotification && response.totalCampaign) loopCheckValue = 3 * response.totalCampaign;
+                if (!rule.loopNotification && response.totalCampaign) loopCheckValue = 3; // * response.totalCampaign;
                 callback(null, responseNotifications, config)
             });
         });

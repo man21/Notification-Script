@@ -3437,24 +3437,27 @@ var Note = function Note(config, containerStyle, iconStyle) {
         innerNotifCTAContainer.appendChild(innerInnerNotifCTAContainer);
 
         if (configuration.isCTATop)
-            mainContainer.appendChild(innerNotifCTAContainer);
+        //     mainContainer.appendChild(innerNotifCTAContainer);
 
-        mainContainer.appendChild(notificationRecentContainer);
-        mainContainer.appendChild(notificationLiveContainer);
-        container.appendChild(bulkNotiifcationContainer);
-        mainContainer.appendChild(notificationReviewContainer);
+        // mainContainer.appendChild(notificationRecentContainer);
+        // mainContainer.appendChild(notificationLiveContainer);
+        // container.appendChild(bulkNotiifcationContainer);
+        // mainContainer.appendChild(notificationReviewContainer);
 
         if (!configuration.isCTATop)
-            mainContainer.appendChild(innerNotifCTAContainer);
+
+        container.appendChild(bulkNotiifcationContainer);
+
+        //     mainContainer.appendChild(innerNotifCTAContainer);
 
 
-        innerDiv.appendChild(mainContainer);
+        // innerDiv.appendChild(mainContainer);
 
         
-        innerContainer.appendChild(innerDiv);
+        // innerContainer.appendChild(innerDiv);
 
-        console.log(innerContainer,"innerCOntainer")
-        container.appendChild(innerContainer);
+        // console.log(innerContainer,"innerCOntainer")
+        // container.appendChild(innerContainer);
 
 
         if (type == 'journey' && userDetails && userDetails.length > k_c6ba2870) {

@@ -3267,6 +3267,11 @@ var Note = function Note(config, containerStyle, iconStyle) {
     //bulkNotificationSecondText.innerHTML =  configuration.visitorText;  //"signed up for influence in the last 7 days"
     
     bulkNotificationPTag.appendChild(bulkNotificationFirstText)
+    var bulkNotificationText2= document.createElement('em')
+    bulkNotificationText2.className = 'main-text'
+
+    bulkNotificationText2.innerHTML='People'
+    bulkNotificationPTag.appendChild(bulkNotificationText2)
      bulkNotificationPTag.appendChild(bulkNotificationSecondText)
     bulkNotificationTextContainer.appendChild(bulkNotificationPTag)
      bulkNotiifcationUpperPartContainer.appendChild(bulkNotificationTextContainer)

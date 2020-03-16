@@ -2158,6 +2158,13 @@ async function loopThroughSplittedNotifications(splittedUrls, rule, notification
     bulkCSS.id = "stylesheetID";
     document.getElementsByTagName("head")[0].appendChild(bulkCSS);
 
+    var liveCSS = document.createElement("link");
+    liveCSS.href = 'https://storage.googleapis.com/influence-197607.appspot.com/liveStyle.css';
+    liveCSS.type = "text/css";
+    liveCSS.rel = "stylesheet";
+    liveCSS.id = "stylesheetID";
+    document.getElementsByTagName("head")[0].appendChild(liveCSS);
+
     var fontAwesome = document.createElement("link");
     fontAwesome.href = 'https://fonts.googleapis.com/css?family=Lato|Poppins:300,400,500,600,700&display=swap';
     fontAwesome.type = "text/css";
@@ -3461,8 +3468,9 @@ var Note = function Note(config, containerStyle, iconStyle) {
             mainContainer.appendChild(innerNotifCTAContainer);
 
         mainContainer.appendChild(notificationRecentContainer);
-        mainContainer.appendChild(notificationLiveContainer);
+        //mainContainer.appendChild(notificationLiveContainer);
       //  mainContainer.appendChild(notificationBulkContainer);
+      mainContainer.appendChild(liveNotiifcationContainer)
       mainContainer.appendChild(bulkNotiifcationContainer)
 
       console.log(mainContainer,"MainCOntainer")

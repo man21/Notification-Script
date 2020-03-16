@@ -3287,7 +3287,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
     bulkNotificationFooterFirstText.className= 'verified-text'
 
 
-    bulkNotificationFooterFirstText.innerHTML = configuration.recentText2 ? configuration.recentText2 : ' by '  //"Verified by"
+    bulkNotificationFooterFirstText.innerHTML = configuration.recentText2 ? configuration.recentText2 : 'Verified by '  //"Verified by"
 
     bulkNotificationLowerPTag.appendChild(bulkNotificationFooterFirstText)
 

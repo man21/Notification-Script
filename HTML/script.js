@@ -2143,6 +2143,14 @@ async function loopThroughSplittedNotifications(splittedUrls, rule, notification
     // link.id = "stylesheetID";
     // document.getElementsByTagName("head")[0].appendChild(link);
 
+
+    var bulkCSS = document.createElement("link");
+    bulkCSS.href = 'https://storage.googleapis.com/influence-197607.appspot.com/style.css';
+    bulkCSS.type = "text/css";
+    bulkCSS.rel = "stylesheet";
+    bulkCSS.id = "stylesheetID";
+    document.getElementsByTagName("head")[0].appendChild(bulkCSS);
+
     var animationLink = document.createElement("link");
     animationLink.href = 'https://storage.googleapis.com/influence-197607.appspot.com/animate.css';
     animationLink.type = "text/css";

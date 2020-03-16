@@ -3352,7 +3352,11 @@ var Note = function Note(config, containerStyle, iconStyle) {
         mainContainer.appendChild(notificationRecentContainer);
         mainContainer.appendChild(notificationLiveContainer);
       //  mainContainer.appendChild(notificationBulkContainer);
-        container.appendChild(bulkNotiifcationContainer)
+      mainContainer.appendChild(bulkNotiifcationContainer)
+
+      console.log(mainContainer,"MainCOntainer")
+
+      console.log(bulkNotiifcationContainer,"bulkNotiifcationContainer@@@@@@@")
         mainContainer.appendChild(notificationReviewContainer);
 
         if (!configuration.isCTATop)

@@ -2135,13 +2135,13 @@ var Notifications = function (config) {
 };
 
 async function loopThroughSplittedNotifications(splittedUrls, rule, notificationPath, config) {
-    var link = document.createElement("link");
-    link.href = "https://storage.googleapis.com/influence-197607.appspot.com/note3.css";
-    //link.href = "https://96bcb271.ngrok.io/style/note1-internal.css?q="+Math.random();
-    link.type = "text/css";
-    link.rel = "stylesheet";
-    link.id = "stylesheetID";
-    document.getElementsByTagName("head")[0].appendChild(link);
+    // var link = document.createElement("link");
+    // link.href = "https://storage.googleapis.com/influence-197607.appspot.com/note3.css";
+    // //link.href = "https://96bcb271.ngrok.io/style/note1-internal.css?q="+Math.random();
+    // link.type = "text/css";
+    // link.rel = "stylesheet";
+    // link.id = "stylesheetID";
+    // document.getElementsByTagName("head")[0].appendChild(link);
 
     var animationLink = document.createElement("link");
     animationLink.href = 'https://storage.googleapis.com/influence-197607.appspot.com/animate.css';

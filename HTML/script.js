@@ -3203,20 +3203,20 @@ var Note = function Note(config, containerStyle, iconStyle) {
     var bulkNotificationImage = document.createElement('img')
     // bulkNotificationImage.className= 'image'
 
-    if (config.icon)
-    bulkNotificationImage.setAttribute('src', config.icon);
-    else
-    bulkNotificationImage.setAttribute('src', configuration.panelStyle.image ? configuration.panelStyle.image : 'https://storage.googleapis.com/influence-197607.appspot.com/fire_icon_blue_6.png')
-    if (configuration.panelStyle && configuration.panelStyle.image) {
-        bulkNotificationImage.style = `padding:${configuration.panelStyle.imagePadding}px; border-radius: 0;`;
-       // bulkNotificationImage.className = 'FPqR37xpqJeA37xp7MM9_IMG FPqRqg5HqJmAqu5I7MM9C';
+    // if (config.icon)
+    // bulkNotificationImage.setAttribute('src', config.icon);
+    // else
+    // bulkNotificationImage.setAttribute('src', configuration.panelStyle.image ? configuration.panelStyle.image : 'https://storage.googleapis.com/influence-197607.appspot.com/fire_icon_blue_6.png')
+    // if (configuration.panelStyle && configuration.panelStyle.image) {
+    //     bulkNotificationImage.style = `padding:${configuration.panelStyle.imagePadding}px; border-radius: 0;`;
+    //    // bulkNotificationImage.className = 'FPqR37xpqJeA37xp7MM9_IMG FPqRqg5HqJmAqu5I7MM9C';
 
-       bulkNotificationImage.className= 'image'
+    //    bulkNotificationImage.className= 'image'
 
-    }
+    // }
 
 
-   // bulkNotificationImage.setAttribute('src', 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/C77C11F2-0E34-49DE-97CC-10DF6C848B69.png')
+    bulkNotificationImage.setAttribute('src', 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/C77C11F2-0E34-49DE-97CC-10DF6C848B69.png')
 
     bulkNotificationImageContainer.appendChild(bulkNotificationImage)
 

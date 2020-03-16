@@ -2627,7 +2627,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         console.log(iconStyle, "icon style")
         console.log(alignment,"alighnment")
 
-        
+
         if (notifClosr_c4rF9Effgt985n7v4y5h)
             return;
         let configurations = config.configurations.filter(config => config.paths.indexOf(__pathname) > -1 || config.paths.indexOf(window.location.pathname) > -1);
@@ -3441,16 +3441,14 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         mainContainer.appendChild(notificationRecentContainer);
         mainContainer.appendChild(notificationLiveContainer);
-        mainContainer.appendChild(bulkNotiifcationContainer);
+        container.appendChild(bulkNotiifcationContainer);
         mainContainer.appendChild(notificationReviewContainer);
 
         if (!configuration.isCTATop)
             mainContainer.appendChild(innerNotifCTAContainer);
-            console.log(mainContainer,"mainCOntainer in else part")
 
 
         innerDiv.appendChild(mainContainer);
-        console.log(innerDiv,"INNER DIV ")
 
         
         innerContainer.appendChild(innerDiv);
@@ -3458,7 +3456,6 @@ var Note = function Note(config, containerStyle, iconStyle) {
         console.log(innerContainer,"innerCOntainer")
         container.appendChild(innerContainer);
 
-        console.log(container,"COntainer data")
 
         if (type == 'journey' && userDetails && userDetails.length > k_c6ba2870) {
             k_c6ba2870++;

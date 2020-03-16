@@ -3437,6 +3437,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
         innerNotifCTAContainer.appendChild(innerInnerNotifCTAContainer);
 
         if (configuration.isCTATop)
+        container.appendChild(bulkNotiifcationContainer);
+
         //     mainContainer.appendChild(innerNotifCTAContainer);
 
         // mainContainer.appendChild(notificationRecentContainer);

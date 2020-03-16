@@ -3342,10 +3342,16 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         if (!configuration.isCTATop)
             mainContainer.appendChild(innerNotifCTAContainer);
+            console.log(mainContainer,"mainCOntainer in else part")
 
 
         innerDiv.appendChild(mainContainer);
+        console.log(innerDiv,"INNER DIV ")
+
+        
         innerContainer.appendChild(innerDiv);
+
+        console.log(innerContainer,"innerCOntainer")
         container.appendChild(innerContainer);
 
         console.log(container,"COntainer data")

@@ -3201,7 +3201,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
     bulkNotificationImageContainer.className= 'image-container'
 
     var bulkNotificationImage = document.createElement('img')
-    // bulkNotificationImage.className= 'image'
+    bulkNotificationImage.className= 'image'
 
     // if (config.icon)
     // bulkNotificationImage.setAttribute('src', config.icon);

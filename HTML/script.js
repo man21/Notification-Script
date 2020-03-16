@@ -3333,6 +3333,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         innerNotifCTAContainer.appendChild(innerInnerNotifCTAContainer);
 
         if (configuration.isCTATop)
+        console.log(configuration.isCTATop,"CTA TOP ")
             mainContainer.appendChild(innerNotifCTAContainer);
 
         mainContainer.appendChild(notificationRecentContainer);
@@ -3341,6 +3342,9 @@ var Note = function Note(config, containerStyle, iconStyle) {
         mainContainer.appendChild(notificationReviewContainer);
 
         if (!configuration.isCTATop)
+
+        console.log(configuration.isCTATop,"CTA TOP data ")
+
             mainContainer.appendChild(innerNotifCTAContainer);
 
 

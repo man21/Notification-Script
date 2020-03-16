@@ -3348,6 +3348,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
         innerContainer.appendChild(innerDiv);
         container.appendChild(innerContainer);
 
+        console.log(container,"COntainer data")
+
         if (type == 'journey' && userDetails && userDetails.length > k_c6ba2870) {
             k_c6ba2870++;
             k_c6ba2870 = k_c6ba2870 == userDetails.length ? 0 : k_c6ba2870;

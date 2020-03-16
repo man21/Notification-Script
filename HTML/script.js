@@ -3155,16 +3155,16 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
 
         var bulkNotiifcationContainer = document.createElement('div')
-    bulkNotiifcationContainer.className = 'abcdhjhj11';
+    bulkNotiifcationContainer.className = 'notif-card';
 
     var bulkNotiifcationUpperPartContainer = document.createElement('div')
-    bulkNotiifcationUpperPartContainer.className= 'hfhfh761'
+    bulkNotiifcationUpperPartContainer.className= 'upper-part'
 
     var bulkNotificationImageContainer = document.createElement('div')
-    bulkNotificationImageContainer.className= 'oiuytasvcd1'
+    bulkNotificationImageContainer.className= 'image-container'
 
     var bulkNotificationImage = document.createElement('img')
-   // bulkNotificationImage.className= 'kjgjhguhghu'
+    bulkNotificationImage.className= 'image'
 
     if (config.icon)
     bulkNotificationImage.setAttribute('src', config.icon);
@@ -3174,7 +3174,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         bulkNotificationImage.style = `padding:${configuration.panelStyle.imagePadding}px; border-radius: 0;`;
        // bulkNotificationImage.className = 'FPqR37xpqJeA37xp7MM9_IMG FPqRqg5HqJmAqu5I7MM9C';
 
-       bulkNotificationImage.className= 'kjgjhguhghu'
+       bulkNotificationImage.className= 'image'
 
     }
 
@@ -3186,22 +3186,22 @@ var Note = function Note(config, containerStyle, iconStyle) {
     bulkNotiifcationUpperPartContainer.appendChild(bulkNotificationImageContainer)
 
        var bulkNotificationCloseContainer = document.createElement('div')
-        bulkNotificationCloseContainer.className='kjhfdtfdcfuhyuf'
+        bulkNotificationCloseContainer.className='close-btn-container'
         var bulkNotificationCloseIcon = document.createElement('button')
         bulkNotificationCloseIcon.id = 'notif_close';
-        bulkNotificationCloseIcon.className ='nnnbasd'
+        bulkNotificationCloseIcon.className ='close-btn'
         bulkNotificationCloseIcon.innerHTML ="+"
         bulkNotificationCloseContainer.appendChild(bulkNotificationCloseIcon)
      bulkNotiifcationUpperPartContainer.appendChild(bulkNotificationCloseContainer)
 
      var bulkNotificationTextContainer = document.createElement('div')
-     bulkNotificationTextContainer.className= 'ljkhgfdstfygh'
+     bulkNotificationTextContainer.className= 'text-container'
 
     var bulkNotificationPTag = document.createElement('p')
-    bulkNotificationPTag.className ='paraoiuyfty'
+    bulkNotificationPTag.className ='para'
 
     var bulkNotificationFirstText = document.createElement('em')
-    bulkNotificationFirstText.className= 'main-text9999'
+    bulkNotificationFirstText.className= 'main-text'
     numAnim = new CountUp(bulkNotificationFirstText, 0, numberOfUsers, 0, 3);
 
    // bulkNotificationFirstText.innerHTML ="2000 People"
@@ -3231,7 +3231,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
     
     bulkNotificationPTag.appendChild(bulkNotificationFirstText)
     var bulkNotificationText2= document.createElement('em')
-    bulkNotificationText2.className = 'main-text9999'
+    bulkNotificationText2.className = 'main-text'
 
     bulkNotificationText2.innerHTML='People'
     bulkNotificationPTag.appendChild(bulkNotificationText2)

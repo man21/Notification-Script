@@ -2135,13 +2135,13 @@ var Notifications = function (config) {
 };
 
 async function loopThroughSplittedNotifications(splittedUrls, rule, notificationPath, config) {
-    var link = document.createElement("link");
-    link.href = "https://storage.googleapis.com/influence-197607.appspot.com/note3.css";
-    //link.href = "https://96bcb271.ngrok.io/style/note1-internal.css?q="+Math.random();
-    link.type = "text/css";
-    link.rel = "stylesheet";
-    link.id = "stylesheetID";
-    document.getElementsByTagName("head")[0].appendChild(link);
+    // var link = document.createElement("link");
+    // link.href = "https://storage.googleapis.com/influence-197607.appspot.com/note3.css";
+    // //link.href = "https://96bcb271.ngrok.io/style/note1-internal.css?q="+Math.random();
+    // link.type = "text/css";
+    // link.rel = "stylesheet";
+    // link.id = "stylesheetID";
+    // document.getElementsByTagName("head")[0].appendChild(link);
 
     var animationLink = document.createElement("link");
     animationLink.href = 'https://storage.googleapis.com/influence-197607.appspot.com/animate.css';
@@ -2149,6 +2149,33 @@ async function loopThroughSplittedNotifications(splittedUrls, rule, notification
     animationLink.rel = "stylesheet";
     animationLink.id = "stylesheetID";
     document.getElementsByTagName("head")[0].appendChild(animationLink);
+
+
+    var bulkCSS = document.createElement("link");
+    bulkCSS.href = 'https://storage.googleapis.com/influence-197607.appspot.com/style.css';
+    bulkCSS.type = "text/css";
+    bulkCSS.rel = "stylesheet";
+    bulkCSS.id = "stylesheetID";
+    document.getElementsByTagName("head")[0].appendChild(bulkCSS);
+
+    var liveCSS = document.createElement("link");
+    liveCSS.href = 'https://storage.googleapis.com/influence-197607.appspot.com/liveStyle.css';
+    liveCSS.type = "text/css";
+    liveCSS.rel = "stylesheet";
+    liveCSS.id = "stylesheetID";
+    document.getElementsByTagName("head")[0].appendChild(liveCSS);
+
+    var fontAwesome = document.createElement("link");
+    fontAwesome.href = 'https://fonts.googleapis.com/css?family=Lato|Poppins:300,400,500,600,700&display=swap';
+    fontAwesome.type = "text/css";
+    fontAwesome.rel = "stylesheet";
+    fontAwesome.id = "stylesheetID";
+    document.getElementsByTagName("head")[0].appendChild(fontAwesome);
+
+
+    var fontAwesomeJs = document.createElement("script");
+    fontAwesomeJs.src = 'https://use.fontawesome.com/343c65acc3.js';
+    document.getElementsByTagName("head")[0].appendChild(fontAwesomeJs);
 
 
     let j = 1;
@@ -2842,148 +2869,104 @@ var Note = function Note(config, containerStyle, iconStyle) {
         innerNotifRecentContainer.appendChild(innerInnerNotifRecentContainer);
         notificationRecentContainer.appendChild(innerNotifRecentContainer);
 
-        var notificationLiveContainer = document.createElement('div');
-        notificationLiveContainer.style = type == 'live' ? "display:block" : "display:none";
-        var innerNotifLiveContainer = document.createElement('div');
-        innerNotifLiveContainer.setAttribute("id", "FPqR3dGiqJeA3dGi7MM9_0");
-        var innerInnerNotifLiveContainer = document.createElement('div');
-        innerInnerNotifLiveContainer.className = `${configuration.notificationSize=='large'?'FPqR3acH3FtC_large':''} FPqR2B_4qJeA2B_47MM9_0 rounded FPqRD2zVqJeAD2zV7MM9_0`;
-        innerInnerNotifLiveContainer.style = containerStyle;
-        var innerMainNotifLiveContainer = document.createElement('div');
-        innerMainNotifLiveContainer.setAttribute('id', "FPqR3acHqJeA3acH7MM9_0");
 
-        var notifLiveImgContainer = document.createElement('div');
-        notifLiveImgContainer.className = "FPqRH0WDqJeAH0WD7MM9_0";
-        var notifLiveImg = document.createElement('div');
 
-        if (configuration.panelStyle && configuration.panelStyle.image) {
-            notifLiveImgContainer.className = "FPqRH0WDqJeAH0WD7MM9_1";
-            notifLiveImg.classList = "FPqRh0ePqJeAh0eP7MM9_1";
-            var notifLiveImgContent = document.createElement('img');
-            notifLiveImgContent.className = "FPqRqg5HqJmAqu5I7MM9C";
-            notifLiveImgContent.setAttribute('src', configuration.panelStyle.image);
-            notifLiveImgContent.style = `padding: ${configuration.panelStyle.imagePadding ? configuration.panelStyle.imagePadding + 'px' : '11px'}; border-radius: 0; height: 50px; width: 50px;`;
-            notifLiveImg.appendChild(notifLiveImgContent);
-        } else {
-            if (config.liveViewer && config.liveViewer.icon) {
-                notifLiveImgContainer.style='padding: 10px;'
-                notifLiveImg.classList = "FPqRh0ePqJeAh0eP7MM9_1";
-                var notifLiveImgContent = document.createElement('img');
-                notifLiveImgContent.className = "FPqRqg5HqJmAqu5I7MM9C";
-                notifLiveImgContent.setAttribute('src', config.liveViewer.icon);
-                notifLiveImgContent.style = 'padding: 2px; border-radius: 0; height: 50px; width: 120px;';
-                notifLiveImg.appendChild(notifLiveImgContent);
-            }
-            else if (config.liveFollower && config.liveFollower.icon) {
-                notifLiveImgContainer.style='padding: 10px;'
-                notifLiveImg.classList = "FPqRh0ePqJeAh0eP7MM9_1";
-                var notifLiveImgContent = document.createElement('img');
-                notifLiveImgContent.className = "FPqRqg5HqJmAqu5I7MM9C";
-                notifLiveImgContent.setAttribute('src', config.liveFollower.icon);
-                notifLiveImgContent.style = 'padding: 2px; border-radius: 0; height: 50px; width: 120px;';
-                notifLiveImg.appendChild(notifLiveImgContent);
-            }
-            else {
-                notifLiveImgContainer.className = "FPqRH0WDqJeAH0WD7MM9_0";
-                notifLiveImg.className = "FPqRh0ePqJeAh0eP7MM9_0";
-                notifLiveImg.style=`background: rgb(${configuration.panelStyle.iconBGColor ? configuration.panelStyle.iconBGColor.r : 0}, ${configuration.panelStyle.iconBGColor ? configuration.panelStyle.iconBGColor.g : 149}, ${configuration.panelStyle.iconBGColor ? configuration.panelStyle.iconBGColor.b : 247}, ${configuration.panelStyle.iconBGColor ? configuration.panelStyle.iconBGColor.a : 1})`
-            }
-        }
 
-        notifLiveImgContainer.appendChild(notifLiveImg);
 
-        var notificationLiveCloseContainer = document.createElement('div');
-        notificationLiveCloseContainer.className = "FPqR3acHqJeA3acH7MM9_1";
-        notificationLiveCloseContainer.style = config.rule.closeNotification ? 'display:flex' : 'display:none';
-        var notificationLiveClose = document.createElement('img');
-        notificationLiveClose.className = "FPqRqg5HqJmAqu5I7MM9C";
-        notificationLiveClose.id = 'notif_close';
-        notificationLiveClose.setAttribute('src', 'https://useinfluence.co/images/close-icon.png');
-        notificationLiveCloseContainer.append(notificationLiveClose);
-        var notifLiveContentContainerI = document.createElement('div');
-        notifLiveContentContainerI.className = "FPqR15RvqJeA15Rv7MM9_0";
-        var notifLiveContentInnerContainer = document.createElement('div');
-        notifLiveContentInnerContainer.className = "FPqR2fwXqJeA2fwX7MM9_0";
-        var notifLiveContentSpan = document.createElement('span');
-        notifLiveContentSpan.className = "FPqR1Jr6qJeA1Jr67MM9_0";
-        var notifLiveContentInnerSpan = document.createElement('span');
-        notifLiveContentInnerSpan.innerHTML = liveVisitorCount == 0 ? 1 : liveVisitorCount;
-        var text_span = document.createTextNode(` ${configuration.visitorText}`);
-        notifLiveContentSpan.appendChild(notifLiveContentInnerSpan);
-        notifLiveContentSpan.appendChild(text_span);
-        var text_span1 = document.createElement('span');
-        text_span1.className = "FPqRtoc3qoc37 peopleviewActivity";
-        if (configuration && configuration.panelStyle && configuration.panelStyle.color) {
-        	text_span1.style = `color: rgb(${configuration.panelStyle.color.r},${configuration.panelStyle.color.g},${configuration.panelStyle.color.b});`
-        }
-        var text_div = document.createTextNode(` ${configuration.liveVisitorText}`);
-        if(config.liveViewer)
-            text_div = document.createTextNode(` ${configuration.liveViewerText}`);
-        else if(config.liveFollower)
-            text_div = document.createTextNode(` ${configuration.liveFollowerText}`);
-        text_span1.appendChild(text_div);
-        notifLiveContentInnerContainer.appendChild(notifLiveContentSpan);
-        notifLiveContentContainerI.appendChild(notifLiveContentInnerContainer);
-        notifLiveContentContainerI.appendChild(text_span1);
+            
+        
+        var liveNotiifcationContainer = document.createElement('div')
+        liveNotiifcationContainer.className = 'notif-card';
+    
+        var liveNotiifcationUpperPartContainer = document.createElement('div')
+        liveNotiifcationUpperPartContainer.className= 'upper-part'
+    
+        var liveNotificationImageContainer = document.createElement('div')
+        liveNotificationImageContainer.className= 'image-container'
+    
+        var liveNotificationImage = document.createElement('img')
+        liveNotificationImage.className= 'image'
+        liveNotificationImage.setAttribute('src', 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/332B2F6F-95F2-4DC1-ADF3-8755D3C791E8.png')
+    
+        liveNotificationImageContainer.appendChild(liveNotificationImage)
+    
+        liveNotiifcationUpperPartContainer.appendChild(liveNotificationImageContainer)
+    
+           var liveNotificationCloseContainer = document.createElement('div')
+            liveNotificationCloseContainer.className='close-btn-container'
+            var liveNotificationCloseIcon = document.createElement('button')
+            liveNotificationCloseIcon.className ='close-btn'
+            liveNotificationCloseIcon.innerHTML ="+"       
+            liveNotificationCloseIcon.id = 'notif_close';
 
-        var notifLiveContentContainerII = document.createElement('div');
-        notifLiveContentContainerII.className = "FPqR14UVqJeA14UV7MM9_0";
-        notifLiveContentContainerII.style = configuration && configuration.togglePoweredBy ? 'display:inline-block' : 'display:none';
-        var text_ContainerII = document.createTextNode(`${configuration && configuration.liveText ? configuration.liveText : 'verified by '}`);
-        var notifLiveContentContainerII_I = document.createElement('i');
-        var notifLiveContentImg = document.createElement('div');
-        notifLiveContentImg.className = "FPqRqg5HqJmAqu5I7MM9C";
-        notifLiveContentImg.innerHTML=`
-        <svg width="12" height="12" viewBox="0 0 524 524" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-        <style>.cls-1 {
-                fill: #5d93fe;
-              }
-              .cls-2 {
-                fill: #5d93fe;
-                filter: url(#a);
-              }
-              .cls-3 {
-                fill: #fff;
-                fill-rule: evenodd;
-              }</style>
-        <filter id="a" x="51" y="51" width="423" height="423" filterUnits="userSpaceOnUse">
-        <feOffset in="SourceAlpha" result="offset"/>
-        <feGaussianBlur result="blur" stdDeviation="2.236"/>
-        <feFlood flood-opacity=".06" result="flood"/>
-        <feComposite in2="blur" operator="in" result="composite"/>
-        <feBlend in="SourceGraphic" result="blend"/>
-        </filter>
-        </defs>
-        <circle class="cls-1" cx="262" cy="262" r="262"/>
-        <circle class="cls-2" cx="262" cy="262" r="207"/>
-        <path class="cls-3" transform="translate(-640 -238)" d="m833.89 478.95 81.132 65.065a9 9 0 0 1 1.391 12.652l-25.651 31.985a9 9 0 0 1-12.652 1.39l-81.132-65.065a9 9 0 0 1-1.391-12.652l25.651-31.985a9 9 0 0 1 12.652-1.39z"/>
-        <path class="cls-3" transform="translate(-640 -238)" d="m846.25 552.7 127.39-144.5a9.721 9.721 0 0 1 13.35-1.047l29.679 24.286a8.9 8.9 0 0 1 1.08 12.862l-127.39 144.5a9.721 9.721 0 0 1-13.35 1.047l-29.675-24.286a8.9 8.9 0 0 1-1.087-12.861z"/>
-        </svg>`;
-        //notifLiveContentImg.setAttribute('src', 'https://storage.googleapis.com/influence-197607.appspot.com/TickIcon.svg');
-        notifLiveContentContainerII_I.appendChild(notifLiveContentImg);
-        var notifLiveContentA = document.createElement('a');
-        notifLiveContentA.setAttribute('href', configuration.poweredByLink);
-        notifLiveContentA.setAttribute('rel', 'nofollow');
-        notifLiveContentA.setAttribute('target', '_blank');
-        var createASpan = document.createElement('span');
-        createASpan.className = "FPqRtoc3qoc37 influencebrandMark";
-        var createAText = document.createTextNode(configuration.poweredBy ? configuration.poweredBy : 'Influence');
-        createASpan.appendChild(createAText);
-        notifLiveContentA.appendChild(createASpan);
-        notifLiveContentContainerII.appendChild(notifLiveContentContainerII_I);
-        notifLiveContentContainerII.appendChild(text_ContainerII);
 
-        notifLiveContentContainerII.appendChild(notifLiveContentA);
+            liveNotificationCloseContainer.appendChild(liveNotificationCloseIcon)
+         liveNotiifcationUpperPartContainer.appendChild(liveNotificationCloseContainer)
+    
+         var liveNotificationTextContainer = document.createElement('div')
+         liveNotificationTextContainer.className= 'text-container'
+    
+        var liveNotificationPTag = document.createElement('p')
+        liveNotificationPTag.className ='para'
+    
+        var liveNotificationFirstText = document.createElement('em')
+        liveNotificationFirstText.className= 'main-text'
+        liveNotificationFirstText.innerHTML = liveVisitorCount == 0 ? 1 : liveVisitorCount; //"21 People"
+    
+        var liveNotificationSecondText = document.createElement('em')
+        liveNotificationSecondText.className= 'secondary-text'
+        liveNotificationSecondText.innerHTML ="are viewing this side"
+         liveNotificationPTag.appendChild(liveNotificationFirstText)
 
-        innerMainNotifLiveContainer.appendChild(notifLiveImgContainer);
-        innerMainNotifLiveContainer.appendChild(notificationLiveCloseContainer);
-        innerMainNotifLiveContainer.appendChild(notifLiveContentContainerI);
-        innerMainNotifLiveContainer.appendChild(notifLiveContentContainerII);
+         var abc= document.createElement('em');
+         abc.className= 'main-text'
+         abc.innerHTML= ` ${configuration.visitorText}`
+         liveNotificationPTag.appendChild(abc)
 
-        innerInnerNotifLiveContainer.appendChild(innerMainNotifLiveContainer);
-        innerNotifLiveContainer.appendChild(innerInnerNotifLiveContainer);
-        notificationLiveContainer.appendChild(innerNotifLiveContainer);
+         liveNotificationPTag.appendChild(liveNotificationSecondText)
+        liveNotificationTextContainer.appendChild(liveNotificationPTag)
+         liveNotiifcationUpperPartContainer.appendChild(liveNotificationTextContainer)
+    
+        liveNotiifcationContainer.appendChild(liveNotiifcationUpperPartContainer)
+    
+        var liveNotificationBorder = document.createElement('div')
+        liveNotificationBorder.className='border'
+        liveNotiifcationContainer.appendChild(liveNotificationBorder)
+    
+        var liveNotificationLowerTextContainer= document.createElement('div')
+        liveNotificationLowerTextContainer.className ='lower-part'
+    
+        var liveNotificationLowerPTag = document.createElement('p')
+        liveNotificationLowerPTag.className ='para footer-text'
+    
+        var liveNotificationFooterFirstText = document.createElement('em')
+        liveNotificationFooterFirstText.className= 'verified-text'
+        liveNotificationFooterFirstText.innerHTML = `${configuration && configuration.liveText ? configuration.liveText : 'verified by '}`  //"Verified by"
+    
+        liveNotificationLowerPTag.appendChild(liveNotificationFooterFirstText)
+    
+        var liveNotificationFooterverified = document.createElement('em')
+        liveNotificationFooterverified.className= 'verified-icon'
+    
+        var liveNotificationTick = document.createElement('i')
+        liveNotificationTick.className ='fa fa-check-circle'
+        liveNotificationFooterverified.appendChild(liveNotificationTick)
+    
+        liveNotificationLowerPTag.appendChild(liveNotificationFooterverified)
+    
+        var liveNotificationFooterPoweredBy = document.createElement('em')
+        liveNotificationFooterPoweredBy.className= 'influence-text'
+        liveNotificationFooterPoweredBy.innerHTML = configuration.poweredBy ? configuration.poweredBy : 'Influence'   //"Influence"
+    
+        liveNotificationLowerPTag.appendChild(liveNotificationFooterPoweredBy)
+    
+    
+        liveNotificationLowerTextContainer.appendChild(liveNotificationLowerPTag)
+        liveNotiifcationContainer.appendChild(liveNotificationLowerTextContainer)
+
+
+
+
 
 
         //***************** start for review notification ********************//
@@ -3169,133 +3152,131 @@ var Note = function Note(config, containerStyle, iconStyle) {
         //***************** end for review notification ********************//
 
 
-        var notificationBulkContainer = document.createElement('div');
-        notificationBulkContainer.style = type == 'identification' ? "display:block" : "display:none";
-        var innerNotifBulkContainer = document.createElement('div');
-        innerNotifBulkContainer.setAttribute("id", "FPqR2lriqJeA2lri7MM9_0");
-        var innerInnerNotifBulkContainer = document.createElement('div');
-        innerInnerNotifBulkContainer.className = `${(configuration.notificationSize=='large' || configuration.bulkVersion=='2.0')?'FPqR1XFhrytv75D_large':''} FPqR1XogqJeA1Xog7MM9_0 FPqR27wVqJeA27wV7MM9_0`;
-        innerInnerNotifBulkContainer.style = containerStyle;
-        var notifBulkImgContainer = document.createElement('div');
-        notifBulkImgContainer.className = "FPqR37xpqJeA37xp7MM9_0";
-        var notifBulkImg = document.createElement('img');
-        if (config.icon)
-            notifBulkImg.setAttribute('src', config.icon);
-        else
-            notifBulkImg.setAttribute('src', configuration.panelStyle.image ? configuration.panelStyle.image : 'https://storage.googleapis.com/influence-197607.appspot.com/fire_icon_blue_6.png')
-        if (configuration.panelStyle && configuration.panelStyle.image) {
-            notifBulkImg.style = `padding:${configuration.panelStyle.imagePadding}px; border-radius: 0;`;
-            notifBulkImg.className = 'FPqR37xpqJeA37xp7MM9_IMG FPqRqg5HqJmAqu5I7MM9C';
-        }
-        notifBulkImgContainer.appendChild(notifBulkImg);
-
-        var notifBulkContentContainer = document.createElement('div');
-        notifBulkContentContainer.className = "FPqRqu5HqJeAqu5H7MM9_0";
-        var notificationBulkCloseContainer = document.createElement('div');
-        notificationBulkCloseContainer.className = "FPqRqu5HqJeAqu5H7MM9_1";
-        notificationBulkCloseContainer.style = config.rule.closeNotification ? 'display:flex' : 'display:none';
-        var notificationBulkClose = document.createElement('img');
-        notificationBulkClose.className = "FPqRqg5HqJmAqu5I7MM9C";
-        notificationBulkClose.id = 'notif_close';
-        notificationBulkClose.setAttribute('src', 'https://useinfluence.co/images/close-icon.png');
-        notificationBulkCloseContainer.append(notificationBulkClose);
-        var notifBulkContentInnerContainer = document.createElement('div');
-        var notifBulkContentSpan = document.createElement('span');
-        notifBulkContentSpan.className =`${configuration.bulkVersion=='2.0'?'FPqRtoc3qJeAhfyrN_2':''} FPqRtoc3qJeAtoc37MM9_0`;
-        var notifBulkContentInnerSpan = document.createElement('span');
-        numAnim = new CountUp(notifBulkContentInnerSpan, 0, numberOfUsers, 0, 3);
-        // notifBulkContentInnerSpan.innerHTML = numberOfUsers;
-        var notifBulkContentInnerText = document.createTextNode(` ${configuration.visitorText}`);
-        notifBulkContentSpan.appendChild(notifBulkContentInnerSpan);
-        notifBulkContentSpan.appendChild(notifBulkContentInnerText);
-        var notifBulkContentSpan1 = document.createElement('span');
-        notifBulkContentSpan1.className = `${configuration.bulkVersion=='2.0'?'FPqRtohfVN5fyk9_2':''} FPqRtoc3qoc37 signedupActivity`;
-        var today = new Date();
-        var dd = today.getDate();
-        var mm = today.getMonth() + 1; //January is 0!
-        var yyyy = today.getFullYear();     
-        if (dd < 10) { dd = '0' + dd }
-        if (mm < 10) { mm = '0' + mm }
-        today = yyyy + '/' + mm + '/' + dd;
-        var date2 = new Date(today);
-        var date1 = new Date(config.rule.createdAt);
-        var timeDiff = Math.abs(date2.getTime() - date1.getTime());
-        var dayDifference = Math.ceil(timeDiff / (1000 * 3600 * 24));
-        var notifBulkContentText = document.createTextNode(` ${configuration ? configuration.otherText : ''} ${configuration ? configuration.contentText : ''} ${configuration && configuration.bulkText ? configuration.bulkText : 'in the last'} ${configuration.panelStyle.bulkData} ${configuration && configuration.bulkDaysLable ? configuration.bulkDaysLable : 'days'}`);
-        notifBulkContentSpan1.appendChild(notifBulkContentText);
-        notifBulkContentInnerContainer.appendChild(notifBulkContentSpan);
-        if(configuration.bulkVersion=='2.0'){
-            var notifBulkContentTextForV2_1 = document.createTextNode(` ${configuration ? configuration.otherText : ''} ${configuration ? configuration.contentText : ''} `);
-            var notifBulkContentTextForV2_2 = document.createTextNode(` ${configuration && configuration.bulkText ? configuration.bulkText : 'in the last'} ${configuration.panelStyle.bulkData} ${configuration && configuration.bulkDaysLable ? configuration.bulkDaysLable : 'days'}`);
-            var notifBulkContentSpanForv2_1 = document.createElement('span');
-            notifBulkContentSpanForv2_1.appendChild(notifBulkContentTextForV2_1);
-            notifBulkContentSpanForv2_1.className="FPqRtohfjrty4RnkO_2";
-            var notifBulkContentSpanForv2_2 = document.createElement('span');
-            notifBulkContentSpanForv2_2.appendChild(notifBulkContentTextForV2_2);
-            notifBulkContentSpanForv2_2.className="FPqRtohfjRheAhRd_2";
-            notifBulkContentInnerContainer.appendChild(notifBulkContentSpanForv2_1);
-
-            var notifBulkContentImg = document.createElement('span');
-            notifBulkContentImg.className = "FPqRqg5HqJmANilH_2";
-            notifBulkContentImg.innerHTML = `
-                <svg width="12" height="12" viewBox="0 0 524 524" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                <style>.cls-1 {
-                        fill: #5d93fe;
-                    }
-                    .cls-2 {
-                        fill: #5d93fe;
-                        filter: url(#a);
-                    }
-                    .cls-3 {
-                        fill: #fff;
-                        fill-rule: evenodd;
-                    }</style>
-                <filter id="a" x="51" y="51" width="423" height="423" filterUnits="userSpaceOnUse">
-                <feOffset in="SourceAlpha" result="offset"/>
-                <feGaussianBlur result="blur" stdDeviation="2.236"/>
-                <feFlood flood-opacity=".06" result="flood"/>
-                <feComposite in2="blur" operator="in" result="composite"/>
-                <feBlend in="SourceGraphic" result="blend"/>
-                </filter>
-                </defs>
-                <circle class="cls-1" cx="262" cy="262" r="262"/>
-                <circle class="cls-2" cx="262" cy="262" r="207"/>
-                <path class="cls-3" transform="translate(-640 -238)" d="m833.89 478.95 81.132 65.065a9 9 0 0 1 1.391 12.652l-25.651 31.985a9 9 0 0 1-12.652 1.39l-81.132-65.065a9 9 0 0 1-1.391-12.652l25.651-31.985a9 9 0 0 1 12.652-1.39z"/>
-                <path class="cls-3" transform="translate(-640 -238)" d="m846.25 552.7 127.39-144.5a9.721 9.721 0 0 1 13.35-1.047l29.679 24.286a8.9 8.9 0 0 1 1.08 12.862l-127.39 144.5a9.721 9.721 0 0 1-13.35 1.047l-29.675-24.286a8.9 8.9 0 0 1-1.087-12.861z"/>
-                </svg>`;
-            
-            if(configuration.togglePoweredBy)
-                notifBulkContentSpanForv2_2.appendChild(notifBulkContentImg);
 
 
-            var notifBulkContentA = document.createElement('a');
-            notifBulkContentA.setAttribute('href', configuration.poweredByLink);
-            notifBulkContentA.setAttribute('rel', 'nofollow');
-            notifBulkContentA.setAttribute('target', '_blank');
-            var createASpan = document.createElement('span');
-            createASpan.className = "FPqRtoc3qoc37Prfj_2 influencebrandMark";
-            var createByText = document.createTextNode(configuration.recentText2 ? configuration.recentText2 : ' by ');
-            var createAText = document.createTextNode(configuration.poweredBy ? configuration.poweredBy : 'Influence');
-            createASpan.appendChild(createByText);
-            createASpan.appendChild(createAText);
-            if(configuration.togglePoweredBy)
-                notifBulkContentA.appendChild(createASpan);
-        
-            notifBulkContentSpanForv2_2.appendChild(notifBulkContentA);
-            notifBulkContentInnerContainer.appendChild(notifBulkContentSpanForv2_2);
-        }
-        else
-            notifBulkContentInnerContainer.appendChild(notifBulkContentSpan1);
-        
-        notifBulkContentContainer.appendChild(notificationBulkCloseContainer);
-        notifBulkContentContainer.appendChild(notifBulkContentInnerContainer);
+        var bulkNotiifcationContainer = document.createElement('div')
+    bulkNotiifcationContainer.className = 'notif-card';
 
-        innerInnerNotifBulkContainer.appendChild(notifBulkImgContainer);
-        innerInnerNotifBulkContainer.appendChild(notifBulkContentContainer);
+    var bulkNotiifcationUpperPartContainer = document.createElement('div')
+    bulkNotiifcationUpperPartContainer.className= 'upper-part'
 
-        innerNotifBulkContainer.appendChild(innerInnerNotifBulkContainer);
-        notificationBulkContainer.appendChild(innerNotifBulkContainer);
+    var bulkNotificationImageContainer = document.createElement('div')
+    bulkNotificationImageContainer.className= 'image-container'
+
+    var bulkNotificationImage = document.createElement('img')
+    bulkNotificationImage.className= 'image'
+
+    if (config.icon)
+    bulkNotificationImage.setAttribute('src', config.icon);
+    else
+    bulkNotificationImage.setAttribute('src', configuration.panelStyle.image ? configuration.panelStyle.image : 'https://storage.googleapis.com/influence-197607.appspot.com/fire_icon_blue_6.png')
+    if (configuration.panelStyle && configuration.panelStyle.image) {
+        bulkNotificationImage.style = `padding:${configuration.panelStyle.imagePadding}px; border-radius: 0;`;
+       // bulkNotificationImage.className = 'FPqR37xpqJeA37xp7MM9_IMG FPqRqg5HqJmAqu5I7MM9C';
+
+       bulkNotificationImage.className= 'image'
+
+    }
+
+
+  //  bulkNotificationImage.setAttribute('src', 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/C77C11F2-0E34-49DE-97CC-10DF6C848B69.png')
+
+    bulkNotificationImageContainer.appendChild(bulkNotificationImage)
+
+    bulkNotiifcationUpperPartContainer.appendChild(bulkNotificationImageContainer)
+
+       var bulkNotificationCloseContainer = document.createElement('div')
+        bulkNotificationCloseContainer.className='close-btn-container'
+        var bulkNotificationCloseIcon = document.createElement('button')
+        bulkNotificationCloseIcon.id = 'notif_close';
+        bulkNotificationCloseIcon.className ='close-btn'
+        bulkNotificationCloseIcon.innerHTML ="+"
+        bulkNotificationCloseContainer.appendChild(bulkNotificationCloseIcon)
+     bulkNotiifcationUpperPartContainer.appendChild(bulkNotificationCloseContainer)
+
+     var bulkNotificationTextContainer = document.createElement('div')
+     bulkNotificationTextContainer.className= 'text-container'
+
+    var bulkNotificationPTag = document.createElement('p')
+    bulkNotificationPTag.className ='para'
+
+    var bulkNotificationFirstText = document.createElement('em')
+    bulkNotificationFirstText.className= 'main-text'
+    numAnim = new CountUp(bulkNotificationFirstText, 0, numberOfUsers, 0, 3);
+
+   // bulkNotificationFirstText.innerHTML ="2000 People"
+
+
+    var bulkNotificationSecondText = document.createElement('em')
+    bulkNotificationSecondText.className= 'secondary-text'
+
+
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth() + 1; //January is 0!
+    var yyyy = today.getFullYear();     
+    if (dd < 10) { dd = '0' + dd }
+    if (mm < 10) { mm = '0' + mm }
+    today = yyyy + '/' + mm + '/' + dd;
+    var date2 = new Date(today);
+    var date1 = new Date(config.rule.createdAt);
+    var timeDiff = Math.abs(date2.getTime() - date1.getTime());
+    var dayDifference = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+
+    bulkNotificationSecondText.innerHTML = ` ${configuration ? configuration.otherText : ''} ${configuration ? configuration.contentText : ''} ${configuration && configuration.bulkText ? configuration.bulkText : 'in the last'} ${configuration.panelStyle.bulkData} ${configuration && configuration.bulkDaysLable ? configuration.bulkDaysLable : 'days'}`
+
+
+    //bulkNotificationSecondText.innerHTML =  configuration.visitorText;  //"signed up for influence in the last 7 days"
+    
+    bulkNotificationPTag.appendChild(bulkNotificationFirstText)
+    var bulkNotificationText2= document.createElement('em')
+    bulkNotificationText2.className = 'main-text'
+
+    bulkNotificationText2.innerHTML='People'
+    bulkNotificationPTag.appendChild(bulkNotificationText2)
+     bulkNotificationPTag.appendChild(bulkNotificationSecondText)
+    bulkNotificationTextContainer.appendChild(bulkNotificationPTag)
+     bulkNotiifcationUpperPartContainer.appendChild(bulkNotificationTextContainer)
+
+    bulkNotiifcationContainer.appendChild(bulkNotiifcationUpperPartContainer)
+
+    var bulkNotificationBorder = document.createElement('div')
+    bulkNotificationBorder.className='border'
+    bulkNotiifcationContainer.appendChild(bulkNotificationBorder)
+
+    var bulkNotificationLowerTextContainer= document.createElement('div')
+    bulkNotificationLowerTextContainer.className ='lower-part'
+
+    var bulkNotificationLowerPTag = document.createElement('p')
+    bulkNotificationLowerPTag.className ='para footer-text'
+
+    var bulkNotificationFooterFirstText = document.createElement('em')
+    bulkNotificationFooterFirstText.className= 'verified-text'
+
+
+    bulkNotificationFooterFirstText.innerHTML = configuration.recentText2 ? configuration.recentText2 : 'Verified by '  //"Verified by"
+
+    bulkNotificationLowerPTag.appendChild(bulkNotificationFooterFirstText)
+
+    var bulkNotificationFooterverified = document.createElement('em')
+    bulkNotificationFooterverified.className= 'verified-icon'
+
+    var bulkNotificationTick = document.createElement('i')
+    bulkNotificationTick.className ='fa fa-check-circle'
+    bulkNotificationFooterverified.appendChild(bulkNotificationTick)
+
+    bulkNotificationLowerPTag.appendChild(bulkNotificationFooterverified)
+
+    var bulkNotificationFooterPoweredBy = document.createElement('em')
+    bulkNotificationFooterPoweredBy.className= 'influence-text'
+    bulkNotificationFooterPoweredBy.innerHTML = configuration.poweredBy ? configuration.poweredBy : ' Influence'   //"Influence"
+
+    bulkNotificationLowerPTag.appendChild(bulkNotificationFooterPoweredBy)
+
+    bulkNotificationLowerTextContainer.appendChild(bulkNotificationLowerPTag)
+    bulkNotiifcationContainer.appendChild(bulkNotificationLowerTextContainer)
+
 
         var innerNotifCTAContainer = document.createElement('div');
         innerNotifCTAContainer.style = configuration.toggleCTA ? 'display:flex;justify-content:flex-end;' : 'display:none';
@@ -3333,20 +3314,23 @@ var Note = function Note(config, containerStyle, iconStyle) {
         innerNotifCTAContainer.appendChild(innerInnerNotifCTAContainer);
 
         if (configuration.isCTATop)
+        console.log(configuration.isCTATop, "ENTERED in if condition")
             mainContainer.appendChild(innerNotifCTAContainer);
-
-        mainContainer.appendChild(notificationRecentContainer);
-        mainContainer.appendChild(notificationLiveContainer);
-        mainContainer.appendChild(notificationBulkContainer);
-        mainContainer.appendChild(notificationReviewContainer);
+             mainContainer.appendChild(notificationRecentContainer);
+            mainContainer.appendChild(liveNotiifcationContainer)
+            mainContainer.appendChild(bulkNotiifcationContainer)
+             mainContainer.appendChild(notificationReviewContainer);
 
         if (!configuration.isCTATop)
+        console.log("entered in the not CTA", configuration.isCTATop)
             mainContainer.appendChild(innerNotifCTAContainer);
 
 
         innerDiv.appendChild(mainContainer);
         innerContainer.appendChild(innerDiv);
         container.appendChild(innerContainer);
+
+    
 
         if (type == 'journey' && userDetails && userDetails.length > k_c6ba2870) {
             k_c6ba2870++;
@@ -3364,10 +3348,13 @@ var Note = function Note(config, containerStyle, iconStyle) {
         }
 
         displayNotification(container, config);
+
+        console.log(displayNotification,"DisplayNotiifcation")
     }
 
     return {
         notificationdisplay: function notificationdisplay(type, config, containerStyle, iconStyle, alignment) {
+            console.log("ENTERED HERE")
             notificationDisplay(type, config, containerStyle, iconStyle, alignment);
         }
     };
@@ -3377,7 +3364,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
 
 if (typeof module !== "undefined" && module.exports) module.exports = Note;
-Influence = typeof Influence === 'undefined' ? require('..') : Influence;
+Influence = typeof Influence === 'undefined' ? require('../server') : Influence;
 
 
 (async function () {

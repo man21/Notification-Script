@@ -3409,6 +3409,10 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         mainContainer.appendChild(innerNotifCTAContainer);
 
+        mainContainer.appendChild(bulkNotiifcationContainer);
+
+        mainContainer.appendChild(liveNotiifcationContainer)
+
         
             console.log(configuration.isCTATop,"ELSE CONDITIOn")
             console.log(mainContainer,"MAIN CONTAINER IN ELSE PART")

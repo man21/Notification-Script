@@ -3400,13 +3400,17 @@ var Note = function Note(config, containerStyle, iconStyle) {
        
         mainContainer.appendChild(bulkNotiifcationContainer);
 
-        //mainContainer.appendChild(liveNotiifcationContainer)
+        mainContainer.appendChild(liveNotiifcationContainer)
+
+        console.log(mainContainer, "MAIN CONTAINER IN IF PART")
 
          if (!configuration.isCTATop)
 
          console.log(configuration.isCTATop,"ELSE CONDITIOn")
-         mainContainer.appendChild(liveNotiifcationContainer)
-         mainContainer.appendChild(bulkNotiifcationContainer);
+        //  mainContainer.appendChild(liveNotiifcationContainer)
+        //  mainContainer.appendChild(bulkNotiifcationContainer);
+
+        console.log(mainContainer,"MAIN CONTAINER IN ELSE PART")
 
 
        

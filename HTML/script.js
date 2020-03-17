@@ -3007,7 +3007,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         var reviewNotificationCloseContainer = document.createElement('div')
         reviewNotificationCloseContainer.className = 'close-btn-container'
         var reviewNotificationCloseIcon = document.createElement('button')
-        notificationReviewClose.id = 'notif_close';
+        reviewNotificationCloseIcon.id = 'notif_close';
         reviewNotificationCloseIcon.className = 'close-btn'
         reviewNotificationCloseIcon.innerHTML = "+"
         reviewNotificationCloseContainer.appendChild(reviewNotificationCloseIcon)

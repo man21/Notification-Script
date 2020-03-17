@@ -3101,6 +3101,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
         console.log(star ,"STAR VALUE in REVIEW NOTIFICATIOn")
         reviewNotificationUpperStarContainer.innerHTML= star
 
+        console.log(reviewNotificationUpperStarContainer,"YES")
+
 
 
 

@@ -3416,22 +3416,22 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
 
     if (configuration.isCTATop)
-            mainContainer.appendChild(innerNotifCTAContainer);
+    innerDiv.appendChild(innerNotifCTAContainer);
 
-           mainContainer.appendChild(bulkNotiifcationContainer);
-           mainContainer.appendChild(liveNotiifcationContainer);
+            innerDiv.appendChild(bulkNotiifcationContainer);
+           innerDiv.appendChild(liveNotiifcationContainer);
 
         console.log(container,"container DATA")
         // mainContainer.appendChild(notificationBulkContainer);
         // mainContainer.appendChild(notificationReviewContainer);
 
         if (!configuration.isCTATop)
-            mainContainer.appendChild(innerNotifCTAContainer);
+        innerDiv.appendChild(innerNotifCTAContainer);
 
             console.log(container,"COntainer")
 
 
-        innerDiv.appendChild(mainContainer);
+       // innerDiv.appendChild(mainContainer);
         innerContainer.appendChild(innerDiv);
         container.appendChild(innerContainer);
        

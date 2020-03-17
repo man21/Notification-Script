@@ -2181,12 +2181,12 @@ async function loopThroughSplittedNotifications(splittedUrls, rule, notification
     document.getElementsByTagName("head")[0].appendChild(animationLink);
 
 
-    var font = document.createElement("link");
-    font.href = 'https://fonts.googleapis.com/css?family=Lato|Poppins:300,400,500,600,700&display=swap';
-    font.type = "text/css";
-    font.rel = "stylesheet";
-    font.id = "stylesheetID";
-    document.getElementsByTagName("head")[0].appendChild(font);
+    var fontCSS = document.createElement("link");
+    fontCSS.href = 'https://fonts.googleapis.com/css?family=Lato|Poppins:300,400,500,600,700&display=swap';
+    fontCSS.type = "text/css";
+    fontCSS.rel = "stylesheet";
+    fontCSS.id = "stylesheetID";
+    document.getElementsByTagName("head")[0].appendChild(fontCSS);
 
 
     let j = 1;

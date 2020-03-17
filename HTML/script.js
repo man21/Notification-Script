@@ -3340,8 +3340,14 @@ var Note = function Note(config, containerStyle, iconStyle) {
         mainContainer.appendChild(notificationBulkContainer);
         mainContainer.appendChild(notificationReviewContainer);
 
+
+        console.log(mainContainer,"Main COntainer in IF PART")
+
         if (!configuration.isCTATop)
             mainContainer.appendChild(innerNotifCTAContainer);
+
+            console.log(mainContainer,"Main COntainer in else PART")
+
 
 
         innerDiv.appendChild(mainContainer);

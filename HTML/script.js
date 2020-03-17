@@ -3416,25 +3416,21 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
 
     if (configuration.isCTATop)
-            mainContainer.appendChild(innerNotifCTAContainer);
+           // mainContainer.appendChild(innerNotifCTAContainer);
 
-        mainContainer.appendChild(bulkNotiifcationContainer);
-        mainContainer.appendChild(liveNotiifcationContainer);
+        container.appendChild(bulkNotiifcationContainer);
+        container.appendChild(liveNotiifcationContainer);
         // mainContainer.appendChild(notificationBulkContainer);
         // mainContainer.appendChild(notificationReviewContainer);
 
         if (!configuration.isCTATop)
-            mainContainer.appendChild(innerNotifCTAContainer);
+        //     mainContainer.appendChild(innerNotifCTAContainer);
 
 
-        innerDiv.appendChild(mainContainer);
-        innerContainer.appendChild(innerDiv);
-        container.appendChild(innerContainer);
+        // innerDiv.appendChild(mainContainer);
+        // innerContainer.appendChild(innerDiv);
+        // container.appendChild(innerContainer);
        
-
-
-
-
 
         if (type == 'journey' && userDetails && userDetails.length > k_c6ba2870) {
             k_c6ba2870++;

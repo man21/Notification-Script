@@ -2868,6 +2868,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
 
 
+        console.log(config.rule.closeNotification,"CLose Notification DATA")
+
         var notificationLiveContainer = document.createElement('div')
         notificationLiveContainer.className = 'oiuytretg';
         notificationLiveContainer.style = config.rule.closeNotification ? 'display:flex' : 'display:none';

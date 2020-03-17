@@ -3365,40 +3365,40 @@ var Note = function Note(config, containerStyle, iconStyle) {
         bulkNotiifcationContainer.appendChild(bulkNotificationLowerTextContainer)
 
 
-        // var innerNotifCTAContainer = document.createElement('div');
-        // innerNotifCTAContainer.style = configuration.toggleCTA ? 'display:flex;justify-content:flex-end;' : 'display:none';
-        // innerNotifCTAContainer.setAttribute("id", "cta");
-        // var innerInnerNotifCTAContainer = document.createElement('div');
-        // innerInnerNotifCTAContainer.setAttribute("id", "ctatext");
-        // if (configuration && configuration.panelStyle)
-        //     innerInnerNotifCTAContainer.style = `
-        //         background-color: rgb(${configuration.panelStyle.ctaBackgroundColor ? configuration.panelStyle.ctaBackgroundColor.r : 0}, ${configuration.panelStyle.ctaBackgroundColor ? configuration.panelStyle.ctaBackgroundColor.g : 0}, ${configuration.panelStyle.ctaBackgroundColor ? configuration.panelStyle.ctaBackgroundColor.b : 0}, ${configuration.panelStyle.ctaBackgroundColor ? configuration.panelStyle.ctaBackgroundColor.a : 0});
-        //         width: auto;
-        //         border: ${configuration.panelStyle.ctaBorderWidth}px solid rgb(${configuration.panelStyle.ctaBorderColor ? configuration.panelStyle.ctaBorderColor.r : 0}, ${configuration.panelStyle.ctaBorderColor ? configuration.panelStyle.ctaBorderColor.g : 0}, ${configuration.panelStyle.ctaBorderColor ? configuration.panelStyle.ctaBorderColor.b : 0}, ${configuration.panelStyle.ctaBorderColor ? configuration.panelStyle.ctaBorderColor.a : 0});
-        //         border-radius: ${configuration.panelStyle.ctaRadius}px;
-        //         color: rgb(${configuration.panelStyle.ctaTextColor ? configuration.panelStyle.ctaTextColor.r : 0}, ${configuration.panelStyle.ctaTextColor ? configuration.panelStyle.ctaTextColor.g : 0}, ${configuration.panelStyle.ctaTextColor ? configuration.panelStyle.ctaTextColor.b : 0}, ${configuration.panelStyle.ctaTextColor ? configuration.panelStyle.ctaTextColor.a : 0});
-        //         height: 20.5px;
-        //         font-size: 10px;
-        //         font-family: inherit;
-        //         font-weight: normal;
-        //         pointer-events: auto;
-        //         overflow: hidden;
-        //         position: relative;
-        //         float: right;
-        //         font-weight: 400;
-        //         margin-bottom: ${configuration.isCTATop ? '4px' : '0px'};
-        //         margin-top: ${!configuration.isCTATop ? '3px' : '0px'};
-        //         margin-right: 25px;
-        //         padding: 6px 14px;
-        //         box-sizing: border-box;
-        //         line-height: 1em;
-        //         box-shadow: 0 0 1px rgba(0,0,0,.2), 0 1px 2px rgba(0,0,0,.15), 0 5px 50px rgba(0,0,0,.15);
-        //         cursor: pointer;
-        //         opacity: 0.95;
-        //     `;
-        // var createCTAText = document.createTextNode(configuration.ctaButtonText);
-        // innerInnerNotifCTAContainer.appendChild(createCTAText);
-        // innerNotifCTAContainer.appendChild(innerInnerNotifCTAContainer);
+        var innerNotifCTAContainer = document.createElement('div');
+        innerNotifCTAContainer.style = configuration.toggleCTA ? 'display:flex;justify-content:flex-end;' : 'display:none';
+        innerNotifCTAContainer.setAttribute("id", "cta");
+        var innerInnerNotifCTAContainer = document.createElement('div');
+        innerInnerNotifCTAContainer.setAttribute("id", "ctatext");
+        if (configuration && configuration.panelStyle)
+            innerInnerNotifCTAContainer.style = `
+                background-color: rgb(${configuration.panelStyle.ctaBackgroundColor ? configuration.panelStyle.ctaBackgroundColor.r : 0}, ${configuration.panelStyle.ctaBackgroundColor ? configuration.panelStyle.ctaBackgroundColor.g : 0}, ${configuration.panelStyle.ctaBackgroundColor ? configuration.panelStyle.ctaBackgroundColor.b : 0}, ${configuration.panelStyle.ctaBackgroundColor ? configuration.panelStyle.ctaBackgroundColor.a : 0});
+                width: auto;
+                border: ${configuration.panelStyle.ctaBorderWidth}px solid rgb(${configuration.panelStyle.ctaBorderColor ? configuration.panelStyle.ctaBorderColor.r : 0}, ${configuration.panelStyle.ctaBorderColor ? configuration.panelStyle.ctaBorderColor.g : 0}, ${configuration.panelStyle.ctaBorderColor ? configuration.panelStyle.ctaBorderColor.b : 0}, ${configuration.panelStyle.ctaBorderColor ? configuration.panelStyle.ctaBorderColor.a : 0});
+                border-radius: ${configuration.panelStyle.ctaRadius}px;
+                color: rgb(${configuration.panelStyle.ctaTextColor ? configuration.panelStyle.ctaTextColor.r : 0}, ${configuration.panelStyle.ctaTextColor ? configuration.panelStyle.ctaTextColor.g : 0}, ${configuration.panelStyle.ctaTextColor ? configuration.panelStyle.ctaTextColor.b : 0}, ${configuration.panelStyle.ctaTextColor ? configuration.panelStyle.ctaTextColor.a : 0});
+                height: 20.5px;
+                font-size: 10px;
+                font-family: inherit;
+                font-weight: normal;
+                pointer-events: auto;
+                overflow: hidden;
+                position: relative;
+                float: right;
+                font-weight: 400;
+                margin-bottom: ${configuration.isCTATop ? '4px' : '0px'};
+                margin-top: ${!configuration.isCTATop ? '3px' : '0px'};
+                margin-right: 25px;
+                padding: 6px 14px;
+                box-sizing: border-box;
+                line-height: 1em;
+                box-shadow: 0 0 1px rgba(0,0,0,.2), 0 1px 2px rgba(0,0,0,.15), 0 5px 50px rgba(0,0,0,.15);
+                cursor: pointer;
+                opacity: 0.95;
+            `;
+        var createCTAText = document.createTextNode(configuration.ctaButtonText);
+        innerInnerNotifCTAContainer.appendChild(createCTAText);
+        innerNotifCTAContainer.appendChild(innerInnerNotifCTAContainer);
 
        // if (configuration.isCTATop)
         //container.appendChild(notificationLiveContainer)

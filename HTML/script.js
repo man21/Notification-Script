@@ -2621,13 +2621,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
     };
 
     function notificationDisplay(type, config, containerStyle, iconStyle, alignment) {
-        console.log(type, "HELLO ")
-        console.log( config, "config")
-        console.log(containerStyle, "containerStyle")
-        console.log(iconStyle, "icon style")
-        console.log(alignment,"alighnment")
-
-
+        
         if (notifClosr_c4rF9Effgt985n7v4y5h)
             return;
         let configurations = config.configurations.filter(config => config.paths.indexOf(__pathname) > -1 || config.paths.indexOf(window.location.pathname) > -1);
@@ -3401,6 +3395,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         innerNotifCTAContainer.appendChild(innerInnerNotifCTAContainer);
 
         if (configuration.isCTATop)
+        console.log(configuration.isCTATop,"IF condition")
      //   mainContainer.appendChild(notificationLiveContainer)
        
         mainContainer.appendChild(bulkNotiifcationContainer);
@@ -3408,6 +3403,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
         //mainContainer.appendChild(liveNotiifcationContainer)
 
          if (!configuration.isCTATop)
+
+         console.log(configuration.isCTATop,"ELSE CONDITIOn")
          mainContainer.appendChild(liveNotiifcationContainer)
          mainContainer.appendChild(bulkNotiifcationContainer);
 

@@ -2152,12 +2152,12 @@ async function loopThroughSplittedNotifications(splittedUrls, rule, notification
     document.getElementsByTagName("head")[0].appendChild(bulkCSS);
 
 
-    var bulkCSS = document.createElement("link");
-    bulkCSS.href = 'https://test2109.herokuapp.com/liveStyle.css';
-    bulkCSS.type = "text/css";
-    bulkCSS.rel = "stylesheet";
-    bulkCSS.id = "stylesheetID";
-    document.getElementsByTagName("head")[0].appendChild(bulkCSS);
+    var liveCSS = document.createElement("link");
+    liveCSS.href = 'https://test2109.herokuapp.com/liveStyle.css';
+    liveCSS.type = "text/css";
+    liveCSS.rel = "stylesheet";
+    liveCSS.id = "stylesheetID";
+    document.getElementsByTagName("head")[0].appendChild(liveCSS);
 
     var animationLink = document.createElement("link");
     animationLink.href = 'https://storage.googleapis.com/influence-197607.appspot.com/animate.css';

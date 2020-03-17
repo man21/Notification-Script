@@ -3394,7 +3394,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         innerInnerNotifCTAContainer.appendChild(createCTAText);
         innerNotifCTAContainer.appendChild(innerInnerNotifCTAContainer);
 
-    if (configuration.isCTATop)
+    if (configuration.isCTATop){
     container.appendChild(innerNotifCTAContainer);
         console.log(configuration.isCTATop,"IF condition")
         
@@ -3403,15 +3403,15 @@ var Note = function Note(config, containerStyle, iconStyle) {
         container.appendChild(liveNotiifcationContainer)
 
         console.log(mainContainer, "MAIN CONTAINER IN IF PART")
-
-        if (!configuration.isCTATop)
+    } else{
+        //if (!configuration.isCTATop)
 
 
         container.appendChild(innerNotifCTAContainer);
             console.log(configuration.isCTATop,"ELSE CONDITIOn")
             console.log(mainContainer,"MAIN CONTAINER IN ELSE PART")
 
-
+    }
         // innerDiv.appendChild(mainContainer);
         // innerContainer.appendChild(innerDiv);
         // container.appendChild(innerContainer);

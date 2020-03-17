@@ -3400,21 +3400,21 @@ var Note = function Note(config, containerStyle, iconStyle) {
         innerInnerNotifCTAContainer.appendChild(createCTAText);
         innerNotifCTAContainer.appendChild(innerInnerNotifCTAContainer);
 
-       // if (configuration.isCTATop)
+        if (configuration.isCTATop)
         //container.appendChild(notificationLiveContainer)
        
         mainContainer.appendChild(bulkNotiifcationContainer);
 
         mainContainer.appendChild(liveNotiifcationContainer)
 
-        //     mainContainer.appendChild(innerNotifCTAContainer);
+        // mainContainer.appendChild(innerNotifCTAContainer);
 
         // mainContainer.appendChild(notificationRecentContainer);
         // mainContainer.appendChild(notificationLiveContainer);
         // container.appendChild(bulkNotiifcationContainer);
         // mainContainer.appendChild(notificationReviewContainer);
 
-        // if (!configuration.isCTATop)
+         if (!configuration.isCTATop)
 
         // container.appendChild(bulkNotiifcationContainer);
         // //container.appendChild(notificationLiveContainer)

@@ -2831,7 +2831,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         var recentNotificationFooterLeftText = document.createElement('p')
         recentNotificationFooterLeftText.className = 'footer-left-text'
         var timeStamp = userDetails && userDetails ? userDetails.timestamp : new Date();
-        recentNotificationFooterLeftText.innerHTML = timeStamp ? timeSince(new Date(new Date(timeStamp) - aDay).toISOString(),configuration) : "Not available ";
+        recentNotificationFooterLeftText.innerHTML = 'updated ' +timeStamp ? timeSince(new Date(new Date(timeStamp) - aDay).toISOString(),configuration) : "Not available ";
         // recentNotificationFooterLeftText.innerHTML = "updated 9 min ago"
      
          recentNotificationFooterLeft.appendChild(recentNotificationFooterLeftText)
@@ -2910,6 +2910,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
            var liveNotificationCloseContainer = document.createElement('div')
             liveNotificationCloseContainer.className='khjvgcfdrgtyh'
             var liveNotificationCloseIcon = document.createElement('button')
+            liveNotificationCloseIcon.id = 'notif_close';
             liveNotificationCloseIcon.className ='jhfgdxsghj'
             liveNotificationCloseIcon.innerHTML ="+"
             liveNotificationCloseContainer.appendChild(liveNotificationCloseIcon)
@@ -2927,7 +2928,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
     
         var liveNotificationSecondText = document.createElement('em')
         liveNotificationSecondText.className= 'jhjfdrtfgvgj'
-        liveNotificationSecondText.innerHTML ="are viewing this side"
+        liveNotificationSecondText.innerHTML = ` ${configuration.visitorText}`   //"are viewing this side"
          liveNotificationPTag.appendChild(liveNotificationFirstText)
          liveNotificationPTag.appendChild(liveNotificationSecondText)
         liveNotificationTextContainer.appendChild(liveNotificationPTag)
@@ -2947,7 +2948,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
     
         var liveNotificationFooterFirstText = document.createElement('em')
         liveNotificationFooterFirstText.className= 'uytdr'
-        liveNotificationFooterFirstText.innerHTML ="Verified by"
+        liveNotificationFooterFirstText.innerHTML = `${configuration && configuration.liveText ? configuration.liveText : 'verified by '}`  //"Verified by"
     
         liveNotificationLowerPTag.appendChild(liveNotificationFooterFirstText)
     
@@ -2962,7 +2963,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
     
         var liveNotificationFooterPoweredBy = document.createElement('em')
         liveNotificationFooterPoweredBy.className= 'jbhftyftgckjgyh'
-        liveNotificationFooterPoweredBy.innerHTML ="Influence"
+        liveNotificationFooterPoweredBy.innerHTML = configuration.poweredBy ? configuration.poweredBy : 'Influence'  //"Influence"
     
         liveNotificationLowerPTag.appendChild(liveNotificationFooterPoweredBy)
     
@@ -3199,184 +3200,6 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
 
 
-
-        // var notificationReviewContainer = document.createElement('div');
-        // notificationReviewContainer.style = type == 'review' ? "display:block" : "display:none";
-        // var innerNotifReviewContainer = document.createElement('div');
-        // innerNotifReviewContainer.setAttribute("id", "FPqR3dGiqJeA3dGi7MM9_0");
-        // var innerInnerNotifReviewContainer = document.createElement('div');
-        // innerInnerNotifReviewContainer.className = `${configuration.notificationSize=='large'?'FPqR3acH3FtC_large':''} FPqR2B_4qJeA2B_47MM9_0 rounded FPqRD2zVqJeAD2zV7MM9_0 FPqRD2zVqJeAD2FFJR9_0`;
-        // innerInnerNotifReviewContainer.style = containerStyle;
-        // var innerMainNotifReviewContainer = document.createElement('div');
-        // innerMainNotifReviewContainer.setAttribute('id', "FPqR3acHqJeA3acH7MM9_0");
-
-        // var notifReviewImgContainer = document.createElement('div');
-        // notifReviewImgContainer.className = "FPqRH0WDqJeAH0WD7MM9_0";
-        // var notifReviewImg = document.createElement('div');
-
-        // notifReviewImgContainer.className = "FPqRH0WDqJeAH0WD7MM9_1";
-        // notifReviewImg.classList = "FPqRh0ePqJeAh0eP7MM9_1";
-        // var notifReviewImgContent = document.createElement('img');
-        // notifReviewImgContent.className = "FPqRqg5HqJmAqu5I7MM9C FPqRfgRthDvE_0";
-        // if (fromAppType == 'facebook')
-        //     notifReviewImgContent.setAttribute('src', 'https://storage.googleapis.com/influence-197607.appspot.com/facebook_round.png');
-        // else if (fromAppType == 'google')
-        //     notifReviewImgContent.setAttribute('src', 'https://storage.googleapis.com/influence-197607.appspot.com/googlereview.png');
-        // notifReviewImgContent.style = `padding: 11px; border-radius: 0; height: 50px; width: 50px;`;
-        // notifReviewImg.appendChild(notifReviewImgContent);
-
-        // notifReviewImgContainer.appendChild(notifReviewImg);
-
-        // var notificationReviewCloseContainer = document.createElement('div');
-        // notificationReviewCloseContainer.className = "FPqR3acHqJeA3acH7MM9_1 FPqR3acHqJeA3acH7MM9_2";
-        // notificationReviewCloseContainer.style = config.rule.closeNotification ? 'display:flex' : 'display:none';
-        // var notificationReviewClose = document.createElement('img');
-        // notificationReviewClose.className = "FPqRqg5HqJmAqu5I7MM9C";
-        // notificationReviewClose.id = 'notif_close';
-        // notificationReviewClose.setAttribute('src', 'https://useinfluence.co/images/close-icon.png');
-        // notificationReviewCloseContainer.append(notificationReviewClose);
-        // var notifReviewContentContainerI = document.createElement('div');
-        // notifReviewContentContainerI.className = "FPqR15RvqJeA15Rv7MM9_0 FPqFjrtuD9_0";
-        // var notifReviewContentInnerContainer = document.createElement('div');
-        // notifReviewContentInnerContainer.className = `${fromAppType=='google'?'FPqR2fwXqJehgtj73M9_0':''} FPqR2fwXqJeA2fwX7MM9_0 FPqR2fwXqJehgtYRHF_0`;
-        // var notifReviewContentSpan = document.createElement('span');
-        // notifReviewContentSpan.className = "FPqR1Jr6qJeA1Jr67MM9_0 FPquyrhbf78FNR_0";
-        // var notifReviewContentImg = document.createElement('span');
-        // //notifReviewContentSpan.style=containerStyle;
-        // if (fromAppType == 'facebook') {
-        //     var text_span = document.createTextNode(` ${userReview && userReview.username ? userReview.username : 'Someone'}`);
-        //     notifReviewContentSpan.appendChild(text_span);
-        //     var notifReviewContentImg = document.createElement('img');
-        //     notifReviewContentImg.setAttribute('src', 'https://storage.googleapis.com/influence-197607.appspot.com/fbreview.jpg');
-        //     notifReviewContentImg.className = 'FPqhfnrkSnf34gkt_0';
-        // }
-        // else if (fromAppType == 'google') {
-        //     var star = '';
-        //     if (userReview && userReview.rating) {
-        //         for (let star_i = 0; star_i < userReview.rating; star_i++) {
-        //             star += `<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-        //                viewBox="0 0 53.867 53.867" style="enable-background:new 0 0 53.867 53.867;" xml:space="preserve">
-        //                 <polygon style="fill:rgb(255, 215, 0, 1);" points="26.934,1.318 35.256,18.182 53.867,20.887 40.4,34.013 43.579,52.549 26.934,43.798 
-        //                 10.288,52.549 13.467,34.013 0,20.887 18.611,18.182 "/>
-        //               </svg>`
-        //         }
-        //     }
-        //     var text_span = document.createElement('div');
-        //     text_span.innerHTML=star;
-        //     notifReviewContentSpan.appendChild(text_span);
-        //     notifReviewContentImg.innerHTML = userReview ? userReview.rating : 0;
-        //     notifReviewContentImg.className = 'FPqhfnrkSnf34gkt_0 FPqhfnrfhrTngkt_0';
-        // }
-
-        // // var text_span1 = document.createElement('span');
-        // // text_span1.className = "FPqRtoc3qoc37  peopleviewActivity";
-        // // text_span1.style=containerStyle;
-        // //var text_div = document.createTextNode(` ${configuration.liveVisitorText}`);
-        // // var text_div = document.createTextNode(` reviewed us on facebook`);
-        // // text_span1.appendChild(text_div);
-        // notifReviewContentInnerContainer.appendChild(notifReviewContentSpan);
-        // notifReviewContentInnerContainer.appendChild(notifReviewContentImg);
-        // notifReviewContentContainerI.appendChild(notifReviewContentInnerContainer);
-        // //notifReviewContentContainerI.appendChild(text_span1);
-
-        // var notifReviewContentContainerI_I = document.createElement('div');
-        // notifReviewContentContainerI_I.className = "FPqR15RvqJeA15Rv7MM9_0 FPqFjRTghrtuD9_0";
-        // var notifReviewContentInnerContainer = document.createElement('div');
-        // notifReviewContentInnerContainer.className = `${fromAppType=='googgle'?'FPqR2fwXqJeA2fHFrT4_0':''} FPqR2fwXqJeA2fwX7MM9_0 ${configuration.notificationSize=='large'?'FPqR2fwXotjg7NghfMM9_large_0':'FPqR2fwXotjg7NghfMM9_0'} `;
-        // var notifReviewContentSpan = document.createElement('div');
-        // var star='';
-        // if(userReview&& userReview.rating){
-        //     for (let star_i = 0; star_i < userReview.rating ; star_i++) {
-        //         star+=`<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-        //                viewBox="0 0 53.867 53.867" style="enable-background:new 0 0 53.867 53.867;" xml:space="preserve">
-        //                 <polygon style="fill:rgb(${configuration.panelStyle.color ? configuration.panelStyle.color.r : 0}, ${configuration.panelStyle.color ? configuration.panelStyle.color.g : 0}, ${configuration.panelStyle.color ? configuration.panelStyle.color.b : 0}, ${configuration.panelStyle.color ? configuration.panelStyle.color.a : 0});" points="26.934,1.318 35.256,18.182 53.867,20.887 40.4,34.013 43.579,52.549 26.934,43.798 
-        //                 10.288,52.549 13.467,34.013 0,20.887 18.611,18.182 "/>
-        //               </svg>`
-        //     }
-        // }
-        // //notifReviewContentSpan.innerHTML=star;
-        // if (fromAppType == 'facebook')
-        //     notifReviewContentSpan.innerHTML = 'Recommended us on Facebook';
-        // else if (fromAppType == 'google') {
-        //     var text_span_name = document.createElement('span');
-        //     text_span_name.innerHTML = userReview && userReview.username ? userReview.username : 'Someone';
-        //     text_span_name.className = 'FQhfht45HFtyD_0';
-        //     var text_span_review_text = document.createTextNode(configuration.gglReviewText ? configuration.gglReviewText : 'Reviewed us on Google');
-        //     notifReviewContentSpan.appendChild(text_span_name);
-        //     notifReviewContentSpan.appendChild(text_span_review_text);
-        // }
-        // //notifReviewContentSpan.style=containerStyle;
-        // var text_avg = document.createElement('span');
-        // text_avg.className = "FPqRtoc3qoc3sfRgC7";
-        // text_avg.style=containerStyle;
-        // // var text_div_avg = document.createTextNode(`${userReview?userReview.avgRating:0}`);
-        // // text_avg.appendChild(text_div_avg);
-
-        // notifReviewContentInnerContainer.appendChild(notifReviewContentSpan);
-        // notifReviewContentContainerI_I.appendChild(notifReviewContentInnerContainer);
-        // // if(userReview && userReview.avgRating)
-        // //     notifReviewContentContainerI_I.appendChild(text_avg);
-
-        // var notifReviewContentContainerII = document.createElement('div');
-        // notifReviewContentContainerII.className = "FPqR14UVqJeA14UV7MM9_0 FPqR14UV475HDnfr_0";
-        // notifReviewContentContainerII.style = configuration && configuration.togglePoweredBy ? 'display:inline-block' : 'display:none';
-        // var text_ContainerII = document.createTextNode(`${configuration && configuration.liveText ? configuration.liveText : 'verified by '}`);
-        // var notifReviewContentContainerII_I = document.createElement('i');
-        // var notifReviewContentImg = document.createElement('div');
-        // notifReviewContentImg.className = "FPqRqg5HqJmAqu5I7MM9_R";
-        // notifReviewContentImg.innerHTML=`
-        // <svg width="10.5" height="10.5" viewBox="0 0 524 524" xmlns="http://www.w3.org/2000/svg">
-        // <defs>
-        // <style>.cls-1 {
-        //         fill: #5d93fe;
-        //       }
-        //       .cls-2 {
-        //         fill: #5d93fe;
-        //         filter: url(#a);
-        //       }
-        //       .cls-3 {
-        //         fill: #fff;
-        //         fill-rule: evenodd;
-        //       }</style>
-        // <filter id="a" x="51" y="51" width="423" height="423" filterUnits="userSpaceOnUse">
-        // <feOffset in="SourceAlpha" result="offset"/>
-        // <feGaussianBlur result="blur" stdDeviation="2.236"/>
-        // <feFlood flood-opacity=".06" result="flood"/>
-        // <feComposite in2="blur" operator="in" result="composite"/>
-        // <feBlend in="SourceGraphic" result="blend"/>
-        // </filter>
-        // </defs>
-        // <circle class="cls-1" cx="262" cy="262" r="262"/>
-        // <circle class="cls-2" cx="262" cy="262" r="207"/>
-        // <path class="cls-3" transform="translate(-640 -238)" d="m833.89 478.95 81.132 65.065a9 9 0 0 1 1.391 12.652l-25.651 31.985a9 9 0 0 1-12.652 1.39l-81.132-65.065a9 9 0 0 1-1.391-12.652l25.651-31.985a9 9 0 0 1 12.652-1.39z"/>
-        // <path class="cls-3" transform="translate(-640 -238)" d="m846.25 552.7 127.39-144.5a9.721 9.721 0 0 1 13.35-1.047l29.679 24.286a8.9 8.9 0 0 1 1.08 12.862l-127.39 144.5a9.721 9.721 0 0 1-13.35 1.047l-29.675-24.286a8.9 8.9 0 0 1-1.087-12.861z"/>
-        // </svg>`;
-        // //notifReviewContentImg.setAttribute('src', 'https://storage.googleapis.com/influence-197607.appspot.com/TickIcon.svg');
-        // notifReviewContentContainerII_I.appendChild(notifReviewContentImg);
-        // var notifReviewContentA = document.createElement('a');
-        // notifReviewContentA.setAttribute('href', configuration.poweredByLink);
-        // notifReviewContentA.setAttribute('rel', 'nofollow');
-        // notifReviewContentA.setAttribute('target', '_blank');
-        // var createASpan = document.createElement('span');
-        // createASpan.className = "FPqRtoc3qoc37 influencebrandMark";
-        // var createAText = document.createTextNode(configuration.poweredBy ? configuration.poweredBy : 'Influence');
-        // createASpan.appendChild(createAText);
-        // notifReviewContentA.appendChild(createASpan);
-        // notifReviewContentContainerII.appendChild(notifReviewContentContainerII_I);
-        // notifReviewContentContainerII.appendChild(text_ContainerII);
-
-        // notifReviewContentContainerII.appendChild(notifReviewContentA);
-
-        // innerMainNotifReviewContainer.appendChild(notifReviewImgContainer);
-        // innerMainNotifReviewContainer.appendChild(notificationReviewCloseContainer);
-        // innerMainNotifReviewContainer.appendChild(notifReviewContentContainerI);
-        // innerMainNotifReviewContainer.appendChild(notifReviewContentContainerI_I);
-        // innerMainNotifReviewContainer.appendChild(notifReviewContentContainerII);
-
-        // innerInnerNotifReviewContainer.appendChild(innerMainNotifReviewContainer);
-        // innerNotifReviewContainer.appendChild(innerInnerNotifReviewContainer);
-        // notificationReviewContainer.appendChild(innerNotifReviewContainer);
-
         //***************** end for review notification ********************//
 
 
@@ -3393,7 +3216,17 @@ var Note = function Note(config, containerStyle, iconStyle) {
     
         var bulkNotificationImage = document.createElement('img')
         bulkNotificationImage.className= 'image'
-        bulkNotificationImage.setAttribute('src', 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/C77C11F2-0E34-49DE-97CC-10DF6C848B69.png')
+
+        if (config.icon)
+        bulkNotificationImage.setAttribute('src', config.icon);
+        else
+        bulkNotificationImage.setAttribute('src', configuration.panelStyle.image ? configuration.panelStyle.image : 'https://storage.googleapis.com/influence-197607.appspot.com/fire_icon_blue_6.png')
+        if (configuration.panelStyle && configuration.panelStyle.image) {
+           // notifBulkImg.style = `padding:${configuration.panelStyle.imagePadding}px; border-radius: 0;`;
+           // notifBulkImg.className = 'FPqR37xpqJeA37xp7MM9_IMG FPqRqg5HqJmAqu5I7MM9C';
+        }
+
+      //  bulkNotificationImage.setAttribute('src', 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/C77C11F2-0E34-49DE-97CC-10DF6C848B69.png')
     
         bulkNotificationImageContainer.appendChild(bulkNotificationImage)
     
@@ -3402,6 +3235,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
            var bulkNotificationCloseContainer = document.createElement('div')
             bulkNotificationCloseContainer.className='close-btn-container'
             var bulkNotificationCloseIcon = document.createElement('button')
+            bulkNotificationCloseIcon.id = 'notif_close';
             bulkNotificationCloseIcon.className ='close-btn'
             bulkNotificationCloseIcon.innerHTML ="+"
             bulkNotificationCloseContainer.appendChild(bulkNotificationCloseIcon)
@@ -3416,15 +3250,25 @@ var Note = function Note(config, containerStyle, iconStyle) {
         var bulkNotificationFirstText = document.createElement('em')
         bulkNotificationFirstText.className= 'main-text'
         numAnim = new CountUp(bulkNotificationFirstText, 0, numberOfUsers, 0, 3);
-         bulkNotificationFirstText.innerHTML = numberOfUsers
+         bulkNotificationFirstText.innerHTML = numberOfUsers +" " + `${configuration.visitorText}`
     
-       
-    
-    
-    
+
         var bulkNotificationSecondText = document.createElement('em')
         bulkNotificationSecondText.className= 'secondary-text'
-        bulkNotificationSecondText.innerHTML ="signed up for influence in the last 7 days"
+
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth() + 1; //January is 0!
+        var yyyy = today.getFullYear();     
+        if (dd < 10) { dd = '0' + dd }
+        if (mm < 10) { mm = '0' + mm }
+        today = yyyy + '/' + mm + '/' + dd;
+        var date2 = new Date(today);
+        var date1 = new Date(config.rule.createdAt);
+        var timeDiff = Math.abs(date2.getTime() - date1.getTime());
+        var dayDifference = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+        bulkNotificationSecondText.innerHTML = ` ${configuration ? configuration.otherText : ''} ${configuration ? configuration.contentText : ''} ${configuration && configuration.bulkText ? configuration.bulkText : 'in the last'} ${configuration.panelStyle.bulkData} ${configuration && configuration.bulkDaysLable ? configuration.bulkDaysLable : 'days'}`  //"signed up for influence in the last 7 days"
          bulkNotificationPTag.appendChild(bulkNotificationFirstText)
      
          bulkNotificationPTag.appendChild(bulkNotificationSecondText)
@@ -3445,7 +3289,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
     
         var bulkNotificationFooterFirstText = document.createElement('em')
         bulkNotificationFooterFirstText.className= 'verified-text'
-        bulkNotificationFooterFirstText.innerHTML ="Verified by"
+        bulkNotificationFooterFirstText.innerHTML = configuration.recentText2 ? configuration.recentText2 : ' by '  //"Verified by"
     
         bulkNotificationLowerPTag.appendChild(bulkNotificationFooterFirstText)
     
@@ -3460,7 +3304,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
     
         var bulkNotificationFooterPoweredBy = document.createElement('em')
         bulkNotificationFooterPoweredBy.className= 'influence-text'
-        bulkNotificationFooterPoweredBy.innerHTML ="Influence"
+        bulkNotificationFooterPoweredBy.innerHTML = configuration.poweredBy ? configuration.poweredBy : 'Influence'   //"Influence"
     
         bulkNotificationLowerPTag.appendChild(bulkNotificationFooterPoweredBy)
     

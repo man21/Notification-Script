@@ -3424,7 +3424,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         // mainContainer.appendChild(notificationReviewContainer);
 
         if (!configuration.isCTATop)
-        //     mainContainer.appendChild(innerNotifCTAContainer);
+            container.appendChild(innerNotifCTAContainer);
 
 
         // innerDiv.appendChild(mainContainer);

@@ -3395,26 +3395,29 @@ var Note = function Note(config, containerStyle, iconStyle) {
         innerNotifCTAContainer.appendChild(innerInnerNotifCTAContainer);
 
     if (configuration.isCTATop){
-    container.appendChild(innerNotifCTAContainer);
+        mainContainer.appendChild(innerNotifCTAContainer);
         console.log(configuration.isCTATop,"IF condition")
         
-        container.appendChild(bulkNotiifcationContainer);
+        mainContainer.appendChild(bulkNotiifcationContainer);
 
-        container.appendChild(liveNotiifcationContainer)
+        mainContainer.appendChild(liveNotiifcationContainer)
 
         console.log(mainContainer, "MAIN CONTAINER IN IF PART")
     } else{
         //if (!configuration.isCTATop)
 
 
-        container.appendChild(innerNotifCTAContainer);
+        mainContainer.appendChild(innerNotifCTAContainer);
+
+        
             console.log(configuration.isCTATop,"ELSE CONDITIOn")
             console.log(mainContainer,"MAIN CONTAINER IN ELSE PART")
+            innerDiv.appendChild(mainContainer);
+            innerContainer.appendChild(innerDiv);
+            container.appendChild(innerContainer);
 
     }
-        // innerDiv.appendChild(mainContainer);
-        // innerContainer.appendChild(innerDiv);
-        // container.appendChild(innerContainer);
+       
 
 
 

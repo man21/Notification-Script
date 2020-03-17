@@ -2897,7 +2897,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
     
         var liveNotificationSecondText = document.createElement('em')
         liveNotificationSecondText.className= 'secondary-text'
-        liveNotificationSecondText.innerHTML = ` ${configuration.visitorText}`   //"are viewing this side"
+        liveNotificationSecondText.innerHTML = "are viewing this side"// ` ${configuration.visitorText}` 
          liveNotificationPTag.appendChild(liveNotificationFirstText)
          liveNotificationPTag.appendChild(liveNotificationSecondText)
         liveNotificationTextContainer.appendChild(liveNotificationPTag)

@@ -3412,7 +3412,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
     mainContainer.appendChild(innerNotifCTAContainer);
 
     mainContainer.appendChild(bulkNotiifcationContainer);
-   // mainContainer.appendChild(notificationLiveContainer);
+    mainContainer.appendChild(notificationLiveContainer);
 
         console.log(mainContainer,"container DATA")
 

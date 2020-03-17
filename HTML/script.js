@@ -3405,7 +3405,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
        
         mainContainer.appendChild(bulkNotiifcationContainer);
 
-        mainContainer.appendChild(liveNotiifcationContainer)
+        //mainContainer.appendChild(liveNotiifcationContainer)
 
         // mainContainer.appendChild(innerNotifCTAContainer);
 

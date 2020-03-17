@@ -2595,6 +2595,11 @@ var Note = function Note(config, containerStyle, iconStyle) {
     var numAnim;
    
     function displayNotification(container, config) {
+
+        console.log(config,"COnfig Data is here")
+
+        console.log(container,"COntainer is here")
+
         let className = `animated_FPqR2bI7Mf_c ${config.rule.popupAnimationIn}`;
         container.className =  className;
         const elem = document.getElementsByClassName(className);

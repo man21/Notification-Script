@@ -2159,12 +2159,34 @@ async function loopThroughSplittedNotifications(splittedUrls, rule, notification
     liveCSS.id = "stylesheetID";
     document.getElementsByTagName("head")[0].appendChild(liveCSS);
 
+    var recentCSS = document.createElement("link");
+    recentCSS.href = 'https://storage.googleapis.com/influence-197607.appspot.com/recentStyle.css';
+    recentCSS.type = "text/css";
+    recentCSS.rel = "stylesheet";
+    recentCSS.id = "stylesheetID";
+    document.getElementsByTagName("head")[0].appendChild(recentCSS);
+
+    var reviewCSS = document.createElement("link");
+    reviewCSS.href = 'https://storage.googleapis.com/influence-197607.appspot.com/reviewStyle.css';
+    reviewCSS.type = "text/css";
+    reviewCSS.rel = "stylesheet";
+    reviewCSS.id = "stylesheetID";
+    document.getElementsByTagName("head")[0].appendChild(reviewCSS);
+
     var animationLink = document.createElement("link");
     animationLink.href = 'https://storage.googleapis.com/influence-197607.appspot.com/animate.css';
     animationLink.type = "text/css";
     animationLink.rel = "stylesheet";
     animationLink.id = "stylesheetID";
     document.getElementsByTagName("head")[0].appendChild(animationLink);
+
+
+    var font = document.createElement("link");
+    font.href = 'https://fonts.googleapis.com/css?family=Lato|Poppins:300,400,500,600,700&display=swap';
+    font.type = "text/css";
+    font.rel = "stylesheet";
+    font.id = "stylesheetID";
+    document.getElementsByTagName("head")[0].appendChild(font);
 
 
     let j = 1;
@@ -2717,57 +2739,41 @@ var Note = function Note(config, containerStyle, iconStyle) {
         var mainContainer = document.createElement('div');
 
 
-        var notificationRecentContainer = document.createElement('div');
-        notificationRecentContainer.style = type == 'journey' ? "display:block" : "display:none";
-        var innerNotifRecentContainer = document.createElement('div');
-        innerNotifRecentContainer.setAttribute("id", "FPqR2fZIqJeA2fZI7MM9_0");
-        var innerInnerNotifRecentContainer = document.createElement('div');
-        innerInnerNotifRecentContainer.className = `${configuration.notificationSize=='large'?'FPqR3fRghT4Gk0_large':''} FPqR3zjZqJeA3zjZ7MM9_0 FPqR2riIqJeA2riI7MM9_0`;
-        innerInnerNotifRecentContainer.style = containerStyle + 'display: grid; grid-template-columns: 66px 1fr;grid-gap: 8px 10px;';
 
-        var notifRecentImgContainer = document.createElement('div');
-        notifRecentImgContainer.className = "FPqR1JYFqJeA1JYF7MM9_0";
-        var notifRecentImg = document.createElement('img');
-        notifRecentImg.className = "FPqRqg5HqJmAqu5I7MM9C";
-        var res_img = 'https://storage.googleapis.com/influence-197607.appspot.com/default_icon.png';
-        //var res_img = 'https://user-images.githubusercontent.com/29310956/55402673-9f130500-5571-11e9-893c-8893b1ae415c.png';
+        var recentNotiifcationContainer = document.createElement('div')
+        recentNotiifcationContainer.className = 'notif-card';
+        recentNotiifcationContainer.style = type == 'journey' ? "display:block" : "display:none";
 
-        if (userDetails && userDetails) {
-            if (userDetails.productImg) {
-                res_img = userDetails.productImg;
-            }
-            else if (configuration && configuration.toggleMap == 'map') {
-                if (userDetails.city && userDetails.country) {
-                    res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=QBPTzg6GDCrhrjVkWFJ1&app_code=H5w788Dx2a64Z5UKth4rHQ&ci=${userDetails.city}&co=${userDetails.country}&z=10&h=200&w=200`;
-                }
-                else if (userDetails.city) {
-                    res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=QBPTzg6GDCrhrjVkWFJ1&app_code=H5w788Dx2a64Z5UKth4rHQ&ci=${userDetails.city}&z=10&h=200&w=200`;
-                }
-                else if (userDetails.country) {
-                    res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=QBPTzg6GDCrhrjVkWFJ1&app_code=H5w788Dx2a64Z5UKth4rHQ&co=${userDetails.country}&z=10&h=200&w=200`;
-                }
-            }
-            else if (configuration && configuration.panelStyle) {
-                res_img = configuration.panelStyle.image;
-            }
-        }
-        notifRecentImg.setAttribute('src', res_img ? res_img : "https://storage.googleapis.com/influence-197607.appspot.com/user_icon.png");
-        notifRecentImg.style = iconStyle;
-        notifRecentImgContainer.appendChild(notifRecentImg);
-        var notifRecentContentContainer = document.createElement('div');
-        notifRecentContentContainer.className = "FPqR2EbCqJeA2EbC7MM9_0";
-        var notificationRecentCloseContainer = document.createElement('div');
-        notificationRecentCloseContainer.className = "FPqR2AUlqJeA2AUl7MM9_1";
-        notificationRecentCloseContainer.style = config.rule.closeNotification ? 'display:flex' : 'display:none';
-        var notificationRecentClose = document.createElement('img');
-        notificationRecentClose.className = "FPqRqg5HqJmAqu5I7MM9C";
-        notificationRecentClose.id = 'notif_close';
-        notificationRecentClose.setAttribute('src', 'https://useinfluence.co/images/close-icon.png');
-        notificationRecentCloseContainer.append(notificationRecentClose);
-        var notifRecentContentI = document.createElement('div');
-        notifRecentContentI.className = "FPqR2AUlqJeA2AUl7MM9_0";
+        var recentNotiifcationUpperPartContainer = document.createElement('div')
+        recentNotiifcationUpperPartContainer.className = 'upper-part'
 
-        var res_name = userDetails && userDetails ? userDetails.username ? userDetails.username : userDetails.response.json.value.form.firstname : null;
+        var recentNotificationImageContainer = document.createElement('div')
+        recentNotificationImageContainer.className = 'image-container'
+
+        var recentNotificationImage = document.createElement('img')
+        recentNotificationImage.className = 'image'
+        recentNotificationImage.setAttribute('src', 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/5FCE8400-0616-426F-8BEA-F53136305123.png')
+        recentNotificationImageContainer.appendChild(recentNotificationImage)
+
+
+        recentNotiifcationUpperPartContainer.appendChild(recentNotificationImageContainer)
+
+        var recentNotificationCloseContainer = document.createElement('div')
+        recentNotificationCloseContainer.className = 'close-btn-container'
+        var recentNotificationCloseIcon = document.createElement('button')
+        recentNotificationCloseIcon.id = 'notif_close'
+        recentNotificationCloseIcon.className = 'close-btn'
+        recentNotificationCloseIcon.innerHTML = "+"
+        recentNotificationCloseContainer.appendChild(recentNotificationCloseIcon)
+        recentNotiifcationUpperPartContainer.appendChild(recentNotificationCloseContainer)
+
+        var recentNotificationTextContainer = document.createElement('div')
+        recentNotificationTextContainer.className = 'text-container'
+
+        var recentNotificationNameText = document.createElement('p')
+         recentNotificationNameText.className = 'para main-text'
+
+         var res_name = userDetails && userDetails ? userDetails.username ? userDetails.username : userDetails.response.json.value.form.firstname : null;
         if (res_name && res_name.trim().length == 0) res_name = 'Someone';
         res_name = res_name ? res_name.replace(/[0-9]/g, '').toLowerCase().split('.').join(' ').split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ') : res_name;
         if (res_name && res_name.split(' ').length > 1 && configuration.isHideLastname == true) {
@@ -2792,83 +2798,96 @@ var Note = function Note(config, containerStyle, iconStyle) {
                             "Anonymous"
             : "Anonymous";
 
-        notifRecentContentI.innerHTML = user_details;
-        notifRecentContentI.style = configuration && configuration.panelStyle ? `color: rgb(${configuration.panelStyle.color.r}, ${configuration.panelStyle.color.g}, ${configuration.panelStyle.color.b}, ${configuration.panelStyle.color.a}) !important;` : '';
-        var notifRecentContentII = document.createElement('div');
-        notifRecentContentII.className = "FPqR13BWqJeA13BW7MM9_0";
+         recentNotificationNameText.innerHTML = user_details  //'Samuel from Seattle, Washington'
+
+         recentNotificationTextContainer.appendChild(recentNotificationNameText)
+
+          var recentNotificationUpperSecondaryText = document.createElement('p')
+        recentNotificationUpperSecondaryText.className = 'para secondary-text'
+
         if (userDetails && userDetails && userDetails.productName)
-            notifRecentContentII.innerHTML = configuration.orderText + ' ' + userDetails.productName
+        recentNotificationUpperSecondaryText.innerHTML = configuration.orderText + ' ' + userDetails.productName
         else
-            notifRecentContentII.innerHTML = configuration.otherText + ' ' + configuration.contentText;
-        var notifFooterDiv = document.createElement('div');
-        notifFooterDiv.className = "FPqR2PlWqJeA2PFotRMC9_0"
-        var notifRecentContentIII = document.createElement('div');
-        notifRecentContentIII.className = "FPqR2PlWqJeA2PlW7MM9_0";
+        recentNotificationUpperSecondaryText.innerHTML = configuration.otherText + ' ' + configuration.contentText;
+
+        //recentNotificationUpperSecondaryText.innerHTML = "recently bought a Mexican teriyaki pizza!"
+
+        recentNotificationTextContainer.appendChild(recentNotificationUpperSecondaryText)
+
+
+        recentNotiifcationUpperPartContainer.appendChild(recentNotificationTextContainer)
+        recentNotiifcationContainer.appendChild(recentNotiifcationUpperPartContainer)
+
+        var recentNotificationBorder = document.createElement('div')
+        recentNotificationBorder.className = 'border'
+        recentNotiifcationContainer.appendChild(recentNotificationBorder)
+
+        var recentNotificationLowerTextContainer = document.createElement('div')
+        recentNotificationLowerTextContainer.className = 'lower-part'
+
+        var recentNotificationFooterLeft = document.createElement('div')
+        recentNotificationFooterLeft.className = 'footer-left'
+
+        var recentNotificationFooterLeftText = document.createElement('p')
+        recentNotificationFooterLeftText.className = 'footer-left-text'
         var timeStamp = userDetails && userDetails ? userDetails.timestamp : new Date();
-        notifRecentContentIII.innerHTML = timeStamp ? timeSince(new Date(new Date(timeStamp) - aDay).toISOString(),configuration) : "Not available ";
-        // notifRecentContentIII.innerHTML = timeStamp?customMoment(timeStamp).fromNow():"Not available ";
-        var notifRecentContentSvg = document.createElement('div');
-        notifRecentContentSvg.className = "FPqRqg5HqJmAqu5I7MM9C";
-        notifRecentContentSvg.innerHTML = `
-        <svg width="12" height="12" viewBox="0 0 524 524" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-        <style>.cls-1 {
-                fill: #dee9ff;
-              }
-              .cls-2 {
-                fill: #5d93fe;
-                filter: url(#a);
-              }
-              .cls-3 {
-                fill: #fff;
-                fill-rule: evenodd;
-              }</style>
-        <filter id="a" x="51" y="51" width="423" height="423" filterUnits="userSpaceOnUse">
-        <feOffset in="SourceAlpha" result="offset"/>
-        <feGaussianBlur result="blur" stdDeviation="2.236"/>
-        <feFlood flood-opacity=".06" result="flood"/>
-        <feComposite in2="blur" operator="in" result="composite"/>
-        <feBlend in="SourceGraphic" result="blend"/>
-        </filter>
-        </defs>
-        <circle class="cls-1" cx="262" cy="262" r="262"/>
-        <circle class="cls-2" cx="262" cy="262" r="207"/>
-        <path class="cls-3" transform="translate(-640 -238)" d="m833.89 478.95 81.132 65.065a9 9 0 0 1 1.391 12.652l-25.651 31.985a9 9 0 0 1-12.652 1.39l-81.132-65.065a9 9 0 0 1-1.391-12.652l25.651-31.985a9 9 0 0 1 12.652-1.39z"/>
-        <path class="cls-3" transform="translate(-640 -238)" d="m846.25 552.7 127.39-144.5a9.721 9.721 0 0 1 13.35-1.047l29.679 24.286a8.9 8.9 0 0 1 1.08 12.862l-127.39 144.5a9.721 9.721 0 0 1-13.35 1.047l-29.675-24.286a8.9 8.9 0 0 1-1.087-12.861z"/>
-        </svg>`
-        //notifRecentContentSvg.setAttribute('src', 'https://storage.googleapis.com/influence-197607.appspot.com/TickIcon.svg');
-        notifRecentContentSvg.className = "FPqRtoc3qoc37 icon-img-influence";
-        notifRecentContentSvg.style = configuration && configuration.togglePoweredBy ? 'display:inline-block' : 'display:none';
-        // notifRecentContentIVInnerI.appendChild(notifRecentContentSvg);
-        var notifRecentContentIV = document.createElement('div');
-        notifRecentContentIV.className = "FPqR3eNuqJeA3eNu7MM9_0";
-        notifRecentContentIV.style = configuration && configuration.togglePoweredBy ? 'display:inline-block' : 'display:none';
-        var notifRecentContentIVInnerI = document.createElement('i');
+        recentNotificationFooterLeftText.innerHTML = timeStamp ? timeSince(new Date(new Date(timeStamp) - aDay).toISOString(),configuration) : "Not available ";
+        // recentNotificationFooterLeftText.innerHTML = "updated 9 min ago"
+     
+         recentNotificationFooterLeft.appendChild(recentNotificationFooterLeftText)
+        
+        recentNotificationLowerTextContainer.appendChild(recentNotificationFooterLeft)
 
-        var notifRecentContentIVSpan1 = document.createElement('span');
-        notifRecentContentIVSpan1.innerHTML = `${configuration && configuration.recentText2 ? configuration.recentText2 : 'verified by'}`;
-        var notifRecentContentIVSpan2 = document.createElement('span');
-        notifRecentContentIVSpan2.className = "FPqR12wMqJeA12wM7MM9_0";
-        notifRecentContentIVSpan2.innerHTML = configuration.poweredBy ? configuration.poweredBy : 'Influence';
-        notifRecentContentIVSpan2.id = "poweredBy";
-        notifRecentContentIV.appendChild(notifRecentContentIVInnerI);
-        notifRecentContentIV.appendChild(notifRecentContentIVSpan1);
-        notifRecentContentIV.appendChild(notifRecentContentIVSpan2);
-        notifRecentContentContainer.appendChild(notificationRecentCloseContainer);
-        notifRecentContentContainer.appendChild(notifRecentContentI);
-        notifRecentContentContainer.appendChild(notifRecentContentII);
-        notifFooterDiv.appendChild(notifRecentContentIII);
-        notifFooterDiv.appendChild(notifRecentContentSvg);
-        notifFooterDiv.appendChild(notifRecentContentIV);
-        notifRecentContentContainer.appendChild(notifFooterDiv);
-        innerInnerNotifRecentContainer.appendChild(notifRecentImgContainer);
-        innerInnerNotifRecentContainer.appendChild(notifRecentContentContainer);
-        innerNotifRecentContainer.appendChild(innerInnerNotifRecentContainer);
-        notificationRecentContainer.appendChild(innerNotifRecentContainer);
+        var recentNotificationLowerPTag = document.createElement('p')
+        recentNotificationLowerPTag.className = 'para footer-text-right'
+
+        var recentNotificationFooterFirstText = document.createElement('em')
+        recentNotificationFooterFirstText.className = 'verified-text'
+        recentNotificationFooterFirstText.innerHTML = `${configuration && configuration.recentText2 ? configuration.recentText2 : 'verified by'}`;   //"Verified by"
+
+        recentNotificationLowerPTag.appendChild(recentNotificationFooterFirstText)
+
+        var recentNotificationFooterverified = document.createElement('em')
+        recentNotificationFooterverified.className = 'verified-icon'
+
+        var recentNotificationTick = document.createElement('i')
+        recentNotificationTick.className = 'fa fa-check-circle'
+        recentNotificationFooterverified.appendChild(recentNotificationTick)
+
+        recentNotificationLowerPTag.appendChild(recentNotificationFooterverified)
+
+        var recentNotificationFooterPoweredBy = document.createElement('em')
+        recentNotificationFooterPoweredBy.className = 'influence-text'
+        recentNotificationFooterPoweredBy.innerHTML = configuration.poweredBy ? configuration.poweredBy : 'Influence'; //"Influence"
+
+        recentNotificationLowerPTag.appendChild(recentNotificationFooterPoweredBy)
+
+        var recentNotificationFooterDot = document.createElement('em')
+        recentNotificationFooterDot.className = 'footer-dot'
+
+        var recentNotificationFooterCircle = document.createElement('i')
+        recentNotificationFooterCircle.className = 'fa fa-circle'
+
+        recentNotificationFooterDot.appendChild(recentNotificationFooterCircle)
+        recentNotificationLowerPTag.appendChild(recentNotificationFooterDot)
+
+        var recentNotificationFooterMobileTimeContainer = document.createElement('em')
+        recentNotificationFooterMobileTimeContainer.className = 'time-container'
+        var timeStamp = userDetails && userDetails ? userDetails.timestamp : new Date();
+        recentNotificationFooterMobileTimeContainer.innerHTML = timeStamp ? timeSince(new Date(new Date(timeStamp) - aDay).toISOString(),configuration) : "Not available ";
+       // recentNotificationFooterMobileTimeContainer.innerHTML = '9 mins ago'
+
+        recentNotificationLowerPTag.appendChild(recentNotificationFooterMobileTimeContainer)
+
+        recentNotificationLowerTextContainer.appendChild(recentNotificationLowerPTag)
+
+        recentNotiifcationContainer.appendChild(recentNotificationLowerTextContainer)
 
 
 
-      //  console.log(config.rule.closeNotification,"CLose Notification DATA")
+
+
+
 
         var notificationLiveContainer = document.createElement('div')
         notificationLiveContainer.className = 'oiuytretg';
@@ -2954,103 +2973,359 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
 
 
+        //***************** start for review notification ********************//
+        // console.log('====userReview',userReview.fromApp)
+        const fromAppType = userReview ? userReview.fromApp :'';
+
+
+        
+        var reviewNotiifcationContainer = document.createElement('div')
+        reviewNotiifcationContainer.className = 'notif-card';
+        reviewNotiifcationContainer.style= type == 'review' ? "display:block" : "display:none";
+
+        var reviewNotiifcationUpperPartContainer = document.createElement('div')
+        reviewNotiifcationUpperPartContainer.className = 'upper-part'
+
+        var reviewNotificationImageContainer = document.createElement('div')
+        reviewNotificationImageContainer.className = 'image-container'
+
+        var reviewNotificationImage = document.createElement('img')
+        reviewNotificationImage.className = 'image'
+       // reviewNotificationImage.setAttribute('src', 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/5FCE8400-0616-426F-8BEA-F53136305123.png')
+       
+        if (fromAppType == 'facebook')
+        reviewNotificationImage.setAttribute('src', 'https://storage.googleapis.com/influence-197607.appspot.com/facebook_round.png');
+        else if (fromAppType == 'google')
+        reviewNotificationImage.setAttribute('src', 'https://storage.googleapis.com/influence-197607.appspot.com/googlereview.png');
+       // notifReviewImgContent.style = `padding: 11px; border-radius: 0; height: 50px; width: 50px;`;
+
+        reviewNotificationImageContainer.appendChild(reviewNotificationImage)
+
+
+        reviewNotiifcationUpperPartContainer.appendChild(reviewNotificationImageContainer)
+
+        var reviewNotificationCloseContainer = document.createElement('div')
+        reviewNotificationCloseContainer.className = 'close-btn-container'
+        var reviewNotificationCloseIcon = document.createElement('button')
+        notificationReviewClose.id = 'notif_close';
+        reviewNotificationCloseIcon.className = 'close-btn'
+        reviewNotificationCloseIcon.innerHTML = "+"
+        reviewNotificationCloseContainer.appendChild(reviewNotificationCloseIcon)
+        reviewNotiifcationUpperPartContainer.appendChild(reviewNotificationCloseContainer)
+
+        var reviewNotificationTextContainer = document.createElement('div')
+        reviewNotificationTextContainer.className = 'text-container'
+
+        var reviewNotificationUserNameContainer = document.createElement('div')
+        reviewNotificationUserNameContainer.className = 'user-name-container'
+
+
+        var reviewNotificationNameText = document.createElement('p')
+        reviewNotificationNameText.className = 'para main-text'
+        reviewNotificationNameText.innerHTML = 'Aviel Sela'
+        reviewNotificationUserNameContainer.appendChild(reviewNotificationNameText)
+
+        var reviewNotificationUpperLogoContainer = document.createElement('div')
+        reviewNotificationUpperLogoContainer.className = 'upper-logo-container'
+
+        var reviewNotificationUpperLogo = document.createElement('img')
+        reviewNotificationUpperLogo.className = 'footer-logo'
+        reviewNotificationUpperLogo.setAttribute('src', 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/79341C01-B8BF-4484-AD66-B9314BAE4121.png')
+
+
+        reviewNotificationUpperLogoContainer.appendChild(reviewNotificationUpperLogo)
+
+
+        var reviewNotificationUpperStarContainer = document.createElement('div')
+        reviewNotificationUpperStarContainer.className = 'footer-star-container'
+
+
+        var star = '';
+        if (userReview && userReview.rating) {
+            for (let star_i = 0; star_i < userReview.rating; star_i++) {
+                star += `<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                   viewBox="0 0 53.867 53.867" style="enable-background:new 0 0 53.867 53.867;" xml:space="preserve">
+                    <polygon style="fill:rgb(255, 215, 0, 1);" points="26.934,1.318 35.256,18.182 53.867,20.887 40.4,34.013 43.579,52.549 26.934,43.798 
+                    10.288,52.549 13.467,34.013 0,20.887 18.611,18.182 "/>
+                  </svg>`
+            }
+        }
+        reviewNotificationUpperStarContainer.innerHTML= star
 
 
 
 
-        // var notificationLiveContainer = document.createElement('div');
-        // notificationLiveContainer.style = type == 'live' ? "display:block" : "display:none";
-        // var innerNotifLiveContainer = document.createElement('div');
-        // innerNotifLiveContainer.setAttribute("id", "FPqR3dGiqJeA3dGi7MM9_0");
-        // var innerInnerNotifLiveContainer = document.createElement('div');
-        // innerInnerNotifLiveContainer.className = `${configuration.notificationSize=='large'?'FPqR3acH3FtC_large':''} FPqR2B_4qJeA2B_47MM9_0 rounded FPqRD2zVqJeAD2zV7MM9_0`;
-        // innerInnerNotifLiveContainer.style = containerStyle;
-        // var innerMainNotifLiveContainer = document.createElement('div');
-        // innerMainNotifLiveContainer.setAttribute('id', "FPqR3acHqJeA3acH7MM9_0");
+        // var reviewNotificationStar1 = document.createElement('i')
+        // reviewNotificationStar1.className = 'fa fa-star'
+        // reviewNotificationUpperStarContainer.appendChild(reviewNotificationStar1)
 
-        // var notifLiveImgContainer = document.createElement('div');
-        // notifLiveImgContainer.className = "FPqRH0WDqJeAH0WD7MM9_0";
-        // var notifLiveImg = document.createElement('div');
+        // var reviewNotificationStar2 = document.createElement('i')
+        // reviewNotificationStar2.className = 'fa fa-star'
+        // reviewNotificationUpperStarContainer.appendChild(reviewNotificationStar2)
 
-        // if (configuration.panelStyle && configuration.panelStyle.image) {
-        //     notifLiveImgContainer.className = "FPqRH0WDqJeAH0WD7MM9_1";
-        //     notifLiveImg.classList = "FPqRh0ePqJeAh0eP7MM9_1";
-        //     var notifLiveImgContent = document.createElement('img');
-        //     notifLiveImgContent.className = "FPqRqg5HqJmAqu5I7MM9C";
-        //     notifLiveImgContent.setAttribute('src', configuration.panelStyle.image);
-        //     notifLiveImgContent.style = `padding: ${configuration.panelStyle.imagePadding ? configuration.panelStyle.imagePadding + 'px' : '11px'}; border-radius: 0; height: 50px; width: 50px;`;
-        //     notifLiveImg.appendChild(notifLiveImgContent);
-        // } else {
-        //     if (config.liveViewer && config.liveViewer.icon) {
-        //         notifLiveImgContainer.style='padding: 10px;'
-        //         notifLiveImg.classList = "FPqRh0ePqJeAh0eP7MM9_1";
-        //         var notifLiveImgContent = document.createElement('img');
-        //         notifLiveImgContent.className = "FPqRqg5HqJmAqu5I7MM9C";
-        //         notifLiveImgContent.setAttribute('src', config.liveViewer.icon);
-        //         notifLiveImgContent.style = 'padding: 2px; border-radius: 0; height: 50px; width: 120px;';
-        //         notifLiveImg.appendChild(notifLiveImgContent);
+        // var reviewNotificationStar3 = document.createElement('i')
+        // reviewNotificationStar3.className = 'fa fa-star'
+        // reviewNotificationUpperStarContainer.appendChild(reviewNotificationStar3)
+
+        // var reviewNotificationStar4 = document.createElement('i')
+        // reviewNotificationStar4.className = 'fa fa-star'
+        // reviewNotificationUpperStarContainer.appendChild(reviewNotificationStar4)
+
+        // var reviewNotificationStar5 = document.createElement('i')
+        // reviewNotificationStar5.className = 'fa fa-star-half'
+        // reviewNotificationUpperStarContainer.appendChild(reviewNotificationStar5)
+
+
+
+
+        reviewNotificationUpperLogoContainer.appendChild(reviewNotificationUpperStarContainer)
+
+        reviewNotificationUserNameContainer.appendChild(reviewNotificationUpperLogoContainer)
+        reviewNotificationTextContainer.appendChild(reviewNotificationUserNameContainer)
+
+        var reviewNotificationUpperSecondaryText = document.createElement('p')
+        reviewNotificationUpperSecondaryText.className = 'para secondary-text'
+
+        if (fromAppType == 'facebook')
+        reviewNotificationUpperSecondaryText.innerHTML = 'Recommended us on Facebook';
+    else if (fromAppType == 'google') {
+        reviewNotificationUpperSecondaryText.innerHTML = userReview && userReview.username ? userReview.username : 'Someone' + ' ' + configuration.gglReviewText ? configuration.gglReviewText : 'Reviewed us on Google';       
+    }
+
+      //  reviewNotificationUpperSecondaryText.innerHTML = "Awesome must have tool for every marketer or an online business! Easy to use, great uxui, and most importantly - gets more leads than any other platform."
+
+        reviewNotificationTextContainer.appendChild(reviewNotificationUpperSecondaryText)
+        reviewNotiifcationUpperPartContainer.appendChild(reviewNotificationTextContainer)
+        reviewNotiifcationContainer.appendChild(reviewNotiifcationUpperPartContainer)
+
+        var reviewNotificationBorder = document.createElement('div')
+        reviewNotificationBorder.className = 'border'
+        reviewNotiifcationContainer.appendChild(reviewNotificationBorder)
+
+        var reviewNotificationLowerTextContainer = document.createElement('div')
+        reviewNotificationLowerTextContainer.className = 'lower-part'
+
+        var reviewNotificationFooterLeft = document.createElement('div')
+        reviewNotificationFooterLeft.className = 'footer-left'
+
+        var reviewNotificationFooterLeftText = document.createElement('p')
+        reviewNotificationFooterLeftText.className = 'footer-left-text'
+        reviewNotificationFooterLeftText.innerHTML = "updated 9 min ago"
+        reviewNotificationFooterLeft.appendChild(reviewNotificationFooterLeftText)
+        var reviewNotificationFooterLogoContainer = document.createElement('div')
+        reviewNotificationFooterLogoContainer.className = 'footer-logo-container'
+
+        var reviewNotificationFooterLogo = document.createElement('img')
+        reviewNotificationFooterLogo.className = 'footer-logo'
+        reviewNotificationFooterLogo.setAttribute('src', 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/79341C01-B8BF-4484-AD66-B9314BAE4121.png')
+
+        reviewNotificationFooterLogoContainer.appendChild(reviewNotificationFooterLogo)
+
+        var reviewNotificationFooterStarContainer = document.createElement('div')
+        reviewNotificationFooterStarContainer.className = 'footer-star-container'
+
+        reviewNotificationFooterStarContainer.innerHTML= star
+
+
+
+
+        // var reviewNotificationFooterStar1 = document.createElement('i')
+        // reviewNotificationFooterStar1.className = 'fa fa-star'
+
+        // reviewNotificationFooterStarContainer.appendChild(reviewNotificationFooterStar1)
+
+        // var reviewNotificationFooterStar2 = document.createElement('i')
+        // reviewNotificationFooterStar2.className = 'fa fa-star'
+        // reviewNotificationFooterStarContainer.appendChild(reviewNotificationFooterStar2)
+
+        // var reviewNotificationFooterStar3 = document.createElement('i')
+        // reviewNotificationFooterStar3.className = 'fa fa-star'
+        // reviewNotificationFooterStarContainer.appendChild(reviewNotificationFooterStar3)
+
+        // var reviewNotificationFooterStar4 = document.createElement('i')
+        // reviewNotificationFooterStar4.className = 'fa fa-star'
+        // reviewNotificationFooterStarContainer.appendChild(reviewNotificationFooterStar4)
+
+        // var reviewNotificationFooterStar5 = document.createElement('i')
+        // reviewNotificationFooterStar5.className = 'fa fa-star-half'
+        // reviewNotificationFooterStarContainer.appendChild(reviewNotificationFooterStar5)
+
+        reviewNotificationFooterLogoContainer.appendChild(reviewNotificationFooterStarContainer)
+        reviewNotificationFooterLeft.appendChild(reviewNotificationFooterLogoContainer)
+        reviewNotificationLowerTextContainer.appendChild(reviewNotificationFooterLeft)
+
+        var reviewNotificationLowerPTag = document.createElement('p')
+        reviewNotificationLowerPTag.className = 'para footer-text-right'
+
+        var reviewNotificationFooterFirstText = document.createElement('em')
+        reviewNotificationFooterFirstText.className = 'verified-text'
+        reviewNotificationFooterFirstText.innerHTML = `${configuration && configuration.liveText ? configuration.liveText : 'verified by '}` //"Verified by"
+
+        reviewNotificationLowerPTag.appendChild(reviewNotificationFooterFirstText)
+
+        var reviewNotificationFooterverified = document.createElement('em')
+        reviewNotificationFooterverified.className = 'verified-icon'
+
+        var reviewNotificationTick = document.createElement('i')
+        reviewNotificationTick.className = 'fa fa-check-circle'
+        reviewNotificationFooterverified.appendChild(reviewNotificationTick)
+
+        reviewNotificationLowerPTag.appendChild(reviewNotificationFooterverified)
+
+        var reviewNotificationFooterPoweredBy = document.createElement('em')
+        reviewNotificationFooterPoweredBy.className = 'influence-text'
+        reviewNotificationFooterPoweredBy.innerHTML = configuration.poweredBy ? configuration.poweredBy : 'Influence' //"Influence"
+
+        reviewNotificationLowerPTag.appendChild(reviewNotificationFooterPoweredBy)
+
+        var reviewNotificationFooterDot = document.createElement('em')
+        reviewNotificationFooterDot.className = 'footer-dot'
+
+        var reviewNotificationFooterCircle = document.createElement('i')
+        reviewNotificationFooterCircle.className = 'fa fa-circle'
+
+        reviewNotificationFooterDot.appendChild(reviewNotificationFooterCircle)
+        reviewNotificationLowerPTag.appendChild(reviewNotificationFooterDot)
+
+        var reviewNotificationFooterMobileTimeContainer = document.createElement('em')
+        reviewNotificationFooterMobileTimeContainer.className = 'time-container'
+        reviewNotificationFooterMobileTimeContainer.innerHTML = '9 mins ago'
+
+        reviewNotificationLowerPTag.appendChild(reviewNotificationFooterMobileTimeContainer)
+
+        reviewNotificationLowerTextContainer.appendChild(reviewNotificationLowerPTag)
+
+        reviewNotiifcationContainer.appendChild(reviewNotificationLowerTextContainer)
+
+
+
+
+        // var notificationReviewContainer = document.createElement('div');
+        // notificationReviewContainer.style = type == 'review' ? "display:block" : "display:none";
+        // var innerNotifReviewContainer = document.createElement('div');
+        // innerNotifReviewContainer.setAttribute("id", "FPqR3dGiqJeA3dGi7MM9_0");
+        // var innerInnerNotifReviewContainer = document.createElement('div');
+        // innerInnerNotifReviewContainer.className = `${configuration.notificationSize=='large'?'FPqR3acH3FtC_large':''} FPqR2B_4qJeA2B_47MM9_0 rounded FPqRD2zVqJeAD2zV7MM9_0 FPqRD2zVqJeAD2FFJR9_0`;
+        // innerInnerNotifReviewContainer.style = containerStyle;
+        // var innerMainNotifReviewContainer = document.createElement('div');
+        // innerMainNotifReviewContainer.setAttribute('id', "FPqR3acHqJeA3acH7MM9_0");
+
+        // var notifReviewImgContainer = document.createElement('div');
+        // notifReviewImgContainer.className = "FPqRH0WDqJeAH0WD7MM9_0";
+        // var notifReviewImg = document.createElement('div');
+
+        // notifReviewImgContainer.className = "FPqRH0WDqJeAH0WD7MM9_1";
+        // notifReviewImg.classList = "FPqRh0ePqJeAh0eP7MM9_1";
+        // var notifReviewImgContent = document.createElement('img');
+        // notifReviewImgContent.className = "FPqRqg5HqJmAqu5I7MM9C FPqRfgRthDvE_0";
+        // if (fromAppType == 'facebook')
+        //     notifReviewImgContent.setAttribute('src', 'https://storage.googleapis.com/influence-197607.appspot.com/facebook_round.png');
+        // else if (fromAppType == 'google')
+        //     notifReviewImgContent.setAttribute('src', 'https://storage.googleapis.com/influence-197607.appspot.com/googlereview.png');
+        // notifReviewImgContent.style = `padding: 11px; border-radius: 0; height: 50px; width: 50px;`;
+        // notifReviewImg.appendChild(notifReviewImgContent);
+
+        // notifReviewImgContainer.appendChild(notifReviewImg);
+
+        // var notificationReviewCloseContainer = document.createElement('div');
+        // notificationReviewCloseContainer.className = "FPqR3acHqJeA3acH7MM9_1 FPqR3acHqJeA3acH7MM9_2";
+        // notificationReviewCloseContainer.style = config.rule.closeNotification ? 'display:flex' : 'display:none';
+        // var notificationReviewClose = document.createElement('img');
+        // notificationReviewClose.className = "FPqRqg5HqJmAqu5I7MM9C";
+        // notificationReviewClose.id = 'notif_close';
+        // notificationReviewClose.setAttribute('src', 'https://useinfluence.co/images/close-icon.png');
+        // notificationReviewCloseContainer.append(notificationReviewClose);
+        // var notifReviewContentContainerI = document.createElement('div');
+        // notifReviewContentContainerI.className = "FPqR15RvqJeA15Rv7MM9_0 FPqFjrtuD9_0";
+        // var notifReviewContentInnerContainer = document.createElement('div');
+        // notifReviewContentInnerContainer.className = `${fromAppType=='google'?'FPqR2fwXqJehgtj73M9_0':''} FPqR2fwXqJeA2fwX7MM9_0 FPqR2fwXqJehgtYRHF_0`;
+        // var notifReviewContentSpan = document.createElement('span');
+        // notifReviewContentSpan.className = "FPqR1Jr6qJeA1Jr67MM9_0 FPquyrhbf78FNR_0";
+        // var notifReviewContentImg = document.createElement('span');
+        // //notifReviewContentSpan.style=containerStyle;
+        // if (fromAppType == 'facebook') {
+        //     var text_span = document.createTextNode(` ${userReview && userReview.username ? userReview.username : 'Someone'}`);
+        //     notifReviewContentSpan.appendChild(text_span);
+        //     var notifReviewContentImg = document.createElement('img');
+        //     notifReviewContentImg.setAttribute('src', 'https://storage.googleapis.com/influence-197607.appspot.com/fbreview.jpg');
+        //     notifReviewContentImg.className = 'FPqhfnrkSnf34gkt_0';
+        // }
+        // else if (fromAppType == 'google') {
+        //     var star = '';
+        //     if (userReview && userReview.rating) {
+        //         for (let star_i = 0; star_i < userReview.rating; star_i++) {
+        //             star += `<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+        //                viewBox="0 0 53.867 53.867" style="enable-background:new 0 0 53.867 53.867;" xml:space="preserve">
+        //                 <polygon style="fill:rgb(255, 215, 0, 1);" points="26.934,1.318 35.256,18.182 53.867,20.887 40.4,34.013 43.579,52.549 26.934,43.798 
+        //                 10.288,52.549 13.467,34.013 0,20.887 18.611,18.182 "/>
+        //               </svg>`
+        //         }
         //     }
-        //     else if (config.liveFollower && config.liveFollower.icon) {
-        //         notifLiveImgContainer.style='padding: 10px;'
-        //         notifLiveImg.classList = "FPqRh0ePqJeAh0eP7MM9_1";
-        //         var notifLiveImgContent = document.createElement('img');
-        //         notifLiveImgContent.className = "FPqRqg5HqJmAqu5I7MM9C";
-        //         notifLiveImgContent.setAttribute('src', config.liveFollower.icon);
-        //         notifLiveImgContent.style = 'padding: 2px; border-radius: 0; height: 50px; width: 120px;';
-        //         notifLiveImg.appendChild(notifLiveImgContent);
-        //     }
-        //     else {
-        //         notifLiveImgContainer.className = "FPqRH0WDqJeAH0WD7MM9_0";
-        //         notifLiveImg.className = "FPqRh0ePqJeAh0eP7MM9_0";
-        //         notifLiveImg.style=`background: rgb(${configuration.panelStyle.iconBGColor ? configuration.panelStyle.iconBGColor.r : 0}, ${configuration.panelStyle.iconBGColor ? configuration.panelStyle.iconBGColor.g : 149}, ${configuration.panelStyle.iconBGColor ? configuration.panelStyle.iconBGColor.b : 247}, ${configuration.panelStyle.iconBGColor ? configuration.panelStyle.iconBGColor.a : 1})`
-        //     }
+        //     var text_span = document.createElement('div');
+        //     text_span.innerHTML=star;
+        //     notifReviewContentSpan.appendChild(text_span);
+        //     notifReviewContentImg.innerHTML = userReview ? userReview.rating : 0;
+        //     notifReviewContentImg.className = 'FPqhfnrkSnf34gkt_0 FPqhfnrfhrTngkt_0';
         // }
 
-        // notifLiveImgContainer.appendChild(notifLiveImg);
+        // // var text_span1 = document.createElement('span');
+        // // text_span1.className = "FPqRtoc3qoc37  peopleviewActivity";
+        // // text_span1.style=containerStyle;
+        // //var text_div = document.createTextNode(` ${configuration.liveVisitorText}`);
+        // // var text_div = document.createTextNode(` reviewed us on facebook`);
+        // // text_span1.appendChild(text_div);
+        // notifReviewContentInnerContainer.appendChild(notifReviewContentSpan);
+        // notifReviewContentInnerContainer.appendChild(notifReviewContentImg);
+        // notifReviewContentContainerI.appendChild(notifReviewContentInnerContainer);
+        // //notifReviewContentContainerI.appendChild(text_span1);
 
-        // var notificationLiveCloseContainer = document.createElement('div');
-        // notificationLiveCloseContainer.className = "FPqR3acHqJeA3acH7MM9_1";
-        // notificationLiveCloseContainer.style = config.rule.closeNotification ? 'display:flex' : 'display:none';
-        // var notificationLiveClose = document.createElement('img');
-        // notificationLiveClose.className = "FPqRqg5HqJmAqu5I7MM9C";
-        // notificationLiveClose.id = 'notif_close';
-        // notificationLiveClose.setAttribute('src', 'https://useinfluence.co/images/close-icon.png');
-        // notificationLiveCloseContainer.append(notificationLiveClose);
-        // var notifLiveContentContainerI = document.createElement('div');
-        // notifLiveContentContainerI.className = "FPqR15RvqJeA15Rv7MM9_0";
-        // var notifLiveContentInnerContainer = document.createElement('div');
-        // notifLiveContentInnerContainer.className = "FPqR2fwXqJeA2fwX7MM9_0";
-        // var notifLiveContentSpan = document.createElement('span');
-        // notifLiveContentSpan.className = "FPqR1Jr6qJeA1Jr67MM9_0";
-        // var notifLiveContentInnerSpan = document.createElement('span');
-        // notifLiveContentInnerSpan.innerHTML = liveVisitorCount == 0 ? 1 : liveVisitorCount;
-        // var text_span = document.createTextNode(` ${configuration.visitorText}`);
-        // notifLiveContentSpan.appendChild(notifLiveContentInnerSpan);
-        // notifLiveContentSpan.appendChild(text_span);
-        // var text_span1 = document.createElement('span');
-        // text_span1.className = "FPqRtoc3qoc37 peopleviewActivity";
-        // if (configuration && configuration.panelStyle && configuration.panelStyle.color) {
-        // 	text_span1.style = `color: rgb(${configuration.panelStyle.color.r},${configuration.panelStyle.color.g},${configuration.panelStyle.color.b});`
+        // var notifReviewContentContainerI_I = document.createElement('div');
+        // notifReviewContentContainerI_I.className = "FPqR15RvqJeA15Rv7MM9_0 FPqFjRTghrtuD9_0";
+        // var notifReviewContentInnerContainer = document.createElement('div');
+        // notifReviewContentInnerContainer.className = `${fromAppType=='googgle'?'FPqR2fwXqJeA2fHFrT4_0':''} FPqR2fwXqJeA2fwX7MM9_0 ${configuration.notificationSize=='large'?'FPqR2fwXotjg7NghfMM9_large_0':'FPqR2fwXotjg7NghfMM9_0'} `;
+        // var notifReviewContentSpan = document.createElement('div');
+        // var star='';
+        // if(userReview&& userReview.rating){
+        //     for (let star_i = 0; star_i < userReview.rating ; star_i++) {
+        //         star+=`<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+        //                viewBox="0 0 53.867 53.867" style="enable-background:new 0 0 53.867 53.867;" xml:space="preserve">
+        //                 <polygon style="fill:rgb(${configuration.panelStyle.color ? configuration.panelStyle.color.r : 0}, ${configuration.panelStyle.color ? configuration.panelStyle.color.g : 0}, ${configuration.panelStyle.color ? configuration.panelStyle.color.b : 0}, ${configuration.panelStyle.color ? configuration.panelStyle.color.a : 0});" points="26.934,1.318 35.256,18.182 53.867,20.887 40.4,34.013 43.579,52.549 26.934,43.798 
+        //                 10.288,52.549 13.467,34.013 0,20.887 18.611,18.182 "/>
+        //               </svg>`
+        //     }
         // }
-        // var text_div = document.createTextNode(` ${configuration.liveVisitorText}`);
-        // if(config.liveViewer)
-        //     text_div = document.createTextNode(` ${configuration.liveViewerText}`);
-        // else if(config.liveFollower)
-        //     text_div = document.createTextNode(` ${configuration.liveFollowerText}`);
-        // text_span1.appendChild(text_div);
-        // notifLiveContentInnerContainer.appendChild(notifLiveContentSpan);
-        // notifLiveContentContainerI.appendChild(notifLiveContentInnerContainer);
-        // notifLiveContentContainerI.appendChild(text_span1);
+        // //notifReviewContentSpan.innerHTML=star;
+        // if (fromAppType == 'facebook')
+        //     notifReviewContentSpan.innerHTML = 'Recommended us on Facebook';
+        // else if (fromAppType == 'google') {
+        //     var text_span_name = document.createElement('span');
+        //     text_span_name.innerHTML = userReview && userReview.username ? userReview.username : 'Someone';
+        //     text_span_name.className = 'FQhfht45HFtyD_0';
+        //     var text_span_review_text = document.createTextNode(configuration.gglReviewText ? configuration.gglReviewText : 'Reviewed us on Google');
+        //     notifReviewContentSpan.appendChild(text_span_name);
+        //     notifReviewContentSpan.appendChild(text_span_review_text);
+        // }
+        // //notifReviewContentSpan.style=containerStyle;
+        // var text_avg = document.createElement('span');
+        // text_avg.className = "FPqRtoc3qoc3sfRgC7";
+        // text_avg.style=containerStyle;
+        // // var text_div_avg = document.createTextNode(`${userReview?userReview.avgRating:0}`);
+        // // text_avg.appendChild(text_div_avg);
 
-        // var notifLiveContentContainerII = document.createElement('div');
-        // notifLiveContentContainerII.className = "FPqR14UVqJeA14UV7MM9_0";
-        // notifLiveContentContainerII.style = configuration && configuration.togglePoweredBy ? 'display:inline-block' : 'display:none';
+        // notifReviewContentInnerContainer.appendChild(notifReviewContentSpan);
+        // notifReviewContentContainerI_I.appendChild(notifReviewContentInnerContainer);
+        // // if(userReview && userReview.avgRating)
+        // //     notifReviewContentContainerI_I.appendChild(text_avg);
+
+        // var notifReviewContentContainerII = document.createElement('div');
+        // notifReviewContentContainerII.className = "FPqR14UVqJeA14UV7MM9_0 FPqR14UV475HDnfr_0";
+        // notifReviewContentContainerII.style = configuration && configuration.togglePoweredBy ? 'display:inline-block' : 'display:none';
         // var text_ContainerII = document.createTextNode(`${configuration && configuration.liveText ? configuration.liveText : 'verified by '}`);
-        // var notifLiveContentContainerII_I = document.createElement('i');
-        // var notifLiveContentImg = document.createElement('div');
-        // notifLiveContentImg.className = "FPqRqg5HqJmAqu5I7MM9C";
-        // notifLiveContentImg.innerHTML=`
-        // <svg width="12" height="12" viewBox="0 0 524 524" xmlns="http://www.w3.org/2000/svg">
+        // var notifReviewContentContainerII_I = document.createElement('i');
+        // var notifReviewContentImg = document.createElement('div');
+        // notifReviewContentImg.className = "FPqRqg5HqJmAqu5I7MM9_R";
+        // notifReviewContentImg.innerHTML=`
+        // <svg width="10.5" height="10.5" viewBox="0 0 524 524" xmlns="http://www.w3.org/2000/svg">
         // <defs>
         // <style>.cls-1 {
         //         fill: #5d93fe;
@@ -3076,211 +3351,31 @@ var Note = function Note(config, containerStyle, iconStyle) {
         // <path class="cls-3" transform="translate(-640 -238)" d="m833.89 478.95 81.132 65.065a9 9 0 0 1 1.391 12.652l-25.651 31.985a9 9 0 0 1-12.652 1.39l-81.132-65.065a9 9 0 0 1-1.391-12.652l25.651-31.985a9 9 0 0 1 12.652-1.39z"/>
         // <path class="cls-3" transform="translate(-640 -238)" d="m846.25 552.7 127.39-144.5a9.721 9.721 0 0 1 13.35-1.047l29.679 24.286a8.9 8.9 0 0 1 1.08 12.862l-127.39 144.5a9.721 9.721 0 0 1-13.35 1.047l-29.675-24.286a8.9 8.9 0 0 1-1.087-12.861z"/>
         // </svg>`;
-        // //notifLiveContentImg.setAttribute('src', 'https://storage.googleapis.com/influence-197607.appspot.com/TickIcon.svg');
-        // notifLiveContentContainerII_I.appendChild(notifLiveContentImg);
-        // var notifLiveContentA = document.createElement('a');
-        // notifLiveContentA.setAttribute('href', configuration.poweredByLink);
-        // notifLiveContentA.setAttribute('rel', 'nofollow');
-        // notifLiveContentA.setAttribute('target', '_blank');
+        // //notifReviewContentImg.setAttribute('src', 'https://storage.googleapis.com/influence-197607.appspot.com/TickIcon.svg');
+        // notifReviewContentContainerII_I.appendChild(notifReviewContentImg);
+        // var notifReviewContentA = document.createElement('a');
+        // notifReviewContentA.setAttribute('href', configuration.poweredByLink);
+        // notifReviewContentA.setAttribute('rel', 'nofollow');
+        // notifReviewContentA.setAttribute('target', '_blank');
         // var createASpan = document.createElement('span');
         // createASpan.className = "FPqRtoc3qoc37 influencebrandMark";
         // var createAText = document.createTextNode(configuration.poweredBy ? configuration.poweredBy : 'Influence');
         // createASpan.appendChild(createAText);
-        // notifLiveContentA.appendChild(createASpan);
-        // notifLiveContentContainerII.appendChild(notifLiveContentContainerII_I);
-        // notifLiveContentContainerII.appendChild(text_ContainerII);
+        // notifReviewContentA.appendChild(createASpan);
+        // notifReviewContentContainerII.appendChild(notifReviewContentContainerII_I);
+        // notifReviewContentContainerII.appendChild(text_ContainerII);
 
-        // notifLiveContentContainerII.appendChild(notifLiveContentA);
+        // notifReviewContentContainerII.appendChild(notifReviewContentA);
 
-        // innerMainNotifLiveContainer.appendChild(notifLiveImgContainer);
-        // innerMainNotifLiveContainer.appendChild(notificationLiveCloseContainer);
-        // innerMainNotifLiveContainer.appendChild(notifLiveContentContainerI);
-        // innerMainNotifLiveContainer.appendChild(notifLiveContentContainerII);
+        // innerMainNotifReviewContainer.appendChild(notifReviewImgContainer);
+        // innerMainNotifReviewContainer.appendChild(notificationReviewCloseContainer);
+        // innerMainNotifReviewContainer.appendChild(notifReviewContentContainerI);
+        // innerMainNotifReviewContainer.appendChild(notifReviewContentContainerI_I);
+        // innerMainNotifReviewContainer.appendChild(notifReviewContentContainerII);
 
-        // innerInnerNotifLiveContainer.appendChild(innerMainNotifLiveContainer);
-        // innerNotifLiveContainer.appendChild(innerInnerNotifLiveContainer);
-        // notificationLiveContainer.appendChild(innerNotifLiveContainer);
-
-
-        //***************** start for review notification ********************//
-        // console.log('====userReview',userReview.fromApp)
-        const fromAppType = userReview ? userReview.fromApp :'';
-        var notificationReviewContainer = document.createElement('div');
-        notificationReviewContainer.style = type == 'review' ? "display:block" : "display:none";
-        var innerNotifReviewContainer = document.createElement('div');
-        innerNotifReviewContainer.setAttribute("id", "FPqR3dGiqJeA3dGi7MM9_0");
-        var innerInnerNotifReviewContainer = document.createElement('div');
-        innerInnerNotifReviewContainer.className = `${configuration.notificationSize=='large'?'FPqR3acH3FtC_large':''} FPqR2B_4qJeA2B_47MM9_0 rounded FPqRD2zVqJeAD2zV7MM9_0 FPqRD2zVqJeAD2FFJR9_0`;
-        innerInnerNotifReviewContainer.style = containerStyle;
-        var innerMainNotifReviewContainer = document.createElement('div');
-        innerMainNotifReviewContainer.setAttribute('id', "FPqR3acHqJeA3acH7MM9_0");
-
-        var notifReviewImgContainer = document.createElement('div');
-        notifReviewImgContainer.className = "FPqRH0WDqJeAH0WD7MM9_0";
-        var notifReviewImg = document.createElement('div');
-
-        notifReviewImgContainer.className = "FPqRH0WDqJeAH0WD7MM9_1";
-        notifReviewImg.classList = "FPqRh0ePqJeAh0eP7MM9_1";
-        var notifReviewImgContent = document.createElement('img');
-        notifReviewImgContent.className = "FPqRqg5HqJmAqu5I7MM9C FPqRfgRthDvE_0";
-        if (fromAppType == 'facebook')
-            notifReviewImgContent.setAttribute('src', 'https://storage.googleapis.com/influence-197607.appspot.com/facebook_round.png');
-        else if (fromAppType == 'google')
-            notifReviewImgContent.setAttribute('src', 'https://storage.googleapis.com/influence-197607.appspot.com/googlereview.png');
-        notifReviewImgContent.style = `padding: 11px; border-radius: 0; height: 50px; width: 50px;`;
-        notifReviewImg.appendChild(notifReviewImgContent);
-
-        notifReviewImgContainer.appendChild(notifReviewImg);
-
-        var notificationReviewCloseContainer = document.createElement('div');
-        notificationReviewCloseContainer.className = "FPqR3acHqJeA3acH7MM9_1 FPqR3acHqJeA3acH7MM9_2";
-        notificationReviewCloseContainer.style = config.rule.closeNotification ? 'display:flex' : 'display:none';
-        var notificationReviewClose = document.createElement('img');
-        notificationReviewClose.className = "FPqRqg5HqJmAqu5I7MM9C";
-        notificationReviewClose.id = 'notif_close';
-        notificationReviewClose.setAttribute('src', 'https://useinfluence.co/images/close-icon.png');
-        notificationReviewCloseContainer.append(notificationReviewClose);
-        var notifReviewContentContainerI = document.createElement('div');
-        notifReviewContentContainerI.className = "FPqR15RvqJeA15Rv7MM9_0 FPqFjrtuD9_0";
-        var notifReviewContentInnerContainer = document.createElement('div');
-        notifReviewContentInnerContainer.className = `${fromAppType=='google'?'FPqR2fwXqJehgtj73M9_0':''} FPqR2fwXqJeA2fwX7MM9_0 FPqR2fwXqJehgtYRHF_0`;
-        var notifReviewContentSpan = document.createElement('span');
-        notifReviewContentSpan.className = "FPqR1Jr6qJeA1Jr67MM9_0 FPquyrhbf78FNR_0";
-        var notifReviewContentImg = document.createElement('span');
-        //notifReviewContentSpan.style=containerStyle;
-        if (fromAppType == 'facebook') {
-            var text_span = document.createTextNode(` ${userReview && userReview.username ? userReview.username : 'Someone'}`);
-            notifReviewContentSpan.appendChild(text_span);
-            var notifReviewContentImg = document.createElement('img');
-            notifReviewContentImg.setAttribute('src', 'https://storage.googleapis.com/influence-197607.appspot.com/fbreview.jpg');
-            notifReviewContentImg.className = 'FPqhfnrkSnf34gkt_0';
-        }
-        else if (fromAppType == 'google') {
-            var star = '';
-            if (userReview && userReview.rating) {
-                for (let star_i = 0; star_i < userReview.rating; star_i++) {
-                    star += `<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                       viewBox="0 0 53.867 53.867" style="enable-background:new 0 0 53.867 53.867;" xml:space="preserve">
-                        <polygon style="fill:rgb(255, 215, 0, 1);" points="26.934,1.318 35.256,18.182 53.867,20.887 40.4,34.013 43.579,52.549 26.934,43.798 
-                        10.288,52.549 13.467,34.013 0,20.887 18.611,18.182 "/>
-                      </svg>`
-                }
-            }
-            var text_span = document.createElement('div');
-            text_span.innerHTML=star;
-            notifReviewContentSpan.appendChild(text_span);
-            notifReviewContentImg.innerHTML = userReview ? userReview.rating : 0;
-            notifReviewContentImg.className = 'FPqhfnrkSnf34gkt_0 FPqhfnrfhrTngkt_0';
-        }
-
-        // var text_span1 = document.createElement('span');
-        // text_span1.className = "FPqRtoc3qoc37  peopleviewActivity";
-        // text_span1.style=containerStyle;
-        //var text_div = document.createTextNode(` ${configuration.liveVisitorText}`);
-        // var text_div = document.createTextNode(` reviewed us on facebook`);
-        // text_span1.appendChild(text_div);
-        notifReviewContentInnerContainer.appendChild(notifReviewContentSpan);
-        notifReviewContentInnerContainer.appendChild(notifReviewContentImg);
-        notifReviewContentContainerI.appendChild(notifReviewContentInnerContainer);
-        //notifReviewContentContainerI.appendChild(text_span1);
-
-        var notifReviewContentContainerI_I = document.createElement('div');
-        notifReviewContentContainerI_I.className = "FPqR15RvqJeA15Rv7MM9_0 FPqFjRTghrtuD9_0";
-        var notifReviewContentInnerContainer = document.createElement('div');
-        notifReviewContentInnerContainer.className = `${fromAppType=='googgle'?'FPqR2fwXqJeA2fHFrT4_0':''} FPqR2fwXqJeA2fwX7MM9_0 ${configuration.notificationSize=='large'?'FPqR2fwXotjg7NghfMM9_large_0':'FPqR2fwXotjg7NghfMM9_0'} `;
-        var notifReviewContentSpan = document.createElement('div');
-        var star='';
-        if(userReview&& userReview.rating){
-            for (let star_i = 0; star_i < userReview.rating ; star_i++) {
-                star+=`<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                       viewBox="0 0 53.867 53.867" style="enable-background:new 0 0 53.867 53.867;" xml:space="preserve">
-                        <polygon style="fill:rgb(${configuration.panelStyle.color ? configuration.panelStyle.color.r : 0}, ${configuration.panelStyle.color ? configuration.panelStyle.color.g : 0}, ${configuration.panelStyle.color ? configuration.panelStyle.color.b : 0}, ${configuration.panelStyle.color ? configuration.panelStyle.color.a : 0});" points="26.934,1.318 35.256,18.182 53.867,20.887 40.4,34.013 43.579,52.549 26.934,43.798 
-                        10.288,52.549 13.467,34.013 0,20.887 18.611,18.182 "/>
-                      </svg>`
-            }
-        }
-        //notifReviewContentSpan.innerHTML=star;
-        if (fromAppType == 'facebook')
-            notifReviewContentSpan.innerHTML = 'Recommended us on Facebook';
-        else if (fromAppType == 'google') {
-            var text_span_name = document.createElement('span');
-            text_span_name.innerHTML = userReview && userReview.username ? userReview.username : 'Someone';
-            text_span_name.className = 'FQhfht45HFtyD_0';
-            var text_span_review_text = document.createTextNode(configuration.gglReviewText ? configuration.gglReviewText : 'Reviewed us on Google');
-            notifReviewContentSpan.appendChild(text_span_name);
-            notifReviewContentSpan.appendChild(text_span_review_text);
-        }
-        //notifReviewContentSpan.style=containerStyle;
-        var text_avg = document.createElement('span');
-        text_avg.className = "FPqRtoc3qoc3sfRgC7";
-        text_avg.style=containerStyle;
-        // var text_div_avg = document.createTextNode(`${userReview?userReview.avgRating:0}`);
-        // text_avg.appendChild(text_div_avg);
-
-        notifReviewContentInnerContainer.appendChild(notifReviewContentSpan);
-        notifReviewContentContainerI_I.appendChild(notifReviewContentInnerContainer);
-        // if(userReview && userReview.avgRating)
-        //     notifReviewContentContainerI_I.appendChild(text_avg);
-
-        var notifReviewContentContainerII = document.createElement('div');
-        notifReviewContentContainerII.className = "FPqR14UVqJeA14UV7MM9_0 FPqR14UV475HDnfr_0";
-        notifReviewContentContainerII.style = configuration && configuration.togglePoweredBy ? 'display:inline-block' : 'display:none';
-        var text_ContainerII = document.createTextNode(`${configuration && configuration.liveText ? configuration.liveText : 'verified by '}`);
-        var notifReviewContentContainerII_I = document.createElement('i');
-        var notifReviewContentImg = document.createElement('div');
-        notifReviewContentImg.className = "FPqRqg5HqJmAqu5I7MM9_R";
-        notifReviewContentImg.innerHTML=`
-        <svg width="10.5" height="10.5" viewBox="0 0 524 524" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-        <style>.cls-1 {
-                fill: #5d93fe;
-              }
-              .cls-2 {
-                fill: #5d93fe;
-                filter: url(#a);
-              }
-              .cls-3 {
-                fill: #fff;
-                fill-rule: evenodd;
-              }</style>
-        <filter id="a" x="51" y="51" width="423" height="423" filterUnits="userSpaceOnUse">
-        <feOffset in="SourceAlpha" result="offset"/>
-        <feGaussianBlur result="blur" stdDeviation="2.236"/>
-        <feFlood flood-opacity=".06" result="flood"/>
-        <feComposite in2="blur" operator="in" result="composite"/>
-        <feBlend in="SourceGraphic" result="blend"/>
-        </filter>
-        </defs>
-        <circle class="cls-1" cx="262" cy="262" r="262"/>
-        <circle class="cls-2" cx="262" cy="262" r="207"/>
-        <path class="cls-3" transform="translate(-640 -238)" d="m833.89 478.95 81.132 65.065a9 9 0 0 1 1.391 12.652l-25.651 31.985a9 9 0 0 1-12.652 1.39l-81.132-65.065a9 9 0 0 1-1.391-12.652l25.651-31.985a9 9 0 0 1 12.652-1.39z"/>
-        <path class="cls-3" transform="translate(-640 -238)" d="m846.25 552.7 127.39-144.5a9.721 9.721 0 0 1 13.35-1.047l29.679 24.286a8.9 8.9 0 0 1 1.08 12.862l-127.39 144.5a9.721 9.721 0 0 1-13.35 1.047l-29.675-24.286a8.9 8.9 0 0 1-1.087-12.861z"/>
-        </svg>`;
-        //notifReviewContentImg.setAttribute('src', 'https://storage.googleapis.com/influence-197607.appspot.com/TickIcon.svg');
-        notifReviewContentContainerII_I.appendChild(notifReviewContentImg);
-        var notifReviewContentA = document.createElement('a');
-        notifReviewContentA.setAttribute('href', configuration.poweredByLink);
-        notifReviewContentA.setAttribute('rel', 'nofollow');
-        notifReviewContentA.setAttribute('target', '_blank');
-        var createASpan = document.createElement('span');
-        createASpan.className = "FPqRtoc3qoc37 influencebrandMark";
-        var createAText = document.createTextNode(configuration.poweredBy ? configuration.poweredBy : 'Influence');
-        createASpan.appendChild(createAText);
-        notifReviewContentA.appendChild(createASpan);
-        notifReviewContentContainerII.appendChild(notifReviewContentContainerII_I);
-        notifReviewContentContainerII.appendChild(text_ContainerII);
-
-        notifReviewContentContainerII.appendChild(notifReviewContentA);
-
-        innerMainNotifReviewContainer.appendChild(notifReviewImgContainer);
-        innerMainNotifReviewContainer.appendChild(notificationReviewCloseContainer);
-        innerMainNotifReviewContainer.appendChild(notifReviewContentContainerI);
-        innerMainNotifReviewContainer.appendChild(notifReviewContentContainerI_I);
-        innerMainNotifReviewContainer.appendChild(notifReviewContentContainerII);
-
-        innerInnerNotifReviewContainer.appendChild(innerMainNotifReviewContainer);
-        innerNotifReviewContainer.appendChild(innerInnerNotifReviewContainer);
-        notificationReviewContainer.appendChild(innerNotifReviewContainer);
+        // innerInnerNotifReviewContainer.appendChild(innerMainNotifReviewContainer);
+        // innerNotifReviewContainer.appendChild(innerInnerNotifReviewContainer);
+        // notificationReviewContainer.appendChild(innerNotifReviewContainer);
 
         //***************** end for review notification ********************//
 

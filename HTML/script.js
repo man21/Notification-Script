@@ -2189,6 +2189,11 @@ async function loopThroughSplittedNotifications(splittedUrls, rule, notification
     document.getElementsByTagName("head")[0].appendChild(fontCSS);
 
 
+    var fontJS = document.createElement("script");
+    fontJS.src = 'https://use.fontawesome.com/343c65acc3.js';
+    document.getElementsByTagName("head")[0].appendChild(fontJS);
+
+
     let j = 1;
     var responseNotifications = [];
     var loopCheckValue = rule.loopNotification ? 1000 : 3;

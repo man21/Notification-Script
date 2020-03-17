@@ -3394,64 +3394,30 @@ var Note = function Note(config, containerStyle, iconStyle) {
         innerInnerNotifCTAContainer.appendChild(createCTAText);
         innerNotifCTAContainer.appendChild(innerInnerNotifCTAContainer);
 
-    //     if (configuration.isCTATop)
-    //     console.log(configuration.isCTATop,"IF condition")
-    //     mainContainer.appendChild(innerNotifCTAContainer);
-    //  //   mainContainer.appendChild(notificationLiveContainer)
-       
-    //     mainContainer.appendChild(bulkNotiifcationContainer);
-
-    //     mainContainer.appendChild(liveNotiifcationContainer)
-
-    //     console.log(mainContainer, "MAIN CONTAINER IN IF PART")
-
-    //      if (!configuration.isCTATop)
-
-    //      console.log(configuration.isCTATop,"ELSE CONDITIOn")
-    //     //  mainContainer.appendChild(liveNotiifcationContainer)
-    //     //  mainContainer.appendChild(bulkNotiifcationContainer);
-
-    //     console.log(mainContainer,"MAIN CONTAINER IN ELSE PART")
-
-
-       
-    //      //mainContainer.appendChild(innerNotifCTAContainer);
-
-
-    //     innerDiv.appendChild(mainContainer);
-
-        
-    //     innerContainer.appendChild(innerDiv);
-
-    //     container.appendChild(innerContainer);
-
-
     if (configuration.isCTATop)
-            mainContainer.appendChild(innerNotifCTAContainer);
+    container.appendChild(innerNotifCTAContainer);
         console.log(configuration.isCTATop,"IF condition")
         
-        mainContainer.appendChild(bulkNotiifcationContainer);
+        container.appendChild(bulkNotiifcationContainer);
 
-        mainContainer.appendChild(liveNotiifcationContainer)
+        container.appendChild(liveNotiifcationContainer)
 
         console.log(mainContainer, "MAIN CONTAINER IN IF PART")
-
-        // mainContainer.appendChild(notificationRecentContainer);
-        // mainContainer.appendChild(notificationLiveContainer);
-        // mainContainer.appendChild(notificationBulkContainer);
-        // mainContainer.appendChild(notificationReviewContainer);
 
         if (!configuration.isCTATop)
 
 
-            mainContainer.appendChild(innerNotifCTAContainer);
+        container.appendChild(innerNotifCTAContainer);
             console.log(configuration.isCTATop,"ELSE CONDITIOn")
             console.log(mainContainer,"MAIN CONTAINER IN ELSE PART")
 
 
-        innerDiv.appendChild(mainContainer);
-        innerContainer.appendChild(innerDiv);
-        container.appendChild(innerContainer);
+        // innerDiv.appendChild(mainContainer);
+        // innerContainer.appendChild(innerDiv);
+        // container.appendChild(innerContainer);
+
+
+
 
 
         if (type == 'journey' && userDetails && userDetails.length > k_c6ba2870) {

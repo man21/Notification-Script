@@ -2870,7 +2870,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         var notificationLiveContainer = document.createElement('div')
         notificationLiveContainer.className = 'oiuytretg';
-        notificationLiveCloseContainer.style = config.rule.closeNotification ? 'display:flex' : 'display:none';
+        notificationLiveContainer.style = config.rule.closeNotification ? 'display:flex' : 'display:none';
 
         var liveNotiifcationUpperPartContainer = document.createElement('div')
         liveNotiifcationUpperPartContainer.className= 'jihuygtfrdes'

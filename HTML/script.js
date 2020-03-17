@@ -3405,23 +3405,11 @@ var Note = function Note(config, containerStyle, iconStyle) {
        
         mainContainer.appendChild(bulkNotiifcationContainer);
 
-        mainContainer.appendChild(liveNotiifcationContainer)
-
-        // mainContainer.appendChild(innerNotifCTAContainer);
-
-        // mainContainer.appendChild(notificationRecentContainer);
-        // mainContainer.appendChild(notificationLiveContainer);
-        // container.appendChild(bulkNotiifcationContainer);
-        // mainContainer.appendChild(notificationReviewContainer);
+        //mainContainer.appendChild(liveNotiifcationContainer)
 
          if (!configuration.isCTATop)
 
-        // container.appendChild(bulkNotiifcationContainer);
-        // //container.appendChild(notificationLiveContainer)
-        // container.appendChild(liveNotiifcationContainer)
-
-
-
+       
          mainContainer.appendChild(innerNotifCTAContainer);
 
 

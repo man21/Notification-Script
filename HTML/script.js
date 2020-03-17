@@ -3161,7 +3161,6 @@ var Note = function Note(config, containerStyle, iconStyle) {
     //     reviewNotificationUpperSecondaryText.innerHTML = userReview && userReview.username ? userReview.username : 'Someone' + ' ' + configuration.gglReviewText ? configuration.gglReviewText : 'Reviewed us on Google';       
     // }
 
-    console.log(configuration, "ABCDDDDDDDDDDDDD")
        reviewNotificationUpperSecondaryText.innerHTML =  configuration.gglReviewText ? configuration.gglReviewText : 'Reviewed us on Google';         //"Awesome must have tool for every marketer or an online business! Easy to use, great uxui, and most importantly - gets more leads than any other platform."
 
         reviewNotificationTextContainer.appendChild(reviewNotificationUpperSecondaryText)
@@ -3197,28 +3196,36 @@ var Note = function Note(config, containerStyle, iconStyle) {
         //reviewNotificationFooterStarContainer.innerHTML= star
 
 
-
-
         var reviewNotificationFooterStar1 = document.createElement('i')
-        reviewNotificationFooterStar1.className = 'fa fa-star'
+        if (userReview && userReview.rating) {
+            for (let star_i = 0; star_i < userReview.rating; star_i++) {
+                reviewNotificationFooterStar1.className = 'fa fa-star';
+                reviewNotificationFooterStarContainer.appendChild(reviewNotificationFooterStar1)
 
-        reviewNotificationFooterStarContainer.appendChild(reviewNotificationFooterStar1)
+            }
+        }
 
-        var reviewNotificationFooterStar2 = document.createElement('i')
-        reviewNotificationFooterStar2.className = 'fa fa-star'
-        reviewNotificationFooterStarContainer.appendChild(reviewNotificationFooterStar2)
 
-        var reviewNotificationFooterStar3 = document.createElement('i')
-        reviewNotificationFooterStar3.className = 'fa fa-star'
-        reviewNotificationFooterStarContainer.appendChild(reviewNotificationFooterStar3)
+        // var reviewNotificationFooterStar1 = document.createElement('i')
+        // reviewNotificationFooterStar1.className = 'fa fa-star'
 
-        var reviewNotificationFooterStar4 = document.createElement('i')
-        reviewNotificationFooterStar4.className = 'fa fa-star'
-        reviewNotificationFooterStarContainer.appendChild(reviewNotificationFooterStar4)
+        // reviewNotificationFooterStarContainer.appendChild(reviewNotificationFooterStar1)
 
-        var reviewNotificationFooterStar5 = document.createElement('i')
-        reviewNotificationFooterStar5.className = 'fa fa-star-half'
-        reviewNotificationFooterStarContainer.appendChild(reviewNotificationFooterStar5)
+        // var reviewNotificationFooterStar2 = document.createElement('i')
+        // reviewNotificationFooterStar2.className = 'fa fa-star'
+        // reviewNotificationFooterStarContainer.appendChild(reviewNotificationFooterStar2)
+
+        // var reviewNotificationFooterStar3 = document.createElement('i')
+        // reviewNotificationFooterStar3.className = 'fa fa-star'
+        // reviewNotificationFooterStarContainer.appendChild(reviewNotificationFooterStar3)
+
+        // var reviewNotificationFooterStar4 = document.createElement('i')
+        // reviewNotificationFooterStar4.className = 'fa fa-star'
+        // reviewNotificationFooterStarContainer.appendChild(reviewNotificationFooterStar4)
+
+        // var reviewNotificationFooterStar5 = document.createElement('i')
+        // reviewNotificationFooterStar5.className = 'fa fa-star-half'
+        // reviewNotificationFooterStarContainer.appendChild(reviewNotificationFooterStar5)
 
         reviewNotificationFooterLogoContainer.appendChild(reviewNotificationFooterStarContainer)
         reviewNotificationFooterLeft.appendChild(reviewNotificationFooterLogoContainer)

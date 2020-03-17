@@ -2901,7 +2901,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
     
         var liveNotificationImage = document.createElement('img')
         liveNotificationImage.className= 'klhjgyf'
-        liveNotificationImage.setAttribute('src', configuration.panelStyle.image)
+        liveNotificationImage.setAttribute('src', config.liveViewer.icon)
     
         liveNotificationImageContainer.appendChild(liveNotificationImage)
     

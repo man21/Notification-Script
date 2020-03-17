@@ -2901,7 +2901,39 @@ var Note = function Note(config, containerStyle, iconStyle) {
     
         var liveNotificationImage = document.createElement('img')
         liveNotificationImage.className= 'klhjgyf'
-        liveNotificationImage.setAttribute('src', config.liveViewer.icon)
+
+
+        if (configuration.panelStyle && configuration.panelStyle.image) {
+           // notifLiveImgContainer.className = "FPqRH0WDqJeAH0WD7MM9_1";
+            //notifLiveImg.classList = "FPqRh0ePqJeAh0eP7MM9_1";
+           // var notifLiveImgContent = document.createElement('img');
+            //notifLiveImgContent.className = "FPqRqg5HqJmAqu5I7MM9C";
+            liveNotificationImage.setAttribute('src', configuration.panelStyle.image);
+            liveNotificationImage.style = `padding: ${configuration.panelStyle.imagePadding ? configuration.panelStyle.imagePadding + 'px' : '11px'}; border-radius: 0; height: 50px; width: 50px;`;
+           // notifLiveImg.appendChild(notifLiveImgContent);
+        } else {
+            if (config.liveViewer && config.liveViewer.icon) {
+                
+                liveNotificationImage.setAttribute('src', config.liveViewer.icon);
+                liveNotificationImage.style = 'padding: 2px; border-radius: 0; height: 50px; width: 120px;';
+                
+            }
+            else if (config.liveFollower && config.liveFollower.icon) {
+               
+                liveNotificationImage.setAttribute('src', config.liveFollower.icon);
+                liveNotificationImage.style = 'padding: 2px; border-radius: 0; height: 50px; width: 120px;';
+                
+            }
+            else {
+                
+                liveNotificationImage.style=`background: rgb(${configuration.panelStyle.iconBGColor ? configuration.panelStyle.iconBGColor.r : 0}, ${configuration.panelStyle.iconBGColor ? configuration.panelStyle.iconBGColor.g : 149}, ${configuration.panelStyle.iconBGColor ? configuration.panelStyle.iconBGColor.b : 247}, ${configuration.panelStyle.iconBGColor ? configuration.panelStyle.iconBGColor.a : 1})`
+            }
+        }
+
+
+
+
+       // liveNotificationImage.setAttribute('src', config.liveViewer.icon)
     
         liveNotificationImageContainer.appendChild(liveNotificationImage)
     

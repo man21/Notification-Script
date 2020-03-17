@@ -2901,7 +2901,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
     
         var liveNotificationImage = document.createElement('img')
         liveNotificationImage.className= 'klhjgyf'
-        liveNotificationImage.setAttribute('src', 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/332B2F6F-95F2-4DC1-ADF3-8755D3C791E8.png')
+        liveNotificationImage.setAttribute('src', configuration.panelStyle.image)
     
         liveNotificationImageContainer.appendChild(liveNotificationImage)
     

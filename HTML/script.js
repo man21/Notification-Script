@@ -3408,6 +3408,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         //mainContainer.appendChild(liveNotiifcationContainer)
 
          if (!configuration.isCTATop)
+         mainContainer.appendChild(liveNotiifcationContainer)
          mainContainer.appendChild(bulkNotiifcationContainer);
 
 

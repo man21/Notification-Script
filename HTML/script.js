@@ -2868,11 +2868,11 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
 
 
-        console.log(config.rule.closeNotification,"CLose Notification DATA")
+      //  console.log(config.rule.closeNotification,"CLose Notification DATA")
 
         var notificationLiveContainer = document.createElement('div')
         notificationLiveContainer.className = 'oiuytretg';
-        notificationLiveContainer.style = config.rule.closeNotification ? 'display:flex' : 'display:none';
+        notificationLiveContainer.style = type == 'live' ? "display:block" : "display:none";
 
         var liveNotiifcationUpperPartContainer = document.createElement('div')
         liveNotiifcationUpperPartContainer.className= 'jihuygtfrdes'
@@ -3288,7 +3288,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         var bulkNotiifcationContainer = document.createElement('div')
         bulkNotiifcationContainer.className = 'notif-card';
-        bulkNotiifcationContainer.style = config.rule.closeNotification ? 'display:flex' : 'display:none';
+        bulkNotiifcationContainer.style = type == 'identification' ? "display:block" : "display:none";
     
         var bulkNotiifcationUpperPartContainer = document.createElement('div')
         bulkNotiifcationUpperPartContainer.className= 'upper-part'

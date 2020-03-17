@@ -2868,8 +2868,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
 
 
-        var liveNotiifcationContainer = document.createElement('div')
-        liveNotiifcationContainer.className = 'oiuytretg';
+        var notificationLiveContainer = document.createElement('div')
+        notificationLiveContainer.className = 'oiuytretg';
     
         var liveNotiifcationUpperPartContainer = document.createElement('div')
         liveNotiifcationUpperPartContainer.className= 'jihuygtfrdes'
@@ -2911,11 +2911,11 @@ var Note = function Note(config, containerStyle, iconStyle) {
         liveNotificationTextContainer.appendChild(liveNotificationPTag)
          liveNotiifcationUpperPartContainer.appendChild(liveNotificationTextContainer)
     
-        liveNotiifcationContainer.appendChild(liveNotiifcationUpperPartContainer)
+        notificationLiveContainer.appendChild(liveNotiifcationUpperPartContainer)
     
         var liveNotificationBorder = document.createElement('div')
         liveNotificationBorder.className='hvhvyhjvg'
-        liveNotiifcationContainer.appendChild(liveNotificationBorder)
+        notificationLiveContainer.appendChild(liveNotificationBorder)
     
         var liveNotificationLowerTextContainer= document.createElement('div')
         liveNotificationLowerTextContainer.className ='kbhgcghv'
@@ -2946,7 +2946,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
     
     
         liveNotificationLowerTextContainer.appendChild(liveNotificationLowerPTag)
-        liveNotiifcationContainer.appendChild(liveNotificationLowerTextContainer)
+        notificationLiveContainer.appendChild(liveNotificationLowerTextContainer)
 
 
 
@@ -3431,7 +3431,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
     mainContainer.appendChild(innerNotifCTAContainer);
 
     mainContainer.appendChild(bulkNotiifcationContainer);
-    mainContainer.appendChild(liveNotiifcationContainer);
+    mainContainer.appendChild(notificationLiveContainer);
 
         console.log(mainContainer,"container DATA")
         // mainContainer.appendChild(notificationBulkContainer);

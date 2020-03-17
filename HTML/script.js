@@ -3194,31 +3194,31 @@ var Note = function Note(config, containerStyle, iconStyle) {
         var reviewNotificationFooterStarContainer = document.createElement('div')
         reviewNotificationFooterStarContainer.className = 'footer-star-container'
 
-        reviewNotificationFooterStarContainer.innerHTML= star
+        //reviewNotificationFooterStarContainer.innerHTML= star
 
 
 
 
-        // var reviewNotificationFooterStar1 = document.createElement('i')
-        // reviewNotificationFooterStar1.className = 'fa fa-star'
+        var reviewNotificationFooterStar1 = document.createElement('i')
+        reviewNotificationFooterStar1.className = 'fa fa-star'
 
-        // reviewNotificationFooterStarContainer.appendChild(reviewNotificationFooterStar1)
+        reviewNotificationFooterStarContainer.appendChild(reviewNotificationFooterStar1)
 
-        // var reviewNotificationFooterStar2 = document.createElement('i')
-        // reviewNotificationFooterStar2.className = 'fa fa-star'
-        // reviewNotificationFooterStarContainer.appendChild(reviewNotificationFooterStar2)
+        var reviewNotificationFooterStar2 = document.createElement('i')
+        reviewNotificationFooterStar2.className = 'fa fa-star'
+        reviewNotificationFooterStarContainer.appendChild(reviewNotificationFooterStar2)
 
-        // var reviewNotificationFooterStar3 = document.createElement('i')
-        // reviewNotificationFooterStar3.className = 'fa fa-star'
-        // reviewNotificationFooterStarContainer.appendChild(reviewNotificationFooterStar3)
+        var reviewNotificationFooterStar3 = document.createElement('i')
+        reviewNotificationFooterStar3.className = 'fa fa-star'
+        reviewNotificationFooterStarContainer.appendChild(reviewNotificationFooterStar3)
 
-        // var reviewNotificationFooterStar4 = document.createElement('i')
-        // reviewNotificationFooterStar4.className = 'fa fa-star'
-        // reviewNotificationFooterStarContainer.appendChild(reviewNotificationFooterStar4)
+        var reviewNotificationFooterStar4 = document.createElement('i')
+        reviewNotificationFooterStar4.className = 'fa fa-star'
+        reviewNotificationFooterStarContainer.appendChild(reviewNotificationFooterStar4)
 
-        // var reviewNotificationFooterStar5 = document.createElement('i')
-        // reviewNotificationFooterStar5.className = 'fa fa-star-half'
-        // reviewNotificationFooterStarContainer.appendChild(reviewNotificationFooterStar5)
+        var reviewNotificationFooterStar5 = document.createElement('i')
+        reviewNotificationFooterStar5.className = 'fa fa-star-half'
+        reviewNotificationFooterStarContainer.appendChild(reviewNotificationFooterStar5)
 
         reviewNotificationFooterLogoContainer.appendChild(reviewNotificationFooterStarContainer)
         reviewNotificationFooterLeft.appendChild(reviewNotificationFooterLogoContainer)

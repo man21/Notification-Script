@@ -3394,35 +3394,63 @@ var Note = function Note(config, containerStyle, iconStyle) {
         innerInnerNotifCTAContainer.appendChild(createCTAText);
         innerNotifCTAContainer.appendChild(innerInnerNotifCTAContainer);
 
-        if (configuration.isCTATop)
-        console.log(configuration.isCTATop,"IF condition")
-        mainContainer.appendChild(innerNotifCTAContainer);
-     //   mainContainer.appendChild(notificationLiveContainer)
+    //     if (configuration.isCTATop)
+    //     console.log(configuration.isCTATop,"IF condition")
+    //     mainContainer.appendChild(innerNotifCTAContainer);
+    //  //   mainContainer.appendChild(notificationLiveContainer)
        
+    //     mainContainer.appendChild(bulkNotiifcationContainer);
+
+    //     mainContainer.appendChild(liveNotiifcationContainer)
+
+    //     console.log(mainContainer, "MAIN CONTAINER IN IF PART")
+
+    //      if (!configuration.isCTATop)
+
+    //      console.log(configuration.isCTATop,"ELSE CONDITIOn")
+    //     //  mainContainer.appendChild(liveNotiifcationContainer)
+    //     //  mainContainer.appendChild(bulkNotiifcationContainer);
+
+    //     console.log(mainContainer,"MAIN CONTAINER IN ELSE PART")
+
+
+       
+    //      //mainContainer.appendChild(innerNotifCTAContainer);
+
+
+    //     innerDiv.appendChild(mainContainer);
+
+        
+    //     innerContainer.appendChild(innerDiv);
+
+    //     container.appendChild(innerContainer);
+
+
+    if (configuration.isCTATop)
+            mainContainer.appendChild(innerNotifCTAContainer);
+        console.log(configuration.isCTATop,"IF condition")
+        
         mainContainer.appendChild(bulkNotiifcationContainer);
 
         mainContainer.appendChild(liveNotiifcationContainer)
 
         console.log(mainContainer, "MAIN CONTAINER IN IF PART")
 
-         if (!configuration.isCTATop)
+        // mainContainer.appendChild(notificationRecentContainer);
+        // mainContainer.appendChild(notificationLiveContainer);
+        // mainContainer.appendChild(notificationBulkContainer);
+        // mainContainer.appendChild(notificationReviewContainer);
 
-         console.log(configuration.isCTATop,"ELSE CONDITIOn")
-        //  mainContainer.appendChild(liveNotiifcationContainer)
-        //  mainContainer.appendChild(bulkNotiifcationContainer);
-
-        console.log(mainContainer,"MAIN CONTAINER IN ELSE PART")
+        if (!configuration.isCTATop)
 
 
-       
-         //mainContainer.appendChild(innerNotifCTAContainer);
+            mainContainer.appendChild(innerNotifCTAContainer);
+            console.log(configuration.isCTATop,"ELSE CONDITIOn")
+            console.log(mainContainer,"MAIN CONTAINER IN ELSE PART")
 
 
         innerDiv.appendChild(mainContainer);
-
-        
         innerContainer.appendChild(innerDiv);
-
         container.appendChild(innerContainer);
 
 

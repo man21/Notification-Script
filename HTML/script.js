@@ -2626,10 +2626,6 @@ var Note = function Note(config, containerStyle, iconStyle) {
    
     function displayNotification(container, config) {
 
-        console.log(config,"COnfig Data is here")
-
-        console.log(container,"COntainer is here")
-
         let className = `animated_FPqR2bI7Mf_c ${config.rule.popupAnimationIn}`;
         container.className =  className;
         const elem = document.getElementsByClassName(className);
@@ -2656,8 +2652,6 @@ var Note = function Note(config, containerStyle, iconStyle) {
     };
 
     function notificationDisplay(type, config, containerStyle, iconStyle, alignment) {
-
-        console.log(type,"TYPE******")
         
         if (notifClosr_c4rF9Effgt985n7v4y5h)
             return;
@@ -2707,6 +2701,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
         let userDetails = config.userDetails;
         let numberOfUsers = config.numberOfUsers;
         let userReview = config.userReviews;
+
+        console.log(userReview,"User review datta")
 
         var container = document.createElement('div');
         container.setAttribute("id", "FPqR2DbIqJeA2DbI7MM9_0");
@@ -3101,6 +3097,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
                   </svg>`
             }
         }
+
+        console.log(star ,"STAR VALUE in REVIEW NOTIFICATIOn")
         reviewNotificationUpperStarContainer.innerHTML= star
 
 
@@ -3162,7 +3160,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         var reviewNotificationFooterLeftText = document.createElement('p')
         reviewNotificationFooterLeftText.className = 'footer-left-text'
-        reviewNotificationFooterLeftText.innerHTML = "updated 9 min ago"
+        reviewNotificationFooterLeftText.innerHTML = '       '  //"updated 9 min ago"
         reviewNotificationFooterLeft.appendChild(reviewNotificationFooterLeftText)
         var reviewNotificationFooterLogoContainer = document.createElement('div')
         reviewNotificationFooterLogoContainer.className = 'footer-logo-container'
@@ -3241,7 +3239,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         var reviewNotificationFooterMobileTimeContainer = document.createElement('em')
         reviewNotificationFooterMobileTimeContainer.className = 'time-container'
-        reviewNotificationFooterMobileTimeContainer.innerHTML = '9 mins ago'
+        reviewNotificationFooterMobileTimeContainer.innerHTML ='        ' //'9 mins ago'
 
         reviewNotificationLowerPTag.appendChild(reviewNotificationFooterMobileTimeContainer)
 

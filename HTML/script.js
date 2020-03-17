@@ -2924,11 +2924,22 @@ var Note = function Note(config, containerStyle, iconStyle) {
     
         var liveNotificationFirstText = document.createElement('em')
         liveNotificationFirstText.className= 'oiuyftgc'
-        liveNotificationFirstText.innerHTML = liveVisitorCount == 0 ? 1 : liveVisitorCount;      //"21 People"
+        liveNotificationFirstText.innerHTML = liveVisitorCount == 0 ? 1 : liveVisitorCount + ' ' + ` ${configuration.visitorText}`      //"21 People"
     
         var liveNotificationSecondText = document.createElement('em')
         liveNotificationSecondText.className= 'jhjfdrtfgvgj'
-        liveNotificationSecondText.innerHTML = ` ${configuration.visitorText}`   //"are viewing this side"
+
+        // if (configuration && configuration.panelStyle && configuration.panelStyle.color) {
+        // 	text_span1.style = `color: rgb(${configuration.panelStyle.color.r},${configuration.panelStyle.color.g},${configuration.panelStyle.color.b});`
+        // }
+        liveNotificationSecondText.innerHTML = ` ${configuration.liveVisitorText}`;
+        if(config.liveViewer)
+        liveNotificationSecondText.innerHTML =` ${configuration.liveViewerText}`;
+        else if(config.liveFollower)
+        liveNotificationSecondText.innerHTML =` ${configuration.liveFollowerText}`;
+
+
+       // liveNotificationSecondText.innerHTML =    //"are viewing this side"
          liveNotificationPTag.appendChild(liveNotificationFirstText)
          liveNotificationPTag.appendChild(liveNotificationSecondText)
         liveNotificationTextContainer.appendChild(liveNotificationPTag)
@@ -3289,7 +3300,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
     
         var bulkNotificationFooterFirstText = document.createElement('em')
         bulkNotificationFooterFirstText.className= 'verified-text'
-        bulkNotificationFooterFirstText.innerHTML = configuration.recentText2 ? configuration.recentText2 : ' by '  //"Verified by"
+        bulkNotificationFooterFirstText.innerHTML = configuration.recentText2 ? configuration.recentText2 : 'Verified by '  //"Verified by"
     
         bulkNotificationLowerPTag.appendChild(bulkNotificationFooterFirstText)
     

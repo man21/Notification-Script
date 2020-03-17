@@ -3066,7 +3066,14 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         var reviewNotificationNameText = document.createElement('p')
         reviewNotificationNameText.className = 'para main-text'
-        reviewNotificationNameText.innerHTML = 'Aviel Sela'
+
+        if (fromAppType == 'facebook')
+        reviewNotificationNameText.innerHTML = 'Recommended us on Facebook';
+    else if (fromAppType == 'google') {
+        reviewNotificationNameText.innerHTML = userReview && userReview.username ? userReview.username : 'Someone' ;
+    }
+
+       // reviewNotificationNameText.innerHTML =    //'Aviel Sela'
         reviewNotificationUserNameContainer.appendChild(reviewNotificationNameText)
 
         var reviewNotificationUpperLogoContainer = document.createElement('div')
@@ -3130,13 +3137,14 @@ var Note = function Note(config, containerStyle, iconStyle) {
         var reviewNotificationUpperSecondaryText = document.createElement('p')
         reviewNotificationUpperSecondaryText.className = 'para secondary-text'
 
-        if (fromAppType == 'facebook')
-        reviewNotificationUpperSecondaryText.innerHTML = 'Recommended us on Facebook';
-    else if (fromAppType == 'google') {
-        reviewNotificationUpperSecondaryText.innerHTML = userReview && userReview.username ? userReview.username : 'Someone' + ' ' + configuration.gglReviewText ? configuration.gglReviewText : 'Reviewed us on Google';       
-    }
+    //     if (fromAppType == 'facebook')
+    //     reviewNotificationUpperSecondaryText.innerHTML = 'Recommended us on Facebook';
+    // else if (fromAppType == 'google') {
+    //     reviewNotificationUpperSecondaryText.innerHTML = userReview && userReview.username ? userReview.username : 'Someone' + ' ' + configuration.gglReviewText ? configuration.gglReviewText : 'Reviewed us on Google';       
+    // }
 
-      //  reviewNotificationUpperSecondaryText.innerHTML = "Awesome must have tool for every marketer or an online business! Easy to use, great uxui, and most importantly - gets more leads than any other platform."
+    console.log(configuration.gglReviewText, "ABCDDDDDDDDDDDDD")
+       reviewNotificationUpperSecondaryText.innerHTML =  configuration.gglReviewText ? configuration.gglReviewText : 'Reviewed us on Google';         //"Awesome must have tool for every marketer or an online business! Easy to use, great uxui, and most importantly - gets more leads than any other platform."
 
         reviewNotificationTextContainer.appendChild(reviewNotificationUpperSecondaryText)
         reviewNotiifcationUpperPartContainer.appendChild(reviewNotificationTextContainer)

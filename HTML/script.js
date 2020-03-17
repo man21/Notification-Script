@@ -3396,6 +3396,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         if (configuration.isCTATop)
         console.log(configuration.isCTATop,"IF condition")
+        mainContainer.appendChild(innerNotifCTAContainer);
      //   mainContainer.appendChild(notificationLiveContainer)
        
         mainContainer.appendChild(bulkNotiifcationContainer);
@@ -3414,7 +3415,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
 
        
-         mainContainer.appendChild(innerNotifCTAContainer);
+         //mainContainer.appendChild(innerNotifCTAContainer);
 
 
         innerDiv.appendChild(mainContainer);

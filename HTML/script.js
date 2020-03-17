@@ -3420,6 +3420,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         container.appendChild(bulkNotiifcationContainer);
         container.appendChild(liveNotiifcationContainer);
+
+        console.log(container,"container DATA")
         // mainContainer.appendChild(notificationBulkContainer);
         // mainContainer.appendChild(notificationReviewContainer);
 

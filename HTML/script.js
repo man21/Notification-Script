@@ -2962,9 +2962,9 @@ var Note = function Note(config, containerStyle, iconStyle) {
         var liveNotificationSecondText = document.createElement('em')
         liveNotificationSecondText.className= 'jhjfdrtfgvgj'
 
-        // if (configuration && configuration.panelStyle && configuration.panelStyle.color) {
-        // 	text_span1.style = `color: rgb(${configuration.panelStyle.color.r},${configuration.panelStyle.color.g},${configuration.panelStyle.color.b});`
-        // }
+        if (configuration && configuration.panelStyle && configuration.panelStyle.color) {
+        	liveNotificationSecondText.style = `color: rgb(${configuration.panelStyle.color.r},${configuration.panelStyle.color.g},${configuration.panelStyle.color.b});`
+        }
         liveNotificationSecondText.innerHTML = ` ${configuration.liveVisitorText}`;
         if(config.liveViewer)
         liveNotificationSecondText.innerHTML =` ${configuration.liveViewerText}`;

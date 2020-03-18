@@ -2893,6 +2893,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
         var notificationLiveContainer = document.createElement('div')
         notificationLiveContainer.className = 'oiuytretg';
         notificationLiveContainer.style = type == 'live' ? "display:block" : "display:none";
+        notificationLiveContainer.style = containerStyle;
+         
 
         var liveNotiifcationUpperPartContainer = document.createElement('div')
         liveNotiifcationUpperPartContainer.className= 'jihuygtfrdes'
@@ -3296,7 +3298,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         if (config.icon)
         bulkNotificationImage.setAttribute('src', config.icon);
         else
-        bulkNotificationImage.setAttribute('src', configuration.panelStyle.image ? configuration.panelStyle.image : 'https://storage.googleapis.com/influence-197607.appspot.com/fire_icon_blue_6.png')
+        bulkNotificationImage.setAttribute('src', configuration.panelStyle.image ? configuration.panelStyle.image : 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/C77C11F2-0E34-49DE-97CC-10DF6C848B69.png')
         if (configuration.panelStyle && configuration.panelStyle.image) {
            // notifBulkImg.style = `padding:${configuration.panelStyle.imagePadding}px; border-radius: 0;`;
            // notifBulkImg.className = 'FPqR37xpqJeA37xp7MM9_IMG FPqRqg5HqJmAqu5I7MM9C';

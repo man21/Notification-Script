@@ -3336,8 +3336,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
     
         var bulkNotificationFirstText = document.createElement('em')
         bulkNotificationFirstText.className= 'main-text'
-        numAnim = new CountUp(bulkNotificationFirstText, 0, numberOfUsers, 0, 3);
-         bulkNotificationFirstText.innerHTML = '  ' //numberOfUsers + "123 " // + configuration.visitorText
+       // numAnim = new CountUp(bulkNotificationFirstText, 0, numberOfUsers, 0, 3);
+         bulkNotificationFirstText.innerHTML = '11111  ' //numberOfUsers + "123 " // + configuration.visitorText
     
 
         var bulkNotificationSecondText = document.createElement('em')

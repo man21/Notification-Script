@@ -2744,6 +2744,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         var recentNotiifcationContainer = document.createElement('div')
         recentNotiifcationContainer.className = 'notif-card';
         recentNotiifcationContainer.style = type == 'journey' ? "display:block" : "display:none";
+        recentNotiifcationContainer.style = containerStyle;
 
         var recentNotiifcationUpperPartContainer = document.createElement('div')
         recentNotiifcationUpperPartContainer.className = 'upper-part'
@@ -3029,6 +3030,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         var reviewNotiifcationContainer = document.createElement('div')
         reviewNotiifcationContainer.className = 'notif-card';
         reviewNotiifcationContainer.style= type == 'review' ? "display:block" : "display:none";
+        reviewNotiifcationContainer.style = containerStyle;
 
         var reviewNotiifcationUpperPartContainer = document.createElement('div')
         reviewNotiifcationUpperPartContainer.className = 'upper-part'
@@ -3285,6 +3287,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
         var bulkNotiifcationContainer = document.createElement('div')
         bulkNotiifcationContainer.className = 'notif-card';
         bulkNotiifcationContainer.style = type == 'identification' ? "display:block" : "display:none";
+        bulkNotiifcationContainer.style = containerStyle;
+
     
         var bulkNotiifcationUpperPartContainer = document.createElement('div')
         bulkNotiifcationUpperPartContainer.className= 'upper-part'

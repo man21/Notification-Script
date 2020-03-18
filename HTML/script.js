@@ -3336,6 +3336,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
     
         var bulkNotificationFirstText = document.createElement('em')
         bulkNotificationFirstText.className= 'main-text'
+        bulkNotificationFirstText.style.backgroundColor = "#f3f7ff";
+    //     bulkNotificationFirstText.style.color= background-color: #f3f7ff
         numAnim = new CountUp(bulkNotificationFirstText, 0, numberOfUsers, 0, 3);
        //  bulkNotificationFirstText.innerHTML = '11111  ' //numberOfUsers + "123 " // + configuration.visitorText
     
@@ -3360,6 +3362,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
          var bulkNotificationFirstText2= document.createElement('em')
             bulkNotificationFirstText2.className = 'main-text'
+            bulkNotificationFirstText2.style.backgroundColor = "#f3f7ff";
             bulkNotificationFirstText2.innerHTML= configuration.visitorText  //people
             bulkNotificationPTag.appendChild(bulkNotificationFirstText2)
      

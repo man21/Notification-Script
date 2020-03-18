@@ -2960,6 +2960,9 @@ var Note = function Note(config, containerStyle, iconStyle) {
     
         var liveNotificationFirstText = document.createElement('em')
         liveNotificationFirstText.className= 'oiuyftgc'
+        if (configuration && configuration.panelStyle && configuration.panelStyle.color) {
+        	liveNotificationFirstText.style = `color: rgb(${configuration.panelStyle.color.r},${configuration.panelStyle.color.g},${configuration.panelStyle.color.b});`
+        }
         liveNotificationFirstText.innerHTML = liveVisitorCount == 0 ? 1 : liveVisitorCount + ' ' + ` ${configuration.visitorText}`      //"21 People"
     
         var liveNotificationSecondText = document.createElement('em')

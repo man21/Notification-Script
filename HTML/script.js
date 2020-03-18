@@ -2962,7 +2962,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         liveNotificationFirstText.className= 'oiuyftgc'
         //liveNotificationFirstText.style.backgroundColor = "black";
         if (configuration && configuration.panelStyle && configuration.panelStyle.color) {
-        	liveNotificationFirstText.style = `color: rgb(${configuration.panelStyle.color.r},${configuration.panelStyle.color.g},${configuration.panelStyle.color.b}); background-color: #000000`
+        	liveNotificationFirstText.style = `color: rgb(${configuration.panelStyle.color.r},${configuration.panelStyle.color.g},${configuration.panelStyle.color.b}); background-color: #f3f7ff`
         }
         liveNotificationFirstText.innerHTML = liveVisitorCount == 0 ? 1 : liveVisitorCount + ' ' + ` ${configuration.visitorText}`      //"21 People"
     

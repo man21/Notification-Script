@@ -169,7 +169,7 @@ body{
         border-radius: 50px;
         flex-direction: column-reverse;
         padding: 10px 25px;
-        max-height: 60px;
+        max-height: 90px;
         max-width: 310px;
         position: relative;
         justify-content: space-evenly;

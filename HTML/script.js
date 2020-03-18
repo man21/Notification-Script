@@ -2960,7 +2960,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
     
         var liveNotificationFirstText = document.createElement('em')
         liveNotificationFirstText.className= 'oiuyftgc'
-        liveNotificationFirstText.style.backgroundColor ='black'
+        liveNotificationFirstText.style.backgroundColor = "black";
         if (configuration && configuration.panelStyle && configuration.panelStyle.color) {
         	liveNotificationFirstText.style = `color: rgb(${configuration.panelStyle.color.r},${configuration.panelStyle.color.g},${configuration.panelStyle.color.b});`
         }

@@ -3357,6 +3357,11 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         bulkNotificationSecondText.innerHTML = ` ${configuration ? configuration.otherText : ''} ${configuration ? configuration.contentText : ''} ${configuration && configuration.bulkText ? configuration.bulkText : 'in the last'} ${configuration.panelStyle.bulkData} ${configuration && configuration.bulkDaysLable ? configuration.bulkDaysLable : 'days'}`  //"signed up for influence in the last 7 days"
          bulkNotificationPTag.appendChild(bulkNotificationFirstText)
+
+         var bulkNotificationFirstText2= document.createElement('em')
+            bulkNotificationFirstText2.className = 'main-text'
+            bulkNotificationFirstText2.innerHTML= 'people'
+            bulkNotificationPTag.appendChild(bulkNotificationFirstText2)
      
          bulkNotificationPTag.appendChild(bulkNotificationSecondText)
         bulkNotificationTextContainer.appendChild(bulkNotificationPTag)

@@ -2899,7 +2899,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         var liveNotiifcationUpperPartContainer = document.createElement('div')
         liveNotiifcationUpperPartContainer.className= 'jihuygtfrdes'
-        liveNotiifcationUpperPartContainer.style = containerStyle;
+        //liveNotiifcationUpperPartContainer.style = containerStyle;
     
         var liveNotificationImageContainer = document.createElement('div')
         liveNotificationImageContainer.className= 'jhgfdfghb'

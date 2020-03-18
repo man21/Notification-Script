@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Lato|Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
+    <script src="https://use.fontawesome.com/343c65acc3.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>recent Notifs</title>
+</head>
+
+<body>
+
+
+    <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Lato|Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
+    <script src="https://use.fontawesome.com/343c65acc3.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>recent Notifs</title>
+</head>
+
+<body>
+    <script>
+
+
+        var recentNotiifcationContainer = document.createElement('div')
+        recentNotiifcationContainer.className = 'notif-card';
+
+        var recentNotiifcationUpperPartContainer = document.createElement('div')
+        recentNotiifcationUpperPartContainer.className = 'upper-part'
+
+        var recentNotificationImageContainer = document.createElement('div')
+        recentNotificationImageContainer.className = 'image-container'
+
+        var recentNotificationImage = document.createElement('img')
+        recentNotificationImage.className = 'image'
+        recentNotificationImage.setAttribute('src', 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/5FCE8400-0616-426F-8BEA-F53136305123.png')
+        recentNotificationImageContainer.appendChild(recentNotificationImage)
+
+
+        recentNotiifcationUpperPartContainer.appendChild(recentNotificationImageContainer)
+
+        var recentNotificationCloseContainer = document.createElement('div')
+        recentNotificationCloseContainer.className = 'close-btn-container'
+        var recentNotificationCloseIcon = document.createElement('button')
+        recentNotificationCloseIcon.className = 'close-btn'
+        recentNotificationCloseIcon.innerHTML = "+"
+        recentNotificationCloseContainer.appendChild(recentNotificationCloseIcon)
+        recentNotiifcationUpperPartContainer.appendChild(recentNotificationCloseContainer)
+
+        var recentNotificationTextContainer = document.createElement('div')
+        recentNotificationTextContainer.className = 'text-container'
+
+        var recentNotificationNameText = document.createElement('p')
+         recentNotificationNameText.className = 'para main-text'
+         recentNotificationNameText.innerHTML = 'Samuel from Seattle, Washington'
+
+         recentNotificationTextContainer.appendChild(recentNotificationNameText)
+
+          var recentNotificationUpperSecondaryText = document.createElement('p')
+        recentNotificationUpperSecondaryText.className = 'para secondary-text'
+        recentNotificationUpperSecondaryText.innerHTML = "recently bought a Mexican teriyaki pizza!"
+
+        recentNotificationTextContainer.appendChild(recentNotificationUpperSecondaryText)
+
+
+        recentNotiifcationUpperPartContainer.appendChild(recentNotificationTextContainer)
+        recentNotiifcationContainer.appendChild(recentNotiifcationUpperPartContainer)
+
+        var recentNotificationBorder = document.createElement('div')
+        recentNotificationBorder.className = 'border'
+        recentNotiifcationContainer.appendChild(recentNotificationBorder)
+
+        var recentNotificationLowerTextContainer = document.createElement('div')
+        recentNotificationLowerTextContainer.className = 'lower-part'
+
+        var recentNotificationFooterLeft = document.createElement('div')
+        recentNotificationFooterLeft.className = 'footer-left'
+
+        var recentNotificationFooterLeftText = document.createElement('p')
+        recentNotificationFooterLeftText.className = 'footer-left-text'
+        recentNotificationFooterLeftText.innerHTML = "updated 9 min ago"
+        recentNotificationFooterLeft.appendChild(recentNotificationFooterLeftText)
+        
+        recentNotificationLowerTextContainer.appendChild(recentNotificationFooterLeft)
+
+        var recentNotificationLowerPTag = document.createElement('p')
+        recentNotificationLowerPTag.className = 'para footer-text-right'
+
+        var recentNotificationFooterFirstText = document.createElement('em')
+        recentNotificationFooterFirstText.className = 'verified-text'
+        recentNotificationFooterFirstText.innerHTML = "Verified by"
+
+        recentNotificationLowerPTag.appendChild(recentNotificationFooterFirstText)
+
+        var recentNotificationFooterverified = document.createElement('em')
+        recentNotificationFooterverified.className = 'verified-icon'
+
+        var recentNotificationTick = document.createElement('i')
+        recentNotificationTick.className = 'fa fa-check-circle'
+        recentNotificationFooterverified.appendChild(recentNotificationTick)
+
+        recentNotificationLowerPTag.appendChild(recentNotificationFooterverified)
+
+        var recentNotificationFooterPoweredBy = document.createElement('em')
+        recentNotificationFooterPoweredBy.className = 'influence-text'
+        recentNotificationFooterPoweredBy.innerHTML = "Influence"
+
+        recentNotificationLowerPTag.appendChild(recentNotificationFooterPoweredBy)
+
+        var recentNotificationFooterDot = document.createElement('em')
+        recentNotificationFooterDot.className = 'footer-dot'
+
+        var recentNotificationFooterCircle = document.createElement('i')
+        recentNotificationFooterCircle.className = 'fa fa-circle'
+
+        recentNotificationFooterDot.appendChild(recentNotificationFooterCircle)
+        recentNotificationLowerPTag.appendChild(recentNotificationFooterDot)
+
+        var recentNotificationFooterMobileTimeContainer = document.createElement('em')
+        recentNotificationFooterMobileTimeContainer.className = 'time-container'
+        recentNotificationFooterMobileTimeContainer.innerHTML = '9 mins ago'
+
+        recentNotificationLowerPTag.appendChild(recentNotificationFooterMobileTimeContainer)
+
+        recentNotificationLowerTextContainer.appendChild(recentNotificationLowerPTag)
+
+        recentNotiifcationContainer.appendChild(recentNotificationLowerTextContainer)
+        document.body.appendChild(recentNotiifcationContainer)
+    </script>
+
+</body>
+
+
+</body>
+
+</html>

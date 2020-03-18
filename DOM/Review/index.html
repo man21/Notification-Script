@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Lato|Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
+    <script src="https://use.fontawesome.com/343c65acc3.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Review Notifs</title>
+</head>
+
+<body>
+    <script>
+
+
+        var reviewNotiifcationContainer = document.createElement('div')
+        reviewNotiifcationContainer.className = 'notif-card';
+
+        var reviewNotiifcationUpperPartContainer = document.createElement('div')
+        reviewNotiifcationUpperPartContainer.className = 'upper-part'
+
+        var reviewNotificationImageContainer = document.createElement('div')
+        reviewNotificationImageContainer.className = 'image-container'
+
+        var reviewNotificationImage = document.createElement('img')
+        reviewNotificationImage.className = 'image'
+        reviewNotificationImage.setAttribute('src', 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/5FCE8400-0616-426F-8BEA-F53136305123.png')
+        reviewNotificationImageContainer.appendChild(reviewNotificationImage)
+
+
+        reviewNotiifcationUpperPartContainer.appendChild(reviewNotificationImageContainer)
+
+        var reviewNotificationCloseContainer = document.createElement('div')
+        reviewNotificationCloseContainer.className = 'close-btn-container'
+        var reviewNotificationCloseIcon = document.createElement('button')
+        reviewNotificationCloseIcon.className = 'close-btn'
+        reviewNotificationCloseIcon.innerHTML = "+"
+        reviewNotificationCloseContainer.appendChild(reviewNotificationCloseIcon)
+        reviewNotiifcationUpperPartContainer.appendChild(reviewNotificationCloseContainer)
+
+        var reviewNotificationTextContainer = document.createElement('div')
+        reviewNotificationTextContainer.className = 'text-container'
+
+        var reviewNotificationUserNameContainer = document.createElement('div')
+        reviewNotificationUserNameContainer.className = 'user-name-container'
+
+
+        var reviewNotificationNameText = document.createElement('p')
+        reviewNotificationNameText.className = 'para main-text'
+        reviewNotificationNameText.innerHTML = 'Aviel Sela'
+        reviewNotificationUserNameContainer.appendChild(reviewNotificationNameText)
+
+        var reviewNotificationUpperLogoContainer = document.createElement('div')
+        reviewNotificationUpperLogoContainer.className = 'upper-logo-container'
+
+        var reviewNotificationUpperLogo = document.createElement('img')
+        reviewNotificationUpperLogo.className = 'footer-logo'
+        reviewNotificationUpperLogo.setAttribute('src', 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/79341C01-B8BF-4484-AD66-B9314BAE4121.png')
+
+
+        reviewNotificationUpperLogoContainer.appendChild(reviewNotificationUpperLogo)
+
+
+        var reviewNotificationUpperStarContainer = document.createElement('div')
+        reviewNotificationUpperStarContainer.className = 'footer-star-container'
+
+        var reviewNotificationStar1 = document.createElement('i')
+        reviewNotificationStar1.className = 'fa fa-star'
+        reviewNotificationUpperStarContainer.appendChild(reviewNotificationStar1)
+
+        var reviewNotificationStar2 = document.createElement('i')
+        reviewNotificationStar2.className = 'fa fa-star'
+        reviewNotificationUpperStarContainer.appendChild(reviewNotificationStar2)
+
+        var reviewNotificationStar3 = document.createElement('i')
+        reviewNotificationStar3.className = 'fa fa-star'
+        reviewNotificationUpperStarContainer.appendChild(reviewNotificationStar3)
+
+        var reviewNotificationStar4 = document.createElement('i')
+        reviewNotificationStar4.className = 'fa fa-star'
+        reviewNotificationUpperStarContainer.appendChild(reviewNotificationStar4)
+
+        var reviewNotificationStar5 = document.createElement('i')
+        reviewNotificationStar5.className = 'fa fa-star-half'
+        reviewNotificationUpperStarContainer.appendChild(reviewNotificationStar5)
+
+
+
+
+        reviewNotificationUpperLogoContainer.appendChild(reviewNotificationUpperStarContainer)
+
+        reviewNotificationUserNameContainer.appendChild(reviewNotificationUpperLogoContainer)
+        reviewNotificationTextContainer.appendChild(reviewNotificationUserNameContainer)
+
+        var reviewNotificationUpperSecondaryText = document.createElement('p')
+        reviewNotificationUpperSecondaryText.className = 'para secondary-text'
+        reviewNotificationUpperSecondaryText.innerHTML = "Awesome must have tool for every marketer or an online business! Easy to use, great uxui, and most importantly - gets more leads than any other platform."
+
+        reviewNotificationTextContainer.appendChild(reviewNotificationUpperSecondaryText)
+        reviewNotiifcationUpperPartContainer.appendChild(reviewNotificationTextContainer)
+        reviewNotiifcationContainer.appendChild(reviewNotiifcationUpperPartContainer)
+
+        var reviewNotificationBorder = document.createElement('div')
+        reviewNotificationBorder.className = 'border'
+        reviewNotiifcationContainer.appendChild(reviewNotificationBorder)
+
+        var reviewNotificationLowerTextContainer = document.createElement('div')
+        reviewNotificationLowerTextContainer.className = 'lower-part'
+
+        var reviewNotificationFooterLeft = document.createElement('div')
+        reviewNotificationFooterLeft.className = 'footer-left'
+
+        var reviewNotificationFooterLeftText = document.createElement('p')
+        reviewNotificationFooterLeftText.className = 'footer-left-text'
+        reviewNotificationFooterLeftText.innerHTML = "updated 9 min ago"
+        reviewNotificationFooterLeft.appendChild(reviewNotificationFooterLeftText)
+        var reviewNotificationFooterLogoContainer = document.createElement('div')
+        reviewNotificationFooterLogoContainer.className = 'footer-logo-container'
+
+        var reviewNotificationFooterLogo = document.createElement('img')
+        reviewNotificationFooterLogo.className = 'footer-logo'
+        reviewNotificationFooterLogo.setAttribute('src', 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/79341C01-B8BF-4484-AD66-B9314BAE4121.png')
+
+        reviewNotificationFooterLogoContainer.appendChild(reviewNotificationFooterLogo)
+
+        var reviewNotificationFooterStarContainer = document.createElement('div')
+        reviewNotificationFooterStarContainer.className = 'footer-star-container'
+
+
+        var reviewNotificationFooterStar1 = document.createElement('i')
+        reviewNotificationFooterStar1.className = 'fa fa-star'
+
+        reviewNotificationFooterStarContainer.appendChild(reviewNotificationFooterStar1)
+
+        var reviewNotificationFooterStar2 = document.createElement('i')
+        reviewNotificationFooterStar2.className = 'fa fa-star'
+        reviewNotificationFooterStarContainer.appendChild(reviewNotificationFooterStar2)
+
+        var reviewNotificationFooterStar3 = document.createElement('i')
+        reviewNotificationFooterStar3.className = 'fa fa-star'
+        reviewNotificationFooterStarContainer.appendChild(reviewNotificationFooterStar3)
+
+        var reviewNotificationFooterStar4 = document.createElement('i')
+        reviewNotificationFooterStar4.className = 'fa fa-star'
+        reviewNotificationFooterStarContainer.appendChild(reviewNotificationFooterStar4)
+
+        var reviewNotificationFooterStar5 = document.createElement('i')
+        reviewNotificationFooterStar5.className = 'fa fa-star-half'
+        reviewNotificationFooterStarContainer.appendChild(reviewNotificationFooterStar5)
+
+        reviewNotificationFooterLogoContainer.appendChild(reviewNotificationFooterStarContainer)
+        reviewNotificationFooterLeft.appendChild(reviewNotificationFooterLogoContainer)
+        reviewNotificationLowerTextContainer.appendChild(reviewNotificationFooterLeft)
+
+        var reviewNotificationLowerPTag = document.createElement('p')
+        reviewNotificationLowerPTag.className = 'para footer-text-right'
+
+        var reviewNotificationFooterFirstText = document.createElement('em')
+        reviewNotificationFooterFirstText.className = 'verified-text'
+        reviewNotificationFooterFirstText.innerHTML = "Verified by"
+
+        reviewNotificationLowerPTag.appendChild(reviewNotificationFooterFirstText)
+
+        var reviewNotificationFooterverified = document.createElement('em')
+        reviewNotificationFooterverified.className = 'verified-icon'
+
+        var reviewNotificationTick = document.createElement('i')
+        reviewNotificationTick.className = 'fa fa-check-circle'
+        reviewNotificationFooterverified.appendChild(reviewNotificationTick)
+
+        reviewNotificationLowerPTag.appendChild(reviewNotificationFooterverified)
+
+        var reviewNotificationFooterPoweredBy = document.createElement('em')
+        reviewNotificationFooterPoweredBy.className = 'influence-text'
+        reviewNotificationFooterPoweredBy.innerHTML = "Influence"
+
+        reviewNotificationLowerPTag.appendChild(reviewNotificationFooterPoweredBy)
+
+        var reviewNotificationFooterDot = document.createElement('em')
+        reviewNotificationFooterDot.className = 'footer-dot'
+
+        var reviewNotificationFooterCircle = document.createElement('i')
+        reviewNotificationFooterCircle.className = 'fa fa-circle'
+
+        reviewNotificationFooterDot.appendChild(reviewNotificationFooterCircle)
+        reviewNotificationLowerPTag.appendChild(reviewNotificationFooterDot)
+
+        var reviewNotificationFooterMobileTimeContainer = document.createElement('em')
+        reviewNotificationFooterMobileTimeContainer.className = 'time-container'
+        reviewNotificationFooterMobileTimeContainer.innerHTML = '9 mins ago'
+
+        reviewNotificationLowerPTag.appendChild(reviewNotificationFooterMobileTimeContainer)
+
+        reviewNotificationLowerTextContainer.appendChild(reviewNotificationLowerPTag)
+
+        reviewNotiifcationContainer.appendChild(reviewNotificationLowerTextContainer)
+        document.body.appendChild(reviewNotiifcationContainer)
+    </script>
+
+</body>
+
+</html>

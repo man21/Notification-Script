@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Lato|Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
+    <script src="https://use.fontawesome.com/343c65acc3.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Bulk Notifs</title>
+</head>
+<body>
+<script>
+    var bulkNotiifcationContainer = document.createElement('div')
+    bulkNotiifcationContainer.className = 'notif-card';
+
+    var bulkNotiifcationUpperPartContainer = document.createElement('div')
+    bulkNotiifcationUpperPartContainer.className= 'upper-part'
+
+    var bulkNotificationImageContainer = document.createElement('div')
+    bulkNotificationImageContainer.className= 'image-container'
+
+    var bulkNotificationImage = document.createElement('img')
+    bulkNotificationImage.className= 'image'
+    bulkNotificationImage.setAttribute('src', 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/C77C11F2-0E34-49DE-97CC-10DF6C848B69.png')
+
+    bulkNotificationImageContainer.appendChild(bulkNotificationImage)
+
+    bulkNotiifcationUpperPartContainer.appendChild(bulkNotificationImageContainer)
+
+       var bulkNotificationCloseContainer = document.createElement('div')
+        bulkNotificationCloseContainer.className='close-btn-container'
+        var bulkNotificationCloseIcon = document.createElement('button')
+        bulkNotificationCloseIcon.className ='close-btn'
+        bulkNotificationCloseIcon.innerHTML ="+"
+        bulkNotificationCloseContainer.appendChild(bulkNotificationCloseIcon)
+     bulkNotiifcationUpperPartContainer.appendChild(bulkNotificationCloseContainer)
+
+     var bulkNotificationTextContainer = document.createElement('div')
+     bulkNotificationTextContainer.className= 'text-container'
+
+    var bulkNotificationPTag = document.createElement('p')
+    bulkNotificationPTag.className ='para'
+
+    var bulkNotificationFirstText = document.createElement('em')
+    bulkNotificationFirstText.className= 'main-text'
+     bulkNotificationFirstText.innerHTML ="2000 "
+
+
+
+   
+
+
+
+    var bulkNotificationSecondText = document.createElement('em')
+    bulkNotificationSecondText.className= 'secondary-text'
+    bulkNotificationSecondText.innerHTML ="signed up for influence in the last 7 days"
+     bulkNotificationPTag.appendChild(bulkNotificationFirstText)
+
+     var bulkNotificationFirstText2= document.createElement('em')
+bulkNotificationFirstText2.className = 'main-text'
+bulkNotificationFirstText2.innerHTML= 'people'
+bulkNotificationPTag.appendChild(bulkNotificationFirstText2)
+ 
+     bulkNotificationPTag.appendChild(bulkNotificationSecondText)
+    bulkNotificationTextContainer.appendChild(bulkNotificationPTag)
+     bulkNotiifcationUpperPartContainer.appendChild(bulkNotificationTextContainer)
+
+    bulkNotiifcationContainer.appendChild(bulkNotiifcationUpperPartContainer)
+
+    var bulkNotificationBorder = document.createElement('div')
+    bulkNotificationBorder.className='border'
+    bulkNotiifcationContainer.appendChild(bulkNotificationBorder)
+
+    var bulkNotificationLowerTextContainer= document.createElement('div')
+    bulkNotificationLowerTextContainer.className ='lower-part'
+
+    var bulkNotificationLowerPTag = document.createElement('p')
+    bulkNotificationLowerPTag.className ='para footer-text'
+
+    var bulkNotificationFooterFirstText = document.createElement('em')
+    bulkNotificationFooterFirstText.className= 'verified-text'
+    bulkNotificationFooterFirstText.innerHTML ="Verified by"
+
+    bulkNotificationLowerPTag.appendChild(bulkNotificationFooterFirstText)
+
+    var bulkNotificationFooterverified = document.createElement('em')
+    bulkNotificationFooterverified.className= 'verified-icon'
+
+    var bulkNotificationTick = document.createElement('i')
+    bulkNotificationTick.className ='fa fa-check-circle'
+    bulkNotificationFooterverified.appendChild(bulkNotificationTick)
+
+    bulkNotificationLowerPTag.appendChild(bulkNotificationFooterverified)
+
+    var bulkNotificationFooterPoweredBy = document.createElement('em')
+    bulkNotificationFooterPoweredBy.className= 'influence-text'
+    bulkNotificationFooterPoweredBy.innerHTML ="Influence"
+
+    bulkNotificationLowerPTag.appendChild(bulkNotificationFooterPoweredBy)
+
+
+    bulkNotificationLowerTextContainer.appendChild(bulkNotificationLowerPTag)
+    bulkNotiifcationContainer.appendChild(bulkNotificationLowerTextContainer)
+    document.body.appendChild(bulkNotiifcationContainer)
+</script>
+</body>
+</html>

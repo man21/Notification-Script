@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Lato|Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
+    <script src="https://use.fontawesome.com/343c65acc3.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>LiveCount Notif</title>
+</head>
+<body>
+
+    <script>
+        var liveNotiifcationContainer = document.createElement('div')
+        liveNotiifcationContainer.className = 'notif-card';
+    
+        var liveNotiifcationUpperPartContainer = document.createElement('div')
+        liveNotiifcationUpperPartContainer.className= 'upper-part'
+    
+        var liveNotificationImageContainer = document.createElement('div')
+        liveNotificationImageContainer.className= 'image-container'
+    
+        var liveNotificationImage = document.createElement('img')
+        liveNotificationImage.className= 'image'
+        liveNotificationImage.setAttribute('src', 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/332B2F6F-95F2-4DC1-ADF3-8755D3C791E8.png')
+    
+        liveNotificationImageContainer.appendChild(liveNotificationImage)
+    
+        liveNotiifcationUpperPartContainer.appendChild(liveNotificationImageContainer)
+    
+           var liveNotificationCloseContainer = document.createElement('div')
+            liveNotificationCloseContainer.className='close-btn-container'
+            var liveNotificationCloseIcon = document.createElement('button')
+            liveNotificationCloseIcon.className ='close-btn'
+            liveNotificationCloseIcon.innerHTML ="+"
+            liveNotificationCloseContainer.appendChild(liveNotificationCloseIcon)
+         liveNotiifcationUpperPartContainer.appendChild(liveNotificationCloseContainer)
+    
+         var liveNotificationTextContainer = document.createElement('div')
+         liveNotificationTextContainer.className= 'text-container'
+    
+        var liveNotificationPTag = document.createElement('p')
+        liveNotificationPTag.className ='para'
+    
+        var liveNotificationFirstText = document.createElement('em')
+        liveNotificationFirstText.className= 'main-text'
+        liveNotificationFirstText.innerHTML ="21 People"
+    
+        var liveNotificationSecondText = document.createElement('em')
+        liveNotificationSecondText.className= 'secondary-text'
+        liveNotificationSecondText.innerHTML ="are viewing this side"
+         liveNotificationPTag.appendChild(liveNotificationFirstText)
+         liveNotificationPTag.appendChild(liveNotificationSecondText)
+        liveNotificationTextContainer.appendChild(liveNotificationPTag)
+         liveNotiifcationUpperPartContainer.appendChild(liveNotificationTextContainer)
+    
+        liveNotiifcationContainer.appendChild(liveNotiifcationUpperPartContainer)
+    
+        var liveNotificationBorder = document.createElement('div')
+        liveNotificationBorder.className='border'
+        liveNotiifcationContainer.appendChild(liveNotificationBorder)
+    
+        var liveNotificationLowerTextContainer= document.createElement('div')
+        liveNotificationLowerTextContainer.className ='lower-part'
+    
+        var liveNotificationLowerPTag = document.createElement('p')
+        liveNotificationLowerPTag.className ='para footer-text'
+    
+        var liveNotificationFooterFirstText = document.createElement('em')
+        liveNotificationFooterFirstText.className= 'verified-text'
+        liveNotificationFooterFirstText.innerHTML ="Verified by"
+    
+        liveNotificationLowerPTag.appendChild(liveNotificationFooterFirstText)
+    
+        var liveNotificationFooterverified = document.createElement('em')
+        liveNotificationFooterverified.className= 'verified-icon'
+    
+        var liveNotificationTick = document.createElement('i')
+        liveNotificationTick.className ='fa fa-check-circle'
+        liveNotificationFooterverified.appendChild(liveNotificationTick)
+    
+        liveNotificationLowerPTag.appendChild(liveNotificationFooterverified)
+    
+        var liveNotificationFooterPoweredBy = document.createElement('em')
+        liveNotificationFooterPoweredBy.className= 'influence-text'
+        liveNotificationFooterPoweredBy.innerHTML ="Influence"
+    
+        liveNotificationLowerPTag.appendChild(liveNotificationFooterPoweredBy)
+    
+    
+        liveNotificationLowerTextContainer.appendChild(liveNotificationLowerPTag)
+        liveNotiifcationContainer.appendChild(liveNotificationLowerTextContainer)
+        document.body.appendChild(liveNotiifcationContainer)
+    </script>
+
+</body>
+</html>

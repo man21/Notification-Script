@@ -3360,7 +3360,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
          var bulkNotificationFirstText2= document.createElement('em')
             bulkNotificationFirstText2.className = 'main-text'
-            bulkNotificationFirstText2.innerHTML= 'people'
+            bulkNotificationFirstText2.innerHTML= configuration.visitorText  //people
             bulkNotificationPTag.appendChild(bulkNotificationFirstText2)
      
          bulkNotificationPTag.appendChild(bulkNotificationSecondText)

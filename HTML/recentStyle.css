@@ -5,7 +5,7 @@ body{
 .notif-card-recent{
     background-color: #fff;
     width: 350px;
-    height: 75px;
+    height: 80px;
     border-radius: 6px;
     padding: 4px 10px;
     padding-bottom: 2px;
@@ -265,8 +265,8 @@ body{
         border-radius: 50%;
         border: none;
         box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.26);
-        height: 21.5px;
-        width: 21.5px;
+        height: 20px;
+        width: 20px;
         background-color: #fff;
         position: absolute;
         top: 28px;
@@ -281,9 +281,10 @@ body{
         border: none;
         transform: rotate(45deg);
         padding: 0;
-        height: 22px;
-        width: 22px;
+        height: 20px;
+        width: 20px;
         cursor: pointer;
+        line-height: 1;
     }
     
 }

@@ -2433,7 +2433,7 @@ function notificationTimeout(i, info, rule, key, notificationPath) {
         background-color: rgb(${backgroundColor.r}, ${backgroundColor.g}, ${backgroundColor.b}, ${backgroundColor.a});
         box-shadow: rgb(0, 0, 0) ${panelStyle.shadow}px ${panelStyle.shadow}px ${panelStyle.blur}px;
         color: rgb(${color.r}, ${color.g}, ${color.b}, ${color.a}) !important;
-        height: ${72 + panelStyle.borderWidth * 2}px;
+        height: ${78 + panelStyle.borderWidth * 2}px;
         font-family: ${panelStyle.fontFamily};
         font-Weight: ${panelStyle.fontWeight};
       `;

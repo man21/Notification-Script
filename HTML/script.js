@@ -2833,7 +2833,6 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         var recentNotificationFooterLeft = document.createElement('div')
         recentNotificationFooterLeft.className = 'footer-left-recent'
--recent
         var recentNotificationFooterLeftText = document.createElement('p')
         recentNotificationFooterLeftText.className = 'footer-left-text-recent'
         var timeStamp = userDetails && userDetails ? userDetails.timestamp : new Date();

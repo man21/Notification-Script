@@ -141,6 +141,10 @@
         display: none;
     }
 
+    .upper-part:{
+        margin: '0'
+    }
+
     .main-text{
         font-size: 11px;
         font-weight: 600;
@@ -167,8 +171,8 @@
 
     .image{
         border-radius: 50%;
-        height: 51px;
-        width: 51px;
+        height: 41px;
+        width: 41px;
     }
 
     .main-text{

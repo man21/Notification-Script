@@ -141,7 +141,7 @@
         display: none;
     }
 
-    .upper-part:{
+    .upper-part{
         margin: '0'
     }
 
@@ -167,6 +167,8 @@
         right: 55px;
         margin: 0;
         padding: 0;
+        width: 41px;
+        height: 41px;
     }
 
     .image{

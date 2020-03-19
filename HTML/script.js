@@ -2897,9 +2897,9 @@ var Note = function Note(config, containerStyle, iconStyle) {
        //notificationLiveContainer.style= containerStyle
        // notificationLiveContainer.style = containerStyle;
        
-       var data1 = document.createElement('div');
-       data1.className= 'oiuytretg';
-       data1.style = containerStyle;
+       var notificationLiveMainContainer = document.createElement('div');
+       notificationLiveMainContainer.className= 'oiuytretg';
+       notificationLiveMainContainer.style = containerStyle;
 
          
 
@@ -2992,11 +2992,11 @@ var Note = function Note(config, containerStyle, iconStyle) {
         liveNotificationTextContainer.appendChild(liveNotificationPTag)
          liveNotiifcationUpperPartContainer.appendChild(liveNotificationTextContainer)
     
-        data1.appendChild(liveNotiifcationUpperPartContainer)
+         notificationLiveMainContainer.appendChild(liveNotiifcationUpperPartContainer)
     
         var liveNotificationBorder = document.createElement('div')
         liveNotificationBorder.className='hvhvyhjvg'
-        data1.appendChild(liveNotificationBorder)
+        notificationLiveMainContainer.appendChild(liveNotificationBorder)
     
         var liveNotificationLowerTextContainer= document.createElement('div')
         liveNotificationLowerTextContainer.className ='kbhgcghv'
@@ -3028,9 +3028,9 @@ var Note = function Note(config, containerStyle, iconStyle) {
     
         liveNotificationLowerTextContainer.appendChild(liveNotificationLowerPTag)
 
-        data1.appendChild(liveNotificationLowerTextContainer)
+        notificationLiveMainContainer.appendChild(liveNotificationLowerTextContainer)
 
-         notificationLiveContainer.appendChild(data1)
+         notificationLiveContainer.appendChild(notificationLiveMainContainer)
 
 
 
@@ -3299,11 +3299,14 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
 
         var bulkNotiifcationContainer = document.createElement('div')
-        bulkNotiifcationContainer.className = 'notif-card';
+    //     bulkNotiifcationContainer.className = 'notif-card';
         bulkNotiifcationContainer.style = type == 'identification' ? "display:block" : "display:none";
        // bulkNotiifcationContainer.style = containerStyle;
 
-    
+       var bulkNotiifcationMainContainer = document.createElement('div')
+       bulkNotiifcationMainContainer.className = 'notif-card';
+       bulkNotiifcationMainContainer.style =containerStyle
+
         var bulkNotiifcationUpperPartContainer = document.createElement('div')
         bulkNotiifcationUpperPartContainer.className= 'upper-part'
     
@@ -3380,11 +3383,11 @@ var Note = function Note(config, containerStyle, iconStyle) {
         bulkNotificationTextContainer.appendChild(bulkNotificationPTag)
          bulkNotiifcationUpperPartContainer.appendChild(bulkNotificationTextContainer)
     
-        bulkNotiifcationContainer.appendChild(bulkNotiifcationUpperPartContainer)
+         bulkNotiifcationMainContainer.appendChild(bulkNotiifcationUpperPartContainer)
     
         var bulkNotificationBorder = document.createElement('div')
         bulkNotificationBorder.className='border'
-        bulkNotiifcationContainer.appendChild(bulkNotificationBorder)
+        bulkNotiifcationMainContainer.appendChild(bulkNotificationBorder)
     
         var bulkNotificationLowerTextContainer= document.createElement('div')
         bulkNotificationLowerTextContainer.className ='lower-part'
@@ -3415,7 +3418,9 @@ var Note = function Note(config, containerStyle, iconStyle) {
     
     
         bulkNotificationLowerTextContainer.appendChild(bulkNotificationLowerPTag)
-        bulkNotiifcationContainer.appendChild(bulkNotificationLowerTextContainer)
+        bulkNotiifcationMainContainer.appendChild(bulkNotificationLowerTextContainer)
+        bulkNotiifcationContainer.appendChild(bulkNotiifcationMainContainer)
+
 
 
         var innerNotifCTAContainer = document.createElement('div');

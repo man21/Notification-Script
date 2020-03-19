@@ -2892,14 +2892,14 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
 
         var notificationLiveContainer = document.createElement('div')
-        notificationLiveContainer.className = 'oiuytretg';
+        //notificationLiveContainer.className = 'oiuytretg';
         notificationLiveContainer.style = type == 'live' ? "display:block" : "display:none";
        //notificationLiveContainer.style= containerStyle
        // notificationLiveContainer.style = containerStyle;
        
-    //    var data1 = document.createElement('div');
-    //    data1.className= 'oiuytretg'
-    //    data1.style = containerStyle;
+       var data1 = document.createElement('div');
+       data1.className= 'oiuytretg'
+       data1.style = containerStyle;
 
          
 
@@ -3030,7 +3030,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         notificationLiveContainer.appendChild(liveNotificationLowerTextContainer)
 
-        // notificationLiveContainer.appendChild(data1)
+         notificationLiveContainer.appendChild(data1)
 
 
 

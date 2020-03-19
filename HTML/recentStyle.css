@@ -16,6 +16,7 @@ body{
 .upper-part-recent{
     display: flex;
     flex-direction: row;
+    height: 60px;
 }
 
 .image-container-recent{

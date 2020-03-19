@@ -2145,7 +2145,7 @@ async function loopThroughSplittedNotifications(splittedUrls, rule, notification
 
 
     var bulkCSS = document.createElement("link");
-    bulkCSS.href = 'https://storage.googleapis.com/influence-197607.appspot.com/style.css';
+    bulkCSS.href = 'https://storage.googleapis.com/influence-197607.appspot.com/bulkStyle.css';
     bulkCSS.type = "text/css";
     bulkCSS.rel = "stylesheet";
     bulkCSS.id = "stylesheetID";

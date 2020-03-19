@@ -211,5 +211,8 @@
         width: 22px;
         cursor: pointer;
     }
+    .notif-space-bulk{
+        padding-left: 2px;
+    }
     
 }

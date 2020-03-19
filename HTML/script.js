@@ -3378,7 +3378,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
          bulkNotificationPTag.appendChild(bulkNotificationFirstText)
 
          var bulkNotificationFirstText2= document.createElement('em')
-            bulkNotificationFirstText2.className = 'main-text-bulk'
+            bulkNotificationFirstText2.className = 'main-text-bulk notif-space-bulk'
             bulkNotificationFirstText2.style.backgroundColor = "#f3f7ff";
             bulkNotificationFirstText2.style.paddingLeft = "0px";
             bulkNotificationFirstText2.innerHTML= configuration.visitorText  //people

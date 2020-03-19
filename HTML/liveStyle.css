@@ -16,11 +16,12 @@ body{
 .jihuygtfrdes{
     display: flex;
     flex-direction: row;
+    height: 60px;
 }
 
 .jhgfdfghb{
     width: 41px;
-    height: 4px;
+    height: 41px;
     background-color: #f3f7ff;
     border-radius: 15px;
     text-align: center;
@@ -80,6 +81,9 @@ body{
     padding-right: 5px;
     line-height: 0.8;
     padding-top: 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .uytdr{
@@ -209,6 +213,10 @@ body{
         width: 20px;
         cursor: pointer;
         line-height: 1;
+    }
+
+    .jvygcghv{
+        justify-content: left;
     }
     
 }

@@ -16,6 +16,7 @@
 .upper-part-bulk{
     display: flex;
     flex-direction: row;
+    height: 57px;
 }
 
 .image-container-bulk{
@@ -210,6 +211,7 @@
         height: 22px;
         width: 22px;
         cursor: pointer;
+        line-height: 1;
     }
     .notif-space-bulk{
         padding-left: 2px;

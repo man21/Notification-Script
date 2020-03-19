@@ -2747,17 +2747,17 @@ var Note = function Note(config, containerStyle, iconStyle) {
         //recentNotiifcationContainer.style = containerStyle;
 
         var recentNotiifcationMainContainer = document.createElement('div')
-        recentNotiifcationMainContainer.className = 'notif-card';
+        recentNotiifcationMainContainer.className = 'notif-card-recent';
         recentNotiifcationMainContainer.style = containerStyle
 
         var recentNotiifcationUpperPartContainer = document.createElement('div')
-        recentNotiifcationUpperPartContainer.className = 'upper-part'
+        recentNotiifcationUpperPartContainer.className = 'upper-part-recent'
 
         var recentNotificationImageContainer = document.createElement('div')
-        recentNotificationImageContainer.className = 'image-container'
+        recentNotificationImageContainer.className = 'image-container-recent'
 
         var recentNotificationImage = document.createElement('img')
-        recentNotificationImage.className = 'image'
+        recentNotificationImage.className = 'image-recent'
         recentNotificationImage.setAttribute('src', 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/5FCE8400-0616-426F-8BEA-F53136305123.png')
         recentNotificationImageContainer.appendChild(recentNotificationImage)
 
@@ -2765,19 +2765,19 @@ var Note = function Note(config, containerStyle, iconStyle) {
         recentNotiifcationUpperPartContainer.appendChild(recentNotificationImageContainer)
 
         var recentNotificationCloseContainer = document.createElement('div')
-        recentNotificationCloseContainer.className = 'close-btn-container'
+        recentNotificationCloseContainer.className = 'close-btn-container-recent'
         var recentNotificationCloseIcon = document.createElement('button')
         recentNotificationCloseIcon.id = 'notif_close'
-        recentNotificationCloseIcon.className = 'close-btn'
+        recentNotificationCloseIcon.className = 'close-btn-recent'
         recentNotificationCloseIcon.innerHTML = "+"
         recentNotificationCloseContainer.appendChild(recentNotificationCloseIcon)
         recentNotiifcationUpperPartContainer.appendChild(recentNotificationCloseContainer)
 
         var recentNotificationTextContainer = document.createElement('div')
-        recentNotificationTextContainer.className = 'text-container'
+        recentNotificationTextContainer.className = 'text-container-recent'
 
         var recentNotificationNameText = document.createElement('p')
-         recentNotificationNameText.className = 'para main-text'
+         recentNotificationNameText.className = 'para-recent main-text-recent'
 
          var res_name = userDetails && userDetails ? userDetails.username ? userDetails.username : userDetails.response.json.value.form.firstname : null;
         if (res_name && res_name.trim().length == 0) res_name = 'Someone';
@@ -2809,7 +2809,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
          recentNotificationTextContainer.appendChild(recentNotificationNameText)
 
           var recentNotificationUpperSecondaryText = document.createElement('p')
-        recentNotificationUpperSecondaryText.className = 'para secondary-text'
+        recentNotificationUpperSecondaryText.className = 'para-recent secondary-text-recent'
 
         if (userDetails && userDetails && userDetails.productName)
         recentNotificationUpperSecondaryText.innerHTML = configuration.orderText + ' ' + userDetails.productName
@@ -2825,17 +2825,17 @@ var Note = function Note(config, containerStyle, iconStyle) {
         recentNotiifcationMainContainer.appendChild(recentNotiifcationUpperPartContainer)
 
         var recentNotificationBorder = document.createElement('div')
-        recentNotificationBorder.className = 'border'
+        recentNotificationBorder.className = 'border-recent'
         recentNotiifcationMainContainer.appendChild(recentNotificationBorder)
 
         var recentNotificationLowerTextContainer = document.createElement('div')
-        recentNotificationLowerTextContainer.className = 'lower-part'
+        recentNotificationLowerTextContainer.className = 'lower--recent'
 
         var recentNotificationFooterLeft = document.createElement('div')
-        recentNotificationFooterLeft.className = 'footer-left'
-
+        recentNotificationFooterLeft.className = 'footer-left-recent'
+-recent
         var recentNotificationFooterLeftText = document.createElement('p')
-        recentNotificationFooterLeftText.className = 'footer-left-text'
+        recentNotificationFooterLeftText.className = 'footer-left-text-recent'
         var timeStamp = userDetails && userDetails ? userDetails.timestamp : new Date();
         recentNotificationFooterLeftText.innerHTML = 'updated ' +timeStamp ? timeSince(new Date(new Date(timeStamp) - aDay).toISOString(),configuration) : "Not available ";
         // recentNotificationFooterLeftText.innerHTML = "updated 9 min ago"
@@ -2845,16 +2845,16 @@ var Note = function Note(config, containerStyle, iconStyle) {
         recentNotificationLowerTextContainer.appendChild(recentNotificationFooterLeft)
 
         var recentNotificationLowerPTag = document.createElement('p')
-        recentNotificationLowerPTag.className = 'para footer-text-right'
+        recentNotificationLowerPTag.className = 'para-recent footer-text-right-recent'
 
         var recentNotificationFooterFirstText = document.createElement('em')
-        recentNotificationFooterFirstText.className = 'verified-text'
+        recentNotificationFooterFirstText.className = 'verified-text-recent'
         recentNotificationFooterFirstText.innerHTML = `${configuration && configuration.recentText2 ? configuration.recentText2 : 'verified by'}`;   //"Verified by"
 
         recentNotificationLowerPTag.appendChild(recentNotificationFooterFirstText)
 
         var recentNotificationFooterverified = document.createElement('em')
-        recentNotificationFooterverified.className = 'verified-icon'
+        recentNotificationFooterverified.className = 'verified-icon-recent'
 
         var recentNotificationTick = document.createElement('i')
         recentNotificationTick.className = 'fa fa-check-circle'
@@ -2863,13 +2863,13 @@ var Note = function Note(config, containerStyle, iconStyle) {
         recentNotificationLowerPTag.appendChild(recentNotificationFooterverified)
 
         var recentNotificationFooterPoweredBy = document.createElement('em')
-        recentNotificationFooterPoweredBy.className = 'influence-text'
+        recentNotificationFooterPoweredBy.className = 'influence-text-recent'
         recentNotificationFooterPoweredBy.innerHTML = configuration.poweredBy ? configuration.poweredBy : 'Influence'; //"Influence"
 
         recentNotificationLowerPTag.appendChild(recentNotificationFooterPoweredBy)
 
         var recentNotificationFooterDot = document.createElement('em')
-        recentNotificationFooterDot.className = 'footer-dot'
+        recentNotificationFooterDot.className = 'footer-dot-recent'
 
         var recentNotificationFooterCircle = document.createElement('i')
         recentNotificationFooterCircle.className = 'fa fa-circle'
@@ -2878,7 +2878,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         recentNotificationLowerPTag.appendChild(recentNotificationFooterDot)
 
         var recentNotificationFooterMobileTimeContainer = document.createElement('em')
-        recentNotificationFooterMobileTimeContainer.className = 'time-container'
+        recentNotificationFooterMobileTimeContainer.className = 'time-container-recent'
         var timeStamp = userDetails && userDetails ? userDetails.timestamp : new Date();
         recentNotificationFooterMobileTimeContainer.innerHTML = timeStamp ? timeSince(new Date(new Date(timeStamp) - aDay).toISOString(),configuration) : "Not available ";
        // recentNotificationFooterMobileTimeContainer.innerHTML = '9 mins ago'
@@ -3309,17 +3309,17 @@ var Note = function Note(config, containerStyle, iconStyle) {
        // bulkNotiifcationContainer.style = containerStyle;
 
        var bulkNotiifcationMainContainer = document.createElement('div')
-       bulkNotiifcationMainContainer.className = 'notif-card';
+       bulkNotiifcationMainContainer.className = 'notif-card-bulk';
        bulkNotiifcationMainContainer.style =containerStyle
 
         var bulkNotiifcationUpperPartContainer = document.createElement('div')
-        bulkNotiifcationUpperPartContainer.className= 'upper-part'
+        bulkNotiifcationUpperPartContainer.className= 'upper-part-bulk'
     
         var bulkNotificationImageContainer = document.createElement('div')
-        bulkNotificationImageContainer.className= 'image-container'
+        bulkNotificationImageContainer.className= 'image-container-bulk'
     
         var bulkNotificationImage = document.createElement('img')
-        bulkNotificationImage.className= 'image'
+        bulkNotificationImage.className= 'image-bulk'
 
         if (config.icon)
         bulkNotificationImage.setAttribute('src', config.icon);
@@ -3337,22 +3337,22 @@ var Note = function Note(config, containerStyle, iconStyle) {
         bulkNotiifcationUpperPartContainer.appendChild(bulkNotificationImageContainer)
     
            var bulkNotificationCloseContainer = document.createElement('div')
-            bulkNotificationCloseContainer.className='close-btn-container'
+            bulkNotificationCloseContainer.className='close-btn-container-bulk'
             var bulkNotificationCloseIcon = document.createElement('button')
             bulkNotificationCloseIcon.id = 'notif_close';
-            bulkNotificationCloseIcon.className ='close-btn'
+            bulkNotificationCloseIcon.className ='close-btn-bulk'
             bulkNotificationCloseIcon.innerHTML ="+"
             bulkNotificationCloseContainer.appendChild(bulkNotificationCloseIcon)
          bulkNotiifcationUpperPartContainer.appendChild(bulkNotificationCloseContainer)
     
          var bulkNotificationTextContainer = document.createElement('div')
-         bulkNotificationTextContainer.className= 'text-container'
+         bulkNotificationTextContainer.className= 'text-container-bulk'
     
         var bulkNotificationPTag = document.createElement('p')
-        bulkNotificationPTag.className ='para'
+        bulkNotificationPTag.className ='para-bulk'
     
         var bulkNotificationFirstText = document.createElement('em')
-        bulkNotificationFirstText.className= 'main-text'
+        bulkNotificationFirstText.className= 'main-text-bulk'
         bulkNotificationFirstText.style.backgroundColor = "#f3f7ff";
     //     bulkNotificationFirstText.style.color= background-color: #f3f7ff
         numAnim = new CountUp(bulkNotificationFirstText, 0, numberOfUsers, 0, 3);
@@ -3360,7 +3360,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
     
 
         var bulkNotificationSecondText = document.createElement('em')
-        bulkNotificationSecondText.className= 'secondary-text'
+        bulkNotificationSecondText.className= 'secondary-text-bulk'
 
         var today = new Date();
         var dd = today.getDate();
@@ -3378,7 +3378,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
          bulkNotificationPTag.appendChild(bulkNotificationFirstText)
 
          var bulkNotificationFirstText2= document.createElement('em')
-            bulkNotificationFirstText2.className = 'main-text'
+            bulkNotificationFirstText2.className = 'main-text-bulk'
             bulkNotificationFirstText2.style.backgroundColor = "#f3f7ff";
             bulkNotificationFirstText2.style.paddingLeft = "0px";
             bulkNotificationFirstText2.innerHTML= configuration.visitorText  //people
@@ -3391,23 +3391,23 @@ var Note = function Note(config, containerStyle, iconStyle) {
          bulkNotiifcationMainContainer.appendChild(bulkNotiifcationUpperPartContainer)
     
         var bulkNotificationBorder = document.createElement('div')
-        bulkNotificationBorder.className='border'
+        bulkNotificationBorder.className='border-bulk'
         bulkNotiifcationMainContainer.appendChild(bulkNotificationBorder)
     
         var bulkNotificationLowerTextContainer= document.createElement('div')
-        bulkNotificationLowerTextContainer.className ='lower-part'
+        bulkNotificationLowerTextContainer.className ='lower-part-bulk'
     
         var bulkNotificationLowerPTag = document.createElement('p')
-        bulkNotificationLowerPTag.className ='para footer-text'
+        bulkNotificationLowerPTag.className ='para-bulk footer-text-bulk'
     
         var bulkNotificationFooterFirstText = document.createElement('em')
-        bulkNotificationFooterFirstText.className= 'verified-text'
+        bulkNotificationFooterFirstText.className= 'verified-text-bulk'
         bulkNotificationFooterFirstText.innerHTML = configuration.recentText2 ? configuration.recentText2 : 'Verified by '  //"Verified by"
     
         bulkNotificationLowerPTag.appendChild(bulkNotificationFooterFirstText)
     
         var bulkNotificationFooterverified = document.createElement('em')
-        bulkNotificationFooterverified.className= 'verified-icon'
+        bulkNotificationFooterverified.className= 'verified-icon-bulk'
     
         var bulkNotificationTick = document.createElement('i')
         bulkNotificationTick.className ='fa fa-check-circle'
@@ -3416,7 +3416,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         bulkNotificationLowerPTag.appendChild(bulkNotificationFooterverified)
     
         var bulkNotificationFooterPoweredBy = document.createElement('em')
-        bulkNotificationFooterPoweredBy.className= 'influence-text'
+        bulkNotificationFooterPoweredBy.className= 'influence-text-bulk'
         bulkNotificationFooterPoweredBy.innerHTML = configuration.poweredBy ? configuration.poweredBy : 'Influence'   //"Influence"
     
         bulkNotificationLowerPTag.appendChild(bulkNotificationFooterPoweredBy)

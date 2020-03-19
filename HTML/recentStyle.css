@@ -2,7 +2,7 @@ body{
     background-color: gray;
 }
 
-.notif-card{
+.notif-card-recent{
     background-color: #fff;
     width: 350px;
     height: 75px;
@@ -13,12 +13,12 @@ body{
     flex-direction: column;
 }
 
-.upper-part{
+.upper-part-recent{
     display: flex;
     flex-direction: row;
 }
 
-.image-container{
+.image-container-recent{
     width: 41px;
     height: 41px;
     background-color: #f3f7ff;
@@ -29,22 +29,22 @@ body{
     margin-bottom: auto;
 }
 
-.image{
+.image-recent{
     width: 41px;
     height: 41px;
     border-radius: 15px;
     object-fit: contain;
 }
 
-.text-container{
+.text-container-recent{
     padding: 5px;
 }
 
-.para{
+.para-recent{
     margin: 0;
 }
 
-.main-text{
+.main-text-recent{
     font-size: 9px;
     font-weight: bold;
     font-style: normal;
@@ -56,7 +56,7 @@ body{
     text-transform: capitalize;
 }
 
-.secondary-text{
+.secondary-text-recent{
     /* margin-top: 3px; */
     font-size: 10px;
     font-style: normal;
@@ -71,24 +71,24 @@ body{
     -webkit-box-orient: vertical;
 }
 
-.border{
+.border-recent{
     border-top: 1px dashed ;
     border-color: rgba(102, 102, 102, 0.4);
     margin: 0px 5px;
 }
 
-.lower-part{
+.lower-part-recent{
     text-align: center;
     display: flex;
     justify-content: space-between;
 }
 
-.footer-left{
+.footer-left-recent{
     display: flex;
     align-items: center;
 }
 
-.footer-left-text{
+.footer-left-text-recent{
     font-size: 6px;
     color: #bababa;
     padding-left: 5px;
@@ -97,29 +97,29 @@ body{
     letter-spacing: normal;
 }
 
-.footer-logo-container{
+.footer-logo-container-recent{
     display: flex;
     align-items: center;
     margin-left: 7px;
 }
 
-.footer-logo{
+.footer-logo-recent{
     width: 9px;
     height: 9px;
 }
 
-.footer-star-container{
+.footer-star-container-recent{
     font-size: 7px;
     color: #ffc136;
     padding-left: 4px;
 }
 
-.footer-text-right{
+.footer-text-right-recent{
     padding-right: 5px;
     line-height: 0.8;
 }
 
-.verified-text{
+.verified-text-recent{
     font-size: 9px;
     font-weight: 600;
     font-style: normal;
@@ -129,13 +129,13 @@ body{
     word-spacing: 1px;
 }
 
-.verified-icon{
+.verified-icon-recent{
     font-size: 11px;
     color: #0093fb;
     padding-left: 5px;
 }
 
-.influence-text{
+.influence-text-recent{
     font-style: normal;
     font-size: 10px;
     font-weight: 600;
@@ -143,19 +143,19 @@ body{
     color: #3e3e3e;
 }
 
-.time-container{
+.time-container-recent{
     display: none;
 }
 
-.upper-logo-container{
+.upper-logo-container-recent{
     display: none;
 }
 
-.footer-dot{
+.footer-dot-recent{
     display: none;
 }
 
-.close-btn-container{
+.close-btn-container-recent{
     display: none
 }
 

@@ -2742,9 +2742,13 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
 
         var recentNotiifcationContainer = document.createElement('div')
-        recentNotiifcationContainer.className = 'notif-card';
+        //recentNotiifcationContainer.className = 'notif-card';
         recentNotiifcationContainer.style = type == 'journey' ? "display:block" : "display:none";
         //recentNotiifcationContainer.style = containerStyle;
+
+        var recentNotiifcationMainContainer = document.createElement('div')
+        recentNotiifcationMainContainer.className = 'notif-card';
+        recentNotiifcationMainContainer.style = containerStyle
 
         var recentNotiifcationUpperPartContainer = document.createElement('div')
         recentNotiifcationUpperPartContainer.className = 'upper-part'
@@ -2818,11 +2822,11 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
 
         recentNotiifcationUpperPartContainer.appendChild(recentNotificationTextContainer)
-        recentNotiifcationContainer.appendChild(recentNotiifcationUpperPartContainer)
+        recentNotiifcationMainContainer.appendChild(recentNotiifcationUpperPartContainer)
 
         var recentNotificationBorder = document.createElement('div')
         recentNotificationBorder.className = 'border'
-        recentNotiifcationContainer.appendChild(recentNotificationBorder)
+        recentNotiifcationMainContainer.appendChild(recentNotificationBorder)
 
         var recentNotificationLowerTextContainer = document.createElement('div')
         recentNotificationLowerTextContainer.className = 'lower-part'
@@ -2883,8 +2887,9 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         recentNotificationLowerTextContainer.appendChild(recentNotificationLowerPTag)
 
-        recentNotiifcationContainer.appendChild(recentNotificationLowerTextContainer)
+        recentNotiifcationMainContainer.appendChild(recentNotificationLowerTextContainer)
 
+        recentNotiifcationContainer.appendChild(recentNotiifcationMainContainer)
 
 
 

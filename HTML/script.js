@@ -2893,7 +2893,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         var notificationLiveContainer = document.createElement('div')
         notificationLiveContainer.className = 'oiuytretg';
-        notificationLiveContainer.style = type == 'live' ? "display:block" : "display:none";
+        notificationLiveContainer.style = type == 'live' ? "display:block" : "display:none"
+        notificationLiveContainer.style= containerStyle
        // notificationLiveContainer.style = containerStyle;
          
 

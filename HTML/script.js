@@ -2829,7 +2829,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         recentNotiifcationMainContainer.appendChild(recentNotificationBorder)
 
         var recentNotificationLowerTextContainer = document.createElement('div')
-        recentNotificationLowerTextContainer.className = 'lower--recent'
+        recentNotificationLowerTextContainer.className = 'lower-part-recent'
 
         var recentNotificationFooterLeft = document.createElement('div')
         recentNotificationFooterLeft.className = 'footer-left-recent'

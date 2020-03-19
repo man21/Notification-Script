@@ -2898,7 +2898,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
        // notificationLiveContainer.style = containerStyle;
        
        var data1 = document.createElement('div');
-       data1.className= 'oiuytretg'
+       data1.className= 'oiuytretg';
        data1.style = containerStyle;
 
          
@@ -2992,11 +2992,11 @@ var Note = function Note(config, containerStyle, iconStyle) {
         liveNotificationTextContainer.appendChild(liveNotificationPTag)
          liveNotiifcationUpperPartContainer.appendChild(liveNotificationTextContainer)
     
-        notificationLiveContainer.appendChild(liveNotiifcationUpperPartContainer)
+        data1.appendChild(liveNotiifcationUpperPartContainer)
     
         var liveNotificationBorder = document.createElement('div')
         liveNotificationBorder.className='hvhvyhjvg'
-        notificationLiveContainer.appendChild(liveNotificationBorder)
+        data1.appendChild(liveNotificationBorder)
     
         var liveNotificationLowerTextContainer= document.createElement('div')
         liveNotificationLowerTextContainer.className ='kbhgcghv'

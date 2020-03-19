@@ -16,6 +16,7 @@
 .upper-part-bulk{
     display: flex;
     flex-direction: row;
+    height: 57px;
 }
 
 .image-container-bulk{
@@ -43,6 +44,7 @@
 
 .para-bulk{
     margin: 0;
+    padding-top: 5px;
 }
 
 .main-text-bulk{
@@ -210,6 +212,7 @@
         height: 22px;
         width: 22px;
         cursor: pointer;
+        line-height: 1;
     }
     
 }

@@ -2897,6 +2897,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
        //notificationLiveContainer.style= containerStyle
        // notificationLiveContainer.style = containerStyle;
        var data1 = document.createElement('div');
+       data1.className= 'oiuytretg'
        data1.style = containerStyle;
 
          

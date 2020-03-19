@@ -3363,6 +3363,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
          var bulkNotificationFirstText2= document.createElement('em')
             bulkNotificationFirstText2.className = 'main-text'
             bulkNotificationFirstText2.style.backgroundColor = "#f3f7ff";
+            bulkNotificationFirstText2.style.marginLeft = "4px";
             bulkNotificationFirstText2.innerHTML= configuration.visitorText  //people
             bulkNotificationPTag.appendChild(bulkNotificationFirstText2)
      

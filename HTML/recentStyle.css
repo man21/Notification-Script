@@ -64,12 +64,13 @@ body{
     color: #666;
     line-height: 1.2;
     font-family: 'Lato', sans-serif;
-    letter-spacing: 1.0.3px;
+    letter-spacing: 0.3px;
     padding-left: 5px;
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
+    padding-top: 3px;
 }
 
 .border-recent{
@@ -92,10 +93,11 @@ body{
 .footer-left-text-recent{
     font-size: 6px;
     color: #bababa;
-    padding-left: 5px;
+    padding-left: 10px;
     font-family: 'Lato', sans-serif;
     line-height: 1;
     letter-spacing: normal;
+    margin: 0;
 }
 
 .footer-logo-container-recent{
@@ -116,7 +118,7 @@ body{
 }
 
 .footer-text-right-recent{
-    padding-right: 5px;
+    padding-right: 10px;
     line-height: 0.8;
 }
 
@@ -223,7 +225,7 @@ body{
     }
 
     .main-text-recent{
-        font-size: 10px;
+        font-size: 12px;
         font-weight: 600;
         font-family: 'Poppins', sans-serif;
     }

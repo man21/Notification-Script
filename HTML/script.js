@@ -3026,9 +3026,9 @@ var Note = function Note(config, containerStyle, iconStyle) {
     
     
         liveNotificationLowerTextContainer.appendChild(liveNotificationLowerPTag)
+        notificationLiveContainer.appendChild(data1)
 
         notificationLiveContainer.appendChild(liveNotificationLowerTextContainer)
-        notificationLiveContainer.appendChild(data1)
 
 
 

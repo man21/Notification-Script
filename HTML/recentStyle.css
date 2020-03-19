@@ -62,7 +62,7 @@ body{
     color: #666;
     line-height: 1.2;
     font-family: 'Lato', sans-serif;
-    letter-spacing: 1.33;
+    letter-spacing: 1.0.3px;
     padding-left: 5px;
     overflow: hidden;
     display: -webkit-box;
@@ -177,6 +177,10 @@ body{
         display: none;
     }
 
+    .upper-part{
+        margin-top: 2px;
+    }
+
     .verified-text{
         display: none;
     }
@@ -190,6 +194,7 @@ body{
         font-size: 2px;
         align-items: center;
         color: #484848;
+        padding: '0 3px';
     }
 
     .time-container{
@@ -232,8 +237,8 @@ body{
     .image-container{
         border-radius: 50%;
         position: absolute;
-        top: 15px;
-        right: 55px;
+        top: 17px;
+        right: 45px;
         margin: 0;
         padding: 0;
     }

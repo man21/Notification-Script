@@ -2,7 +2,7 @@ body{
     background-color: gray;
 }
 
-.notif-card{
+.notif-card-review{
     background-color: #fff;
     width: 350px;
     height: 75px;
@@ -13,13 +13,13 @@ body{
     flex-direction: column;
 }
 
-.upper-part{
+.upper-part-review{
     display: flex;
     flex-direction: row;
     margin-top: 5px;
 }
 
-.image-container{
+.image-container-review{
     width: 41px;
     height: 41px;
     background-color: #f3f7ff;
@@ -30,22 +30,22 @@ body{
     margin-bottom: auto;
 }
 
-.image{
+.image-review{
     width: 41px;
     height: 41px;
     border-radius: 15px;
     object-fit: contain;
 }
 
-.text-container{
+.text-container-review{
     padding: 7px;
 }
 
-.para{
+.para-review{
     margin: 0;
 }
 
-.main-text{
+.main-text-review{
     font-size: 12px;
     font-weight: bold;
     font-style: normal;
@@ -56,7 +56,7 @@ body{
     padding-left: 5px;
 }
 
-.secondary-text{
+.secondary-text-review{
     margin-top: 2px;
     font-size: 10px;
     font-style: normal;
@@ -71,24 +71,24 @@ body{
     -webkit-box-orient: vertical;
 }
 
-.border{
+.border-review{
     border-top: 1px dashed ;
     border-color: rgba(102, 102, 102, 0.4);
     margin: 5px;
     margin-bottom: 0;
 }
 
-.lower-part{
+.lower-part-review{
     text-align: center;
     display: flex;
     justify-content: space-between;
 }
 
-.footer-left{
+.footer-left-review{
     display: flex;
 }
 
-.footer-left-text{
+.footer-left-text-review{
     font-size: 6px;
     color: #bababa;
     padding-left: 5px;
@@ -97,29 +97,29 @@ body{
     letter-spacing: normal;
 }
 
-.footer-logo-container{
+.footer-logo-container-review{
     display: flex;
     align-items: center;
     margin-left: 7px;
 }
 
-.footer-logo{
+.footer-logo-review{
     width: 9px;
     height: 9px;
 }
 
-.footer-star-container{
+.footer-star-container-review{
     font-size: 7px;
     color: #ffc136;
     padding-left: 4px;
 }
 
-.footer-text-right{
+.footer-text-right-review{
     padding-right: 5px;
     line-height: 0.8;
 }
 
-.verified-text{
+.verified-text-review{
     font-size: 9px;
     font-weight: 600;
     font-style: normal;
@@ -129,14 +129,14 @@ body{
     word-spacing: 1px;
 }
 
-.verified-icon{
+.verified-icon-review{
     font-size: 11px;
     color: #0093fb;
     padding-left: 5px;
     padding-right: 3px;
 }
 
-.influence-text{
+.influence-text-review{
     font-style: normal;
     font-size: 10px;
     font-weight: 600;
@@ -144,19 +144,19 @@ body{
     color: #3e3e3e;
 }
 
-.time-container{
+.time-container-review{
     display: none;
 }
 
-.upper-logo-container{
+.upper-logo-container-review{
     display: none;
 }
 
-.footer-dot{
+.footer-dot-review{
     display: none;
 }
 
-.close-btn-container{
+.close-btn-container-review{
     display: none
 }
 
@@ -166,7 +166,7 @@ body{
     body{
         background-color: green;
     }
-    .notif-card{
+    .notif-card-review{
         border-radius: 50px;
         flex-direction: column-reverse;
         padding: 10px 25px;
@@ -176,26 +176,26 @@ body{
         justify-content: space-evenly;
     }
 
-    .footer-left{
+    .footer-left-review{
         display: none;
     }
 
-    .verified-text{
+    .verified-text-review{
         display: none;
     }
 
-    .influence-text{
+    .influence-text-review{
         color: #0093fb;
     }
 
-    .footer-dot{
+    .footer-dot-review{
         display: inline;
         font-size: 2px;
         align-items: center;
         color: #484848;
     }
 
-    .time-container{
+    .time-container-review{
         display: inline;
         font-size: 10px;
         color: #484848;
@@ -203,17 +203,17 @@ body{
         font-style: normal;
     }
 
-    .border{
+    .border-review{
         display: none;
     }
 
-    .main-text{
+    .main-text-review{
         font-size: 12px;
         font-weight: bold;
         font-family: 'Poppins', sans-serif;
     }
 
-    .secondary-text{
+    .secondary-text-review{
         margin-top: 0;
         padding-top: 2px;
         padding-left: 0;
@@ -223,7 +223,7 @@ body{
         -webkit-box-orient: vertical;
     }
 
-    .image-container{
+    .image-container-review{
         border-radius: 50%;
         position: absolute;
         top: 15px;
@@ -234,13 +234,13 @@ body{
         height: 41px;
     }
 
-    .image{
+    .image-review{
         border-radius: 50%;
         height: 41px;
         width: 41px;
     }
 
-    .main-text{
+    .main-text-review{
         padding: 0;
     }
 
@@ -250,7 +250,7 @@ body{
         padding-top: 0;
     }
 
-    .close-btn-container{
+    .close-btn-container-review{
         display: inline-block;
         border-radius: 50%;
         border: none;
@@ -263,7 +263,7 @@ body{
         right: 14px;
     }
 
-    .close-btn{
+    .close-btn-review{
         font-size: 20px;
         color: #484848;
         background-color: #fff;

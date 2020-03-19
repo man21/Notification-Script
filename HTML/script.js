@@ -3047,18 +3047,18 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         
         var reviewNotiifcationContainer = document.createElement('div')
-        reviewNotiifcationContainer.className = 'notif-card';
+        reviewNotiifcationContainer.className = 'notif-card-review';
         reviewNotiifcationContainer.style= type == 'review' ? "display:block" : "display:none";
         //reviewNotiifcationContainer.style = containerStyle;
 
         var reviewNotiifcationUpperPartContainer = document.createElement('div')
-        reviewNotiifcationUpperPartContainer.className = 'upper-part'
+        reviewNotiifcationUpperPartContainer.className = 'upper-part-review'
 
         var reviewNotificationImageContainer = document.createElement('div')
-        reviewNotificationImageContainer.className = 'image-container'
+        reviewNotificationImageContainer.className = 'image-container-review'
 
         var reviewNotificationImage = document.createElement('img')
-        reviewNotificationImage.className = 'image'
+        reviewNotificationImage.className = 'image-review'
        // reviewNotificationImage.setAttribute('src', 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/5FCE8400-0616-426F-8BEA-F53136305123.png')
        
         if (fromAppType == 'facebook')
@@ -3073,23 +3073,23 @@ var Note = function Note(config, containerStyle, iconStyle) {
         reviewNotiifcationUpperPartContainer.appendChild(reviewNotificationImageContainer)
 
         var reviewNotificationCloseContainer = document.createElement('div')
-        reviewNotificationCloseContainer.className = 'close-btn-container'
+        reviewNotificationCloseContainer.className = 'close-btn-container-review'
         var reviewNotificationCloseIcon = document.createElement('button')
         reviewNotificationCloseIcon.id = 'notif_close';
-        reviewNotificationCloseIcon.className = 'close-btn'
+        reviewNotificationCloseIcon.className = 'close-btn-review'
         reviewNotificationCloseIcon.innerHTML = "+"
         reviewNotificationCloseContainer.appendChild(reviewNotificationCloseIcon)
         reviewNotiifcationUpperPartContainer.appendChild(reviewNotificationCloseContainer)
 
         var reviewNotificationTextContainer = document.createElement('div')
-        reviewNotificationTextContainer.className = 'text-container'
+        reviewNotificationTextContainer.className = 'text-container-review'
 
         var reviewNotificationUserNameContainer = document.createElement('div')
-        reviewNotificationUserNameContainer.className = 'user-name-container'
+        reviewNotificationUserNameContainer.className = 'user-name-container-review'
 
 
         var reviewNotificationNameText = document.createElement('p')
-        reviewNotificationNameText.className = 'para main-text'
+        reviewNotificationNameText.className = 'para-review main-text-review'
 
         if (fromAppType == 'facebook')
         reviewNotificationNameText.innerHTML = 'Recommended us on Facebook';
@@ -3101,10 +3101,10 @@ var Note = function Note(config, containerStyle, iconStyle) {
         reviewNotificationUserNameContainer.appendChild(reviewNotificationNameText)
 
         var reviewNotificationUpperLogoContainer = document.createElement('div')
-        reviewNotificationUpperLogoContainer.className = 'upper-logo-container'
+        reviewNotificationUpperLogoContainer.className = 'upper-logo-container-review'
 
         var reviewNotificationUpperLogo = document.createElement('img')
-        reviewNotificationUpperLogo.className = 'footer-logo'
+        reviewNotificationUpperLogo.className = 'footer-logo-review'
         reviewNotificationUpperLogo.setAttribute('src', 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/79341C01-B8BF-4484-AD66-B9314BAE4121.png')
 
 
@@ -3112,7 +3112,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
 
         var reviewNotificationUpperStarContainer = document.createElement('div')
-        reviewNotificationUpperStarContainer.className = 'footer-star-container'
+        reviewNotificationUpperStarContainer.className = 'footer-star-container-review'
 
 
         // var star = '';
@@ -3176,7 +3176,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         reviewNotificationTextContainer.appendChild(reviewNotificationUserNameContainer)
 
         var reviewNotificationUpperSecondaryText = document.createElement('p')
-        reviewNotificationUpperSecondaryText.className = 'para secondary-text'
+        reviewNotificationUpperSecondaryText.className = 'para-review secondary-text-review'
 
     //     if (fromAppType == 'facebook')
     //     reviewNotificationUpperSecondaryText.innerHTML = 'Recommended us on Facebook';
@@ -3191,30 +3191,31 @@ var Note = function Note(config, containerStyle, iconStyle) {
         reviewNotiifcationContainer.appendChild(reviewNotiifcationUpperPartContainer)
 
         var reviewNotificationBorder = document.createElement('div')
-        reviewNotificationBorder.className = 'border'
+        reviewNotificationBorder.className = 'border-review'
         reviewNotiifcationContainer.appendChild(reviewNotificationBorder)
 
         var reviewNotificationLowerTextContainer = document.createElement('div')
-        reviewNotificationLowerTextContainer.className = 'lower-part'
+        reviewNotificationLowerTextContainer.className = 'lower-part-review'
 
         var reviewNotificationFooterLeft = document.createElement('div')
-        reviewNotificationFooterLeft.className = 'footer-left'
+        reviewNotificationFooterLeft.className = 'footer-left-review'
 
         var reviewNotificationFooterLeftText = document.createElement('p')
-        reviewNotificationFooterLeftText.className = 'footer-left-text'
-        reviewNotificationFooterLeftText.innerHTML = '       '  //"updated 9 min ago"
+        reviewNotificationFooterLeftText.className = 'footer-left-text-review'
+        reviewNotificationFooterLeftText.innerHTML = "updated 9 min ago"
+        reviewNotificationFooterLeftText.style = "display: none"
         reviewNotificationFooterLeft.appendChild(reviewNotificationFooterLeftText)
         var reviewNotificationFooterLogoContainer = document.createElement('div')
-        reviewNotificationFooterLogoContainer.className = 'footer-logo-container'
+        reviewNotificationFooterLogoContainer.className = 'footer-logo-container-review'
 
         var reviewNotificationFooterLogo = document.createElement('img')
-        reviewNotificationFooterLogo.className = 'footer-logo'
+        reviewNotificationFooterLogo.className = 'footer-logo-review'
         reviewNotificationFooterLogo.setAttribute('src', 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/79341C01-B8BF-4484-AD66-B9314BAE4121.png')
 
         reviewNotificationFooterLogoContainer.appendChild(reviewNotificationFooterLogo)
 
         var reviewNotificationFooterStarContainer = document.createElement('div')
-        reviewNotificationFooterStarContainer.className = 'footer-star-container'
+        reviewNotificationFooterStarContainer.className = 'footer-star-container-review'
 
         //reviewNotificationFooterStarContainer.innerHTML= star
 
@@ -3255,16 +3256,16 @@ var Note = function Note(config, containerStyle, iconStyle) {
         reviewNotificationLowerTextContainer.appendChild(reviewNotificationFooterLeft)
 
         var reviewNotificationLowerPTag = document.createElement('p')
-        reviewNotificationLowerPTag.className = 'para footer-text-right'
+        reviewNotificationLowerPTag.className = 'para-review footer-text-right-review'
 
         var reviewNotificationFooterFirstText = document.createElement('em')
-        reviewNotificationFooterFirstText.className = 'verified-text'
+        reviewNotificationFooterFirstText.className = 'verified-text-review'
         reviewNotificationFooterFirstText.innerHTML = `${configuration && configuration.liveText ? configuration.liveText : 'verified by '}` //"Verified by"
 
         reviewNotificationLowerPTag.appendChild(reviewNotificationFooterFirstText)
 
         var reviewNotificationFooterverified = document.createElement('em')
-        reviewNotificationFooterverified.className = 'verified-icon'
+        reviewNotificationFooterverified.className = 'verified-icon-review'
 
         var reviewNotificationTick = document.createElement('i')
         reviewNotificationTick.className = 'fa fa-check-circle'
@@ -3273,13 +3274,13 @@ var Note = function Note(config, containerStyle, iconStyle) {
         reviewNotificationLowerPTag.appendChild(reviewNotificationFooterverified)
 
         var reviewNotificationFooterPoweredBy = document.createElement('em')
-        reviewNotificationFooterPoweredBy.className = 'influence-text'
+        reviewNotificationFooterPoweredBy.className = 'influence-text-review'
         reviewNotificationFooterPoweredBy.innerHTML = configuration.poweredBy ? configuration.poweredBy : 'Influence' //"Influence"
 
         reviewNotificationLowerPTag.appendChild(reviewNotificationFooterPoweredBy)
 
         var reviewNotificationFooterDot = document.createElement('em')
-        reviewNotificationFooterDot.className = 'footer-dot'
+        reviewNotificationFooterDot.className = 'footer-dot-review'
 
         var reviewNotificationFooterCircle = document.createElement('i')
         reviewNotificationFooterCircle.className = 'fa fa-circle'
@@ -3288,7 +3289,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         reviewNotificationLowerPTag.appendChild(reviewNotificationFooterDot)
 
         var reviewNotificationFooterMobileTimeContainer = document.createElement('em')
-        reviewNotificationFooterMobileTimeContainer.className = 'time-container'
+        reviewNotificationFooterMobileTimeContainer.className = 'time-container-review'
         reviewNotificationFooterMobileTimeContainer.innerHTML ='        ' //'9 mins ago'
 
         reviewNotificationLowerPTag.appendChild(reviewNotificationFooterMobileTimeContainer)

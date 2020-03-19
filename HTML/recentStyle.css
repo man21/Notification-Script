@@ -193,8 +193,8 @@ body{
         display: inline;
         font-size: 2px;
         align-items: center;
-        color: #484848;
-        padding: '0px 3px';
+        color: rgba(72, 72, 72, 0.4);
+        padding: 0px 3px;
     }
 
     .time-container{
@@ -237,8 +237,8 @@ body{
     .image-container{
         border-radius: 50%;
         position: absolute;
-        top: 17px;
-        right: 45px;
+        top: 18px;
+        right: 34px;
         margin: 0;
         padding: 0;
     }
@@ -263,12 +263,12 @@ body{
         border-radius: 50%;
         border: none;
         box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.26);
-        height: 22.5px;
-        width: 22.5px;
+        height: 21.5px;
+        width: 21.5px;
         background-color: #fff;
         position: absolute;
         top: 28px;
-        right: 14px;
+        right: 8px;
     }
 
     .close-btn{

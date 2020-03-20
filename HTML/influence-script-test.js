@@ -2914,7 +2914,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         var liveNotificationImageContainer = document.createElement('div')
         liveNotificationImageContainer.className= 'jhgfdfghb'
     
-        var liveNotificationImage = document.createElement('img')
+        var liveNotificationImage = document.createElement('div')
         liveNotificationImage.className= 'klhjgyf'
 
 

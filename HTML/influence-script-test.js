@@ -3,7 +3,7 @@ var exclued_button_text = 'login,signin,loginnow,memberlogin,accountlogin';
 var __pathname = window.location.pathname;
 __pathname = '/' + __pathname.split('/')[1];
 
-var influenceScript = 'script.js';
+var influenceScript = 'influence-script-test.js';
 var BASE_URL = "https://api.useinfluence.co";
 
 document.addEventListener('visibilitychange', function (e) {
@@ -2145,7 +2145,7 @@ async function loopThroughSplittedNotifications(splittedUrls, rule, notification
 
 
     var bulkCSS = document.createElement("link");
-    bulkCSS.href = 'https://test2109.herokuapp.com/bulkStyle.css';
+    bulkCSS.href = 'https://storage.googleapis.com/influence-197607.appspot.com/bulkStyle.css';
     bulkCSS.type = "text/css";
     bulkCSS.rel = "stylesheet";
     bulkCSS.id = "stylesheetID";
@@ -2153,21 +2153,21 @@ async function loopThroughSplittedNotifications(splittedUrls, rule, notification
 
 
     var liveCSS = document.createElement("link");
-    liveCSS.href = 'https://test2109.herokuapp.com/liveStyle.css';
+    liveCSS.href = 'https://storage.googleapis.com/influence-197607.appspot.com/liveStyle.css';
     liveCSS.type = "text/css";
     liveCSS.rel = "stylesheet";
     liveCSS.id = "stylesheetID";
     document.getElementsByTagName("head")[0].appendChild(liveCSS);
 
     var recentCSS = document.createElement("link");
-    recentCSS.href = 'https://test2109.herokuapp.com/recentStyle.css';
+    recentCSS.href = 'https://storage.googleapis.com/influence-197607.appspot.com/recentStyle.css';
     recentCSS.type = "text/css";
     recentCSS.rel = "stylesheet";
     recentCSS.id = "stylesheetID";
     document.getElementsByTagName("head")[0].appendChild(recentCSS);
 
     var reviewCSS = document.createElement("link");
-    reviewCSS.href = 'https://test2109.herokuapp.com/reviewStyle.css';
+    reviewCSS.href = 'https://storage.googleapis.com/influence-197607.appspot.com/reviewStyle.css';
     reviewCSS.type = "text/css";
     reviewCSS.rel = "stylesheet";
     reviewCSS.id = "stylesheetID";

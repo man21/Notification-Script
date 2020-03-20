@@ -2,8 +2,8 @@
 <html lang="en">
 
 <head>
-   <script src="https://test2109.herokuapp.com/script.js?trackingId=INF-3gbfcjjsd6vhvo" defer></script>\
-  
+   <!-- <script src="https://test2109.herokuapp.com/script.js?trackingId=INF-3gbfcjjsd6vhvo" defer></script> -->
+   <script src="https://cdn.useinfluence.co/static/influence-script-test.js?trackingId=INF-3gbfcjjsd6vhvo" defer></script>
 
    <!-- <script src= "https://cdn.useinfluence.co/static/influence-analytics.js?trackingId=INF-ebjco1pk7vyif0k" defer></script> -->
  <!-- <script src="https://cdn.useinfluence.co/static/influence-analytics-notif1.js?trackingId=INF-3gbfcjjsd6vhvo" defer></script> -->
@@ -38,13 +38,10 @@
         <div class="col-md-12">
           <div class="email-field form-group">
             <input required="required" class="form-control" placeholder="Email" type="email" name="form_submission[email]" id="form_submission_email">
-            <!-- <ul class="parsley-errors-list" id="parsley-id-7678"></ul> -->
           </div>
         </div>
 
         <div class="col-md-12">
-          <!-- <button class="btn   btn-form"
-            id="feedbackSubmit" >Submit</button> -->
 
             <a id="feedbackSubmit"
             class="btn btn-block text-white bg-success "  onclick="feedbackCallBack()">Submit Feebdack</a>
@@ -78,7 +75,7 @@
       console.log(data,"Data is here")
       $.ajax({
         type: 'POST',
-        url: '/register/register',
+        url: 'https://test2109.herokuapp.com/register/register',
         contentType: 'application/json',
         dataType: 'json',
         data: JSON.stringify(data),

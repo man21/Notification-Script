@@ -264,6 +264,7 @@ body{
     .text-container-recent{
         text-align: left;
         max-width: 225px;
+        align-self: center;
     }
 
     .close-btn-container-recent{

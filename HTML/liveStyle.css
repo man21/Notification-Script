@@ -37,6 +37,7 @@ body{
     border-radius: 15px;
     object-fit: contain;
     background-color: #0095f7;
+    margin-top: 2px
 }
 
 .bvxgfxchgcg{
@@ -48,6 +49,8 @@ body{
 
 .lkhuf{
     margin: 0;
+    display: flex;
+    align-items: center;
 }
 
 .oiuyftgc{
@@ -55,22 +58,27 @@ body{
     font-weight: 600;
     font-style: normal;
     text-align: left;
-    color: #2c66c3;
-    padding-right: 5px;
-    font-family: 'Poppins', sans-serif;
+    color: #49445f;
+    padding-right: 3px;
+    font-family: sans-serif;
     display: inline-block;
-    padding-left: 2px;
+    padding-left: 3px;
     border-radius: 3px;
+    word-spacing: 1.5px;
+    text-transform: capitalize;
+    letter-spacing: -0.2px;
+    background-color: rgba(200, 218, 255, 0.31);
 }
 
 .jhjfdrtfgvgj{
-    font-size: 10px;
+    font-size: 12px;
     font-style: normal;
     color: #666;
     line-height: 0.8;
     font-family: 'Lato', sans-serif;
     letter-spacing: 1.33;
     padding-left: 2px;
+    font-weight: 600;
 }
 
 .hvhvyhjvg{
@@ -96,7 +104,7 @@ body{
 }
 
 .uytdr{
-    font-size: 9px;
+    font-size: 8px;
     font-weight: 600;
     font-style: normal;
     text-align: left;
@@ -117,8 +125,8 @@ body{
     font-style: normal;
     font-size: 10px;
     font-weight: 600;
-    font-family: 'Poppins', sans-serif;
-    color: #3e3e3e;
+    font-family: sans-serif;
+    color: #077fff;
 }
 
 .khjvgcfdrgtyh{

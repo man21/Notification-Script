@@ -70,7 +70,8 @@ body{
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
-    padding-top: 3px;
+    /* padding-top: 3px; */
+    align-self: center;
 }
 
 .border-recent{
@@ -82,7 +83,7 @@ body{
 .lower-part-recent{
     text-align: center;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .footer-left-recent{
@@ -92,12 +93,13 @@ body{
 
 .footer-left-text-recent{
     font-size: 6px;
-    color: #bababa;
+    color: #49445f;
     padding-left: 10px;
-    font-family: 'Lato', sans-serif;
+    font-family: sans-serif;
     line-height: 1;
     letter-spacing: normal;
     margin: 0;
+    font-weight: 600;
 }
 
 .footer-logo-container-recent{
@@ -128,7 +130,7 @@ body{
     font-style: normal;
     text-align: left;
     color: #666;
-    font-family: 'Lato', sans-serif;
+    font-family: sans-serif;
     word-spacing: 1px;
 }
 
@@ -141,10 +143,10 @@ body{
 
 .influence-text-recent{
     font-style: normal;
-    font-size: 10px;
+    font-size: 9.5px;
     font-weight: 600;
-    font-family: 'Poppins', sans-serif;
-    color: #3e3e3e;
+    font-family: sans-serif;
+    color: #077fff;
 }
 
 .time-container-recent{

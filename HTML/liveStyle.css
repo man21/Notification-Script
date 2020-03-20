@@ -88,6 +88,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-bottom: 2px;
 }
 
 .uytdr{
@@ -98,6 +99,7 @@ body{
     color: #666;
     font-family: 'Lato', sans-serif;
     word-spacing: 1px;
+    text-transform: capitalize;
 }
 
 .lkjhgvftg{
@@ -165,6 +167,7 @@ body{
         -webkit-line-clamp: 1;
         -webkit-box-orient: vertical;
         line-height: 1.3;
+        font-family: 'Poppins', sans-serif;
     }
 
     .jhgfdfghb{
@@ -190,6 +193,7 @@ body{
         padding-top: 0px;
         text-align: left;
         max-width: 225px;
+        align-self: center;
     }
 
     .khjvgcfdrgtyh{

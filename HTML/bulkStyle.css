@@ -31,8 +31,8 @@
 }
 
 .image-bulk{
-    width: 100%;
-    height: 100%;
+    width: 41px;
+    height: 41px;
     border-radius: 15px;
     object-fit: contain;
 }
@@ -47,13 +47,19 @@
 }
 
 .main-text-bulk{
-    font-size: 18px;
+    font-size: 17px;
     font-weight: bold;
     font-style: normal;
     text-align: left;
     color: #2c66c3;
     padding-right: 5px;
     font-family: 'Poppins', sans-serif;
+
+}
+
+.main-text-bulk-digit{
+    border-radius: 4px 0px 0px 4px;
+    padding-left: 3px;
 }
 
 .secondary-text-bulk{
@@ -108,6 +114,10 @@
 
 .close-btn-container-bulk{
     display: none
+}
+
+.notif-space-bulk{
+    border-radius: 0px 4px 4px 0px;
 }
 
 

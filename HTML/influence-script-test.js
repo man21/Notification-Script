@@ -3356,7 +3356,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         bulkNotificationPTag.className ='para-bulk'
     
         var bulkNotificationFirstText = document.createElement('em')
-        bulkNotificationFirstText.className= 'main-text-bulk'
+        bulkNotificationFirstText.className= 'main-text-bulk main-text-bulk-digit'
         bulkNotificationFirstText.style.backgroundColor = "#f3f7ff";
     //     bulkNotificationFirstText.style.color= background-color: #f3f7ff
         numAnim = new CountUp(bulkNotificationFirstText, 0, numberOfUsers, 0, 3);

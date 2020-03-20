@@ -58,6 +58,9 @@ body{
     color: #2c66c3;
     padding-right: 5px;
     font-family: 'Poppins', sans-serif;
+    display: inline-block;
+    padding-left: 2px;
+    border-radius: 3px;
 }
 
 .jhjfdrtfgvgj{
@@ -75,6 +78,7 @@ body{
     border-color: rgba(102, 102, 102, 0.4);
     margin: 5px;
     margin-bottom: 0;
+    padding-bottom: 4px;
 }
 
 .kbhgcghv{
@@ -157,6 +161,7 @@ body{
         font-size: 11px;
         font-weight: 600;
         font-family: 'Poppins', sans-serif;
+        background-color: rgba(0,149,247,0.1);
     }
 
     .jhjfdrtfgvgj{

@@ -229,7 +229,7 @@ body{
     }
 
     .main-text-recent{
-        font-size: 10px;
+        font-size: 11px;
         font-weight: 600;
         font-family: sans-serif;
     }
@@ -293,6 +293,10 @@ body{
         width: 20px;
         cursor: pointer;
         line-height: 1;
+    }
+
+    .lower-part-recent{
+        justify-content: flex-start;
     }
     
 }

@@ -163,6 +163,7 @@
     }
 
     .secondary-text-bulk{
+        font-size: 10px;
         padding-top: 4px;
         padding-left: 0px;
         overflow: hidden;

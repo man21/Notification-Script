@@ -62,12 +62,12 @@
 }
 
 .secondary-text-bulk{
-    font-size: 12px;
+    font-size: 11px;
     font-style: normal;
     color: #666;
     line-height: 0.8;
     font-family: sans-serif;
-    letter-spacing: 1.33;
+    letter-spacing: 0.3px;
     padding-left: 2px;
 }
 

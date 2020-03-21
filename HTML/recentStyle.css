@@ -39,6 +39,7 @@ body{
 
 .text-container-recent{
     padding: 5px;
+    align-self: center
 }
 
 .para-recent{

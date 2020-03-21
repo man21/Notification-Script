@@ -2752,7 +2752,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         var recentNotiifcationMainContainer = document.createElement('div')
         recentNotiifcationMainContainer.className = 'notif-card-recent';
-        // recentNotiifcationMainContainer.style = containerStyle
+        recentNotiifcationMainContainer.style = containerStyle
 
         var recentNotiifcationUpperPartContainer = document.createElement('div')
         recentNotiifcationUpperPartContainer.className = 'upper-part-recent'
@@ -2907,7 +2907,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
        
        var notificationLiveMainContainer = document.createElement('div');
        notificationLiveMainContainer.className= 'oiuytretg';
-    //    notificationLiveMainContainer.style = containerStyle;
+       notificationLiveMainContainer.style = containerStyle;
 
          
 
@@ -3314,7 +3314,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
        var bulkNotiifcationMainContainer = document.createElement('div')
        bulkNotiifcationMainContainer.className = 'notif-card-bulk';
-    //    bulkNotiifcationMainContainer.style =containerStyle
+       bulkNotiifcationMainContainer.style =containerStyle
 
         var bulkNotiifcationUpperPartContainer = document.createElement('div')
         bulkNotiifcationUpperPartContainer.className= 'upper-part-bulk'

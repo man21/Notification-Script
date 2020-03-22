@@ -39,6 +39,7 @@ body{
 .text-container-review{
     width: 280px;
     height: 40px;
+    align-self: center;
 }
 
 .para-review{

@@ -11,6 +11,8 @@ body{
     padding-bottom: 2px;
     display: flex ;
     flex-direction: column;
+    /* ---- */
+    cursor: pointer;
 }
 
 .upper-part-review{

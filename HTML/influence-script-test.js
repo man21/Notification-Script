@@ -2224,8 +2224,10 @@ async function loopThroughSplittedNotifications(splittedUrls, rule, notification
         if (result.length == 4) {
             for (let i = 0; i < splittedUrls.length; i++) {
                 var notif = responseNotifications[i];
+                console.log(notif,"Notif")
                 var key = Object.keys(notif);
                 responses = notif[key];
+
                 const infos = responses.message_data;
                 if (j > loopCheckValue) {
                     i = 5;

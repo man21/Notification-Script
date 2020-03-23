@@ -2129,7 +2129,6 @@ var Notifications = function (config) {
         notificationPath = notificationPath.map(notifPath => notifPath.url);
         var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
         if (rule && (rule.displayOnAllPages || notificationPath.indexOf(__pathname) != -1 || notificationPath.indexOf(window.location.pathname) != -1) && (exclude_notificationPath.indexOf(__pathname)==-1 && exclude_notificationPath.indexOf(window.location.pathname)==-1) && !(isMobile && rule.hideNotification)) {
-            console.log("ENTERED *")
             loopThroughSplittedNotifications(splittedUrls, rule, notificationPath, config);
         }
     });
@@ -2202,17 +2201,13 @@ async function loopThroughSplittedNotifications(splittedUrls, rule, notification
     let j = 1;
     var responseNotifications = [];
     var loopCheckValue = rule.loopNotification ? 1000 : 3;
-    console.log("*********************")
     let responseNotif = (callback) => {
-        console.log("!!!!!!!!!!!!!!!!!!!!!!")
         let splittedUrlsSingle = ['live']
         splittedUrlsSingle.map(async notifName => {
             var url = 'https://api.useinfluence.co/elasticsearch/search/' + config + '?type=' + notifName;
             //var url = 'https://us-central1-influence-197607.cloudfunctions.net/function-1?_id=' + config + '&type=' + notifName;
-            console.log(url,"URL DATA")
             await httpGetAsync(url, function (res) {
                 response = JSON.parse(res);
-                console.log(response,"Response")
                 responseNotifications = response.message;
                 if (!rule.loopNotification && response.totalCampaign) loopCheckValue = 3 * response.totalCampaign;
                 callback(null, responseNotifications, config)

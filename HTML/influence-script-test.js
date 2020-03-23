@@ -2129,6 +2129,7 @@ var Notifications = function (config) {
         notificationPath = notificationPath.map(notifPath => notifPath.url);
         var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
         if (rule && (rule.displayOnAllPages || notificationPath.indexOf(__pathname) != -1 || notificationPath.indexOf(window.location.pathname) != -1) && (exclude_notificationPath.indexOf(__pathname)==-1 && exclude_notificationPath.indexOf(window.location.pathname)==-1) && !(isMobile && rule.hideNotification)) {
+            console.log("ENTERED *")
             loopThroughSplittedNotifications(splittedUrls, rule, notificationPath, config);
         }
     });

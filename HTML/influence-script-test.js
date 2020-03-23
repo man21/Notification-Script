@@ -2924,7 +2924,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
                 liveNotificationAnimationContainer.className= 'animation-wrapper'
 
                 var liveNotificationAnimationCircle= document.createElement('div')
-                liveNotificationAnimationCircle.className= 'circle-1'
+                liveNotificationAnimationCircle.className= 'animationClass'
 
                 var liveNotificationAnimationCircle2= document.createElement('div')
                 liveNotificationAnimationCircle2.className= 'circle-2'

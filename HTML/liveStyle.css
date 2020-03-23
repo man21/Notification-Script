@@ -133,7 +133,7 @@ body{
     display: none
 }
 
-.animation-wrapper .circle-1,
+.animation-wrapper .animationClass,
 .animation-wrapper .circle-2{
     border-radius: 50%;  
     width: 22px;
@@ -143,18 +143,18 @@ body{
     margin: auto
 }
 /* @media screen and (min-width:480px) {
-    .animation-wrapper .circle-1,
+    .animation-wrapper .animationClass,
     .animation-wrapper .circle-2 {
         border-radius: 50%;
     }
 } */
-.animation-wrapper .circle-1 {
-    animation: pulse 3s linear infinite;
+.animation-wrapper .animationClass {
+    animation: animationClass 3s linear infinite;
 }
 .animation-wrapper .circle-2 {
-    animation: pulse 3s linear infinite 1.5s;
+    animation: animationClass 3s linear infinite 1.5s;
 }
-@keyframes pulse {
+@keyframes animationClass {
   0% {
     box-shadow: 0 0 0 0 rgba(0,149,247,.4);
   }

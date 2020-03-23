@@ -11,6 +11,7 @@
     padding-bottom: 2px;
     display: flex;
     flex-direction: column;
+    cursor: pointer;
 }
 
 .upper-part-bulk{
@@ -96,6 +97,7 @@
     color: #666;
     font-family: sans-serif;
     word-spacing: 1px;
+    vertical-align: middle;
 }
 
 .verified-icon-bulk{
@@ -170,6 +172,7 @@
         display: -webkit-box;
         -webkit-line-clamp: 1;
         -webkit-box-orient: vertical;
+        line-height: 1.1;
     }
 
     .image-container-bulk{

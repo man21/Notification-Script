@@ -2206,8 +2206,10 @@ async function loopThroughSplittedNotifications(splittedUrls, rule, notification
         splittedUrlsSingle.map(async notifName => {
             var url = 'https://api.useinfluence.co/elasticsearch/search/' + config + '?type=' + notifName;
             //var url = 'https://us-central1-influence-197607.cloudfunctions.net/function-1?_id=' + config + '&type=' + notifName;
+            console.log(url,"URL DATA")
             await httpGetAsync(url, function (res) {
                 response = JSON.parse(res);
+                console.log(response,"Response")
                 responseNotifications = response.message;
                 if (!rule.loopNotification && response.totalCampaign) loopCheckValue = 3 * response.totalCampaign;
                 callback(null, responseNotifications, config)

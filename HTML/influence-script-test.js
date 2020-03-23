@@ -2201,7 +2201,9 @@ async function loopThroughSplittedNotifications(splittedUrls, rule, notification
     let j = 1;
     var responseNotifications = [];
     var loopCheckValue = rule.loopNotification ? 1000 : 3;
+    console.log("*********************")
     let responseNotif = (callback) => {
+        console.log("!!!!!!!!!!!!!!!!!!!!!!")
         let splittedUrlsSingle = ['live']
         splittedUrlsSingle.map(async notifName => {
             var url = 'https://api.useinfluence.co/elasticsearch/search/' + config + '?type=' + notifName;

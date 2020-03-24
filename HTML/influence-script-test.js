@@ -2204,11 +2204,15 @@ async function loopThroughSplittedNotifications(splittedUrls, rule, notification
     let responseNotif = (callback) => {
         let splittedUrlsSingle = ['live']
         splittedUrlsSingle.map(async notifName => {
-            var url = 'https://api.useinfluence.co/elasticsearch/search/' + config + '?type=' + notifName;
+            //var url = 'https://api.useinfluence.co/elasticsearch/search/' + config + '?type=' + notifName;
             //var url = 'https://us-central1-influence-197607.cloudfunctions.net/function-1?_id=' + config + '&type=' + notifName;
+
+            var url = 'https://api.useinfluence.co/notificationNew/INF-3gbfcjjsd6vhvo/5e56710d35855b0013f7077f';
             await httpGetAsync(url, function (res) {
                 response = JSON.parse(res);
-                responseNotifications = response.message;
+                //responseNotifications = response.message;
+                responseNotifications = response
+                console.log(responseNotifications,"responseNotifications")
                 if (!rule.loopNotification && response.totalCampaign) loopCheckValue = 3 * response.totalCampaign;
                 callback(null, responseNotifications, config)
             });
@@ -2223,6 +2227,7 @@ async function loopThroughSplittedNotifications(splittedUrls, rule, notification
         let maxMinus=0;
         if (result.length == 4) {
             for (let i = 0; i < splittedUrls.length; i++) {
+                console.log("DATA IS HERE")
                 var notif = responseNotifications[i];
                 console.log(notif,"Notif")
                 var key = Object.keys(notif);

@@ -2202,6 +2202,7 @@ async function loopThroughSplittedNotifications(splittedUrls, rule, notification
     var responseNotifications = [];
     var loopCheckValue = rule.loopNotification ? 1000 : 3;
     let responseNotif = (callback) => {
+        console.log("HELLO")
         let splittedUrlsSingle = ['live']
         splittedUrlsSingle.map(async notifName => {
             //var url = 'https://api.useinfluence.co/elasticsearch/search/' + config + '?type=' + notifName;
@@ -3351,7 +3352,7 @@ async function loopThroughSplittedNotifications(splittedUrls, rule, notification
          }
 
       //  responseNotifications = response
-        console.log(responseNotifications,"responseNotifications")
+       // console.log(responseNotifications,"responseNotifications")
         if (!rule.loopNotification && response.totalCampaign) loopCheckValue = 3 //* response.totalCampaign;
         callback(null, responseNotifications, config)
            

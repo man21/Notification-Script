@@ -2231,6 +2231,8 @@ async function loopThroughSplittedNotifications(splittedUrls, rule, notification
                 const infos = responses.message_data;
                 console.log(infos,"INFOS")
                 if (j > loopCheckValue) {
+                    console.log(j,"VALUE OF J")
+                    console.log(loopCheckValue,"Value of loopCheckValue")
                     i = 5;
                     //setTimeout(() => new Notifications(config), ((rule.loopNotification ? 11988 : 24) + 12) * 1000);//11988
                     setTimeout(() => new Notifications(config), (11988 + 12) * 1000);

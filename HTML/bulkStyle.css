@@ -38,8 +38,9 @@
 }
 
 .text-container-bulk{
-    padding: 5px;
-    padding-right: 25px;
+    padding: 3px;
+    /* padding-right: 25px; */
+    align-self: center
 }
 
 .para-bulk{
@@ -50,6 +51,7 @@
     line-height: 1;
     overflow: hidden;
     display: -webkit-box;
+    direction: inherit;
 }
 
 .main-text-bulk{
@@ -72,10 +74,11 @@
     font-size: 11px;
     font-style: normal;
     color: #666;
-    line-height: 0.8;
+    line-height: 1.3;
     font-family: sans-serif;
     letter-spacing: 0.3px;
     padding-left: 2px;
+    word-wrap: break-word;
 }
 
 .border-bulk{

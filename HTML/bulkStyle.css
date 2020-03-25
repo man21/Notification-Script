@@ -49,6 +49,7 @@
     -webkit-box-orient: vertical;
     line-height: 1;
     overflow: hidden;
+    display: -webkit-box;
 }
 
 .main-text-bulk{

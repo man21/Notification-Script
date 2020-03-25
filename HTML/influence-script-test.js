@@ -2211,11 +2211,8 @@ async function loopThroughSplittedNotifications(splittedUrls, rule, notification
             await httpGetAsync(url, function (res) {
                 responseNotifications = JSON.parse(res);
                 responseNotifications = response.message;
-               
-
-              //  responseNotifications = response
                 console.log(responseNotifications,"responseNotifications")
-                if (!rule.loopNotification ) loopCheckValue = 3 //* response.totalCampaign;  && response.totalCampaign
+                if (!rule.loopNotification && response.totalCampaign ) loopCheckValue = 3 * response.totalCampaign;  
                 callback(null, responseNotifications, config)
             });
         });

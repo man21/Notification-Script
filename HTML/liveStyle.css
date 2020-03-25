@@ -214,7 +214,7 @@ body{
         /* padding-top: 4px; */
         padding-left: 0px;
         overflow: hidden;
-        display: -webkit-box;
+        /* display: -webkit-box; */
         -webkit-line-clamp: 1;
         -webkit-box-orient: vertical;
         line-height: 1.3;
@@ -224,8 +224,8 @@ body{
     .jhgfdfghb{
         border-radius: 50%;
         position: absolute;
-        top: 15px;
-        right: 55px;
+        top: 28px;
+        right: 61px;
         margin: 0;
         padding: 0;
     }

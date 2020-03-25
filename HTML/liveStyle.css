@@ -50,8 +50,14 @@ body{
 
 .lkhuf{
     margin: 0;
-    display: flex;
-    align-items: center;
+    padding-left: 5px;
+    color: #49445f;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    line-height: 1;
+    overflow: hidden;
+    align-self: center;
 }
 
 .oiuyftgc{
@@ -271,6 +277,10 @@ body{
 
     .jvygcghv{
         justify-content: left;
+    }
+
+    .lkhuf{
+        -webkit-line-clamp: 1;
     }
     
 }

@@ -2206,13 +2206,10 @@ async function loopThroughSplittedNotifications(splittedUrls, rule, notification
         splittedUrlsSingle.map(async notifName => {
             var url = 'https://api.useinfluence.co/elasticsearch/search/' + config + '?type=' + notifName;
             //var url = 'https://us-central1-influence-197607.cloudfunctions.net/function-1?_id=' + config + '&type=' + notifName;
-
-          ///  var url = 'https://api.useinfluence.co/notificationNew/INF-3gbfcjjsd6vhvo/5e56710d35855b0013f7077f';
             await httpGetAsync(url, function (res) {
-                responseNotifications = JSON.parse(res);
+                response = JSON.parse(res);
                 responseNotifications = response.message;
-                console.log(responseNotifications,"responseNotifications")
-                if (!rule.loopNotification && response.totalCampaign ) loopCheckValue = 3 * response.totalCampaign;  
+                if (!rule.loopNotification && response.totalCampaign) loopCheckValue = 3 * response.totalCampaign;
                 callback(null, responseNotifications, config)
             });
         });
@@ -2226,26 +2223,18 @@ async function loopThroughSplittedNotifications(splittedUrls, rule, notification
         let maxMinus=0;
         if (result.length == 4) {
             for (let i = 0; i < splittedUrls.length; i++) {
-                console.log("DATA IS HERE")
                 var notif = responseNotifications[i];
-                console.log(notif,"Notif")
                 var key = Object.keys(notif);
                 responses = notif[key];
-
                 const infos = responses.message_data;
-                console.log(infos,"INFOS")
                 if (j > loopCheckValue) {
-                    console.log(j,"VALUE OF J")
-                    console.log(loopCheckValue,"Value of loopCheckValue")
                     i = 5;
                     //setTimeout(() => new Notifications(config), ((rule.loopNotification ? 11988 : 24) + 12) * 1000);//11988
                     setTimeout(() => new Notifications(config), (11988 + 12) * 1000);
                     return;
                 }
                 
-                console.log(infos.length,"INFOS LENTH BEOFRE if")
                 if(infos.length==0){
-                    console.log(infos.length,"INFOS LENTH")
                     if (loopCheckExit.indexOf(key[0]) == -1)
                         loopCheckExit.push(key[0]);
                     if (i == splittedUrls.length - 1) {
@@ -2257,17 +2246,13 @@ async function loopThroughSplittedNotifications(splittedUrls, rule, notification
                     // console.log('==========info',info);
                     (function (u, v) {
                         if (response.message && !response.message.error) {
-                            console.log(info,"INFO DATA ***********")
                             //const info = response.message;
                             let configurations = info.configurations.filter(config => config.paths.indexOf(__pathname) > -1 || config.paths.indexOf(window.location.pathname) > -1);
                             configurations = info.rule.displayOnAllPages && !configurations.length ? info.configurations : configurations;
                             let paths = configurations.length > 1 && key == 'journey' ? configurations[pathIndex].paths : configurations.length ? configurations[0].paths : [];
                             
-                            console.log(configurations,"CONFIGURATION ,!!!!!!!!!!111")
-                            console.log(paths,"PATHS !!!!!!!!!!!!!!!!!!!2")
                             let configuration;
 
-                            console.log(configurations.length,"configurations length is here")
                             if (configurations.length)
                                 configuration = configurations.length > 1 && key == 'journey' ? configurations[pathIndex].configuration : configurations.length ? configurations[0].configuration : {};
                             else
@@ -2932,64 +2917,44 @@ var Note = function Note(config, containerStyle, iconStyle) {
     
         var liveNotificationImageContainer = document.createElement('div')
         liveNotificationImageContainer.className= 'jhgfdfghb'
-
-
-
-        var liveNotificationAnimationContainer= document.createElement('div')
-                liveNotificationAnimationContainer.className= 'animation-wrapper'
-
-                var liveNotificationAnimationCircle= document.createElement('div')
-                liveNotificationAnimationCircle.className= 'animationClass'
-
-                var liveNotificationAnimationCircle2= document.createElement('div')
-                liveNotificationAnimationCircle2.className= 'circle-2'
-
-                liveNotificationAnimationCircle.appendChild(liveNotificationAnimationCircle2)
-
-                liveNotificationAnimationContainer.appendChild(liveNotificationAnimationCircle)
-
-                liveNotificationImageContainer.appendChild(liveNotificationAnimationContainer)
-
-
-
-
-
     
-    //     var liveNotificationImage = document.createElement('div')
-    //     liveNotificationImage.className= 'klhjgyf'
+        var liveNotificationImage = document.createElement('div')
+        liveNotificationImage.className= 'klhjgyf'
 
 
-    //     if (configuration.panelStyle && configuration.panelStyle.image) {
-    //        // notifLiveImgContainer.className = "FPqRH0WDqJeAH0WD7MM9_1";
-    //         //notifLiveImg.classList = "FPqRh0ePqJeAh0eP7MM9_1";
-    //        // var notifLiveImgContent = document.createElement('img');
-    //         //notifLiveImgContent.className = "FPqRqg5HqJmAqu5I7MM9C";
-    //         liveNotificationImage.setAttribute('src', configuration.panelStyle.image);
-    //         liveNotificationImage.style = `padding: ${configuration.panelStyle.imagePadding ? configuration.panelStyle.imagePadding + 'px' : '11px'}; border-radius: 0; height: 50px; width: 50px;`;
-    //        // notifLiveImg.appendChild(notifLiveImgContent);
-    //     } else {
-    //         if (config.liveViewer && config.liveViewer.icon) {
+        if (configuration.panelStyle && configuration.panelStyle.image) {
+           // notifLiveImgContainer.className = "FPqRH0WDqJeAH0WD7MM9_1";
+            //notifLiveImg.classList = "FPqRh0ePqJeAh0eP7MM9_1";
+           // var notifLiveImgContent = document.createElement('img');
+            //notifLiveImgContent.className = "FPqRqg5HqJmAqu5I7MM9C";
+            liveNotificationImage.setAttribute('src', configuration.panelStyle.image);
+            liveNotificationImage.style = `padding: ${configuration.panelStyle.imagePadding ? configuration.panelStyle.imagePadding + 'px' : '11px'}; border-radius: 0; height: 50px; width: 50px;`;
+           // notifLiveImg.appendChild(notifLiveImgContent);
+        } else {
+            if (config.liveViewer && config.liveViewer.icon) {
                 
-    //             liveNotificationImage.setAttribute('src', config.liveViewer.icon);
-    //             liveNotificationImage.style = 'padding: 2px; border-radius: 0; height: 50px; width: 120px;';
+                liveNotificationImage.setAttribute('src', config.liveViewer.icon);
+                liveNotificationImage.style = 'padding: 2px; border-radius: 0; height: 50px; width: 120px;';
                 
-    //         }
-    //         else if (config.liveFollower && config.liveFollower.icon) {
+            }
+            else if (config.liveFollower && config.liveFollower.icon) {
                
-    //             liveNotificationImage.setAttribute('src', config.liveFollower.icon);
-    //             liveNotificationImage.style = 'padding: 2px; border-radius: 0; height: 50px; width: 120px;';
+                liveNotificationImage.setAttribute('src', config.liveFollower.icon);
+                liveNotificationImage.style = 'padding: 2px; border-radius: 0; height: 50px; width: 120px;';
                 
-    //         }
-    //         else {
+            }
+            else {
                 
-    //             liveNotificationImage.style=`background: rgb(${configuration.panelStyle.iconBGColor ? configuration.panelStyle.iconBGColor.r : 0}, ${configuration.panelStyle.iconBGColor ? configuration.panelStyle.iconBGColor.g : 149}, ${configuration.panelStyle.iconBGColor ? configuration.panelStyle.iconBGColor.b : 247}, ${configuration.panelStyle.iconBGColor ? configuration.panelStyle.iconBGColor.a : 1})`
-    //         }
-    //     }
+                liveNotificationImage.style=`background: rgb(${configuration.panelStyle.iconBGColor ? configuration.panelStyle.iconBGColor.r : 0}, ${configuration.panelStyle.iconBGColor ? configuration.panelStyle.iconBGColor.g : 149}, ${configuration.panelStyle.iconBGColor ? configuration.panelStyle.iconBGColor.b : 247}, ${configuration.panelStyle.iconBGColor ? configuration.panelStyle.iconBGColor.a : 1})`
+            }
+        }
 
 
-    //    // liveNotificationImage.setAttribute('src', config.liveViewer.icon)
+
+
+       // liveNotificationImage.setAttribute('src', config.liveViewer.icon)
     
-    //     liveNotificationImageContainer.appendChild(liveNotificationImage)
+        liveNotificationImageContainer.appendChild(liveNotificationImage)
     
         liveNotiifcationUpperPartContainer.appendChild(liveNotificationImageContainer)
     
@@ -3511,7 +3476,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
     mainContainer.appendChild(recentNotiifcationContainer);
     mainContainer.appendChild(reviewNotiifcationContainer);
 
-    //console.log(mainContainer,"Main Container Data")
+    console.log(mainContainer,"Main Container Data")
 
         if (!configuration.isCTATop)
         mainContainer.appendChild(innerNotifCTAContainer);

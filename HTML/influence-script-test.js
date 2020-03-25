@@ -4518,24 +4518,17 @@ async function loopThroughSplittedNotifications(splittedUrls, rule, notification
             for (let i = 0; i < splittedUrls.length; i++) {
                 console.log("DATA IS HERE")
                 var notif = responseNotifications[i];
-                console.log(notif,"Notif")
                 var key = Object.keys(notif);
                 responses = notif[key];
-
                 const infos = responses.message_data;
-                console.log(infos,"INFOS")
                 if (j > loopCheckValue) {
-                    console.log(j,"VALUE OF J")
-                    console.log(loopCheckValue,"Value of loopCheckValue")
                     i = 5;
                     //setTimeout(() => new Notifications(config), ((rule.loopNotification ? 11988 : 24) + 12) * 1000);//11988
                     setTimeout(() => new Notifications(config), (11988 + 12) * 1000);
                     return;
                 }
                 
-                console.log(infos.length,"INFOS LENTH BEOFRE if")
                 if(infos.length==0){
-                    console.log(infos.length,"INFOS LENTH")
                     if (loopCheckExit.indexOf(key[0]) == -1)
                         loopCheckExit.push(key[0]);
                     if (i == splittedUrls.length - 1) {
@@ -4547,17 +4540,13 @@ async function loopThroughSplittedNotifications(splittedUrls, rule, notification
                     // console.log('==========info',info);
                     (function (u, v) {
                         if (response.message && !response.message.error) {
-                            console.log(info,"INFO DATA ***********")
                             //const info = response.message;
                             let configurations = info.configurations.filter(config => config.paths.indexOf(__pathname) > -1 || config.paths.indexOf(window.location.pathname) > -1);
                             configurations = info.rule.displayOnAllPages && !configurations.length ? info.configurations : configurations;
                             let paths = configurations.length > 1 && key == 'journey' ? configurations[pathIndex].paths : configurations.length ? configurations[0].paths : [];
                             
-                            console.log(configurations,"CONFIGURATION ,!!!!!!!!!!111")
-                            console.log(paths,"PATHS !!!!!!!!!!!!!!!!!!!2")
                             let configuration;
 
-                            console.log(configurations.length,"configurations length is here")
                             if (configurations.length)
                                 configuration = configurations.length > 1 && key == 'journey' ? configurations[pathIndex].configuration : configurations.length ? configurations[0].configuration : {};
                             else

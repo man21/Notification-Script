@@ -2252,11 +2252,14 @@ async function loopThroughSplittedNotifications(splittedUrls, rule, notification
                             let paths = configurations.length > 1 && key == 'journey' ? configurations[pathIndex].paths : configurations.length ? configurations[0].paths : [];
                             
                             let configuration;
+                            console.log(configurations, "COnfigurations in 1st method")
 
                             if (configurations.length)
                                 configuration = configurations.length > 1 && key == 'journey' ? configurations[pathIndex].configuration : configurations.length ? configurations[0].configuration : {};
                             else
                                 configuration = undefined;
+
+                                console.log(configuration, "configiration in 1st methos")
 
                             let liveVisitorCount =0;
                             if (key == 'live') {
@@ -2293,6 +2296,7 @@ async function loopThroughSplittedNotifications(splittedUrls, rule, notification
                                 }
                             }
 
+                            console.log(j, "Value of j")
                             //let userDetails = info.userDetails && info.userDetails.length && key == 'journey' ? info.userDetails.filter(user => user) : [];
                             let userDetails = info.userDetails;
                             let userReviews = info.userReviews;
@@ -2372,6 +2376,7 @@ function generateRandomNumber(randomDelayTime, tempRandomDelayTime, displayTime,
 }
 
 function notificationTimeout(i, info, rule, key, notificationPath) {
+    console.log(key, "KEY in notification TIME OUT")
     if (notificationPath.indexOf(__pathname) === -1 && notificationPath.indexOf(window.location.pathname) === -1 && !rule.displayOnAllPages)
         return;
     var note = new Note({});

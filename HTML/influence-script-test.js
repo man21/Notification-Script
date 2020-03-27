@@ -2762,7 +2762,30 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         var recentNotificationImage = document.createElement('img')
         recentNotificationImage.className = 'image-recent'
-        recentNotificationImage.setAttribute('src', 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/5FCE8400-0616-426F-8BEA-F53136305123.png')
+
+        if (userDetails && userDetails) {
+            if (userDetails.productImg) {
+                res_img = userDetails.productImg;
+            }
+            else if (configuration && configuration.toggleMap == 'map') {
+                if (userDetails.city && userDetails.country) {
+                    res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=kvOeRnlot3fdBnbvum3X&app_code=ddELOikTE8aZ-xDs5mtRJw&ci=${userDetails.city}&co=${userDetails.country}&z=10&h=200&w=200`;
+                }
+                else if (userDetails.city) {
+                    res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=kvOeRnlot3fdBnbvum3X&app_code=ddELOikTE8aZ-xDs5mtRJw&ci=${userDetails.city}&z=10&h=200&w=200`;
+                }
+                else if (userDetails.country) {
+                    res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=kvOeRnlot3fdBnbvum3X&app_code=ddELOikTE8aZ-xDs5mtRJw&co=${userDetails.country}&z=10&h=200&w=200`;
+                }
+            }
+            else if (configuration && configuration.panelStyle) {
+                res_img = configuration.panelStyle.image;
+            }
+        }
+
+        recentNotificationImage.setAttribute('src', res_img ? res_img : "https://storage.googleapis.com/influence-197607.appspot.com/user_icon.png");
+        notifRecentImg.style = iconStyle;
+        //recentNotificationImage.setAttribute('src', 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/5FCE8400-0616-426F-8BEA-F53136305123.png')
         recentNotificationImageContainer.appendChild(recentNotificationImage)
 
 
@@ -3004,9 +3027,10 @@ var Note = function Note(config, containerStyle, iconStyle) {
         var liveNotificationSecondText = document.createElement('em')
         liveNotificationSecondText.className= 'jhjfdrtfgvgj'
 
-        if (configuration && configuration.panelStyle && configuration.panelStyle.color) {
-        	liveNotificationSecondText.style = `color: rgb(${configuration.panelStyle.color.r},${configuration.panelStyle.color.g},${configuration.panelStyle.color.b});`
-        }
+        // if (configuration && configuration.panelStyle && configuration.panelStyle.color) {
+        // 	liveNotificationSecondText.style = `color: rgb(${configuration.panelStyle.color.r},${configuration.panelStyle.color.g},${configuration.panelStyle.color.b});`
+        // }
+
         liveNotificationSecondText.innerHTML = ` ${configuration.liveVisitorText}`;
         if(config.liveViewer)
         liveNotificationSecondText.innerHTML =` ${configuration.liveViewerText}`;

@@ -2762,6 +2762,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         var recentNotificationImage = document.createElement('img')
         recentNotificationImage.className = 'image-recent'
+        var res_img = 'https://storage.googleapis.com/influence-197607.appspot.com/default_icon.png';
+
 
         if (userDetails && userDetails) {
             if (userDetails.productImg) {

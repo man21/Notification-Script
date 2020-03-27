@@ -2772,12 +2772,17 @@ var Note = function Note(config, containerStyle, iconStyle) {
             else if (configuration && configuration.toggleMap == 'map') {
                 if (userDetails.city && userDetails.country) {
                     res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=kvOeRnlot3fdBnbvum3X&app_code=ddELOikTE8aZ-xDs5mtRJw&ci=${userDetails.city}&co=${userDetails.country}&z=10&h=200&w=200`;
+                    console.log(res_img, "city and country")
                 }
                 else if (userDetails.city) {
                     res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=kvOeRnlot3fdBnbvum3X&app_code=ddELOikTE8aZ-xDs5mtRJw&ci=${userDetails.city}&z=10&h=200&w=200`;
+                    console.log(res_img, "city ")
+
                 }
                 else if (userDetails.country) {
                     res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=kvOeRnlot3fdBnbvum3X&app_code=ddELOikTE8aZ-xDs5mtRJw&co=${userDetails.country}&z=10&h=200&w=200`;
+                    console.log(res_img, " country")
+
                 }
             }
             else if (configuration && configuration.panelStyle) {

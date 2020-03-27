@@ -2786,7 +2786,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         }
 
         recentNotificationImage.setAttribute('src', res_img ? res_img : "https://storage.googleapis.com/influence-197607.appspot.com/user_icon.png");
-        notifRecentImg.style = iconStyle;
+        recentNotificationImage.style = iconStyle;
         //recentNotificationImage.setAttribute('src', 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/5FCE8400-0616-426F-8BEA-F53136305123.png')
         recentNotificationImageContainer.appendChild(recentNotificationImage)
 

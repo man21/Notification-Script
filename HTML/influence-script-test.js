@@ -3113,7 +3113,6 @@ var Note = function Note(config, containerStyle, iconStyle) {
         var reviewNotificationImage = document.createElement('img')
         reviewNotificationImage.className = 'image-review'
        // reviewNotificationImage.setAttribute('src', 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/5FCE8400-0616-426F-8BEA-F53136305123.png')
-       console.log(userReview.productImg, "REVIEW IMAGE")
         if (fromAppType == 'facebook')
         reviewNotificationImage.setAttribute('src', 'https://storage.googleapis.com/influence-197607.appspot.com/facebook_round.png');
         else if (fromAppType == 'google')

@@ -3116,7 +3116,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         if (fromAppType == 'facebook')
         reviewNotificationImage.setAttribute('src', 'https://storage.googleapis.com/influence-197607.appspot.com/facebook_round.png');
         else if (fromAppType == 'google')
-        reviewNotificationImage.setAttribute('src', userReview.productImg);
+        reviewNotificationImage.setAttribute('src', userReview.profileImg);
         //reviewNotificationImage.setAttribute('src', 'https://storage.googleapis.com/influence-197607.appspot.com/googlereview.png');
        // notifReviewImgContent.style = `padding: 11px; border-radius: 0; height: 50px; width: 50px;`;
 

@@ -2252,11 +2252,14 @@ async function loopThroughSplittedNotifications(splittedUrls, rule, notification
                             let paths = configurations.length > 1 && key == 'journey' ? configurations[pathIndex].paths : configurations.length ? configurations[0].paths : [];
                             
                             let configuration;
+                            console.log(configurations, "COnfigurations in 1st method")
 
                             if (configurations.length)
                                 configuration = configurations.length > 1 && key == 'journey' ? configurations[pathIndex].configuration : configurations.length ? configurations[0].configuration : {};
                             else
                                 configuration = undefined;
+
+                                console.log(configuration, "configiration in 1st methos")
 
                             let liveVisitorCount =0;
                             if (key == 'live') {
@@ -2293,6 +2296,7 @@ async function loopThroughSplittedNotifications(splittedUrls, rule, notification
                                 }
                             }
 
+                            console.log(j, "Value of j")
                             //let userDetails = info.userDetails && info.userDetails.length && key == 'journey' ? info.userDetails.filter(user => user) : [];
                             let userDetails = info.userDetails;
                             let userReviews = info.userReviews;
@@ -2372,6 +2376,7 @@ function generateRandomNumber(randomDelayTime, tempRandomDelayTime, displayTime,
 }
 
 function notificationTimeout(i, info, rule, key, notificationPath) {
+    console.log(key, "KEY in notification TIME OUT")
     if (notificationPath.indexOf(__pathname) === -1 && notificationPath.indexOf(window.location.pathname) === -1 && !rule.displayOnAllPages)
         return;
     var note = new Note({});
@@ -2711,8 +2716,6 @@ var Note = function Note(config, containerStyle, iconStyle) {
         let numberOfUsers = config.numberOfUsers;
         let userReview = config.userReviews;
 
-        console.log(userReview,"User review datta")
-
         var container = document.createElement('div');
         container.setAttribute("id", "FPqR2DbIqJeA2DbI7MM9_0");
         container.onclick = function (e) {
@@ -2762,7 +2765,33 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         var recentNotificationImage = document.createElement('img')
         recentNotificationImage.className = 'image-recent'
-        recentNotificationImage.setAttribute('src', 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/5FCE8400-0616-426F-8BEA-F53136305123.png')
+        var res_img = 'https://storage.googleapis.com/influence-197607.appspot.com/default_icon.png';
+
+
+        if (userDetails && userDetails) {
+            if (userDetails.productImg) {
+                res_img = userDetails.productImg;
+            }
+            else if (configuration && configuration.toggleMap == 'map') {
+                if (userDetails.city && userDetails.country) {
+                    res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=kvOeRnlot3fdBnbvum3X&app_code=ddELOikTE8aZ-xDs5mtRJw&ci=${userDetails.city}&co=${userDetails.country}&z=10&h=200&w=200`;
+                }
+                else if (userDetails.city) {
+                    res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=kvOeRnlot3fdBnbvum3X&app_code=ddELOikTE8aZ-xDs5mtRJw&ci=${userDetails.city}&z=10&h=200&w=200`;
+                }
+                else if (userDetails.country) {
+                    res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=kvOeRnlot3fdBnbvum3X&app_code=ddELOikTE8aZ-xDs5mtRJw&co=${userDetails.country}&z=10&h=200&w=200`;
+                }
+            }
+            else if (configuration && configuration.panelStyle) {
+                res_img = configuration.panelStyle.image;
+            }
+        }
+
+
+        recentNotificationImage.setAttribute('src', res_img ? res_img : "https://storage.googleapis.com/influence-197607.appspot.com/user_icon.png");
+        recentNotificationImage.style = iconStyle;
+        //recentNotificationImage.setAttribute('src', 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/5FCE8400-0616-426F-8BEA-F53136305123.png')
         recentNotificationImageContainer.appendChild(recentNotificationImage)
 
 
@@ -3004,9 +3033,10 @@ var Note = function Note(config, containerStyle, iconStyle) {
         var liveNotificationSecondText = document.createElement('em')
         liveNotificationSecondText.className= 'jhjfdrtfgvgj'
 
-        if (configuration && configuration.panelStyle && configuration.panelStyle.color) {
-        	liveNotificationSecondText.style = `color: rgb(${configuration.panelStyle.color.r},${configuration.panelStyle.color.g},${configuration.panelStyle.color.b});`
-        }
+        // if (configuration && configuration.panelStyle && configuration.panelStyle.color) {
+        // 	liveNotificationSecondText.style = `color: rgb(${configuration.panelStyle.color.r},${configuration.panelStyle.color.g},${configuration.panelStyle.color.b});`
+        // }
+
         liveNotificationSecondText.innerHTML = ` ${configuration.liveVisitorText}`;
         if(config.liveViewer)
         liveNotificationSecondText.innerHTML =` ${configuration.liveViewerText}`;
@@ -3083,11 +3113,11 @@ var Note = function Note(config, containerStyle, iconStyle) {
         var reviewNotificationImage = document.createElement('img')
         reviewNotificationImage.className = 'image-review'
        // reviewNotificationImage.setAttribute('src', 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/5FCE8400-0616-426F-8BEA-F53136305123.png')
-       
         if (fromAppType == 'facebook')
         reviewNotificationImage.setAttribute('src', 'https://storage.googleapis.com/influence-197607.appspot.com/facebook_round.png');
         else if (fromAppType == 'google')
-        reviewNotificationImage.setAttribute('src', 'https://storage.googleapis.com/influence-197607.appspot.com/googlereview.png');
+        reviewNotificationImage.setAttribute('src', userReview.profileImg);
+        //reviewNotificationImage.setAttribute('src', 'https://storage.googleapis.com/influence-197607.appspot.com/googlereview.png');
        // notifReviewImgContent.style = `padding: 11px; border-radius: 0; height: 50px; width: 50px;`;
 
         reviewNotificationImageContainer.appendChild(reviewNotificationImage)
@@ -3116,9 +3146,9 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         if (fromAppType == 'facebook')
         reviewNotificationNameText.innerHTML = 'Recommended us on Facebook';
-    else if (fromAppType == 'google') {
+        else if (fromAppType == 'google') {
         reviewNotificationNameText.innerHTML = userReview && userReview.username ? userReview.username : 'Someone' ;
-    }
+        }
 
        // reviewNotificationNameText.innerHTML =    //'Aviel Sela'
         reviewNotificationUserNameContainer.appendChild(reviewNotificationNameText)
@@ -3207,7 +3237,10 @@ var Note = function Note(config, containerStyle, iconStyle) {
     //     reviewNotificationUpperSecondaryText.innerHTML = userReview && userReview.username ? userReview.username : 'Someone' + ' ' + configuration.gglReviewText ? configuration.gglReviewText : 'Reviewed us on Google';       
     // }
 
-       reviewNotificationUpperSecondaryText.innerHTML =  configuration.gglReviewText ? configuration.gglReviewText : 'Reviewed us on Google';         //"Awesome must have tool for every marketer or an online business! Easy to use, great uxui, and most importantly - gets more leads than any other platform."
+    console.log(userReview,"USER REVIEW********")
+
+    console.log(userReview.review_text, "REVIEW TEXT")
+       reviewNotificationUpperSecondaryText.innerHTML = userReview.review_text  //configuration.gglReviewText ? configuration.gglReviewText : 'Reviewed us on Google';         //"Awesome must have tool for every marketer or an online business! Easy to use, great uxui, and most importantly - gets more leads than any other platform."
 
         reviewNotificationTextContainer.appendChild(reviewNotificationUpperSecondaryText)
         reviewNotiifcationUpperPartContainer.appendChild(reviewNotificationTextContainer)

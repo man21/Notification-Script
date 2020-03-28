@@ -5,7 +5,7 @@ body{
 .notif-card-review{
     background-color: #fff;
     width: 350px;
-    height: 75px;
+    height: 85px;
     border-radius: 6px;
     padding: 4px 10px;
     padding-bottom: 2px;
@@ -19,6 +19,7 @@ body{
     display: flex;
     flex-direction: row;
     margin-top: 5px;
+    height: 54px;
 }
 
 .image-container-review{
@@ -40,7 +41,6 @@ body{
 
 .text-container-review{
     width: 280px;
-    height: 40px;
     align-self: center;
 }
 
@@ -66,7 +66,6 @@ body{
     line-height: 1.2;
     font-family: sans-serif;
     letter-spacing: 0.3px;
-    padding-left: 5px;
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 3;

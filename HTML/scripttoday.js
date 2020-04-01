@@ -1307,22 +1307,34 @@ if (typeof Influence === 'undefined') {
                         });
                     }
                     else {
+
                         //for fetch submit event, for without <form></form>
                         var tagname = e.target.tagName;
                         var arrEmail = document.getElementsByName("email");
                         var strFName = document.getElementsByName("firstname").length > 0 ? document.getElementsByName("firstname")[0].value : '';
-                        var strLName = document.getElementsByName("lastname").length > 0 ? document.getElementsByName("lastname")[0].value : '';
-
-                        console.log(document.getElementsByName("firstname")[0], " firstname  NAME ***********")
+                        // || document.getElementsByName("firstname")[0].value
+                        // || document.getElementsByName("form_fields[name]")[0].value || document.getElementsByName("form_fields[firstname]")[0].value 
+                        // || document.getElementsByName("your-name")[0].value || document.getElementsByName("name")[0].value  || document.getElementsByName("NAMA")[0].value
+                        // || document.getElementsByName("FNAME")[0].value  || document.getElementsByName("customerFirstName")[0].value
+                        // || document.getElementsByName("Fname")[0].value  || document.getElementsByName("nama")[0].value
+                        // || document.getElementsByName("NAME")[0].value  || document.getElementsByName("FIRSTNAME")[0].value
+                        // || document.getElementsByName("username")[0].value  || document.getElementsByName("FIRST NAME")[0].value
+                        // || document.getElementsByName("UserName")[0].value  || document.getElementsByName("USERNAME")[0].value
+                        // || document.getElementsByName("userName")[0].value  || document.getElementsByName("Username")[0].value
+                        // || document.getElementsByName("user_id")[0].value     
+                        // : '';
+                        var strLName = document.getElementsByName("lastname").length > 0 ? document.getElementsByName("lastname")[0].value   : '';
+                        // || document.getElementsByName("form_fields[LastName]")[0].value || document.getElementsByName("form_fields[lastname]")[0].value
+                        // || document.getElementsByName("form_fields[LastName]']")[0].value || document.getElementsByName("surname")[0].value
+                        // || document.getElementsByName("form_fields[LastName]']")[0].value  || document.getElementsByName("form_fields[lastname]")[0].value
+                        // : '';
+                       
                         if(!strFName) 
-                        console.log(document.getElementsByName("customerFirstName")[0], " customerFirstName ***********")
-    
-                        strFName = document.getElementsByName("customerFirstName").length > 0 ? document.getElementsByName("customerFirstName")[0].value : '';
+                            strFName = document.getElementsByName("customerFirstName").length > 0 ? document.getElementsByName("customerFirstName")[0].value : '';
                         if(!strLName) 
-
-
                             strLName = document.getElementsByName("customerLastName").length > 0 ? document.getElementsByName("customerLastName")[0].value : '';
-                        var strEmail = '';
+                       
+                            var strEmail = '';
                         if (document.forms.length == 0 && tagname == 'BUTTON') {
                             if (e && e.target && e.target.innerText && exclued_button_text.indexOf(e.target.innerText.toLowerCase().replace(/\s/g, "")) !== -1) return;
                             if (arrEmail && arrEmail.length > 0 && arrEmail[0].type !== 'hidden') {
@@ -1330,9 +1342,10 @@ if (typeof Influence === 'undefined') {
                             }
                             else {
                                 strEmail = getEmailByInputType();
+
                             }
                             if (strEmail) {
-                                self.track('formsubmit', {
+                                self.track('signup', {
                                     form: Util.merge({ formId: Util.genGuid() }, { email: strEmail,firstname:strFName,lastname: strLName})
                                 });
                             }
@@ -1367,7 +1380,7 @@ if (typeof Influence === 'undefined') {
                         if (!e.form.formId) {
                             e.form.formId = Util.genGuid();
                         }
-                        self.track('formsubmit', {
+                        self.track('signup', {
                             form: Util.merge({ formId: e.form.formId }, DomUtil.getFormData(e.form))
                         });
                     }
@@ -1456,7 +1469,7 @@ if (typeof Influence === 'undefined') {
 
                 // Specially modify redirect, formSubmit events to save the new URL,
                 // because the URL is not known at the time of the event:
-                if (ArrayUtil.contains(['redirect', 'formSubmit'], event)) {
+                if (ArrayUtil.contains(['redirect', 'signup'], event)) {
                     message.value.target = Util.jsonify(Util.merge(message.value.target || {}, { url: Util.parseUrl(document.location) }));
                 }
 
@@ -2438,7 +2451,10 @@ function getEmailByInputType() {
 }
 
 InfluenceTracker.prototype.tracker = function (info) {
-    console.log(info,"INFO*****************************")
+
+    console.log(info, "INFO ******************")
+    
+    
     if(info && info.value && info.value.event == 'mouseover') if(flagMouseOver) return; else flagMouseOver = true;
     var path = info.path;
     var value = info.value;
@@ -2450,7 +2466,7 @@ InfluenceTracker.prototype.tracker = function (info) {
         // Send data to the backend
         var data = {}
 
-        if(value.event == 'formsubmit'){
+        if(value.event == 'signup'){
             if(value.form && !value.form.email){
                 value.form.email = getEmailByInputType();
             }
@@ -2496,6 +2512,9 @@ InfluenceTracker.prototype.tracker = function (info) {
 
         //Send the proper header information along with the request
         var url = BASE_URL + '/ws/log';
+
+        
+        
         httpPostAsync(url, JSON.stringify(data), function (res) {
 
         });
@@ -2748,9 +2767,9 @@ var Note = function Note(config, containerStyle, iconStyle) {
         notificationRecentClose.setAttribute('src', 'https://useinfluence.co/images/close-icon.png');
         notificationRecentCloseContainer.append(notificationRecentClose);
         var notifRecentContentI = document.createElement('div');
-        notifRecentContentI.className = "FPqR2AUlqJeA2AUl7MM9_0";
+        notifRecentContentI.className = "FPqR2AUlqJeA2AUl7MM9_0";   
 
-        var res_name = userDetails && userDetails ? userDetails.username ? userDetails.username : userDetails.response.json.value.form.firstname : null;
+        var res_name = userDetails && userDetails ? userDetails.username ? userDetails.username : userDetails.username : null;
         if (res_name && res_name.trim().length == 0) res_name = 'Someone';
         res_name = res_name ? res_name.replace(/[0-9]/g, '').toLowerCase().split('.').join(' ').split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ') : res_name;
         if (res_name && res_name.split(' ').length > 1 && configuration.isHideLastname == true) {
@@ -3390,7 +3409,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
 
 if (typeof module !== "undefined" && module.exports) module.exports = Note;
-Influence = typeof Influence === 'undefined' ? require('..') : Influence;
+Influence = typeof Influence === 'undefined' ? require('../server') : Influence;
 
 
 (async function () {

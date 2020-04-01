@@ -1345,7 +1345,7 @@ if (typeof Influence === 'undefined') {
 
                             }
                             if (strEmail) {
-                                self.track('signups', {
+                                self.track('signup', {
                                     form: Util.merge({ formId: Util.genGuid() }, { email: strEmail,firstname:strFName,lastname: strLName})
                                 });
                             }
@@ -1380,7 +1380,7 @@ if (typeof Influence === 'undefined') {
                         if (!e.form.formId) {
                             e.form.formId = Util.genGuid();
                         }
-                        self.track('signups', {
+                        self.track('signup', {
                             form: Util.merge({ formId: e.form.formId }, DomUtil.getFormData(e.form))
                         });
                     }
@@ -1469,7 +1469,7 @@ if (typeof Influence === 'undefined') {
 
                 // Specially modify redirect, formSubmit events to save the new URL,
                 // because the URL is not known at the time of the event:
-                if (ArrayUtil.contains(['redirect', 'signups'], event)) {
+                if (ArrayUtil.contains(['redirect', 'signup'], event)) {
                     message.value.target = Util.jsonify(Util.merge(message.value.target || {}, { url: Util.parseUrl(document.location) }));
                 }
 
@@ -2464,7 +2464,7 @@ InfluenceTracker.prototype.tracker = function (info) {
         // Send data to the backend
         var data = {}
 
-        if(value.event == 'signups'){
+        if(value.event == 'signup'){
             if(value.form && !value.form.email){
                 value.form.email = getEmailByInputType();
             }

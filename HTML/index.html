@@ -40,6 +40,18 @@
         </div>
 
         <div class="col-md-12">
+          <div class="text-field form-group">
+            <input type="text" name="customerFirstName" id="form_submission_fName"value="" required="required" class="form-control" placeholder="First Name">
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <div class="text-field form-group">
+            <input type="text" name="customerLastName" id="form_submission_lName"value="" required="required" class="form-control" placeholder="Last Name">
+          </div>
+        </div>
+
+        <div class="col-md-12">
           <div class="email-field form-group">
             <input required="required" class="form-control" placeholder="Email" type="email" name="form_submission[email]" id="form_submission_email">
           </div>
@@ -75,6 +87,8 @@
       var data = {
         name: $('#form_submission_name').val(),
         email: $('#form_submission_email').val(),
+        fName: $('#form_submission_fName').val(),
+        lName: $('#form_submission_lName').val(),
       } 
       console.log(data,"Data is here")
       $.ajax({

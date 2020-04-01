@@ -4,6 +4,13 @@ const registerSchema = mongoose.Schema({
     _id : mongoose.Schema.ObjectId,
     name : {
         type : String,
+    },
+    fName : {
+        type : String,
+        required : true
+    },
+    lName : {
+        type : String,
         required : true
     },
     email : {

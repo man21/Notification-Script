@@ -2759,7 +2759,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         console.log(userDetails, "USERS DETAILS")
         console.log(userDetails.response, "RESPONSE ")
-        var res_name = userDetails && userDetails ? userDetails.username ? userDetails.username : userDetails.response.json.value.form.firstname : null;
+
+        var res_name = userDetails && userDetails ? userDetails.username ? userDetails.username : userDetails.username : null;
         if (res_name && res_name.trim().length == 0) res_name = 'Someone';
         res_name = res_name ? res_name.replace(/[0-9]/g, '').toLowerCase().split('.').join(' ').split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ') : res_name;
         if (res_name && res_name.split(' ').length > 1 && configuration.isHideLastname == true) {

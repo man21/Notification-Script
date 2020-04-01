@@ -2758,9 +2758,6 @@ var Note = function Note(config, containerStyle, iconStyle) {
         var notifRecentContentI = document.createElement('div');
         notifRecentContentI.className = "FPqR2AUlqJeA2AUl7MM9_0";
 
-        console.log(userDetails, "USERS DETAILS")
-        console.log(userDetails.response, "RESPONSE ")
-
         var res_name = userDetails && userDetails ? userDetails.username ? userDetails.username : userDetails.username : null;
         if (res_name && res_name.trim().length == 0) res_name = 'Someone';
         res_name = res_name ? res_name.replace(/[0-9]/g, '').toLowerCase().split('.').join(' ').split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ') : res_name;

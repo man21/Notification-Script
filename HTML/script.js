@@ -1299,12 +1299,14 @@ if (typeof Influence === 'undefined') {
                     });
                 });
 
+                console.log("ENTERED HERE")
                 Events.onevent(document.body, 'click', true, function (e) {
                     if (e.target && e.target.className && e.target.className.indexOf && e.target.className.indexOf('FPqR') !== -1) {
                         var ancestors = DomUtil.getAncestors(e.target);
                         self.track('click', {
                             target: DomUtil.getNodeDescriptor(e.target)
                         });
+                        console.log("ENTERED*******")
                     }
                     else {
 

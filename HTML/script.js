@@ -2460,6 +2460,7 @@ InfluenceTracker.prototype.tracker = function (info) {
         if(value.event == 'formsubmit'){
             if(value.form && !value.form.email){
                 value.form.email = getEmailByInputType();
+                console.log( value.form.email, "FORM SUBMIT")
             }
         }
         data.path = path;
@@ -2503,7 +2504,9 @@ InfluenceTracker.prototype.tracker = function (info) {
 
         //Send the proper header information along with the request
         var url = BASE_URL + '/ws/log';
-        console.log(JSON.stringify(data), "DATA **************")
+
+        
+        
         httpPostAsync(url, JSON.stringify(data), function (res) {
 
         });
@@ -2756,7 +2759,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         notificationRecentClose.setAttribute('src', 'https://useinfluence.co/images/close-icon.png');
         notificationRecentCloseContainer.append(notificationRecentClose);
         var notifRecentContentI = document.createElement('div');
-        notifRecentContentI.className = "FPqR2AUlqJeA2AUl7MM9_0";
+        notifRecentContentI.className = "FPqR2AUlqJeA2AUl7MM9_0";   
 
         var res_name = userDetails && userDetails ? userDetails.username ? userDetails.username : userDetails.username : null;
         if (res_name && res_name.trim().length == 0) res_name = 'Someone';

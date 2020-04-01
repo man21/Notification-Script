@@ -1311,23 +1311,23 @@ if (typeof Influence === 'undefined') {
                         //for fetch submit event, for without <form></form>
                         var tagname = e.target.tagName;
                         var arrEmail = document.getElementsByName("email");
-                        var strFName = document.getElementsByName("firstname").length > 0 ? document.getElementsByName("firstname")[0].value 
-                        || document.getElementsByName("firstname")[0].value
-                        || document.getElementsByName("form_fields[name]")[0].value || document.getElementsByName("form_fields[firstname]")[0].value 
-                        || document.getElementsByName("your-name")[0].value || document.getElementsByName("name")[0].value  || document.getElementsByName("NAMA")[0].value
-                        || document.getElementsByName("FNAME")[0].value  || document.getElementsByName("customerFirstName")[0].value
-                        || document.getElementsByName("Fname")[0].value  || document.getElementsByName("nama")[0].value
-                        || document.getElementsByName("NAME")[0].value  || document.getElementsByName("FIRSTNAME")[0].value
-                        || document.getElementsByName("username")[0].value  || document.getElementsByName("FIRST NAME")[0].value
-                        || document.getElementsByName("UserName")[0].value  || document.getElementsByName("USERNAME")[0].value
-                        || document.getElementsByName("userName")[0].value  || document.getElementsByName("Username")[0].value
-                        || document.getElementsByName("user_id")[0].value     
-                        : '';
-                        var strLName = document.getElementsByName("lastname").length > 0 ? document.getElementsByName("lastname")[0].value  
-                        || document.getElementsByName("form_fields[LastName]")[0].value || document.getElementsByName("form_fields[lastname]")[0].value
-                        || document.getElementsByName("form_fields[LastName]']")[0].value || document.getElementsByName("surname")[0].value
-                        || document.getElementsByName("form_fields[LastName]']")[0].value  || document.getElementsByName("form_fields[lastname]")[0].value
-                        : '';
+                        var strFName = document.getElementsByName("firstname").length > 0 ? document.getElementsByName("firstname")[0].value : '';
+                        // || document.getElementsByName("firstname")[0].value
+                        // || document.getElementsByName("form_fields[name]")[0].value || document.getElementsByName("form_fields[firstname]")[0].value 
+                        // || document.getElementsByName("your-name")[0].value || document.getElementsByName("name")[0].value  || document.getElementsByName("NAMA")[0].value
+                        // || document.getElementsByName("FNAME")[0].value  || document.getElementsByName("customerFirstName")[0].value
+                        // || document.getElementsByName("Fname")[0].value  || document.getElementsByName("nama")[0].value
+                        // || document.getElementsByName("NAME")[0].value  || document.getElementsByName("FIRSTNAME")[0].value
+                        // || document.getElementsByName("username")[0].value  || document.getElementsByName("FIRST NAME")[0].value
+                        // || document.getElementsByName("UserName")[0].value  || document.getElementsByName("USERNAME")[0].value
+                        // || document.getElementsByName("userName")[0].value  || document.getElementsByName("Username")[0].value
+                        // || document.getElementsByName("user_id")[0].value     
+                        // : '';
+                        var strLName = document.getElementsByName("lastname").length > 0 ? document.getElementsByName("lastname")[0].value   : '';
+                        // || document.getElementsByName("form_fields[LastName]")[0].value || document.getElementsByName("form_fields[lastname]")[0].value
+                        // || document.getElementsByName("form_fields[LastName]']")[0].value || document.getElementsByName("surname")[0].value
+                        // || document.getElementsByName("form_fields[LastName]']")[0].value  || document.getElementsByName("form_fields[lastname]")[0].value
+                        // : '';
                        
                         if(!strFName) 
                             strFName = document.getElementsByName("customerFirstName").length > 0 ? document.getElementsByName("customerFirstName")[0].value : '';

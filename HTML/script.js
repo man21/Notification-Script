@@ -1299,23 +1299,18 @@ if (typeof Influence === 'undefined') {
                     });
                 });
 
-                console.log("ENTERED HERE")
                 Events.onevent(document.body, 'click', true, function (e) {
                     if (e.target && e.target.className && e.target.className.indexOf && e.target.className.indexOf('FPqR') !== -1) {
                         var ancestors = DomUtil.getAncestors(e.target);
                         self.track('click', {
                             target: DomUtil.getNodeDescriptor(e.target)
                         });
-                        console.log("ENTERED*******")
                     }
                     else {
 
                         //for fetch submit event, for without <form></form>
                         var tagname = e.target.tagName;
-                        console.log(tagname, " TAG NAME")
-
                         var arrEmail = document.getElementsByName("email");
-                        console.log(arrEmail,"ARRY EMAIL ************")
                         var strFName = document.getElementsByName("firstname").length > 0 ? document.getElementsByName("firstname")[0].value : '';
                         var strLName = document.getElementsByName("lastname").length > 0 ? document.getElementsByName("lastname")[0].value : '';
                        
@@ -1325,24 +1320,20 @@ if (typeof Influence === 'undefined') {
                         if(!strLName) 
                             strLName = document.getElementsByName("customerLastName").length > 0 ? document.getElementsByName("customerLastName")[0].value : '';
                        
-                            console.log(strFName,"STR F NAME***")
                             var strEmail = '';
                         if (document.forms.length == 0 && tagname == 'BUTTON') {
                             if (e && e.target && e.target.innerText && exclued_button_text.indexOf(e.target.innerText.toLowerCase().replace(/\s/g, "")) !== -1) return;
                             if (arrEmail && arrEmail.length > 0 && arrEmail[0].type !== 'hidden') {
                                 strEmail = document.getElementsByName("email")[0].value;
-                                console.log(strEmail,"STR EMAIL 1")
                             }
                             else {
                                 strEmail = getEmailByInputType();
-                                console.log(strEmail,"STR EMAIL 2")
 
                             }
                             if (strEmail) {
                                 self.track('formsubmit', {
                                     form: Util.merge({ formId: Util.genGuid() }, { email: strEmail,firstname:strFName,lastname: strLName})
                                 });
-                                console.log(email,firstname,lastname, "*********************")
                             }
                         }
 
@@ -2446,6 +2437,7 @@ function getEmailByInputType() {
 }
 
 InfluenceTracker.prototype.tracker = function (info) {
+    console.log(info,"INFO *********************")
     if(info && info.value && info.value.event == 'mouseover') if(flagMouseOver) return; else flagMouseOver = true;
     var path = info.path;
     var value = info.value;
@@ -2460,7 +2452,6 @@ InfluenceTracker.prototype.tracker = function (info) {
         if(value.event == 'formsubmit'){
             if(value.form && !value.form.email){
                 value.form.email = getEmailByInputType();
-                console.log( value.form.email, "FORM SUBMIT")
             }
         }
         data.path = path;

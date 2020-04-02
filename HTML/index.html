@@ -80,10 +80,10 @@
 
   function feedbackCallBack() {
   
-    if ($('#form_submission_name').val() == '') {
-      alert("Please enter the Name");
+    // if ($('#form_submission_name').val() == '') {
+    //   alert("Please enter the Name");
 
-    } else {
+    // } else {
       var data = {
         name: $('#form_submission_name').val(),
         email: $('#form_submission_email').val(),
@@ -105,7 +105,7 @@
           console.log("error: ", err);
         }
       });
-    }
+    //}
 
   }
 

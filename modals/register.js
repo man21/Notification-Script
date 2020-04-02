@@ -5,14 +5,12 @@ const registerSchema = mongoose.Schema({
     name : {
         type : String,
     },
-    fName : {
-        type : String,
-        required : true
-    },
-    lName : {
-        type : String,
-        required : true
-    },
+    // fName : {
+    //     type : String,
+    // },
+    // lName : {
+    //     type : String,
+    // },
     email : {
         type : String,
         required : true

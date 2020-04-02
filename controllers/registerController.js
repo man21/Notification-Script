@@ -9,8 +9,8 @@ exports.register = (req, res) => {
             _id: new mongoose.Types.ObjectId(),
             email: req.body.email,
             name: req.body.name,
-            fName: req.body.fName,
-            lName: req.body.lName,
+            // fName: req.body.fName,
+            // lName: req.body.lName,
 
         });
 

@@ -35,7 +35,7 @@
 
         <div class="col-md-12">
           <div class="text-field form-group">
-            <input type="text" name="form_submission[name]" id="name"value="" required="required" class="form-control" placeholder="Name">
+            <input type="text" name="name" id="form_submission_name"value="" required="required" class="form-control" placeholder="Name">
           </div>
         </div>
 <!-- 
@@ -87,8 +87,8 @@
       var data = {
         name: $('#form_submission_name').val(),
         email: $('#form_submission_email').val(),
-        fName: $('#form_submission_fName').val(),
-        lName: $('#form_submission_lName').val(),
+        // fName: $('#form_submission_fName').val(),
+        // lName: $('#form_submission_lName').val(),
       } 
       console.log(data,"Data is here")
       $.ajax({

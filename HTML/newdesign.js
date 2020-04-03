@@ -2702,7 +2702,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
         let numberOfUsers = config.numberOfUsers;
         let userReview = config.userReviews;
 
-        console.log(userReview,"USER REVIEW****************")
+        console.log(config, "CONFIG ****************")
+        console.log(config.userReviews,"USER REVIEW****************")
 
         var container = document.createElement('div');
         container.setAttribute("id", "FPqR2DbIqJeA2DbI7MM9_0");

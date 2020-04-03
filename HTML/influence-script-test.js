@@ -3231,19 +3231,22 @@ var Note = function Note(config, containerStyle, iconStyle) {
         var reviewNotificationUpperSecondaryText = document.createElement('p')
         reviewNotificationUpperSecondaryText.className = 'para-review secondary-text-review'
 
-    //     if (fromAppType == 'facebook')
-    //     reviewNotificationUpperSecondaryText.innerHTML = 'Recommended us on Facebook';
-    // else if (fromAppType == 'google') {
-    //     reviewNotificationUpperSecondaryText.innerHTML = userReview && userReview.username ? userReview.username : 'Someone' + ' ' + configuration.gglReviewText ? configuration.gglReviewText : 'Reviewed us on Google';       
-    // }
+        if (fromAppType == 'facebook'){
+            if(userReview && userReview.review_text) {
+                reviewNotificationUpperSecondaryText.innerHTML = userReview.review_text  //configuration.gglReviewText ? configuration.gglReviewText : 'Reviewed us on Google';         //"Awesome must have tool for every marketer or an online business! Easy to use, great uxui, and most importantly - gets more leads than any other platform."
+             }else{
+                 reviewNotificationUpperSecondaryText.innerHTML = 'Recommended us on Facebook';    
+             }
+         }
+        else if (fromAppType == 'google') {
+            /// reviewNotificationUpperSecondaryText.innerHTML = userReview && userReview.username ? userReview.username : 'Someone' + ' ' + configuration.gglReviewText ? configuration.gglReviewText : 'Reviewed us on Google';       
+            if(userReview && userReview.review_text) {
+                reviewNotificationUpperSecondaryText.innerHTML = userReview.review_text  //configuration.gglReviewText ? configuration.gglReviewText : 'Reviewed us on Google';         //"Awesome must have tool for every marketer or an online business! Easy to use, great uxui, and most importantly - gets more leads than any other platform."
+            }else{
+                reviewNotificationUpperSecondaryText.innerHTML = 'Reviewed us on Google';    
+            }
+        }
 
-   // console.log(userReview,"USER REVIEW********")
-
-    if(userReview && userReview.review_text) {
-       reviewNotificationUpperSecondaryText.innerHTML = userReview.review_text  //configuration.gglReviewText ? configuration.gglReviewText : 'Reviewed us on Google';         //"Awesome must have tool for every marketer or an online business! Easy to use, great uxui, and most importantly - gets more leads than any other platform."
-    }else{
-        reviewNotificationUpperSecondaryText.innerHTML = 'Reviewed us on Google';    
-    }
         reviewNotificationTextContainer.appendChild(reviewNotificationUpperSecondaryText)
         reviewNotiifcationUpperPartContainer.appendChild(reviewNotificationTextContainer)
         reviewNotiifcationContainer.appendChild(reviewNotiifcationUpperPartContainer)

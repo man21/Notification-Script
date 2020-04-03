@@ -3159,12 +3159,12 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
 
         var reviewNotiifcationContainer = document.createElement('div')
-        reviewNotiifcationContainer.className = 'notif-card-review';
+        // reviewNotiifcationContainer.className = 'notif-card-review';
         reviewNotiifcationContainer.style= type == 'review' ? "display:block" : "display:none";
 
         
-        // var reviewNotiifcationMainContainer = document.createElement('div')
-        // reviewNotiifcationMainContainer.className = 'notif-card-review';
+        var reviewNotiifcationMainContainer = document.createElement('div')
+        reviewNotiifcationMainContainer.className = 'notif-card-review';
         //reviewNotiifcationContainer.style = containerStyle; 
 
         var reviewNotiifcationUpperPartContainer = document.createElement('div')
@@ -3455,8 +3455,9 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         reviewNotificationLowerTextContainer.appendChild(reviewNotificationLowerPTag)
 
-        reviewNotiifcationContainer.appendChild(reviewNotificationLowerTextContainer)
+        reviewNotiifcationMainContainer.appendChild(reviewNotificationLowerTextContainer)
        // reviewNotiifcationContainer.appendChild(reviewNotiifcationMainContainer)
+       reviewNotiifcationContainer.appendChild(reviewNotiifcationMainContainer)
 
 
 

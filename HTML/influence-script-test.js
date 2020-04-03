@@ -3237,10 +3237,10 @@ var Note = function Note(config, containerStyle, iconStyle) {
     //     reviewNotificationUpperSecondaryText.innerHTML = userReview && userReview.username ? userReview.username : 'Someone' + ' ' + configuration.gglReviewText ? configuration.gglReviewText : 'Reviewed us on Google';       
     // }
 
-    console.log(userReview,"USER REVIEW********")
+   // console.log(userReview,"USER REVIEW********")
 
-    console.log(userReview.review_text, "REVIEW TEXT")
-       reviewNotificationUpperSecondaryText.innerHTML = userReview.review_text  //configuration.gglReviewText ? configuration.gglReviewText : 'Reviewed us on Google';         //"Awesome must have tool for every marketer or an online business! Easy to use, great uxui, and most importantly - gets more leads than any other platform."
+    //console.log(userReview.review_text, "REVIEW TEXT")
+       reviewNotificationUpperSecondaryText.innerHTML = "hello" //userReview.review_text  //configuration.gglReviewText ? configuration.gglReviewText : 'Reviewed us on Google';         //"Awesome must have tool for every marketer or an online business! Easy to use, great uxui, and most importantly - gets more leads than any other platform."
 
         reviewNotificationTextContainer.appendChild(reviewNotificationUpperSecondaryText)
         reviewNotiifcationUpperPartContainer.appendChild(reviewNotificationTextContainer)

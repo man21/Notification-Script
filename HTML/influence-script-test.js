@@ -3,7 +3,7 @@ var exclued_button_text = 'login,signin,loginnow,memberlogin,accountlogin';
 var __pathname = window.location.pathname;
 __pathname = '/' + __pathname.split('/')[1];
 
-var influenceScript = 'influence-script-test.js';
+var influenceScript = 'influence-script-new-design.js';
 var BASE_URL = "https://api.useinfluence.co";
 
 document.addEventListener('visibilitychange', function (e) {
@@ -203,6 +203,7 @@ if (typeof Influence === 'undefined') {
                         longitude: response.lon,
                         city: response.city,
                         country: response.country,
+                        region: response.region,
                         ip: response.query
                     });
                 else
@@ -1311,9 +1312,23 @@ if (typeof Influence === 'undefined') {
                         var tagname = e.target.tagName;
                         var arrEmail = document.getElementsByName("email");
                         var strFName = document.getElementsByName("firstname").length > 0 ? document.getElementsByName("firstname")[0].value : '';
+
                         var strLName = document.getElementsByName("lastname").length > 0 ? document.getElementsByName("lastname")[0].value : '';
-                        if(!strFName) 
-                            strFName = document.getElementsByName("customerFirstName").length > 0 ? document.getElementsByName("customerFirstName")[0].value : '';
+
+                        if(!strFName)     
+                            strFName = document.getElementsByName("customerFirstName").length > 0 ? document.getElementsByName("customerFirstName")[0].value  //: '';
+                            || document.getElementsByName("firstname")[0].value
+                            || document.getElementsByName("form_fields[name]")[0].value || document.getElementsByName("form_fields[firstname]")[0].value 
+                            || document.getElementsByName("your-name")[0].value || document.getElementsByName("name")[0].value  || document.getElementsByName("NAMA")[0].value
+                            || document.getElementsByName("FNAME")[0].value  || document.getElementsByName("customerFirstName")[0].value
+                            || document.getElementsByName("Fname")[0].value  || document.getElementsByName("nama")[0].value
+                            || document.getElementsByName("NAME")[0].value  || document.getElementsByName("FIRSTNAME")[0].value
+                            || document.getElementsByName("username")[0].value  || document.getElementsByName("FIRST NAME")[0].value
+                            || document.getElementsByName("UserName")[0].value  || document.getElementsByName("USERNAME")[0].value
+                            || document.getElementsByName("userName")[0].value  || document.getElementsByName("Username")[0].value
+                            || document.getElementsByName("user_id")[0].value     
+                            : '';
+
                         if(!strLName) 
                             strLName = document.getElementsByName("customerLastName").length > 0 ? document.getElementsByName("customerLastName")[0].value : '';
                         var strEmail = '';
@@ -2143,39 +2158,12 @@ async function loopThroughSplittedNotifications(splittedUrls, rule, notification
     // link.id = "stylesheetID";
     // document.getElementsByTagName("head")[0].appendChild(link);
 
-
-    var bulkCSS = document.createElement("link");
-    // bulkCSS.href = 'https://storage.googleapis.com/influence-197607.appspot.com/bulkStyle.css';
-    bulkCSS.href = 'https://test2109.herokuapp.com/bulkStyle.css';
-    bulkCSS.type = "text/css";
-    bulkCSS.rel = "stylesheet";
-    bulkCSS.id = "stylesheetID";
-    document.getElementsByTagName("head")[0].appendChild(bulkCSS);
-
-
-    var liveCSS = document.createElement("link");
-    // liveCSS.href = 'https://storage.googleapis.com/influence-197607.appspot.com/liveStyle.css';
-    liveCSS.href = 'https://test2109.herokuapp.com/liveStyle.css';
-    liveCSS.type = "text/css";
-    liveCSS.rel = "stylesheet";
-    liveCSS.id = "stylesheetID";
-    document.getElementsByTagName("head")[0].appendChild(liveCSS);
-
-    var recentCSS = document.createElement("link");
-    recentCSS.href = 'https://test2109.herokuapp.com/recentStyle.css';
-    // recentCSS.href = 'https://storage.googleapis.com//influence-197607.appspot.com/recentStyle.css';
-    recentCSS.type = "text/css";
-    recentCSS.rel = "stylesheet";
-    recentCSS.id = "stylesheetID";
-    document.getElementsByTagName("head")[0].appendChild(recentCSS);
-
-    var reviewCSS = document.createElement("link");
-    // reviewCSS.href = 'https://storage.googleapis.com/influence-197607.appspot.com/reviewStyle.css';
-    reviewCSS.href = 'https://test2109.herokuapp.com/reviewStyle.css';
-    reviewCSS.type = "text/css";
-    reviewCSS.rel = "stylesheet";
-    reviewCSS.id = "stylesheetID";
-    document.getElementsByTagName("head")[0].appendChild(reviewCSS);
+    var newDesignCSS = document.createElement("link");
+    newDesignCSS.href = 'https://storage.googleapis.com/influence-197607.appspot.com/design.css';
+    newDesignCSS.type = "text/css";
+    newDesignCSS.rel = "stylesheet";
+    newDesignCSS.id = "stylesheetID";
+    document.getElementsByTagName("head")[0].appendChild(newDesignCSS);
 
     var animationLink = document.createElement("link");
     animationLink.href = 'https://storage.googleapis.com/influence-197607.appspot.com/animate.css';
@@ -2185,22 +2173,22 @@ async function loopThroughSplittedNotifications(splittedUrls, rule, notification
     document.getElementsByTagName("head")[0].appendChild(animationLink);
 
 
-    var fontCSS = document.createElement("link");
-    fontCSS.href = 'https://fonts.googleapis.com/css?family=Lato|Poppins:300,400,500,600,700&display=swap';
-    fontCSS.type = "text/css";
-    fontCSS.rel = "stylesheet";
-    fontCSS.id = "stylesheetID";
-    document.getElementsByTagName("head")[0].appendChild(fontCSS);
+    // var fontCSS = document.createElement("link");
+    // fontCSS.href = 'https://fonts.googleapis.com/css?family=Lato|Poppins:300,400,500,600,700&display=swap';
+    // fontCSS.type = "text/css";
+    // fontCSS.rel = "stylesheet";
+    // fontCSS.id = "stylesheetID";
+    // document.getElementsByTagName("head")[0].appendChild(fontCSS);
 
 
-    var fontJS = document.createElement("script");
-    fontJS.src = 'https://use.fontawesome.com/343c65acc3.js';
-    document.getElementsByTagName("head")[0].appendChild(fontJS);
+    // var fontJS = document.createElement("script");
+    // fontJS.src = 'https://use.fontawesome.com/343c65acc3.js';
+    // document.getElementsByTagName("head")[0].appendChild(fontJS);
 
 
     let j = 1;
     var responseNotifications = [];
-    var loopCheckValue = rule.loopNotification ? 1000 : 3;
+    var loopCheckValue = rule.loopNotification ? 1000 : 1;
     let responseNotif = (callback) => {
         let splittedUrlsSingle = ['live']
         splittedUrlsSingle.map(async notifName => {
@@ -2209,7 +2197,7 @@ async function loopThroughSplittedNotifications(splittedUrls, rule, notification
             await httpGetAsync(url, function (res) {
                 response = JSON.parse(res);
                 responseNotifications = response.message;
-                if (!rule.loopNotification && response.totalCampaign) loopCheckValue = 3 * response.totalCampaign;
+                if (!rule.loopNotification && response.totalCampaign) loopCheckValue = 1 * response.totalCampaign;
                 callback(null, responseNotifications, config)
             });
         });
@@ -2252,14 +2240,11 @@ async function loopThroughSplittedNotifications(splittedUrls, rule, notification
                             let paths = configurations.length > 1 && key == 'journey' ? configurations[pathIndex].paths : configurations.length ? configurations[0].paths : [];
                             
                             let configuration;
-                            console.log(configurations, "COnfigurations in 1st method")
 
                             if (configurations.length)
                                 configuration = configurations.length > 1 && key == 'journey' ? configurations[pathIndex].configuration : configurations.length ? configurations[0].configuration : {};
                             else
                                 configuration = undefined;
-
-                                console.log(configuration, "configiration in 1st methos")
 
                             let liveVisitorCount =0;
                             if (key == 'live') {
@@ -2296,7 +2281,6 @@ async function loopThroughSplittedNotifications(splittedUrls, rule, notification
                                 }
                             }
 
-                            console.log(j, "Value of j")
                             //let userDetails = info.userDetails && info.userDetails.length && key == 'journey' ? info.userDetails.filter(user => user) : [];
                             let userDetails = info.userDetails;
                             let userReviews = info.userReviews;
@@ -2376,7 +2360,6 @@ function generateRandomNumber(randomDelayTime, tempRandomDelayTime, displayTime,
 }
 
 function notificationTimeout(i, info, rule, key, notificationPath) {
-    console.log(key, "KEY in notification TIME OUT")
     if (notificationPath.indexOf(__pathname) === -1 && notificationPath.indexOf(window.location.pathname) === -1 && !rule.displayOnAllPages)
         return;
     var note = new Note({});
@@ -2628,6 +2611,9 @@ var timeSince = function (date,configuration) {
     // if (interval > 1 || interval === 0) {
     //     intervalType += 's';
     // }
+    if (interval < 0) {
+        interval = 1;
+    }
     var extraT = configuration.extraText ? configuration.extraText + ' ' : '';
     return extraT + interval + ' ' + intervalType;
 };
@@ -2765,8 +2751,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         var recentNotificationImage = document.createElement('img')
         recentNotificationImage.className = 'image-recent'
-        var res_img = 'https://storage.googleapis.com/influence-197607.appspot.com/default_icon.png';
 
+        var res_img = 'https://storage.googleapis.com/influence-197607.appspot.com/default_icon.png';
 
         if (userDetails && userDetails) {
             if (userDetails.productImg) {
@@ -2774,20 +2760,19 @@ var Note = function Note(config, containerStyle, iconStyle) {
             }
             else if (configuration && configuration.toggleMap == 'map') {
                 if (userDetails.city && userDetails.country) {
-                    res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=kvOeRnlot3fdBnbvum3X&app_code=ddELOikTE8aZ-xDs5mtRJw&ci=${userDetails.city}&co=${userDetails.country}&z=10&h=200&w=200`;
+                    res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=djP4XpkRM0S4leGISdfD&app_code=LyFZgCv43sC6oCu7Hhkc9g&ci=${userDetails.city}&co=${userDetails.country}&z=10&h=200&w=200`;
                 }
                 else if (userDetails.city) {
-                    res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=kvOeRnlot3fdBnbvum3X&app_code=ddELOikTE8aZ-xDs5mtRJw&ci=${userDetails.city}&z=10&h=200&w=200`;
+                    res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=djP4XpkRM0S4leGISdfD&app_code=LyFZgCv43sC6oCu7Hhkc9g&ci=${userDetails.city}&z=10&h=200&w=200`;
                 }
                 else if (userDetails.country) {
-                    res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=kvOeRnlot3fdBnbvum3X&app_code=ddELOikTE8aZ-xDs5mtRJw&co=${userDetails.country}&z=10&h=200&w=200`;
+                    res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=djP4XpkRM0S4leGISdfD&app_code=LyFZgCv43sC6oCu7Hhkc9g&co=${userDetails.country}&z=10&h=200&w=200`;
                 }
             }
             else if (configuration && configuration.panelStyle) {
                 res_img = configuration.panelStyle.image;
             }
         }
-
 
         recentNotificationImage.setAttribute('src', res_img ? res_img : "https://storage.googleapis.com/influence-197607.appspot.com/user_icon.png");
         recentNotificationImage.style = iconStyle;
@@ -2888,8 +2873,33 @@ var Note = function Note(config, containerStyle, iconStyle) {
         var recentNotificationFooterverified = document.createElement('em')
         recentNotificationFooterverified.className = 'verified-icon-recent'
 
-        var recentNotificationTick = document.createElement('i')
-        recentNotificationTick.className = 'fa fa-check-circle'
+        var recentNotificationTick = document.createElement('span')
+        recentNotificationTick.innerHTML = `<svg width="9" height="9" viewBox="0 0 524 524" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+        <style>.cls-1 {
+                fill: #5d93fe;
+            }
+            .cls-2 {
+                fill: #5d93fe;
+                filter: url(#a);
+            }
+            .cls-3 {
+                fill: #fff;
+                fill-rule: evenodd;
+            }</style>
+        <filter id="a" x="51" y="51" width="423" height="423" filterUnits="userSpaceOnUse">
+        <feOffset in="SourceAlpha" result="offset"/>
+        <feGaussianBlur result="blur" stdDeviation="2.236"/>
+        <feFlood flood-opacity=".06" result="flood"/>
+        <feComposite in2="blur" operator="in" result="composite"/>
+        <feBlend in="SourceGraphic" result="blend"/>
+        </filter>
+        </defs>
+        <circle class="cls-1" cx="262" cy="262" r="262"/>
+        <circle class="cls-2" cx="262" cy="262" r="207"/>
+        <path class="cls-3" transform="translate(-640 -238)" d="m833.89 478.95 81.132 65.065a9 9 0 0 1 1.391 12.652l-25.651 31.985a9 9 0 0 1-12.652 1.39l-81.132-65.065a9 9 0 0 1-1.391-12.652l25.651-31.985a9 9 0 0 1 12.652-1.39z"/>
+        <path class="cls-3" transform="translate(-640 -238)" d="m846.25 552.7 127.39-144.5a9.721 9.721 0 0 1 13.35-1.047l29.679 24.286a8.9 8.9 0 0 1 1.08 12.862l-127.39 144.5a9.721 9.721 0 0 1-13.35 1.047l-29.675-24.286a8.9 8.9 0 0 1-1.087-12.861z"/>
+        </svg>`
         recentNotificationFooterverified.appendChild(recentNotificationTick)
 
         recentNotificationLowerPTag.appendChild(recentNotificationFooterverified)
@@ -2903,8 +2913,33 @@ var Note = function Note(config, containerStyle, iconStyle) {
         var recentNotificationFooterDot = document.createElement('em')
         recentNotificationFooterDot.className = 'footer-dot-recent'
 
-        var recentNotificationFooterCircle = document.createElement('i')
-        recentNotificationFooterCircle.className = 'fa fa-circle'
+        var recentNotificationFooterCircle = document.createElement('span')
+        recentNotificationFooterCircle.innerHTML = `<svg width="9" height="9" viewBox="0 0 524 524" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+        <style>.cls-1 {
+                fill: #5d93fe;
+            }
+            .cls-2 {
+                fill: #5d93fe;
+                filter: url(#a);
+            }
+            .cls-3 {
+                fill: #fff;
+                fill-rule: evenodd;
+            }</style>
+        <filter id="a" x="51" y="51" width="423" height="423" filterUnits="userSpaceOnUse">
+        <feOffset in="SourceAlpha" result="offset"/>
+        <feGaussianBlur result="blur" stdDeviation="2.236"/>
+        <feFlood flood-opacity=".06" result="flood"/>
+        <feComposite in2="blur" operator="in" result="composite"/>
+        <feBlend in="SourceGraphic" result="blend"/>
+        </filter>
+        </defs>
+        <circle class="cls-1" cx="262" cy="262" r="262"/>
+        <circle class="cls-2" cx="262" cy="262" r="207"/>
+        <path class="cls-3" transform="translate(-640 -238)" d="m833.89 478.95 81.132 65.065a9 9 0 0 1 1.391 12.652l-25.651 31.985a9 9 0 0 1-12.652 1.39l-81.132-65.065a9 9 0 0 1-1.391-12.652l25.651-31.985a9 9 0 0 1 12.652-1.39z"/>
+        <path class="cls-3" transform="translate(-640 -238)" d="m846.25 552.7 127.39-144.5a9.721 9.721 0 0 1 13.35-1.047l29.679 24.286a8.9 8.9 0 0 1 1.08 12.862l-127.39 144.5a9.721 9.721 0 0 1-13.35 1.047l-29.675-24.286a8.9 8.9 0 0 1-1.087-12.861z"/>
+        </svg>`
 
         recentNotificationFooterDot.appendChild(recentNotificationFooterCircle)
         recentNotificationLowerPTag.appendChild(recentNotificationFooterDot)
@@ -3071,8 +3106,33 @@ var Note = function Note(config, containerStyle, iconStyle) {
         var liveNotificationFooterverified = document.createElement('em')
         liveNotificationFooterverified.className= 'lkjhgvftg'
     
-        var liveNotificationTick = document.createElement('i')
-        liveNotificationTick.className ='fa fa-check-circle'
+        var liveNotificationTick = document.createElement('span')
+        liveNotificationTick.innerHTML =`<svg width="9" height="9" viewBox="0 0 524 524" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+        <style>.cls-1 {
+                fill: #5d93fe;
+            }
+            .cls-2 {
+                fill: #5d93fe;
+                filter: url(#a);
+            }
+            .cls-3 {
+                fill: #fff;
+                fill-rule: evenodd;
+            }</style>
+        <filter id="a" x="51" y="51" width="423" height="423" filterUnits="userSpaceOnUse">
+        <feOffset in="SourceAlpha" result="offset"/>
+        <feGaussianBlur result="blur" stdDeviation="2.236"/>
+        <feFlood flood-opacity=".06" result="flood"/>
+        <feComposite in2="blur" operator="in" result="composite"/>
+        <feBlend in="SourceGraphic" result="blend"/>
+        </filter>
+        </defs>
+        <circle class="cls-1" cx="262" cy="262" r="262"/>
+        <circle class="cls-2" cx="262" cy="262" r="207"/>
+        <path class="cls-3" transform="translate(-640 -238)" d="m833.89 478.95 81.132 65.065a9 9 0 0 1 1.391 12.652l-25.651 31.985a9 9 0 0 1-12.652 1.39l-81.132-65.065a9 9 0 0 1-1.391-12.652l25.651-31.985a9 9 0 0 1 12.652-1.39z"/>
+        <path class="cls-3" transform="translate(-640 -238)" d="m846.25 552.7 127.39-144.5a9.721 9.721 0 0 1 13.35-1.047l29.679 24.286a8.9 8.9 0 0 1 1.08 12.862l-127.39 144.5a9.721 9.721 0 0 1-13.35 1.047l-29.675-24.286a8.9 8.9 0 0 1-1.087-12.861z"/>
+        </svg>`
         liveNotificationFooterverified.appendChild(liveNotificationTick)
     
         liveNotificationLowerPTag.appendChild(liveNotificationFooterverified)
@@ -3100,8 +3160,12 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         
         var reviewNotiifcationContainer = document.createElement('div')
-        reviewNotiifcationContainer.className = 'notif-card-review';
+
         reviewNotiifcationContainer.style= type == 'review' ? "display:block" : "display:none";
+
+        
+        var reviewNotiifcationMainContainer = document.createElement('div')
+        reviewNotiifcationMainContainer.className = 'notif-card-review';
         //reviewNotiifcationContainer.style = containerStyle;
 
         var reviewNotiifcationUpperPartContainer = document.createElement('div')
@@ -3168,6 +3232,22 @@ var Note = function Note(config, containerStyle, iconStyle) {
         reviewNotificationUpperStarContainer.className = 'footer-star-container-review'
 
 
+        var reviewNotificationUpperStar = document.createElement('span')
+        var star = '';
+        if (userReview && userReview.rating) {
+            for (let star_i = 0; star_i < userReview.rating; star_i++) {
+                star += `<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                   viewBox="0 0 53.867 53.867" style="enable-background:new 0 0 53.867 53.867;" xml:space="preserve">
+                    <polygon style="fill:rgb(255, 215, 0, 1);" points="26.934,1.318 35.256,18.182 53.867,20.887 40.4,34.013 43.579,52.549 26.934,43.798 
+                    10.288,52.549 13.467,34.013 0,20.887 18.611,18.182 "/>
+                  </svg>`
+            }
+        }
+
+        reviewNotificationUpperStar.innerHTML= star
+        reviewNotificationUpperStarContainer.appendChild(reviewNotificationUpperStar)
+
+
         // var star = '';
         // if (userReview && userReview.rating) {
         //     for (let star_i = 0; star_i < userReview.rating; star_i++) {
@@ -3185,42 +3265,29 @@ var Note = function Note(config, containerStyle, iconStyle) {
         //console.log(reviewNotificationUpperStarContainer,"YES")
 
 
-        var reviewNotificationStar1 = document.createElement('i')
+         var reviewNotificationStar1 = document.createElement('span')
+        // if (userReview && userReview.rating) {
+        //     for (let star_i = 0; star_i < userReview.rating; star_i++) {
+        //         reviewNotificationStar1.className = 'fa fa-star';
+        //         reviewNotificationUpperStarContainer.appendChild(reviewNotificationStar1)
+
+        //     }
+        // }
+
+
+        var star = '';
         if (userReview && userReview.rating) {
             for (let star_i = 0; star_i < userReview.rating; star_i++) {
-                reviewNotificationStar1.className = 'fa fa-star';
-                reviewNotificationUpperStarContainer.appendChild(reviewNotificationStar1)
-
+                star += `<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                   viewBox="0 0 53.867 53.867" style="enable-background:new 0 0 53.867 53.867;" xml:space="preserve">
+                    <polygon style="fill:rgb(255, 215, 0, 1);" points="26.934,1.318 35.256,18.182 53.867,20.887 40.4,34.013 43.579,52.549 26.934,43.798 
+                    10.288,52.549 13.467,34.013 0,20.887 18.611,18.182 "/>
+                  </svg>`
             }
         }
 
-      //  console.log(star ,"STAR VALUE in REVIEW NOTIFICATIOn")
-       // reviewNotificationUpperStarContainer.innerHTML= star
-
-
-
-
-        // var reviewNotificationStar1 = document.createElement('i')
-        // reviewNotificationStar1.className = 'fa fa-star'
-        // reviewNotificationUpperStarContainer.appendChild(reviewNotificationStar1)
-
-        // var reviewNotificationStar2 = document.createElement('i')
-        // reviewNotificationStar2.className = 'fa fa-star'
-        // reviewNotificationUpperStarContainer.appendChild(reviewNotificationStar2)
-
-        // var reviewNotificationStar3 = document.createElement('i')
-        // reviewNotificationStar3.className = 'fa fa-star'
-        // reviewNotificationUpperStarContainer.appendChild(reviewNotificationStar3)
-
-        // var reviewNotificationStar4 = document.createElement('i')
-        // reviewNotificationStar4.className = 'fa fa-star'
-        // reviewNotificationUpperStarContainer.appendChild(reviewNotificationStar4)
-
-        // var reviewNotificationStar5 = document.createElement('i')
-        // reviewNotificationStar5.className = 'fa fa-star-half'
-        // reviewNotificationUpperStarContainer.appendChild(reviewNotificationStar5)
-
-
+        reviewNotificationStar1.innerHTML= star
+        reviewNotificationUpperStarContainer.appendChild(reviewNotificationStar1)
 
 
         reviewNotificationUpperLogoContainer.appendChild(reviewNotificationUpperStarContainer)
@@ -3231,22 +3298,18 @@ var Note = function Note(config, containerStyle, iconStyle) {
         var reviewNotificationUpperSecondaryText = document.createElement('p')
         reviewNotificationUpperSecondaryText.className = 'para-review secondary-text-review'
 
-        if (fromAppType == 'facebook'){
-            if(userReview && userReview.review_text) {
-                reviewNotificationUpperSecondaryText.innerHTML = userReview.review_text  //configuration.gglReviewText ? configuration.gglReviewText : 'Reviewed us on Google';         //"Awesome must have tool for every marketer or an online business! Easy to use, great uxui, and most importantly - gets more leads than any other platform."
-             }else{
-                 reviewNotificationUpperSecondaryText.innerHTML = 'Recommended us on Facebook';    
-             }
-         }
-        else if (fromAppType == 'google') {
-            /// reviewNotificationUpperSecondaryText.innerHTML = userReview && userReview.username ? userReview.username : 'Someone' + ' ' + configuration.gglReviewText ? configuration.gglReviewText : 'Reviewed us on Google';       
-            if(userReview && userReview.review_text) {
-                reviewNotificationUpperSecondaryText.innerHTML = userReview.review_text  //configuration.gglReviewText ? configuration.gglReviewText : 'Reviewed us on Google';         //"Awesome must have tool for every marketer or an online business! Easy to use, great uxui, and most importantly - gets more leads than any other platform."
-            }else{
-                reviewNotificationUpperSecondaryText.innerHTML = 'Reviewed us on Google';    
-            }
-        }
+    //     if (fromAppType == 'facebook')
+    //     reviewNotificationUpperSecondaryText.innerHTML = 'Recommended us on Facebook';
+    // else if (fromAppType == 'google') {
+    //     reviewNotificationUpperSecondaryText.innerHTML = userReview && userReview.username ? userReview.username : 'Someone' + ' ' + configuration.gglReviewText ? configuration.gglReviewText : 'Reviewed us on Google';       
+    // }
 
+    if(userReview && userReview.review_text) {
+        reviewNotificationUpperSecondaryText.innerHTML = userReview.review_text  //configuration.gglReviewText ? configuration.gglReviewText : 'Reviewed us on Google';         //"Awesome must have tool for every marketer or an online business! Easy to use, great uxui, and most importantly - gets more leads than any other platform."
+     }else{
+         reviewNotificationUpperSecondaryText.innerHTML = 'Reviewed us on Google';    
+     }
+     
         reviewNotificationTextContainer.appendChild(reviewNotificationUpperSecondaryText)
         reviewNotiifcationUpperPartContainer.appendChild(reviewNotificationTextContainer)
         reviewNotiifcationContainer.appendChild(reviewNotiifcationUpperPartContainer)
@@ -3281,36 +3344,22 @@ var Note = function Note(config, containerStyle, iconStyle) {
         //reviewNotificationFooterStarContainer.innerHTML= star
 
 
-        var reviewNotificationFooterStar1 = document.createElement('i')
+        
+        var reviwNotificationFooterStar1 = document.createElement('span')
+        reviwNotificationFooterStar1.style= "display: flex"
+
+        var star = '';
         if (userReview && userReview.rating) {
             for (let star_i = 0; star_i < userReview.rating; star_i++) {
-                reviewNotificationFooterStar1.className = 'fa fa-star';
-                reviewNotificationFooterStarContainer.appendChild(reviewNotificationFooterStar1)
-
+                star += `<svg version="1.1" style= "height: 10px; width: 10px" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                   viewBox="0 0 53.867 53.867" style="enable-background:new 0 0 53.867 53.867;" xml:space="preserve">
+                    <polygon style="fill:rgb(255, 215, 0, 1);" points="26.934,1.318 35.256,18.182 53.867,20.887 40.4,34.013 43.579,52.549 26.934,43.798 
+                    10.288,52.549 13.467,34.013 0,20.887 18.611,18.182 "/>
+                  </svg>`
             }
         }
-
-
-        // var reviewNotificationFooterStar1 = document.createElement('i')
-        // reviewNotificationFooterStar1.className = 'fa fa-star'
-
-        // reviewNotificationFooterStarContainer.appendChild(reviewNotificationFooterStar1)
-
-        // var reviewNotificationFooterStar2 = document.createElement('i')
-        // reviewNotificationFooterStar2.className = 'fa fa-star'
-        // reviewNotificationFooterStarContainer.appendChild(reviewNotificationFooterStar2)
-
-        // var reviewNotificationFooterStar3 = document.createElement('i')
-        // reviewNotificationFooterStar3.className = 'fa fa-star'
-        // reviewNotificationFooterStarContainer.appendChild(reviewNotificationFooterStar3)
-
-        // var reviewNotificationFooterStar4 = document.createElement('i')
-        // reviewNotificationFooterStar4.className = 'fa fa-star'
-        // reviewNotificationFooterStarContainer.appendChild(reviewNotificationFooterStar4)
-
-        // var reviewNotificationFooterStar5 = document.createElement('i')
-        // reviewNotificationFooterStar5.className = 'fa fa-star-half'
-        // reviewNotificationFooterStarContainer.appendChild(reviewNotificationFooterStar5)
+        reviwNotificationFooterStar1.innerHTML= star
+        reviewNotificationFooterStarContainer.appendChild(reviwNotificationFooterStar1)
 
         reviewNotificationFooterLogoContainer.appendChild(reviewNotificationFooterStarContainer)
         reviewNotificationFooterLeft.appendChild(reviewNotificationFooterLogoContainer)
@@ -3328,8 +3377,33 @@ var Note = function Note(config, containerStyle, iconStyle) {
         var reviewNotificationFooterverified = document.createElement('em')
         reviewNotificationFooterverified.className = 'verified-icon-review'
 
-        var reviewNotificationTick = document.createElement('i')
-        reviewNotificationTick.className = 'fa fa-check-circle'
+        var reviewNotificationTick = document.createElement('span')
+        reviewNotificationTick.innerHTML = `<svg width="9" height="9" viewBox="0 0 524 524" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+        <style>.cls-1 {
+                fill: #5d93fe;
+            }
+            .cls-2 {
+                fill: #5d93fe;
+                filter: url(#a);
+            }
+            .cls-3 {
+                fill: #fff;
+                fill-rule: evenodd;
+            }</style>
+        <filter id="a" x="51" y="51" width="423" height="423" filterUnits="userSpaceOnUse">
+        <feOffset in="SourceAlpha" result="offset"/>
+        <feGaussianBlur result="blur" stdDeviation="2.236"/>
+        <feFlood flood-opacity=".06" result="flood"/>
+        <feComposite in2="blur" operator="in" result="composite"/>
+        <feBlend in="SourceGraphic" result="blend"/>
+        </filter>
+        </defs>
+        <circle class="cls-1" cx="262" cy="262" r="262"/>
+        <circle class="cls-2" cx="262" cy="262" r="207"/>
+        <path class="cls-3" transform="translate(-640 -238)" d="m833.89 478.95 81.132 65.065a9 9 0 0 1 1.391 12.652l-25.651 31.985a9 9 0 0 1-12.652 1.39l-81.132-65.065a9 9 0 0 1-1.391-12.652l25.651-31.985a9 9 0 0 1 12.652-1.39z"/>
+        <path class="cls-3" transform="translate(-640 -238)" d="m846.25 552.7 127.39-144.5a9.721 9.721 0 0 1 13.35-1.047l29.679 24.286a8.9 8.9 0 0 1 1.08 12.862l-127.39 144.5a9.721 9.721 0 0 1-13.35 1.047l-29.675-24.286a8.9 8.9 0 0 1-1.087-12.861z"/>
+        </svg>`
         reviewNotificationFooterverified.appendChild(reviewNotificationTick)
 
         reviewNotificationLowerPTag.appendChild(reviewNotificationFooterverified)
@@ -3343,8 +3417,33 @@ var Note = function Note(config, containerStyle, iconStyle) {
         var reviewNotificationFooterDot = document.createElement('em')
         reviewNotificationFooterDot.className = 'footer-dot-review'
 
-        var reviewNotificationFooterCircle = document.createElement('i')
-        reviewNotificationFooterCircle.className = 'fa fa-circle'
+        var reviewNotificationFooterCircle = document.createElement('span')
+        reviewNotificationFooterCircle.innerHTML = `<svg width="9" height="9" viewBox="0 0 524 524" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+        <style>.cls-1 {
+                fill: #5d93fe;
+            }
+            .cls-2 {
+                fill: #5d93fe;
+                filter: url(#a);
+            }
+            .cls-3 {
+                fill: #fff;
+                fill-rule: evenodd;
+            }</style>
+        <filter id="a" x="51" y="51" width="423" height="423" filterUnits="userSpaceOnUse">
+        <feOffset in="SourceAlpha" result="offset"/>
+        <feGaussianBlur result="blur" stdDeviation="2.236"/>
+        <feFlood flood-opacity=".06" result="flood"/>
+        <feComposite in2="blur" operator="in" result="composite"/>
+        <feBlend in="SourceGraphic" result="blend"/>
+        </filter>
+        </defs>
+        <circle class="cls-1" cx="262" cy="262" r="262"/>
+        <circle class="cls-2" cx="262" cy="262" r="207"/>
+        <path class="cls-3" transform="translate(-640 -238)" d="m833.89 478.95 81.132 65.065a9 9 0 0 1 1.391 12.652l-25.651 31.985a9 9 0 0 1-12.652 1.39l-81.132-65.065a9 9 0 0 1-1.391-12.652l25.651-31.985a9 9 0 0 1 12.652-1.39z"/>
+        <path class="cls-3" transform="translate(-640 -238)" d="m846.25 552.7 127.39-144.5a9.721 9.721 0 0 1 13.35-1.047l29.679 24.286a8.9 8.9 0 0 1 1.08 12.862l-127.39 144.5a9.721 9.721 0 0 1-13.35 1.047l-29.675-24.286a8.9 8.9 0 0 1-1.087-12.861z"/>
+        </svg>`
 
         reviewNotificationFooterDot.appendChild(reviewNotificationFooterCircle)
         reviewNotificationLowerPTag.appendChild(reviewNotificationFooterDot)
@@ -3357,7 +3456,9 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         reviewNotificationLowerTextContainer.appendChild(reviewNotificationLowerPTag)
 
-        reviewNotiifcationContainer.appendChild(reviewNotificationLowerTextContainer)
+        reviewNotiifcationMainContainer.appendChild(reviewNotificationLowerTextContainer)
+        reviewNotiifcationContainer.appendChild(reviewNotiifcationMainContainer)
+
 
 
 
@@ -3471,8 +3572,33 @@ var Note = function Note(config, containerStyle, iconStyle) {
         var bulkNotificationFooterverified = document.createElement('em')
         bulkNotificationFooterverified.className= 'verified-icon-bulk'
     
-        var bulkNotificationTick = document.createElement('i')
-        bulkNotificationTick.className ='fa fa-check-circle'
+        var bulkNotificationTick = document.createElement('span')
+        bulkNotificationTick.innerHTML = `<svg width="9" height="9" viewBox="0 0 524 524" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+        <style>.cls-1 {
+                fill: #5d93fe;
+            }
+            .cls-2 {
+                fill: #5d93fe;
+                filter: url(#a);
+            }
+            .cls-3 {
+                fill: #fff;
+                fill-rule: evenodd;
+            }</style>
+        <filter id="a" x="51" y="51" width="423" height="423" filterUnits="userSpaceOnUse">
+        <feOffset in="SourceAlpha" result="offset"/>
+        <feGaussianBlur result="blur" stdDeviation="2.236"/>
+        <feFlood flood-opacity=".06" result="flood"/>
+        <feComposite in2="blur" operator="in" result="composite"/>
+        <feBlend in="SourceGraphic" result="blend"/>
+        </filter>
+        </defs>
+        <circle class="cls-1" cx="262" cy="262" r="262"/>
+        <circle class="cls-2" cx="262" cy="262" r="207"/>
+        <path class="cls-3" transform="translate(-640 -238)" d="m833.89 478.95 81.132 65.065a9 9 0 0 1 1.391 12.652l-25.651 31.985a9 9 0 0 1-12.652 1.39l-81.132-65.065a9 9 0 0 1-1.391-12.652l25.651-31.985a9 9 0 0 1 12.652-1.39z"/>
+        <path class="cls-3" transform="translate(-640 -238)" d="m846.25 552.7 127.39-144.5a9.721 9.721 0 0 1 13.35-1.047l29.679 24.286a8.9 8.9 0 0 1 1.08 12.862l-127.39 144.5a9.721 9.721 0 0 1-13.35 1.047l-29.675-24.286a8.9 8.9 0 0 1-1.087-12.861z"/>
+        </svg>`
         bulkNotificationFooterverified.appendChild(bulkNotificationTick)
     
         bulkNotificationLowerPTag.appendChild(bulkNotificationFooterverified)

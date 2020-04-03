@@ -3311,11 +3311,11 @@ var Note = function Note(config, containerStyle, iconStyle) {
      
         reviewNotificationTextContainer.appendChild(reviewNotificationUpperSecondaryText)
         reviewNotiifcationUpperPartContainer.appendChild(reviewNotificationTextContainer)
-        reviewNotiifcationContainer.appendChild(reviewNotiifcationUpperPartContainer)
+        reviewNotiifcationMainContainer.appendChild(reviewNotiifcationUpperPartContainer)
 
         var reviewNotificationBorder = document.createElement('div')
         reviewNotificationBorder.className = 'border-review'
-        reviewNotiifcationContainer.appendChild(reviewNotificationBorder)
+        reviewNotiifcationMainContainer.appendChild(reviewNotificationBorder)
 
         var reviewNotificationLowerTextContainer = document.createElement('div')
         reviewNotificationLowerTextContainer.className = 'lower-part-review'

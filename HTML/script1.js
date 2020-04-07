@@ -2153,7 +2153,7 @@ async function loopThroughSplittedNotifications(splittedUrls, rule, notification
 
     let j = 1;
     var responseNotifications = [];
-    var loopCheckValue = rule.loopNotification ? 1000 : 1;
+    var loopCheckValue = rule.loopNotification ? 1000 : 3;
     let responseNotif = (callback) => {
         let splittedUrlsSingle = ['live']
         splittedUrlsSingle.map(async notifName => {
@@ -2162,7 +2162,7 @@ async function loopThroughSplittedNotifications(splittedUrls, rule, notification
             await httpGetAsync(url, function (res) {
                 response = JSON.parse(res);
                 responseNotifications = response.message;
-                if (!rule.loopNotification && response.totalCampaign) loopCheckValue = 3 * response.totalCampaign;
+                if (!rule.loopNotification && response.totalCampaign) loopCheckValue = 1 * response.totalCampaign;
                 callback(null, responseNotifications, config)
             });
         });

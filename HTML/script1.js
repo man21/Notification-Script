@@ -2188,12 +2188,12 @@ async function loopThroughSplittedNotifications(splittedUrls, rule, notification
                 const infos = responses.message_data;
 
                 console.log(loopCheckValue,"LOOP CHECK VALUE ***********************")
-                if (j > loopCheckValue) {
-                    i = 5;
-                    //setTimeout(() => new Notifications(config), ((rule.loopNotification ? 11988 : 24) + 12) * 1000);//11988
-                    setTimeout(() => new Notifications(config), (11988 + 12) * 1000);
-                    return;
-                }
+                // if (j > loopCheckValue) {
+                //     i = 5;
+                //     //setTimeout(() => new Notifications(config), ((rule.loopNotification ? 11988 : 24) + 12) * 1000);//11988
+                //     setTimeout(() => new Notifications(config), (11988 + 12) * 1000);
+                //     return;
+                // }
 
                 
                 if(infos.length==0){

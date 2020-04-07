@@ -3348,7 +3348,6 @@ var Note = function Note(config, containerStyle, iconStyle) {
         reviwNotificationFooterStar1.style= "display: flex"
 
         var star = '';
-        console.log(userReview.rating, "USER RATING *********************")
         if (userReview && userReview.rating) {
             for (let star_i = 0; star_i < userReview.rating; star_i++) {
                 star += `<svg version="1.1" style= "height: 10px; width: 10px" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"

@@ -2200,7 +2200,7 @@ async function loopThroughSplittedNotifications(splittedUrls, rule, notification
 
     let j = 1;
     var responseNotifications = [];
-    var loopCheckValue = rule.loopNotification ? 1000 : 3;
+    var loopCheckValue = rule.loopNotification ? 1000 : 1;
     let responseNotif = (callback) => {
         let splittedUrlsSingle = ['live']
         splittedUrlsSingle.map(async notifName => {

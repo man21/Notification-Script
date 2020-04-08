@@ -2280,6 +2280,8 @@ async function loopThroughSplittedNotifications(splittedUrls, rule, notification
                             }
                             //console.log('========configuration',configuration);
                             if (configuration && configuration.activity) {
+
+                                console.log("ENTERED HERE **************************")
                                 if (j == 1) {
                                     randomDelayTime = 0;
                                     setTimeout(function () {

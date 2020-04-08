@@ -2294,6 +2294,7 @@ async function loopThroughSplittedNotifications(splittedUrls, rule, notification
                                     }, (rule.initialDelay) * 1000);
                                 }
                                 else
+                                console.log("ENTERED IN ELE PART ***************")
                                     setTimeout(function () {
                                         if (info.visitorList || info.liveViewer || info.liveFollower) key = 'live';
                                         else if (info.numberOfUsers) key = 'identification';

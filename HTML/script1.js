@@ -2195,7 +2195,8 @@ async function loopThroughSplittedNotifications(splittedUrls, rule, notification
                     return;
                 }
 
-                
+                console.log(loopCheckExit ,"LOOP EXIT VALYUE ********************")
+
                 if(infos.length==0){
                     if (loopCheckExit.indexOf(key[0]) == -1)
                         loopCheckExit.push(key[0]);
@@ -2255,6 +2256,8 @@ async function loopThroughSplittedNotifications(splittedUrls, rule, notification
                                 }
                             }
 
+                            console.log(loopCheckExit, "loop exit 2")
+
                             //let userDetails = info.userDetails && info.userDetails.length && key == 'journey' ? info.userDetails.filter(user => user) : [];
                             let userDetails = info.userDetails;
                             let userReviews = info.userReviews;
@@ -2266,6 +2269,7 @@ async function loopThroughSplittedNotifications(splittedUrls, rule, notification
                                 (key == 'identification' && !numberOfUsers) ||
                                 (key == 'live' && (!liveVisitorCount || (configuration && Number(configuration.panelStyle.liveVisitorCount) >= liveVisitorCount)))
                             ) || (configuration && !configuration.activity)) {
+                                console.log("entered in 2272")
                                 j = j - 1;
                                 if (loopCheckExit.indexOf(key[0]) == -1)
                                     loopCheckExit.push(key[0]);

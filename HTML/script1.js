@@ -2283,36 +2283,36 @@ async function loopThroughSplittedNotifications(splittedUrls, rule, notification
                                 prevRandGap = (randomDelayTime - tempRandomDelayTime - (rule.displayTime + 3));
                             }
                             //console.log('========configuration',configuration);
-                            if (configuration && configuration.activity) {
+                            // if (configuration && configuration.activity) {
 
-                                console.log("ENTERED HERE **************************")
-                                if (j == 1) {
-                                    randomDelayTime = 0;
-                                    setTimeout(function () {
-                                        if (info.visitorList || info.liveViewer || info.liveFollower) key = 'live';
-                                        else if (info.numberOfUsers) key = 'identification';
-                                        else if (info.userDetails) key = 'journey';
-                                        else if (info.userReviews) key = 'review';
-                                        if(isTabVisibility)
-                                            return notificationTimeout(u, info, rule, key, notificationPath);
-                                    }, (rule.initialDelay) * 1000);
-                                }
-                                else
-                                console.log("ENTERED IN ELE PART ***************")
-                                    setTimeout(function () {
-                                        if (info.visitorList || info.liveViewer || info.liveFollower) key = 'live';
-                                        else if (info.numberOfUsers) key = 'identification';
-                                        else if (info.userDetails) key = 'journey';
-                                        else if (info.userReviews) key = 'review';
-                                        if(isTabVisibility)
-                                            return notificationTimeout(u, info, rule, key, notificationPath);
-                                    }, (rule.delayNotification ? (randomDelayTime * 1000) : ((rule.displayTime + rule.delayBetween + 3) * (v - 1)) * 1000));
-                                tempRandomDelayTime = randomDelayTime;
-                            } else {
-                                if (maxMinus > 1000) return;
-                                j = j - 1;
-                                maxMinus++;
-                            }
+                            //     console.log("ENTERED HERE **************************")
+                            //     if (j == 1) {
+                            //         randomDelayTime = 0;
+                            //         setTimeout(function () {
+                            //             if (info.visitorList || info.liveViewer || info.liveFollower) key = 'live';
+                            //             else if (info.numberOfUsers) key = 'identification';
+                            //             else if (info.userDetails) key = 'journey';
+                            //             else if (info.userReviews) key = 'review';
+                            //             if(isTabVisibility)
+                            //                 return notificationTimeout(u, info, rule, key, notificationPath);
+                            //         }, (rule.initialDelay) * 1000);
+                            //     }
+                            //     else
+                            //     console.log("ENTERED IN ELE PART ***************")
+                            //         setTimeout(function () {
+                            //             if (info.visitorList || info.liveViewer || info.liveFollower) key = 'live';
+                            //             else if (info.numberOfUsers) key = 'identification';
+                            //             else if (info.userDetails) key = 'journey';
+                            //             else if (info.userReviews) key = 'review';
+                            //             if(isTabVisibility)
+                            //                 return notificationTimeout(u, info, rule, key, notificationPath);
+                            //         }, (rule.delayNotification ? (randomDelayTime * 1000) : ((rule.displayTime + rule.delayBetween + 3) * (v - 1)) * 1000));
+                            //     tempRandomDelayTime = randomDelayTime;
+                            // } else {
+                            //     if (maxMinus > 1000) return;
+                            //     j = j - 1;
+                            //     maxMinus++;
+                            // }
                         }
                     })(i, j);
 

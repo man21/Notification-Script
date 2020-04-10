@@ -3091,10 +3091,16 @@ var Note = function Note(config, containerStyle, iconStyle) {
          notificationLiveMainContainer.appendChild(liveNotiifcationUpperPartContainer)
     
         var liveNotificationBorder = document.createElement('div')
+        if (!configuration.togglePoweredBy) {
+            liveNotificationBorder.style = 'display: none'
+        }
         liveNotificationBorder.className='hvhvyhjvg'
         notificationLiveMainContainer.appendChild(liveNotificationBorder)
     
         var liveNotificationLowerTextContainer= document.createElement('div')
+        if(!configuration.togglePoweredBy){
+            liveNotificationLowerTextContainer.style = 'display: none'
+        }
         liveNotificationLowerTextContainer.className ='kbhgcghv'
     
         var liveNotificationLowerPTag = document.createElement('p')
@@ -3558,10 +3564,16 @@ var Note = function Note(config, containerStyle, iconStyle) {
          bulkNotiifcationMainContainer.appendChild(bulkNotiifcationUpperPartContainer)
     
         var bulkNotificationBorder = document.createElement('div')
+        if (!configuration.togglePoweredBy) {
+            bulkNotificationBorder.style = 'display: none'
+        }
         bulkNotificationBorder.className='border-bulk'
         bulkNotiifcationMainContainer.appendChild(bulkNotificationBorder)
     
         var bulkNotificationLowerTextContainer= document.createElement('div')
+        if(!configuration.togglePoweredBy){
+            bulkNotificationLowerTextContainer.style = 'display: none'
+        }
         bulkNotificationLowerTextContainer.className ='lower-part-bulk'
     
         var bulkNotificationLowerPTag = document.createElement('p')

@@ -3166,7 +3166,6 @@ var Note = function Note(config, containerStyle, iconStyle) {
         // console.log('====userReview',userReview.fromApp)
         const fromAppType = userReview ? userReview.fromApp :'';
 
-        console.log(containerStyle ,"CONTAINER STYLE ****************")
 
         var reviewNotiifcationContainer = document.createElement('div')
         // reviewNotiifcationContainer.className = 'notif-card-review';
@@ -3175,7 +3174,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         
         var reviewNotiifcationMainContainer = document.createElement('div')
         reviewNotiifcationMainContainer.className = 'notif-card-review';
-        reviewNotiifcationContainer.style = containerStyle; 
+        reviewNotiifcationMainContainer.style = containerStyle; 
 
         var reviewNotiifcationUpperPartContainer = document.createElement('div')
         reviewNotiifcationUpperPartContainer.className = 'upper-part-review'

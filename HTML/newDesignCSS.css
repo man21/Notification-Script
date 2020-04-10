@@ -24,6 +24,8 @@ body{
     display: flex;
     flex-direction: row;
     height: 66.5px;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 /*icon width & margins - raman*/

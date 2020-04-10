@@ -2755,7 +2755,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         var recentNotiifcationMainContainer = document.createElement('div')
         recentNotiifcationMainContainer.className = 'notif-card-recent';
-        // recentNotiifcationMainContainer.style = containerStyle
+        recentNotiifcationMainContainer.style = containerStyle
 
         var recentNotiifcationUpperPartContainer = document.createElement('div')
         recentNotiifcationUpperPartContainer.className = 'upper-part-recent'

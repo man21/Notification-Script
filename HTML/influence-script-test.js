@@ -2764,6 +2764,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
         recentNotificationImageContainer.className = 'image-container-recent'
 
         var recentNotificationImage = document.createElement('img')
+        console.log('conatinerstyle', containerStyle)
+        recentNotificationImage.style = containerStyle.border-radius
         recentNotificationImage.className = 'image-recent'
         var res_img = 'https://storage.googleapis.com/influence-197607.appspot.com/default_icon.png';
 

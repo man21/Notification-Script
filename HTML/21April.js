@@ -3,7 +3,7 @@ var exclued_button_text = 'login,signin,loginnow,memberlogin,accountlogin';
 var __pathname = window.location.pathname;
 __pathname = '/' + __pathname.split('/')[1];
 
-var influenceScript = 'influence-script-NewDesign.js';
+var influenceScript = '21April.js';
 var BASE_URL = "https://api.useinfluence.co";
 
 document.addEventListener('visibilitychange', function (e) {
@@ -3186,7 +3186,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         reviewNotificationImage.className = 'image-review'
        // reviewNotificationImage.setAttribute('src', 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/5FCE8400-0616-426F-8BEA-F53136305123.png')
         if (fromAppType == 'facebook')
-        reviewNotificationImage.setAttribute('src', 'https://storage.googleapis.com/influence-197607.appspot.com/facebook_round.png');
+        reviewNotificationImage.setAttribute('src', userReview.profilePicture );  //'https://storage.googleapis.com/influence-197607.appspot.com/facebook_round.png'
         else if (fromAppType == 'google')
         reviewNotificationImage.setAttribute('src', userReview.profileImg);
         //reviewNotificationImage.setAttribute('src', 'https://storage.googleapis.com/influence-197607.appspot.com/googlereview.png');
@@ -3218,7 +3218,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         reviewNotificationNameText.className = 'para-review main-text-review'
 
         if (fromAppType == 'facebook')
-        reviewNotificationNameText.innerHTML = 'Recommended us on Facebook';
+        reviewNotificationNameText.innerHTML = userReview.review_text   //'Recommended us on Facebook';
         else if (fromAppType == 'google') {
         reviewNotificationNameText.innerHTML = userReview && userReview.username ? userReview.username : 'Someone' ;
         }

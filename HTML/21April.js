@@ -3186,7 +3186,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         reviewNotificationImage.className = 'image-review'
        // reviewNotificationImage.setAttribute('src', 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/5FCE8400-0616-426F-8BEA-F53136305123.png')
         if (fromAppType == 'facebook')
-        reviewNotificationImage.setAttribute('src', userReview ? userReview.profilePicture : userReview.profileImg );  //'https://storage.googleapis.com/influence-197607.appspot.com/facebook_round.png'
+        reviewNotificationImage.setAttribute('src', userReview.profileImg );  //'https://storage.googleapis.com/influence-197607.appspot.com/facebook_round.png'
         else if (fromAppType == 'google')
         reviewNotificationImage.setAttribute('src', userReview.profileImg);
         //reviewNotificationImage.setAttribute('src', 'https://storage.googleapis.com/influence-197607.appspot.com/googlereview.png');

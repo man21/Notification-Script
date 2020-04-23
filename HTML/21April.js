@@ -3218,7 +3218,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         reviewNotificationNameText.className = 'para-review main-text-review'
 
         if (fromAppType == 'facebook')
-        reviewNotificationNameText.innerHTML = userReview.review_text   //'Recommended us on Facebook';
+        reviewNotificationNameText.innerHTML = userReview.username   //'Recommended us on Facebook';
         else if (fromAppType == 'google') {
         reviewNotificationNameText.innerHTML = userReview && userReview.username ? userReview.username : 'Someone' ;
         }
@@ -3241,6 +3241,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         reviewNotificationUpperStarContainer.className = 'footer-star-container-review'
 
 
+        if(fromAppType == 'google'){
         var reviewNotificationUpperStar = document.createElement('span')
         var star = '';
         if (userReview && userReview.rating) {
@@ -3255,7 +3256,9 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         reviewNotificationUpperStar.innerHTML= star
         reviewNotificationUpperStarContainer.appendChild(reviewNotificationUpperStar)
-
+    }else {
+        
+    }
 
         // var star = '';
         // if (userReview && userReview.rating) {

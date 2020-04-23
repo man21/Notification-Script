@@ -3341,11 +3341,14 @@ var Note = function Note(config, containerStyle, iconStyle) {
         var reviewNotificationFooterLogoContainer = document.createElement('div')
         reviewNotificationFooterLogoContainer.className = 'footer-logo-container-review'
 
+        if(fromAppType == 'google'){
         var reviewNotificationFooterLogo = document.createElement('img')
         reviewNotificationFooterLogo.className = 'footer-logo-review'
         reviewNotificationFooterLogo.setAttribute('src', 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/79341C01-B8BF-4484-AD66-B9314BAE4121.png')
 
         reviewNotificationFooterLogoContainer.appendChild(reviewNotificationFooterLogo)
+
+    }
 
         var reviewNotificationFooterStarContainer = document.createElement('div')
         reviewNotificationFooterStarContainer.className = 'footer-star-container-review'

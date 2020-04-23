@@ -1897,7 +1897,7 @@ var InfluenceTracker = function (config) {
 /*
 
 	countUp.js
-	by @inorganik
+     by @inorganik
 
 */
 
@@ -3185,7 +3185,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         var reviewNotificationImage = document.createElement('img')
         reviewNotificationImage.className = 'image-review'
        // reviewNotificationImage.setAttribute('src', 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/5FCE8400-0616-426F-8BEA-F53136305123.png')
-                
+
         reviewNotificationImage.setAttribute('src', userReview.profileImg);
         //reviewNotificationImage.setAttribute('src', 'https://storage.googleapis.com/influence-197607.appspot.com/googlereview.png');
        // notifReviewImgContent.style = `padding: 11px; border-radius: 0; height: 50px; width: 50px;`;
@@ -3351,7 +3351,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         reviewNotificationFooterLogo.className = 'footer-logo-review'
         reviewNotificationFooterLogo.setAttribute('src', 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/79341C01-B8BF-4484-AD66-B9314BAE4121.png')
        }
-        
+
         reviewNotificationFooterLogoContainer.appendChild(reviewNotificationFooterLogo)
 
         var reviewNotificationFooterStarContainer = document.createElement('div')

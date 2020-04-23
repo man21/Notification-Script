@@ -3353,7 +3353,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         //reviewNotificationFooterStarContainer.innerHTML= star
 
 
-        
+        if(fromAppType == 'google'){
         var reviwNotificationFooterStar1 = document.createElement('span')
         reviwNotificationFooterStar1.style= "display: flex"
 
@@ -3369,6 +3369,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
         }
         reviwNotificationFooterStar1.innerHTML= star
         reviewNotificationFooterStarContainer.appendChild(reviwNotificationFooterStar1)
+
+    }
 
         reviewNotificationFooterLogoContainer.appendChild(reviewNotificationFooterStarContainer)
         reviewNotificationFooterLeft.appendChild(reviewNotificationFooterLogoContainer)

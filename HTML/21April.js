@@ -3257,7 +3257,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         reviewNotificationUpperStar.innerHTML= star
         reviewNotificationUpperStarContainer.appendChild(reviewNotificationUpperStar)
     }else {
-        
+
     }
 
         // var star = '';
@@ -3277,14 +3277,10 @@ var Note = function Note(config, containerStyle, iconStyle) {
         //console.log(reviewNotificationUpperStarContainer,"YES")
 
 
-         var reviewNotificationStar1 = document.createElement('span')
-        // if (userReview && userReview.rating) {
-        //     for (let star_i = 0; star_i < userReview.rating; star_i++) {
-        //         reviewNotificationStar1.className = 'fa fa-star';
-        //         reviewNotificationUpperStarContainer.appendChild(reviewNotificationStar1)
 
-        //     }
-        // }
+        if(fromAppType == 'google'){
+         var reviewNotificationStar1 = document.createElement('span')
+       
 
 
         var star = '';
@@ -3300,6 +3296,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         reviewNotificationStar1.innerHTML= star
         reviewNotificationUpperStarContainer.appendChild(reviewNotificationStar1)
+    } 
 
 
         reviewNotificationUpperLogoContainer.appendChild(reviewNotificationUpperStarContainer)

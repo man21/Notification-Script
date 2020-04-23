@@ -3185,9 +3185,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         var reviewNotificationImage = document.createElement('img')
         reviewNotificationImage.className = 'image-review'
        // reviewNotificationImage.setAttribute('src', 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/5FCE8400-0616-426F-8BEA-F53136305123.png')
-        if (fromAppType == 'facebook')
-        reviewNotificationImage.setAttribute('src', userReview.profileImg );  //'https://storage.googleapis.com/influence-197607.appspot.com/facebook_round.png'
-        else if (fromAppType == 'google')
+                
         reviewNotificationImage.setAttribute('src', userReview.profileImg);
         //reviewNotificationImage.setAttribute('src', 'https://storage.googleapis.com/influence-197607.appspot.com/googlereview.png');
        // notifReviewImgContent.style = `padding: 11px; border-radius: 0; height: 50px; width: 50px;`;
@@ -3241,11 +3239,10 @@ var Note = function Note(config, containerStyle, iconStyle) {
         reviewNotificationUpperStarContainer.className = 'footer-star-container-review'
 
 
-        console.log(userReview)
+        var reviewNotificationUpperStar = document.createElement('span')
 
 
         if(fromAppType == 'google'){
-        var reviewNotificationUpperStar = document.createElement('span')
         var star = '';
         if (userReview && userReview.rating) {
             for (let star_i = 0; star_i < userReview.rating; star_i++) {
@@ -3258,10 +3255,12 @@ var Note = function Note(config, containerStyle, iconStyle) {
         }
 
         reviewNotificationUpperStar.innerHTML= star
-        reviewNotificationUpperStarContainer.appendChild(reviewNotificationUpperStar)
     }else {
 
     }
+
+    reviewNotificationUpperStarContainer.appendChild(reviewNotificationUpperStar)
+
 
         // var star = '';
         // if (userReview && userReview.rating) {
@@ -3279,10 +3278,10 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         //console.log(reviewNotificationUpperStarContainer,"YES")
 
+        var reviewNotificationStar1 = document.createElement('span')
 
 
         if(fromAppType == 'google'){
-         var reviewNotificationStar1 = document.createElement('span')
        
 
 
@@ -3298,8 +3297,10 @@ var Note = function Note(config, containerStyle, iconStyle) {
         }
 
         reviewNotificationStar1.innerHTML= star
-        reviewNotificationUpperStarContainer.appendChild(reviewNotificationStar1)
     } 
+
+    reviewNotificationUpperStarContainer.appendChild(reviewNotificationStar1)
+
 
 
         reviewNotificationUpperLogoContainer.appendChild(reviewNotificationUpperStarContainer)
@@ -3344,24 +3345,25 @@ var Note = function Note(config, containerStyle, iconStyle) {
         var reviewNotificationFooterLogoContainer = document.createElement('div')
         reviewNotificationFooterLogoContainer.className = 'footer-logo-container-review'
 
-        if(fromAppType == 'google'){
         var reviewNotificationFooterLogo = document.createElement('img')
+
+        if(fromAppType == 'google'){
         reviewNotificationFooterLogo.className = 'footer-logo-review'
         reviewNotificationFooterLogo.setAttribute('src', 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/79341C01-B8BF-4484-AD66-B9314BAE4121.png')
-
+       }
+        
         reviewNotificationFooterLogoContainer.appendChild(reviewNotificationFooterLogo)
-
-    }
 
         var reviewNotificationFooterStarContainer = document.createElement('div')
         reviewNotificationFooterStarContainer.className = 'footer-star-container-review'
 
         //reviewNotificationFooterStarContainer.innerHTML= star
 
-
-        if(fromAppType == 'google'){
         var reviwNotificationFooterStar1 = document.createElement('span')
         reviwNotificationFooterStar1.style= "display: flex"
+
+        if(fromAppType == 'google'){
+        
 
         var star = '';
         if (userReview && userReview.rating) {
@@ -3374,9 +3376,9 @@ var Note = function Note(config, containerStyle, iconStyle) {
             }
         }
         reviwNotificationFooterStar1.innerHTML= star
-        reviewNotificationFooterStarContainer.appendChild(reviwNotificationFooterStar1)
-
     }
+
+        reviewNotificationFooterStarContainer.appendChild(reviwNotificationFooterStar1)
 
         reviewNotificationFooterLogoContainer.appendChild(reviewNotificationFooterStarContainer)
         reviewNotificationFooterLeft.appendChild(reviewNotificationFooterLogoContainer)

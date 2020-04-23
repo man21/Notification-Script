@@ -3241,6 +3241,9 @@ var Note = function Note(config, containerStyle, iconStyle) {
         reviewNotificationUpperStarContainer.className = 'footer-star-container-review'
 
 
+        console.log(userReview)
+
+
         if(fromAppType == 'google'){
         var reviewNotificationUpperStar = document.createElement('span')
         var star = '';

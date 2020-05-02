@@ -4,7 +4,6 @@ var __pathname = window.location.pathname;
 __pathname = '/' + __pathname.split('/')[1];
 
 var influenceScript = '21April.js';
-// var influenceScript = 'influence-script-NewDesign.js';
 var BASE_URL = "https://api.useinfluence.co";
 
 document.addEventListener('visibilitychange', function (e) {
@@ -572,8 +571,8 @@ if (typeof Influence === 'undefined') {
               const email=objValue.find(o=>o.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi));
               const firstname = formObj["customerFirstName"] || formObj["firstname"] || formObj["form_fields[name]"] || formObj["form_fields[firstname]"] || formObj["your-name"] || formObj["name"]  || formObj["NAMA"]|| formObj["FNAME"]  || formObj["customerFirstName"] || formObj["Fname"]  || formObj["nama"] || formObj["NAME"]  || formObj["FIRSTNAME"] || formObj["username"]  || formObj["FIRST NAME"] || formObj["UserName"]  || formObj["USERNAME"] || formObj["userName"]  || formObj["Username"] || formObj["user_id"] || formObj["ctl19$txtName"]
               const lastname = formObj["customerLastName"] || formObj["lastname"] || formObj["form_fields[lastname]"] || formObj["last-name"] || formObj["lname"] || formObj["LNAME"]  || formObj["customerLastName"] || formObj["Lname"]  || formObj["lnama"] || formObj["LNAME"]  || formObj["LASTNAME"] || formObj["LAST NAME"] 
-            //   console.log('firstname----->>',firstname)
-              return({firstname: firstname ? firstname.replace('+',' '):'',lastname:lastname ? lastname.replace('+',' '):'',email})
+              
+              return({firstname,lastname,email})
           }
           return({})
         }
@@ -1393,8 +1392,7 @@ if (typeof Influence === 'undefined') {
                         }
                         const btnText = e.form.querySelector('button[type="submit"]')? e.form.querySelector('button[type="submit"]').innerText :  e.form.querySelector('input[type="submit"]') ? e.form.querySelector('input[type="submit"]').value : e.form.querySelector('button[type="submit"]') ? e.form.querySelector('button[type="submit"]').value :''
                         const incluedForm = exclued_button_text.indexOf(btnText.toLowerCase().replace(/\s/g, "")) === -1
-                    //   console.log('-=>>',DomUtil.getFormData(e.form))
-                      if (incluedForm) {
+                        if (incluedForm) {
                             self.track('formsubmit', {
                             form: Util.merge({ formId: e.form.formId }, DomUtil.getFormData(e.form))
                         });
@@ -2179,8 +2177,8 @@ async function loopThroughSplittedNotifications(splittedUrls, rule, notification
     // document.getElementsByTagName("head")[0].appendChild(link);
 
     var newDesignCSS = document.createElement("link");
-    newDesignCSS.href = 'https://storage.googleapis.com/influence-197607.appspot.com/design-new4.css';
-    // newDesignCSS.href = 'https://test2109.herokuapp.com/newDesignCSS.css';
+    // newDesignCSS.href = 'https://storage.googleapis.com/influence-197607.appspot.com/design-new3.css';
+    newDesignCSS.href = 'https://test2109.herokuapp.com/newDesignCSS.css';
     newDesignCSS.type = "text/css";
     newDesignCSS.rel = "stylesheet";
     newDesignCSS.id = "stylesheetID";
@@ -2209,7 +2207,7 @@ async function loopThroughSplittedNotifications(splittedUrls, rule, notification
 
     let j = 1;
     var responseNotifications = [];
-    var loopCheckValue = rule.loopNotification ? 1000 : rule.activeNotification;
+    var loopCheckValue = rule.loopNotification ? 1000 : 4;
     let responseNotif = (callback) => {
         let splittedUrlsSingle = ['live']
         splittedUrlsSingle.map(async notifName => {
@@ -2218,7 +2216,7 @@ async function loopThroughSplittedNotifications(splittedUrls, rule, notification
             await httpGetAsync(url, function (res) {
                 response = JSON.parse(res);
                 responseNotifications = response.message;
-                if (!rule.loopNotification && response.totalCampaign) loopCheckValue = rule.activeNotification * response.totalCampaign;
+                if (!rule.loopNotification && response.totalCampaign) loopCheckValue = 4 * response.totalCampaign;
                 callback(null, responseNotifications, config)
             });
         });
@@ -2781,16 +2779,13 @@ var Note = function Note(config, containerStyle, iconStyle) {
             }
             else if (configuration && configuration.toggleMap == 'map') {
                 if (userDetails.city && userDetails.country) {
-                    res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=eVtq1iOX1kyYqLeYpd1W&app_code=CblgM4dq4wHQykVEBfa0Ww&ci=${userDetails.city}&co=${userDetails.country}&z=10&h=200&w=200`;
-                    // res_img = `https://image.maps.ls.hereapi.com/mia/1.6/mapview?co=${userDetails.country}&z=10&ci=${userDetails.city}&h=200&w=200&apiKey=GnxMRg61uO4_XgMs5cSR8wZej8Bf-fiqtbngQ6pmLtg`;
+                    res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=ejMlhbQk6SB2ZwpGW7Ax&app_code=75zpDd2IEcmBp_g1k2bEyg&ci=${userDetails.city}&co=${userDetails.country}&z=10&h=200&w=200`;
                 }
                 else if (userDetails.city) {
-                    res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=eVtq1iOX1kyYqLeYpd1W&app_code=CblgM4dq4wHQykVEBfa0Ww&ci=${userDetails.city}&z=10&h=200&w=200`;
-                    // res_img = `https://image.maps.ls.hereapi.com/mia/1.6/mapview?z=10&ci=${userDetails.city}&h=200&w=200&apiKey=GnxMRg61uO4_XgMs5cSR8wZej8Bf-fiqtbngQ6pmLtg`;
+                    res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=ejMlhbQk6SB2ZwpGW7Ax&app_code=75zpDd2IEcmBp_g1k2bEyg&ci=${userDetails.city}&z=10&h=200&w=200`;
                 }
                 else if (userDetails.country) {
-                    res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=eVtq1iOX1kyYqLeYpd1W&app_code=CblgM4dq4wHQykVEBfa0Ww&co=${userDetails.country}&z=10&h=200&w=200`;
-                    // res_img = `https://image.maps.ls.hereapi.com/mia/1.6/mapview?co=${userDetails.country}&z=10&h=200&w=200&apiKey=GnxMRg61uO4_XgMs5cSR8wZej8Bf-fiqtbngQ6pmLtg`;
+                    res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=ejMlhbQk6SB2ZwpGW7Ax&app_code=75zpDd2IEcmBp_g1k2bEyg&co=${userDetails.country}&z=10&h=200&w=200`;
                 }
             }
             else if (configuration && configuration.panelStyle) {
@@ -2819,7 +2814,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         var recentNotificationTextContainer = document.createElement('div')
         recentNotificationTextContainer.className = 'text-container-recent'
 
-        var recentNotificationNameText = document.createElement('div')
+        var recentNotificationNameText = document.createElement('p')
          recentNotificationNameText.className = 'para-recent main-text-recent'
 
          var res_name = userDetails && userDetails ? userDetails.username ? userDetails.username : userDetails.response.json.value.form.firstname : null;
@@ -2851,7 +2846,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
          recentNotificationTextContainer.appendChild(recentNotificationNameText)
 
-          var recentNotificationUpperSecondaryText = document.createElement('div')
+          var recentNotificationUpperSecondaryText = document.createElement('p')
         recentNotificationUpperSecondaryText.className = 'para-recent secondary-text-recent'
 
         if (userDetails && userDetails && userDetails.productName)
@@ -2876,7 +2871,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         var recentNotificationFooterLeft = document.createElement('div')
         recentNotificationFooterLeft.className = 'footer-left-recent'
-        var recentNotificationFooterLeftText = document.createElement('div')
+        var recentNotificationFooterLeftText = document.createElement('p')
         recentNotificationFooterLeftText.className = 'footer-left-text-recent'
         var timeStamp = userDetails && userDetails ? userDetails.timestamp : new Date();
         recentNotificationFooterLeftText.innerHTML = 'updated ' +timeStamp ? timeSince(new Date(new Date(timeStamp) - aDay).toISOString(),configuration) : "Not available ";
@@ -2886,8 +2881,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
         
         recentNotificationLowerTextContainer.appendChild(recentNotificationFooterLeft)
 
-        var recentNotificationLowerPTag = document.createElement('div')
-        // console.log("togglepoweredby", configuration.togglePoweredBy)
+        var recentNotificationLowerPTag = document.createElement('p')
+        console.log("togglepoweredby", configuration.togglePoweredBy)
         if (!configuration.togglePoweredBy){
             recentNotificationLowerPTag.style = 'display: none'
         }
@@ -2978,7 +2973,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
        
        var notificationLiveMainContainer = document.createElement('div');
        notificationLiveMainContainer.className= 'oiuytretg';
-       notificationLiveMainContainer.style = containerStyle;
+    //    notificationLiveMainContainer.style = containerStyle;
 
          
 
@@ -3062,7 +3057,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
          var liveNotificationTextContainer = document.createElement('div')
          liveNotificationTextContainer.className= 'bvxgfxchgcg'
     
-        var liveNotificationPTag = document.createElement('div')
+        var liveNotificationPTag = document.createElement('p')
         liveNotificationPTag.className ='lkhuf'
     
         var liveNotificationFirstText = document.createElement('em')
@@ -3108,7 +3103,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         }
         liveNotificationLowerTextContainer.className ='kbhgcghv'
     
-        var liveNotificationLowerPTag = document.createElement('div')
+        var liveNotificationLowerPTag = document.createElement('p')
         liveNotificationLowerPTag.className ='lkhuf jvygcghv'
     
         var liveNotificationFooterFirstText = document.createElement('em')
@@ -3217,7 +3212,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         reviewNotificationUserNameContainer.className = 'user-name-container-review'
 
 
-        var reviewNotificationNameText = document.createElement('div')
+        var reviewNotificationNameText = document.createElement('p')
         reviewNotificationNameText.className = 'para-review main-text-review'
 
         if (fromAppType == 'facebook')
@@ -3308,7 +3303,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         reviewNotificationUserNameContainer.appendChild(reviewNotificationUpperLogoContainer)
         reviewNotificationTextContainer.appendChild(reviewNotificationUserNameContainer)
 
-        var reviewNotificationUpperSecondaryText = document.createElement('div')
+        var reviewNotificationUpperSecondaryText = document.createElement('p')
         reviewNotificationUpperSecondaryText.className = 'para-review secondary-text-review'
 
     //     if (fromAppType == 'facebook')
@@ -3337,7 +3332,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         var reviewNotificationFooterLeft = document.createElement('div')
         reviewNotificationFooterLeft.className = 'footer-left-review'
 
-        var reviewNotificationFooterLeftText = document.createElement('div')
+        var reviewNotificationFooterLeftText = document.createElement('p')
         reviewNotificationFooterLeftText.className = 'footer-left-text-review'
         reviewNotificationFooterLeftText.innerHTML = "updated 9 min ago"
         reviewNotificationFooterLeftText.style = "display: none"
@@ -3381,7 +3376,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         reviewNotificationFooterLeft.appendChild(reviewNotificationFooterLogoContainer)
         reviewNotificationLowerTextContainer.appendChild(reviewNotificationFooterLeft)
 
-        var reviewNotificationLowerPTag = document.createElement('div')
+        var reviewNotificationLowerPTag = document.createElement('p')
         reviewNotificationLowerPTag.className = 'para-review footer-text-right-review'
 
         var reviewNotificationFooterFirstText = document.createElement('em')
@@ -3528,7 +3523,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
          var bulkNotificationTextContainer = document.createElement('div')
          bulkNotificationTextContainer.className= 'text-container-bulk'
     
-        var bulkNotificationPTag = document.createElement('div')
+        var bulkNotificationPTag = document.createElement('p')
         bulkNotificationPTag.className ='para-bulk'
     
         var bulkNotificationFirstText = document.createElement('em')
@@ -3583,7 +3578,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         }
         bulkNotificationLowerTextContainer.className ='lower-part-bulk'
     
-        var bulkNotificationLowerPTag = document.createElement('div')
+        var bulkNotificationLowerPTag = document.createElement('p')
         bulkNotificationLowerPTag.className ='para-bulk footer-text-bulk'
     
         var bulkNotificationFooterFirstText = document.createElement('em')

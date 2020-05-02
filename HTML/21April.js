@@ -572,7 +572,7 @@ if (typeof Influence === 'undefined') {
               const email=objValue.find(o=>o.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi));
               const firstname = formObj["customerFirstName"] || formObj["firstname"] || formObj["form_fields[name]"] || formObj["form_fields[firstname]"] || formObj["your-name"] || formObj["name"]  || formObj["NAMA"]|| formObj["FNAME"]  || formObj["customerFirstName"] || formObj["Fname"]  || formObj["nama"] || formObj["NAME"]  || formObj["FIRSTNAME"] || formObj["username"]  || formObj["FIRST NAME"] || formObj["UserName"]  || formObj["USERNAME"] || formObj["userName"]  || formObj["Username"] || formObj["user_id"] || formObj["ctl19$txtName"]
               const lastname = formObj["customerLastName"] || formObj["lastname"] || formObj["form_fields[lastname]"] || formObj["last-name"] || formObj["lname"] || formObj["LNAME"]  || formObj["customerLastName"] || formObj["Lname"]  || formObj["lnama"] || formObj["LNAME"]  || formObj["LASTNAME"] || formObj["LAST NAME"] 
-              console.log('firstname----->>',firstname)
+            //   console.log('firstname----->>',firstname)
               return({firstname: firstname ? firstname.replace('+',' '):'',lastname:lastname ? lastname.replace('+',' '):'',email})
           }
           return({})
@@ -1393,12 +1393,12 @@ if (typeof Influence === 'undefined') {
                         }
                         const btnText = e.form.querySelector('button[type="submit"]')? e.form.querySelector('button[type="submit"]').innerText :  e.form.querySelector('input[type="submit"]') ? e.form.querySelector('input[type="submit"]').value : e.form.querySelector('button[type="submit"]') ? e.form.querySelector('button[type="submit"]').value :''
                         const incluedForm = exclued_button_text.indexOf(btnText.toLowerCase().replace(/\s/g, "")) === -1
-                      console.log('-=>>',DomUtil.getFormData(e.form))
-                      // if (incluedForm) {
-                        //     self.track('formsubmit', {
-                        //     form: Util.merge({ formId: e.form.formId }, DomUtil.getFormData(e.form))
-                        // });
-                        // }
+                    //   console.log('-=>>',DomUtil.getFormData(e.form))
+                      if (incluedForm) {
+                            self.track('formsubmit', {
+                            form: Util.merge({ formId: e.form.formId }, DomUtil.getFormData(e.form))
+                        });
+                        }
                     }
                 });
             }

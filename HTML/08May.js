@@ -2878,6 +2878,10 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
           var recentNotificationUpperSecondaryText = document.createElement('div')
         recentNotificationUpperSecondaryText.className = 'para-recent secondary-text-recent'
+        
+        if(configuration.panelStyle.secondaryColor){
+            recentNotificationUpperSecondaryText.style = `color: rgb(${configuration.panelStyle.secondaryColor.r},${configuration.panelStyle.secondaryColor.g},${configuration.panelStyle.secondaryColor.b});`
+           }
 
         if (userDetails && userDetails && userDetails.productName)
         recentNotificationUpperSecondaryText.innerHTML = configuration.orderText + ' ' + userDetails.productName

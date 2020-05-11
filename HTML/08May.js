@@ -2233,7 +2233,8 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
     let responseNotif = (callback) => {
         let splittedUrlsSingle = ['live']
         splittedUrlsSingle.map(async notifName => {
-            var url = BASE_URL + '/elasticsearch/search/' + "INF-3gbfcjjsd6vhvo" + '?type=' + notifName;
+            // var url = BASE_URL + '/elasticsearch/search/' + "INF-3gbfcjjsd6vhvo" + '?type=' + notifName;
+           var url = BASE_URL + '/elasticsearch/search/' + config + '?type=' + notifName;
             // var url = 'https://api.useinfluence.co/elasticsearch/search/' + config + '?type=' + notifName;
             await httpGetAsync(url, function (res) {
                 response = JSON.parse(res);

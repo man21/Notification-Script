@@ -28,11 +28,13 @@ if (typeof Influence === 'undefined') {
          */
         checkCampaignActive(options.trackingId, (err, res) => {
             tracker = new InfluenceTracker(options.trackingId);
-            res.isActive= true; // remove this code after implimantation
+            //res.isActive= true; // remove this code after implimantation
 
+            console.log(res, "RES DATA ******************************")
             if (err)
                 return;
             if (res.isActive) {
+                console.log("entered ***************************")
                 /**
                  * New InfluenceNotification()
                  * @type {{Notifications}}
@@ -1878,8 +1880,11 @@ if (typeof Influence === 'undefined') {
 
 var checkCampaignActive = function (config, cb) {
     var url = BASE_URL + '/campaign/track/' + config;
+    console.log(url,"URL ********************************** ")
     httpGetAsync(url, function (res) {
         response = JSON.parse(res);
+        
+        console.log(response,"***************************************************** ==========================")
         if (response)
             cb(null, response);
         else

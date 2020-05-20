@@ -66,7 +66,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
-const hsts = require('hsts');
+// const hsts = require('hsts');
 const path = require('path');
 const compression = require('compression');
 
@@ -98,7 +98,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 
 
-app.use(hsts({ maxAge: 5184000 }));
+// app.use(hsts({ maxAge: 5184000 }));
 app.use(compression());
 
 // app.use(express.static(path.join(__dirname, 'HTML')));

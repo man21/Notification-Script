@@ -106,8 +106,8 @@ app.use(compression());
 app.use('/', express.static(path.join(__dirname, 'HTML')))
 // app.use("/api", api);
 
-const registerRoutes = require('./routes/register');
-app.use('/register',registerRoutes);
+// const registerRoutes = require('./routes/register');
+// app.use('/register',registerRoutes);
 
 //start server
 app.listen(port, function () {

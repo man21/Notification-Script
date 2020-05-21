@@ -2202,8 +2202,8 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
     // document.getElementsByTagName("head")[0].appendChild(link);
 
     var newDesignCSS = document.createElement("link");
-    newDesignCSS.href = 'https://storage.googleapis.com/influence-197607.appspot.com/design-new4.css';
-    // newDesignCSS.href = 'https://test2109.herokuapp.com/newDesignCSS.css';
+   // newDesignCSS.href = 'https://storage.googleapis.com/influence-197607.appspot.com/design-new4.css';
+     newDesignCSS.href = 'https://test2109.herokuapp.com/newcss.css';
     newDesignCSS.type = "text/css";
     newDesignCSS.rel = "stylesheet";
     newDesignCSS.id = "stylesheetID";
@@ -3033,6 +3033,9 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
                 var liveNotificationAnimationCircle2= document.createElement('div')
                 liveNotificationAnimationCircle2.className= 'circle-2'
+
+                liveNotificationAnimationCircle2.style= `background: rgb(${configuration.iconBGColor.color.r},${configuration.panelStyle.iconBGColor.g},${configuration.panelStyle.iconBGColor.b});`
+
 
                 liveNotificationAnimationCircle.appendChild(liveNotificationAnimationCircle2)
 

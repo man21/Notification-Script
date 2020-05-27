@@ -2551,10 +2551,14 @@ InfluenceTracker.prototype.tracker = function (info) {
         // }
         // data.value.category=data.value.event;//user-events';
 
-        console.log(configurationPath,"CONFIGURATION =================================")
 
         if (configurationPath && configurationPath.rule && configurationPath.rule.displayOnAllPages)
+
+        {
+            console.log(configurationPath,"CONFIGURATION =================================")
+
             data.campaignId = configurationPath.rule.campaign;
+        }
         else {
             if (configurationPath && configurationPath.notificationPath && configurationPath.notificationPath.length > 0) {
                 const dataNotifPath = configurationPath.notificationPath.filter(x => x.url == location.pathname && x.type == 'display');

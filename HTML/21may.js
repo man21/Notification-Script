@@ -2567,6 +2567,7 @@ InfluenceTracker.prototype.tracker = function (info) {
                 console.log(dataNotifPath, "data nOtiifcation Path **********************************")
                 if (dataNotifPath && dataNotifPath.length > 0)
                     data.campaignId = dataNotifPath[0].campaignId;
+                    console.log(dataNotifPath[0].campaignId,"%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
             }
         }
 

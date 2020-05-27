@@ -2557,7 +2557,7 @@ InfluenceTracker.prototype.tracker = function (info) {
         {
             console.log(configurationPath,"CONFIGURATION =================================")
 
-            data.campaignId = configurationPath.rule.campaign;
+            data.value.campaignId = configurationPath.rule.campaign;
         }
         else {
             if (configurationPath && configurationPath.notificationPath && configurationPath.notificationPath.length > 0) {

@@ -2561,6 +2561,8 @@ InfluenceTracker.prototype.tracker = function (info) {
         }
         else {
             if (configurationPath && configurationPath.notificationPath && configurationPath.notificationPath.length > 0) {
+
+                console.log(configurationPath,"&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&")
                 const dataNotifPath = configurationPath.notificationPath.filter(x => x.url == location.pathname && x.type == 'display');
                 console.log(dataNotifPath, "data nOtiifcation Path **********************************")
                 if (dataNotifPath && dataNotifPath.length > 0)

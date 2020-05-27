@@ -2551,7 +2551,7 @@ InfluenceTracker.prototype.tracker = function (info) {
         // }
         // data.value.category=data.value.event;//user-events';
 
-        console.log(configurationPath,"CONFIGURATION *************************")
+        console.log(configurationPath,"CONFIGURATION =================================")
 
         if (configurationPath && configurationPath.rule && configurationPath.rule.displayOnAllPages)
             data.campaignId = configurationPath.rule.campaign;

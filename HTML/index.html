@@ -95,40 +95,40 @@ $("#FORMM").submit(function() {
 
   //$('#feedbackSubmit').click(feedbackCallBack);)
 
-  function newpage() {
-    window.location.assign("/signup.html");
-  }
+  // function newpage() {
+  //   window.location.assign("/signup.html");
+  // }
 
-  function feedbackCallBack() {
+  // function feedbackCallBack() {
 
-    // if ($('#form_submission_name').val() == '') {
-    //   alert("Please enter the Name");
+  //   // if ($('#form_submission_name').val() == '') {
+  //   //   alert("Please enter the Name");
 
-    // } else {
-    var data = {
-      name: $('#form_submission_name').val(),
-      email: $('#form_submission_email').val(),
-      // fName: $('#form_submission_fName').val(),
-      // lName: $('#form_submission_lName').val(),
-    }
-    console.log(data, "Data is here")
-    $.ajax({
-      type: 'POST',
-      url: 'https://test2109.herokuapp.com/register/register',
-      contentType: 'application/json',
-      dataType: 'json',
-      data: JSON.stringify(data),
+  //   // } else {
+  //   var data = {
+  //     name: $('#form_submission_name').val(),
+  //     email: $('#form_submission_email').val(),
+  //     // fName: $('#form_submission_fName').val(),
+  //     // lName: $('#form_submission_lName').val(),
+  //   }
+  //   console.log(data, "Data is here")
+  //   $.ajax({
+  //     type: 'POST',
+  //     url: 'https://test2109.herokuapp.com/register/register',
+  //     contentType: 'application/json',
+  //     dataType: 'json',
+  //     data: JSON.stringify(data),
 
-      success: function (data) {
-        console.log(data);
-        alert("Sucessfull")
-      }, error: function (err) {
-        console.log("error: ", err);
-      }
-    });
-    //}
+  //     success: function (data) {
+  //       console.log(data);
+  //       alert("Sucessfull")
+  //     }, error: function (err) {
+  //       console.log("error: ", err);
+  //     }
+  //   });
+  //   //}
 
-  }
+  // }
 
 
 </script>

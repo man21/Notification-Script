@@ -2563,7 +2563,7 @@ InfluenceTracker.prototype.tracker = function (info) {
             if (configurationPath && configurationPath.notificationPath && configurationPath.notificationPath.length > 0) {
 
                 console.log(configurationPath,"&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&")
-                const dataNotifPath = configurationPath.notificationPath.filter(x => x.url == location.pathname && x.type == 'display');
+                const dataNotifPath = configurationPath.notificationPath.filter(x => x.url == location.pathname && x.type == 'lead');
                 console.log(dataNotifPath, "data nOtiifcation Path **********************************")
                 if (dataNotifPath && dataNotifPath.length > 0)
                     data.campaignId = dataNotifPath[0].campaignId;

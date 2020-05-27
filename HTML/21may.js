@@ -2158,6 +2158,8 @@ var Notifications = function (config) {
         response = JSON.parse(res);
         // configurationPath = JSON.parse(res);
         configurationPath = response.find(obj=> obj.notificationPath.find(ojb1=>ojb1.url === __pathname && ojb1.type == "lead"))
+       
+        console.log("CONFIG PATH **************************!==========================================")
         activeNotification = Math.max.apply(null,response.map(obj=> obj.rule.activeNotification))
         var enableLoopNotification = response.find(obj=> obj.rule.loopNotification) ? true : false
     
@@ -2554,6 +2556,7 @@ InfluenceTracker.prototype.tracker = function (info) {
         else {
             if (configurationPath && configurationPath.notificationPath && configurationPath.notificationPath.length > 0) {
                 const dataNotifPath = configurationPath.notificationPath.filter(x => x.url == location.pathname && x.type == 'display');
+                console.log(dataNotifPath, "data nOtiifcation Path **********************************")
                 if (dataNotifPath && dataNotifPath.length > 0)
                     data.campaignId = dataNotifPath[0].campaignId;
             }
@@ -3029,7 +3032,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
                 var liveNotificationAnimationCircle2= document.createElement('div')
                 liveNotificationAnimationCircle2.className= 'circle-2'
-                liveNotificationAnimationCircle2.style= `background: rgb(${configuration.iconBGColor.color.r},${configuration.panelStyle.iconBGColor.g},${configuration.panelStyle.iconBGColor.b});`
+                liveNotificationAnimationCircle2.style= `background: rgb(${configuration.panelStyle.iconBGColor.r},${configuration.panelStyle.iconBGColor.g},${configuration.panelStyle.iconBGColor.b});`
 
 
                 liveNotificationAnimationCircle.appendChild(liveNotificationAnimationCircle2)

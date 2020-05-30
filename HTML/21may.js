@@ -2563,6 +2563,8 @@ InfluenceTracker.prototype.tracker = function (info) {
             data.campaignId = configurationPath.rule.campaign;
 
             console.log(data.value.campaignId, "CAMPAHN********")
+            console.log(data.campaignId, "CAMPAHN*======================*******")
+
 
         }
         else {

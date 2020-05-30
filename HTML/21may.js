@@ -2557,7 +2557,7 @@ InfluenceTracker.prototype.tracker = function (info) {
         {
             console.log(configurationPath,"CONFIGURATION =================================")
             data.value.campaignId = configurationPath.rule.campaign;
-            data.campaignId = configurationPath.rule.campaign;
+            // data.campaignId = configurationPath.rule.campaign;
 
         }
         else {
@@ -2567,7 +2567,7 @@ InfluenceTracker.prototype.tracker = function (info) {
                 const dataNotifPath = configurationPath.notificationPath.filter(x => x.url == location.pathname && x.type == 'lead');
                 console.log(dataNotifPath, "data nOtiifcation Path **********************************")
                 if (dataNotifPath) // && dataNotifPath.length > 0
-                data.campaignId = dataNotifPath[0].campaignId;
+                // data.campaignId = dataNotifPath[0].campaignId;
                 data.value.campaignId = dataNotifPath[0].campaignId;
                     console.log(dataNotifPath[0].campaignId,"%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
             }

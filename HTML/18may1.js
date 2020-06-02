@@ -10,6 +10,7 @@ document.addEventListener('visibilitychange', function (e) {
     document.hidden ? isTabVisibility = false : isTabVisibility = true;
 });
 
+
 if (typeof Influence === 'undefined') {
     /**
      * Constructs a new Influence  Analytics tracker.

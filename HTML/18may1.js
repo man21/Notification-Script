@@ -3,7 +3,7 @@ var exclued_button_text = 'login,signin,loginnow,memberlogin,accountlogin';
 var __pathname = window.location.pathname;
 __pathname = '/' + __pathname.split('/')[1];
 
-var influenceScript = '18may.js';
+var influenceScript = '18may01.js';
 var BASE_URL = "https://api.useinfluence.co";
 
 document.addEventListener('visibilitychange', function (e) {
@@ -30,11 +30,9 @@ if (typeof Influence === 'undefined') {
             tracker = new InfluenceTracker(options.trackingId);
             // res.isActive= true; // remove this code after implimantation
 
-            console.log(res.isActive, " isActive ********************************************")
             if (err)
                 return;
             if (res.isActive) {
-                console.log("ENTERED **************************")
                 /**
                  * New InfluenceNotification()
                  * @type {{Notifications}}
@@ -1882,7 +1880,6 @@ var checkCampaignActive = function (config, cb) {
     var url = BASE_URL + '/campaign/track/' + config;
     httpGetAsync(url, function (res) {
         response = JSON.parse(res);
-        console.log(response,"resposne .*********************************")
         if (response)
             cb(null, response);
         else
@@ -2161,6 +2158,8 @@ var Notifications = function (config) {
         response = JSON.parse(res);
         // configurationPath = JSON.parse(res);
         configurationPath = response.find(obj=> obj.notificationPath.find(ojb1=>ojb1.url === __pathname && ojb1.type == "lead"))
+       
+        console.log(configurationPath, "CONFIG PATH **************************!==========================================")
         activeNotification = Math.max.apply(null,response.map(obj=> obj.rule.activeNotification))
         var enableLoopNotification = response.find(obj=> obj.rule.loopNotification) ? true : false
     
@@ -2552,13 +2551,34 @@ InfluenceTracker.prototype.tracker = function (info) {
         // }
         // data.value.category=data.value.event;//user-events';
 
+
+
+        console.log(configurationPath,"CONFIGURATION ***************************** =================================")
+
         if (configurationPath && configurationPath.rule && configurationPath.rule.displayOnAllPages)
+
+        {
+            console.log(configurationPath,"CONFIGURATION =================================")
+            data.value.campaignId = configurationPath.rule.campaign;
             data.campaignId = configurationPath.rule.campaign;
+
+            console.log(data.value.campaignId, "CAMPAHN********")
+            console.log(data.campaignId, "CAMPAHN*======================*******")
+
+
+        }
         else {
+
+            console.log(configurationPath,"CONFIGURATION PATH ========================")
             if (configurationPath && configurationPath.notificationPath && configurationPath.notificationPath.length > 0) {
-                const dataNotifPath = configurationPath.notificationPath.filter(x => x.url == location.pathname && x.type == 'display');
-                if (dataNotifPath && dataNotifPath.length > 0)
-                    data.campaignId = dataNotifPath[0].campaignId;
+
+                console.log(configurationPath,"&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&")
+                const dataNotifPath = configurationPath.notificationPath.filter(x => x.url == location.pathname && x.type == 'lead');
+                console.log(dataNotifPath, "data nOtiifcation Path **********************************")
+                if (dataNotifPath) // && dataNotifPath.length > 0
+                data.campaignId = dataNotifPath[0].campaignId;
+                data.value.campaignId = dataNotifPath[0].campaignId;
+                    console.log(dataNotifPath[0].campaignId,"%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
             }
         }
 
@@ -3032,6 +3052,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
                 var liveNotificationAnimationCircle2= document.createElement('div')
                 liveNotificationAnimationCircle2.className= 'circle-2'
+                liveNotificationAnimationCircle2.style= `background: rgb(${configuration.panelStyle.iconBGColor.r},${configuration.panelStyle.iconBGColor.g},${configuration.panelStyle.iconBGColor.b});`
+
 
                 liveNotificationAnimationCircle.appendChild(liveNotificationAnimationCircle2)
 

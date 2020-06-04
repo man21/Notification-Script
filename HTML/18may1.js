@@ -3430,6 +3430,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
             }
         }
         reviwNotificationFooterStar1.innerHTML= star
+    }else{
+        reviwNotificationFooterStar1.setAttribute('src', 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/79341C01-B8BF-4484-AD66-B9314BAE4121.png')
     }
         reviewNotificationFooterStarContainer.appendChild(reviwNotificationFooterStar1)
 

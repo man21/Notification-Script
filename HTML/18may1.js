@@ -3053,7 +3053,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
                 var liveNotificationAnimationCircle2= document.createElement('div')
                 liveNotificationAnimationCircle2.className= 'circle-2'
-                liveNotificationAnimationCircle2.style= `background: rgb(${configuration.panelStyle.iconBGColor.r},${configuration.panelStyle.iconBGColor.g},${configuration.panelStyle.iconBGColor.b});`
+                // liveNotificationAnimationCircle2.style= `background: rgb(${configuration.panelStyle.iconBGColor.r},${configuration.panelStyle.iconBGColor.g},${configuration.panelStyle.iconBGColor.b});`
 
 
                 liveNotificationAnimationCircle.appendChild(liveNotificationAnimationCircle2)

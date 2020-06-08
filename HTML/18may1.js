@@ -3308,14 +3308,17 @@ var Note = function Note(config, containerStyle, iconStyle) {
         reviewNotificationUpperStar.innerHTML= star
     }else {
 
-        var reviewNotificationUpperLogo2 = document.createElement('img')
-        reviewNotificationUpperLogo2.className = 'bXZsh24SLi'
-        reviewNotificationUpperLogo2.setAttribute('src', 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/79341C01-B8BF-4484-AD66-B9314BAE4121.png')
+        
+
+        // var reviewNotificationUpperLogo2 = document.createElement('img')
+        // reviewNotificationUpperLogo2.className = 'bXZsh24SLi'
+        // reviewNotificationUpperLogo2.setAttribute('src', 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/79341C01-B8BF-4484-AD66-B9314BAE4121.png')
        
-        console.log(reviewNotificationUpperLogo2, "********************************")
-        reviewNotificationUpperStarContainer.appendChild(reviewNotificationUpperLogo2)
+        // console.log(reviewNotificationUpperLogo2, "********************************")
 
     }
+    reviewNotificationUpperStarContainer.appendChild(reviewNotificationUpperLogo2)
+
     reviewNotificationUpperStarContainer.appendChild(reviewNotificationUpperStar)
 
 

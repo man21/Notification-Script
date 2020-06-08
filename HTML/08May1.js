@@ -2561,7 +2561,8 @@ InfluenceTracker.prototype.tracker = function (info) {
        
         }else {
             if (configurationPath && configurationPath.notificationPath && configurationPath.notificationPath.length > 0) {
-                const dataNotifPath = configurationPath.notificationPath.filter(x => x.url == location.pathname && x.type == 'lead');
+                const dataNotifPath = configurationPath.notificationPath.filter(x => (location.pathname.match(x.url) ||  __pathname.match(x.url)) && x.type == 'lead'
+                );
 
                 // console.log(dataNotifPath,"DATA NOTIFICATION PATH ***************************************")
 
@@ -2940,6 +2941,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         var recentNotificationFooterFirstText = document.createElement('em')
         recentNotificationFooterFirstText.className = 'JeSkWc3iVZ'
+
         recentNotificationFooterFirstText.setAttribute('href', configuration ? configuration.poweredByLink : 'https://useinfluence.co')
 
         recentNotificationFooterFirstText.innerHTML = `${configuration && configuration.recentText2 ? configuration.recentText2 : 'verified by'}`;   //"Verified by"
@@ -3683,6 +3685,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         bulkNotificationFooterPoweredBy.className= 'Q9bSwcf36B'
         bulkNotificationFooterPoweredBy.setAttribute('href', configuration ? configuration.poweredByLink : 'https://useinfluence.co')
         bulkNotificationFooterPoweredBy.setAttribute('target', '_blank')
+
         bulkNotificationFooterPoweredBy.innerHTML = configuration.poweredBy ? configuration.poweredBy : 'Influence'   //"Influence"
     
         bulkNotificationLowerPTag.appendChild(bulkNotificationFooterPoweredBy)

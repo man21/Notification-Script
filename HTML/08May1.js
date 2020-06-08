@@ -3682,6 +3682,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         var bulkNotificationFooterPoweredBy = document.createElement('a')
         bulkNotificationFooterPoweredBy.className= 'Q9bSwcf36B'
         bulkNotificationFooterPoweredBy.setAttribute('href', configuration ? configuration.poweredByLink : 'https://useinfluence.co')
+        bulkNotificationFooterPoweredBy.setAttribute('target', '_blank')
         bulkNotificationFooterPoweredBy.innerHTML = configuration.poweredBy ? configuration.poweredBy : 'Influence'   //"Influence"
     
         bulkNotificationLowerPTag.appendChild(bulkNotificationFooterPoweredBy)

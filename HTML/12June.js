@@ -4881,12 +4881,15 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                     }
                     return
                 }
+                console.log(infos, "INFOS *****************")
                 startSecondLoop= startSecondLoop+result.length
                 for (let inff = 0; inff < infos.length; inff++) {
                     const info = infos[inff];
+
                     (function (u, v) {
                         if (response.message && !response.message.error) {
                             const info = response.message;
+
                             console.log(info, "info***")
                             let configurations = info.configurations.filter(config => config.paths.indexOf(__pathname) > -1 || config.paths.indexOf(window.location.pathname) > -1);
                             configurations = info.rule.displayOnAllPages && !configurations.length ? info.configurations : configurations;

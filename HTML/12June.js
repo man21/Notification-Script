@@ -2469,6 +2469,7 @@ function notificationTimeout(i, info, rule, key, notificationPath) {
 
 
     if (configuration) {
+        console.log(configuration, "configuration if condition ==========================================")
         const panelStyle = configuration.panelStyle;
         const backgroundColor = panelStyle.backgroundColor;
         const borderColor = panelStyle.borderColor;

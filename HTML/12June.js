@@ -3099,7 +3099,6 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                             if (((key == 'journey' && !userDetails) ||
                                 (key == 'review' && !userReviews) ||
                                 (key == 'identification' && !numberOfUsers) ||
-                                (key == 'announcement') ||
                                 (key == 'live' && (!liveVisitorCount || (configuration && Number(configuration.panelStyle.liveVisitorCount) >= liveVisitorCount)))
                             ) || (configuration && !configuration.activity)) {
                                 j = j - 1;
@@ -3123,7 +3122,6 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                                         else if (info.numberOfUsers) key = 'identification';
                                         else if (info.userDetails) key = 'journey';
                                         else if (info.userReviews) key = 'review';
-                                        else if (info) key = 'announcement';
                                         if(isTabVisibility)
                                             return notificationTimeout(u, info, info.rule, key, notificationPath);
                                     }, (info.rule.initialDelay) * 1000);
@@ -3134,8 +3132,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                                         else if (info.numberOfUsers) key = 'identification';
                                         else if (info.userDetails) key = 'journey';
                                         else if (info.userReviews) key = 'review';
-                                        else if (info) key = 'announcement';
-
+                                        
                                         if(isTabVisibility)
                                             return notificationTimeout(u, info, info.rule, key, notificationPath);
                                     },(info.rule.delayNotification ? (randomDelayTime * 1000) : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v - 1)) * 1000));
@@ -3481,7 +3478,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
     function notificationDisplay(type, config, containerStyle, iconStyle, alignment) {
 
         
-        console.log(type, "TYPE, @@@@@@@@@@@@@@@@@@@@@@@")
+        console.log(type, "TYPE @@@@@@@@@@@@@@@@@@@@@@@")
+
         if (notifClosr_c4rF9Effgt985n7v4y5h)
             return;
         let configurations = config.configurations.filter(config => config.paths.indexOf(__pathname) > -1 || config.paths.indexOf(window.location.pathname) > -1);

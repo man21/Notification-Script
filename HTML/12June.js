@@ -3121,6 +3121,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                                         else if (info.numberOfUsers) key = 'identification';
                                         else if (info.userDetails) key = 'journey';
                                         else if (info.userReviews) key = 'review';
+                                        else key = 'announcement'
                                         if(isTabVisibility){
                                             console.log(key, "KEY is here 1111111111111111111")
                                             return notificationTimeout(u, info, info.rule, key, notificationPath);}
@@ -3132,7 +3133,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                                         else if (info.numberOfUsers) key = 'identification';
                                         else if (info.userDetails) key = 'journey';
                                         else if (info.userReviews) key = 'review';
-                                        
+                                        else key = 'announcement'
                                         if(isTabVisibility){
                                             console.log(key, "key is here 2222222222222222222222")
                                             return notificationTimeout(u, info, info.rule, key, notificationPath); }

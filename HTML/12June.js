@@ -3478,6 +3478,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
     function notificationDisplay(type, config, containerStyle, iconStyle, alignment) {
 
         
+        console.log(type, "TYPE, @@@@@@@@@@@@@@@@@@@@@@@")
         if (notifClosr_c4rF9Effgt985n7v4y5h)
             return;
         let configurations = config.configurations.filter(config => config.paths.indexOf(__pathname) > -1 || config.paths.indexOf(window.location.pathname) > -1);

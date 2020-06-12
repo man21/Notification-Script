@@ -2081,7 +2081,8 @@ function CountUp(target, startVal, endVal, decimals, duration, options) {
         // decimal
         self.frameVal = Math.round(self.frameVal * self.dec) / self.dec;
 
-        // format and print value
+        // format and print any
+value
         self.printValue(self.frameVal);
 
         // whether to continue
@@ -2239,7 +2240,6 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
     var responseNotifications = [];
     var loopCheckValue = enableLoopNotification ? 1000 : activeNotification;
 
-    console.log(loopCheckValue, "Loop check value -----")
     let responseNotif = (callback) => {
         let splittedUrlsSingle = ['live']
         splittedUrlsSingle.map(async notifName => {
@@ -2264,10 +2264,8 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
         let maxMinus=0;
         let startSecondLoop = result.length
 
-        console.log(startSecondLoop,"===================" ,result.length)
         if (result.length == 5) {
             for (let i = 0; i < splittedUrls.length; i++) {
-                console.log("-------------------------------------")
                 var notif = responseNotifications[i];
                 var key = Object.keys(notif);
                 responses = notif[key];
@@ -2294,11 +2292,11 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                 }
                 startSecondLoop= startSecondLoop+result.length
                 for (let inff = 0; inff < infos.length; inff++) {
+                    console.log(infos.length, "infos.length )))))))))))))))))")
                     const info = infos[inff];
                     (function (u, v) {
                         if (response.message && !response.message.error) {
                             const info = response.message;
-                            console.log(info[4], "CONFIGURATIOn ***********************")
                             let configurations = info.configurations.filter(config => config.paths.indexOf(__pathname) > -1 || config.paths.indexOf(window.location.pathname) > -1);
                             configurations = info.rule.displayOnAllPages && !configurations.length ? info.configurations : configurations;
                             let paths = configurations.length > 1 && key == 'journey' ? configurations[pathIndex].paths : configurations.length ? configurations[0].paths : [];
@@ -2346,7 +2344,6 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                             }
 
 
-                            console.log(info, "INFO =====================")
                             //let userDetails = info.userDetails && info.userDetails.length && key == 'journey' ? info.userDetails.filter(user => user) : [];
                             let userDetails = info.userDetails;
                             let userReviews = info.userReviews;
@@ -2373,7 +2370,6 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                             }
                             // console.log('========configuration',configuration);
                             if (configuration && configuration.activity) {
-                                console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!1")
                                 if (j == 1) {
                                     randomDelayTime = 0;
                                     setTimeout(function () {
@@ -2388,7 +2384,6 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                                 }
                                 else
                                     setTimeout(function () {
-                                        console.log("!!!!!!!!111111111111111111111111111")
                                         if (info.visitorList || info.liveViewer || info.liveFollower) key = 'live';
                                         else if (info.numberOfUsers) key = 'identification';
                                         else if (info.userDetails) key = 'journey';
@@ -2432,7 +2427,6 @@ function generateRandomNumber(randomDelayTime, tempRandomDelayTime, displayTime,
 }
 
 function notificationTimeout(i, info, rule, key, notificationPath) {
-    console.log("Notification Time Out =====================================")
     if (notificationPath.indexOf(__pathname) === -1 && notificationPath.indexOf(window.location.pathname) === -1 && !rule.displayOnAllPages)
         return;
     var note = new Note({});
@@ -2487,7 +2481,6 @@ function notificationTimeout(i, info, rule, key, notificationPath) {
 
 
     if (configuration) {
-        console.log(configuration, "configuration if condition ==========================================")
         const panelStyle = configuration.panelStyle;
         const backgroundColor = panelStyle.backgroundColor;
         const borderColor = panelStyle.borderColor;

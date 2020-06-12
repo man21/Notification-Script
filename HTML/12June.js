@@ -3224,6 +3224,7 @@ function notificationTimeout(i, info, rule, key, notificationPath) {
 
 
     if (configuration) {
+        console.log(configuration.announcementHeaderText, "!!!!!!!!!!!!!!!!!!!!!!!!!!!1")
         const panelStyle = configuration.panelStyle;
         const backgroundColor = panelStyle.backgroundColor;
         const borderColor = panelStyle.borderColor;

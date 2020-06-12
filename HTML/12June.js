@@ -2247,7 +2247,2598 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
             var url = BASE_URL + '/elasticsearch/search/' + config + '?type=' + notifName;
             // var url = 'https://api.useinfluence.co/elasticsearch/search/' + config + '?type=' + notifName;
             await httpGetAsync(url, function (res) {
-                response = JSON.parse(res);
+                // response = JSON.parse(res);
+
+                response= {
+                    "message": [
+                        {
+                            "journey": {
+                                "message_data": [
+                                    {
+                                        "configurations": [
+                                            {
+                                                "configuration": {
+                                                    "notificationUrl": "https://app.udvdjdce.co/signup?affiliate=-DTqVl8dD",
+                                                    "isHideCountryLocation": false,
+                                                    "notificationSize": "large",
+                                                    "toggleMap": "map",
+                                                    "toggleHideName": false,
+                                                    "activity": false,
+                                                    "recentText1": "from",
+                                                    "recentText2": "by",
+                                                    "contentText": "Company Name",
+                                                    "hoursAgo": "hour(s) ago",
+                                                    "isHideFullLocation": false,
+                                                    "notificationType": "5bd668ced7d18f0011ff6552",
+                                                    "createdAt": "2020-05-02T08:25:09.443Z",
+                                                    "isHideState": false,
+                                                    "__v": 0,
+                                                    "otherText": "Recently signed up for",
+                                                    "langName": {
+                                                        "name": "English",
+                                                        "language": "en"
+                                                    },
+                                                    "ctaHyperlinkUrl": "",
+                                                    "id": "5ead2e6520e83f00144f0b38",
+                                                    "updatedAt": "2020-05-19T08:08:30.517Z",
+                                                    "daysAgo": "day(s) ago",
+                                                    "bulkVersion": "2.0",
+                                                    "gglReviewText": "reviewed us on Google",
+                                                    "isDisplayPurchase": true,
+                                                    "ctaButtonText": "Book Now",
+                                                    "togglePoweredBy": true,
+                                                    "minuteAgo": "minute(s) ago",
+                                                    "orderText": "Purchased for",
+                                                    "panelStyle": {
+                                                        "borderColor": {
+                                                            "a": 0.8,
+                                                            "r": 200,
+                                                            "b": 200,
+                                                            "g": 200
+                                                        },
+                                                        "onlyDisplayNotification": false,
+                                                        "ctaBorderWidth": 0,
+                                                        "shadow": {
+                                                            "r": 0,
+                                                            "b": 0,
+                                                            "color": "lightgrey",
+                                                            "g": 0
+                                                        },
+                                                        "color": {
+                                                            "a": 1,
+                                                            "r": 44,
+                                                            "b": 195,
+                                                            "g": 102
+                                                        },
+                                                        "linkFontWeight": "normal",
+                                                        "selectDurationData": "days",
+                                                        "blur": 0,
+                                                        "recentNumber": 2,
+                                                        "liveVisitorCount": 0,
+                                                        "iconBGColor": {
+                                                            "a": 1,
+                                                            "r": 0,
+                                                            "b": 247,
+                                                            "g": 149
+                                                        },
+                                                        "ctaButtonWidth": 100,
+                                                        "fontFamily": "sans-serif",
+                                                        "ctaBorderColor": {
+                                                            "a": 0.8,
+                                                            "r": 200,
+                                                            "b": 200,
+                                                            "g": 200
+                                                        },
+                                                        "borderWidth": 0,
+                                                        "ctaBackgroundColor": {
+                                                            "a": 1,
+                                                            "r": 255,
+                                                            "b": 255,
+                                                            "g": 255
+                                                        },
+                                                        "otherText": "signed up for",
+                                                        "hideAnonymousConversion": true,
+                                                        "selectLastDisplayConversation": "days",
+                                                        "radius": 9,
+                                                        "fontWeight": "600",
+                                                        "linkFontFamily": "sans-serif",
+                                                        "image": "",
+                                                        "backgroundColor": {
+                                                            "a": 1,
+                                                            "r": 255,
+                                                            "b": 255,
+                                                            "g": 255
+                                                        },
+                                                        "bulkData": 5,
+                                                        "gglReviewText": "reviewed us on Google",
+                                                        "linkColor": {
+                                                            "a": 1,
+                                                            "r": 0,
+                                                            "b": 216,
+                                                            "g": 137
+                                                        },
+                                                        "ctaRadius": 0,
+                                                        "orderText": "purchased for",
+                                                        "ctaTextColor": {
+                                                            "a": 1,
+                                                            "r": 0,
+                                                            "b": 216,
+                                                            "g": 137
+                                                        },
+                                                        "recentConv": 365,
+                                                        "secondaryColor": {
+                                                            "a": 1,
+                                                            "r": 44,
+                                                            "b": 195,
+                                                            "g": 102
+                                                        }
+                                                    },
+                                                    "isCTATop": false,
+                                                    "isDisplaySignup": true,
+                                                    "visitorText": "people",
+                                                    "toggleCTA": false,
+                                                    "usernameText": "someone",
+                                                    "isEnablePurchaseNotificationUrl": true,
+                                                    "campaign": "5ead2e6520e83f00144f0b36",
+                                                    "_id": "5ead2e6520e83f00144f0b38",
+                                                    "poweredByLink": "dummy.com",
+                                                    "poweredBy": "dummy",
+                                                    "isHideLastname": false,
+                                                    "isHideCityLocation": false
+                                                },
+                                                "paths": []
+                                            }
+                                        ],
+                                        "rule": {
+                                            "loopNotification": true,
+                                            "displayTime": 5,
+                                            "delayBetween": 3,
+                                            "companyName": "Test2109 2",
+                                            "popupPositionInMobile": "bottom",
+                                            "initialDelay": 0,
+                                            "notificationFromCountry": [],
+                                            "popupAnimationIn": "bounceIn",
+                                            "displayOnAllPages": true,
+                                            "createdAt": "2020-05-02T08:25:09.241Z",
+                                            "popupAnimationOut": "zoomOutLeft",
+                                            "closeNotification": false,
+                                            "websiteUrl": "test2109.herokuapp.com",
+                                            "hideNotification": false,
+                                            "userConsent": false,
+                                            "campaign": "5ead2e6520e83f00144f0b36",
+                                            "_id": "5ead2e6520e83f00144f0b3b",
+                                            "delayNotification": false,
+                                            "displayPosition": "Bottom Left"
+                                        },
+                                        "userDetails": {
+                                            "country": "India",
+                                            "path": "/",
+                                            "city": "Noida",
+                                            "campaignId": "5ead2e6520e83f00144f0b36",
+                                            "latitude": 28.58,
+                                            "_id": "5d3dfdf0-a23d-11ea-90d8-371ae30a9e91",
+                                            "type": "_doc",
+                                            "email": "hgcf@gmail.com",
+                                            "username": "Kjhug",
+                                            "timestamp": "2020-05-30T06:18:11+00:00",
+                                            "longitude": 77.33,
+                                            "trackingId": "INF-3gbfcjjsd6vhvo"
+                                        }
+                                    },
+                                    {
+                                        "configurations": [
+                                            {
+                                                "configuration": {
+                                                    "notificationUrl": "https://app.udvdjdce.co/signup?affiliate=-DTqVl8dD",
+                                                    "isHideCountryLocation": false,
+                                                    "notificationSize": "large",
+                                                    "toggleMap": "map",
+                                                    "toggleHideName": false,
+                                                    "activity": false,
+                                                    "recentText1": "from",
+                                                    "recentText2": "by",
+                                                    "contentText": "Company Name",
+                                                    "hoursAgo": "hour(s) ago",
+                                                    "isHideFullLocation": false,
+                                                    "notificationType": "5bd668ced7d18f0011ff6552",
+                                                    "createdAt": "2020-05-02T08:25:09.443Z",
+                                                    "isHideState": false,
+                                                    "__v": 0,
+                                                    "otherText": "Recently signed up for",
+                                                    "langName": {
+                                                        "name": "English",
+                                                        "language": "en"
+                                                    },
+                                                    "ctaHyperlinkUrl": "",
+                                                    "id": "5ead2e6520e83f00144f0b38",
+                                                    "updatedAt": "2020-05-19T08:08:30.517Z",
+                                                    "daysAgo": "day(s) ago",
+                                                    "bulkVersion": "2.0",
+                                                    "gglReviewText": "reviewed us on Google",
+                                                    "isDisplayPurchase": true,
+                                                    "ctaButtonText": "Book Now",
+                                                    "togglePoweredBy": true,
+                                                    "minuteAgo": "minute(s) ago",
+                                                    "orderText": "Purchased for",
+                                                    "panelStyle": {
+                                                        "borderColor": {
+                                                            "a": 0.8,
+                                                            "r": 200,
+                                                            "b": 200,
+                                                            "g": 200
+                                                        },
+                                                        "onlyDisplayNotification": false,
+                                                        "ctaBorderWidth": 0,
+                                                        "shadow": {
+                                                            "r": 0,
+                                                            "b": 0,
+                                                            "color": "lightgrey",
+                                                            "g": 0
+                                                        },
+                                                        "color": {
+                                                            "a": 1,
+                                                            "r": 44,
+                                                            "b": 195,
+                                                            "g": 102
+                                                        },
+                                                        "linkFontWeight": "normal",
+                                                        "selectDurationData": "days",
+                                                        "blur": 0,
+                                                        "recentNumber": 2,
+                                                        "liveVisitorCount": 0,
+                                                        "iconBGColor": {
+                                                            "a": 1,
+                                                            "r": 0,
+                                                            "b": 247,
+                                                            "g": 149
+                                                        },
+                                                        "ctaButtonWidth": 100,
+                                                        "fontFamily": "sans-serif",
+                                                        "ctaBorderColor": {
+                                                            "a": 0.8,
+                                                            "r": 200,
+                                                            "b": 200,
+                                                            "g": 200
+                                                        },
+                                                        "borderWidth": 0,
+                                                        "ctaBackgroundColor": {
+                                                            "a": 1,
+                                                            "r": 255,
+                                                            "b": 255,
+                                                            "g": 255
+                                                        },
+                                                        "otherText": "signed up for",
+                                                        "hideAnonymousConversion": true,
+                                                        "selectLastDisplayConversation": "days",
+                                                        "radius": 9,
+                                                        "fontWeight": "600",
+                                                        "linkFontFamily": "sans-serif",
+                                                        "image": "",
+                                                        "backgroundColor": {
+                                                            "a": 1,
+                                                            "r": 255,
+                                                            "b": 255,
+                                                            "g": 255
+                                                        },
+                                                        "bulkData": 5,
+                                                        "gglReviewText": "reviewed us on Google",
+                                                        "linkColor": {
+                                                            "a": 1,
+                                                            "r": 0,
+                                                            "b": 216,
+                                                            "g": 137
+                                                        },
+                                                        "ctaRadius": 0,
+                                                        "orderText": "purchased for",
+                                                        "ctaTextColor": {
+                                                            "a": 1,
+                                                            "r": 0,
+                                                            "b": 216,
+                                                            "g": 137
+                                                        },
+                                                        "recentConv": 365,
+                                                        "secondaryColor": {
+                                                            "a": 1,
+                                                            "r": 44,
+                                                            "b": 195,
+                                                            "g": 102
+                                                        }
+                                                    },
+                                                    "isCTATop": false,
+                                                    "isDisplaySignup": true,
+                                                    "visitorText": "people",
+                                                    "toggleCTA": false,
+                                                    "usernameText": "someone",
+                                                    "isEnablePurchaseNotificationUrl": true,
+                                                    "campaign": "5ead2e6520e83f00144f0b36",
+                                                    "_id": "5ead2e6520e83f00144f0b38",
+                                                    "poweredByLink": "dummy.com",
+                                                    "poweredBy": "dummy",
+                                                    "isHideLastname": false,
+                                                    "isHideCityLocation": false
+                                                },
+                                                "paths": []
+                                            }
+                                        ],
+                                        "rule": {
+                                            "loopNotification": true,
+                                            "displayTime": 5,
+                                            "delayBetween": 3,
+                                            "companyName": "Test2109 2",
+                                            "popupPositionInMobile": "bottom",
+                                            "initialDelay": 0,
+                                            "notificationFromCountry": [],
+                                            "popupAnimationIn": "bounceIn",
+                                            "displayOnAllPages": true,
+                                            "createdAt": "2020-05-02T08:25:09.241Z",
+                                            "popupAnimationOut": "zoomOutLeft",
+                                            "closeNotification": false,
+                                            "websiteUrl": "test2109.herokuapp.com",
+                                            "hideNotification": false,
+                                            "userConsent": false,
+                                            "campaign": "5ead2e6520e83f00144f0b36",
+                                            "_id": "5ead2e6520e83f00144f0b3b",
+                                            "delayNotification": false,
+                                            "displayPosition": "Bottom Left"
+                                        },
+                                        "userDetails": {
+                                            "country": "India",
+                                            "path": "/",
+                                            "city": "Noida",
+                                            "campaignId": "5ead2e6520e83f00144f0b36",
+                                            "latitude": 28.58,
+                                            "_id": "e97c33f0-a23c-11ea-8f5a-e54586495139",
+                                            "type": "_doc",
+                                            "email": "mann@gmail.cs",
+                                            "username": "Man",
+                                            "timestamp": "2020-05-30T06:14:57+00:00",
+                                            "longitude": 77.33,
+                                            "trackingId": "INF-3gbfcjjsd6vhvo"
+                                        }
+                                    },
+                                    {
+                                        "configurations": [
+                                            {
+                                                "configuration": {
+                                                    "notificationUrl": "abcd.com",
+                                                    "isHideCountryLocation": false,
+                                                    "notificationSize": "large",
+                                                    "toggleMap": "map",
+                                                    "toggleHideName": false,
+                                                    "activity": true,
+                                                    "recentText1": "from",
+                                                    "recentText2": "verified by",
+                                                    "contentText": "Appsumo",
+                                                    "hoursAgo": "hour(s) ago",
+                                                    "isHideFullLocation": false,
+                                                    "notificationType": "5bd668ced7d18f0011ff6552",
+                                                    "createdAt": "2020-02-26T13:22:21.976Z",
+                                                    "isHideState": true,
+                                                    "__v": 0,
+                                                    "otherText": "Recently signed up for ",
+                                                    "langName": {
+                                                        "name": "English",
+                                                        "language": "en"
+                                                    },
+                                                    "ctaHyperlinkUrl": "https://www.google.com/",
+                                                    "id": "5e56710d35855b0013f70781",
+                                                    "updatedAt": "2020-06-02T14:07:46.927Z",
+                                                    "daysAgo": "day(s) ago",
+                                                    "bulkVersion": "2.0",
+                                                    "gglReviewText": "reviewed us on Google",
+                                                    "isDisplayPurchase": true,
+                                                    "ctaButtonText": "Book Now",
+                                                    "togglePoweredBy": false,
+                                                    "minuteAgo": "minute(s) ago",
+                                                    "orderText": "Purchased for",
+                                                    "panelStyle": {
+                                                        "borderColor": {
+                                                            "a": 0.8,
+                                                            "r": 200,
+                                                            "b": 200,
+                                                            "g": 200
+                                                        },
+                                                        "onlyDisplayNotification": false,
+                                                        "ctaBorderWidth": 0,
+                                                        "shadow": {
+                                                            "r": 0,
+                                                            "b": 0,
+                                                            "color": "lightgrey",
+                                                            "g": 0
+                                                        },
+                                                        "color": {
+                                                            "a": 1,
+                                                            "r": 0,
+                                                            "b": 0,
+                                                            "g": 0
+                                                        },
+                                                        "linkFontWeight": "normal",
+                                                        "selectDurationData": "days",
+                                                        "blur": 0,
+                                                        "recentNumber": 2,
+                                                        "liveVisitorCount": 0,
+                                                        "iconBGColor": {
+                                                            "a": 1,
+                                                            "r": 0,
+                                                            "b": 247,
+                                                            "g": 149
+                                                        },
+                                                        "ctaButtonWidth": 100,
+                                                        "fontFamily": "inherit",
+                                                        "ctaBorderColor": {
+                                                            "a": 0.8,
+                                                            "r": 200,
+                                                            "b": 200,
+                                                            "g": 200
+                                                        },
+                                                        "borderWidth": 0,
+                                                        "ctaBackgroundColor": {
+                                                            "a": 1,
+                                                            "r": 255,
+                                                            "b": 255,
+                                                            "g": 255
+                                                        },
+                                                        "otherText": "signed up for",
+                                                        "hideAnonymousConversion": true,
+                                                        "selectLastDisplayConversation": "days",
+                                                        "radius": 48,
+                                                        "fontWeight": "normal",
+                                                        "linkFontFamily": "inherit",
+                                                        "image": "",
+                                                        "backgroundColor": {
+                                                            "a": 1,
+                                                            "r": 255,
+                                                            "b": 255,
+                                                            "g": 255
+                                                        },
+                                                        "bulkData": 5,
+                                                        "gglReviewText": "reviewed us on Google",
+                                                        "linkColor": {
+                                                            "a": 1,
+                                                            "r": 0,
+                                                            "b": 216,
+                                                            "g": 137
+                                                        },
+                                                        "ctaRadius": 33,
+                                                        "orderText": "purchased for",
+                                                        "ctaTextColor": {
+                                                            "a": 1,
+                                                            "r": 0,
+                                                            "b": 216,
+                                                            "g": 137
+                                                        },
+                                                        "recentConv": 365,
+                                                        "secondaryColor": {
+                                                            "a": 1,
+                                                            "r": 255,
+                                                            "b": 5,
+                                                            "g": 0
+                                                        }
+                                                    },
+                                                    "isCTATop": false,
+                                                    "isDisplaySignup": true,
+                                                    "visitorText": "people",
+                                                    "toggleCTA": false,
+                                                    "usernameText": "someone",
+                                                    "isEnablePurchaseNotificationUrl": true,
+                                                    "campaign": "5e56710d35855b0013f7077f",
+                                                    "_id": "5e56710d35855b0013f70781",
+                                                    "poweredByLink": "https://useinfluence.co",
+                                                    "extraText": "",
+                                                    "poweredBy": "ExamHUB",
+                                                    "isHideLastname": true,
+                                                    "isHideCityLocation": false
+                                                },
+                                                "paths": []
+                                            }
+                                        ],
+                                        "rule": {
+                                            "loopNotification": true,
+                                            "displayTime": 5,
+                                            "delayBetween": 3,
+                                            "companyName": "test2109",
+                                            "popupPositionInMobile": "top",
+                                            "initialDelay": 0,
+                                            "notificationFromCountry": [],
+                                            "popupAnimationIn": "fadeIn",
+                                            "displayOnAllPages": false,
+                                            "createdAt": "2020-02-26T13:22:21.795Z",
+                                            "popupAnimationOut": "fadeIn",
+                                            "closeNotification": true,
+                                            "websiteUrl": "test2109.herokuapp.com",
+                                            "hideNotification": false,
+                                            "userConsent": false,
+                                            "campaign": "5e56710d35855b0013f7077f",
+                                            "_id": "5e56710d35855b0013f70784",
+                                            "delayNotification": false,
+                                            "displayPosition": "Bottom Left"
+                                        },
+                                        "userDetails": {
+                                            "country": "India",
+                                            "path": "/",
+                                            "city": "Noida",
+                                            "campaignId": "5e56710d35855b0013f7077f",
+                                            "latitude": 28.58,
+                                            "_id": "92ff0c60-a23b-11ea-9fd6-1f8776bbad85",
+                                            "type": "_doc",
+                                            "email": "jhg@gmail.com",
+                                            "username": "Hv",
+                                            "timestamp": "2020-05-30T06:05:22+00:00",
+                                            "longitude": 77.33,
+                                            "trackingId": "INF-3gbfcjjsd6vhvo"
+                                        }
+                                    },
+                                    {
+                                        "configurations": [
+                                            {
+                                                "configuration": {
+                                                    "notificationUrl": "abcd.com",
+                                                    "isHideCountryLocation": false,
+                                                    "notificationSize": "large",
+                                                    "toggleMap": "map",
+                                                    "toggleHideName": false,
+                                                    "activity": true,
+                                                    "recentText1": "from",
+                                                    "recentText2": "verified by",
+                                                    "contentText": "Appsumo",
+                                                    "hoursAgo": "hour(s) ago",
+                                                    "isHideFullLocation": false,
+                                                    "notificationType": "5bd668ced7d18f0011ff6552",
+                                                    "createdAt": "2020-02-26T13:22:21.976Z",
+                                                    "isHideState": true,
+                                                    "__v": 0,
+                                                    "otherText": "Recently signed up for ",
+                                                    "langName": {
+                                                        "name": "English",
+                                                        "language": "en"
+                                                    },
+                                                    "ctaHyperlinkUrl": "https://www.google.com/",
+                                                    "id": "5e56710d35855b0013f70781",
+                                                    "updatedAt": "2020-06-02T14:07:46.927Z",
+                                                    "daysAgo": "day(s) ago",
+                                                    "bulkVersion": "2.0",
+                                                    "gglReviewText": "reviewed us on Google",
+                                                    "isDisplayPurchase": true,
+                                                    "ctaButtonText": "Book Now",
+                                                    "togglePoweredBy": false,
+                                                    "minuteAgo": "minute(s) ago",
+                                                    "orderText": "Purchased for",
+                                                    "panelStyle": {
+                                                        "borderColor": {
+                                                            "a": 0.8,
+                                                            "r": 200,
+                                                            "b": 200,
+                                                            "g": 200
+                                                        },
+                                                        "onlyDisplayNotification": false,
+                                                        "ctaBorderWidth": 0,
+                                                        "shadow": {
+                                                            "r": 0,
+                                                            "b": 0,
+                                                            "color": "lightgrey",
+                                                            "g": 0
+                                                        },
+                                                        "color": {
+                                                            "a": 1,
+                                                            "r": 0,
+                                                            "b": 0,
+                                                            "g": 0
+                                                        },
+                                                        "linkFontWeight": "normal",
+                                                        "selectDurationData": "days",
+                                                        "blur": 0,
+                                                        "recentNumber": 2,
+                                                        "liveVisitorCount": 0,
+                                                        "iconBGColor": {
+                                                            "a": 1,
+                                                            "r": 0,
+                                                            "b": 247,
+                                                            "g": 149
+                                                        },
+                                                        "ctaButtonWidth": 100,
+                                                        "fontFamily": "inherit",
+                                                        "ctaBorderColor": {
+                                                            "a": 0.8,
+                                                            "r": 200,
+                                                            "b": 200,
+                                                            "g": 200
+                                                        },
+                                                        "borderWidth": 0,
+                                                        "ctaBackgroundColor": {
+                                                            "a": 1,
+                                                            "r": 255,
+                                                            "b": 255,
+                                                            "g": 255
+                                                        },
+                                                        "otherText": "signed up for",
+                                                        "hideAnonymousConversion": true,
+                                                        "selectLastDisplayConversation": "days",
+                                                        "radius": 48,
+                                                        "fontWeight": "normal",
+                                                        "linkFontFamily": "inherit",
+                                                        "image": "",
+                                                        "backgroundColor": {
+                                                            "a": 1,
+                                                            "r": 255,
+                                                            "b": 255,
+                                                            "g": 255
+                                                        },
+                                                        "bulkData": 5,
+                                                        "gglReviewText": "reviewed us on Google",
+                                                        "linkColor": {
+                                                            "a": 1,
+                                                            "r": 0,
+                                                            "b": 216,
+                                                            "g": 137
+                                                        },
+                                                        "ctaRadius": 33,
+                                                        "orderText": "purchased for",
+                                                        "ctaTextColor": {
+                                                            "a": 1,
+                                                            "r": 0,
+                                                            "b": 216,
+                                                            "g": 137
+                                                        },
+                                                        "recentConv": 365,
+                                                        "secondaryColor": {
+                                                            "a": 1,
+                                                            "r": 255,
+                                                            "b": 5,
+                                                            "g": 0
+                                                        }
+                                                    },
+                                                    "isCTATop": false,
+                                                    "isDisplaySignup": true,
+                                                    "visitorText": "people",
+                                                    "toggleCTA": false,
+                                                    "usernameText": "someone",
+                                                    "isEnablePurchaseNotificationUrl": true,
+                                                    "campaign": "5e56710d35855b0013f7077f",
+                                                    "_id": "5e56710d35855b0013f70781",
+                                                    "poweredByLink": "https://useinfluence.co",
+                                                    "extraText": "",
+                                                    "poweredBy": "ExamHUB",
+                                                    "isHideLastname": true,
+                                                    "isHideCityLocation": false
+                                                },
+                                                "paths": []
+                                            }
+                                        ],
+                                        "rule": {
+                                            "loopNotification": true,
+                                            "displayTime": 5,
+                                            "delayBetween": 3,
+                                            "companyName": "test2109",
+                                            "popupPositionInMobile": "top",
+                                            "initialDelay": 0,
+                                            "notificationFromCountry": [],
+                                            "popupAnimationIn": "fadeIn",
+                                            "displayOnAllPages": false,
+                                            "createdAt": "2020-02-26T13:22:21.795Z",
+                                            "popupAnimationOut": "fadeIn",
+                                            "closeNotification": true,
+                                            "websiteUrl": "test2109.herokuapp.com",
+                                            "hideNotification": false,
+                                            "userConsent": false,
+                                            "campaign": "5e56710d35855b0013f7077f",
+                                            "_id": "5e56710d35855b0013f70784",
+                                            "delayNotification": false,
+                                            "displayPosition": "Bottom Left"
+                                        },
+                                        "userDetails": {
+                                            "country": "India",
+                                            "path": "/",
+                                            "city": "Noida",
+                                            "campaignId": "5e56710d35855b0013f7077f",
+                                            "latitude": 28.58,
+                                            "_id": "5114cfb0-a23b-11ea-9181-0bb3e2450079",
+                                            "type": "_doc",
+                                            "email": "dummy@gmail.com",
+                                            "username": "Kjhg",
+                                            "timestamp": "2020-05-30T06:03:32+00:00",
+                                            "longitude": 77.33,
+                                            "trackingId": "INF-3gbfcjjsd6vhvo"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "identification": {
+                                "message_data": [
+                                    {
+                                        "configurations": [
+                                            {
+                                                "configuration": {
+                                                    "notificationUrl": "dummy.com",
+                                                    "isHideCountryLocation": false,
+                                                    "notificationSize": "large",
+                                                    "toggleMap": "image",
+                                                    "toggleHideName": true,
+                                                    "activity": false,
+                                                    "contentText": "Company",
+                                                    "isHideFullLocation": false,
+                                                    "notificationType": "5bd668d9d7d18f0011ff6553",
+                                                    "bulkDaysLable": "days",
+                                                    "createdAt": "2020-05-02T08:25:09.443Z",
+                                                    "isHideState": false,
+                                                    "__v": 0,
+                                                    "otherText": "signed up for",
+                                                    "langName": {
+                                                        "name": "English",
+                                                        "language": "en"
+                                                    },
+                                                    "ctaHyperlinkUrl": "",
+                                                    "id": "5ead2e6520e83f00144f0b37",
+                                                    "bulkText": "in last ",
+                                                    "updatedAt": "2020-05-19T08:08:13.000Z",
+                                                    "bulkVersion": "2.0",
+                                                    "gglReviewText": "reviewed us on Google",
+                                                    "isDisplayPurchase": true,
+                                                    "ctaButtonText": "Book Now",
+                                                    "togglePoweredBy": true,
+                                                    "bulkDays": "days",
+                                                    "orderText": "purchased for",
+                                                    "panelStyle": {
+                                                        "linkFontFamily": "sans-serif",
+                                                        "borderColor": {
+                                                            "a": 0.8,
+                                                            "r": 200,
+                                                            "b": 200,
+                                                            "g": 200
+                                                        },
+                                                        "backgroundColor": {
+                                                            "a": 1,
+                                                            "r": 255,
+                                                            "b": 255,
+                                                            "g": 255
+                                                        },
+                                                        "onlyDisplayNotification": false,
+                                                        "shadow": {
+                                                            "r": 0,
+                                                            "b": 0,
+                                                            "color": "lightgrey",
+                                                            "g": 0
+                                                        },
+                                                        "color": {
+                                                            "a": 1,
+                                                            "r": 44,
+                                                            "b": 195,
+                                                            "g": 102
+                                                        },
+                                                        "linkFontWeight": "normal",
+                                                        "bulkData": 1000,
+                                                        "selectDurationData": "days",
+                                                        "blur": 0,
+                                                        "recentNumber": 5,
+                                                        "liveVisitorCount": 0,
+                                                        "linkColor": {
+                                                            "a": 1,
+                                                            "r": 0,
+                                                            "b": 216,
+                                                            "g": 137
+                                                        },
+                                                        "iconBGColor": {
+                                                            "a": 1,
+                                                            "r": 0,
+                                                            "b": 247,
+                                                            "g": 149
+                                                        },
+                                                        "fontFamily": "sans-serif",
+                                                        "borderWidth": 0,
+                                                        "otherText": "signed up for",
+                                                        "recentConv": 5,
+                                                        "hideAnonymousConversion": true,
+                                                        "selectLastDisplayConversation": "days",
+                                                        "radius": 9,
+                                                        "fontWeight": "normal"
+                                                    },
+                                                    "isCTATop": false,
+                                                    "isDisplaySignup": true,
+                                                    "visitorText": "people",
+                                                    "toggleCTA": false,
+                                                    "usernameText": "someone",
+                                                    "isEnablePurchaseNotificationUrl": true,
+                                                    "campaign": "5ead2e6520e83f00144f0b36",
+                                                    "_id": "5ead2e6520e83f00144f0b37",
+                                                    "poweredByLink": "dummy.com",
+                                                    "poweredBy": "dummy",
+                                                    "isHideLastname": false,
+                                                    "isHideCityLocation": false
+                                                },
+                                                "paths": []
+                                            }
+                                        ],
+                                        "numberOfUsers": 2,
+                                        "rule": {
+                                            "loopNotification": true,
+                                            "displayTime": 5,
+                                            "delayBetween": 3,
+                                            "companyName": "Test2109 2",
+                                            "popupPositionInMobile": "bottom",
+                                            "initialDelay": 0,
+                                            "notificationFromCountry": [],
+                                            "popupAnimationIn": "bounceIn",
+                                            "displayOnAllPages": true,
+                                            "createdAt": "2020-05-02T08:25:09.241Z",
+                                            "popupAnimationOut": "zoomOutLeft",
+                                            "closeNotification": false,
+                                            "websiteUrl": "test2109.herokuapp.com",
+                                            "hideNotification": false,
+                                            "userConsent": false,
+                                            "campaign": "5ead2e6520e83f00144f0b36",
+                                            "_id": "5ead2e6520e83f00144f0b3b",
+                                            "delayNotification": false,
+                                            "displayPosition": "Bottom Left"
+                                        }
+                                    },
+                                    {
+                                        "configurations": [
+                                            {
+                                                "configuration": {
+                                                    "notificationUrl": "abcd.com",
+                                                    "isHideCountryLocation": false,
+                                                    "notificationSize": "large",
+                                                    "toggleMap": "image",
+                                                    "toggleHideName": true,
+                                                    "activity": true,
+                                                    "recentText2": "by",
+                                                    "contentText": "abcd",
+                                                    "isHideFullLocation": false,
+                                                    "notificationType": "5bd668d9d7d18f0011ff6553",
+                                                    "bulkDaysLable": "days",
+                                                    "createdAt": "2020-02-26T13:22:21.976Z",
+                                                    "isHideState": false,
+                                                    "__v": 0,
+                                                    "otherText": "signed up for",
+                                                    "langName": {
+                                                        "name": "Chinese (Simplified)",
+                                                        "language": "zh"
+                                                    },
+                                                    "ctaHyperlinkUrl": "",
+                                                    "id": "5e56710d35855b0013f70780",
+                                                    "bulkText": "in last ",
+                                                    "updatedAt": "2020-06-02T14:07:44.482Z",
+                                                    "bulkVersion": "2.0",
+                                                    "notificationDisplayApp": "facebook",
+                                                    "gglReviewText": "reviewed us on Google",
+                                                    "isDisplayPurchase": true,
+                                                    "ctaButtonText": "Book Now",
+                                                    "togglePoweredBy": false,
+                                                    "bulkDays": "days",
+                                                    "orderText": "purchased for",
+                                                    "panelStyle": {
+                                                        "linkFontFamily": "inherit",
+                                                        "FontFamily": "monospace",
+                                                        "borderColor": {
+                                                            "a": 0.8,
+                                                            "r": 200,
+                                                            "b": 200,
+                                                            "g": 200
+                                                        },
+                                                        "backgroundColor": {
+                                                            "a": 1,
+                                                            "r": 255,
+                                                            "b": 255,
+                                                            "g": 255
+                                                        },
+                                                        "onlyDisplayNotification": false,
+                                                        "shadow": {
+                                                            "r": 0,
+                                                            "b": 0,
+                                                            "color": "lightgrey",
+                                                            "g": 0
+                                                        },
+                                                        "color": {
+                                                            "a": 1,
+                                                            "r": 0,
+                                                            "b": 247,
+                                                            "g": 3
+                                                        },
+                                                        "linkFontWeight": "normal",
+                                                        "bulkData": 1000,
+                                                        "selectDurationData": "days",
+                                                        "blur": 0,
+                                                        "recentNumber": 5,
+                                                        "liveVisitorCount": 0,
+                                                        "linkColor": {
+                                                            "a": 1,
+                                                            "r": 0,
+                                                            "b": 216,
+                                                            "g": 137
+                                                        },
+                                                        "iconBGColor": {
+                                                            "a": 1,
+                                                            "r": 0,
+                                                            "b": 247,
+                                                            "g": 149
+                                                        },
+                                                        "fontFamily": "inherit",
+                                                        "borderWidth": 0,
+                                                        "otherText": "signed up for",
+                                                        "recentConv": 5,
+                                                        "hideAnonymousConversion": true,
+                                                        "selectLastDisplayConversation": "days",
+                                                        "radius": 50,
+                                                        "fontWeight": "normal"
+                                                    },
+                                                    "isCTATop": false,
+                                                    "isDisplaySignup": true,
+                                                    "visitorText": "people",
+                                                    "toggleCTA": false,
+                                                    "usernameText": "someone",
+                                                    "isEnablePurchaseNotificationUrl": true,
+                                                    "campaign": "5e56710d35855b0013f7077f",
+                                                    "_id": "5e56710d35855b0013f70780",
+                                                    "poweredByLink": "abc.com",
+                                                    "poweredBy": "abcd",
+                                                    "isHideLastname": false,
+                                                    "isHideCityLocation": false
+                                                },
+                                                "paths": []
+                                            }
+                                        ],
+                                        "numberOfUsers": 279,
+                                        "rule": {
+                                            "loopNotification": true,
+                                            "displayTime": 5,
+                                            "delayBetween": 3,
+                                            "companyName": "test2109",
+                                            "popupPositionInMobile": "top",
+                                            "initialDelay": 0,
+                                            "notificationFromCountry": [],
+                                            "popupAnimationIn": "fadeIn",
+                                            "displayOnAllPages": false,
+                                            "createdAt": "2020-02-26T13:22:21.795Z",
+                                            "popupAnimationOut": "fadeIn",
+                                            "closeNotification": true,
+                                            "websiteUrl": "test2109.herokuapp.com",
+                                            "hideNotification": false,
+                                            "userConsent": false,
+                                            "campaign": "5e56710d35855b0013f7077f",
+                                            "_id": "5e56710d35855b0013f70784",
+                                            "delayNotification": false,
+                                            "displayPosition": "Bottom Left"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "live": {
+                                "message_data": [
+                                    {
+                                        "visitorList": [
+                                            {
+                                                "doc_count": 7,
+                                                "unique_visitors": {
+                                                    "value": 1
+                                                },
+                                                "key": "/"
+                                            }
+                                        ],
+                                        "configurations": [
+                                            {
+                                                "configuration": {
+                                                    "notificationUrl": "dummy.com",
+                                                    "isHideCountryLocation": false,
+                                                    "notificationSize": "large",
+                                                    "toggleMap": "image",
+                                                    "toggleHideName": true,
+                                                    "activity": false,
+                                                    "contentText": "Influence",
+                                                    "isHideFullLocation": false,
+                                                    "notificationType": "5bd668e21960740011c76628",
+                                                    "liveFollowerText": "are following live stream",
+                                                    "createdAt": "2020-05-02T08:25:09.443Z",
+                                                    "isHideState": false,
+                                                    "liveVisitorText": "are viewing this site",
+                                                    "__v": 0,
+                                                    "otherText": "signed up for",
+                                                    "langName": {
+                                                        "name": "English",
+                                                        "language": "en"
+                                                    },
+                                                    "ctaHyperlinkUrl": "",
+                                                    "id": "5ead2e6520e83f00144f0b39",
+                                                    "updatedAt": "2020-05-19T08:08:49.370Z",
+                                                    "bulkVersion": "2.0",
+                                                    "liveViewerText": "are viewing live stream",
+                                                    "gglReviewText": "reviewed us on Google",
+                                                    "isDisplayPurchase": true,
+                                                    "ctaButtonText": "Book Now",
+                                                    "togglePoweredBy": true,
+                                                    "orderText": "purchased for",
+                                                    "panelStyle": {
+                                                        "linkFontFamily": "sans-serif",
+                                                        "borderColor": {
+                                                            "a": 0.8,
+                                                            "r": 200,
+                                                            "b": 200,
+                                                            "g": 200
+                                                        },
+                                                        "backgroundColor": {
+                                                            "a": 1,
+                                                            "r": 255,
+                                                            "b": 255,
+                                                            "g": 255
+                                                        },
+                                                        "onlyDisplayNotification": false,
+                                                        "shadow": {
+                                                            "r": 0,
+                                                            "b": 0,
+                                                            "color": "lightgrey",
+                                                            "g": 0
+                                                        },
+                                                        "color": {
+                                                            "a": 1,
+                                                            "r": 44,
+                                                            "b": 195,
+                                                            "g": 102
+                                                        },
+                                                        "linkFontWeight": "normal",
+                                                        "bulkData": 5,
+                                                        "selectDurationData": "days",
+                                                        "blur": 0,
+                                                        "recentNumber": 5,
+                                                        "liveVisitorCount": 1,
+                                                        "linkColor": {
+                                                            "a": 1,
+                                                            "r": 0,
+                                                            "b": 216,
+                                                            "g": 137
+                                                        },
+                                                        "iconBGColor": {
+                                                            "a": 1,
+                                                            "r": 0,
+                                                            "b": 247,
+                                                            "g": 149
+                                                        },
+                                                        "fontFamily": "sans-serif",
+                                                        "liveVisitorText": "are viewing this site",
+                                                        "borderWidth": 0,
+                                                        "recentConv": 5,
+                                                        "hideAnonymousConversion": true,
+                                                        "selectLastDisplayConversation": "days",
+                                                        "radius": 9,
+                                                        "fontWeight": "600"
+                                                    },
+                                                    "isCTATop": false,
+                                                    "isDisplaySignup": true,
+                                                    "visitorText": "people",
+                                                    "toggleCTA": false,
+                                                    "usernameText": "someone",
+                                                    "isEnablePurchaseNotificationUrl": true,
+                                                    "campaign": "5ead2e6520e83f00144f0b36",
+                                                    "liveText": "Verified by ",
+                                                    "_id": "5ead2e6520e83f00144f0b39",
+                                                    "poweredByLink": "dummy.com",
+                                                    "poweredBy": "dummy",
+                                                    "isHideLastname": false,
+                                                    "isHideCityLocation": false
+                                                },
+                                                "paths": []
+                                            }
+                                        ],
+                                        "rule": {
+                                            "loopNotification": true,
+                                            "displayTime": 5,
+                                            "delayBetween": 3,
+                                            "companyName": "Test2109 2",
+                                            "popupPositionInMobile": "bottom",
+                                            "initialDelay": 0,
+                                            "notificationFromCountry": [],
+                                            "popupAnimationIn": "bounceIn",
+                                            "displayOnAllPages": true,
+                                            "createdAt": "2020-05-02T08:25:09.241Z",
+                                            "popupAnimationOut": "zoomOutLeft",
+                                            "closeNotification": false,
+                                            "websiteUrl": "test2109.herokuapp.com",
+                                            "hideNotification": false,
+                                            "userConsent": false,
+                                            "campaign": "5ead2e6520e83f00144f0b36",
+                                            "_id": "5ead2e6520e83f00144f0b3b",
+                                            "delayNotification": false,
+                                            "displayPosition": "Bottom Left"
+                                        }
+                                    },
+                                    {
+                                        "visitorList": [
+                                            {
+                                                "doc_count": 7,
+                                                "unique_visitors": {
+                                                    "value": 1
+                                                },
+                                                "key": "/"
+                                            }
+                                        ],
+                                        "configurations": [
+                                            {
+                                                "configuration": {
+                                                    "notificationUrl": "abcd.com",
+                                                    "isHideCountryLocation": false,
+                                                    "notificationSize": "large",
+                                                    "toggleHideName": true,
+                                                    "contentText": "āpilome",
+                                                    "hoursAgo": "निर्दिष्ट नहीं है",
+                                                    "isHideFullLocation": false,
+                                                    "liveFollowerText": "आप एक लाइव स्ट्रीम का अनुसरण कर रहे हैं",
+                                                    "createdAt": "2020-02-26T13:22:21.976Z",
+                                                    "isHideState": false,
+                                                    "liveVisitorText": "प्रयोग",
+                                                    "__v": 0,
+                                                    "id": "5e56710d35855b0013f70782",
+                                                    "bulkText": "अंत में,",
+                                                    "updatedAt": "2020-06-02T14:07:48.274Z",
+                                                    "bulkVersion": "2.0",
+                                                    "liveViewerText": "ए बी सी डी",
+                                                    "gglReviewText": "Google पर समीक्षा की गई",
+                                                    "isDisplayPurchase": true,
+                                                    "ctaButtonText": "अभी बुक करें",
+                                                    "bulkDays": "दिन",
+                                                    "orderText": "खरीदा",
+                                                    "panelStyle": {
+                                                        "linkFontFamily": "inherit",
+                                                        "borderColor": {
+                                                            "a": 0.8,
+                                                            "r": 200,
+                                                            "b": 200,
+                                                            "g": 200
+                                                        },
+                                                        "backgroundColor": {
+                                                            "a": 0.56,
+                                                            "r": 252,
+                                                            "b": 252,
+                                                            "g": 252
+                                                        },
+                                                        "onlyDisplayNotification": false,
+                                                        "shadow": {
+                                                            "r": 0,
+                                                            "b": 0,
+                                                            "color": "lightgrey",
+                                                            "g": 0
+                                                        },
+                                                        "color": {
+                                                            "a": 1,
+                                                            "r": 22,
+                                                            "b": 14,
+                                                            "g": 14
+                                                        },
+                                                        "linkFontWeight": "normal",
+                                                        "bulkData": 5,
+                                                        "selectDurationData": "days",
+                                                        "blur": 0,
+                                                        "recentNumber": 5,
+                                                        "liveVisitorCount": 0,
+                                                        "linkColor": {
+                                                            "a": 1,
+                                                            "r": 0,
+                                                            "b": 216,
+                                                            "g": 137
+                                                        },
+                                                        "iconBGColor": {
+                                                            "a": 0.36,
+                                                            "r": 255,
+                                                            "b": 0,
+                                                            "g": 0
+                                                        },
+                                                        "fontFamily": "georgia",
+                                                        "liveVisitorText": "are viewing this site",
+                                                        "borderWidth": 0,
+                                                        "recentConv": 5,
+                                                        "hideAnonymousConversion": true,
+                                                        "selectLastDisplayConversation": "days",
+                                                        "radius": 50,
+                                                        "fontWeight": "normal"
+                                                    },
+                                                    "isCTATop": false,
+                                                    "isDisplaySignup": true,
+                                                    "toggleCTA": false,
+                                                    "usernameText": "एक",
+                                                    "isEnablePurchaseNotificationUrl": true,
+                                                    "campaign": "5e56710d35855b0013f7077f",
+                                                    "liveText": "द्वारा सत्यापित",
+                                                    "_id": "5e56710d35855b0013f70782",
+                                                    "poweredByLink": "abcd.com",
+                                                    "extraText": "निर्दिष्ट नहीं है",
+                                                    "poweredBy": "abcd",
+                                                    "toggleMap": "image",
+                                                    "activity": true,
+                                                    "recentText1": "से",
+                                                    "recentText2": "पर",
+                                                    "notificationType": "5bd668e21960740011c76628",
+                                                    "bulkDaysLable": "निर्दिष्ट नहीं है",
+                                                    "otherText": "आपकी सदस्यता ली जाती है",
+                                                    "langName": {
+                                                        "name": "English",
+                                                        "language": "en"
+                                                    },
+                                                    "ctaHyperlinkUrl": "",
+                                                    "daysAgo": "निर्दिष्ट नहीं है",
+                                                    "notificationDisplayApp": "google",
+                                                    "togglePoweredBy": true,
+                                                    "minuteAgo": "निर्दिष्ट नहीं है",
+                                                    "visitorText": "डेमो",
+                                                    "isHideLastname": false,
+                                                    "isHideCityLocation": false
+                                                },
+                                                "paths": []
+                                            }
+                                        ],
+                                        "rule": {
+                                            "loopNotification": true,
+                                            "displayTime": 5,
+                                            "delayBetween": 3,
+                                            "companyName": "test2109",
+                                            "popupPositionInMobile": "top",
+                                            "initialDelay": 0,
+                                            "notificationFromCountry": [],
+                                            "popupAnimationIn": "fadeIn",
+                                            "displayOnAllPages": false,
+                                            "createdAt": "2020-02-26T13:22:21.795Z",
+                                            "popupAnimationOut": "fadeIn",
+                                            "closeNotification": true,
+                                            "websiteUrl": "test2109.herokuapp.com",
+                                            "hideNotification": false,
+                                            "userConsent": false,
+                                            "campaign": "5e56710d35855b0013f7077f",
+                                            "_id": "5e56710d35855b0013f70784",
+                                            "delayNotification": false,
+                                            "displayPosition": "Bottom Left"
+                                        }
+                                    },
+                                    {
+                                        "visitorList": [
+                                            {
+                                                "doc_count": 7,
+                                                "unique_visitors": {
+                                                    "value": 1
+                                                },
+                                                "key": "/"
+                                            }
+                                        ],
+                                        "configurations": [
+                                            {
+                                                "configuration": {
+                                                    "notificationUrl": "Enter-url",
+                                                    "isHideCountryLocation": false,
+                                                    "toggleMap": "image",
+                                                    "toggleHideName": true,
+                                                    "activity": false,
+                                                    "contentText": "Influence",
+                                                    "isHideFullLocation": false,
+                                                    "notificationType": "5bd668e21960740011c76628",
+                                                    "liveFollowerText": "are following live stream",
+                                                    "createdAt": "2020-05-18T08:24:12.453Z",
+                                                    "isHideState": false,
+                                                    "liveVisitorText": "are viewing this site",
+                                                    "__v": 0,
+                                                    "otherText": "signed up for",
+                                                    "ctaHyperlinkUrl": "",
+                                                    "id": "5ec2462c7c68790019441652",
+                                                    "updatedAt": "2020-05-18T08:25:13.286Z",
+                                                    "liveViewerText": "are viewing live stream",
+                                                    "gglReviewText": "reviewed us on Google",
+                                                    "isDisplayPurchase": true,
+                                                    "ctaButtonText": "Book Now",
+                                                    "togglePoweredBy": true,
+                                                    "orderText": "purchased for",
+                                                    "panelStyle": {
+                                                        "linkFontFamily": "sans-serif",
+                                                        "borderColor": {
+                                                            "a": 0.8,
+                                                            "r": 200,
+                                                            "b": 200,
+                                                            "g": 200
+                                                        },
+                                                        "backgroundColor": {
+                                                            "a": 1,
+                                                            "r": 255,
+                                                            "b": 255,
+                                                            "g": 255
+                                                        },
+                                                        "onlyDisplayNotification": false,
+                                                        "shadow": {
+                                                            "r": 0,
+                                                            "b": 0,
+                                                            "color": "lightgrey",
+                                                            "g": 0
+                                                        },
+                                                        "color": {
+                                                            "a": 1,
+                                                            "r": 44,
+                                                            "b": 195,
+                                                            "g": 102
+                                                        },
+                                                        "linkFontWeight": "normal",
+                                                        "bulkData": 5,
+                                                        "selectDurationData": "days",
+                                                        "blur": 0,
+                                                        "recentNumber": 5,
+                                                        "liveVisitorCount": 1,
+                                                        "linkColor": {
+                                                            "a": 1,
+                                                            "r": 0,
+                                                            "b": 216,
+                                                            "g": 137
+                                                        },
+                                                        "iconBGColor": {
+                                                            "a": 1,
+                                                            "r": 0,
+                                                            "b": 247,
+                                                            "g": 149
+                                                        },
+                                                        "fontFamily": "sans-serif",
+                                                        "liveVisitorText": "are viewing this site",
+                                                        "borderWidth": 0,
+                                                        "recentConv": 5,
+                                                        "hideAnonymousConversion": true,
+                                                        "selectLastDisplayConversation": "days",
+                                                        "radius": 9,
+                                                        "fontWeight": "600"
+                                                    },
+                                                    "isCTATop": false,
+                                                    "isDisplaySignup": true,
+                                                    "visitorText": "people",
+                                                    "toggleCTA": false,
+                                                    "usernameText": "someone",
+                                                    "isEnablePurchaseNotificationUrl": true,
+                                                    "campaign": "5ec2462b7c6879001944164f",
+                                                    "liveText": "Verified by ",
+                                                    "_id": "5ec2462c7c68790019441652",
+                                                    "poweredByLink": "https://useinfluence.co",
+                                                    "poweredBy": "Influence",
+                                                    "isHideLastname": false,
+                                                    "isHideCityLocation": false
+                                                },
+                                                "paths": []
+                                            }
+                                        ],
+                                        "rule": {
+                                            "loopNotification": true,
+                                            "displayTime": 5,
+                                            "delayBetween": 3,
+                                            "companyName": "test2109 3",
+                                            "popupPositionInMobile": "bottom",
+                                            "initialDelay": 0,
+                                            "notificationFromCountry": [],
+                                            "popupAnimationIn": "bounceIn",
+                                            "displayOnAllPages": true,
+                                            "createdAt": "2020-05-18T08:24:12.074Z",
+                                            "popupAnimationOut": "zoomOutLeft",
+                                            "closeNotification": false,
+                                            "websiteUrl": "test2109.herokuapp.com",
+                                            "hideNotification": false,
+                                            "userConsent": false,
+                                            "campaign": "5ec2462b7c6879001944164f",
+                                            "_id": "5ec2462c7c68790019441655",
+                                            "delayNotification": false,
+                                            "displayPosition": "Bottom Left"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "review": {
+                                "message_data": [
+                                    {
+                                        "userReviews": {
+                                            "created_time": "2020-02-24T08:14:35+0000",
+                                            "fromApp": "facebook",
+                                            "campaignId": "5e56710d35855b0013f7077f",
+                                            "rating": "5",
+                                            "pageId": "107890014011803",
+                                            "type": "_doc",
+                                            "pageName": "The Exam HUB",
+                                            "host": "test2109.herokuapp.com",
+                                            "review_text": "Nice",
+                                            "_id": "1fcac230-a0c3-11ea-8450-cde50074191b",
+                                            "profileImg": "https://platform-lookaside.fbsbx.com/platform/profilepic/?psid=2905079772885128&height=200&width=200&ext=1593249050&hash=AeScyvZxQZCsr0Rg",
+                                            "username": "Mandeep Yadav",
+                                            "timestamp": "2020-05-28T09:10:50+00:00",
+                                            "trackingId": "INF-3gbfcjjsd6vhvo"
+                                        },
+                                        "configurations": [
+                                            {
+                                                "configuration": {
+                                                    "notificationUrl": "www.google.com",
+                                                    "isHideCountryLocation": false,
+                                                    "notificationSize": "large",
+                                                    "toggleMap": "image",
+                                                    "toggleHideName": true,
+                                                    "activity": true,
+                                                    "recentText1": "from",
+                                                    "recentText2": "by",
+                                                    "contentText": "Influence",
+                                                    "isHideFullLocation": false,
+                                                    "notificationType": "5d835d1b4d294e3288ed370e",
+                                                    "bulkDaysLable": "days",
+                                                    "createdAt": "2020-02-26T13:22:21.976Z",
+                                                    "isHideState": false,
+                                                    "liveVisitorText": "are viewing this site",
+                                                    "__v": 0,
+                                                    "otherText": "signed up for",
+                                                    "langName": {
+                                                        "name": "English",
+                                                        "language": "en"
+                                                    },
+                                                    "ctaHyperlinkUrl": "",
+                                                    "id": "5e56710d35855b0013f70783",
+                                                    "bulkText": "in last ",
+                                                    "updatedAt": "2020-06-02T14:07:45.321Z",
+                                                    "bulkVersion": "2.0",
+                                                    "notificationDisplayApp": "facebook",
+                                                    "gglReviewText": "reviewed us af",
+                                                    "isDisplayPurchase": true,
+                                                    "ctaButtonText": "Book Now",
+                                                    "togglePoweredBy": false,
+                                                    "bulkDays": "days",
+                                                    "orderText": "purchased ",
+                                                    "panelStyle": {
+                                                        "borderColor": {
+                                                            "a": 0.8,
+                                                            "r": 200,
+                                                            "b": 200,
+                                                            "g": 200
+                                                        },
+                                                        "onlyDisplayNotification": false,
+                                                        "shadow": {
+                                                            "r": 0,
+                                                            "b": 0,
+                                                            "color": "lightgrey",
+                                                            "g": 0
+                                                        },
+                                                        "color": {
+                                                            "a": 1,
+                                                            "r": 0,
+                                                            "b": 247,
+                                                            "g": 149
+                                                        },
+                                                        "linkFontWeight": "normal",
+                                                        "selectDurationData": "days",
+                                                        "blur": 0,
+                                                        "recentNumber": 10,
+                                                        "liveVisitorCount": 0,
+                                                        "iconBGColor": {
+                                                            "a": 1,
+                                                            "r": 255,
+                                                            "b": 255,
+                                                            "g": 255
+                                                        },
+                                                        "minStarRating": 5,
+                                                        "fontFamily": "sans-serif",
+                                                        "borderWidth": 0,
+                                                        "ctaBackgroundColor": {
+                                                            "a": 1,
+                                                            "r": 61,
+                                                            "b": 86,
+                                                            "g": 56
+                                                        },
+                                                        "otherText": "signed up for",
+                                                        "hideAnonymousConversion": true,
+                                                        "selectLastDisplayConversation": "days",
+                                                        "radius": 50,
+                                                        "fontWeight": "normal",
+                                                        "linkFontFamily": "inherit",
+                                                        "image": "",
+                                                        "backgroundColor": {
+                                                            "a": 1,
+                                                            "r": 255,
+                                                            "b": 255,
+                                                            "g": 255
+                                                        },
+                                                        "bulkData": 5,
+                                                        "linkColor": {
+                                                            "a": 1,
+                                                            "r": 0,
+                                                            "b": 216,
+                                                            "g": 137
+                                                        },
+                                                        "ctaTextColor": {
+                                                            "a": 1,
+                                                            "r": 182,
+                                                            "b": 200,
+                                                            "g": 179
+                                                        },
+                                                        "recentConv": 10000
+                                                    },
+                                                    "isCTATop": false,
+                                                    "isDisplaySignup": true,
+                                                    "visitorText": "people",
+                                                    "toggleCTA": false,
+                                                    "usernameText": "someone",
+                                                    "isEnablePurchaseNotificationUrl": true,
+                                                    "campaign": "5e56710d35855b0013f7077f",
+                                                    "liveText": "Verified by ",
+                                                    "_id": "5e56710d35855b0013f70783",
+                                                    "poweredByLink": "https://useinfluence.co",
+                                                    "poweredBy": "Influence",
+                                                    "isHideLastname": false,
+                                                    "isHideCityLocation": false
+                                                },
+                                                "paths": []
+                                            }
+                                        ],
+                                        "rule": {
+                                            "loopNotification": true,
+                                            "displayTime": 5,
+                                            "delayBetween": 3,
+                                            "companyName": "test2109",
+                                            "popupPositionInMobile": "top",
+                                            "initialDelay": 0,
+                                            "notificationFromCountry": [],
+                                            "popupAnimationIn": "fadeIn",
+                                            "displayOnAllPages": false,
+                                            "createdAt": "2020-02-26T13:22:21.795Z",
+                                            "popupAnimationOut": "fadeIn",
+                                            "closeNotification": true,
+                                            "websiteUrl": "test2109.herokuapp.com",
+                                            "hideNotification": false,
+                                            "userConsent": false,
+                                            "campaign": "5e56710d35855b0013f7077f",
+                                            "_id": "5e56710d35855b0013f70784",
+                                            "delayNotification": false,
+                                            "displayPosition": "Bottom Left"
+                                        }
+                                    },
+                                    {
+                                        "userReviews": {
+                                            "created_time": "2020-04-20T14:11:17+0000",
+                                            "fromApp": "facebook",
+                                            "campaignId": "5e56710d35855b0013f7077f",
+                                            "rating": "5",
+                                            "pageId": "107990947553408",
+                                            "type": "_doc",
+                                            "pageName": "Test Page",
+                                            "host": "test2109.herokuapp.com",
+                                            "review_text": "Amazing",
+                                            "avgRating": 0,
+                                            "_id": "43c0ee50-8393-11ea-aa63-67fbf80d0c81",
+                                            "username": "Mandeep Khoshya",
+                                            "timestamp": "2020-04-21T05:45:10+00:00",
+                                            "trackingId": "INF-3gbfcjjsd6vhvo"
+                                        },
+                                        "configurations": [
+                                            {
+                                                "configuration": {
+                                                    "notificationUrl": "www.google.com",
+                                                    "isHideCountryLocation": false,
+                                                    "notificationSize": "large",
+                                                    "toggleMap": "image",
+                                                    "toggleHideName": true,
+                                                    "activity": true,
+                                                    "recentText1": "from",
+                                                    "recentText2": "by",
+                                                    "contentText": "Influence",
+                                                    "isHideFullLocation": false,
+                                                    "notificationType": "5d835d1b4d294e3288ed370e",
+                                                    "bulkDaysLable": "days",
+                                                    "createdAt": "2020-02-26T13:22:21.976Z",
+                                                    "isHideState": false,
+                                                    "liveVisitorText": "are viewing this site",
+                                                    "__v": 0,
+                                                    "otherText": "signed up for",
+                                                    "langName": {
+                                                        "name": "English",
+                                                        "language": "en"
+                                                    },
+                                                    "ctaHyperlinkUrl": "",
+                                                    "id": "5e56710d35855b0013f70783",
+                                                    "bulkText": "in last ",
+                                                    "updatedAt": "2020-06-02T14:07:45.321Z",
+                                                    "bulkVersion": "2.0",
+                                                    "notificationDisplayApp": "facebook",
+                                                    "gglReviewText": "reviewed us af",
+                                                    "isDisplayPurchase": true,
+                                                    "ctaButtonText": "Book Now",
+                                                    "togglePoweredBy": false,
+                                                    "bulkDays": "days",
+                                                    "orderText": "purchased ",
+                                                    "panelStyle": {
+                                                        "borderColor": {
+                                                            "a": 0.8,
+                                                            "r": 200,
+                                                            "b": 200,
+                                                            "g": 200
+                                                        },
+                                                        "onlyDisplayNotification": false,
+                                                        "shadow": {
+                                                            "r": 0,
+                                                            "b": 0,
+                                                            "color": "lightgrey",
+                                                            "g": 0
+                                                        },
+                                                        "color": {
+                                                            "a": 1,
+                                                            "r": 0,
+                                                            "b": 247,
+                                                            "g": 149
+                                                        },
+                                                        "linkFontWeight": "normal",
+                                                        "selectDurationData": "days",
+                                                        "blur": 0,
+                                                        "recentNumber": 10,
+                                                        "liveVisitorCount": 0,
+                                                        "iconBGColor": {
+                                                            "a": 1,
+                                                            "r": 255,
+                                                            "b": 255,
+                                                            "g": 255
+                                                        },
+                                                        "minStarRating": 5,
+                                                        "fontFamily": "sans-serif",
+                                                        "borderWidth": 0,
+                                                        "ctaBackgroundColor": {
+                                                            "a": 1,
+                                                            "r": 61,
+                                                            "b": 86,
+                                                            "g": 56
+                                                        },
+                                                        "otherText": "signed up for",
+                                                        "hideAnonymousConversion": true,
+                                                        "selectLastDisplayConversation": "days",
+                                                        "radius": 50,
+                                                        "fontWeight": "normal",
+                                                        "linkFontFamily": "inherit",
+                                                        "image": "",
+                                                        "backgroundColor": {
+                                                            "a": 1,
+                                                            "r": 255,
+                                                            "b": 255,
+                                                            "g": 255
+                                                        },
+                                                        "bulkData": 5,
+                                                        "linkColor": {
+                                                            "a": 1,
+                                                            "r": 0,
+                                                            "b": 216,
+                                                            "g": 137
+                                                        },
+                                                        "ctaTextColor": {
+                                                            "a": 1,
+                                                            "r": 182,
+                                                            "b": 200,
+                                                            "g": 179
+                                                        },
+                                                        "recentConv": 10000
+                                                    },
+                                                    "isCTATop": false,
+                                                    "isDisplaySignup": true,
+                                                    "visitorText": "people",
+                                                    "toggleCTA": false,
+                                                    "usernameText": "someone",
+                                                    "isEnablePurchaseNotificationUrl": true,
+                                                    "campaign": "5e56710d35855b0013f7077f",
+                                                    "liveText": "Verified by ",
+                                                    "_id": "5e56710d35855b0013f70783",
+                                                    "poweredByLink": "https://useinfluence.co",
+                                                    "poweredBy": "Influence",
+                                                    "isHideLastname": false,
+                                                    "isHideCityLocation": false
+                                                },
+                                                "paths": []
+                                            }
+                                        ],
+                                        "rule": {
+                                            "loopNotification": true,
+                                            "displayTime": 5,
+                                            "delayBetween": 3,
+                                            "companyName": "test2109",
+                                            "popupPositionInMobile": "top",
+                                            "initialDelay": 0,
+                                            "notificationFromCountry": [],
+                                            "popupAnimationIn": "fadeIn",
+                                            "displayOnAllPages": false,
+                                            "createdAt": "2020-02-26T13:22:21.795Z",
+                                            "popupAnimationOut": "fadeIn",
+                                            "closeNotification": true,
+                                            "websiteUrl": "test2109.herokuapp.com",
+                                            "hideNotification": false,
+                                            "userConsent": false,
+                                            "campaign": "5e56710d35855b0013f7077f",
+                                            "_id": "5e56710d35855b0013f70784",
+                                            "delayNotification": false,
+                                            "displayPosition": "Bottom Left"
+                                        }
+                                    },
+                                    {
+                                        "userReviews": {
+                                            "created_time": "2020-04-20T10:55:04+0000",
+                                            "fromApp": "facebook",
+                                            "campaignId": "5e56710d35855b0013f7077f",
+                                            "rating": "5",
+                                            "pageId": "107990947553408",
+                                            "type": "_doc",
+                                            "pageName": "Test Page",
+                                            "host": "test2109.herokuapp.com",
+                                            "review_text": "nice .......................................",
+                                            "avgRating": 0,
+                                            "_id": "43c11560-8393-11ea-aa63-67fbf80d0c81",
+                                            "username": "Mandeep Yadav",
+                                            "timestamp": "2020-04-21T05:45:10+00:00",
+                                            "trackingId": "INF-3gbfcjjsd6vhvo"
+                                        },
+                                        "configurations": [
+                                            {
+                                                "configuration": {
+                                                    "notificationUrl": "www.google.com",
+                                                    "isHideCountryLocation": false,
+                                                    "notificationSize": "large",
+                                                    "toggleMap": "image",
+                                                    "toggleHideName": true,
+                                                    "activity": true,
+                                                    "recentText1": "from",
+                                                    "recentText2": "by",
+                                                    "contentText": "Influence",
+                                                    "isHideFullLocation": false,
+                                                    "notificationType": "5d835d1b4d294e3288ed370e",
+                                                    "bulkDaysLable": "days",
+                                                    "createdAt": "2020-02-26T13:22:21.976Z",
+                                                    "isHideState": false,
+                                                    "liveVisitorText": "are viewing this site",
+                                                    "__v": 0,
+                                                    "otherText": "signed up for",
+                                                    "langName": {
+                                                        "name": "English",
+                                                        "language": "en"
+                                                    },
+                                                    "ctaHyperlinkUrl": "",
+                                                    "id": "5e56710d35855b0013f70783",
+                                                    "bulkText": "in last ",
+                                                    "updatedAt": "2020-06-02T14:07:45.321Z",
+                                                    "bulkVersion": "2.0",
+                                                    "notificationDisplayApp": "facebook",
+                                                    "gglReviewText": "reviewed us af",
+                                                    "isDisplayPurchase": true,
+                                                    "ctaButtonText": "Book Now",
+                                                    "togglePoweredBy": false,
+                                                    "bulkDays": "days",
+                                                    "orderText": "purchased ",
+                                                    "panelStyle": {
+                                                        "borderColor": {
+                                                            "a": 0.8,
+                                                            "r": 200,
+                                                            "b": 200,
+                                                            "g": 200
+                                                        },
+                                                        "onlyDisplayNotification": false,
+                                                        "shadow": {
+                                                            "r": 0,
+                                                            "b": 0,
+                                                            "color": "lightgrey",
+                                                            "g": 0
+                                                        },
+                                                        "color": {
+                                                            "a": 1,
+                                                            "r": 0,
+                                                            "b": 247,
+                                                            "g": 149
+                                                        },
+                                                        "linkFontWeight": "normal",
+                                                        "selectDurationData": "days",
+                                                        "blur": 0,
+                                                        "recentNumber": 10,
+                                                        "liveVisitorCount": 0,
+                                                        "iconBGColor": {
+                                                            "a": 1,
+                                                            "r": 255,
+                                                            "b": 255,
+                                                            "g": 255
+                                                        },
+                                                        "minStarRating": 5,
+                                                        "fontFamily": "sans-serif",
+                                                        "borderWidth": 0,
+                                                        "ctaBackgroundColor": {
+                                                            "a": 1,
+                                                            "r": 61,
+                                                            "b": 86,
+                                                            "g": 56
+                                                        },
+                                                        "otherText": "signed up for",
+                                                        "hideAnonymousConversion": true,
+                                                        "selectLastDisplayConversation": "days",
+                                                        "radius": 50,
+                                                        "fontWeight": "normal",
+                                                        "linkFontFamily": "inherit",
+                                                        "image": "",
+                                                        "backgroundColor": {
+                                                            "a": 1,
+                                                            "r": 255,
+                                                            "b": 255,
+                                                            "g": 255
+                                                        },
+                                                        "bulkData": 5,
+                                                        "linkColor": {
+                                                            "a": 1,
+                                                            "r": 0,
+                                                            "b": 216,
+                                                            "g": 137
+                                                        },
+                                                        "ctaTextColor": {
+                                                            "a": 1,
+                                                            "r": 182,
+                                                            "b": 200,
+                                                            "g": 179
+                                                        },
+                                                        "recentConv": 10000
+                                                    },
+                                                    "isCTATop": false,
+                                                    "isDisplaySignup": true,
+                                                    "visitorText": "people",
+                                                    "toggleCTA": false,
+                                                    "usernameText": "someone",
+                                                    "isEnablePurchaseNotificationUrl": true,
+                                                    "campaign": "5e56710d35855b0013f7077f",
+                                                    "liveText": "Verified by ",
+                                                    "_id": "5e56710d35855b0013f70783",
+                                                    "poweredByLink": "https://useinfluence.co",
+                                                    "poweredBy": "Influence",
+                                                    "isHideLastname": false,
+                                                    "isHideCityLocation": false
+                                                },
+                                                "paths": []
+                                            }
+                                        ],
+                                        "rule": {
+                                            "loopNotification": true,
+                                            "displayTime": 5,
+                                            "delayBetween": 3,
+                                            "companyName": "test2109",
+                                            "popupPositionInMobile": "top",
+                                            "initialDelay": 0,
+                                            "notificationFromCountry": [],
+                                            "popupAnimationIn": "fadeIn",
+                                            "displayOnAllPages": false,
+                                            "createdAt": "2020-02-26T13:22:21.795Z",
+                                            "popupAnimationOut": "fadeIn",
+                                            "closeNotification": true,
+                                            "websiteUrl": "test2109.herokuapp.com",
+                                            "hideNotification": false,
+                                            "userConsent": false,
+                                            "campaign": "5e56710d35855b0013f7077f",
+                                            "_id": "5e56710d35855b0013f70784",
+                                            "delayNotification": false,
+                                            "displayPosition": "Bottom Left"
+                                        }
+                                    },
+                                    {
+                                        "userReviews": {
+                                            "created_time": "2020-02-24T08:14:35+0000",
+                                            "fromApp": "facebook",
+                                            "campaignId": "5e56710d35855b0013f7077f",
+                                            "rating": "5",
+                                            "pageId": "107890014011803",
+                                            "type": "_doc",
+                                            "pageName": "The Exam HUB",
+                                            "host": "test2109.herokuapp.com",
+                                            "review_text": "Nice",
+                                            "_id": "f08dd310-7b09-11ea-a207-a349eeb15140",
+                                            "username": "Mandeep Yadav",
+                                            "timestamp": "2020-04-10T09:02:00+00:00",
+                                            "trackingId": "INF-3gbfcjjsd6vhvo"
+                                        },
+                                        "configurations": [
+                                            {
+                                                "configuration": {
+                                                    "notificationUrl": "www.google.com",
+                                                    "isHideCountryLocation": false,
+                                                    "notificationSize": "large",
+                                                    "toggleMap": "image",
+                                                    "toggleHideName": true,
+                                                    "activity": true,
+                                                    "recentText1": "from",
+                                                    "recentText2": "by",
+                                                    "contentText": "Influence",
+                                                    "isHideFullLocation": false,
+                                                    "notificationType": "5d835d1b4d294e3288ed370e",
+                                                    "bulkDaysLable": "days",
+                                                    "createdAt": "2020-02-26T13:22:21.976Z",
+                                                    "isHideState": false,
+                                                    "liveVisitorText": "are viewing this site",
+                                                    "__v": 0,
+                                                    "otherText": "signed up for",
+                                                    "langName": {
+                                                        "name": "English",
+                                                        "language": "en"
+                                                    },
+                                                    "ctaHyperlinkUrl": "",
+                                                    "id": "5e56710d35855b0013f70783",
+                                                    "bulkText": "in last ",
+                                                    "updatedAt": "2020-06-02T14:07:45.321Z",
+                                                    "bulkVersion": "2.0",
+                                                    "notificationDisplayApp": "facebook",
+                                                    "gglReviewText": "reviewed us af",
+                                                    "isDisplayPurchase": true,
+                                                    "ctaButtonText": "Book Now",
+                                                    "togglePoweredBy": false,
+                                                    "bulkDays": "days",
+                                                    "orderText": "purchased ",
+                                                    "panelStyle": {
+                                                        "borderColor": {
+                                                            "a": 0.8,
+                                                            "r": 200,
+                                                            "b": 200,
+                                                            "g": 200
+                                                        },
+                                                        "onlyDisplayNotification": false,
+                                                        "shadow": {
+                                                            "r": 0,
+                                                            "b": 0,
+                                                            "color": "lightgrey",
+                                                            "g": 0
+                                                        },
+                                                        "color": {
+                                                            "a": 1,
+                                                            "r": 0,
+                                                            "b": 247,
+                                                            "g": 149
+                                                        },
+                                                        "linkFontWeight": "normal",
+                                                        "selectDurationData": "days",
+                                                        "blur": 0,
+                                                        "recentNumber": 10,
+                                                        "liveVisitorCount": 0,
+                                                        "iconBGColor": {
+                                                            "a": 1,
+                                                            "r": 255,
+                                                            "b": 255,
+                                                            "g": 255
+                                                        },
+                                                        "minStarRating": 5,
+                                                        "fontFamily": "sans-serif",
+                                                        "borderWidth": 0,
+                                                        "ctaBackgroundColor": {
+                                                            "a": 1,
+                                                            "r": 61,
+                                                            "b": 86,
+                                                            "g": 56
+                                                        },
+                                                        "otherText": "signed up for",
+                                                        "hideAnonymousConversion": true,
+                                                        "selectLastDisplayConversation": "days",
+                                                        "radius": 50,
+                                                        "fontWeight": "normal",
+                                                        "linkFontFamily": "inherit",
+                                                        "image": "",
+                                                        "backgroundColor": {
+                                                            "a": 1,
+                                                            "r": 255,
+                                                            "b": 255,
+                                                            "g": 255
+                                                        },
+                                                        "bulkData": 5,
+                                                        "linkColor": {
+                                                            "a": 1,
+                                                            "r": 0,
+                                                            "b": 216,
+                                                            "g": 137
+                                                        },
+                                                        "ctaTextColor": {
+                                                            "a": 1,
+                                                            "r": 182,
+                                                            "b": 200,
+                                                            "g": 179
+                                                        },
+                                                        "recentConv": 10000
+                                                    },
+                                                    "isCTATop": false,
+                                                    "isDisplaySignup": true,
+                                                    "visitorText": "people",
+                                                    "toggleCTA": false,
+                                                    "usernameText": "someone",
+                                                    "isEnablePurchaseNotificationUrl": true,
+                                                    "campaign": "5e56710d35855b0013f7077f",
+                                                    "liveText": "Verified by ",
+                                                    "_id": "5e56710d35855b0013f70783",
+                                                    "poweredByLink": "https://useinfluence.co",
+                                                    "poweredBy": "Influence",
+                                                    "isHideLastname": false,
+                                                    "isHideCityLocation": false
+                                                },
+                                                "paths": []
+                                            }
+                                        ],
+                                        "rule": {
+                                            "loopNotification": true,
+                                            "displayTime": 5,
+                                            "delayBetween": 3,
+                                            "companyName": "test2109",
+                                            "popupPositionInMobile": "top",
+                                            "initialDelay": 0,
+                                            "notificationFromCountry": [],
+                                            "popupAnimationIn": "fadeIn",
+                                            "displayOnAllPages": false,
+                                            "createdAt": "2020-02-26T13:22:21.795Z",
+                                            "popupAnimationOut": "fadeIn",
+                                            "closeNotification": true,
+                                            "websiteUrl": "test2109.herokuapp.com",
+                                            "hideNotification": false,
+                                            "userConsent": false,
+                                            "campaign": "5e56710d35855b0013f7077f",
+                                            "_id": "5e56710d35855b0013f70784",
+                                            "delayNotification": false,
+                                            "displayPosition": "Bottom Left"
+                                        }
+                                    },
+                                    {
+                                        "userReviews": {
+                                            "created_time": "2020-02-24T08:14:35+0000",
+                                            "fromApp": "facebook",
+                                            "campaignId": "5e56710d35855b0013f7077f",
+                                            "rating": "5",
+                                            "pageId": "107890014011803",
+                                            "type": "_doc",
+                                            "pageName": "The Exam HUB",
+                                            "host": "test2109.herokuapp.com",
+                                            "review_text": "Nice",
+                                            "_id": "cfb901d0-7b06-11ea-aa6a-1bcea0417264",
+                                            "username": "Mandeep Yadav",
+                                            "timestamp": "2020-04-10T08:39:37+00:00",
+                                            "trackingId": "INF-3gbfcjjsd6vhvo"
+                                        },
+                                        "configurations": [
+                                            {
+                                                "configuration": {
+                                                    "notificationUrl": "www.google.com",
+                                                    "isHideCountryLocation": false,
+                                                    "notificationSize": "large",
+                                                    "toggleMap": "image",
+                                                    "toggleHideName": true,
+                                                    "activity": true,
+                                                    "recentText1": "from",
+                                                    "recentText2": "by",
+                                                    "contentText": "Influence",
+                                                    "isHideFullLocation": false,
+                                                    "notificationType": "5d835d1b4d294e3288ed370e",
+                                                    "bulkDaysLable": "days",
+                                                    "createdAt": "2020-02-26T13:22:21.976Z",
+                                                    "isHideState": false,
+                                                    "liveVisitorText": "are viewing this site",
+                                                    "__v": 0,
+                                                    "otherText": "signed up for",
+                                                    "langName": {
+                                                        "name": "English",
+                                                        "language": "en"
+                                                    },
+                                                    "ctaHyperlinkUrl": "",
+                                                    "id": "5e56710d35855b0013f70783",
+                                                    "bulkText": "in last ",
+                                                    "updatedAt": "2020-06-02T14:07:45.321Z",
+                                                    "bulkVersion": "2.0",
+                                                    "notificationDisplayApp": "facebook",
+                                                    "gglReviewText": "reviewed us af",
+                                                    "isDisplayPurchase": true,
+                                                    "ctaButtonText": "Book Now",
+                                                    "togglePoweredBy": false,
+                                                    "bulkDays": "days",
+                                                    "orderText": "purchased ",
+                                                    "panelStyle": {
+                                                        "borderColor": {
+                                                            "a": 0.8,
+                                                            "r": 200,
+                                                            "b": 200,
+                                                            "g": 200
+                                                        },
+                                                        "onlyDisplayNotification": false,
+                                                        "shadow": {
+                                                            "r": 0,
+                                                            "b": 0,
+                                                            "color": "lightgrey",
+                                                            "g": 0
+                                                        },
+                                                        "color": {
+                                                            "a": 1,
+                                                            "r": 0,
+                                                            "b": 247,
+                                                            "g": 149
+                                                        },
+                                                        "linkFontWeight": "normal",
+                                                        "selectDurationData": "days",
+                                                        "blur": 0,
+                                                        "recentNumber": 10,
+                                                        "liveVisitorCount": 0,
+                                                        "iconBGColor": {
+                                                            "a": 1,
+                                                            "r": 255,
+                                                            "b": 255,
+                                                            "g": 255
+                                                        },
+                                                        "minStarRating": 5,
+                                                        "fontFamily": "sans-serif",
+                                                        "borderWidth": 0,
+                                                        "ctaBackgroundColor": {
+                                                            "a": 1,
+                                                            "r": 61,
+                                                            "b": 86,
+                                                            "g": 56
+                                                        },
+                                                        "otherText": "signed up for",
+                                                        "hideAnonymousConversion": true,
+                                                        "selectLastDisplayConversation": "days",
+                                                        "radius": 50,
+                                                        "fontWeight": "normal",
+                                                        "linkFontFamily": "inherit",
+                                                        "image": "",
+                                                        "backgroundColor": {
+                                                            "a": 1,
+                                                            "r": 255,
+                                                            "b": 255,
+                                                            "g": 255
+                                                        },
+                                                        "bulkData": 5,
+                                                        "linkColor": {
+                                                            "a": 1,
+                                                            "r": 0,
+                                                            "b": 216,
+                                                            "g": 137
+                                                        },
+                                                        "ctaTextColor": {
+                                                            "a": 1,
+                                                            "r": 182,
+                                                            "b": 200,
+                                                            "g": 179
+                                                        },
+                                                        "recentConv": 10000
+                                                    },
+                                                    "isCTATop": false,
+                                                    "isDisplaySignup": true,
+                                                    "visitorText": "people",
+                                                    "toggleCTA": false,
+                                                    "usernameText": "someone",
+                                                    "isEnablePurchaseNotificationUrl": true,
+                                                    "campaign": "5e56710d35855b0013f7077f",
+                                                    "liveText": "Verified by ",
+                                                    "_id": "5e56710d35855b0013f70783",
+                                                    "poweredByLink": "https://useinfluence.co",
+                                                    "poweredBy": "Influence",
+                                                    "isHideLastname": false,
+                                                    "isHideCityLocation": false
+                                                },
+                                                "paths": []
+                                            }
+                                        ],
+                                        "rule": {
+                                            "loopNotification": true,
+                                            "displayTime": 5,
+                                            "delayBetween": 3,
+                                            "companyName": "test2109",
+                                            "popupPositionInMobile": "top",
+                                            "initialDelay": 0,
+                                            "notificationFromCountry": [],
+                                            "popupAnimationIn": "fadeIn",
+                                            "displayOnAllPages": false,
+                                            "createdAt": "2020-02-26T13:22:21.795Z",
+                                            "popupAnimationOut": "fadeIn",
+                                            "closeNotification": true,
+                                            "websiteUrl": "test2109.herokuapp.com",
+                                            "hideNotification": false,
+                                            "userConsent": false,
+                                            "campaign": "5e56710d35855b0013f7077f",
+                                            "_id": "5e56710d35855b0013f70784",
+                                            "delayNotification": false,
+                                            "displayPosition": "Bottom Left"
+                                        }
+                                    },
+                                    {
+                                        "userReviews": {
+                                            "created_time": "2020-02-24T08:14:35+0000",
+                                            "fromApp": "facebook",
+                                            "campaignId": "5e56710d35855b0013f7077f",
+                                            "rating": "5",
+                                            "pageId": "107890014011803",
+                                            "type": "_doc",
+                                            "pageName": "The Exam HUB",
+                                            "host": "test2109.herokuapp.com",
+                                            "review_text": "Nice",
+                                            "_id": "3fdaee30-7574-11ea-86dd-1908a268b758",
+                                            "username": "Mandeep Yadav",
+                                            "timestamp": "2020-04-03T06:27:53+00:00",
+                                            "trackingId": "INF-3gbfcjjsd6vhvo"
+                                        },
+                                        "configurations": [
+                                            {
+                                                "configuration": {
+                                                    "notificationUrl": "www.google.com",
+                                                    "isHideCountryLocation": false,
+                                                    "notificationSize": "large",
+                                                    "toggleMap": "image",
+                                                    "toggleHideName": true,
+                                                    "activity": true,
+                                                    "recentText1": "from",
+                                                    "recentText2": "by",
+                                                    "contentText": "Influence",
+                                                    "isHideFullLocation": false,
+                                                    "notificationType": "5d835d1b4d294e3288ed370e",
+                                                    "bulkDaysLable": "days",
+                                                    "createdAt": "2020-02-26T13:22:21.976Z",
+                                                    "isHideState": false,
+                                                    "liveVisitorText": "are viewing this site",
+                                                    "__v": 0,
+                                                    "otherText": "signed up for",
+                                                    "langName": {
+                                                        "name": "English",
+                                                        "language": "en"
+                                                    },
+                                                    "ctaHyperlinkUrl": "",
+                                                    "id": "5e56710d35855b0013f70783",
+                                                    "bulkText": "in last ",
+                                                    "updatedAt": "2020-06-02T14:07:45.321Z",
+                                                    "bulkVersion": "2.0",
+                                                    "notificationDisplayApp": "facebook",
+                                                    "gglReviewText": "reviewed us af",
+                                                    "isDisplayPurchase": true,
+                                                    "ctaButtonText": "Book Now",
+                                                    "togglePoweredBy": false,
+                                                    "bulkDays": "days",
+                                                    "orderText": "purchased ",
+                                                    "panelStyle": {
+                                                        "borderColor": {
+                                                            "a": 0.8,
+                                                            "r": 200,
+                                                            "b": 200,
+                                                            "g": 200
+                                                        },
+                                                        "onlyDisplayNotification": false,
+                                                        "shadow": {
+                                                            "r": 0,
+                                                            "b": 0,
+                                                            "color": "lightgrey",
+                                                            "g": 0
+                                                        },
+                                                        "color": {
+                                                            "a": 1,
+                                                            "r": 0,
+                                                            "b": 247,
+                                                            "g": 149
+                                                        },
+                                                        "linkFontWeight": "normal",
+                                                        "selectDurationData": "days",
+                                                        "blur": 0,
+                                                        "recentNumber": 10,
+                                                        "liveVisitorCount": 0,
+                                                        "iconBGColor": {
+                                                            "a": 1,
+                                                            "r": 255,
+                                                            "b": 255,
+                                                            "g": 255
+                                                        },
+                                                        "minStarRating": 5,
+                                                        "fontFamily": "sans-serif",
+                                                        "borderWidth": 0,
+                                                        "ctaBackgroundColor": {
+                                                            "a": 1,
+                                                            "r": 61,
+                                                            "b": 86,
+                                                            "g": 56
+                                                        },
+                                                        "otherText": "signed up for",
+                                                        "hideAnonymousConversion": true,
+                                                        "selectLastDisplayConversation": "days",
+                                                        "radius": 50,
+                                                        "fontWeight": "normal",
+                                                        "linkFontFamily": "inherit",
+                                                        "image": "",
+                                                        "backgroundColor": {
+                                                            "a": 1,
+                                                            "r": 255,
+                                                            "b": 255,
+                                                            "g": 255
+                                                        },
+                                                        "bulkData": 5,
+                                                        "linkColor": {
+                                                            "a": 1,
+                                                            "r": 0,
+                                                            "b": 216,
+                                                            "g": 137
+                                                        },
+                                                        "ctaTextColor": {
+                                                            "a": 1,
+                                                            "r": 182,
+                                                            "b": 200,
+                                                            "g": 179
+                                                        },
+                                                        "recentConv": 10000
+                                                    },
+                                                    "isCTATop": false,
+                                                    "isDisplaySignup": true,
+                                                    "visitorText": "people",
+                                                    "toggleCTA": false,
+                                                    "usernameText": "someone",
+                                                    "isEnablePurchaseNotificationUrl": true,
+                                                    "campaign": "5e56710d35855b0013f7077f",
+                                                    "liveText": "Verified by ",
+                                                    "_id": "5e56710d35855b0013f70783",
+                                                    "poweredByLink": "https://useinfluence.co",
+                                                    "poweredBy": "Influence",
+                                                    "isHideLastname": false,
+                                                    "isHideCityLocation": false
+                                                },
+                                                "paths": []
+                                            }
+                                        ],
+                                        "rule": {
+                                            "loopNotification": true,
+                                            "displayTime": 5,
+                                            "delayBetween": 3,
+                                            "companyName": "test2109",
+                                            "popupPositionInMobile": "top",
+                                            "initialDelay": 0,
+                                            "notificationFromCountry": [],
+                                            "popupAnimationIn": "fadeIn",
+                                            "displayOnAllPages": false,
+                                            "createdAt": "2020-02-26T13:22:21.795Z",
+                                            "popupAnimationOut": "fadeIn",
+                                            "closeNotification": true,
+                                            "websiteUrl": "test2109.herokuapp.com",
+                                            "hideNotification": false,
+                                            "userConsent": false,
+                                            "campaign": "5e56710d35855b0013f7077f",
+                                            "_id": "5e56710d35855b0013f70784",
+                                            "delayNotification": false,
+                                            "displayPosition": "Bottom Left"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "announcement": {
+                                "message_data": [
+                                    {
+                                        "configurations": [
+                                            {
+                                                "configuration": {
+                                                    "notificationUrl": "",
+                                                    "isHideCountryLocation": false,
+                                                    "toggleMap": "map",
+                                                    "toggleHideName": true,
+                                                    "activity": true,
+                                                    "contentText": "Company Name",
+                                                    "isHideFullLocation": false,
+                                                    "notificationType": "5ebfcc9500b578a4776c19d0",
+                                                    "createdAt": "2020-05-18T08:24:12.454Z",
+                                                    "isHideState": false,
+                                                    "__v": 0,
+                                                    "otherText": "signed up for",
+                                                    "ctaHyperlinkUrl": "",
+                                                    "id": "5ec2462c7c68790019441654",
+                                                    "updatedAt": "2020-05-18T08:24:12.454Z",
+                                                    "gglReviewText": "reviewed us on Google",
+                                                    "isDisplayPurchase": true,
+                                                    "ctaButtonText": "Book Now",
+                                                    "togglePoweredBy": true,
+                                                    "orderText": "purchased for",
+                                                    "panelStyle": {
+                                                        "borderColor": {
+                                                            "a": 0.8,
+                                                            "r": 200,
+                                                            "b": 200,
+                                                            "g": 200
+                                                        },
+                                                        "onlyDisplayNotification": false,
+                                                        "ctaBorderWidth": 0,
+                                                        "shadow": {
+                                                            "r": 0,
+                                                            "b": 0,
+                                                            "color": "lightgrey",
+                                                            "g": 0
+                                                        },
+                                                        "color": {
+                                                            "a": 1,
+                                                            "r": 0,
+                                                            "b": 0,
+                                                            "g": 0
+                                                        },
+                                                        "linkFontWeight": "normal",
+                                                        "selectDurationData": "hours",
+                                                        "blur": 0,
+                                                        "recentNumber": 5,
+                                                        "liveVisitorCount": 0,
+                                                        "iconBGColor": {
+                                                            "a": 1,
+                                                            "r": 0,
+                                                            "b": 247,
+                                                            "g": 149
+                                                        },
+                                                        "ctaButtonWidth": 100,
+                                                        "fontFamily": "inherit",
+                                                        "ctaBorderColor": {
+                                                            "a": 0.8,
+                                                            "r": 200,
+                                                            "b": 200,
+                                                            "g": 200
+                                                        },
+                                                        "borderWidth": 0,
+                                                        "ctaBackgroundColor": {
+                                                            "a": 1,
+                                                            "r": 255,
+                                                            "b": 255,
+                                                            "g": 255
+                                                        },
+                                                        "hideAnonymousConversion": true,
+                                                        "selectLastDisplayConversation": "hours",
+                                                        "radius": 0,
+                                                        "fontWeight": "normal",
+                                                        "linkFontFamily": "inherit",
+                                                        "backgroundColor": {
+                                                            "a": 1,
+                                                            "r": 255,
+                                                            "b": 255,
+                                                            "g": 255
+                                                        },
+                                                        "bulkData": 5,
+                                                        "linkColor": {
+                                                            "a": 1,
+                                                            "r": 0,
+                                                            "b": 216,
+                                                            "g": 137
+                                                        },
+                                                        "ctaRadius": 0,
+                                                        "imagePadding": 9,
+                                                        "ctaTextColor": {
+                                                            "a": 1,
+                                                            "r": 0,
+                                                            "b": 216,
+                                                            "g": 137
+                                                        },
+                                                        "recentConv": 5
+                                                    },
+                                                    "isCTATop": false,
+                                                    "isDisplaySignup": true,
+                                                    "visitorText": "people",
+                                                    "toggleCTA": false,
+                                                    "usernameText": "someone",
+                                                    "isEnablePurchaseNotificationUrl": true,
+                                                    "campaign": "5ec2462b7c6879001944164f",
+                                                    "_id": "5ec2462c7c68790019441654",
+                                                    "poweredByLink": "https://useinfluence.co",
+                                                    "poweredBy": "Influence",
+                                                    "isHideLastname": false,
+                                                    "isHideCityLocation": false
+                                                },
+                                                "paths": []
+                                            }
+                                        ],
+                                        "rule": {
+                                            "loopNotification": true,
+                                            "displayTime": 5,
+                                            "delayBetween": 3,
+                                            "companyName": "test2109 3",
+                                            "popupPositionInMobile": "bottom",
+                                            "initialDelay": 0,
+                                            "notificationFromCountry": [],
+                                            "popupAnimationIn": "bounceIn",
+                                            "displayOnAllPages": true,
+                                            "createdAt": "2020-05-18T08:24:12.074Z",
+                                            "popupAnimationOut": "zoomOutLeft",
+                                            "closeNotification": false,
+                                            "websiteUrl": "test2109.herokuapp.com",
+                                            "hideNotification": false,
+                                            "userConsent": false,
+                                            "campaign": "5ec2462b7c6879001944164f",
+                                            "_id": "5ec2462c7c68790019441655",
+                                            "delayNotification": false,
+                                            "displayPosition": "Bottom Left"
+                                        }
+                                    },
+                                    {
+                                        "configurations": [
+                                            {
+                                                "configuration": {
+                                                    "notificationUrl": "",
+                                                    "isHideCountryLocation": true,
+                                                    "toggleMap": "map",
+                                                    "toggleHideName": true,
+                                                    "activity": true,
+                                                    "contentText": "Company Name",
+                                                    "isHideFullLocation": false,
+                                                    "notificationType": "5ebfcc9500b578a4776c19d0",
+                                                    "createdAt": "2020-06-12T07:38:13.482Z",
+                                                    "isHideState": false,
+                                                    "facebookReviewText": "reviewed us on Facebook",
+                                                    "__v": 0,
+                                                    "otherText": "signed up for",
+                                                    "ctaHyperlinkUrl": "",
+                                                    "id": "5ee330e54c1b67127bcc6b32",
+                                                    "updatedAt": "2020-06-12T07:38:13.482Z",
+                                                    "notificationDisplayApp": "google",
+                                                    "gglReviewText": "reviewed us on Google",
+                                                    "isDisplayPurchase": true,
+                                                    "ctaButtonText": "Book Now",
+                                                    "togglePoweredBy": true,
+                                                    "orderText": "purchased for",
+                                                    "panelStyle": {
+                                                        "linkFontFamily": "sans-serif",
+                                                        "borderColor": {
+                                                            "a": 0.8,
+                                                            "r": 200,
+                                                            "b": 200,
+                                                            "g": 200
+                                                        },
+                                                        "backgroundColor": {
+                                                            "a": 1,
+                                                            "r": 255,
+                                                            "b": 255,
+                                                            "g": 255
+                                                        },
+                                                        "shadow": {
+                                                            "r": 0,
+                                                            "b": 0,
+                                                            "color": "lightgrey",
+                                                            "g": 0
+                                                        },
+                                                        "color": {
+                                                            "a": 1,
+                                                            "r": 44,
+                                                            "b": 195,
+                                                            "g": 102
+                                                        },
+                                                        "linkFontWeight": "normal",
+                                                        "blur": 0,
+                                                        "linkColor": {
+                                                            "a": 1,
+                                                            "r": 0,
+                                                            "b": 216,
+                                                            "g": 137
+                                                        },
+                                                        "iconBGColor": {
+                                                            "a": 1,
+                                                            "r": 0,
+                                                            "b": 247,
+                                                            "g": 149
+                                                        },
+                                                        "fontFamily": "sans-serif",
+                                                        "borderWidth": 0,
+                                                        "radius": 9,
+                                                        "fontWeight": "normal"
+                                                    },
+                                                    "isCTATop": false,
+                                                    "isDisplaySignup": true,
+                                                    "visitorText": "people",
+                                                    "announcementSubText": "Do you want to restart to install the updatenow or later",
+                                                    "toggleCTA": false,
+                                                    "usernameText": "someone",
+                                                    "isEnablePurchaseNotificationUrl": true,
+                                                    "campaign": "5e56710d35855b0013f7077f",
+                                                    "_id": "5ee330e54c1b67127bcc6b32",
+                                                    "poweredByLink": "https://useinfluence.co",
+                                                    "announcementHeaderText": "Update Avaiable",
+                                                    "poweredBy": "Influence",
+                                                    "isHideLastname": false,
+                                                    "isHideCityLocation": false
+                                                },
+                                                "paths": []
+                                            }
+                                        ],
+                                        "rule": {
+                                            "loopNotification": true,
+                                            "displayTime": 5,
+                                            "delayBetween": 3,
+                                            "companyName": "test2109",
+                                            "popupPositionInMobile": "top",
+                                            "initialDelay": 0,
+                                            "notificationFromCountry": [],
+                                            "popupAnimationIn": "fadeIn",
+                                            "displayOnAllPages": false,
+                                            "createdAt": "2020-02-26T13:22:21.795Z",
+                                            "popupAnimationOut": "fadeIn",
+                                            "closeNotification": true,
+                                            "websiteUrl": "test2109.herokuapp.com",
+                                            "hideNotification": false,
+                                            "userConsent": false,
+                                            "campaign": "5e56710d35855b0013f7077f",
+                                            "_id": "5e56710d35855b0013f70784",
+                                            "delayNotification": false,
+                                            "displayPosition": "Bottom Left"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "totalCampaign": 3
+                }
                 responseNotifications = response.message;
                 if (!enableLoopNotification && response.totalCampaign) loopCheckValue = activeNotification * response.totalCampaign;
                 // console.log('-------cal-----')

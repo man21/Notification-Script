@@ -4469,7 +4469,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         var announcementNotiifcationContainer = document.createElement('div')
         announcementNotiifcationContainer.className = 'notif-card';
-        announcementNotiifcationContainer.style =containerStyle
+        // announcementNotiifcationContainer.style =containerStyle
 
         var announcementNotiifcationUpperPartContainer = document.createElement('div')
         announcementNotiifcationUpperPartContainer.className = 'upper-part'

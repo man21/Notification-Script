@@ -2276,6 +2276,8 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                 var secondLoop = (result.length * result.length) >= startSecondLoop ? false : true
 
                 const infos = secondLoop ? responses.message_data.filter(obj=> excludeCampaign.indexOf(obj.rule.campaign) == -1 && obj.rule.loopNotification ) : responses.message_data.filter(obj=> excludeCampaign.indexOf(obj.rule.campaign) == -1 )
+                
+
                 if (j > loopCheckValue) {
                     console.log("ENTERED ****************")
                     i = 6;
@@ -2285,6 +2287,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                 }
                 
                 if(infos.length==0){
+                    console.log("HELLO !!!!!!!!!!!!!")
                     if (loopCheckExit.indexOf(key[0]) == -1)
                         loopCheckExit.push(key[0]);
                     if (i == splittedUrls.length - 1) {

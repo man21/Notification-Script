@@ -2336,6 +2336,8 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                                 }
                             }
 
+
+                            console.log(info, "INFO =====================")
                             //let userDetails = info.userDetails && info.userDetails.length && key == 'journey' ? info.userDetails.filter(user => user) : [];
                             let userDetails = info.userDetails;
                             let userReviews = info.userReviews;
@@ -2345,6 +2347,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                             if (((key == 'journey' && !userDetails) ||
                                 (key == 'review' && !userReviews) ||
                                 (key == 'identification' && !numberOfUsers) ||
+                                (key == 'announcement') ||
                                 (key == 'live' && (!liveVisitorCount || (configuration && Number(configuration.panelStyle.liveVisitorCount) >= liveVisitorCount)))
                             ) || (configuration && !configuration.activity)) {
                                 j = j - 1;
@@ -2361,6 +2364,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                             }
                             // console.log('========configuration',configuration);
                             if (configuration && configuration.activity) {
+                                console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!1")
                                 if (j == 1) {
                                     randomDelayTime = 0;
                                     setTimeout(function () {
@@ -2368,16 +2372,20 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                                         else if (info.numberOfUsers) key = 'identification';
                                         else if (info.userDetails) key = 'journey';
                                         else if (info.userReviews) key = 'review';
+                                        else if (info) key = 'announcement';
                                         if(isTabVisibility)
                                             return notificationTimeout(u, info, info.rule, key, notificationPath);
                                     }, (info.rule.initialDelay) * 1000);
                                 }
                                 else
                                     setTimeout(function () {
+                                        console.log("!!!!!!!!111111111111111111111111111")
                                         if (info.visitorList || info.liveViewer || info.liveFollower) key = 'live';
                                         else if (info.numberOfUsers) key = 'identification';
                                         else if (info.userDetails) key = 'journey';
                                         else if (info.userReviews) key = 'review';
+                                        else if (info) key = 'announcement';
+
                                         if(isTabVisibility)
                                             return notificationTimeout(u, info, info.rule, key, notificationPath);
                                     },(info.rule.delayNotification ? (randomDelayTime * 1000) : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v - 1)) * 1000));
@@ -2415,6 +2423,7 @@ function generateRandomNumber(randomDelayTime, tempRandomDelayTime, displayTime,
 }
 
 function notificationTimeout(i, info, rule, key, notificationPath) {
+    console.log("Notification Time Out =====================================")
     if (notificationPath.indexOf(__pathname) === -1 && notificationPath.indexOf(window.location.pathname) === -1 && !rule.displayOnAllPages)
         return;
     var note = new Note({});

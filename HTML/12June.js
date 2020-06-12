@@ -3699,12 +3699,14 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
 
 
+        console.log( "*****************************************")
+
 
         var announcementContainer= document.createElement('div');
         // announcementContainer.style = type == 'announcement' ? "display:block" : "display:none";
 
 
-        console.log(configuration, "*****************************************")
+        console.log(configuration, "================================")
 
         var announcementNotiifcationContainer = document.createElement('div')
         announcementNotiifcationContainer.className = 'notif-card';
@@ -3849,7 +3851,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
     mainContainer.appendChild(reviewNotiifcationContainer);
     mainContainer.appendChild(announcementContainer);  
 
-    //console.log(mainContainer,"Main Container Data")
+    console.log(mainContainer,"Main Container Data")
 
         if (!configuration.isCTATop)
         mainContainer.appendChild(innerNotifCTAContainer);

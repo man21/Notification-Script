@@ -2168,7 +2168,7 @@ var Notifications = function (config) {
         })
 
         // notificationPath = response.notificationPath;
-        var splittedUrls = ["live", "identification", "journey","review"];
+        var splittedUrls = ["live", "identification", "journey","review", "announcement"];
         // var exclude_notificationPath = notificationPath.filter(notifPath => notifPath.type == 'display_exclude');
         // exclude_notificationPath = exclude_notificationPath.map(notifPath => notifPath.url);
         notificationPath = notificationPath.filter(notifPath => notifPath.type == 'display');

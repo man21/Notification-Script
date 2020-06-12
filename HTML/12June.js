@@ -2238,6 +2238,8 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
     let j = 1;
     var responseNotifications = [];
     var loopCheckValue = enableLoopNotification ? 1000 : activeNotification;
+
+    console.log(loopCheckValue, "Loop check value -----")
     let responseNotif = (callback) => {
         let splittedUrlsSingle = ['live']
         splittedUrlsSingle.map(async notifName => {
@@ -2262,7 +2264,9 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
         let maxMinus=0;
         let startSecondLoop = result.length
 
+        console.log(startSecondLoop,"===================" ,result)
         if (result.length == 5) {
+            console.log("entered ++++++++++++++++++++++")
             for (let i = 0; i < splittedUrls.length; i++) {
                 var notif = responseNotifications[i];
                 var key = Object.keys(notif);

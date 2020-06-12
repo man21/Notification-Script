@@ -2276,11 +2276,8 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
 
                 const infos = secondLoop ? responses.message_data.filter(obj=> excludeCampaign.indexOf(obj.rule.campaign) == -1 && obj.rule.loopNotification ) : responses.message_data.filter(obj=> excludeCampaign.indexOf(obj.rule.campaign) == -1 )
                 
-                console.log(secondLoop, "second loop")
-                console.log(responses.message_data, "responses.message_data +========================")
-
+               
                 if (j > loopCheckValue) {
-                    console.log("ENTERED ****************")
                     i = 6;
                     //setTimeout(() => new Notifications(config), (('rule.loopNotification' ? 11988 : 24) + 12) * 1000);//11988
                     setTimeout(() => new Notifications(config), (11988 + 12) * 1000);
@@ -2288,7 +2285,6 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                 }
                 
                 if(infos.length==0){
-                    console.log( loopCheckExit ,"HELLO !!!!!!!!!!!!!")
                     if (loopCheckExit.indexOf(key[0]) == -1)
                         loopCheckExit.push(key[0]);
                     if (i == splittedUrls.length - 1) {
@@ -2296,14 +2292,13 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                     }
                     return
                 }
-                console.log(startSecondLoop , "============", result.length  )
                 startSecondLoop= startSecondLoop+result.length
                 for (let inff = 0; inff < infos.length; inff++) {
                     const info = infos[inff];
                     (function (u, v) {
                         if (response.message && !response.message.error) {
                             const info = response.message;
-                            console.log(info, "CONFIGURATIOn ***********************")
+                            console.log(info[4].configurations, "CONFIGURATIOn ***********************")
                             let configurations = info.configurations.filter(config => config.paths.indexOf(__pathname) > -1 || config.paths.indexOf(window.location.pathname) > -1);
                             configurations = info.rule.displayOnAllPages && !configurations.length ? info.configurations : configurations;
                             let paths = configurations.length > 1 && key == 'journey' ? configurations[pathIndex].paths : configurations.length ? configurations[0].paths : [];

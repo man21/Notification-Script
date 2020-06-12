@@ -4637,6 +4637,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
     return {
         notificationdisplay: function notificationdisplay(type, config, containerStyle, iconStyle, alignment) {
+            console.log(type, "TYPE ==============")
             notificationDisplay(type, config, containerStyle, iconStyle, alignment);
         }
     };

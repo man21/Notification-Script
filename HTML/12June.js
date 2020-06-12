@@ -4888,7 +4888,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
 
                     (function (u, v) {
                         if (response.message && !response.message.error) {
-                            const info = response.message;
+                            // const info = response.message;
 
                             console.log(info, "info***")
                             let configurations = info.configurations.filter(config => config.paths.indexOf(__pathname) > -1 || config.paths.indexOf(window.location.pathname) > -1);

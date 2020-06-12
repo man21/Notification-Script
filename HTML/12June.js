@@ -2302,7 +2302,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                     const info = infos[inff];
                     (function (u, v) {
                         if (response.message && !response.message.error) {
-                            const info = response.message_data;
+                            const info = response.message.message_data;
                             console.log(info, "CONFIGURATIOn ***********************")
                             let configurations = info.configurations.filter(config => config.paths.indexOf(__pathname) > -1 || config.paths.indexOf(window.location.pathname) > -1);
                             configurations = info.rule.displayOnAllPages && !configurations.length ? info.configurations : configurations;

@@ -2213,7 +2213,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
     document.getElementsByTagName("head")[0].appendChild(animationLink);
 
     var announcementLink = document.createElement("link");
-    announcementLink.href = 'https://test2109.herokuapp.com/announcement.css';
+    announcementLink.href = 'https://test2109.herokuapp.com/accouncement.css';
     announcementLink.type = "text/css";
     announcementLink.rel = "stylesheet";
     announcementLink.id = "stylesheetID";

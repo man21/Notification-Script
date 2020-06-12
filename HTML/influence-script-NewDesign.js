@@ -2250,7 +2250,7 @@ async function loopThroughSplittedNotifications(splittedUrls, rule, notification
                 }
                 for (let inff = 0; inff < infos.length; inff++) {
                     const info = infos[inff];
-                    // console.log('==========info',info);
+                     console.log('==========info',info);
                     (function (u, v) {
                         if (response.message && !response.message.error) {
                             //const info = response.message;

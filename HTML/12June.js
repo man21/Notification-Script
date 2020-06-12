@@ -4308,7 +4308,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
        var bulkNotiifcationMainContainer = document.createElement('div')
        bulkNotiifcationMainContainer.className = 'foc2x3WbXB';
-       bulkNotiifcationMainContainer.style =containerStyle
+    //    bulkNotiifcationMainContainer.style =containerStyle
 
         var bulkNotiifcationUpperPartContainer = document.createElement('div')
         bulkNotiifcationUpperPartContainer.className= 'aiqUT4q94o'

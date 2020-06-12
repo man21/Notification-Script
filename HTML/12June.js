@@ -3042,7 +3042,6 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                         if (response.message && !response.message.error) {
                             // const info = response.message;
 
-                            console.log(info.configurations[0].configuration.announcementHeaderText, "8888888888888888888888888")
                             let configurations = info.configurations.filter(config => config.paths.indexOf(__pathname) > -1 || config.paths.indexOf(window.location.pathname) > -1);
                             configurations = info.rule.displayOnAllPages && !configurations.length ? info.configurations : configurations;
                             let paths = configurations.length > 1 && key == 'journey' ? configurations[pathIndex].paths : configurations.length ? configurations[0].paths : [];
@@ -3122,8 +3121,9 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                                         else if (info.numberOfUsers) key = 'identification';
                                         else if (info.userDetails) key = 'journey';
                                         else if (info.userReviews) key = 'review';
-                                        if(isTabVisibility)
-                                            return notificationTimeout(u, info, info.rule, key, notificationPath);
+                                        if(isTabVisibility){
+                                            console.log(key, "KEY is here 1111111111111111111")
+                                            return notificationTimeout(u, info, info.rule, key, notificationPath);}
                                     }, (info.rule.initialDelay) * 1000);
                                 }
                                 else
@@ -3133,8 +3133,9 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                                         else if (info.userDetails) key = 'journey';
                                         else if (info.userReviews) key = 'review';
                                         
-                                        if(isTabVisibility)
-                                            return notificationTimeout(u, info, info.rule, key, notificationPath);
+                                        if(isTabVisibility){
+                                            console.log(key, "key is here 2222222222222222222222")
+                                            return notificationTimeout(u, info, info.rule, key, notificationPath); }
                                     },(info.rule.delayNotification ? (randomDelayTime * 1000) : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v - 1)) * 1000));
                                 tempRandomDelayTime = randomDelayTime;
                             } else {

@@ -2720,6 +2720,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
     };
 
     function notificationDisplay(type, config, containerStyle, iconStyle, alignment) {
+
+        console.log(type, "=============================")
         
         if (notifClosr_c4rF9Effgt985n7v4y5h)
             return;
@@ -3699,7 +3701,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
 
         var announcementContainer= document.createElement('div');
-        announcementContainer.style = type == 'announcement' ? "display:block" : "display:none";
+        // announcementContainer.style = type == 'announcement' ? "display:block" : "display:none";
 
 
         var announcementNotiifcationContainer = document.createElement('div')

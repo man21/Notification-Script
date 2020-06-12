@@ -6309,10 +6309,10 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
 
         var announcementContainer= document.createElement('div');
-        // announcementContainer.style = type == 'announcement' ? "display:block" : "display:none";
+         announcementContainer.style = type == 'announcement' ? "display:block" : "display:none";
 
 
-        console.log(configuration, "================================")
+        console.log(configuration, "====== announcement **************==========================")
 
         var announcementNotiifcationContainer = document.createElement('div')
         announcementNotiifcationContainer.className = 'notif-card';

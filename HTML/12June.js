@@ -2292,8 +2292,8 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                 }
                 startSecondLoop= startSecondLoop+result.length
                 for (let inff = 0; inff < infos.length; inff++) {
-                    console.log(infos, "infos.length )))))))))))))))))")
                     const info = infos[inff];
+                    console.log(info, "INFO *********************")
                     (function (u, v) {
                         if (response.message && !response.message.error) {
                             const info = response.message;

@@ -2264,7 +2264,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
         let maxMinus=0;
         let startSecondLoop = result.length
 
-        console.log(startSecondLoop,"===================" ,result)
+        console.log(startSecondLoop,"===================" ,result.length)
         if (result.length == 5) {
             console.log("entered ++++++++++++++++++++++")
             for (let i = 0; i < splittedUrls.length; i++) {
@@ -2272,6 +2272,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                 var notif = responseNotifications[i];
                 var key = Object.keys(notif);
                 responses = notif[key];
+                console.log("(result.length * result.length)", (result.length * result.length))
                 var secondLoop = (result.length * result.length) >= startSecondLoop ? false : true
 
                 console.log(secondLoop,"second loop +++++++++++++++++++++++++++++++++++++")
@@ -2298,7 +2299,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                     const info = infos[inff];
                     (function (u, v) {
                         if (response.message && !response.message.error) {
-                            //const info = response.message;
+                            const info = response.message;
                             let configurations = info.configurations.filter(config => config.paths.indexOf(__pathname) > -1 || config.paths.indexOf(window.location.pathname) > -1);
                             configurations = info.rule.displayOnAllPages && !configurations.length ? info.configurations : configurations;
                             let paths = configurations.length > 1 && key == 'journey' ? configurations[pathIndex].paths : configurations.length ? configurations[0].paths : [];

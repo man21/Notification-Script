@@ -4455,13 +4455,11 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
 
 
-
-
         console.log( "*****************************************")
 
         var announcementContainer= document.createElement('div');
 
-        //  announcementContainer.style = type == 'announcement' ? "display:block" : "display:none";
+         announcementContainer.style = type == 'announcement' ? "display:block" : "display:none";
 
 
         console.log(configuration.announcementHeaderText, "====== announcement **************==========================")

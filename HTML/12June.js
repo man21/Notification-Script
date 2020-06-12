@@ -3,8 +3,8 @@ var exclued_button_text = 'login,signin,loginnow,memberlogin,accountlogin';
 var __pathname = window.location.pathname;
 __pathname = '/' + __pathname.split('/')[1];
 
-var influenceScript = 'influence-script-NewDesign.js';
-var BASE_URL = "https://api.useinfluence.co";
+var influenceScript = '12June.js';
+var BASE_URL = "https://strapi.useinfluence.co";
 
 document.addEventListener('visibilitychange', function (e) {
     document.hidden ? isTabVisibility = false : isTabVisibility = true;
@@ -28,6 +28,7 @@ if (typeof Influence === 'undefined') {
          */
         checkCampaignActive(options.trackingId, (err, res) => {
             tracker = new InfluenceTracker(options.trackingId);
+            // res.isActive= true; // remove this code after implimantation
 
             if (err)
                 return;
@@ -195,7 +196,7 @@ if (typeof Influence === 'undefined') {
         var Geo = {};
 
         Geo.geoip = function (success, failure) {
-            httpGetAsync('https://extreme-ip-lookup.com/json', (res) => {
+            httpGetAsync('https://extreme-ip-lookup.com/json/?key=UTiXVnrYntPf6s0qokOK', (res) => {
                 response = JSON.parse(res);
                 if (response)
                     success({
@@ -569,10 +570,10 @@ if (typeof Influence === 'undefined') {
               const formObj = Util.parseQueryString(queryString)
               const objValue = Object.values(formObj)
               const email=objValue.find(o=>o.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi));
-              const firstname = formObj["customerFirstName"] || formObj["firstname"] || formObj["form_fields[name]"] || formObj["form_fields[firstname]"] || formObj["your-name"] || formObj["name"]  || formObj["NAMA"]|| formObj["FNAME"]  || formObj["customerFirstName"] || formObj["Fname"]  || formObj["nama"] || formObj["NAME"]  || formObj["FIRSTNAME"] || formObj["username"]  || formObj["FIRST NAME"] || formObj["UserName"]  || formObj["USERNAME"] || formObj["userName"]  || formObj["Username"] || formObj["user_id"] || formObj["ctl19$txtName"]
+              const firstname = formObj["customerFirstName"] || formObj["firstname"] || formObj["form_fields[name]"] || formObj["form_fields[firstname]"] || formObj["your-name"] || formObj["name"]  || formObj["NAMA"]|| formObj["FNAME"]  || formObj["customerFirstName"] || formObj["Fname"]  || formObj["nama"] || formObj["NAME"]  || formObj["FIRSTNAME"] || formObj["username"]  || formObj["FIRST NAME"] || formObj["UserName"]  || formObj["USERNAME"] || formObj["userName"]  || formObj["Username"] || formObj["user_id"] || formObj["ctl19$txtName"] || formObj["form_submission[name]"] || formObj["wpforms[fields][12]"] || formObj["checkout_offer[extra_contact_information][custom_14]"]
               const lastname = formObj["customerLastName"] || formObj["lastname"] || formObj["form_fields[lastname]"] || formObj["last-name"] || formObj["lname"] || formObj["LNAME"]  || formObj["customerLastName"] || formObj["Lname"]  || formObj["lnama"] || formObj["LNAME"]  || formObj["LASTNAME"] || formObj["LAST NAME"] 
               
-              return({firstname,lastname,email})
+              return({firstname: firstname ? firstname.replace('+',' '):'',lastname:lastname ? lastname.replace('+',' '):'',email})
           }
           return({})
         }
@@ -1896,8 +1897,8 @@ var InfluenceTracker = function (config) {
 
 /*
 
-	countUp.js
-	by @inorganik
+    countUp.js
+    by @inorganik
 
 */
 
@@ -2144,30 +2145,50 @@ function CountUp(target, startVal, endVal, decimals, duration, options) {
 
 var notificationPath = [];
 var configurationPath = '';
+var excludeCampaign = []
+var activeNotification = 4
 var Notifications = function (config) {
     if (!(this instanceof Notifications)) return new Notifications(config);
     this.config = config;
     var rule;
     var rulesUrl = BASE_URL + '/rules/configuration/path/' + config;
+    // var rulesUrl = "http://localhost:1337/rules/configuration/path/INF-3gbfcjjsd6vhvo"
+
     httpGetAsync(rulesUrl, function (res) {
         response = JSON.parse(res);
-        configurationPath = JSON.parse(res);
-        rule = response.rule;
-        notificationPath = response.notificationPath;
+        // configurationPath = JSON.parse(res);
+        configurationPath = response.find(obj=> obj.notificationPath.find(ojb1 => (ojb1.url === __pathname || ojb1.url === window.location.pathname) && ojb1.type == "lead"))
+        activeNotification = Math.max.apply(null,response.map(obj=> obj.rule.activeNotification))
+        var enableLoopNotification = response.find(obj=> obj.rule.loopNotification) ? true : false
+    
+        JSON.parse(res||"[]").map(obj=> {
+            var notificationList = notificationPath.concat(obj.notificationPath)
+           notificationPath = notificationList
+           excludeCampaign=notificationList.filter(obj=> obj.type === "display_exclude" &&  (obj.url === __pathname || obj.url === window.location.pathname)).map(cmId=> cmId.campaignId)
+        })
 
+        // notificationPath = response.notificationPath;
         var splittedUrls = ["live", "identification", "journey","review"];
-        var exclude_notificationPath = notificationPath.filter(notifPath => notifPath.type == 'display_exclude');
-        exclude_notificationPath = exclude_notificationPath.map(notifPath => notifPath.url);
+        // var exclude_notificationPath = notificationPath.filter(notifPath => notifPath.type == 'display_exclude');
+        // exclude_notificationPath = exclude_notificationPath.map(notifPath => notifPath.url);
         notificationPath = notificationPath.filter(notifPath => notifPath.type == 'display');
         notificationPath = notificationPath.map(notifPath => notifPath.url);
         var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-        if (rule && (rule.displayOnAllPages || notificationPath.indexOf(__pathname) != -1 || notificationPath.indexOf(window.location.pathname) != -1) && (exclude_notificationPath.indexOf(__pathname)==-1 && exclude_notificationPath.indexOf(window.location.pathname)==-1) && !(isMobile && rule.hideNotification)) {
-            loopThroughSplittedNotifications(splittedUrls, rule, notificationPath, config);
-        }
+        var disabledOnMobile =  response.find(obj=> obj.rule.hideNotification);
+        // if (rule && (rule.displayOnAllPages || notificationPath.indexOf(__pathname) != -1 || notificationPath.indexOf(window.location.pathname) != -1) && (exclude_notificationPath.indexOf(__pathname)==-1 && exclude_notificationPath.indexOf(window.location.pathname)==-1) && !(isMobile && rule.hideNotification)) {
+            if ((notificationPath.indexOf(__pathname) != -1 || notificationPath.indexOf(window.location.pathname) != -1 || response.find(obj=> obj.rule.displayOnAllPages)) &&  !(isMobile && disabledOnMobile)) {
+                loopThroughSplittedNotifications(splittedUrls, enableLoopNotification, notificationPath, config);
+            }
+        // loopThroughSplittedNotifications(splittedUrls, rule, notificationPath, config);
+
+        // console.log("Exclued Path--------->>",exclude_notificationPath)
+
+
+
     });
 };
 
-async function loopThroughSplittedNotifications(splittedUrls, rule, notificationPath, config) {
+async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotification, notificationPath, config) {
     // var link = document.createElement("link");
     // link.href = "https://storage.googleapis.com/influence-197607.appspot.com/note3.css";
     // //link.href = "https://96bcb271.ngrok.io/style/note1-internal.css?q="+Math.random();
@@ -2177,8 +2198,8 @@ async function loopThroughSplittedNotifications(splittedUrls, rule, notification
     // document.getElementsByTagName("head")[0].appendChild(link);
 
     var newDesignCSS = document.createElement("link");
-    // newDesignCSS.href = 'https://storage.googleapis.com/influence-197607.appspot.com/design-new3.css';
-    newDesignCSS.href = 'https://test2109.herokuapp.com/newDesignCSS.css';
+    newDesignCSS.href = 'https://storage.googleapis.com/influence-197607.appspot.com/design6.css';
+    // newDesignCSS.href = 'https://test2109.herokuapp.com/newDesignCSS.css';
     newDesignCSS.type = "text/css";
     newDesignCSS.rel = "stylesheet";
     newDesignCSS.id = "stylesheetID";
@@ -2190,6 +2211,13 @@ async function loopThroughSplittedNotifications(splittedUrls, rule, notification
     animationLink.rel = "stylesheet";
     animationLink.id = "stylesheetID";
     document.getElementsByTagName("head")[0].appendChild(animationLink);
+
+    var announcementLink = document.createElement("link");
+    announcementLink.href = 'https://test2109.herokuapp.com/announcement.css';
+    announcementLink.type = "text/css";
+    announcementLink.rel = "stylesheet";
+    announcementLink.id = "stylesheetID";
+    document.getElementsByTagName("head")[0].appendChild(announcementLink);
 
 
     // var fontCSS = document.createElement("link");
@@ -2204,19 +2232,23 @@ async function loopThroughSplittedNotifications(splittedUrls, rule, notification
     // fontJS.src = 'https://use.fontawesome.com/343c65acc3.js';
     // document.getElementsByTagName("head")[0].appendChild(fontJS);
 
+    // console.log("notification........>",{splittedUrls, rule, notificationPath, config, activeNotification})
+
 
     let j = 1;
     var responseNotifications = [];
-    var loopCheckValue = rule.loopNotification ? 1000 : 4;
+    var loopCheckValue = enableLoopNotification ? 1000 : activeNotification;
     let responseNotif = (callback) => {
         let splittedUrlsSingle = ['live']
         splittedUrlsSingle.map(async notifName => {
-            var url = 'https://api.useinfluence.co/elasticsearch/search/' + config + '?type=' + notifName;
-            //var url = 'https://us-central1-influence-197607.cloudfunctions.net/function-1?_id=' + config + '&type=' + notifName;
+            // var url = BASE_URL + '/elasticsearch/search/' + "INF-3gbfcjjsd6vhvo" + '?type=' + notifName;
+            var url = BASE_URL + '/elasticsearch/search/' + config + '?type=' + notifName;
+            // var url = 'https://api.useinfluence.co/elasticsearch/search/' + config + '?type=' + notifName;
             await httpGetAsync(url, function (res) {
                 response = JSON.parse(res);
                 responseNotifications = response.message;
-                if (!rule.loopNotification && response.totalCampaign) loopCheckValue = 4 * response.totalCampaign;
+                if (!enableLoopNotification && response.totalCampaign) loopCheckValue = activeNotification * response.totalCampaign;
+                // console.log('-------cal-----')
                 callback(null, responseNotifications, config)
             });
         });
@@ -2228,15 +2260,18 @@ async function loopThroughSplittedNotifications(splittedUrls, rule, notification
         let loopCheckExit = [];
         let randomDelayTime = 0, tempRandomDelayTime = 0, prevRandGap = 0;
         let maxMinus=0;
+        let startSecondLoop = result.length
+
         if (result.length == 4) {
             for (let i = 0; i < splittedUrls.length; i++) {
                 var notif = responseNotifications[i];
                 var key = Object.keys(notif);
                 responses = notif[key];
-                const infos = responses.message_data;
+                var secondLoop = (result.length * result.length) >= startSecondLoop ? false : true
+                const infos = secondLoop ? responses.message_data.filter(obj=> excludeCampaign.indexOf(obj.rule.campaign) == -1 && obj.rule.loopNotification ) : responses.message_data.filter(obj=> excludeCampaign.indexOf(obj.rule.campaign) == -1 )
                 if (j > loopCheckValue) {
                     i = 5;
-                    //setTimeout(() => new Notifications(config), ((rule.loopNotification ? 11988 : 24) + 12) * 1000);//11988
+                    //setTimeout(() => new Notifications(config), (('rule.loopNotification' ? 11988 : 24) + 12) * 1000);//11988
                     setTimeout(() => new Notifications(config), (11988 + 12) * 1000);
                     return;
                 }
@@ -2247,10 +2282,11 @@ async function loopThroughSplittedNotifications(splittedUrls, rule, notification
                     if (i == splittedUrls.length - 1) {
                         i = -1;
                     }
+                    return
                 }
+                startSecondLoop= startSecondLoop+result.length
                 for (let inff = 0; inff < infos.length; inff++) {
                     const info = infos[inff];
-                    // console.log('==========info',info);
                     (function (u, v) {
                         if (response.message && !response.message.error) {
                             //const info = response.message;
@@ -2319,11 +2355,11 @@ async function loopThroughSplittedNotifications(splittedUrls, rule, notification
                                 return;
                             }
 
-                            if (rule.delayNotification) {
-                                randomDelayTime = generateRandomNumber(randomDelayTime, tempRandomDelayTime, rule.displayTime, prevRandGap);
-                                prevRandGap = (randomDelayTime - tempRandomDelayTime - (rule.displayTime + 3));
+                            if (info.rule.delayNotification) {
+                                randomDelayTime = generateRandomNumber(randomDelayTime, tempRandomDelayTime, info.rule.displayTime, prevRandGap);
+                                prevRandGap = (randomDelayTime - tempRandomDelayTime - (info.rule.displayTime + 3));
                             }
-                            //console.log('========configuration',configuration);
+                            // console.log('========configuration',configuration);
                             if (configuration && configuration.activity) {
                                 if (j == 1) {
                                     randomDelayTime = 0;
@@ -2333,8 +2369,8 @@ async function loopThroughSplittedNotifications(splittedUrls, rule, notification
                                         else if (info.userDetails) key = 'journey';
                                         else if (info.userReviews) key = 'review';
                                         if(isTabVisibility)
-                                            return notificationTimeout(u, info, rule, key, notificationPath);
-                                    }, (rule.initialDelay) * 1000);
+                                            return notificationTimeout(u, info, info.rule, key, notificationPath);
+                                    }, (info.rule.initialDelay) * 1000);
                                 }
                                 else
                                     setTimeout(function () {
@@ -2343,8 +2379,8 @@ async function loopThroughSplittedNotifications(splittedUrls, rule, notification
                                         else if (info.userDetails) key = 'journey';
                                         else if (info.userReviews) key = 'review';
                                         if(isTabVisibility)
-                                            return notificationTimeout(u, info, rule, key, notificationPath);
-                                    }, (rule.delayNotification ? (randomDelayTime * 1000) : ((rule.displayTime + rule.delayBetween + 3) * (v - 1)) * 1000));
+                                            return notificationTimeout(u, info, info.rule, key, notificationPath);
+                                    },(info.rule.delayNotification ? (randomDelayTime * 1000) : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v - 1)) * 1000));
                                 tempRandomDelayTime = randomDelayTime;
                             } else {
                                 if (maxMinus > 1000) return;
@@ -2522,13 +2558,26 @@ InfluenceTracker.prototype.tracker = function (info) {
         // }
         // data.value.category=data.value.event;//user-events';
 
-        if (configurationPath && configurationPath.rule && configurationPath.rule.displayOnAllPages)
+        // console.log( configurationPath,  "CONFIGURATION PATH ==========================")
+        if (configurationPath && configurationPath.rule && configurationPath.rule.displayOnAllPages){
+
+            // console.log(configurationPath.rule.campaign, "IF CONDIITON ***************************")
+            
+            data.value.campaignId = configurationPath.rule.campaign;
             data.campaignId = configurationPath.rule.campaign;
-        else {
+       
+        }else {
             if (configurationPath && configurationPath.notificationPath && configurationPath.notificationPath.length > 0) {
-                const dataNotifPath = configurationPath.notificationPath.filter(x => x.url == location.pathname && x.type == 'display');
-                if (dataNotifPath && dataNotifPath.length > 0)
-                    data.campaignId = dataNotifPath[0].campaignId;
+                const dataNotifPath = configurationPath.notificationPath.filter(x => x.url == location.pathname && x.type == 'lead');
+
+                // console.log(dataNotifPath,"DATA NOTIFICATION PATH ***************************************")
+
+                // console.log(dataNotifPath[0].campaignId, "dataNotifPath[0].campaignId ===============================================")
+                if (dataNotifPath) //&& dataNotifPath.length > 0)
+                    {
+                        data.value.campaignId = dataNotifPath[0].campaignId;
+                        data.campaignId = dataNotifPath[0].campaignId
+                    }
             }
         }
 
@@ -2759,17 +2808,17 @@ var Note = function Note(config, containerStyle, iconStyle) {
         //recentNotiifcationContainer.style = containerStyle;
 
         var recentNotiifcationMainContainer = document.createElement('div')
-        recentNotiifcationMainContainer.className = 'notif-card-recent';
+        recentNotiifcationMainContainer.className = 'sisbMFuEGu';
          recentNotiifcationMainContainer.style = containerStyle
 
         var recentNotiifcationUpperPartContainer = document.createElement('div')
-        recentNotiifcationUpperPartContainer.className = 'upper-part-recent'
+        recentNotiifcationUpperPartContainer.className = 'CTTTs8uT13'
 
         var recentNotificationImageContainer = document.createElement('div')
-        recentNotificationImageContainer.className = 'image-container-recent'
+        recentNotificationImageContainer.className = 'XIwR5JMPFF'
 
         var recentNotificationImage = document.createElement('img')
-        recentNotificationImage.className = 'image-recent'
+        recentNotificationImage.className = 'YgksSelqbb'
 
         var res_img = 'https://storage.googleapis.com/influence-197607.appspot.com/default_icon.png';
 
@@ -2779,13 +2828,16 @@ var Note = function Note(config, containerStyle, iconStyle) {
             }
             else if (configuration && configuration.toggleMap == 'map') {
                 if (userDetails.city && userDetails.country) {
-                    res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=ejMlhbQk6SB2ZwpGW7Ax&app_code=75zpDd2IEcmBp_g1k2bEyg&ci=${userDetails.city}&co=${userDetails.country}&z=10&h=200&w=200`;
+                    res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=ZsjaYz1YG8oZNDAlxvKO&app_code=Bd9Gt9S_uPFm8bYuiHlAxA&ci=${userDetails.city}&co=${userDetails.country}&z=10&h=200&w=200`;
+                    // res_img = `https://image.maps.ls.hereapi.com/mia/1.6/mapview?co=${userDetails.country}&z=10&ci=${userDetails.city}&h=200&w=200&apiKey=GnxMRg61uO4_XgMs5cSR8wZej8Bf-fiqtbngQ6pmLtg`;
                 }
                 else if (userDetails.city) {
-                    res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=ejMlhbQk6SB2ZwpGW7Ax&app_code=75zpDd2IEcmBp_g1k2bEyg&ci=${userDetails.city}&z=10&h=200&w=200`;
+                    res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=ZsjaYz1YG8oZNDAlxvKO&app_code=Bd9Gt9S_uPFm8bYuiHlAxA&ci=${userDetails.city}&z=10&h=200&w=200`;
+                    // res_img = `https://image.maps.ls.hereapi.com/mia/1.6/mapview?z=10&ci=${userDetails.city}&h=200&w=200&apiKey=GnxMRg61uO4_XgMs5cSR8wZej8Bf-fiqtbngQ6pmLtg`;
                 }
                 else if (userDetails.country) {
-                    res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=ejMlhbQk6SB2ZwpGW7Ax&app_code=75zpDd2IEcmBp_g1k2bEyg&co=${userDetails.country}&z=10&h=200&w=200`;
+                    res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=ZsjaYz1YG8oZNDAlxvKO&app_code=Bd9Gt9S_uPFm8bYuiHlAxA&co=${userDetails.country}&z=10&h=200&w=200`;
+                    // res_img = `https://image.maps.ls.hereapi.com/mia/1.6/mapview?co=${userDetails.country}&z=10&h=200&w=200&apiKey=GnxMRg61uO4_XgMs5cSR8wZej8Bf-fiqtbngQ6pmLtg`;
                 }
             }
             else if (configuration && configuration.panelStyle) {
@@ -2802,20 +2854,20 @@ var Note = function Note(config, containerStyle, iconStyle) {
         recentNotiifcationUpperPartContainer.appendChild(recentNotificationImageContainer)
 
         var recentNotificationCloseContainer = document.createElement('div')
-        recentNotificationCloseContainer.className = 'close-btn-container-recent'
+        recentNotificationCloseContainer.className = 'YDR83P698y'
         recentNotificationCloseContainer.style = config.rule.closeNotification ? 'display:block' : 'display:none';
         var recentNotificationCloseIcon = document.createElement('button')
         recentNotificationCloseIcon.id = 'notif_close'
-        recentNotificationCloseIcon.className = 'close-btn-recent'
+        recentNotificationCloseIcon.className = 'qcXxmyzjdA'
         recentNotificationCloseIcon.innerHTML = "+"
         recentNotificationCloseContainer.appendChild(recentNotificationCloseIcon)
         recentNotiifcationUpperPartContainer.appendChild(recentNotificationCloseContainer)
 
         var recentNotificationTextContainer = document.createElement('div')
-        recentNotificationTextContainer.className = 'text-container-recent'
+        recentNotificationTextContainer.className = 'nm9yXLhzoO'
 
-        var recentNotificationNameText = document.createElement('p')
-         recentNotificationNameText.className = 'para-recent main-text-recent'
+        var recentNotificationNameText = document.createElement('div')
+         recentNotificationNameText.className = 'C1Q4m1N5gw Q7ng9a2YqP'
 
          var res_name = userDetails && userDetails ? userDetails.username ? userDetails.username : userDetails.response.json.value.form.firstname : null;
         if (res_name && res_name.trim().length == 0) res_name = 'Someone';
@@ -2846,8 +2898,13 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
          recentNotificationTextContainer.appendChild(recentNotificationNameText)
 
-          var recentNotificationUpperSecondaryText = document.createElement('p')
-        recentNotificationUpperSecondaryText.className = 'para-recent secondary-text-recent'
+          var recentNotificationUpperSecondaryText = document.createElement('div')
+        recentNotificationUpperSecondaryText.className = 'C1Q4m1N5gw AApOh2Bpqu'
+
+        if(configuration.panelStyle.secondaryColor){
+            recentNotificationUpperSecondaryText.style = `color: rgb(${configuration.panelStyle.secondaryColor.r},${configuration.panelStyle.secondaryColor.g},${configuration.panelStyle.secondaryColor.b});`
+           }
+
 
         if (userDetails && userDetails && userDetails.productName)
         recentNotificationUpperSecondaryText.innerHTML = configuration.orderText + ' ' + userDetails.productName
@@ -2863,16 +2920,16 @@ var Note = function Note(config, containerStyle, iconStyle) {
         recentNotiifcationMainContainer.appendChild(recentNotiifcationUpperPartContainer)
 
         var recentNotificationBorder = document.createElement('div')
-        recentNotificationBorder.className = 'border-recent'
+        recentNotificationBorder.className = 'w6k3Avv5zW'
         recentNotiifcationMainContainer.appendChild(recentNotificationBorder)
 
         var recentNotificationLowerTextContainer = document.createElement('div')
-        recentNotificationLowerTextContainer.className = 'lower-part-recent'
+        recentNotificationLowerTextContainer.className = 'dEFGtUaiiu'
 
         var recentNotificationFooterLeft = document.createElement('div')
-        recentNotificationFooterLeft.className = 'footer-left-recent'
-        var recentNotificationFooterLeftText = document.createElement('p')
-        recentNotificationFooterLeftText.className = 'footer-left-text-recent'
+        recentNotificationFooterLeft.className = 'o9zv1YAYbn'
+        var recentNotificationFooterLeftText = document.createElement('div')
+        recentNotificationFooterLeftText.className = 'Habz07uygm'
         var timeStamp = userDetails && userDetails ? userDetails.timestamp : new Date();
         recentNotificationFooterLeftText.innerHTML = 'updated ' +timeStamp ? timeSince(new Date(new Date(timeStamp) - aDay).toISOString(),configuration) : "Not available ";
         // recentNotificationFooterLeftText.innerHTML = "updated 9 min ago"
@@ -2881,24 +2938,24 @@ var Note = function Note(config, containerStyle, iconStyle) {
         
         recentNotificationLowerTextContainer.appendChild(recentNotificationFooterLeft)
 
-        var recentNotificationLowerPTag = document.createElement('p')
-        console.log("togglepoweredby", configuration.togglePoweredBy)
+        var recentNotificationLowerPTag = document.createElement('div')
+        // console.log("togglepoweredby", configuration.togglePoweredBy)
         if (!configuration.togglePoweredBy){
             recentNotificationLowerPTag.style = 'display: none'
         }
-        recentNotificationLowerPTag.className = 'para-recent footer-text-right-recent'
+        recentNotificationLowerPTag.className = 'C1Q4m1N5gw OCvwHZZuMd'
 
         var recentNotificationFooterFirstText = document.createElement('em')
-        recentNotificationFooterFirstText.className = 'verified-text-recent'
+        recentNotificationFooterFirstText.className = 'JeSkWc3iVZ'
         recentNotificationFooterFirstText.innerHTML = `${configuration && configuration.recentText2 ? configuration.recentText2 : 'verified by'}`;   //"Verified by"
 
         recentNotificationLowerPTag.appendChild(recentNotificationFooterFirstText)
 
         var recentNotificationFooterverified = document.createElement('em')
-        recentNotificationFooterverified.className = 'verified-icon-recent'
+        recentNotificationFooterverified.className = 'TLKvGQLGMV'
 
         var recentNotificationTick = document.createElement('span')
-        recentNotificationTick.className = "recent-svg"
+        recentNotificationTick.className = "Kh4bINB0G4"
         recentNotificationTick.innerHTML = `<svg width="9" height="9" viewBox="0 0 524 524" xmlns="http://www.w3.org/2000/svg">
         <defs>
         <style>.cls-1 {
@@ -2930,13 +2987,13 @@ var Note = function Note(config, containerStyle, iconStyle) {
         recentNotificationLowerPTag.appendChild(recentNotificationFooterverified)
 
         var recentNotificationFooterPoweredBy = document.createElement('em')
-        recentNotificationFooterPoweredBy.className = 'influence-text-recent'
+        recentNotificationFooterPoweredBy.className = 'M7XEUSC5mc'
         recentNotificationFooterPoweredBy.innerHTML = configuration.poweredBy ? configuration.poweredBy : 'Influence'; //"Influence"
 
         recentNotificationLowerPTag.appendChild(recentNotificationFooterPoweredBy)
 
         var recentNotificationFooterDot = document.createElement('em')
-        recentNotificationFooterDot.className = 'footer-dot-recent'
+        recentNotificationFooterDot.className = 'vuYBgve3cU'
         recentNotificationFooterDot.innerHTML = "."
 
         // removed by raman
@@ -2947,7 +3004,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         recentNotificationLowerPTag.appendChild(recentNotificationFooterDot)
 
         var recentNotificationFooterMobileTimeContainer = document.createElement('em')
-        recentNotificationFooterMobileTimeContainer.className = 'time-container-recent'
+        recentNotificationFooterMobileTimeContainer.className = 'W8oo4ja6cK'
         var timeStamp = userDetails && userDetails ? userDetails.timestamp : new Date();
         recentNotificationFooterMobileTimeContainer.innerHTML = timeStamp ? timeSince(new Date(new Date(timeStamp) - aDay).toISOString(),configuration) : "Not available ";
        // recentNotificationFooterMobileTimeContainer.innerHTML = '9 mins ago'
@@ -2973,7 +3030,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
        
        var notificationLiveMainContainer = document.createElement('div');
        notificationLiveMainContainer.className= 'oiuytretg';
-    //    notificationLiveMainContainer.style = containerStyle;
+       notificationLiveMainContainer.style = containerStyle;
 
          
 
@@ -2994,6 +3051,9 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
                 var liveNotificationAnimationCircle2= document.createElement('div')
                 liveNotificationAnimationCircle2.className= 'circle-2'
+                if(configuration.panelStyle.iconBGColor){
+                    liveNotificationAnimationCircle2.style= `background: rgb(${configuration.panelStyle.iconBGColor.r},${configuration.panelStyle.iconBGColor.g},${configuration.panelStyle.iconBGColor.b});`
+                }
 
                 liveNotificationAnimationCircle.appendChild(liveNotificationAnimationCircle2)
 
@@ -3057,14 +3117,14 @@ var Note = function Note(config, containerStyle, iconStyle) {
          var liveNotificationTextContainer = document.createElement('div')
          liveNotificationTextContainer.className= 'bvxgfxchgcg'
     
-        var liveNotificationPTag = document.createElement('p')
+        var liveNotificationPTag = document.createElement('div')
         liveNotificationPTag.className ='lkhuf'
     
         var liveNotificationFirstText = document.createElement('em')
         liveNotificationFirstText.className= 'oiuyftgc'
         //liveNotificationFirstText.style.backgroundColor = "black";
         if (configuration && configuration.panelStyle && configuration.panelStyle.color) {
-        	liveNotificationFirstText.style = `color: rgb(${configuration.panelStyle.color.r},${configuration.panelStyle.color.g},${configuration.panelStyle.color.b});`
+            liveNotificationFirstText.style = `color: rgb(${configuration.panelStyle.color.r},${configuration.panelStyle.color.g},${configuration.panelStyle.color.b});`
         }
         liveNotificationFirstText.innerHTML = liveVisitorCount == 0 ? 1 : liveVisitorCount + ' ' + ` ${configuration.visitorText}`      //"21 People"
     
@@ -3072,7 +3132,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         liveNotificationSecondText.className= 'jhjfdrtfgvgj'
 
         // if (configuration && configuration.panelStyle && configuration.panelStyle.color) {
-        // 	liveNotificationSecondText.style = `color: rgb(${configuration.panelStyle.color.r},${configuration.panelStyle.color.g},${configuration.panelStyle.color.b});`
+        //  liveNotificationSecondText.style = `color: rgb(${configuration.panelStyle.color.r},${configuration.panelStyle.color.g},${configuration.panelStyle.color.b});`
         // }
 
         liveNotificationSecondText.innerHTML = ` ${configuration.liveVisitorText}`;
@@ -3103,7 +3163,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         }
         liveNotificationLowerTextContainer.className ='kbhgcghv'
     
-        var liveNotificationLowerPTag = document.createElement('p')
+        var liveNotificationLowerPTag = document.createElement('div')
         liveNotificationLowerPTag.className ='lkhuf jvygcghv'
     
         var liveNotificationFooterFirstText = document.createElement('em')
@@ -3173,22 +3233,20 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         
         var reviewNotiifcationMainContainer = document.createElement('div')
-        reviewNotiifcationMainContainer.className = 'notif-card-review';
+        reviewNotiifcationMainContainer.className = 'y2UXzO2spo';
         reviewNotiifcationMainContainer.style = containerStyle; 
 
         var reviewNotiifcationUpperPartContainer = document.createElement('div')
-        reviewNotiifcationUpperPartContainer.className = 'upper-part-review'
+        reviewNotiifcationUpperPartContainer.className = 'DyWfFTHh9R'
 
         var reviewNotificationImageContainer = document.createElement('div')
-        reviewNotificationImageContainer.className = 'image-container-review'
+        reviewNotificationImageContainer.className = 'sD1KBJgziO'
 
         var reviewNotificationImage = document.createElement('img')
-        reviewNotificationImage.className = 'image-review'
+        reviewNotificationImage.className = 'wIwWxk318I'
        // reviewNotificationImage.setAttribute('src', 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/5FCE8400-0616-426F-8BEA-F53136305123.png')
-        if (fromAppType == 'facebook')
-        reviewNotificationImage.setAttribute('src', 'https://storage.googleapis.com/influence-197607.appspot.com/facebook_round.png');
-        else if (fromAppType == 'google')
-        reviewNotificationImage.setAttribute('src', userReview.profileImg);
+
+        reviewNotificationImage.setAttribute('src', userReview ? userReview.profileImg :'https://lh3.ggpht.com/-HiICnzrd7xo/AAAAAAAAAAI/AAAAAAAAAAA/GcUbxXrSSYg/s128-c0x00000000-cc-rp-mo/photo.jpg');
         //reviewNotificationImage.setAttribute('src', 'https://storage.googleapis.com/influence-197607.appspot.com/googlereview.png');
        // notifReviewImgContent.style = `padding: 11px; border-radius: 0; height: 50px; width: 50px;`;
 
@@ -3198,27 +3256,27 @@ var Note = function Note(config, containerStyle, iconStyle) {
         reviewNotiifcationUpperPartContainer.appendChild(reviewNotificationImageContainer)
 
         var reviewNotificationCloseContainer = document.createElement('div')
-        reviewNotificationCloseContainer.className = 'close-btn-container-review'
+        reviewNotificationCloseContainer.className = 'bnvt6niIjl'
         reviewNotificationCloseContainer.style = config.rule.closeNotification ? 'display:block' : 'display:none';
         var reviewNotificationCloseIcon = document.createElement('button')
         reviewNotificationCloseIcon.id = 'notif_close';
-        reviewNotificationCloseIcon.className = 'close-btn-review'
+        reviewNotificationCloseIcon.className = 'E256pj3mJ4'
         reviewNotificationCloseIcon.innerHTML = "+"
         reviewNotificationCloseContainer.appendChild(reviewNotificationCloseIcon)
         reviewNotiifcationUpperPartContainer.appendChild(reviewNotificationCloseContainer)
 
         var reviewNotificationTextContainer = document.createElement('div')
-        reviewNotificationTextContainer.className = 'text-container-review'
+        reviewNotificationTextContainer.className = 'Pw72iFZOEh'
 
         var reviewNotificationUserNameContainer = document.createElement('div')
         reviewNotificationUserNameContainer.className = 'user-name-container-review'
 
 
-        var reviewNotificationNameText = document.createElement('p')
-        reviewNotificationNameText.className = 'para-review main-text-review'
+        var reviewNotificationNameText = document.createElement('div')
+        reviewNotificationNameText.className = 'VxoCrsNjZR vR7cdCBJQH'
 
         if (fromAppType == 'facebook')
-        reviewNotificationNameText.innerHTML = 'Recommended us on Facebook';
+        reviewNotificationNameText.innerHTML = userReview.username   //'Recommended us on Facebook';
         else if (fromAppType == 'google') {
         reviewNotificationNameText.innerHTML = userReview && userReview.username ? userReview.username : 'Someone' ;
         }
@@ -3227,10 +3285,10 @@ var Note = function Note(config, containerStyle, iconStyle) {
         reviewNotificationUserNameContainer.appendChild(reviewNotificationNameText)
 
         var reviewNotificationUpperLogoContainer = document.createElement('div')
-        reviewNotificationUpperLogoContainer.className = 'upper-logo-container-review'
+        reviewNotificationUpperLogoContainer.className = 'Se4hb14yxF'
 
         var reviewNotificationUpperLogo = document.createElement('img')
-        reviewNotificationUpperLogo.className = 'footer-logo-review'
+        reviewNotificationUpperLogo.className = 'bXZsh24SLi'
         reviewNotificationUpperLogo.setAttribute('src', 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/79341C01-B8BF-4484-AD66-B9314BAE4121.png')
 
 
@@ -3238,10 +3296,11 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
 
         var reviewNotificationUpperStarContainer = document.createElement('div')
-        reviewNotificationUpperStarContainer.className = 'footer-star-container-review'
+        reviewNotificationUpperStarContainer.className = 'r0wMxd4rAu'
 
 
         var reviewNotificationUpperStar = document.createElement('span')
+        if(fromAppType == 'google'){
         var star = '';
         if (userReview && userReview.rating) {
             for (let star_i = 0; star_i < userReview.rating; star_i++) {
@@ -3254,7 +3313,10 @@ var Note = function Note(config, containerStyle, iconStyle) {
         }
 
         reviewNotificationUpperStar.innerHTML= star
-        reviewNotificationUpperStarContainer.appendChild(reviewNotificationUpperStar)
+    }else {
+
+    }
+    reviewNotificationUpperStarContainer.appendChild(reviewNotificationUpperStar)
 
 
         // var star = '';
@@ -3273,15 +3335,11 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         //console.log(reviewNotificationUpperStarContainer,"YES")
 
+        var reviewNotificationStar1 = document.createElement('span')
 
-         var reviewNotificationStar1 = document.createElement('span')
-        // if (userReview && userReview.rating) {
-        //     for (let star_i = 0; star_i < userReview.rating; star_i++) {
-        //         reviewNotificationStar1.className = 'fa fa-star';
-        //         reviewNotificationUpperStarContainer.appendChild(reviewNotificationStar1)
 
-        //     }
-        // }
+        if(fromAppType == 'google'){
+       
 
 
         var star = '';
@@ -3296,7 +3354,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
         }
 
         reviewNotificationStar1.innerHTML= star
-        reviewNotificationUpperStarContainer.appendChild(reviewNotificationStar1)
+    } 
+    reviewNotificationUpperStarContainer.appendChild(reviewNotificationStar1)
 
 
         reviewNotificationUpperLogoContainer.appendChild(reviewNotificationUpperStarContainer)
@@ -3304,8 +3363,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
         reviewNotificationUserNameContainer.appendChild(reviewNotificationUpperLogoContainer)
         reviewNotificationTextContainer.appendChild(reviewNotificationUserNameContainer)
 
-        var reviewNotificationUpperSecondaryText = document.createElement('p')
-        reviewNotificationUpperSecondaryText.className = 'para-review secondary-text-review'
+        var reviewNotificationUpperSecondaryText = document.createElement('div')
+        reviewNotificationUpperSecondaryText.className = 'VxoCrsNjZR cwvnPVjfAZ'
 
     //     if (fromAppType == 'facebook')
     //     reviewNotificationUpperSecondaryText.innerHTML = 'Recommended us on Facebook';
@@ -3324,39 +3383,44 @@ var Note = function Note(config, containerStyle, iconStyle) {
         reviewNotiifcationMainContainer.appendChild(reviewNotiifcationUpperPartContainer)
 
         var reviewNotificationBorder = document.createElement('div')
-        reviewNotificationBorder.className = 'border-review'
+        reviewNotificationBorder.className = 'Nit4f0puNC'
         reviewNotiifcationMainContainer.appendChild(reviewNotificationBorder)
 
         var reviewNotificationLowerTextContainer = document.createElement('div')
-        reviewNotificationLowerTextContainer.className = 'lower-part-review'
+        reviewNotificationLowerTextContainer.className = 'eHy4QhDPOH'
 
         var reviewNotificationFooterLeft = document.createElement('div')
-        reviewNotificationFooterLeft.className = 'footer-left-review'
+        reviewNotificationFooterLeft.className = 'SHtHNHI4jR'
 
-        var reviewNotificationFooterLeftText = document.createElement('p')
-        reviewNotificationFooterLeftText.className = 'footer-left-text-review'
+        var reviewNotificationFooterLeftText = document.createElement('div')
+        reviewNotificationFooterLeftText.className = 'vcfYyKTme5'
         reviewNotificationFooterLeftText.innerHTML = "updated 9 min ago"
         reviewNotificationFooterLeftText.style = "display: none"
         reviewNotificationFooterLeft.appendChild(reviewNotificationFooterLeftText)
         var reviewNotificationFooterLogoContainer = document.createElement('div')
-        reviewNotificationFooterLogoContainer.className = 'footer-logo-container-review'
+        reviewNotificationFooterLogoContainer.className = 'PI5MfWQuUH'
 
         var reviewNotificationFooterLogo = document.createElement('img')
-        reviewNotificationFooterLogo.className = 'footer-logo-review'
+
+        if(fromAppType == 'google'){
+        reviewNotificationFooterLogo.className = 'bXZsh24SLi'
         reviewNotificationFooterLogo.setAttribute('src', 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/79341C01-B8BF-4484-AD66-B9314BAE4121.png')
+       } else{
+            reviewNotificationFooterLogo.className = 'bXZsh24SLi'
+            reviewNotificationFooterLogo.setAttribute('src', "https://storage.googleapis.com/influence-197607.appspot.com/fbreview.jpg")
+       }
 
         reviewNotificationFooterLogoContainer.appendChild(reviewNotificationFooterLogo)
 
         var reviewNotificationFooterStarContainer = document.createElement('div')
-        reviewNotificationFooterStarContainer.className = 'footer-star-container-review'
+        reviewNotificationFooterStarContainer.className = 'r0wMxd4rAu'
 
         //reviewNotificationFooterStarContainer.innerHTML= star
 
-
-        
         var reviwNotificationFooterStar1 = document.createElement('span')
         reviwNotificationFooterStar1.style= "display: flex"
 
+        if(fromAppType == 'google'){
         var star = '';
         if (userReview && userReview.rating) {
             for (let star_i = 0; star_i < userReview.rating; star_i++) {
@@ -3368,23 +3432,24 @@ var Note = function Note(config, containerStyle, iconStyle) {
             }
         }
         reviwNotificationFooterStar1.innerHTML= star
+    }
         reviewNotificationFooterStarContainer.appendChild(reviwNotificationFooterStar1)
 
         reviewNotificationFooterLogoContainer.appendChild(reviewNotificationFooterStarContainer)
         reviewNotificationFooterLeft.appendChild(reviewNotificationFooterLogoContainer)
         reviewNotificationLowerTextContainer.appendChild(reviewNotificationFooterLeft)
 
-        var reviewNotificationLowerPTag = document.createElement('p')
-        reviewNotificationLowerPTag.className = 'para-review footer-text-right-review'
+        var reviewNotificationLowerPTag = document.createElement('div')
+        reviewNotificationLowerPTag.className = 'VxoCrsNjZR Y0g8JetRD9'
 
         var reviewNotificationFooterFirstText = document.createElement('em')
-        reviewNotificationFooterFirstText.className = 'verified-text-review'
+        reviewNotificationFooterFirstText.className = 'q1loq211Xo'
         reviewNotificationFooterFirstText.innerHTML = `${configuration && configuration.liveText ? configuration.liveText : 'verified by '}` //"Verified by"
 
         reviewNotificationLowerPTag.appendChild(reviewNotificationFooterFirstText)
 
         var reviewNotificationFooterverified = document.createElement('em')
-        reviewNotificationFooterverified.className = 'verified-icon-review'
+        reviewNotificationFooterverified.className = 's8VV8RquLh'
 
         var reviewNotificationTick = document.createElement('span')
         reviewNotificationTick.innerHTML = `<svg width="9" height="9" viewBox="0 0 524 524" xmlns="http://www.w3.org/2000/svg">
@@ -3418,13 +3483,13 @@ var Note = function Note(config, containerStyle, iconStyle) {
         reviewNotificationLowerPTag.appendChild(reviewNotificationFooterverified)
 
         var reviewNotificationFooterPoweredBy = document.createElement('em')
-        reviewNotificationFooterPoweredBy.className = 'influence-text-review'
+        reviewNotificationFooterPoweredBy.className = 'y35sRsZztl'
         reviewNotificationFooterPoweredBy.innerHTML = configuration.poweredBy ? configuration.poweredBy : 'Influence' //"Influence"
 
         reviewNotificationLowerPTag.appendChild(reviewNotificationFooterPoweredBy)
 
         var reviewNotificationFooterDot = document.createElement('em')
-        reviewNotificationFooterDot.className = 'footer-dot-review'
+        reviewNotificationFooterDot.className = 'Vo6H8NISoP'
 
         // var reviewNotificationFooterCircle = document.createElement('span')
         // reviewNotificationFooterCircle.innerHTML = `<svg width="9" height="9" viewBox="0 0 524 524" xmlns="http://www.w3.org/2000/svg">
@@ -3458,7 +3523,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         reviewNotificationLowerPTag.appendChild(reviewNotificationFooterDot)
 
         var reviewNotificationFooterMobileTimeContainer = document.createElement('em')
-        reviewNotificationFooterMobileTimeContainer.className = 'time-container-review'
+        reviewNotificationFooterMobileTimeContainer.className = 'qT51DYlYRH'
         reviewNotificationFooterMobileTimeContainer.innerHTML ='        ' //'9 mins ago'
 
         reviewNotificationLowerPTag.appendChild(reviewNotificationFooterMobileTimeContainer)
@@ -3481,17 +3546,17 @@ var Note = function Note(config, containerStyle, iconStyle) {
        // bulkNotiifcationContainer.style = containerStyle;
 
        var bulkNotiifcationMainContainer = document.createElement('div')
-       bulkNotiifcationMainContainer.className = 'notif-card-bulk';
+       bulkNotiifcationMainContainer.className = 'foc2x3WbXB';
        bulkNotiifcationMainContainer.style =containerStyle
 
         var bulkNotiifcationUpperPartContainer = document.createElement('div')
-        bulkNotiifcationUpperPartContainer.className= 'upper-part-bulk'
+        bulkNotiifcationUpperPartContainer.className= 'aiqUT4q94o'
     
         var bulkNotificationImageContainer = document.createElement('div')
-        bulkNotificationImageContainer.className= 'image-container-bulk'
+        bulkNotificationImageContainer.className= 'VyDVZdCWdx'
     
         var bulkNotificationImage = document.createElement('img')
-        bulkNotificationImage.className= 'image-bulk'
+        bulkNotificationImage.className= 'A4S38Y254X'
 
         if (config.icon)
         bulkNotificationImage.setAttribute('src', config.icon);
@@ -3509,23 +3574,23 @@ var Note = function Note(config, containerStyle, iconStyle) {
         bulkNotiifcationUpperPartContainer.appendChild(bulkNotificationImageContainer)
     
            var bulkNotificationCloseContainer = document.createElement('div')
-            bulkNotificationCloseContainer.className='close-btn-container-bulk'
+            bulkNotificationCloseContainer.className='qQ6LvxoYlp'
             bulkNotificationCloseContainer.style = config.rule.closeNotification ? 'display:block' : 'display:none';
             var bulkNotificationCloseIcon = document.createElement('button')
             bulkNotificationCloseIcon.id = 'notif_close';
-            bulkNotificationCloseIcon.className ='close-btn-bulk'
+            bulkNotificationCloseIcon.className ='knaKnioVnl'
             bulkNotificationCloseIcon.innerHTML ="+"
             bulkNotificationCloseContainer.appendChild(bulkNotificationCloseIcon)
          bulkNotiifcationUpperPartContainer.appendChild(bulkNotificationCloseContainer)
     
          var bulkNotificationTextContainer = document.createElement('div')
-         bulkNotificationTextContainer.className= 'text-container-bulk'
+         bulkNotificationTextContainer.className= 'Jxf0sUFKNw'
     
-        var bulkNotificationPTag = document.createElement('p')
-        bulkNotificationPTag.className ='para-bulk'
+        var bulkNotificationPTag = document.createElement('div')
+        bulkNotificationPTag.className ='WyM33MZmTi'
     
         var bulkNotificationFirstText = document.createElement('em')
-        bulkNotificationFirstText.className= 'main-text-bulk main-text-bulk-digit'
+        bulkNotificationFirstText.className= 'FocLFPnCyM Kbulz3yVQa'
         bulkNotificationFirstText.style.backgroundColor = "#f3f7ff";
     //     bulkNotificationFirstText.style.color= background-color: #f3f7ff
         numAnim = new CountUp(bulkNotificationFirstText, 0, numberOfUsers, 0, 3);
@@ -3533,7 +3598,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
     
 
         var bulkNotificationSecondText = document.createElement('em')
-        bulkNotificationSecondText.className= 'secondary-text-bulk'
+        bulkNotificationSecondText.className= 'Wvoh0jbGb2'
 
         var today = new Date();
         var dd = today.getDate();
@@ -3551,7 +3616,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
          bulkNotificationPTag.appendChild(bulkNotificationFirstText)
 
          var bulkNotificationFirstText2= document.createElement('em')
-            bulkNotificationFirstText2.className = 'main-text-bulk notif-space-bulk'
+            bulkNotificationFirstText2.className = 'FocLFPnCyM YNK4CEgEKV'
             bulkNotificationFirstText2.style.backgroundColor = "#f3f7ff";
             bulkNotificationFirstText2.style.paddingLeft = "0px";
             bulkNotificationFirstText2.innerHTML= configuration.visitorText  //people
@@ -3567,26 +3632,26 @@ var Note = function Note(config, containerStyle, iconStyle) {
         if (!configuration.togglePoweredBy) {
             bulkNotificationBorder.style = 'display: none'
         }
-        bulkNotificationBorder.className='border-bulk'
+        bulkNotificationBorder.className='zwnmZYXtFz'
         bulkNotiifcationMainContainer.appendChild(bulkNotificationBorder)
     
         var bulkNotificationLowerTextContainer= document.createElement('div')
         if(!configuration.togglePoweredBy){
             bulkNotificationLowerTextContainer.style = 'display: none'
         }
-        bulkNotificationLowerTextContainer.className ='lower-part-bulk'
+        bulkNotificationLowerTextContainer.className ='ZyQ5NX6Xi0'
     
-        var bulkNotificationLowerPTag = document.createElement('p')
-        bulkNotificationLowerPTag.className ='para-bulk footer-text-bulk'
+        var bulkNotificationLowerPTag = document.createElement('div')
+        bulkNotificationLowerPTag.className ='WyM33MZmTi QwrzAVKEx3'
     
         var bulkNotificationFooterFirstText = document.createElement('em')
-        bulkNotificationFooterFirstText.className= 'verified-text-bulk'
+        bulkNotificationFooterFirstText.className= 'cndnnNxkVv'
         bulkNotificationFooterFirstText.innerHTML = configuration.recentText2 ? configuration.recentText2 : 'Verified by '  //"Verified by"
     
         bulkNotificationLowerPTag.appendChild(bulkNotificationFooterFirstText)
     
         var bulkNotificationFooterverified = document.createElement('em')
-        bulkNotificationFooterverified.className= 'verified-icon-bulk'
+        bulkNotificationFooterverified.className= 'SxMMtXX6gU'
     
         var bulkNotificationTick = document.createElement('span')
         bulkNotificationTick.innerHTML = `<svg width="9" height="9" viewBox="0 0 524 524" xmlns="http://www.w3.org/2000/svg">
@@ -3620,7 +3685,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         bulkNotificationLowerPTag.appendChild(bulkNotificationFooterverified)
     
         var bulkNotificationFooterPoweredBy = document.createElement('em')
-        bulkNotificationFooterPoweredBy.className= 'influence-text-bulk'
+        bulkNotificationFooterPoweredBy.className= 'Q9bSwcf36B'
         bulkNotificationFooterPoweredBy.innerHTML = configuration.poweredBy ? configuration.poweredBy : 'Influence'   //"Influence"
     
         bulkNotificationLowerPTag.appendChild(bulkNotificationFooterPoweredBy)
@@ -3632,7 +3697,105 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
 
 
-        // 
+
+        var announcementContainer= document.createElement('div');
+        announcementContainer.style = type == 'announcement' ? "display:block" : "display:none";
+
+
+        var announcementNotiifcationContainer = document.createElement('div')
+        announcementNotiifcationContainer.className = 'notif-card';
+        announcementNotiifcationContainer.style =containerStyle
+
+        var announcementNotiifcationUpperPartContainer = document.createElement('div')
+        announcementNotiifcationUpperPartContainer.className = 'upper-part'
+
+        var announcementNotificationImageContainer = document.createElement('div')
+        announcementNotificationImageContainer.className = 'image-container'
+
+        var announcementNotificationImage = document.createElement('img')
+        announcementNotificationImage.className = 'image'
+        announcementNotificationImage.setAttribute('src', 'https://app.useinfluence.co/static/media/fire-new.bece222f.png')
+        announcementNotificationImageContainer.appendChild(announcementNotificationImage)
+
+
+        announcementNotiifcationUpperPartContainer.appendChild(announcementNotificationImageContainer)
+
+        var announcementNotificationCloseContainer = document.createElement('div')
+        announcementNotificationCloseContainer.className = 'close-btn-container'
+        var announcementNotificationCloseIcon = document.createElement('button')
+        announcementNotificationCloseIcon.className = 'close-btn'
+        announcementNotificationCloseIcon.innerHTML = "+"
+        announcementNotificationCloseContainer.appendChild(announcementNotificationCloseIcon)
+        announcementNotiifcationUpperPartContainer.appendChild(announcementNotificationCloseContainer)
+
+        var announcementNotificationTextContainer = document.createElement('div')
+        announcementNotificationTextContainer.className = 'text-container'
+
+        var announcementNotificationUserNameContainer = document.createElement('div')
+        announcementNotificationUserNameContainer.className = 'user-name-container'
+
+
+        var announcementNotificationNameText = document.createElement('p')
+        announcementNotificationNameText.className = 'para main-text'
+        announcementNotificationNameText.innerHTML =  configuration.announcementHeaderText ? configuration.announcementHeaderText : 'Updates Available'
+        announcementNotificationUserNameContainer.appendChild(announcementNotificationNameText)
+
+      
+        announcementNotificationTextContainer.appendChild(announcementNotificationUserNameContainer)
+
+        var announcementNotificationUpperSecondaryText = document.createElement('p')
+        announcementNotificationUpperSecondaryText.className = 'para secondary-text'
+        announcementNotificationUpperSecondaryText.innerHTML = configuration.announcementSubText ?  configuration.announcementSubText : "DO you want to install ?"  //"Awesome must have tool for every marketer or an online business! Easy to use, great uxui, and most importantly - gets more leads than any other platform."
+
+        announcementNotificationTextContainer.appendChild(announcementNotificationUpperSecondaryText)
+        announcementNotiifcationUpperPartContainer.appendChild(announcementNotificationTextContainer)
+        announcementNotiifcationContainer.appendChild(announcementNotiifcationUpperPartContainer)
+
+    
+
+        var announcementNotificationLowerTextContainer = document.createElement('div')
+        announcementNotificationLowerTextContainer.className = 'lower-part'
+
+        var announcementNotificationFooterLeft = document.createElement('div')
+
+      
+        announcementNotificationLowerTextContainer.appendChild(announcementNotificationFooterLeft)
+
+        var announcementNotificationLowerPTag = document.createElement('p')
+        announcementNotificationLowerPTag.className = 'para'
+
+        var announcementNotificationFooterPI =document.createElement('em')
+        announcementNotificationFooterPI.className = 'powerem'
+        var announcementNotificationFooterverified = document.createElement('em')
+        announcementNotificationFooterverified.className = 'verified-icon'
+
+        var announcementNotificationTick = document.createElement('i')
+        announcementNotificationTick.className = 'fa fa-check-circle'
+        announcementNotificationFooterverified.appendChild(announcementNotificationTick)
+
+        announcementNotificationFooterPI.appendChild(announcementNotificationFooterverified)
+
+        var announcementNotificationFooterPoweredBy = document.createElement('em')
+        announcementNotificationFooterPoweredBy.className = 'influence-text'
+        announcementNotificationFooterPoweredBy.innerHTML =  configuration.poweredBy ? configuration.poweredBy : 'Influence'  //"Influence"
+
+        announcementNotificationFooterPI.appendChild(announcementNotificationFooterPoweredBy)
+        announcementNotificationLowerPTag.appendChild(announcementNotificationFooterPI)
+
+        var announcementNotificationFooterButtonDiv = document.createElement('em')
+
+        var announcementNotificationFooterButton = document.createElement('button')
+        announcementNotificationFooterButton.className = 'buttonF'
+        announcementNotificationFooterButton.innerHTML = "Book Now"
+        announcementNotificationFooterButtonDiv.appendChild(announcementNotificationFooterButton)
+        announcementNotificationLowerPTag.appendChild(announcementNotificationFooterButtonDiv)
+
+      
+        announcementNotificationLowerTextContainer.appendChild(announcementNotificationLowerPTag)
+
+        announcementNotiifcationContainer.appendChild(announcementNotificationLowerTextContainer)
+
+        announcementContainer.appendChild(announcementNotiifcationContainer)
 
 
 
@@ -3680,6 +3843,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
     mainContainer.appendChild(notificationLiveContainer);
     mainContainer.appendChild(recentNotiifcationContainer);
     mainContainer.appendChild(reviewNotiifcationContainer);
+    mainContainer.appendChild(announcementContainer);  
 
     //console.log(mainContainer,"Main Container Data")
 

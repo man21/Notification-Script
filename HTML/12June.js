@@ -2273,7 +2273,10 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                 var key = Object.keys(notif);
                 responses = notif[key];
                 var secondLoop = (result.length * result.length) >= startSecondLoop ? false : true
+
+                console.log(secondLoop,"second loop +++++++++++++++++++++++++++++++++++++")
                 const infos = secondLoop ? responses.message_data.filter(obj=> excludeCampaign.indexOf(obj.rule.campaign) == -1 && obj.rule.loopNotification ) : responses.message_data.filter(obj=> excludeCampaign.indexOf(obj.rule.campaign) == -1 )
+               console.log(infos,"000000000000000000000000000000")
                 if (j > loopCheckValue) {
                     i = 5;
                     //setTimeout(() => new Notifications(config), (('rule.loopNotification' ? 11988 : 24) + 12) * 1000);//11988

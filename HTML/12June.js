@@ -2082,7 +2082,7 @@ function CountUp(target, startVal, endVal, decimals, duration, options) {
         self.frameVal = Math.round(self.frameVal * self.dec) / self.dec;
 
         // format and print any
-value
+//value
         self.printValue(self.frameVal);
 
         // whether to continue
@@ -4881,7 +4881,6 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                     }
                     return
                 }
-                console.log(infos, "INFOS *****************")
                 startSecondLoop= startSecondLoop+result.length
                 for (let inff = 0; inff < infos.length; inff++) {
                     const info = infos[inff];
@@ -6305,14 +6304,15 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
 
 
-        console.log( "*****************************************")
 
 
         var announcementContainer= document.createElement('div');
+        console.log( type, "*****************************************")
+
          announcementContainer.style = type == 'announcement' ? "display:block" : "display:none";
 
 
-        console.log(configuration, "====== announcement **************==========================")
+        console.log(configuration.announcementHeaderText, "====== announcement **************==========================")
 
         var announcementNotiifcationContainer = document.createElement('div')
         announcementNotiifcationContainer.className = 'notif-card';

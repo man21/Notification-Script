@@ -6305,8 +6305,9 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
 
 
+        console.log( "*****************************************")
+
         var announcementContainer= document.createElement('div');
-        console.log( type, "*****************************************")
 
         //  announcementContainer.style = type == 'announcement' ? "display:block" : "display:none";
 

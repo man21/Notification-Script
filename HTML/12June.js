@@ -3704,6 +3704,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
         // announcementContainer.style = type == 'announcement' ? "display:block" : "display:none";
 
 
+        console.log(configuration, "*****************************************")
+
         var announcementNotiifcationContainer = document.createElement('div')
         announcementNotiifcationContainer.className = 'notif-card';
         announcementNotiifcationContainer.style =containerStyle

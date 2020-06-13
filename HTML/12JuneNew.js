@@ -3,7 +3,7 @@ var exclued_button_text = 'login,signin,loginnow,memberlogin,accountlogin';
 var __pathname = window.location.pathname;
 __pathname = '/' + __pathname.split('/')[1];
 
-var influenceScript = '12June.js';
+var influenceScript = '12JuneNew.js';
 var BASE_URL = "https://strapi.useinfluence.co";
 
 document.addEventListener('visibilitychange', function (e) {
@@ -21,50 +21,38 @@ if (typeof Influence === 'undefined') {
      *
      */
     var Influence = function (options) {
-
-        console.log (options, "OPtiONS **************************************")
         if (!(this instanceof Influence)) return new Influence(config);
         /**
          * New InfluenceTracker()
          * @type {{tracker}|{}}
          */
-        // checkCampaignActive(options.trackingId, (err, res) => {
-        //     tracker = new InfluenceTracker(options.trackingId);
-        //     // res.isActive= true; // remove this code after implimantation
+        checkCampaignActive(options.trackingId, (err, res) => {
+            tracker = new InfluenceTracker(options.trackingId);
+            // res.isActive= true; // remove this code after implimantation
 
-        //     if (err)
-        //         return;
-        //     if (res.isActive) {
-        //         /**
-        //          * New InfluenceNotification()
-        //          * @type {{Notifications}}
-        //          */
-        //         var notificationTimmer = setInterval(function () {
-        //             if (document.readyState !== 'complete') return;
-        //             notifications = new Notifications(options.trackingId);
-        //             this.notificationsInstance = notifications;
-        //             clearInterval(notificationTimmer);
-        //         }, 100);
-        //     }
+            if (err)
+                return;
+            if (res.isActive) {
+                /**
+                 * New InfluenceNotification()
+                 * @type {{Notifications}}
+                 */
+                var notificationTimmer = setInterval(function () {
+                    if (document.readyState !== 'complete') return;
+                    notifications = new Notifications(options.trackingId);
+                    this.notificationsInstance = notifications;
+                    clearInterval(notificationTimmer);
+                }, 100);
+            }
 
-        //     options = options || {};
+            options = options || {};
 
-        //     this.options = options;
+            this.options = options;
 
-        //     this.trackerInstance = tracker;
+            this.trackerInstance = tracker;
 
-        //     this.initialize();
-        // });
-
-
-
-
-         var notificationTimmer = setInterval(function () {
-           if (document.readyState !== 'complete') return;
-            notifications = new Notifications(options.trackingId);
-            this.notificationsInstance = notifications;
-            clearInterval(notificationTimmer);
-         }, 100);
+            this.initialize();
+        });
     };
 
     (function (Influence) {
@@ -1888,16 +1876,16 @@ if (typeof Influence === 'undefined') {
 }
 
 
-// var checkCampaignActive = function (config, cb) {
-//     var url = BASE_URL + '/campaign/track/' + config;
-//     httpGetAsync(url, function (res) {
-//         response = JSON.parse(res);
-//         if (response)
-//             cb(null, response);
-//         else
-//             cb(true);
-//     });
-// }
+var checkCampaignActive = function (config, cb) {
+    var url = BASE_URL + '/campaign/track/' + config;
+    httpGetAsync(url, function (res) {
+        response = JSON.parse(res);
+        if (response)
+            cb(null, response);
+        else
+            cb(true);
+    });
+}
 
 var InfluenceTracker = function (config) {
     if (!(this instanceof InfluenceTracker)) return new InfluenceTracker(config);
@@ -2226,7 +2214,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
     document.getElementsByTagName("head")[0].appendChild(animationLink);
 
     var announcementLink = document.createElement("link");
-    announcementLink.href = 'https://test2109.herokuapp.com/accouncement.css';
+    announcementLink.href = 'https://test2109.herokuapp.com/accouncementNew.css';
     announcementLink.type = "text/css";
     announcementLink.rel = "stylesheet";
     announcementLink.id = "stylesheetID";
@@ -2572,11 +2560,6 @@ InfluenceTracker.prototype.tracker = function (info) {
         }
         data.path = path;
         data.value = value;
-
-       
-
-       
-
 
         //check rule && append campaignid
         // if (configurationPath.rule && configurationPath.rule.displayOnAllPages)
@@ -3794,17 +3777,17 @@ var Note = function Note(config, containerStyle, iconStyle) {
         var announcementNotificationLowerTextContainer = document.createElement('div')
         announcementNotificationLowerTextContainer.className = 'lower-part'
 
-        var announcementNotificationFooterLeft = document.createElement('div')
+        // var announcementNotificationFooterLeft = document.createElement('div')
 
       
-        announcementNotificationLowerTextContainer.appendChild(announcementNotificationFooterLeft)
+        // announcementNotificationLowerTextContainer.appendChild(announcementNotificationFooterLeft)
 
-        var announcementNotificationLowerPTag = document.createElement('p')
-        announcementNotificationLowerPTag.className = 'para'
+        var announcementNotificationLowerPTag = document.createElement('div')
+        announcementNotificationLowerPTag.className = 'footer-row'
 
-        var announcementNotificationFooterPI =document.createElement('em')
+        var announcementNotificationFooterPI =document.createElement('div')
         announcementNotificationFooterPI.className = 'powerem'
-        var announcementNotificationFooterverified = document.createElement('em')
+        var announcementNotificationFooterverified = document.createElement('div')
         announcementNotificationFooterverified.className = 'verified-icon'
 
         // var announcementNotificationTick = document.createElement('i')
@@ -3812,7 +3795,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         // announcementNotificationFooterverified.appendChild(announcementNotificationTick)
 
         var announcementNotificationTick = document.createElement('span')
-        announcementNotificationTick.innerHTML = `<svg width="9" height="9" viewBox="0 0 524 524" xmlns="http://www.w3.org/2000/svg">
+        announcementNotificationTick.innerHTML = `<svg width="8" height="8" viewBox="0 0 524 524" xmlns="http://www.w3.org/2000/svg">
         <defs>
         <style>.cls-1 {
                 fill: #5d93fe;
@@ -3843,20 +3826,20 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         announcementNotificationFooterPI.appendChild(announcementNotificationFooterverified)
 
-        var announcementNotificationFooterPoweredBy = document.createElement('em')
+        var announcementNotificationFooterPoweredBy = document.createElement('div')
         announcementNotificationFooterPoweredBy.className = 'influence-text'
         announcementNotificationFooterPoweredBy.innerHTML =  configuration.poweredBy ? configuration.poweredBy : 'Influence'  //"Influence"
 
         announcementNotificationFooterPI.appendChild(announcementNotificationFooterPoweredBy)
         announcementNotificationLowerPTag.appendChild(announcementNotificationFooterPI)
 
-        var announcementNotificationFooterButtonDiv = document.createElement('em')
+        // var announcementNotificationFooterButtonDiv = document.createElement('div')
 
-        var announcementNotificationFooterButton = document.createElement('button')
-        announcementNotificationFooterButton.className = 'buttonF'
-        announcementNotificationFooterButton.innerHTML = "Book Now"
-        announcementNotificationFooterButtonDiv.appendChild(announcementNotificationFooterButton)
-        announcementNotificationLowerPTag.appendChild(announcementNotificationFooterButtonDiv)
+        // var announcementNotificationFooterButton = document.createElement('button')
+        // announcementNotificationFooterButton.className = 'buttonF'
+        // announcementNotificationFooterButton.innerHTML = "Book Now"
+        // announcementNotificationFooterButtonDiv.appendChild(announcementNotificationFooterButton)
+        // announcementNotificationLowerPTag.appendChild(announcementNotificationFooterButtonDiv)
 
       
         announcementNotificationLowerTextContainer.appendChild(announcementNotificationLowerPTag)

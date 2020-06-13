@@ -359,6 +359,8 @@ body{
 }
 }
 .notif-card:hover {
-    border: 1.5px solid #097fff2b;
-    box-shadow: 0px 0px 2px #097fff;
+    /* border: 1.5px solid #097fff2b;
+    box-shadow: 0px 0px 2px #097fff; */
+    background: #6f6f6f;
+    box-shadow: none;
 }

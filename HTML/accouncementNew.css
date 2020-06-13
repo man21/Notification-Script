@@ -357,7 +357,7 @@ body{
         min-width: 346px;
         width: auto;
 }
-
+}
 .notif-card:hover {
     border: 1.5px solid #097fff2b;
     box-shadow: 0px 0px 2px #097fff;

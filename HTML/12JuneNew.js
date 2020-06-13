@@ -26,33 +26,41 @@ if (typeof Influence === 'undefined') {
          * New InfluenceTracker()
          * @type {{tracker}|{}}
          */
-        checkCampaignActive(options.trackingId, (err, res) => {
-            tracker = new InfluenceTracker(options.trackingId);
-            // res.isActive= true; // remove this code after implimantation
+        // checkCampaignActive(options.trackingId, (err, res) => {
+        //     tracker = new InfluenceTracker(options.trackingId);
+        //     // res.isActive= true; // remove this code after implimantation
 
-            if (err)
-                return;
-            if (res.isActive) {
-                /**
-                 * New InfluenceNotification()
-                 * @type {{Notifications}}
-                 */
-                var notificationTimmer = setInterval(function () {
+        //     if (err)
+        //         return;
+        //     if (res.isActive) {
+        //         /**
+        //          * New InfluenceNotification()
+        //          * @type {{Notifications}}
+        //          */
+        //         var notificationTimmer = setInterval(function () {
+        //             if (document.readyState !== 'complete') return;
+        //             notifications = new Notifications(options.trackingId);
+        //             this.notificationsInstance = notifications;
+        //             clearInterval(notificationTimmer);
+        //         }, 100);
+        //     }
+
+        //     options = options || {};
+
+        //     this.options = options;
+
+        //     this.trackerInstance = tracker;
+
+        //     this.initialize();
+        // });
+
+    
+                  var notificationTimmer = setInterval(function () {
                     if (document.readyState !== 'complete') return;
                     notifications = new Notifications(options.trackingId);
                     this.notificationsInstance = notifications;
                     clearInterval(notificationTimmer);
                 }, 100);
-            }
-
-            options = options || {};
-
-            this.options = options;
-
-            this.trackerInstance = tracker;
-
-            this.initialize();
-        });
     };
 
     (function (Influence) {
@@ -1876,16 +1884,16 @@ if (typeof Influence === 'undefined') {
 }
 
 
-var checkCampaignActive = function (config, cb) {
-    var url = BASE_URL + '/campaign/track/' + config;
-    httpGetAsync(url, function (res) {
-        response = JSON.parse(res);
-        if (response)
-            cb(null, response);
-        else
-            cb(true);
-    });
-}
+// var checkCampaignActive = function (config, cb) {
+//     var url = BASE_URL + '/campaign/track/' + config;
+//     httpGetAsync(url, function (res) {
+//         response = JSON.parse(res);
+//         if (response)
+//             cb(null, response);
+//         else
+//             cb(true);
+//     });
+// }
 
 var InfluenceTracker = function (config) {
     if (!(this instanceof InfluenceTracker)) return new InfluenceTracker(config);

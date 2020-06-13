@@ -3280,7 +3280,7 @@ InfluenceTracker.prototype.tracker = function (info) {
     console.log(info, "INFO ***************************************")
 
 
-    console.log(this.context.visitorId, "This context")
+    console.log(info.valu.visitorId, "This context")
 
 
     if(info && info.value && info.value.event == 'mouseover') if(flagMouseOver) return; else flagMouseOver = true;

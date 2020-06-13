@@ -3280,6 +3280,13 @@ function getEmailByInputType() {
 }
 
 InfluenceTracker.prototype.tracker = function (info) {
+    console.log(info, "INFO ***************************************")
+
+    console.log( readCookie('influence_vid'))
+
+    console.log(this.context.visitorId, "This context")
+
+    
     if(info && info.value && info.value.event == 'mouseover') if(flagMouseOver) return; else flagMouseOver = true;
     var path = info.path;
     var value = info.value;
@@ -3298,6 +3305,12 @@ InfluenceTracker.prototype.tracker = function (info) {
         }
         data.path = path;
         data.value = value;
+        data.visitorId =  readCookie('influence_vid');
+
+       
+
+       
+
 
         //check rule && append campaignid
         // if (configurationPath.rule && configurationPath.rule.displayOnAllPages)

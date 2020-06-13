@@ -3298,10 +3298,10 @@ InfluenceTracker.prototype.tracker = function (info) {
             if(value.form && !value.form.email){
                 value.form.email = getEmailByInputType();
             }
+            data.visitorId = info.value.visitorId
         }
         data.path = path;
         data.value = value;
-        data.visitorId =  readCookie('influence_vid');
 
        
 

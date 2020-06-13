@@ -3299,6 +3299,8 @@ InfluenceTracker.prototype.tracker = function (info) {
                 value.form.email = getEmailByInputType();
             }
             data.visitorId = info.value.visitorId
+            data.fingerprint= info.value.fingerprint
+            data.sessionId = info.value.sessionId
         }
         data.path = path;
         data.value = value;

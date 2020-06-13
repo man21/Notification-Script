@@ -3123,7 +3123,6 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                                         else if (info.userReviews) key = 'review';
                                         else key = 'announcement'
                                         if(isTabVisibility){
-                                            console.log(key, "KEY is here 1111111111111111111")
                                             return notificationTimeout(u, info, info.rule, key, notificationPath);}
                                     }, (info.rule.initialDelay) * 1000);
                                 }
@@ -3135,7 +3134,6 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                                         else if (info.userReviews) key = 'review';
                                         else key = 'announcement'
                                         if(isTabVisibility){
-                                            console.log(key, "key is here 2222222222222222222222")
                                             return notificationTimeout(u, info, info.rule, key, notificationPath); }
                                     },(info.rule.delayNotification ? (randomDelayTime * 1000) : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v - 1)) * 1000));
                                 tempRandomDelayTime = randomDelayTime;
@@ -3226,7 +3224,6 @@ function notificationTimeout(i, info, rule, key, notificationPath) {
 
 
     if (configuration) {
-        console.log(configuration.announcementHeaderText, "!!!!!!!!!!!!!!!!!!!!!!!!!!!1")
         const panelStyle = configuration.panelStyle;
         const backgroundColor = panelStyle.backgroundColor;
         const borderColor = panelStyle.borderColor;
@@ -3282,7 +3279,7 @@ function getEmailByInputType() {
 InfluenceTracker.prototype.tracker = function (info) {
     console.log(info, "INFO ***************************************")
 
-    console.log( readCookie('influence_vid'))
+    console.log( readCookie('influence_vid'), "rEAD FROM COOKIES")
 
     console.log(this.context.visitorId, "This context")
 
@@ -3492,9 +3489,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
     function notificationDisplay(type, config, containerStyle, iconStyle, alignment) {
 
-        
-        console.log(type, "TYPE @@@@@@@@@@@@@@@@@@@@@@@")
-
+    
         if (notifClosr_c4rF9Effgt985n7v4y5h)
             return;
         let configurations = config.configurations.filter(config => config.paths.indexOf(__pathname) > -1 || config.paths.indexOf(window.location.pathname) > -1);
@@ -4471,14 +4466,12 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
 
 
-        console.log( "*****************************************")
 
         var announcementContainer= document.createElement('div');
 
          announcementContainer.style = type == 'announcement' ? "display:block" : "display:none";
 
 
-        console.log(configuration.announcementHeaderText, "====== announcement **************==========================")
 
         var announcementNotiifcationContainer = document.createElement('div')
         announcementNotiifcationContainer.className = 'notif-card';
@@ -4683,7 +4676,6 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
     return {
         notificationdisplay: function notificationdisplay(type, config, containerStyle, iconStyle, alignment) {
-            console.log(type, "TYPE ==============")
             notificationDisplay(type, config, containerStyle, iconStyle, alignment);
         }
     };

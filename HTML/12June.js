@@ -3279,7 +3279,6 @@ function getEmailByInputType() {
 InfluenceTracker.prototype.tracker = function (info) {
     console.log(info, "INFO ***************************************")
 
-    console.log( readCookie('influence_vid'), "rEAD FROM COOKIES")
 
     console.log(this.context.visitorId, "This context")
 

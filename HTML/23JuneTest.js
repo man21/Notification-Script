@@ -2200,6 +2200,8 @@ var Notifications = function (config) {
 };
 
 async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotification, notificationPath, config) {
+
+     console.log( splittedUrls, enableLoopNotification, notificationPath, config, " loop notification ***********************")
     // var link = document.createElement("link");
     // link.href = "https://storage.googleapis.com/influence-197607.appspot.com/note3.css";
     // //link.href = "https://96bcb271.ngrok.io/style/note1-internal.css?q="+Math.random();
@@ -2269,6 +2271,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
     }
 
     responseNotif((err, result, config) => {
+        console.log(result, config, " result  !!!!!!!!!!!!!!!!!!!!11")
         let m = 1;
         let userLength = 1;
         let loopCheckExit = [];

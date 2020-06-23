@@ -2186,7 +2186,6 @@ var Notifications = function (config) {
         var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
         var disabledOnMobile =  response.find(obj=> obj.rule.hideNotification);
 
-        console.log( "  ************************")
         // if (rule && (rule.displayOnAllPages || notificationPath.indexOf(__pathname) != -1 || notificationPath.indexOf(window.location.pathname) != -1) && (exclude_notificationPath.indexOf(__pathname)==-1 && exclude_notificationPath.indexOf(window.location.pathname)==-1) && !(isMobile && rule.hideNotification)) {
             if ((notificationPath.indexOf(__pathname) != -1 || notificationPath.indexOf(window.location.pathname) != -1 || response.find(obj=> obj.rule.displayOnAllPages)) &&  !(isMobile && disabledOnMobile)) {
                 loopThroughSplittedNotifications(splittedUrls, enableLoopNotification, notificationPath, config);
@@ -2246,7 +2245,6 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
 
     // console.log("notification........>",{splittedUrls, rule, notificationPath, config, activeNotification})
 
-    console.log("before ES query *********************")
 
     let j = 1;
     var responseNotifications = [];
@@ -2279,7 +2277,13 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
         let startSecondLoop = result.length
 
         if (result.length == 4) {
+
+            console.log("before ES query *********************")
+
             for (let i = 0; i < splittedUrls.length; i++) {
+
+                console.log("before ES query *********************111111111111")
+
                 var notif = responseNotifications[i];
                 // console.log(notif, "NOtif ********************")
                 var key = Object.keys(notif);
@@ -2314,6 +2318,11 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                     (function (u, v) {
                         if (response.message && !response.message.error) {
                             // const info = response.message;
+
+                            console.log(response.message, " response message **********************")
+
+                            console.log(response.message.error, " response message error ** **********************")
+
 
                             let configurations = info.configurations.filter(config => config.paths.indexOf(__pathname) > -1 || config.paths.indexOf(window.location.pathname) > -1);
                             configurations = info.rule.displayOnAllPages && !configurations.length ? info.configurations : configurations;
@@ -2361,6 +2370,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                                 }
                             }
 
+                            console.log("Hello !!!!!!!!!!!!!!!!!!!!!!!!")
 
                             //let userDetails = info.userDetails && info.userDetails.length && key == 'journey' ? info.userDetails.filter(user => user) : [];
                             let userDetails = info.userDetails;
@@ -2395,6 +2405,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                                         else if (info.userDetails) key = 'journey';
                                         else if (info.userReviews) key = 'review';
                                         if(isTabVisibility){
+                                            console.log("  before ntoifiication timeout call 111111111111111111")
                                             return notificationTimeout(u, info, info.rule, key, notificationPath);}
                                     }, (info.rule.initialDelay) * 1000);
                                 }
@@ -2405,6 +2416,9 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                                         else if (info.userDetails) key = 'journey';
                                         else if (info.userReviews) key = 'review';
                                         if(isTabVisibility){
+
+                                            console.log("  before ntoifiication timeout call 222222")
+
                                             return notificationTimeout(u, info, info.rule, key, notificationPath); }
                                     },(info.rule.delayNotification ? (randomDelayTime * 1000) : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v - 1)) * 1000));
                                 tempRandomDelayTime = randomDelayTime;

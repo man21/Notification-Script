@@ -2441,8 +2441,10 @@ function generateRandomNumber(randomDelayTime, tempRandomDelayTime, displayTime,
 }
 
 function notificationTimeout(i, info, rule, key, notificationPath) {
+
     if (notificationPath.indexOf(__pathname) === -1 && notificationPath.indexOf(window.location.pathname) === -1 && !rule.displayOnAllPages)
         return;
+        console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaa")
     var note = new Note({});
 
     let configurations = info.configurations.filter(config => config.paths.indexOf(__pathname) > -1 || config.paths.indexOf(window.location.pathname) > -1);
@@ -2720,6 +2722,7 @@ var aDay = 24 * 60 * 60;
 
 let k_c6ba2870 = 0, pathIndex = 0, notifClosr_c4rF9Effgt985n7v4y5h;
 var Note = function Note(config, containerStyle, iconStyle) {
+
     var numAnim;
    
     function displayNotification(container, config) {
@@ -3951,7 +3954,11 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
 
 
-if (typeof module !== "undefined" && module.exports) module.exports = Note;
+if (typeof module !== "undefined" && module.exports){
+    console.log("undefined !!!!!!!!!!!!!!!!!!!!!!!!!1")
+    module.exports = Note;
+}
+
 Influence = typeof Influence === 'undefined' ? require('../server') : Influence;
 
 

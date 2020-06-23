@@ -45,6 +45,8 @@ if (typeof Influence === 'undefined') {
             if (err)
                 return;
             if (res.isActive) {
+
+                console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1")
                 /**
                  * New InfluenceNotification()
                  * @type {{Notifications}}

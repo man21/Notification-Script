@@ -31,42 +31,66 @@ if (typeof Influence === 'undefined') {
          * New InfluenceTracker()
          * @type {{tracker}|{}}
          */
-        checkCampaignActive(options.trackingId, (err, res) => {
-            tracker = new InfluenceTracker(options.trackingId);
-            // res.isActive= true; // remove this code after implimantation
+        // checkCampaignActive(options.trackingId, (err, res) => {
+        //     tracker = new InfluenceTracker(options.trackingId);
+        //     // res.isActive= true; // remove this code after implimantation
 
-            console.log(tracker, " TRACKER *******************************")
+        //     console.log(tracker, " TRACKER *******************************")
 
-            if (err)
-                return;
-            if (res.isActive) {
+        //     if (err)
+        //         return;
+        //     if (res.isActive) {
 
-                console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1")
-                /**
-                 * New InfluenceNotification()
-                 * @type {{Notifications}}
-                 */
-                var notificationTimmer = setInterval(function () {
+        //         console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1")
+        //         /**
+        //          * New InfluenceNotification()
+        //          * @type {{Notifications}}
+        //          */
+        //         var notificationTimmer = setInterval(function () {
 
-                    console.log(document.readyState, "STATE **********")
+        //             console.log(document.readyState, "STATE **********")
 
-                    if (document.readyState !== 'complete') return;
+        //             if (document.readyState !== 'complete') return;
 
-                    console.log("HELLO *********")
-                    notifications = new Notifications(options.trackingId);
-                    this.notificationsInstance = notifications;
-                    clearInterval(notificationTimmer);
-                }, 100);
-            }
+        //             console.log("HELLO *********")
+        //             notifications = new Notifications(options.trackingId);
+        //             this.notificationsInstance = notifications;
+        //             clearInterval(notificationTimmer);
+        //         }, 100);
+        //     }
 
-            options = options || {};
+        //     options = options || {};
+
+        //     this.options = options;
+
+        //     this.trackerInstance = tracker;
+
+        //     this.initialize();
+        // });
+
+        tracker = new InfluenceTracker(options.trackingId);
+
+        var notificationTimmer = setInterval(function () {
+
+            console.log(document.readyState, "STATE **********")
+
+            if (document.readyState !== 'complete') return;
+
+            console.log("HELLO *********")
+            notifications = new Notifications(options.trackingId);
+            this.notificationsInstance = notifications;
+            clearInterval(notificationTimmer);
+        }, 100);
+
+        options = options || {};
 
             this.options = options;
 
             this.trackerInstance = tracker;
 
             this.initialize();
-        });
+        
+
     };
 
     (function (Influence) {

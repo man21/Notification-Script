@@ -2185,6 +2185,8 @@ var Notifications = function (config) {
         notificationPath = notificationPath.map(notifPath => notifPath.url);
         var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
         var disabledOnMobile =  response.find(obj=> obj.rule.hideNotification);
+
+        console.log( "  ************************")
         // if (rule && (rule.displayOnAllPages || notificationPath.indexOf(__pathname) != -1 || notificationPath.indexOf(window.location.pathname) != -1) && (exclude_notificationPath.indexOf(__pathname)==-1 && exclude_notificationPath.indexOf(window.location.pathname)==-1) && !(isMobile && rule.hideNotification)) {
             if ((notificationPath.indexOf(__pathname) != -1 || notificationPath.indexOf(window.location.pathname) != -1 || response.find(obj=> obj.rule.displayOnAllPages)) &&  !(isMobile && disabledOnMobile)) {
                 loopThroughSplittedNotifications(splittedUrls, enableLoopNotification, notificationPath, config);
@@ -2244,6 +2246,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
 
     // console.log("notification........>",{splittedUrls, rule, notificationPath, config, activeNotification})
 
+    console.log("before ES query *********************")
 
     let j = 1;
     var responseNotifications = [];
@@ -2747,6 +2750,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
     };
 
     function notificationDisplay(type, config, containerStyle, iconStyle, alignment) {
+
+        console.log(type, config, containerStyle,  iconStyle, alignment, " Notification Display *******************")
 
     
         if (notifClosr_c4rF9Effgt985n7v4y5h)
@@ -3931,11 +3936,13 @@ var Note = function Note(config, containerStyle, iconStyle) {
             }
         }
 
+        console.log(container, config, "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
         displayNotification(container, config);
     }
 
     return {
         notificationdisplay: function notificationdisplay(type, config, containerStyle, iconStyle, alignment) {
+            console.log(type, config, containerStyle, iconStyle, alignment, " @@@@@@@@@@@@@@@@@@@@@@@@@@")
             notificationDisplay(type, config, containerStyle, iconStyle, alignment);
         }
     };

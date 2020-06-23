@@ -2201,7 +2201,6 @@ var Notifications = function (config) {
 
 async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotification, notificationPath, config) {
 
-     console.log( splittedUrls, enableLoopNotification, notificationPath, config, " loop notification ***********************")
     // var link = document.createElement("link");
     // link.href = "https://storage.googleapis.com/influence-197607.appspot.com/note3.css";
     // //link.href = "https://96bcb271.ngrok.io/style/note1-internal.css?q="+Math.random();
@@ -2271,7 +2270,6 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
     }
 
     responseNotif((err, result, config) => {
-        console.log(result, config, " result  !!!!!!!!!!!!!!!!!!!!11")
         let m = 1;
         let userLength = 1;
         let loopCheckExit = [];
@@ -2281,11 +2279,8 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
 
         if (result.length == 4) {
 
-            console.log("before ES query *********************")
-
             for (let i = 0; i < splittedUrls.length; i++) {
 
-                console.log("before ES query *********************111111111111")
 
                 var notif = responseNotifications[i];
                 // console.log(notif, "NOtif ********************")
@@ -2321,11 +2316,6 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                     (function (u, v) {
                         if (response.message && !response.message.error) {
                             // const info = response.message;
-
-                            console.log(response.message, " response message **********************")
-
-                            console.log(response.message.error, " response message error ** **********************")
-
 
                             let configurations = info.configurations.filter(config => config.paths.indexOf(__pathname) > -1 || config.paths.indexOf(window.location.pathname) > -1);
                             configurations = info.rule.displayOnAllPages && !configurations.length ? info.configurations : configurations;
@@ -2373,8 +2363,6 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                                 }
                             }
 
-                            console.log("Hello !!!!!!!!!!!!!!!!!!!!!!!!")
-
                             //let userDetails = info.userDetails && info.userDetails.length && key == 'journey' ? info.userDetails.filter(user => user) : [];
                             let userDetails = info.userDetails;
                             let userReviews = info.userReviews;
@@ -2408,7 +2396,6 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                                         else if (info.userDetails) key = 'journey';
                                         else if (info.userReviews) key = 'review';
                                         if(isTabVisibility){
-                                            console.log("  before ntoifiication timeout call 111111111111111111")
                                             return notificationTimeout(u, info, info.rule, key, notificationPath);}
                                     }, (info.rule.initialDelay) * 1000);
                                 }
@@ -2419,9 +2406,6 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                                         else if (info.userDetails) key = 'journey';
                                         else if (info.userReviews) key = 'review';
                                         if(isTabVisibility){
-
-                                            console.log("  before ntoifiication timeout call 222222")
-
                                             return notificationTimeout(u, info, info.rule, key, notificationPath); }
                                     },(info.rule.delayNotification ? (randomDelayTime * 1000) : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v - 1)) * 1000));
                                 tempRandomDelayTime = randomDelayTime;
@@ -2461,7 +2445,6 @@ function notificationTimeout(i, info, rule, key, notificationPath) {
 
     if (notificationPath.indexOf(__pathname) === -1 && notificationPath.indexOf(window.location.pathname) === -1 && !rule.displayOnAllPages)
         return;
-        console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaa")
     var note = new Note({});
 
     let configurations = info.configurations.filter(config => config.paths.indexOf(__pathname) > -1 || config.paths.indexOf(window.location.pathname) > -1);
@@ -2771,7 +2754,6 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
     function notificationDisplay(type, config, containerStyle, iconStyle, alignment) {
 
-        console.log(type, config, containerStyle,  iconStyle, alignment, " Notification Display *******************")
 
     
         if (notifClosr_c4rF9Effgt985n7v4y5h)
@@ -3956,13 +3938,11 @@ var Note = function Note(config, containerStyle, iconStyle) {
             }
         }
 
-        console.log(container, config, "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
         displayNotification(container, config);
     }
 
     return {
         notificationdisplay: function notificationdisplay(type, config, containerStyle, iconStyle, alignment) {
-            console.log(type, config, containerStyle, iconStyle, alignment, " @@@@@@@@@@@@@@@@@@@@@@@@@@")
             notificationDisplay(type, config, containerStyle, iconStyle, alignment);
         }
     };
@@ -3971,10 +3951,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
 
 
-if (typeof module !== "undefined" && module.exports){
-    console.log("undefined !!!!!!!!!!!!!!!!!!!!!!!!!1")
-    module.exports = Note;
-}
+if (typeof module !== "undefined" && module.exports) module.exports = Note;
 
 Influence = typeof Influence === 'undefined' ? require('../server') : Influence;
 

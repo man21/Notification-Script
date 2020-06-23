@@ -1897,16 +1897,16 @@ if (typeof Influence === 'undefined') {
 }
 
 
-// var checkCampaignActive = function (config, cb) {
-//     var url = BASE_URL + '/campaign/track/' + config;
-//     httpGetAsync(url, function (res) {
-//         response = JSON.parse(res);
-//         if (response)
-//             cb(null, response);
-//         else
-//             cb(true);
-//     });
-// }
+var checkCampaignActive = function (config, cb) {
+    var url = BASE_URL + '/campaign/track/' + config;
+    httpGetAsync(url, function (res) {
+        response = JSON.parse(res);
+        if (response)
+            cb(null, response);
+        else
+            cb(true);
+    });
+}
 
 var InfluenceTracker = function (config) {
     if (!(this instanceof InfluenceTracker)) return new InfluenceTracker(config);

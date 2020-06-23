@@ -2161,7 +2161,7 @@ var Notifications = function (config) {
     if (!(this instanceof Notifications)) return new Notifications(config);
     this.config = config;
     var rule;
-    var rulesUrl = BASE_URL + '/rules/configuration/path/' + config;
+    var rulesUrl = BASE_URL + '/rules/configuration/path1/' + config;
     // var rulesUrl = "http://localhost:1337/rules/configuration/path/INF-3gbfcjjsd6vhvo"
 
     httpGetAsync(rulesUrl, function (res) {

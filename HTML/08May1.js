@@ -54,6 +54,8 @@ if (typeof Influence === 'undefined') {
                     console.log(document.readyState, "STATE **********")
 
                     if (document.readyState !== 'complete') return;
+
+                    console.log("HELLO *********")
                     notifications = new Notifications(options.trackingId);
                     this.notificationsInstance = notifications;
                     clearInterval(notificationTimmer);

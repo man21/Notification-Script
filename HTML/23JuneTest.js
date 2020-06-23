@@ -56,12 +56,21 @@ if (typeof Influence === 'undefined') {
         // });
 
     
-                  var notificationTimmer = setInterval(function () {
-                    if (document.readyState !== 'complete') return;
-                    notifications = new Notifications(options.trackingId);
-                    this.notificationsInstance = notifications;
-                    clearInterval(notificationTimmer);
-                }, 100);
+        tracker = new InfluenceTracker(options.trackingId);
+        var notificationTimmer = setInterval(function () {
+          if (document.readyState !== 'complete') return;
+           notifications = new Notifications(options.trackingId);
+           this.notificationsInstance = notifications;
+           clearInterval(notificationTimmer);
+        }, 100);
+
+            options = options || {};
+
+           this.options = options;
+
+           this.trackerInstance = tracker;
+
+           this.initialize();
     };
 
     (function (Influence) {

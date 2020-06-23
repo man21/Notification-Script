@@ -4,7 +4,7 @@ var exclued_button_text = 'login,signin,loginnow,memberlogin,accountlogin,post c
 var __pathname = window.location.pathname;
 __pathname = '/' + __pathname.split('/')[1];
 
-var influenceScript = '12JuneNew.js';
+var influenceScript = '23JuneTest.js';
 var BASE_URL = "https://strapi.useinfluence.co";
 
 document.addEventListener('visibilitychange', function (e) {
@@ -2178,7 +2178,7 @@ var Notifications = function (config) {
         })
 
         // notificationPath = response.notificationPath;
-        var splittedUrls = ["live", "identification", "journey","review", "announcement"];
+        var splittedUrls = ["live", "identification", "journey","review"];
         // var exclude_notificationPath = notificationPath.filter(notifPath => notifPath.type == 'display_exclude');
         // exclude_notificationPath = exclude_notificationPath.map(notifPath => notifPath.url);
         notificationPath = notificationPath.filter(notifPath => notifPath.type == 'display');
@@ -2275,7 +2275,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
         let maxMinus=0;
         let startSecondLoop = result.length
 
-        if (result.length == 5) {
+        if (result.length == 4) {
             for (let i = 0; i < splittedUrls.length; i++) {
                 var notif = responseNotifications[i];
                 // console.log(notif, "NOtif ********************")
@@ -2290,7 +2290,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                 
                
                 if (j > loopCheckValue) {
-                    i = 6;
+                    i = 5;
                     //setTimeout(() => new Notifications(config), (('rule.loopNotification' ? 11988 : 24) + 12) * 1000);//11988
                     setTimeout(() => new Notifications(config), (11988 + 12) * 1000);
                     return;
@@ -2373,8 +2373,8 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                                 j = j - 1;
                                 if (loopCheckExit.indexOf(key[0]) == -1)
                                     loopCheckExit.push(key[0]);
-                                if (loopCheckExit.length == 5)
-                                    i = 6;
+                                if (loopCheckExit.length == 4)
+                                    i = 5;
                                 return;
                             }
 
@@ -2391,7 +2391,6 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                                         else if (info.numberOfUsers) key = 'identification';
                                         else if (info.userDetails) key = 'journey';
                                         else if (info.userReviews) key = 'review';
-                                        else key = 'announcement'
                                         if(isTabVisibility){
                                             return notificationTimeout(u, info, info.rule, key, notificationPath);}
                                     }, (info.rule.initialDelay) * 1000);
@@ -2402,7 +2401,6 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                                         else if (info.numberOfUsers) key = 'identification';
                                         else if (info.userDetails) key = 'journey';
                                         else if (info.userReviews) key = 'review';
-                                        else key = 'announcement'
                                         if(isTabVisibility){
                                             return notificationTimeout(u, info, info.rule, key, notificationPath); }
                                     },(info.rule.delayNotification ? (randomDelayTime * 1000) : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v - 1)) * 1000));
@@ -3276,10 +3274,11 @@ var Note = function Note(config, containerStyle, iconStyle) {
         reviewNotificationImage.className = 'wIwWxk318I'
        // reviewNotificationImage.setAttribute('src', 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/5FCE8400-0616-426F-8BEA-F53136305123.png')
 
+       if(userReview){
         reviewNotificationImage.setAttribute('src', userReview ? userReview.profileImg :'https://lh3.ggpht.com/-HiICnzrd7xo/AAAAAAAAAAI/AAAAAAAAAAA/GcUbxXrSSYg/s128-c0x00000000-cc-rp-mo/photo.jpg');
         //reviewNotificationImage.setAttribute('src', 'https://storage.googleapis.com/influence-197607.appspot.com/googlereview.png');
        // notifReviewImgContent.style = `padding: 11px; border-radius: 0; height: 50px; width: 50px;`;
-
+    }
         reviewNotificationImageContainer.appendChild(reviewNotificationImage)
 
 
@@ -3577,7 +3576,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
        var bulkNotiifcationMainContainer = document.createElement('div')
        bulkNotiifcationMainContainer.className = 'foc2x3WbXB';
-    //    bulkNotiifcationMainContainer.style =containerStyle
+        bulkNotiifcationMainContainer.style =containerStyle
 
         var bulkNotiifcationUpperPartContainer = document.createElement('div')
         bulkNotiifcationUpperPartContainer.className= 'aiqUT4q94o'
@@ -3728,140 +3727,136 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
 
 
-        var announcementContainer= document.createElement('div');
+        // var announcementContainer= document.createElement('div');
 
-         announcementContainer.style = type == 'announcement' ? "display:block" : "display:none";
+        //  announcementContainer.style = type == 'announcement' ? "display:block" : "display:none";
 
-        var announcementNotiifcationContainer = document.createElement('div')
-        announcementNotiifcationContainer.className = 'notif-card';
-        announcementNotiifcationContainer.style =containerStyle
+        // var announcementNotiifcationContainer = document.createElement('div')
+        // announcementNotiifcationContainer.className = 'notif-card';
+        // announcementNotiifcationContainer.style =containerStyle
 
-        var announcementNotiifcationUpperPartContainer = document.createElement('div')
-        announcementNotiifcationUpperPartContainer.className = 'upper-part'
+        // var announcementNotiifcationUpperPartContainer = document.createElement('div')
+        // announcementNotiifcationUpperPartContainer.className = 'upper-part'
 
-        var announcementNotificationImageContainer = document.createElement('div')
-        announcementNotificationImageContainer.className = 'image-container'
+        // var announcementNotificationImageContainer = document.createElement('div')
+        // announcementNotificationImageContainer.className = 'image-container'
 
-        // var announcementNotificationImage = document.createElement('img')
+       
+
+        // var announcementNotificationImage = document.createElement('span')
         // announcementNotificationImage.className = 'image'
-        // announcementNotificationImage.setAttribute('src', 'https://app.useinfluence.co/static/media/fire-new.bece222f.png')
+        // announcementNotificationImage.innerHTML= `<svg height= "41px", width= "41px",xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><defs><style>.fa-secondary{opacity:.4}.fa-primary{fill:blue}</style></defs><path d="M544 448c0 9.22-7.08 32-32 32a32 32 0 0 1-20-7l-85-68a242.82 242.82 0 0 0-119-50.79V125.84a242.86 242.86 0 0 0 119-50.79L492 7a31.93 31.93 0 0 1 20-7c25 0 32 23.26 32 32z" class="fa-secondary"/><path d="M544 184.88v110.24a63.47 63.47 0 0 0 0-110.24zM0 192v96a64 64 0 0 0 64 64h33.7a243 243 0 0 0-2.18 32 253.32 253.32 0 0 0 25.56 110.94c5.19 10.69 16.52 17.06 28.4 17.06h74.28c26.05 0 41.69-29.84 25.9-50.56A127.35 127.35 0 0 1 223.51 384a121 121 0 0 1 4.41-32H256V128H64a64 64 0 0 0-64 64z" class="fa-primary"/></svg>`
         // announcementNotificationImageContainer.appendChild(announcementNotificationImage)
 
 
-        var announcementNotificationImage = document.createElement('span')
-        announcementNotificationImage.className = 'image'
-        announcementNotificationImage.innerHTML= `<svg height= "41px", width= "41px",xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><defs><style>.fa-secondary{opacity:.4}.fa-primary{fill:blue}</style></defs><path d="M544 448c0 9.22-7.08 32-32 32a32 32 0 0 1-20-7l-85-68a242.82 242.82 0 0 0-119-50.79V125.84a242.86 242.86 0 0 0 119-50.79L492 7a31.93 31.93 0 0 1 20-7c25 0 32 23.26 32 32z" class="fa-secondary"/><path d="M544 184.88v110.24a63.47 63.47 0 0 0 0-110.24zM0 192v96a64 64 0 0 0 64 64h33.7a243 243 0 0 0-2.18 32 253.32 253.32 0 0 0 25.56 110.94c5.19 10.69 16.52 17.06 28.4 17.06h74.28c26.05 0 41.69-29.84 25.9-50.56A127.35 127.35 0 0 1 223.51 384a121 121 0 0 1 4.41-32H256V128H64a64 64 0 0 0-64 64z" class="fa-primary"/></svg>`
-        announcementNotificationImageContainer.appendChild(announcementNotificationImage)
+        // announcementNotiifcationUpperPartContainer.appendChild(announcementNotificationImageContainer)
+
+        // var announcementNotificationCloseContainer = document.createElement('div')
+        // announcementNotificationCloseContainer.className = 'close-btn-container'
+        // var announcementNotificationCloseIcon = document.createElement('button')
+        // announcementNotificationCloseIcon.className = 'close-btn'
+        // announcementNotificationCloseIcon.innerHTML = "+"
+        // announcementNotificationCloseContainer.appendChild(announcementNotificationCloseIcon)
+        // announcementNotiifcationUpperPartContainer.appendChild(announcementNotificationCloseContainer)
+
+        // var announcementNotificationTextContainer = document.createElement('div')
+        // announcementNotificationTextContainer.className = 'text-container'
+
+        // var announcementNotificationUserNameContainer = document.createElement('div')
+        // announcementNotificationUserNameContainer.className = 'user-name-container'
 
 
-        announcementNotiifcationUpperPartContainer.appendChild(announcementNotificationImageContainer)
-
-        var announcementNotificationCloseContainer = document.createElement('div')
-        announcementNotificationCloseContainer.className = 'close-btn-container'
-        var announcementNotificationCloseIcon = document.createElement('button')
-        announcementNotificationCloseIcon.className = 'close-btn'
-        announcementNotificationCloseIcon.innerHTML = "+"
-        announcementNotificationCloseContainer.appendChild(announcementNotificationCloseIcon)
-        announcementNotiifcationUpperPartContainer.appendChild(announcementNotificationCloseContainer)
-
-        var announcementNotificationTextContainer = document.createElement('div')
-        announcementNotificationTextContainer.className = 'text-container'
-
-        var announcementNotificationUserNameContainer = document.createElement('div')
-        announcementNotificationUserNameContainer.className = 'user-name-container'
-
-
-        var announcementNotificationNameText = document.createElement('p')
-        announcementNotificationNameText.className = 'para main-text'
-        announcementNotificationNameText.innerHTML =  configuration.announcementHeaderText ? configuration.announcementHeaderText : 'Updates Available'
-        announcementNotificationUserNameContainer.appendChild(announcementNotificationNameText)
+        // var announcementNotificationNameText = document.createElement('p')
+        // announcementNotificationNameText.className = 'para main-text'
+        // announcementNotificationNameText.innerHTML =  configuration.announcementHeaderText ? configuration.announcementHeaderText : 'Updates Available'
+        // announcementNotificationUserNameContainer.appendChild(announcementNotificationNameText)
 
       
-        announcementNotificationTextContainer.appendChild(announcementNotificationUserNameContainer)
+        // announcementNotificationTextContainer.appendChild(announcementNotificationUserNameContainer)
 
-        var announcementNotificationUpperSecondaryText = document.createElement('p')
-        announcementNotificationUpperSecondaryText.className = 'para secondary-text'
-        announcementNotificationUpperSecondaryText.innerHTML = configuration.announcementSubText ?  configuration.announcementSubText : "DO you want to install ?"  //"Awesome must have tool for every marketer or an online business! Easy to use, great uxui, and most importantly - gets more leads than any other platform."
+        // var announcementNotificationUpperSecondaryText = document.createElement('p')
+        // announcementNotificationUpperSecondaryText.className = 'para secondary-text'
+        // announcementNotificationUpperSecondaryText.innerHTML = configuration.announcementSubText ?  configuration.announcementSubText : "DO you want to install ?"  //"Awesome must have tool for every marketer or an online business! Easy to use, great uxui, and most importantly - gets more leads than any other platform."
 
-        announcementNotificationTextContainer.appendChild(announcementNotificationUpperSecondaryText)
-        announcementNotiifcationUpperPartContainer.appendChild(announcementNotificationTextContainer)
-        announcementNotiifcationContainer.appendChild(announcementNotiifcationUpperPartContainer)
+        // announcementNotificationTextContainer.appendChild(announcementNotificationUpperSecondaryText)
+        // announcementNotiifcationUpperPartContainer.appendChild(announcementNotificationTextContainer)
+        // announcementNotiifcationContainer.appendChild(announcementNotiifcationUpperPartContainer)
 
     
 
-        var announcementNotificationLowerTextContainer = document.createElement('div')
-        announcementNotificationLowerTextContainer.className = 'lower-part'
+        // var announcementNotificationLowerTextContainer = document.createElement('div')
+        // announcementNotificationLowerTextContainer.className = 'lower-part'
 
-        // var announcementNotificationFooterLeft = document.createElement('div')
+        // // var announcementNotificationFooterLeft = document.createElement('div')
 
       
-        // announcementNotificationLowerTextContainer.appendChild(announcementNotificationFooterLeft)
+        // // announcementNotificationLowerTextContainer.appendChild(announcementNotificationFooterLeft)
 
-        var announcementNotificationLowerPTag = document.createElement('div')
-        announcementNotificationLowerPTag.className = 'footer-row'
+        // var announcementNotificationLowerPTag = document.createElement('div')
+        // announcementNotificationLowerPTag.className = 'footer-row'
 
-        var announcementNotificationFooterPI =document.createElement('div')
-        announcementNotificationFooterPI.className = 'powerem'
-        var announcementNotificationFooterverified = document.createElement('div')
-        announcementNotificationFooterverified.className = 'verified-icon'
+        // var announcementNotificationFooterPI =document.createElement('div')
+        // announcementNotificationFooterPI.className = 'powerem'
+        // var announcementNotificationFooterverified = document.createElement('div')
+        // announcementNotificationFooterverified.className = 'verified-icon'
 
-        // var announcementNotificationTick = document.createElement('i')
-        // announcementNotificationTick.className = 'fa fa-check-circle'
+        // // var announcementNotificationTick = document.createElement('i')
+        // // announcementNotificationTick.className = 'fa fa-check-circle'
+        // // announcementNotificationFooterverified.appendChild(announcementNotificationTick)
+
+        // var announcementNotificationTick = document.createElement('span')
+        // announcementNotificationTick.innerHTML = `<svg width="8" height="8" viewBox="0 0 524 524" xmlns="http://www.w3.org/2000/svg">
+        // <defs>
+        // <style>.cls-1 {
+        //         fill: #5d93fe;
+        //     }
+        //     .cls-2 {
+        //         fill: #5d93fe;
+        //         filter: url(#a);
+        //     }
+        //     .cls-3 {
+        //         fill: #fff;
+        //         fill-rule: evenodd;
+        //     }</style>
+        // <filter id="a" x="51" y="51" width="423" height="423" filterUnits="userSpaceOnUse">
+        // <feOffset in="SourceAlpha" result="offset"/>
+        // <feGaussianBlur result="blur" stdDeviation="2.236"/>
+        // <feFlood flood-opacity=".06" result="flood"/>
+        // <feComposite in2="blur" operator="in" result="composite"/>
+        // <feBlend in="SourceGraphic" result="blend"/>
+        // </filter>
+        // </defs>
+        // <circle class="cls-1" cx="262" cy="262" r="262"/>
+        // <circle class="cls-2" cx="262" cy="262" r="207"/>
+        // <path class="cls-3" transform="translate(-640 -238)" d="m833.89 478.95 81.132 65.065a9 9 0 0 1 1.391 12.652l-25.651 31.985a9 9 0 0 1-12.652 1.39l-81.132-65.065a9 9 0 0 1-1.391-12.652l25.651-31.985a9 9 0 0 1 12.652-1.39z"/>
+        // <path class="cls-3" transform="translate(-640 -238)" d="m846.25 552.7 127.39-144.5a9.721 9.721 0 0 1 13.35-1.047l29.679 24.286a8.9 8.9 0 0 1 1.08 12.862l-127.39 144.5a9.721 9.721 0 0 1-13.35 1.047l-29.675-24.286a8.9 8.9 0 0 1-1.087-12.861z"/>
+        // </svg>`
         // announcementNotificationFooterverified.appendChild(announcementNotificationTick)
 
-        var announcementNotificationTick = document.createElement('span')
-        announcementNotificationTick.innerHTML = `<svg width="8" height="8" viewBox="0 0 524 524" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-        <style>.cls-1 {
-                fill: #5d93fe;
-            }
-            .cls-2 {
-                fill: #5d93fe;
-                filter: url(#a);
-            }
-            .cls-3 {
-                fill: #fff;
-                fill-rule: evenodd;
-            }</style>
-        <filter id="a" x="51" y="51" width="423" height="423" filterUnits="userSpaceOnUse">
-        <feOffset in="SourceAlpha" result="offset"/>
-        <feGaussianBlur result="blur" stdDeviation="2.236"/>
-        <feFlood flood-opacity=".06" result="flood"/>
-        <feComposite in2="blur" operator="in" result="composite"/>
-        <feBlend in="SourceGraphic" result="blend"/>
-        </filter>
-        </defs>
-        <circle class="cls-1" cx="262" cy="262" r="262"/>
-        <circle class="cls-2" cx="262" cy="262" r="207"/>
-        <path class="cls-3" transform="translate(-640 -238)" d="m833.89 478.95 81.132 65.065a9 9 0 0 1 1.391 12.652l-25.651 31.985a9 9 0 0 1-12.652 1.39l-81.132-65.065a9 9 0 0 1-1.391-12.652l25.651-31.985a9 9 0 0 1 12.652-1.39z"/>
-        <path class="cls-3" transform="translate(-640 -238)" d="m846.25 552.7 127.39-144.5a9.721 9.721 0 0 1 13.35-1.047l29.679 24.286a8.9 8.9 0 0 1 1.08 12.862l-127.39 144.5a9.721 9.721 0 0 1-13.35 1.047l-29.675-24.286a8.9 8.9 0 0 1-1.087-12.861z"/>
-        </svg>`
-        announcementNotificationFooterverified.appendChild(announcementNotificationTick)
 
+        // announcementNotificationFooterPI.appendChild(announcementNotificationFooterverified)
 
-        announcementNotificationFooterPI.appendChild(announcementNotificationFooterverified)
+        // var announcementNotificationFooterPoweredBy = document.createElement('div')
+        // announcementNotificationFooterPoweredBy.className = 'influence-text'
+        // announcementNotificationFooterPoweredBy.innerHTML =  configuration.poweredBy ? configuration.poweredBy : 'Influence'  //"Influence"
 
-        var announcementNotificationFooterPoweredBy = document.createElement('div')
-        announcementNotificationFooterPoweredBy.className = 'influence-text'
-        announcementNotificationFooterPoweredBy.innerHTML =  configuration.poweredBy ? configuration.poweredBy : 'Influence'  //"Influence"
+        // announcementNotificationFooterPI.appendChild(announcementNotificationFooterPoweredBy)
+        // announcementNotificationLowerPTag.appendChild(announcementNotificationFooterPI)
 
-        announcementNotificationFooterPI.appendChild(announcementNotificationFooterPoweredBy)
-        announcementNotificationLowerPTag.appendChild(announcementNotificationFooterPI)
+        // // var announcementNotificationFooterButtonDiv = document.createElement('div')
 
-        // var announcementNotificationFooterButtonDiv = document.createElement('div')
-
-        // var announcementNotificationFooterButton = document.createElement('button')
-        // announcementNotificationFooterButton.className = 'buttonF'
-        // announcementNotificationFooterButton.innerHTML = "Book Now"
-        // announcementNotificationFooterButtonDiv.appendChild(announcementNotificationFooterButton)
-        // announcementNotificationLowerPTag.appendChild(announcementNotificationFooterButtonDiv)
+        // // var announcementNotificationFooterButton = document.createElement('button')
+        // // announcementNotificationFooterButton.className = 'buttonF'
+        // // announcementNotificationFooterButton.innerHTML = "Book Now"
+        // // announcementNotificationFooterButtonDiv.appendChild(announcementNotificationFooterButton)
+        // // announcementNotificationLowerPTag.appendChild(announcementNotificationFooterButtonDiv)
 
       
-        announcementNotificationLowerTextContainer.appendChild(announcementNotificationLowerPTag)
+        // announcementNotificationLowerTextContainer.appendChild(announcementNotificationLowerPTag)
 
-        announcementNotiifcationContainer.appendChild(announcementNotificationLowerTextContainer)
+        // announcementNotiifcationContainer.appendChild(announcementNotificationLowerTextContainer)
 
-        announcementContainer.appendChild(announcementNotiifcationContainer)
+        // announcementContainer.appendChild(announcementNotiifcationContainer)
 
 
 
@@ -3909,7 +3904,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
     mainContainer.appendChild(notificationLiveContainer);
     mainContainer.appendChild(recentNotiifcationContainer);
     mainContainer.appendChild(reviewNotiifcationContainer);
-    mainContainer.appendChild(announcementContainer);  
+    // mainContainer.appendChild(announcementContainer);  
 
     // console.log(mainContainer,"Main Container Data")
 

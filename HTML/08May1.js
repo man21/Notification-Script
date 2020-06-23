@@ -24,14 +24,7 @@ if (typeof Influence === 'undefined') {
     var Influence = function (options) {
         if (!(this instanceof Influence)) return new Influence(config);
 
-        // var notificationTimmer = setInterval(function (){
-
-        //     console.log(document.readyState, "STATE **********")
-        //     if (document.readyState !== 'complete') return;
-        //     notifications = new Notifications(options.trackingId);
-        //     this.notificationsInstance = notifications;
-        //     clearInterval(notificationTimmer);
-        // }, 100);
+       
 
 
         /**

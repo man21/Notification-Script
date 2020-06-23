@@ -21,7 +21,6 @@ if (typeof Influence === 'undefined') {
      *
      */
 
-     console.log(options, "PTIONS *****")
     var Influence = function (options) {
         if (!(this instanceof Influence)) return new Influence(config);
 

@@ -20,8 +20,22 @@ if (typeof Influence === 'undefined') {
      *                          Must be: function(collection, event).
      *
      */
+
+     console.log(options, "PTIONS *****")
     var Influence = function (options) {
         if (!(this instanceof Influence)) return new Influence(config);
+
+
+        new Notifications(options.trackingId);
+
+        // var notificationTimmer = setInterval(function () {
+        //     if (document.readyState !== 'complete') return;
+        //     notifications = new Notifications(options.trackingId);
+        //     this.notificationsInstance = notifications;
+        //     clearInterval(notificationTimmer);
+        // }, 100);
+
+
         /**
          * New InfluenceTracker()
          * @type {{tracker}|{}}
@@ -53,21 +67,6 @@ if (typeof Influence === 'undefined') {
 
         //     this.initialize();
         // });
-
-        var notificationTimmer = setInterval(function () {
-            if (document.readyState !== 'complete') return;
-            notifications = new Notifications(options.trackingId);
-            this.notificationsInstance = notifications;
-            clearInterval(notificationTimmer);
-        }, 100);
-
-        options = options || {};
-
-            this.options = options;
-
-            this.trackerInstance = tracker;
-
-            this.initialize();
     };
 
     (function (Influence) {

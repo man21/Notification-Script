@@ -4,32 +4,30 @@ body{
 
 .notif-card{
     background-color: #fff;
-    /*width: 370px;*/
-    /*height: 110px;*/
+    width: 370px;
+    height: 110px;
     border-radius: 5px;
-    padding: 4px 5px;
-    padding-bottom: 3px;
+    padding: 4px 10px;
+    padding-bottom: 2px;
     display: flex;
     flex-direction: column;
-    height: 95px !important;
 }
 
 .upper-part{
     display: flex;
     flex-direction: row;
-    height: 70px;
 }
 
 .image-container{
     width: 61px;
     height: 61px;
-    /*background-color: #f3f7ff;*/
+    background-color: #f3f7ff;
     border-radius: 15px;
     text-align: center;
-    margin-right: 6px;
-    margin-top: 8px;
+    margin-right: 10px;
+    margin-top: 22px;
     margin-bottom: auto;
-    margin-left: 4px;
+    margin-left: 9px;
 }
 
 .image{
@@ -40,18 +38,7 @@ body{
 }
 
 .text-container{
-    /*padding: 5px;*/
-    padding: 1px;
-    align-self: center;
-    max-width: 268px;
-    max-height: 80px;
-    position: relative;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    line-height: 1;
-    overflow: hidden;
-    display: -webkit-inline-box;
-    direction: inherit;
+    padding: 5px;
 }
 
 .para{
@@ -60,38 +47,32 @@ body{
 
 .main-text{
     font-size: 15px;
-    font-weight: 600;
-    font-style: normal;
-    text-align: left;
-    color: #2c66c3;
-    padding-right: 2px;
-    font-family: sans-serif;
-    padding: 2px;
-    text-transform: capitalize;
-    background: aliceblue;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    line-height: 1;
-    margin-bottom: 2px;
-    width: fit-content;
+            font-weight: 600;
+            font-style: normal;
+            text-align: left;
+            color: rgb(0, 149, 247);
+            padding-right: 3px 5px;
+            font-family: sans-serif;
+            padding: 3px 5px;
+            text-transform: capitalize;
            
 }
 
 .secondary-text{
-     margin-top: 2px; 
-    font-size: 9.5px;
+    /* margin-top: 3px; */
+    font-size: 10px;
     font-style: normal;
-    color: #17193c;
+    color: #666;
     line-height: 1.2;
     font-family: sans-serif;
     letter-spacing: 0.3px;
-    padding-left: 2px;
+    padding-left: 5px;
     overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    /* padding-top: 3px; */
     align-self: center;
-    /* white-space: nowrap; */
-    word-break: break-word;
-    text-overflow: ellipsis;
 }
 
 .border{
@@ -104,21 +85,6 @@ body{
     text-align: center;
     display: flex;
     justify-content: space-between;
-    height: 17px;
-    max-height: 20px;
-    width: 80%;
-    max-width: 80%;
-    margin-left: 20%;
-    line-height: 1;
-    margin-top: 3px;
-}
-
-.footer-row{
-    margin: 0;
-    justify-content: space-between;
-    /* display: inline-table; */
-    align-items: center;
-    display: flex;
 }
 
 .footer-left{
@@ -163,30 +129,26 @@ body{
     font-style: normal;
     text-align: left;
     color: #666;
-    font-family: sans-serif;
+    font-family: 'Lato', sans-serif;
     word-spacing: 1px;
 }
 .powerem{
-    display: flex;
-    align-items: center;
-    /*margin-right: 145px;*/
-    line-height: 0.81;
+    margin-right: 145px;
 }
 .verified-icon{
-    font-size: 9px;
-    /*color: #0093fb;*/
+    font-size: 11px;
+    color: #0093fb;
     padding-left: 5px;
-    padding-right: 2px;
   
   
 }
 
 .influence-text{
     font-style: normal;
-    font-size: 9px;
-    font-weight: 500;
-    font-family: sans-serif;
-    color:#097fff;
+    font-size: 10px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    color:#077fff;
     
 }
 
@@ -206,7 +168,7 @@ body{
     display: none
 }
 
-/*.buttonF{
+.buttonF{
     height: 20px;
     width: 76px;
     right: 15px;
@@ -219,7 +181,7 @@ body{
     margin-top: -41px;
     right: 15px;
       
-}*/
+}
 
 /* for mobile screens */
 @media only screen and (max-width: 600px) {
@@ -349,18 +311,4 @@ body{
         margin-right: 110px;
     }
     
-}
-
-@media only screen and (min-width: 700px) {
-    /*notif-card-recent*/
-    .notif-card{
-        min-width: 346px;
-        width: auto;
-}
-}
-.notif-card:hover {
-    /* border: 1.5px solid #097fff2b;
-    box-shadow: 0px 0px 2px #097fff; */
-    background: #6f6f6f;
-    box-shadow: none;
 }

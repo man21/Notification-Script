@@ -59,7 +59,7 @@ if (typeof Influence === 'undefined') {
 
         tracker = new InfluenceTracker(options.trackingId);
          var notificationTimmer = setInterval(function () {
-           if (document.readyState !== 'complete') return;
+         //  if (document.readyState !== 'complete') return;
             notifications = new Notifications(options.trackingId);
             this.notificationsInstance = notifications;
             clearInterval(notificationTimmer);

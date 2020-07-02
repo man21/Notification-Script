@@ -2574,7 +2574,7 @@ InfluenceTracker.prototype.tracker = function (info) {
 
         var result = announcementClassArr.some(function (element, index) {
 
-            if (str.includes(element)) {
+            if (info.value.target.includes(element)) {
                 console.log(element, "ELEMENT FOUND IN ANNOUNCEMENT!!!!!!!!!!!!!!!!!!!!!!!!!")
                 notifType = "announcement"
             } 

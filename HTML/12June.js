@@ -2565,23 +2565,53 @@ function getEmailByInputType() {
 
 InfluenceTracker.prototype.tracker = function (info) {
    
-    if(info && info.value && info.value.event == 'mouseover') if(flagMouseOver) return; else flagMouseOver = true;
-
-    // console.log(info, "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11111")
+ if(info && info.value && info.value.event == 'mouseover') if(flagMouseOver) return; else flagMouseOver = true;
 
     var notifType;
-    // console.log(info.value.target, "selector@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
     if(info.value.target){
+
         var announcementClassArr = ["notif-card", "upper-part", "image-container", "image", "text-container", "main-text"];
 
-        var result = announcementClassArr.some(function (element, index) {
+        var liveClassArr= ["oiuytretg", "jihuygtfrdes", "jhgfdfghb" ]
+        
+        var bulkClassArr = ["foc2x3WbXB" , "aiqUT4q94o", "VyDVZdCWdx", "A4S38Y254X","qQ6LvxoYlp", "knaKnioVnl" ]
 
+        var recentClassArr = ["sisbMFuEGu", "CTTTs8uT13", "XIwR5JMPFF", "YgksSelqbb", "YDR83P698y"]
+
+        var reviewClassArr = ["y2UXzO2spo", "DyWfFTHh9R", "sD1KBJgziO", "wIwWxk318I" ,"bnvt6niIjl" ]
+
+        announcementClassArr.some(function (element, index) {
             if (info.value.target.includes(element)) {
-                console.log(element, "ELEMENT FOUND IN ANNOUNCEMENT!!!!!!!!!!!!!!!!!!!!!!!!!")
                 notifType = "announcement"
             } 
         });
-        console.log(notifType, "NOTIF TYPE **********************************")
+
+        liveClassArr.some(function (element, index) {
+            if (info.value.target.includes(element)) {
+                notifType = "live"
+            } 
+        });
+
+        bulkClassArr.some(function (element, index) {
+            if (info.value.target.includes(element)) {
+                notifType = "bulk"
+            } 
+        });
+
+        recentClassArr.some(function (element, index) {
+            if (info.value.target.includes(element)) {
+                notifType = "recent"
+            } 
+        });
+
+        reviewClassArr.some(function (element, index) {
+            if (info.value.target.includes(element)) {
+                notifType = "review"
+            } 
+        });
+
+        console.log(notifType, "!!!!!!!!!!!!!!!!!!!!!!11")
+        
 
     }
     var path = info.path;

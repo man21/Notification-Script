@@ -1437,6 +1437,9 @@ if (typeof Influence === 'undefined') {
                     return ;
                 }
                 container.addEventListener('mouseover', function (e) {
+
+                    console.log(DomUtil.getNodeDescriptor(e.target), " @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@2 *************************")
+
                     console.log(DomUtil.genCssSelector(e.target), " MOUSEOVER *************************")
 
                     self.track('mouseover', {

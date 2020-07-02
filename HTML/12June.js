@@ -1019,9 +1019,7 @@ if (typeof Influence === 'undefined') {
             var events = [];
 
             Events.onready(function () {
-                Events.onevent(document.body, 'mouseover', true, function (e) {
-                    
-                    console.log(e, " MOUSE OVER EVENTS *******************************")
+                Events.onevent(document.body, 'mouseover', true, function (e) {a                    
                     events.push(e);
                 });
 
@@ -1439,6 +1437,7 @@ if (typeof Influence === 'undefined') {
                 }
                 container.addEventListener('mouseover', function (e) {
                     console.log(e.target, " line no 1439 ====================================")
+                    console.log(DomUtil.getNodeDescriptor(e.target), "!!!!!!!!!!!!!!!!!!!!!!!1111111")
                     self.track('mouseover', {
                         target: DomUtil.getNodeDescriptor(e.target)
                     });

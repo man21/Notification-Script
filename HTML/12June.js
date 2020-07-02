@@ -1019,7 +1019,7 @@ if (typeof Influence === 'undefined') {
             var events = [];
 
             Events.onready(function () {
-                Events.onevent(document.body, 'mouseover', true, function (e) {a                    
+                Events.onevent(document.body, 'mouseover', true, function (e) {                 
                     events.push(e);
                 });
 

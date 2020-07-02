@@ -1437,11 +1437,14 @@ if (typeof Influence === 'undefined') {
                     return ;
                 }
                 container.addEventListener('mouseover', function (e) {
+                    console.log(DomUtil.genCssSelector(e.target), " MOUSEOVER *************************")
+
                     self.track('mouseover', {
                         target: DomUtil.genCssSelector(e.target)
                     });
                 });
                 container.addEventListener('click',  function (e) {
+                    console.log(DomUtil.getNodeDescriptor(e.target), " CLICK *************************")
                     self.track('click', {
                         target: DomUtil.getNodeDescriptor(e.target)
                     });

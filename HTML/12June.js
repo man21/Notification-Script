@@ -1020,6 +1020,8 @@ if (typeof Influence === 'undefined') {
 
             Events.onready(function () {
                 Events.onevent(document.body, 'mouseover', true, function (e) {
+                    
+                    console.log(e, " MOUSE OVER EVENTS *******************************")
                     events.push(e);
                 });
 
@@ -1436,6 +1438,7 @@ if (typeof Influence === 'undefined') {
                     return ;
                 }
                 container.addEventListener('mouseover', function (e) {
+                    console.log(e.target, " line no 1439 ====================================")
                     self.track('mouseover', {
                         target: DomUtil.getNodeDescriptor(e.target)
                     });

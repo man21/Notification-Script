@@ -2565,9 +2565,22 @@ InfluenceTracker.prototype.tracker = function (info) {
    
     if(info && info.value && info.value.event == 'mouseover') if(flagMouseOver) return; else flagMouseOver = true;
 
-    console.log(info, "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11111")
+    // console.log(info, "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11111")
 
-    console.log(info.value.target, "selector@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+    var notifType;
+    // console.log(info.value.target, "selector@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+    if(info.value.target){
+        var announcementClassArr = ["notif-card", "upper-part", "image-container", "image", "text-container", "main-text"];
+
+        var result = announcementClassArr.some(function (element, index) {
+
+            if (str.includes(element)) {
+                console.log(element, "ELEMENT FOUND IN ANNOUNCEMENT!!!!!!!!!!!!!!!!!!!!!!!!!")
+                notifType = "announcement"
+            } 
+        });
+    }
+    console.log(notifType, "NOTIF TYPE **********************************")
     var path = info.path;
     var value = info.value;
     value['referrer'] = document.referrer;

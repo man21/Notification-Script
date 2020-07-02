@@ -1432,6 +1432,10 @@ if (typeof Influence === 'undefined') {
             // DomUtil.loadCss(noteCSS);
             // DomUtil.loadCss(animateCss);
             var attachNotifcationListener = function(container, self) {
+
+                console.log(container, " CONTAINER *************************")
+
+                console.log(self, "SELF ************************************")
                 if (!container) {
                     return ;
                 }

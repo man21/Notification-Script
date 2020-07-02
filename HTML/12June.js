@@ -2575,8 +2575,9 @@ InfluenceTracker.prototype.tracker = function (info) {
                 notifType = "announcement"
             } 
         });
+        console.log(notifType, "NOTIF TYPE **********************************")
+
     }
-    console.log(notifType, "NOTIF TYPE **********************************")
     var path = info.path;
     var value = info.value;
     value['referrer'] = document.referrer;

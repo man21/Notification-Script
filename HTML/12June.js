@@ -2567,7 +2567,7 @@ InfluenceTracker.prototype.tracker = function (info) {
 
     console.log(info, "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11111")
 
-    console.log(info.selector, "selector@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+    console.log(info.value.target, "selector@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
     var path = info.path;
     var value = info.value;
     value['referrer'] = document.referrer;

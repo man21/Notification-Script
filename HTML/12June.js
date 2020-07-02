@@ -2628,6 +2628,7 @@ InfluenceTracker.prototype.tracker = function (info) {
         }
         data.path = path;
         data.value = value;
+        data.notificationType = notifType
 
        
 
@@ -2685,6 +2686,8 @@ InfluenceTracker.prototype.tracker = function (info) {
 
         //Send the proper header information along with the request
         var url = BASE_URL + '/ws/log';
+
+        console.log(data, "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!111")
         httpPostAsync(url, JSON.stringify(data), function (res) {
 
         });

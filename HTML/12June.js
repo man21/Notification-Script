@@ -1433,14 +1433,10 @@ if (typeof Influence === 'undefined') {
             // DomUtil.loadCss(animateCss);
             var attachNotifcationListener = function(container, self) {
 
-                console.log(container, " CONTAINER *************************")
-
-                console.log(self, "SELF ************************************")
                 if (!container) {
                     return ;
                 }
                 container.addEventListener('mouseover', function (e) {
-                    console.log(e.target, " line no 1439 ====================================")
                     console.log(DomUtil.getNodeDescriptor(e.target), "!!!!!!!!!!!!!!!!!!!!!!!1111111")
                     self.track('mouseover', {
                         target: DomUtil.getNodeDescriptor(e.target)
@@ -1451,6 +1447,8 @@ if (typeof Influence === 'undefined') {
                         target: DomUtil.getNodeDescriptor(e.target)
                     });
                 });
+
+                console.log(target, "TARGET _--------------------------- ")
             }
             //notification view
             new MutationObserver(function(mutations) {

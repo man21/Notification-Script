@@ -1438,9 +1438,8 @@ if (typeof Influence === 'undefined') {
                 }
                 container.addEventListener('mouseover', function (e) {
                     console.log
-                    console.log(DomUtil.getNodeDescriptor(e.target), "!!!!!!!!!!!!!!!!!!!!!!!1111111")
+                    console.log(DomUtil.genCssSelector(e.target), "!!!!!!!!!!!!!!!!!!!!!!!1111111")
                     self.track('mouseover', {
-                        
                         target: DomUtil.getNodeDescriptor(e.target)
                     });
                 });
@@ -2566,7 +2565,6 @@ InfluenceTracker.prototype.tracker = function (info) {
    
     if(info && info.value && info.value.event == 'mouseover') if(flagMouseOver) return; else flagMouseOver = true;
 
-    console.log(info, "INFO @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
     var path = info.path;
     var value = info.value;
     value['referrer'] = document.referrer;

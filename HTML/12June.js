@@ -1437,8 +1437,6 @@ if (typeof Influence === 'undefined') {
                     return ;
                 }
                 container.addEventListener('mouseover', function (e) {
-                    console.log
-                    // console.log(DomUtil.genCssSelector(e.target).find(), "!!!!!!!!!!!!!!!!!!!!!!!1111111")
                     self.track('mouseover', {
                         target: DomUtil.genCssSelector(e.target)
                     });
@@ -1448,8 +1446,6 @@ if (typeof Influence === 'undefined') {
                         target: DomUtil.getNodeDescriptor(e.target)
                     });
                 });
-
-                console.log(target, "TARGET _--------------------------- ")
             }
             //notification view
             new MutationObserver(function(mutations) {

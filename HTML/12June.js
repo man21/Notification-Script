@@ -2631,7 +2631,9 @@ InfluenceTracker.prototype.tracker = function (info) {
         data.path = path;
         data.value = value;
 
-        if(notifType && notif != 'undefined'){
+
+
+        if(notifType && notifType != 'undefined'){
             data.notificationType = notifType
         }    
 

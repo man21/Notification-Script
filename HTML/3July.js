@@ -3274,7 +3274,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
        console.log(userReview.profileImg, " Profile IMAGE !!!!!!!!!!!!!!!!!!!!!!!1")
        console.log((userReview && userReview.profileImg) ? "https://storage.googleapis.com/influence-197607.appspot.com/googlereview.png" : "https://lh3.ggpht.com/-HiICnzrd7xo/AAAAAAAAAAI/AAAAAAAAAAA/GcUbxXrSSYg/s128-c0x00000000-cc-rp-mo/photo.jpg")
 
-        reviewNotificationImage.setAttribute('src', ((userReview && userReview.profileImg) ? userReview.profileImg :'https://lh3.ggpht.com/-HiICnzrd7xo/AAAAAAAAAAI/AAAAAAAAAAA/GcUbxXrSSYg/s128-c0x00000000-cc-rp-mo/photo.jpg'));
+
+        reviewNotificationImage.setAttribute('src', userReview &&userReview.profileImg ? userReview.profileImg :( userReview ? 'https://lh3.ggpht.com/-HiICnzrd7xo/AAAAAAAAAAI/AAAAAAAAAAA/GcUbxXrSSYg/s128-c0x00000000-cc-rp-mo/photo.jpg': ""));
        
         //reviewNotificationImage.setAttribute('src', 'https://storage.googleapis.com/influence-197607.appspot.com/googlereview.png');
        // notifReviewImgContent.style = `padding: 11px; border-radius: 0; height: 50px; width: 50px;`;

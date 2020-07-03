@@ -2561,60 +2561,61 @@ InfluenceTracker.prototype.tracker = function (info) {
    
  if(info && info.value && info.value.event == 'mouseover') if(flagMouseOver) return; else flagMouseOver = true;
 
-    
-    if(info.value.target){
-
-        var notifType;
-        
-        var announcementClassArr = ["notif-card", "upper-part", "image-container", "image", "text-container", "main-text"];
-
-        var liveClassArr= ["oiuytretg", "jihuygtfrdes", "jhgfdfghb" ]
-        
-        var bulkClassArr = ["foc2x3WbXB" , "aiqUT4q94o", "VyDVZdCWdx", "A4S38Y254X","qQ6LvxoYlp", "knaKnioVnl" ]
-
-        var recentClassArr = ["sisbMFuEGu", "CTTTs8uT13", "XIwR5JMPFF", "YgksSelqbb", "YDR83P698y"]
-
-        var reviewClassArr = ["y2UXzO2spo", "DyWfFTHh9R", "sD1KBJgziO", "wIwWxk318I" ,"bnvt6niIjl" ]
-
-        announcementClassArr.some(function (element, index) {
-            if (info.value.target.includes(element)) {
-                notifType = "announcement"
-            } 
-        });
-
-        liveClassArr.some(function (element, index) {
-            if (info.value.target.includes(element)) {
-                notifType = "live"
-            } 
-        });
-
-        bulkClassArr.some(function (element, index) {
-            if (info.value.target.includes(element)) {
-                notifType = "bulk"
-            } 
-        });
-
-        recentClassArr.some(function (element, index) {
-            if (info.value.target.includes(element)) {
-                notifType = "recent"
-            } 
-        });
-
-        reviewClassArr.some(function (element, index) {
-            if (info.value.target.includes(element)) {
-                notifType = "review"
-            } 
-        });
-
-        console.log(notifType, "!!!!!!!!!!!!!!!!!!!!!!11")
-        
-
-    }
     var path = info.path;
     var value = info.value;
     value['referrer'] = document.referrer;
     if (value && value.source && value.source.url && value.source.url.host)
         value.source.url.host = value.source.url.host.replace(/^www\./, '');
+
+
+        if(info.value.target){
+
+            var notifType;
+            
+            var announcementClassArr = ["notif-card", "upper-part", "image-container", "image", "text-container", "main-text"];
+    
+            var liveClassArr= ["oiuytretg", "jihuygtfrdes", "jhgfdfghb" ]
+            
+            var bulkClassArr = ["foc2x3WbXB" , "aiqUT4q94o", "VyDVZdCWdx", "A4S38Y254X","qQ6LvxoYlp", "knaKnioVnl" ]
+    
+            var recentClassArr = ["sisbMFuEGu", "CTTTs8uT13", "XIwR5JMPFF", "YgksSelqbb", "YDR83P698y"]
+    
+            var reviewClassArr = ["y2UXzO2spo", "DyWfFTHh9R", "sD1KBJgziO", "wIwWxk318I" ,"bnvt6niIjl" ]
+    
+            announcementClassArr.some(function (element, index) {
+                if (info.value.target.includes(element)) {
+                    data.notificationType = "announcement"
+                } 
+            });
+    
+            liveClassArr.some(function (element, index) {
+                if (info.value.target.includes(element)) {
+                    data.notificationType = "live"
+                } 
+            });
+    
+            bulkClassArr.some(function (element, index) {
+                if (info.value.target.includes(element)) {
+                    data.notificationType = "bulk"
+                } 
+            });
+    
+            recentClassArr.some(function (element, index) {
+                if (info.value.target.includes(element)) {
+                    data.notificationType = "recent"
+                } 
+            });
+    
+            reviewClassArr.some(function (element, index) {
+                if (info.value.target.includes(element)) {
+                    data.notificationType = "review"
+                } 
+            });
+    
+            console.log(notifType, "!!!!!!!!!!!!!!!!!!!!!!11")
+            
+    
+        }   
 
     if (typeof console !== 'undefined') {
         // Send data to the backend
@@ -2630,7 +2631,7 @@ InfluenceTracker.prototype.tracker = function (info) {
         }
         data.path = path;
         data.value = value;
-        data.notificationType = notifType
+       // data.notificationType = notifType
 
        
 

@@ -2633,6 +2633,7 @@ InfluenceTracker.prototype.tracker = function (info) {
 
 
 
+        console.log(notifType, "NOTIF TYPE ===========================")
         if(notifType && notifType != 'undefined'){
             data.notificationType = notifType
         }    

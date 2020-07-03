@@ -2561,9 +2561,11 @@ InfluenceTracker.prototype.tracker = function (info) {
    
  if(info && info.value && info.value.event == 'mouseover') if(flagMouseOver) return; else flagMouseOver = true;
 
-    var notifType;
+    
     if(info.value.target){
 
+        var notifType;
+        
         var announcementClassArr = ["notif-card", "upper-part", "image-container", "image", "text-container", "main-text"];
 
         var liveClassArr= ["oiuytretg", "jihuygtfrdes", "jhgfdfghb" ]

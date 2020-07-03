@@ -2584,36 +2584,35 @@ InfluenceTracker.prototype.tracker = function (info) {
     
             announcementClassArr.some(function (element, index) {
                 if (info.value.target.includes(element)) {
-                    data.notificationType = "announcement"
+                    data["notificationType"] = "announcement"
                 } 
             });
     
             liveClassArr.some(function (element, index) {
                 if (info.value.target.includes(element)) {
-                    data.notificationType = "live"
+                    data["notificationType"] = "live"
                 } 
             });
     
             bulkClassArr.some(function (element, index) {
                 if (info.value.target.includes(element)) {
-                    data.notificationType = "bulk"
+                    data["notificationType"] = "bulk"
                 } 
             });
     
             recentClassArr.some(function (element, index) {
                 if (info.value.target.includes(element)) {
-                    data.notificationType = "recent"
+                    data["notificationType"] = "recent"
                 } 
             });
     
             reviewClassArr.some(function (element, index) {
                 if (info.value.target.includes(element)) {
-                    data.notificationType = "review"
+                    data["notificationType"] = "review"
                 } 
             });
     
-            console.log(notifType, "!!!!!!!!!!!!!!!!!!!!!!11")
-            
+           
     
         }   
 

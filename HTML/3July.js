@@ -2143,19 +2143,19 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
     // document.getElementsByTagName("head")[0].appendChild(link);
 
     var newDesignCSS = document.createElement("link");
-    newDesignCSS.href = 'https://storage.googleapis.com/influence-197607.appspot.com/design8.css';
+    newDesignCSS.href = 'https://test2109.herokuapp.com/combineCSS.css';
     // newDesignCSS.href = 'https://test2109.herokuapp.com/newDesignCSS.css';
     newDesignCSS.type = "text/css";
     newDesignCSS.rel = "stylesheet";
     newDesignCSS.id = "stylesheetID";
     document.getElementsByTagName("head")[0].appendChild(newDesignCSS);
 
-    var animationLink = document.createElement("link");
-    animationLink.href = 'https://storage.googleapis.com/influence-197607.appspot.com/animate1.css';
-    animationLink.type = "text/css";
-    animationLink.rel = "stylesheet";
-    animationLink.id = "stylesheetID";
-    document.getElementsByTagName("head")[0].appendChild(animationLink);
+    // var animationLink = document.createElement("link");
+    // animationLink.href = 'https://storage.googleapis.com/influence-197607.appspot.com/animate1.css';
+    // animationLink.type = "text/css";
+    // animationLink.rel = "stylesheet";
+    // animationLink.id = "stylesheetID";
+    // document.getElementsByTagName("head")[0].appendChild(animationLink);
 
     // var announcementLink = document.createElement("link");
     // announcementLink.href = 'https://test2109.herokuapp.com/accouncement.css';
@@ -3319,7 +3319,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         var reviewNotificationUpperLogo = document.createElement('img')
         reviewNotificationUpperLogo.className = 'bXZsh24SLi'
-        reviewNotificationUpperLogo.setAttribute('src', 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/79341C01-B8BF-4484-AD66-B9314BAE4121.png')
+        reviewNotificationUpperLogo.setAttribute('src', userReview ? 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/79341C01-B8BF-4484-AD66-B9314BAE4121.png': "")
 
 
         reviewNotificationUpperLogoContainer.appendChild(reviewNotificationUpperLogo)
@@ -3434,7 +3434,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         if(fromAppType == 'google'){
         reviewNotificationFooterLogo.className = 'bXZsh24SLi'
-        reviewNotificationFooterLogo.setAttribute('src', 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/79341C01-B8BF-4484-AD66-B9314BAE4121.png')
+        reviewNotificationFooterLogo.setAttribute('src', userReview ? 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/79341C01-B8BF-4484-AD66-B9314BAE4121.png':"")
        } else{
             reviewNotificationFooterLogo.className = 'bXZsh24SLi'
             reviewNotificationFooterLogo.setAttribute('src', "https://storage.googleapis.com/influence-197607.appspot.com/fbreview.jpg")

@@ -2584,31 +2584,31 @@ InfluenceTracker.prototype.tracker = function (info) {
     
             announcementClassArr.some(function (element, index) {
                 if (info.value.target.includes(element)) {
-                    data["notificationType"] = "announcement"
+                    notifType = "announcement"
                 } 
             });
     
             liveClassArr.some(function (element, index) {
                 if (info.value.target.includes(element)) {
-                    data["notificationType"] = "live"
+                    notifType = "live"
                 } 
             });
     
             bulkClassArr.some(function (element, index) {
                 if (info.value.target.includes(element)) {
-                    data["notificationType"] = "bulk"
+                    notifType = "bulk"
                 } 
             });
     
             recentClassArr.some(function (element, index) {
                 if (info.value.target.includes(element)) {
-                    data["notificationType"] = "recent"
+                    notifType = "recent"
                 } 
             });
     
             reviewClassArr.some(function (element, index) {
                 if (info.value.target.includes(element)) {
-                    data["notificationType"] = "review"
+                    notifType = "review"
                 } 
             });
     
@@ -2630,7 +2630,10 @@ InfluenceTracker.prototype.tracker = function (info) {
         }
         data.path = path;
         data.value = value;
-       // data.notificationType = notifType
+
+        if(notifType && notif != 'undefined'){
+            data.notificationType = notifType
+        }    
 
        
 

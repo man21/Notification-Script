@@ -1443,7 +1443,7 @@ if (typeof Influence === 'undefined') {
                 });
                 container.addEventListener('click',  function (e) {
                     self.track('click', {
-                        target: DomUtil.getNodeDescriptor(e.target)
+                        target: DomUtil.genCssSelector(e.target)
                     });
                 });
             }
@@ -2611,9 +2611,6 @@ InfluenceTracker.prototype.tracker = function (info) {
                     notifType = "review"
                 } 
             });
-    
-           
-    
         }   
 
     if (typeof console !== 'undefined') {
@@ -2633,7 +2630,6 @@ InfluenceTracker.prototype.tracker = function (info) {
 
 
 
-        console.log(notifType, "NOTIF TYPE ===========================")
         if(notifType && notifType != 'undefined'){
             data.notificationType = notifType
         }    

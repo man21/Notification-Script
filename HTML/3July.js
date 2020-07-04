@@ -3148,7 +3148,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         if (configuration && configuration.panelStyle && configuration.panelStyle.color) {
             liveNotificationFirstText.style = `color: rgb(${configuration.panelStyle.color.r},${configuration.panelStyle.color.g},${configuration.panelStyle.color.b});`
         }
-        liveNotificationFirstText.innerHTML = liveVisitorCount == 0 ? 1 : liveVisitorCount + ' ' + ` ${configuration.visitorText}`      //"21 People"
+        liveNotificationFirstText.innerHTML = liveVisitorCount == "001" //0 ? 1 : liveVisitorCount + ' ' + ` ${configuration.visitorText}`      //"21 People"
     
         var liveNotificationSecondText = document.createElement('em')
         liveNotificationSecondText.className= 'jhjfdrtfgvgj'

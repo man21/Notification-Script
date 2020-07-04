@@ -3163,7 +3163,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         else if(config.liveFollower)
         liveNotificationSecondText.innerHTML =  "#################" ///////` ${configuration.liveFollowerText}`;
 
-
+ 
        // liveNotificationSecondText.innerHTML =    //"are viewing this side"
          liveNotificationPTag.appendChild(liveNotificationFirstText)
          liveNotificationPTag.appendChild(liveNotificationSecondText)

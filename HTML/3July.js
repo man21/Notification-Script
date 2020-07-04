@@ -3150,7 +3150,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         if (configuration && configuration.panelStyle && configuration.panelStyle.color) {
             liveNotificationFirstText.style = `color: rgb(${configuration.panelStyle.color.r},${configuration.panelStyle.color.g},${configuration.panelStyle.color.b});`
         }
-        liveNotificationFirstText.innerHTML = liveVisitorCount == "001" //0 ? 1 : liveVisitorCount + ' ' + ` ${configuration.visitorText}`      //"21 People"
+        liveNotificationFirstText.innerHTML = liveVisitorCount == 0 ? 1 : liveVisitorCount + ' ' + ` ${configuration.visitorText}`      //"21 People"
     
         var liveNotificationSecondText = document.createElement('em')
         liveNotificationSecondText.className= 'jhjfdrtfgvgj'
@@ -3159,11 +3159,11 @@ var Note = function Note(config, containerStyle, iconStyle) {
         //  liveNotificationSecondText.style = `color: rgb(${configuration.panelStyle.color.r},${configuration.panelStyle.color.g},${configuration.panelStyle.color.b});`
         // }
 
-        liveNotificationSecondText.innerHTML = "!@#3" //` ${configuration.liveVisitorText}`;
+        liveNotificationSecondText.innerHTML = ` ${configuration.liveVisitorText}`;
         if(config.liveViewer)
-        liveNotificationSecondText.innerHTML = "@@@@@@@@@@@@@@@@@@@@@@22" //` ${configuration.liveViewerText}`;
+        liveNotificationSecondText.innerHTML = ` ${configuration.liveViewerText}`;
         else if(config.liveFollower)
-        liveNotificationSecondText.innerHTML =  "#################" ///////` ${configuration.liveFollowerText}`;
+        liveNotificationSecondText.innerHTML =  ` ${configuration.liveFollowerText}`;
 
  
        // liveNotificationSecondText.innerHTML =    //"are viewing this side"

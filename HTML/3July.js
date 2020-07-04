@@ -3157,11 +3157,11 @@ var Note = function Note(config, containerStyle, iconStyle) {
         //  liveNotificationSecondText.style = `color: rgb(${configuration.panelStyle.color.r},${configuration.panelStyle.color.g},${configuration.panelStyle.color.b});`
         // }
 
-        liveNotificationSecondText.innerHTML = ` ${configuration.liveVisitorText}`;
+        liveNotificationSecondText.innerHTML = "!@#3" //` ${configuration.liveVisitorText}`;
         if(config.liveViewer)
-        liveNotificationSecondText.innerHTML =` ${configuration.liveViewerText}`;
+        liveNotificationSecondText.innerHTML = "@@@@@@@@@@@@@@@@@@@@@@22" //` ${configuration.liveViewerText}`;
         else if(config.liveFollower)
-        liveNotificationSecondText.innerHTML =` ${configuration.liveFollowerText}`;
+        liveNotificationSecondText.innerHTML =  "#################" ///////` ${configuration.liveFollowerText}`;
 
 
        // liveNotificationSecondText.innerHTML =    //"are viewing this side"

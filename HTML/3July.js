@@ -2258,7 +2258,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                             else
                                 configuration = undefined;
 
-                            let liveVisitorCount =1;
+                            let liveVisitorCount =0;
                             if (key == 'live') {
                                 if (info.visitorList) {
                                     const arrLive = info.visitorList.filter(visitor => paths.indexOf(visitor.key) > -1);
@@ -2300,7 +2300,6 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                             let numberOfUsers = info.numberOfUsers && key == 'identification' ? info.numberOfUsers : 0;
                             liveVisitorCount = liveVisitorCount == 0 ? 1 : liveVisitorCount;
 
-                            console.log(liveVisitorCount, " line no 2303 @")
                             //if (((key == 'journey' && !userDetails.length) ||
                             if (((key == 'journey' && !userDetails) ||
                                 (key == 'review' && !userReviews) ||
@@ -2756,7 +2755,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         else
             configuration = {};
 
-        let liveVisitorCount = 1;
+        let liveVisitorCount = 0;
         if (config.visitorList) {
             const arrLive = config.visitorList.filter(visitor => paths.indexOf(visitor.key) > -1);
             let totalSum = 0;
@@ -3153,6 +3152,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         console.log(liveVisitorCount, "3153 *")
 
         console.log(liveVisitorCount == 0 ? 1 : liveVisitorCount + ' ' + ` ${configuration.visitorText}`, "############################")
+
         liveNotificationFirstText.innerHTML = liveVisitorCount == 0 ? 1 : liveVisitorCount + ' ' + ` ${configuration.visitorText}`      //"21 People"
     
         var liveNotificationSecondText = document.createElement('em')
@@ -3369,9 +3369,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
 
         if(fromAppType == 'google'){
-       
-
-
+    
         var star = '';
         if (userReview && userReview.rating) {
             for (let star_i = 0; star_i < userReview.rating; star_i++) {

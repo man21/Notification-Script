@@ -2258,7 +2258,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                             else
                                 configuration = undefined;
 
-                            let liveVisitorCount =0;
+                            let liveVisitorCount =1;
                             if (key == 'live') {
                                 if (info.visitorList) {
                                     const arrLive = info.visitorList.filter(visitor => paths.indexOf(visitor.key) > -1);
@@ -2299,6 +2299,8 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                             let userReviews = info.userReviews;
                             let numberOfUsers = info.numberOfUsers && key == 'identification' ? info.numberOfUsers : 0;
                             liveVisitorCount = liveVisitorCount == 0 ? 1 : liveVisitorCount;
+
+                            console.log(liveVisitorCount, " line no 2303 @")
                             //if (((key == 'journey' && !userDetails.length) ||
                             if (((key == 'journey' && !userDetails) ||
                                 (key == 'review' && !userReviews) ||
@@ -2754,7 +2756,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         else
             configuration = {};
 
-        let liveVisitorCount = 0;
+        let liveVisitorCount = 1;
         if (config.visitorList) {
             const arrLive = config.visitorList.filter(visitor => paths.indexOf(visitor.key) > -1);
             let totalSum = 0;

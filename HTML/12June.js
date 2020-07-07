@@ -2351,6 +2351,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                                     liveVisitorCount = info.liveFollower ? info.liveFollower.followers : 0;
                             }
 
+                            console.log(liveVisitorCount, " line no 2354 **************************")
                             if (info.rule.displayOnAllPages) {
                                 if (key == 'live') {
                                     if (info.visitorList) {
@@ -2369,12 +2370,18 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                                 }
                             }
 
+                            console.log(liveVisitorCount, " LIVE VISTOR COUNT after displayon all pages ")
+
 
                             //let userDetails = info.userDetails && info.userDetails.length && key == 'journey' ? info.userDetails.filter(user => user) : [];
                             let userDetails = info.userDetails;
                             let userReviews = info.userReviews;
                             let numberOfUsers = info.numberOfUsers && key == 'identification' ? info.numberOfUsers : 0;
+
+                            console.log(liveVisitorCount, " line no 2381 =========================")
                             liveVisitorCount = liveVisitorCount == 0 ? 1 : liveVisitorCount;
+
+                            console.log(liveVisitorCount, "line 2384 ********************* ")
                             //if (((key == 'journey' && !userDetails.length) ||
                             if (((key == 'journey' && !userDetails) ||
                                 (key == 'review' && !userReviews) ||
@@ -2388,6 +2395,8 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                                     i = 6;
                                 return;
                             }
+
+                            console.log(liveVisitorCount, " 23999, !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
 
                             if (info.rule.delayNotification) {
                                 randomDelayTime = generateRandomNumber(randomDelayTime, tempRandomDelayTime, info.rule.displayTime, prevRandGap);
@@ -2691,7 +2700,6 @@ InfluenceTracker.prototype.tracker = function (info) {
         //Send the proper header information along with the request
         var url = BASE_URL + '/ws/log';
 
-        console.log(data, "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!111")
         httpPostAsync(url, JSON.stringify(data), function (res) {
 
         });
@@ -2844,6 +2852,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
                 totalSum += objLive.unique_visitors.value;
             }
             liveVisitorCount = config.visitorList ? totalSum : configuration && configuration.panelStyle ? configuration.panelStyle.liveVisitorCount : 1;
+            
+            console.log(liveVisitorCount, " livevistor count in notification display @@@@@@@@@@@@@@@@@@@@@@@@@")
             // liveVisitorCount = config.visitorList ? config.visitorList.filter(visitor => paths.indexOf(visitor.key) > -1).length : configuration && configuration.panelStyle ? configuration.panelStyle.liveVisitorCount : 1;
         }
 
@@ -2856,6 +2866,11 @@ var Note = function Note(config, containerStyle, iconStyle) {
                     totalSum += objLive.unique_visitors.value;
                 }
                 liveVisitorCount = config.visitorList ? totalSum : configuration && configuration.panelStyle ? configuration.panelStyle.liveVisitorCount : 1;
+               
+               
+                console.log(liveVisitorCount, " livevistor count in notification display run on all pagess @@@@@@@@@@@@@@@@@@@@@@@@@")
+
+               
                 //liveVisitorCount = config.visitorList ? config.visitorList.length : configuration && configuration.panelStyle ? configuration.panelStyle.liveVisitorCount : 1;
             }
         }

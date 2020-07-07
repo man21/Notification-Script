@@ -3150,6 +3150,11 @@ var Note = function Note(config, containerStyle, iconStyle) {
             liveNotificationFirstText.style = `color: rgb(${configuration.panelStyle.color.r},${configuration.panelStyle.color.g},${configuration.panelStyle.color.b});`
         }
 
+
+        console.log(liveVisitorCount, "!!!!!!!!!!!!!!!1")
+
+        console.log(liveVisitorCount == 0 ? 1 : liveVisitorCount, "@@@@@@@@@@@@@@@@@@@@@@@@@@@22")
+        
         liveNotificationFirstText.innerHTML = liveVisitorCount == 0 ? 1 : liveVisitorCount + ' ' + ` ${configuration.visitorText}`      //"21 People"
     
         var liveNotificationSecondText = document.createElement('em')

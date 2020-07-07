@@ -3136,12 +3136,17 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
 
 
+        console.log(liveVisitorCount, "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@2")
 
         var notificationLiveContainer = document.createElement('div')
         //notificationLiveContainer.className = 'oiuytretg';
         notificationLiveContainer.style = type == 'live' ? "display:block" : "display:none";
        //notificationLiveContainer.style= containerStyle
        // notificationLiveContainer.style = containerStyle;
+
+
+
+       console.log("COME HERE *************")
        
        var notificationLiveMainContainer = document.createElement('div');
        notificationLiveMainContainer.className= 'oiuytretg';

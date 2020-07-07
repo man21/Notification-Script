@@ -2351,7 +2351,6 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                                     liveVisitorCount = info.liveFollower ? info.liveFollower.followers : 0;
                             }
 
-                            console.log(liveVisitorCount, " line no 2354 **************************")
                             if (info.rule.displayOnAllPages) {
                                 if (key == 'live') {
                                     if (info.visitorList) {
@@ -2370,7 +2369,6 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                                 }
                             }
 
-                            console.log(liveVisitorCount, " LIVE VISTOR COUNT after displayon all pages ")
 
 
                             //let userDetails = info.userDetails && info.userDetails.length && key == 'journey' ? info.userDetails.filter(user => user) : [];
@@ -2378,19 +2376,14 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                             let userReviews = info.userReviews;
                             let numberOfUsers = info.numberOfUsers && key == 'identification' ? info.numberOfUsers : 0;
 
-                            console.log(liveVisitorCount, " line no 2381 =========================")
                             liveVisitorCount = liveVisitorCount == 0 ? 1 : liveVisitorCount;
 
-                            console.log(liveVisitorCount, "line 2384 ********************* ")
 
-                            console.log(Number(configuration.panelStyle.liveVisitorCount), "&&&&&&&&&&&&&&&&&&&&&&&&&")
-
-                            console.log(configuration.panelStyle.liveVisitorCount, "############################################3")
+                         
 
                             
                             console.log((key == 'live' && (!liveVisitorCount || (configuration && Number(configuration.panelStyle.liveVisitorCount) <= liveVisitorCount))), "-------------------------------------------------------")
 
-                            console.log(Number(configuration.panelStyle.liveVisitorCount) <= liveVisitorCount, "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1")
                             //if (((key == 'journey' && !userDetails.length) ||
                             if (((key == 'journey' && !userDetails) ||
                                 (key == 'review' && !userReviews) ||
@@ -2405,7 +2398,6 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                                 return;
                             }
 
-                            console.log(liveVisitorCount, " 23999, !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
 
                             if (info.rule.delayNotification) {
                                 randomDelayTime = generateRandomNumber(randomDelayTime, tempRandomDelayTime, info.rule.displayTime, prevRandGap);
@@ -2862,7 +2854,6 @@ var Note = function Note(config, containerStyle, iconStyle) {
             }
             liveVisitorCount = config.visitorList ? totalSum : configuration && configuration.panelStyle ? configuration.panelStyle.liveVisitorCount : 1;
             
-            console.log(liveVisitorCount, " livevistor count in notification display @@@@@@@@@@@@@@@@@@@@@@@@@")
             // liveVisitorCount = config.visitorList ? config.visitorList.filter(visitor => paths.indexOf(visitor.key) > -1).length : configuration && configuration.panelStyle ? configuration.panelStyle.liveVisitorCount : 1;
         }
 
@@ -2877,7 +2868,6 @@ var Note = function Note(config, containerStyle, iconStyle) {
                 liveVisitorCount = config.visitorList ? totalSum : configuration && configuration.panelStyle ? configuration.panelStyle.liveVisitorCount : 1;
                
                
-                console.log(liveVisitorCount, " livevistor count in notification display run on all pagess @@@@@@@@@@@@@@@@@@@@@@@@@")
 
                
                 //liveVisitorCount = config.visitorList ? config.visitorList.length : configuration && configuration.panelStyle ? configuration.panelStyle.liveVisitorCount : 1;
@@ -3251,7 +3241,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         if (configuration && configuration.panelStyle && configuration.panelStyle.color) {
             liveNotificationFirstText.style = `color: rgb(${configuration.panelStyle.color.r},${configuration.panelStyle.color.g},${configuration.panelStyle.color.b});`
         }
-        liveNotificationFirstText.innerHTML = liveVisitorCount == 0 ? 1 : liveVisitorCount + ' ' + ` ${configuration.visitorText}`      //"21 People"
+        liveNotificationFirstText.innerHTML = "HELLO @@@@@@@@@@@@@@@@@@22" ///liveVisitorCount == 0 ? 1 : liveVisitorCount + ' ' + ` ${configuration.visitorText}`      //"21 People"
     
         var liveNotificationSecondText = document.createElement('em')
         liveNotificationSecondText.className= 'jhjfdrtfgvgj'

@@ -2388,6 +2388,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                             console.log(configuration.panelStyle.liveVisitorCount, "############################################3")
 
                             
+                            console.log((key == 'live' && (!liveVisitorCount || (configuration && Number(configuration.panelStyle.liveVisitorCount) <= liveVisitorCount))), "-------------------------------------------------------")
 
                             console.log(Number(configuration.panelStyle.liveVisitorCount) <= liveVisitorCount, "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1")
                             //if (((key == 'journey' && !userDetails.length) ||

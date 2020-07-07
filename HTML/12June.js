@@ -2379,7 +2379,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                             if (((key == 'journey' && !userDetails) ||
                                 (key == 'review' && !userReviews) ||
                                 (key == 'identification' && !numberOfUsers) ||
-                                (key == 'live' && (!liveVisitorCount || (configuration && Number(configuration.panelStyle.liveVisitorCount) >= liveVisitorCount)))
+                                (key == 'live' && (!liveVisitorCount || (configuration && Number(configuration.panelStyle.liveVisitorCount) <= liveVisitorCount)))
                             ) || (configuration && !configuration.activity)) {
                                 j = j - 1;
                                 if (loopCheckExit.indexOf(key[0]) == -1)

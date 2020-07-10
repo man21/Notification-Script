@@ -3009,6 +3009,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         recentNotificationLowerPTag.appendChild(recentNotificationFooterverified)
 
         var recentNotificationFooterPoweredBy = document.createElement('a')
+        recentNotificationFooterPoweredBy.target = "_blank"
         recentNotificationFooterPoweredBy.href = configuration.poweredByLink ? configuration.poweredByLink : 'https://useinfluence.co/'; //"Influence"
 
         recentNotificationFooterPoweredBy.className = 'M7XEUSC5mc'
@@ -3231,6 +3232,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         liveNotificationLowerPTag.appendChild(liveNotificationFooterverified)
     
         var liveNotificationFooterPoweredBy = document.createElement('a')
+        liveNotificationFooterPoweredBy.target = "_blank"
         liveNotificationFooterPoweredBy.href = configuration.poweredByLink ? configuration.poweredByLink : 'https://useinfluence.co/'  //"Influence"
         liveNotificationFooterPoweredBy.className= 'jbhftyftgckjgyh'
         liveNotificationFooterPoweredBy.innerHTML = configuration.poweredBy ? configuration.poweredBy : 'Influence'  //"Influence"
@@ -3508,7 +3510,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         reviewNotificationLowerPTag.appendChild(reviewNotificationFooterverified)
 
-        var reviewNotificationFooterPoweredBy = document.createElement('em')
+        var reviewNotificationFooterPoweredBy = document.createElement('a')
+        reviewNotificationFooterPoweredBy.target = "_blank"
         reviewNotificationFooterPoweredBy.href = configuration.poweredByLink ? configuration.poweredByLink : 'https://useinfluence.co/' //"Influence"
         reviewNotificationFooterPoweredBy.className = 'y35sRsZztl'
         reviewNotificationFooterPoweredBy.innerHTML = configuration.poweredBy ? configuration.poweredBy : 'Influence' //"Influence"
@@ -3718,6 +3721,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         bulkNotificationLowerPTag.appendChild(bulkNotificationFooterverified)
     
         var bulkNotificationFooterPoweredBy = document.createElement('a')
+        bulkNotificationFooterPoweredBy.target = "_blank"
         bulkNotificationFooterPoweredBy.href = configuration.poweredByLink ? configuration.poweredByLink : 'https://useinfluence.co/'
         bulkNotificationFooterPoweredBy.className= 'Q9bSwcf36B'
         bulkNotificationFooterPoweredBy.innerHTML = configuration.poweredBy ? configuration.poweredBy : 'Influence'   //"Influence"
@@ -3845,6 +3849,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         announcementNotificationFooterPI.appendChild(announcementNotificationFooterverified)
 
         var announcementNotificationFooterPoweredBy = document.createElement('a')
+        announcementNotificationFooterPoweredBy.target = "_blank"
         announcementNotificationFooterPoweredBy.href = configuration.poweredByLink ? configuration.poweredByLink : 'https://useinfluence.co/'
         announcementNotificationFooterPoweredBy.className = 'RmtBlrOYya'
         announcementNotificationFooterPoweredBy.innerHTML =  configuration.poweredBy ? configuration.poweredBy : 'Influence'  //"Influence"

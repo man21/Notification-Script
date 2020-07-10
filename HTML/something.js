@@ -3009,8 +3009,10 @@ var Note = function Note(config, containerStyle, iconStyle) {
         recentNotificationLowerPTag.appendChild(recentNotificationFooterverified)
 
         var recentNotificationFooterPoweredBy = document.createElement('a')
-        recentNotificationFooterPoweredBy.target = "_blank"
-        recentNotificationFooterPoweredBy.href = configuration.poweredByLink ? configuration.poweredByLink : 'https://useinfluence.co/'; //"Influence"
+
+        recentNotificationFooterPoweredBy.setAttribute('href', configuration.poweredByLink);
+        recentNotificationFooterPoweredBy.setAttribute('rel', 'nofollow');
+        recentNotificationFooterPoweredBy.setAttribute('target', '_blank');
 
         recentNotificationFooterPoweredBy.className = 'M7XEUSC5mc'
         recentNotificationFooterPoweredBy.innerHTML = configuration.poweredBy ? configuration.poweredBy : 'Influence'; //"Influence"
@@ -3232,8 +3234,10 @@ var Note = function Note(config, containerStyle, iconStyle) {
         liveNotificationLowerPTag.appendChild(liveNotificationFooterverified)
     
         var liveNotificationFooterPoweredBy = document.createElement('a')
-        liveNotificationFooterPoweredBy.target = "_blank"
-        liveNotificationFooterPoweredBy.href = configuration.poweredByLink ? configuration.poweredByLink : 'https://useinfluence.co/'  //"Influence"
+
+        liveNotificationFooterPoweredBy.setAttribute('href', configuration.poweredByLink);
+        liveNotificationFooterPoweredBy.setAttribute('rel', 'nofollow');
+        liveNotificationFooterPoweredBy.setAttribute('target', '_blank');
         liveNotificationFooterPoweredBy.className= 'jbhftyftgckjgyh'
         liveNotificationFooterPoweredBy.innerHTML = configuration.poweredBy ? configuration.poweredBy : 'Influence'  //"Influence"
     
@@ -3511,8 +3515,12 @@ var Note = function Note(config, containerStyle, iconStyle) {
         reviewNotificationLowerPTag.appendChild(reviewNotificationFooterverified)
 
         var reviewNotificationFooterPoweredBy = document.createElement('a')
-        reviewNotificationFooterPoweredBy.target = "_blank"
-        reviewNotificationFooterPoweredBy.href = configuration.poweredByLink ? configuration.poweredByLink : 'https://useinfluence.co/' //"Influence"
+
+        reviewNotificationFooterPoweredBy.setAttribute('href', configuration.poweredByLink);
+        reviewNotificationFooterPoweredBy.setAttribute('rel', 'nofollow');
+        reviewNotificationFooterPoweredBy.setAttribute('target', '_blank');
+
+       
         reviewNotificationFooterPoweredBy.className = 'y35sRsZztl'
         reviewNotificationFooterPoweredBy.innerHTML = configuration.poweredBy ? configuration.poweredBy : 'Influence' //"Influence"
 
@@ -3720,11 +3728,12 @@ var Note = function Note(config, containerStyle, iconStyle) {
     
         bulkNotificationLowerPTag.appendChild(bulkNotificationFooterverified)
     
-        console.log(window.location.href)
-        console.log(configuration.poweredByLink, "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+        
         var bulkNotificationFooterPoweredBy = document.createElement('a')
-        bulkNotificationFooterPoweredBy.target = "_blank"
-        bulkNotificationFooterPoweredBy.href = configuration.poweredByLink ? configuration.poweredByLink : 'https://useinfluence.co/'
+
+        bulkNotificationFooterPoweredBy.setAttribute('href', configuration.poweredByLink);
+        bulkNotificationFooterPoweredBy.setAttribute('rel', 'nofollow');
+        bulkNotificationFooterPoweredBy.setAttribute('target', '_blank');
         bulkNotificationFooterPoweredBy.className= 'Q9bSwcf36B'
         bulkNotificationFooterPoweredBy.innerHTML = configuration.poweredBy ? configuration.poweredBy : 'Influence'   //"Influence"
     
@@ -3851,8 +3860,10 @@ var Note = function Note(config, containerStyle, iconStyle) {
         announcementNotificationFooterPI.appendChild(announcementNotificationFooterverified)
 
         var announcementNotificationFooterPoweredBy = document.createElement('a')
-        announcementNotificationFooterPoweredBy.target = "_blank"
-        announcementNotificationFooterPoweredBy.href = configuration.poweredByLink ? configuration.poweredByLink : 'https://useinfluence.co/'
+        announcementNotificationFooterPoweredBy.setAttribute('href', configuration.poweredByLink);
+        announcementNotificationFooterPoweredBy.setAttribute('rel', 'nofollow');
+        announcementNotificationFooterPoweredBy.setAttribute('target', '_blank');
+
         announcementNotificationFooterPoweredBy.className = 'RmtBlrOYya'
         announcementNotificationFooterPoweredBy.innerHTML =  configuration.poweredBy ? configuration.poweredBy : 'Influence'  //"Influence"
 

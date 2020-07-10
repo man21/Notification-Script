@@ -3731,9 +3731,10 @@ var Note = function Note(config, containerStyle, iconStyle) {
         
         var bulkNotificationFooterPoweredBy = document.createElement('a')
 
-        bulkNotificationFooterPoweredBy.setAttribute('href', configuration.poweredByLink);
+        bulkNotificationFooterPoweredBy.setAttribute('href', "https://"+configuration.poweredByLink);
         bulkNotificationFooterPoweredBy.setAttribute('rel', 'nofollow');
         bulkNotificationFooterPoweredBy.setAttribute('target', '_blank');
+
         bulkNotificationFooterPoweredBy.className= 'Q9bSwcf36B'
         bulkNotificationFooterPoweredBy.innerHTML = configuration.poweredBy ? configuration.poweredBy : 'Influence'   //"Influence"
     

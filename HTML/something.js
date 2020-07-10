@@ -3720,6 +3720,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
     
         bulkNotificationLowerPTag.appendChild(bulkNotificationFooterverified)
     
+        console.log(window.location.href())
         console.log(configuration.poweredByLink, "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
         var bulkNotificationFooterPoweredBy = document.createElement('a')
         bulkNotificationFooterPoweredBy.target = "_blank"

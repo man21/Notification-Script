@@ -2624,6 +2624,8 @@ InfluenceTracker.prototype.tracker = function (info) {
         //Send the proper header information along with the request
         var url = BASE_URL + '/ws/log';
 
+        console.log(value.event, "Events #####################################")
+
         if(configurationPath && value.event == 'formsubmit'){
             httpPostAsync(url, JSON.stringify(data), function (res) {
              });

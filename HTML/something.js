@@ -2493,6 +2493,7 @@ InfluenceTracker.prototype.tracker = function (info) {
     // console.log(info, "#########################################")
    
     if(info && info.value && info.value.event == 'mouseover') if(flagMouseOver) return; else flagMouseOver = true;
+   console.log(info.value.event, "#############333333")
     var path = info.path;
     var value = info.value;
     value['referrer'] = document.referrer;

@@ -2620,11 +2620,11 @@ InfluenceTracker.prototype.tracker = function (info) {
 
         //Send the proper header information along with the request
         var url = BASE_URL + '/ws/log';
-       // if(configurationPath){
-         //   console.log("#################################")
+        if(configurationPath){
+           console.log("#################################")
         httpPostAsync(url, JSON.stringify(data), function (res) {
         });
-   // }
+    }
 
         // if ("WebSocket" in window) {
         //     // Let us open a web socket

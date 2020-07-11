@@ -1372,7 +1372,7 @@ if (typeof Influence === 'undefined') {
                 });
             }
             //notification view
-            new MutationObserver(function(mutations) {
+            new MutationObserver(function(mutations, observe) {
                 var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_0');
                 var in_dom = document.body.contains(element);
                 if(in_dom){
@@ -1380,7 +1380,7 @@ if (typeof Influence === 'undefined') {
                     self.track('notificationview', Util.merge(Env.getPageloadData(), { url: Util.parseUrl(url + '') }));
                 }
                 attachNotifcationListener(element, self);
-            }).observe(document.body, {childList: true});
+            }) //.observe(document.body, {childList: true});
         };
 
         /**
@@ -2134,10 +2134,7 @@ var Notifications = function (config) {
 };
 
 async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotification, notificationPath, config) {
-
-
     
-    console.log(enableLoopNotification, "@@@@@@@@@@@@@@@@@@@@@@@@@@@22")
     // var link = document.createElement("link");
     // link.href = "https://storage.googleapis.com/influence-197607.appspot.com/note3.css";
     // //link.href = "https://96bcb271.ngrok.io/style/note1-internal.css?q="+Math.random();
@@ -2215,6 +2212,8 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
         let randomDelayTime = 0, tempRandomDelayTime = 0, prevRandGap = 0;
         let maxMinus=0;
         let startSecondLoop = result.length
+
+        console.log(result.length, "LENGTH ########################")
 
         if (result.length == 5) {
             for (let i = 0; i < splittedUrls.length; i++) {

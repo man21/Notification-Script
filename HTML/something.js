@@ -2620,8 +2620,8 @@ InfluenceTracker.prototype.tracker = function (info) {
 
         //Send the proper header information along with the request
         var url = BASE_URL + '/ws/log';
-        if(configurationPath){
-           console.log("#################################")
+        if(configurationPath.notificationPath.filter(x => x.url == data.pathname && x.type == 'lead')){
+            
         httpPostAsync(url, JSON.stringify(data), function (res) {
         });
     }

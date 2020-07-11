@@ -2487,7 +2487,7 @@ function getEmailByInputType() {
 
 InfluenceTracker.prototype.tracker = function (info) {
 
-    console.log(info, "#########################################")
+    // console.log(info, "#########################################")
    
     if(info && info.value && info.value.event == 'mouseover') if(flagMouseOver) return; else flagMouseOver = true;
     var path = info.path;
@@ -2586,12 +2586,14 @@ InfluenceTracker.prototype.tracker = function (info) {
         // console.log( configurationPath,  "CONFIGURATION PATH ==========================")
         if (configurationPath && configurationPath.rule && configurationPath.rule.displayOnAllPages){
 
-            // console.log(configurationPath.rule.campaign, "IF CONDIITON ***************************")
+           console.log(configurationPath.rule.campaign, "IF CONDIITON ***************************")
             
             data.value.campaignId = configurationPath.rule.campaign;
             data.campaignId = configurationPath.rule.campaign;
        
         }else {
+
+            console.log("ELSE CONDITION **********************************")
             if (configurationPath && configurationPath.notificationPath && configurationPath.notificationPath.length > 0) {
                 const dataNotifPath = configurationPath.notificationPath.filter(x => x.url == location.pathname && x.type == 'lead');
 

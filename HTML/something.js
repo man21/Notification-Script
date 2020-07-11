@@ -2226,6 +2226,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                 const infos = secondLoop ? responses.message_data.filter(obj=> excludeCampaign.indexOf(obj.rule.campaign) == -1 && obj.rule.loopNotification ) : responses.message_data.filter(obj=> excludeCampaign.indexOf(obj.rule.campaign) == -1 )
                 
                
+                console.log(j, "Values of J!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!111")
                 if (j > loopCheckValue) {
                     console.log("ENTEDED HERE--", j)
                     i = 6;

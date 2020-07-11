@@ -2105,6 +2105,8 @@ var Notifications = function (config) {
         configurationPath = response.find(obj=> obj.notificationPath.find(ojb1 => (ojb1.url === __pathname || ojb1.url === window.location.pathname) && ojb1.type == "lead"))
         activeNotification = Math.max.apply(null,response.map(obj=> obj.rule.activeNotification))
         var enableLoopNotification = response.find(obj=> obj.rule.loopNotification) ? true : false
+
+        console.log(enableLoopNotification, "###############################")
     
         JSON.parse(res||"[]").map(obj=> {
             var notificationList = notificationPath.concat(obj.notificationPath)
@@ -3731,7 +3733,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         
         var bulkNotificationFooterPoweredBy = document.createElement('a')
 
-        bulkNotificationFooterPoweredBy.setAttribute('href', "https://"+configuration.poweredByLink);
+        bulkNotificationFooterPoweredBy.setAttribute('href', configuration.poweredByLink);
         bulkNotificationFooterPoweredBy.setAttribute('rel', 'nofollow');
         bulkNotificationFooterPoweredBy.setAttribute('target', '_blank');
 

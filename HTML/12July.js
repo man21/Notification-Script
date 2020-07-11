@@ -2613,9 +2613,19 @@ InfluenceTracker.prototype.tracker = function (info) {
         console.log(data, "DATAAAAAAAAAAAAAAAAAAAAAAAA")
         //Send the proper header information along with the request
         var url = BASE_URL + '/ws/log';
-        httpPostAsync(url, JSON.stringify(data), function (res) {
+        // httpPostAsync(url, JSON.stringify(data), function (res) {
 
-        });
+        // });
+
+        if(configurationPath && data.category == 'formsubmit'){
+            console.log("IF CONDIITON CALLED *************************")
+            httpPostAsync(url, JSON.stringify(data), function (res) {
+             });
+        } else{
+            console.log("ELASE CONDIITON CALLED *****************")
+            httpPostAsync(url, JSON.stringify(data), function (res) {
+            });
+        }
 
         // if ("WebSocket" in window) {
         //     // Let us open a web socket

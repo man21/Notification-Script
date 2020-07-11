@@ -2624,13 +2624,12 @@ InfluenceTracker.prototype.tracker = function (info) {
         //Send the proper header information along with the request
         var url = BASE_URL + '/ws/log';
 
-        if(configurationPath){
-            var d = configurationPath.notificationPath.filter(x => x.url == data.pathname && x.type == 'lead')
-            if(d){
-                console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$4")
-                httpPostAsync(url, JSON.stringify(data), function (res) {
-                });
-            }
+        if(configurationPath && value.event == 'formsubmit'){
+            httpPostAsync(url, JSON.stringify(data), function (res) {
+             });
+        } else{
+            httpPostAsync(url, JSON.stringify(data), function (res) {
+            });
         }
 
         // if ("WebSocket" in window) {

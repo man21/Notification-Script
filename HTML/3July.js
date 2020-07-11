@@ -2613,7 +2613,7 @@ InfluenceTracker.prototype.tracker = function (info) {
         console.log(data, "DATAAAAAAAAAAAAA")
 
         //Send the proper header information along with the request
-        // var url = BASE_URL + '/ws/log';
+         var url = BASE_URL + '/ws/log';
         // httpPostAsync(url, JSON.stringify(data), function (res) {
 
         // });

@@ -3,7 +3,7 @@ var exclued_button_text = 'login, signin, loginnow, memberlogin, accountlogin, p
 var __pathname = window.location.pathname;
 __pathname = '/' + __pathname.split('/')[1];
 
-var influenceScript = 'something.js';
+var influenceScript = '12July.js';
 var BASE_URL = "https://api.useinfluence.co";
 
 document.addEventListener('visibilitychange', function (e) {
@@ -1372,7 +1372,7 @@ if (typeof Influence === 'undefined') {
                 });
             }
             //notification view
-            new MutationObserver(function(mutations, observe) {
+            new MutationObserver(function(mutations) {
                 var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_0');
                 var in_dom = document.body.contains(element);
                 if(in_dom){
@@ -1380,7 +1380,7 @@ if (typeof Influence === 'undefined') {
                     self.track('notificationview', Util.merge(Env.getPageloadData(), { url: Util.parseUrl(url + '') }));
                 }
                 attachNotifcationListener(element, self);
-            }) //.observe(document.body, {childList: true});
+            }).observe(document.body, {childList: true});
         };
 
         /**
@@ -2134,7 +2134,6 @@ var Notifications = function (config) {
 };
 
 async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotification, notificationPath, config) {
-    
     // var link = document.createElement("link");
     // link.href = "https://storage.googleapis.com/influence-197607.appspot.com/note3.css";
     // //link.href = "https://96bcb271.ngrok.io/style/note1-internal.css?q="+Math.random();
@@ -2142,7 +2141,6 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
     // link.rel = "stylesheet";
     // link.id = "stylesheetID";
     // document.getElementsByTagName("head")[0].appendChild(link);
-    
 
     var newDesignCSS = document.createElement("link");
     newDesignCSS.href = 'https://storage.googleapis.com/influence-197607.appspot.com/design9.css';
@@ -2186,7 +2184,6 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
     var responseNotifications = [];
     var loopCheckValue = enableLoopNotification ? 1000 : activeNotification;
 
-
     let responseNotif = (callback) => {
         let splittedUrlsSingle = ['live']
         splittedUrlsSingle.map(async notifName => {
@@ -2207,13 +2204,11 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
 
     responseNotif((err, result, config) => {
         let m = 1;
-        let userLength = 1;responseNotifications
+        let userLength = 1;
         let loopCheckExit = [];
         let randomDelayTime = 0, tempRandomDelayTime = 0, prevRandGap = 0;
         let maxMinus=0;
         let startSecondLoop = result.length
-
-        console.log(result.length, "LENGTH ########################")
 
         if (result.length == 5) {
             for (let i = 0; i < splittedUrls.length; i++) {
@@ -2229,9 +2224,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                 const infos = secondLoop ? responses.message_data.filter(obj=> excludeCampaign.indexOf(obj.rule.campaign) == -1 && obj.rule.loopNotification ) : responses.message_data.filter(obj=> excludeCampaign.indexOf(obj.rule.campaign) == -1 )
                 
                
-                console.log(j, "Values of J!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!111")
                 if (j > loopCheckValue) {
-                    console.log("ENTEDED HERE--", j)
                     i = 6;
                     //setTimeout(() => new Notifications(config), (('rule.loopNotification' ? 11988 : 24) + 12) * 1000);//11988
                     setTimeout(() => new Notifications(config), (11988 + 12) * 1000);
@@ -2489,11 +2482,8 @@ function getEmailByInputType() {
 }
 
 InfluenceTracker.prototype.tracker = function (info) {
-
-     console.log(info, " INFO #########################################")
    
     if(info && info.value && info.value.event == 'mouseover') if(flagMouseOver) return; else flagMouseOver = true;
-   console.log(info.value.event, "#############333333")
     var path = info.path;
     var value = info.value;
     value['referrer'] = document.referrer;
@@ -2587,20 +2577,19 @@ InfluenceTracker.prototype.tracker = function (info) {
         // }
         // data.value.category=data.value.event;//user-events';
 
+        // console.log( configurationPath,  "CONFIGURATION PATH ==========================")
         if (configurationPath && configurationPath.rule && configurationPath.rule.displayOnAllPages){
 
-        
+            // console.log(configurationPath.rule.campaign, "IF CONDIITON ***************************")
             
             data.value.campaignId = configurationPath.rule.campaign;
             data.campaignId = configurationPath.rule.campaign;
        
         }else {
-
             if (configurationPath && configurationPath.notificationPath && configurationPath.notificationPath.length > 0) {
-
                 const dataNotifPath = configurationPath.notificationPath.filter(x => x.url == location.pathname && x.type == 'lead');
 
-             console.log(dataNotifPath,"DATA NOTIFICATION PATH ***************************************")
+                // console.log(dataNotifPath,"DATA NOTIFICATION PATH ***************************************")
 
                 // console.log(dataNotifPath[0].campaignId, "dataNotifPath[0].campaignId ===============================================")
                 if (dataNotifPath) //&& dataNotifPath.length > 0)
@@ -2620,20 +2609,13 @@ InfluenceTracker.prototype.tracker = function (info) {
         data.timestamp = data && data.value ? data.value.timestamp : '';
         data.category = data && data.value ? data.value.event : '';
 
+
+        console.log(data, "DATAAAAAAAAAAAAAAAAAAAAAAAA")
         //Send the proper header information along with the request
         var url = BASE_URL + '/ws/log';
-
-        console.log(data, "DATAAAAAAAAAAAAAAAAAAAa")
-
         httpPostAsync(url, JSON.stringify(data), function (res) {
-          });
-        // if(configurationPath && data.category == 'formsubmit'){
-        //     httpPostAsync(url, JSON.stringify(data), function (res) {
-        //      });
-        // } else{
-        //     httpPostAsync(url, JSON.stringify(data), function (res) {
-        //     });
-        // }
+
+        });
 
         // if ("WebSocket" in window) {
         //     // Let us open a web socket

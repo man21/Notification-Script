@@ -2134,6 +2134,10 @@ var Notifications = function (config) {
 };
 
 async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotification, notificationPath, config) {
+
+
+    
+    console.log(enableLoopNotification, "@@@@@@@@@@@@@@@@@@@@@@@@@@@22")
     // var link = document.createElement("link");
     // link.href = "https://storage.googleapis.com/influence-197607.appspot.com/note3.css";
     // //link.href = "https://96bcb271.ngrok.io/style/note1-internal.css?q="+Math.random();
@@ -2206,7 +2210,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
 
     responseNotif((err, result, config) => {
         let m = 1;
-        let userLength = 1;
+        let userLength = 1;responseNotifications
         let loopCheckExit = [];
         let randomDelayTime = 0, tempRandomDelayTime = 0, prevRandGap = 0;
         let maxMinus=0;
@@ -2620,7 +2624,7 @@ InfluenceTracker.prototype.tracker = function (info) {
 
         //Send the proper header information along with the request
         var url = BASE_URL + '/ws/log';
-        
+
         if(configurationPath){
             var d = configurationPath.notificationPath.filter(x => x.url == data.pathname && x.type == 'lead')
             if(d){

@@ -2621,7 +2621,7 @@ InfluenceTracker.prototype.tracker = function (info) {
             console.log("IF CONDIITON CALLED *************************")
             httpPostAsync(url, JSON.stringify(data), function (res) {
              });
-        } else{
+        } else if(!data.category == 'formsubmit'){
             console.log("ELASE CONDIITON CALLED *****************")
             httpPostAsync(url, JSON.stringify(data), function (res) {
             });

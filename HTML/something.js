@@ -2490,7 +2490,7 @@ function getEmailByInputType() {
 
 InfluenceTracker.prototype.tracker = function (info) {
 
-    // console.log(info, "#########################################")
+     console.log(info, " INFO #########################################")
    
     if(info && info.value && info.value.event == 'mouseover') if(flagMouseOver) return; else flagMouseOver = true;
    console.log(info.value.event, "#############333333")

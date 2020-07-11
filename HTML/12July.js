@@ -2621,7 +2621,7 @@ InfluenceTracker.prototype.tracker = function (info) {
         {
             httpPostAsync(url, JSON.stringify(data), function (res) {
              });
-        } else if(!data.category === 'formsubmit'){
+        } else if(data.category === 'click' || data.category === 'mouseover' || data.category === 'notificationview' || data.category === 'pageview' ){
             httpPostAsync(url, JSON.stringify(data), function (res) {
             });
         }

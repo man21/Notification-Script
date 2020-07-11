@@ -2142,7 +2142,6 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
     // link.id = "stylesheetID";
     // document.getElementsByTagName("head")[0].appendChild(link);
     
-    console.log(enableLoopNotification, "@@@@@@@@@@@@@@@@@@@@@@@@")
 
     var newDesignCSS = document.createElement("link");
     newDesignCSS.href = 'https://storage.googleapis.com/influence-197607.appspot.com/design9.css';
@@ -2185,6 +2184,8 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
     let j = 1;
     var responseNotifications = [];
     var loopCheckValue = enableLoopNotification ? 1000 : activeNotification;
+
+    console.log(loopCheckValue,"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
 
     let responseNotif = (callback) => {
         let splittedUrlsSingle = ['live']

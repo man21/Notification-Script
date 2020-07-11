@@ -2105,8 +2105,6 @@ var Notifications = function (config) {
         configurationPath = response.find(obj=> obj.notificationPath.find(ojb1 => (ojb1.url === __pathname || ojb1.url === window.location.pathname) && ojb1.type == "lead"))
         activeNotification = Math.max.apply(null,response.map(obj=> obj.rule.activeNotification))
         var enableLoopNotification = response.find(obj=> obj.rule.loopNotification) ? true : false
-
-        console.log(enableLoopNotification, "###############################")
     
         JSON.parse(res||"[]").map(obj=> {
             var notificationList = notificationPath.concat(obj.notificationPath)
@@ -2143,6 +2141,8 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
     // link.rel = "stylesheet";
     // link.id = "stylesheetID";
     // document.getElementsByTagName("head")[0].appendChild(link);
+    
+    console.log(enableLoopNotification, "@@@@@@@@@@@@@@@@@@@@@@@@")
 
     var newDesignCSS = document.createElement("link");
     newDesignCSS.href = 'https://storage.googleapis.com/influence-197607.appspot.com/design9.css';

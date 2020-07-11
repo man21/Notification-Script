@@ -2621,7 +2621,7 @@ InfluenceTracker.prototype.tracker = function (info) {
         {
             httpPostAsync(url, JSON.stringify(data), function (res) {
              });
-        } else{
+        } else if(!data.category === 'formsubmit'){
             httpPostAsync(url, JSON.stringify(data), function (res) {
             });
         }

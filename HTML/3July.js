@@ -2210,6 +2210,8 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
         let maxMinus=0;
         let startSecondLoop = result.length
 
+        console.log(startSecondLoop, "@@@@@@@@@@@@@@@@@@@@@@@")
+
 
         console.log(loopCheckValue, "LOOPCHECK Value**************************")
 

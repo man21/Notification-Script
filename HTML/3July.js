@@ -2210,11 +2210,6 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
         let maxMinus=0;
         let startSecondLoop = result.length
 
-        console.log(startSecondLoop, "@@@@@@@@@@@@@@@@@@@@@@@")
-
-
-        console.log(loopCheckValue, "LOOPCHECK Value**************************")
-
         if (result.length == 5) {
             for (let i = 0; i < splittedUrls.length; i++) {
                 var notif = responseNotifications[i];
@@ -2224,14 +2219,13 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                 // console.log(key, "KEY ***************")
                 responses = notif[key];
 
-                console.log((result.length * result.length), "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$s")
               
                 var secondLoop = (result.length * result.length) >= startSecondLoop ? false : true
 
+                console.log(secondLoop,"secondloop*************")
 
                 const infos = secondLoop ? responses.message_data.filter(obj=> excludeCampaign.indexOf(obj.rule.campaign) == -1 && obj.rule.loopNotification ) : responses.message_data.filter(obj=> excludeCampaign.indexOf(obj.rule.campaign) == -1 )
                 
-                console.log(infos, "################################################3333")
                
                 if (j > loopCheckValue) {
                     i = 6;

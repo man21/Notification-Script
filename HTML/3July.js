@@ -2219,6 +2219,9 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                 // console.log(key, "KEY ***************")
                 responses = notif[key];
 
+                console.log((result.length * result.length) , "===================")
+
+                console.log(startSecondLoop, "-----------------------------------")
               
                 var secondLoop = (result.length * result.length) >= startSecondLoop ? false : true
 

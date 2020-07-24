@@ -1367,7 +1367,7 @@ if (typeof Influence === 'undefined') {
                 });
                 container.addEventListener('click',  function (e) {
                     self.track('click', {
-                        target: DomUtil.genCssSelector(e.target)         //DomUtil.getNodeDescriptor(e.target)
+                        target: DomUtil.getNodeDescriptor(e.target)         //DomUtil.genCssSelector(e.target)
                     });
                 });
             }
@@ -2498,50 +2498,50 @@ InfluenceTracker.prototype.tracker = function (info) {
         value.source.url.host = value.source.url.host.replace(/^www\./, '');
 
 
-        // if(info.value.target){
+        if(info.value.target && info.value.target.selector){
 
-        //     var notifType;
+            var notifType;
             
-        //     var announcementClassArr = ["Zn5De9iJFM", "iIdFziYOKB", "TsebdJUQvt", "bm6LvHbM56", "image", "close-btn-container"];
+            var announcementClassArr = ["Zn5De9iJFM", "iIdFziYOKB", "TsebdJUQvt", "bm6LvHbM56", "image", "close-btn-container"];
     
-        //     var liveClassArr= ["oiuytretg", "jihuygtfrdes", "jhgfdfghb" ]
+            var liveClassArr= ["oiuytretg", "jihuygtfrdes", "jhgfdfghb" ]
             
-        //     var bulkClassArr = ["foc2x3WbXB" , "aiqUT4q94o", "VyDVZdCWdx", "A4S38Y254X","qQ6LvxoYlp", "knaKnioVnl" ]
+            var bulkClassArr = ["foc2x3WbXB" , "aiqUT4q94o", "VyDVZdCWdx", "A4S38Y254X","qQ6LvxoYlp", "knaKnioVnl" ]
     
-        //     var recentClassArr = ["sisbMFuEGu", "CTTTs8uT13", "XIwR5JMPFF", "YgksSelqbb", "YDR83P698y"]
+            var recentClassArr = ["sisbMFuEGu", "CTTTs8uT13", "XIwR5JMPFF", "YgksSelqbb", "YDR83P698y"]
     
-        //     var reviewClassArr = ["y2UXzO2spo", "DyWfFTHh9R", "sD1KBJgziO", "wIwWxk318I" ,"bnvt6niIjl" ]
+            var reviewClassArr = ["y2UXzO2spo", "DyWfFTHh9R", "sD1KBJgziO", "wIwWxk318I" ,"bnvt6niIjl" ]
     
-        //     announcementClassArr.some(function (element, index) {
-        //         if (info.value.target.includes(element)) {
-        //             notifType = "announcement"
-        //         } 
-        //     });
+            announcementClassArr.some(function (element, index) {
+                if (info.value.target.selector.includes(element)) {
+                    notifType = "announcement"
+                } 
+            });
     
-        //     liveClassArr.some(function (element, index) {
-        //         if (info.value.target.includes(element)) {
-        //             notifType = "live"
-        //         } 
-        //     });
+            liveClassArr.some(function (element, index) {
+                if (info.value.target.selector.includes(element)) {
+                    notifType = "live"
+                } 
+            });
     
-        //     bulkClassArr.some(function (element, index) {
-        //         if (info.value.target.includes(element)) {
-        //             notifType = "bulk"
-        //         } 
-        //     });
+            bulkClassArr.some(function (element, index) {
+                if (info.value.target.selector.includes(element)) {
+                    notifType = "bulk"
+                } 
+            });
     
-        //     recentClassArr.some(function (element, index) {
-        //         if (info.value.target.includes(element)) {
-        //             notifType = "recent"
-        //         } 
-        //     });
+            recentClassArr.some(function (element, index) {
+                if (info.value.target.selector.includes(element)) {
+                    notifType = "recent"
+                } 
+            });
     
-        //     reviewClassArr.some(function (element, index) {
-        //         if (info.value.target.includes(element)) {
-        //             notifType = "review"
-        //         } 
-        //     });
-        // } 
+            reviewClassArr.some(function (element, index) {
+                if (info.value.target.selector.includes(element)) {
+                    notifType = "review"
+                } 
+            });
+        } 
 
     if (typeof console !== 'undefined') {
         // Send data to the backend
@@ -2558,9 +2558,9 @@ InfluenceTracker.prototype.tracker = function (info) {
         data.path = path;
         data.value = value;
 
-        // if(notifType && notifType != 'undefined'){
-        //     data.notificationType = notifType
-        // }    
+        if(notifType && notifType != 'undefined'){
+            data.notificationType = notifType
+        }    
 
        
 

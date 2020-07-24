@@ -2486,13 +2486,13 @@ InfluenceTracker.prototype.tracker = function (info) {
     if(info && info.value && info.value.event == 'mouseover') if(flagMouseOver) return; else flagMouseOver = true;
     var path = info.path;
 
-    var value 
-    if(info.value && info.value.target){
-        delete info.value['target'];
-        value = info.value;
-    }else{
-        value = info.value;
-    }
+    var value = info.value;
+    // if(info.value && info.value.target){
+    //     delete info.value['target'];
+    //     value = info.value;
+    // }else{
+    //     value = info.value;
+    // }
     value['referrer'] = document.referrer;
     if (value && value.source && value.source.url && value.source.url.host)
         value.source.url.host = value.source.url.host.replace(/^www\./, '');

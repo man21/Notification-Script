@@ -1362,7 +1362,7 @@ if (typeof Influence === 'undefined') {
                 }
                 container.addEventListener('mouseover', function (e) {
                     self.track('mouseover', {
-                        target: DomUtil.genCssSelector(e.target)         //DomUtil.getNodeDescriptor(e.target)
+                        target: DomUtil.getNodeDescriptor(e.target)         //DomUtil.getNodeDescriptor(e.target)
                     });
                 });
                 container.addEventListener('click',  function (e) {

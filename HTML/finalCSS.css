@@ -1736,32 +1736,27 @@
     height: 95px !important;
     border: 1.45px solid #097fff5e;
     box-shadow: 0px 0px 1.5432px #097fff;
-    position: fixed;
-    width: 350px;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-    font-family:'Graphik Web,Helvetica Neue,Helvetica,Arial,Tahoma,sans-serif';
 }
 
-
 .iIdFziYOKB{
-    display: block;
-    font-size: 14px;
-    padding: 14px 14px 20px 90px;
-    border-radius: 3px;
-    border: 1px solid rgba(0,0,0,.05);
-    color: #47525d;
-    line-height: 1.3rem;
-    background: #fff;
-    box-shadow: 0 3px 5px rgba(0,0,0,.05);
-    text-decoration:none
-  
+    display: flex;
+    flex-direction: row;
+    height: 70px;
 }
 
 .TsebdJUQvt{
-    position: absolute;
-   top: 10px;
-   left: 14px;
+    width: 61px;
+    height: 61px;
+    /*background-color: #f3f7ff;*/
+    border-radius: 15px;
+    text-align: center;
+    margin-right: 6px;
+    margin-top: 8px;
+    margin-bottom: auto;
+    margin-left: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .RKbF8wBwAa{

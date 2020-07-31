@@ -1774,7 +1774,7 @@
     /*padding: 5px;*/
     padding: 1px;
     align-self: center;
-    max-width: 70%;
+    max-width: 71%;
     max-height: 85px;
     position: relative;
     /*-webkit-line-clamp: 3;*/
@@ -1823,7 +1823,6 @@
     line-height: 1.2;
     font-family: sans-serif;
     letter-spacing: 0.5px;
-    padding-left: 2px;
     overflow: hidden;
     align-self: center;
     /* white-space: nowrap; */

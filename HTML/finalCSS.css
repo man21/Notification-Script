@@ -1738,7 +1738,7 @@
     box-shadow: 0px 0px 1.5432px #097fff;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
-    width: min-content;
+    width: 370px;
     
 }
 
@@ -1817,7 +1817,7 @@
 /*secondary-text*/
 .OQD3VMK0CW{
     margin-top: 2px; 
-    font-size: 10px;
+    font-size: 11px;
     font-style: normal;
     color: #47525d;
     line-height: 1.2;
@@ -1830,6 +1830,7 @@
     text-overflow: ellipsis;
     box-sizing: border-box;
     font-weight: 400;
+    margin-left: 1%;
 }
 
 .border{
@@ -1847,7 +1848,7 @@
     max-height: 20px;
     width: 80%;
     max-width: 80%;
-    margin-left: 20%;
+    margin-left: 24%;
     line-height: 1;
     margin-top: 3px;
 }

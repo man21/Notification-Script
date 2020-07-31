@@ -1738,6 +1738,7 @@
     box-shadow: 0px 0px 1.5432px #097fff;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    width: min-content;
     
 }
 
@@ -1916,6 +1917,7 @@
     align-items: center;
     /*margin-right: 145px;*/
     line-height: 0.81;
+    margin-left: 20%;
 }
 
 /*verified-icon*/

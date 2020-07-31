@@ -1773,13 +1773,14 @@
     /*padding: 5px;*/
     padding: 1px;
     align-self: center;
-    max-width: 268px;
+    max-width: 70%;
     max-height: 85px;
     position: relative;
     /*-webkit-line-clamp: 3;*/
     /*-webkit-box-orient: vertical;*/
     line-height: 1;
     overflow: hidden;
+    width: 100%;
     /*display: -webkit-inline-box;*/
     /*direction: inherit;*/
 }
@@ -1787,7 +1788,7 @@
 /*para*/
 .J6LQ6GLNbv{
     margin: 0;
-    margin-left: 5% ;
+  
 }
 
 /*main-text*/
@@ -1814,13 +1815,13 @@
 
 /*secondary-text*/
 .OQD3VMK0CW{
-     margin-top: 2px; 
+    margin-top: 2px; 
     font-size: 10px;
     font-style: normal;
     color: #47525d;
     line-height: 1.2;
     font-family: sans-serif;
-    letter-spacing: 0.3px;
+    letter-spacing: 0.5px;
     padding-left: 2px;
     overflow: hidden;
     align-self: center;

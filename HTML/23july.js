@@ -3851,7 +3851,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         announcementNotificationUserNameContainer.className = 'JqUTr3L3QV'
 
 
-        var announcementNotificationNameText = document.createElement('p')
+        var announcementNotificationNameText = document.createElement('strong')
         announcementNotificationNameText.className = 'J6LQ6GLNbv xPojAbs5Ml'
         announcementNotificationNameText.innerHTML =  configuration.announcementHeaderText ? configuration.announcementHeaderText : 'Updates Available!'
         announcementNotificationUserNameContainer.appendChild(announcementNotificationNameText)

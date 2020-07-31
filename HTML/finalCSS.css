@@ -1736,6 +1736,9 @@
     height: 95px !important;
     border: 1.45px solid #097fff5e;
     box-shadow: 0px 0px 1.5432px #097fff;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    font-family:'Graphik Web,Helvetica Neue,Helvetica,Arial,Tahoma,sans-serif';
 }
 
 .iIdFziYOKB{
@@ -1792,7 +1795,7 @@
     font-weight: 600;
     font-style: normal;
     text-align: left;
-    color: #2c66c3;
+    color: #47525d;
     padding-right: 2px;
     font-family: sans-serif;
     padding: 2px;
@@ -1801,9 +1804,10 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    line-height: 1;
+    line-height: 1.3rem;
     margin-bottom: 2px;
     width: fit-content;
+    font-weight: bold;
            
 }
 
@@ -1822,6 +1826,8 @@
     /* white-space: nowrap; */
     word-break: break-word;
     text-overflow: ellipsis;
+    box-sizing: border-box;
+    font-weight: 400;
 }
 
 .border{

@@ -1791,13 +1791,13 @@
 
 /*main-text*/
 .xPojAbs5Ml{
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 500;
     font-style: normal;
     text-align: left;
     color: #47525d;
     padding-right: 2px;
-    font-family: 'Graphik Web,Helvetica Neue,Helvetica,Arial,Tahoma,sans-serif';
+    font-family: sans-serif;
     padding: 2px;
     text-transform: capitalize;
     background: aliceblue;
@@ -1818,7 +1818,7 @@
     font-style: normal;
     color: #17193c;
     line-height: 1.2;
-    font-family: 'Graphik Web,Helvetica Neue,Helvetica,Arial,Tahoma,sans-serif';
+    font-family: sans-serif;
     letter-spacing: 0.3px;
     padding-left: 2px;
     overflow: hidden;

@@ -1753,10 +1753,10 @@
     /*background-color: #f3f7ff;*/
     border-radius: 15px;
     text-align: center;
-    margin-right: 6px;
+    margin-right: 3%;
     margin-top: 8px;
     margin-bottom: auto;
-    margin-left: 4px;
+    margin-left: 3%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1787,6 +1787,7 @@
 /*para*/
 .J6LQ6GLNbv{
     margin: 0;
+    margin-left: 5% ;
 }
 
 /*main-text*/
@@ -1816,7 +1817,7 @@
      margin-top: 2px; 
     font-size: 10px;
     font-style: normal;
-    color: #17193c;
+    color: #47525d;
     line-height: 1.2;
     font-family: sans-serif;
     letter-spacing: 0.3px;

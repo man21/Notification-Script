@@ -1737,8 +1737,7 @@
     border: 1.45px solid #097fff5e;
     box-shadow: 0px 0px 1.5432px #097fff;
     -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-    width: 370px;
+    width: 370px !important;
     
 }
 

@@ -2223,7 +2223,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
               
                 var secondLoop = (result.length * result.length) >= startSecondLoop ? false : true
 
-                const infos = responses.message_data; //secondLoop ? responses.message_data.filter(obj=> excludeCampaign.indexOf(obj.rule.campaign) == -1 && obj.rule.loopNotification ) : responses.message_data.filter(obj=> excludeCampaign.indexOf(obj.rule.campaign) == -1 )
+                const infos = secondLoop ? responses.message_data:  responses.message_data; //secondLoop ? responses.message_data.filter(obj=> excludeCampaign.indexOf(obj.rule.campaign) == -1 && obj.rule.loopNotification ) : responses.message_data.filter(obj=> excludeCampaign.indexOf(obj.rule.campaign) == -1 )
                 
 
                 // console.log(infos, "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$4")

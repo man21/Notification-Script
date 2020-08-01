@@ -2227,10 +2227,6 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                 
 
                  console.log(infos, "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$4")
-
-                
-
-
                
                 if (j > loopCheckValue) {
                     i = 6;
@@ -2241,11 +2237,11 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                 
                 if(infos.length==0){
                     // console.log("====================")
-                    if (loopCheckExit.indexOf(key[0]) == -1)
-                        loopCheckExit.push(key[0]);
-                    if (i == splittedUrls.length - 1) {
-                        i = -1;
-                    }
+                    // if (loopCheckExit.indexOf(key[0]) == -1)
+                    //     loopCheckExit.push(key[0]);
+                    // if (i == splittedUrls.length - 1) {
+                    //     i = -1;
+                    // }
                     return
                 }
                 startSecondLoop= startSecondLoop+result.length

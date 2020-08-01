@@ -2239,18 +2239,19 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                     return;
                 }
                 
-                // if(infos.length==0){
-                //     if (loopCheckExit.indexOf(key[0]) == -1)
-                //         loopCheckExit.push(key[0]);
-                //     if (i == splittedUrls.length - 1) {
-                //         i = -1;
-                //     }
-                //     return
-                // }
+                if(infos.length==0){
+                    console.log("====================")
+                    if (loopCheckExit.indexOf(key[0]) == -1)
+                        loopCheckExit.push(key[0]);
+                    if (i == splittedUrls.length - 1) {
+                        i = -1;
+                    }
+                    return
+                }
                 startSecondLoop= startSecondLoop+result.length
 
 
-                for (let inff = 0; inff < 5; inff++) {
+                for (let inff = 0; inff < infos.length; inff++) {
                     // console.log("HELLO")
                     const info = infos[inff];
 

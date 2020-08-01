@@ -2245,123 +2245,124 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                 }
                 startSecondLoop= startSecondLoop+result.length
 
-                console.log(startSecondLoop, "start second Loop @@@@@@@@@@@@@@@@@@@@2")
-                for (let inff = 0; inff < infos.length; inff++) {
-                    const info = infos[inff];
+                console.log("HELLO")
 
-                    (function (u, v) {
-                        if (response.message && !response.message.error) {
-                            // const info = response.message;
+                // for (let inff = 0; inff < infos.length; inff++) {
+                //     const info = infos[inff];
 
-                            let configurations = info.configurations.filter(config => config.paths.indexOf(__pathname) > -1 || config.paths.indexOf(window.location.pathname) > -1);
-                            configurations = info.rule.displayOnAllPages && !configurations.length ? info.configurations : configurations;
-                            let paths = configurations.length > 1 && key == 'journey' ? configurations[pathIndex].paths : configurations.length ? configurations[0].paths : [];
+                //     (function (u, v) {
+                //         if (response.message && !response.message.error) {
+                //             // const info = response.message;
+
+                //             let configurations = info.configurations.filter(config => config.paths.indexOf(__pathname) > -1 || config.paths.indexOf(window.location.pathname) > -1);
+                //             configurations = info.rule.displayOnAllPages && !configurations.length ? info.configurations : configurations;
+                //             let paths = configurations.length > 1 && key == 'journey' ? configurations[pathIndex].paths : configurations.length ? configurations[0].paths : [];
                             
-                            let configuration;
+                //             let configuration;
 
-                            if (configurations.length)
-                                configuration = configurations.length > 1 && key == 'journey' ? configurations[pathIndex].configuration : configurations.length ? configurations[0].configuration : {};
-                            else
-                                configuration = undefined;
+                //             if (configurations.length)
+                //                 configuration = configurations.length > 1 && key == 'journey' ? configurations[pathIndex].configuration : configurations.length ? configurations[0].configuration : {};
+                //             else
+                //                 configuration = undefined;
 
-                            let liveVisitorCount =0;
-                            if (key == 'live') {
-                                if (info.visitorList) {
-                                    const arrLive = info.visitorList.filter(visitor => paths.indexOf(visitor.key) > -1);
-                                    let totalSum = 0;
-                                    for (let tl = 0; tl < arrLive.length; tl++) {
-                                        const objLive = arrLive[tl];
-                                        totalSum += objLive.unique_visitors.value;
-                                    }
-                                    liveVisitorCount = totalSum;//info.visitorList.filter(visitor => paths.indexOf(visitor.key) > -1).length;
-                                }
-                                else if (info.liveViewer)
-                                    liveVisitorCount = info.liveViewer ? info.liveViewer.viewers : 0;
-                                else if (info.liveFollower)
-                                    liveVisitorCount = info.liveFollower ? info.liveFollower.followers : 0;
-                            }
+                //             let liveVisitorCount =0;
+                //             if (key == 'live') {
+                //                 if (info.visitorList) {
+                //                     const arrLive = info.visitorList.filter(visitor => paths.indexOf(visitor.key) > -1);
+                //                     let totalSum = 0;
+                //                     for (let tl = 0; tl < arrLive.length; tl++) {
+                //                         const objLive = arrLive[tl];
+                //                         totalSum += objLive.unique_visitors.value;
+                //                     }
+                //                     liveVisitorCount = totalSum;//info.visitorList.filter(visitor => paths.indexOf(visitor.key) > -1).length;
+                //                 }
+                //                 else if (info.liveViewer)
+                //                     liveVisitorCount = info.liveViewer ? info.liveViewer.viewers : 0;
+                //                 else if (info.liveFollower)
+                //                     liveVisitorCount = info.liveFollower ? info.liveFollower.followers : 0;
+                //             }
 
-                            if (info.rule.displayOnAllPages) {
-                                if (key == 'live') {
-                                    if (info.visitorList) {
-                                        const arrLive = info.visitorList;
-                                        let totalSum = 0;
-                                        for (let tl = 0; tl < arrLive.length; tl++) {
-                                            const objLive = arrLive[tl];
-                                            totalSum += objLive.unique_visitors.value;
-                                        }
-                                        liveVisitorCount = totalSum;//info.visitorList.length;
-                                    }
-                                    else if (info.liveViewer)
-                                        liveVisitorCount = info.liveViewer ? info.liveViewer.viewers : 0;
-                                    else if (info.liveFollower)
-                                        liveVisitorCount = info.liveFollower ? info.liveFollower.followers : 0;
-                                }
-                            }
+                //             if (info.rule.displayOnAllPages) {
+                //                 if (key == 'live') {
+                //                     if (info.visitorList) {
+                //                         const arrLive = info.visitorList;
+                //                         let totalSum = 0;
+                //                         for (let tl = 0; tl < arrLive.length; tl++) {
+                //                             const objLive = arrLive[tl];
+                //                             totalSum += objLive.unique_visitors.value;
+                //                         }
+                //                         liveVisitorCount = totalSum;//info.visitorList.length;
+                //                     }
+                //                     else if (info.liveViewer)
+                //                         liveVisitorCount = info.liveViewer ? info.liveViewer.viewers : 0;
+                //                     else if (info.liveFollower)
+                //                         liveVisitorCount = info.liveFollower ? info.liveFollower.followers : 0;
+                //                 }
+                //             }
 
 
-                            //let userDetails = info.userDetails && info.userDetails.length && key == 'journey' ? info.userDetails.filter(user => user) : [];
-                            let userDetails = info.userDetails;
-                            let userReviews = info.userReviews;
-                            let numberOfUsers = info.numberOfUsers && key == 'identification' ? info.numberOfUsers : 0;
-                            liveVisitorCount = liveVisitorCount == 0 ? 1 : liveVisitorCount;
-                            //if (((key == 'journey' && !userDetails.length) ||
-                            if (((key == 'journey' && !userDetails) ||
-                                (key == 'review' && !userReviews) ||
-                                (key == 'identification' && !numberOfUsers) ||
-                                (key == 'live' && (!liveVisitorCount || (configuration && Number(configuration.panelStyle.liveVisitorCount) >= liveVisitorCount)))
-                            ) || (configuration && !configuration.activity)) {
-                                j = j - 1;
-                                if (loopCheckExit.indexOf(key[0]) == -1)
-                                    loopCheckExit.push(key[0]);
-                                if (loopCheckExit.length == 5)
-                                    i = 6;
-                                return;
-                            }
+                //             //let userDetails = info.userDetails && info.userDetails.length && key == 'journey' ? info.userDetails.filter(user => user) : [];
+                //             let userDetails = info.userDetails;
+                //             let userReviews = info.userReviews;
+                //             let numberOfUsers = info.numberOfUsers && key == 'identification' ? info.numberOfUsers : 0;
+                //             liveVisitorCount = liveVisitorCount == 0 ? 1 : liveVisitorCount;
+                //             //if (((key == 'journey' && !userDetails.length) ||
+                //             if (((key == 'journey' && !userDetails) ||
+                //                 (key == 'review' && !userReviews) ||
+                //                 (key == 'identification' && !numberOfUsers) ||
+                //                 (key == 'live' && (!liveVisitorCount || (configuration && Number(configuration.panelStyle.liveVisitorCount) >= liveVisitorCount)))
+                //             ) || (configuration && !configuration.activity)) {
+                //                 j = j - 1;
+                //                 if (loopCheckExit.indexOf(key[0]) == -1)
+                //                     loopCheckExit.push(key[0]);
+                //                 if (loopCheckExit.length == 5)
+                //                     i = 6;
+                //                 return;
+                //             }
 
-                            if (info.rule.delayNotification) {
-                                randomDelayTime = generateRandomNumber(randomDelayTime, tempRandomDelayTime, info.rule.displayTime, prevRandGap);
-                                prevRandGap = (randomDelayTime - tempRandomDelayTime - (info.rule.displayTime + 3));
-                            }
-                            // console.log('========configuration',configuration);
-                            if (configuration && configuration.activity) {
-                                if (j == 1) {
-                                    randomDelayTime = 0;
-                                    setTimeout(function () {
-                                        if (info.visitorList || info.liveViewer || info.liveFollower) key = 'live';
-                                        else if (info.numberOfUsers) key = 'identification';
-                                        else if (info.userDetails) key = 'journey';
-                                        else if (info.userReviews) key = 'review';
-                                        else key = 'announcement'
-                                        if(isTabVisibility){
-                                            return notificationTimeout(u, info, info.rule, key, notificationPath);}
-                                    }, (info.rule.initialDelay) * 1000);
-                                }
-                                else
-                                    setTimeout(function () {
-                                        if (info.visitorList || info.liveViewer || info.liveFollower) key = 'live';
-                                        else if (info.numberOfUsers) key = 'identification';
-                                        else if (info.userDetails) key = 'journey';
-                                        else if (info.userReviews) key = 'review';
-                                        else key = 'announcement'
-                                        if(isTabVisibility){
-                                            return notificationTimeout(u, info, info.rule, key, notificationPath); }
-                                    },(info.rule.delayNotification ? (randomDelayTime * 1000) : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v - 1)) * 1000));
-                                tempRandomDelayTime = randomDelayTime;
-                            } else {
-                                if (maxMinus > 1000) return;
-                                j = j - 1;
-                                maxMinus++;
-                            }
-                        }
-                    })(i, j);
+                //             if (info.rule.delayNotification) {
+                //                 randomDelayTime = generateRandomNumber(randomDelayTime, tempRandomDelayTime, info.rule.displayTime, prevRandGap);
+                //                 prevRandGap = (randomDelayTime - tempRandomDelayTime - (info.rule.displayTime + 3));
+                //             }
+                //             // console.log('========configuration',configuration);
+                //             if (configuration && configuration.activity) {
+                //                 if (j == 1) {
+                //                     randomDelayTime = 0;
+                //                     setTimeout(function () {
+                //                         if (info.visitorList || info.liveViewer || info.liveFollower) key = 'live';
+                //                         else if (info.numberOfUsers) key = 'identification';
+                //                         else if (info.userDetails) key = 'journey';
+                //                         else if (info.userReviews) key = 'review';
+                //                         else key = 'announcement'
+                //                         if(isTabVisibility){
+                //                             return notificationTimeout(u, info, info.rule, key, notificationPath);}
+                //                     }, (info.rule.initialDelay) * 1000);
+                //                 }
+                //                 else
+                //                     setTimeout(function () {
+                //                         if (info.visitorList || info.liveViewer || info.liveFollower) key = 'live';
+                //                         else if (info.numberOfUsers) key = 'identification';
+                //                         else if (info.userDetails) key = 'journey';
+                //                         else if (info.userReviews) key = 'review';
+                //                         else key = 'announcement'
+                //                         if(isTabVisibility){
+                //                             return notificationTimeout(u, info, info.rule, key, notificationPath); }
+                //                     },(info.rule.delayNotification ? (randomDelayTime * 1000) : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v - 1)) * 1000));
+                //                 tempRandomDelayTime = randomDelayTime;
+                //             } else {
+                //                 if (maxMinus > 1000) return;
+                //                 j = j - 1;
+                //                 maxMinus++;
+                //             }
+                //         }
+                //     })(i, j);
 
-                    j++;
+                //     j++;
 
-                    if (i == splittedUrls.length - 1) {
-                        i = -1;
-                    }
-                }
+                //     if (i == splittedUrls.length - 1) {
+                //         i = -1;
+                //     }
+                // }
 
             }
         }

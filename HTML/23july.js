@@ -2226,7 +2226,6 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                 const infos = secondLoop ? responses.message_data.filter(obj=> excludeCampaign.indexOf(obj.rule.campaign) == -1 && obj.rule.loopNotification ) : responses.message_data.filter(obj=> excludeCampaign.indexOf(obj.rule.campaign) == -1 )
                 
                
-                console.log(infos, "INFOS @@@@@@@@@@")
                 if (j > loopCheckValue) {
                     i = 6;
                     //setTimeout(() => new Notifications(config), (('rule.loopNotification' ? 11988 : 24) + 12) * 1000);//11988

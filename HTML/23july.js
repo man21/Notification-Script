@@ -2212,12 +2212,12 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
         let maxMinus=0;
         let startSecondLoop = result.length
 
-        console.log(startSecondLoop," start second loop ***************")
-
         if (result.length == 5) {
 
-            cons
+            
             for (let i = 0; i < splittedUrls.length; i++) {
+
+                console.log("************************************************************")
                 var notif = responseNotifications[i];
                 // console.log(notif, "NOtif ********************")
                 var key = Object.keys(notif);

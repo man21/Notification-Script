@@ -2248,11 +2248,11 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
 
 
                 for (let inff = 0; inff < infos.length; inff++) {
-                    // console.log("HELLO")
+                     console.log("HELLO")
                     const info = infos[inff];
 
                     (function (u, v) {
-                        console.log("YES")
+                        // console.log("YES")
                         if (response.message && !response.message.error) {
                             // const info = response.message;
 

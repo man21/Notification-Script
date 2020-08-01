@@ -1728,14 +1728,17 @@
     background-color: #fff;
     /*width: 370px;*/
     /*height: 110px;*/
-    border-radius: 5px;
+    border-radius: 3px !important;
     padding: 4px 5px;
     padding-bottom: 3px;
     display: flex;
     flex-direction: column;
-    height: 95px !important;
+    height: 100px !important;
     border: 1.45px solid #097fff5e;
     box-shadow: 0px 0px 1.5432px #097fff;
+    -webkit-font-smoothing: antialiased;
+    width: 370px !important;
+    
 }
 
 .iIdFziYOKB{
@@ -1750,10 +1753,10 @@
     /*background-color: #f3f7ff;*/
     border-radius: 15px;
     text-align: center;
-    margin-right: 6px;
+    margin-right: 3%;
     margin-top: 8px;
     margin-bottom: auto;
-    margin-left: 4px;
+    margin-left: 3%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1762,7 +1765,7 @@
 .RKbF8wBwAa{
     width: 61px;
     height: 61px;
-    border-radius: 15px;
+    border-radius: 13px;
     object-fit: contain;
 }
 
@@ -1770,13 +1773,14 @@
     /*padding: 5px;*/
     padding: 1px;
     align-self: center;
-    max-width: 268px;
+    max-width: 71%;
     max-height: 85px;
     position: relative;
     /*-webkit-line-clamp: 3;*/
     /*-webkit-box-orient: vertical;*/
     line-height: 1;
     overflow: hidden;
+    width: 100%;
     /*display: -webkit-inline-box;*/
     /*direction: inherit;*/
 }
@@ -1784,15 +1788,16 @@
 /*para*/
 .J6LQ6GLNbv{
     margin: 0;
+  
 }
 
 /*main-text*/
 .xPojAbs5Ml{
-    font-size: 15px;
-    font-weight: 600;
+    font-size: 13px;
+    font-weight: 500;
     font-style: normal;
     text-align: left;
-    color: #2c66c3;
+    color: #47525d;
     padding-right: 2px;
     font-family: sans-serif;
     padding: 2px;
@@ -1801,27 +1806,30 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    line-height: 1;
+    line-height: 1.3rem;
     margin-bottom: 2px;
     width: fit-content;
+    font-weight: bold;
            
 }
 
 /*secondary-text*/
 .OQD3VMK0CW{
-     margin-top: 2px; 
-    font-size: 9.5px;
+    margin-top: 2px; 
+    font-size: 11px;
     font-style: normal;
-    color: #17193c;
+    color: #47525d;
     line-height: 1.2;
     font-family: sans-serif;
-    letter-spacing: 0.3px;
-    padding-left: 2px;
+    letter-spacing: 0.5px;
     overflow: hidden;
     align-self: center;
     /* white-space: nowrap; */
     word-break: break-word;
     text-overflow: ellipsis;
+    box-sizing: border-box;
+    font-weight: 400;
+    margin-left: 1%;
 }
 
 .border{
@@ -1908,6 +1916,7 @@
     align-items: center;
     /*margin-right: 145px;*/
     line-height: 0.81;
+    margin-left: 20%;
 }
 
 /*verified-icon*/

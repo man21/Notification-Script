@@ -2226,9 +2226,9 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                 const infos = secondLoop ? responses.message_data:  responses.message_data; //secondLoop ? responses.message_data.filter(obj=> excludeCampaign.indexOf(obj.rule.campaign) == -1 && obj.rule.loopNotification ) : responses.message_data.filter(obj=> excludeCampaign.indexOf(obj.rule.campaign) == -1 )
                 
 
-                // console.log(infos, "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$4")
+                 console.log(infos, "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$4")
 
-                // console.log(infos.length, "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$4")
+                
 
 
                
@@ -2251,7 +2251,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                 startSecondLoop= startSecondLoop+result.length
 
 
-                for (let inff = 0; inff < 2; inff++) {
+                for (let inff = 0; inff < infos.length; inff++) {
                     // console.log("HELLO")
                     const info = infos[inff];
 

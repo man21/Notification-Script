@@ -2228,6 +2228,9 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
 
                 console.log(infos, "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$4")
 
+                console.log(infos.length, "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$4")
+
+
                
                 if (j > loopCheckValue) {
                     i = 6;

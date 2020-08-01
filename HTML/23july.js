@@ -2226,9 +2226,9 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                 const infos = secondLoop ? responses.message_data.filter(obj=> excludeCampaign.indexOf(obj.rule.campaign) == -1 && obj.rule.loopNotification ) : responses.message_data.filter(obj=> excludeCampaign.indexOf(obj.rule.campaign) == -1 )
                 
 
-                console.log(infos, "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$4")
+                // console.log(infos, "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$4")
 
-                console.log(infos.length, "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$4")
+                // console.log(infos.length, "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$4")
 
 
                

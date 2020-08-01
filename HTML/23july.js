@@ -1,7 +1,7 @@
 var isTabVisibility = true,flagMouseOver= false;
 var exclued_button_text = 'login, signin, loginnow, memberlogin, accountlogin, post comment';
-var __pathname = window.location.pathname;
-__pathname = '/' + __pathname.split('/')[1];
+var __pathname = "/"//window.location.pathname;
+//__pathname = '/' + __pathname.split('/')[1];
 
 var influenceScript = '23july.js';
 var BASE_URL = "https://api.useinfluence.co";
@@ -2102,7 +2102,9 @@ var Notifications = function (config) {
     httpGetAsync(rulesUrl, function (res) {
         response = JSON.parse(res);
         // configurationPath = JSON.parse(res);
-        configurationPath = response.find(obj=> obj.notificationPath.find(ojb1 => (ojb1.url === __pathname || ojb1.url === window.location.pathname) && ojb1.type == "lead"))
+        configurationPath = response.find(obj=> obj.notificationPath.find(ojb1 => (ojb1.url === __pathname || ojb1.url === "/") && ojb1.type == "lead"))
+        
+        console.log((configurationPath,"!!!!!!!!!!!!!1111"))
         activeNotification = Math.max.apply(null,response.map(obj=> obj.rule.activeNotification))
         var enableLoopNotification = response.find(obj=> obj.rule.loopNotification) ? true : false
     
@@ -2184,8 +2186,6 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
     var responseNotifications = [];
     var loopCheckValue = enableLoopNotification ? 1000 : activeNotification;
 
-    console.log(activeNotification, "ACTIVE NOTIFICATIOn!!!!!!!!!!!!!!!!!!!!!!11111")
-
     let responseNotif = (callback) => {
         let splittedUrlsSingle = ['live']
         splittedUrlsSingle.map(async notifName => {
@@ -2213,8 +2213,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
         let startSecondLoop = result.length
 
         if (result.length == 5) {
-            for (let i = 0; i <= splittedUrls.length; i++) {
-
+            for (let i = 0; i < splittedUrls.length; i++) {
                 var notif = responseNotifications[i];
                 // console.log(notif, "NOtif ********************")
                 var key = Object.keys(notif);
@@ -2226,7 +2225,6 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
 
                 const infos = secondLoop ? responses.message_data.filter(obj=> excludeCampaign.indexOf(obj.rule.campaign) == -1 && obj.rule.loopNotification ) : responses.message_data.filter(obj=> excludeCampaign.indexOf(obj.rule.campaign) == -1 )
                 
-                // console.log(loopCheckValue, "###################################33")
                
                 if (j > loopCheckValue) {
                     i = 6;
@@ -2235,18 +2233,15 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                     return;
                 }
                 
-                // if(infos.length==0){
-                //     if (loopCheckExit.indexOf(key[0]) == -1)
-                //         loopCheckExit.push(key[0]);
-                //     if (i == splittedUrls.length - 1) {
-                //         i = -1;
-                //     }
-                //     return
-                // }
+                if(infos.length==0){
+                    if (loopCheckExit.indexOf(key[0]) == -1)
+                        loopCheckExit.push(key[0]);
+                    if (i == splittedUrls.length - 1) {
+                        i = -1;
+                    }
+                    return
+                }
                 startSecondLoop= startSecondLoop+result.length
-
-               // console.log(infos, "HELLO")
-
                 for (let inff = 0; inff < infos.length; inff++) {
                     const info = infos[inff];
 
@@ -3836,7 +3831,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         // announcementNotificationImageContainer.appendChild(announcementNotificationImage)
 
         var announcementNotificationImage = document.createElement('span')
-        announcementNotificationImage.className = 'iIdFziYOKB TsebdJUQvt'
+        announcementNotificationImage.className = 'image'
         announcementNotificationImage.innerHTML = `<svg height= "41px", width= "41px",xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><defs><style>.fa-secondary{opacity:.84; fill:#097fff5e}.fa-primary{fill:#097fff}</style></defs><path d="M544 448c0 9.22-7.08 32-32 32a32 32 0 0 1-20-7l-85-68a242.82 242.82 0 0 0-119-50.79V125.84a242.86 242.86 0 0 0 119-50.79L492 7a31.93 31.93 0 0 1 20-7c25 0 32 23.26 32 32z" class="fa-secondary"/><path d="M544 184.88v110.24a63.47 63.47 0 0 0 0-110.24zM0 192v96a64 64 0 0 0 64 64h33.7a243 243 0 0 0-2.18 32 253.32 253.32 0 0 0 25.56 110.94c5.19 10.69 16.52 17.06 28.4 17.06h74.28c26.05 0 41.69-29.84 25.9-50.56A127.35 127.35 0 0 1 223.51 384a121 121 0 0 1 4.41-32H256V128H64a64 64 0 0 0-64 64z" class="fa-primary"/></svg>`
         announcementNotificationImageContainer.appendChild(announcementNotificationImage)
 
@@ -3858,7 +3853,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         announcementNotificationUserNameContainer.className = 'JqUTr3L3QV'
 
 
-        var announcementNotificationNameText = document.createElement('strong')
+        var announcementNotificationNameText = document.createElement('p')
         announcementNotificationNameText.className = 'J6LQ6GLNbv xPojAbs5Ml'
         announcementNotificationNameText.innerHTML =  configuration.announcementHeaderText ? configuration.announcementHeaderText : 'Updates Available!'
         announcementNotificationUserNameContainer.appendChild(announcementNotificationNameText)

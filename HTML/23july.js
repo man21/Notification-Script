@@ -2900,7 +2900,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
             else if (configuration && configuration.toggleMap == 'map') {
                 if (userDetails.city && userDetails.country) {
 
-                    var dd = httpGetAsync(bucketUrl +userDetails.city + '_' + userDetails.country + '.jpeg', function(res){
+                    var dd = httpGet(bucketUrl +userDetails.city + '_' + userDetails.country + '.jpeg', function(res){
                         if(res== 200){
                             res_img = bucketUrl +userDetails.city + '_' + userDetails.country + '.jpeg'
                         }else{
@@ -2911,7 +2911,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
                 }
                 else if (userDetails.city) {
 
-                    var dd = httpGetAsync(bucketUrl +  userDetails.city + '.jpeg', function(res){
+                    var dd = httpGet(bucketUrl +  userDetails.city + '.jpeg', function(res){
                         if(res== 200){
                             res_img = bucketUrl +  userDetails.city + '.jpeg'
                         }else{
@@ -2924,7 +2924,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
                 }
                 else if (userDetails.country) {
 
-                    var dd = httpGetAsync(userDetails.country + '.jpeg', function(res){
+                    var dd = httpGet(userDetails.country + '.jpeg', function(res){
                         if(res== 200){
                             res_img = userDetails.country + '.jpeg'
                         }else{

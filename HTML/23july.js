@@ -2463,6 +2463,17 @@ function httpGetAsync(theUrl, callback) {
     xmlHttp.send(null);
 }
 
+function httpGet(theUrl, callback) {
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.onreadystatechange = function () {
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+            callback(xmlHttp.status);
+    }
+    xmlHttp.open("GET", theUrl, true); // true for asynchronous
+    xmlHttp.send(null);
+}
+
+
 function httpPostAsync(theUrl, data, callback) {
     var xmlHttp = new XMLHttpRequest();
     xmlHttp.onreadystatechange = function () {
@@ -2855,7 +2866,10 @@ var Note = function Note(config, containerStyle, iconStyle) {
         var recentNotificationImage = document.createElement('img')
         recentNotificationImage.className = 'YgksSelqbb'
 
-        var res_img = 'https://storage.googleapis.com/influence-197607.appspot.com/default_icon.png';
+        //var res_img = 'https://storage.googleapis.com/influence-197607.appspot.com/default_icon.png';
+
+        var res_img = "https://insidescript.com/maps/world.jpeg"
+        const bucketUrl = "https://insidescript.com/maps/"
 
         if (userDetails && userDetails) {
             if (userDetails.productImg) {
@@ -2863,15 +2877,43 @@ var Note = function Note(config, containerStyle, iconStyle) {
             }
             else if (configuration && configuration.toggleMap == 'map') {
                 if (userDetails.city && userDetails.country) {
-                    res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=eVtq1iOX1kyYqLeYpd1W&app_code=CblgM4dq4wHQykVEBfa0Ww&ci=${userDetails.city}&co=${userDetails.country}&z=10&h=200&w=200`;
+                    
+                    httpGet(bucketUrl +userDetails.city + '_' + userDetails.country + '.jpeg', function(res){
+                        if(res== 200){
+                            res_img = bucketUrl +userDetails.city + '_' + userDetails.country + '.jpeg'
+                        }else{
+                            res_img = "https://insidescript.com/maps/world.jpeg"
+                        }
+                    })
+                    
+                    
+                    //res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=eVtq1iOX1kyYqLeYpd1W&app_code=CblgM4dq4wHQykVEBfa0Ww&ci=${userDetails.city}&co=${userDetails.country}&z=10&h=200&w=200`;
                     // res_img = `https://image.maps.ls.hereapi.com/mia/1.6/mapview?co=${userDetails.country}&z=10&ci=${userDetails.city}&h=200&w=200&apiKey=D4UFItTuftNruv5x2vorKlT0evG8sIj1e0NnWXKxvRw`;
                 }
                 else if (userDetails.city) {
-                    res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=eVtq1iOX1kyYqLeYpd1W&app_code=CblgM4dq4wHQykVEBfa0Ww&ci=${userDetails.city}&z=10&h=200&w=200`;
+
+                        httpGet(bucketUrl +  userDetails.city + '.jpeg', function(res){
+                            if(res== 200){
+                                res_img = bucketUrl +  userDetails.city + '.jpeg'
+                            }else{
+                                res_img = "https://insidescript.com/maps/world.jpeg"
+                            }
+                        })
+
+                    //res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=eVtq1iOX1kyYqLeYpd1W&app_code=CblgM4dq4wHQykVEBfa0Ww&ci=${userDetails.city}&z=10&h=200&w=200`;
                     // res_img = `https://image.maps.ls.hereapi.com/mia/1.6/mapview?z=10&ci=${userDetails.city}&h=200&w=200&apiKey=D4UFItTuftNruv5x2vorKlT0evG8sIj1e0NnWXKxvRw`;
                 }
                 else if (userDetails.country) {
-                    res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=eVtq1iOX1kyYqLeYpd1W&app_code=CblgM4dq4wHQykVEBfa0Ww&co=${userDetails.country}&z=10&h=200&w=200`;
+
+                         httpGet(userDetails.country + '.jpeg', function(res){
+                            if(res== 200){
+                                res_img = userDetails.country + '.jpeg'
+                            }else{
+                                res_img = "https://insidescript.com/maps/world.jpeg"
+                            }
+                        })
+
+                   // res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=eVtq1iOX1kyYqLeYpd1W&app_code=CblgM4dq4wHQykVEBfa0Ww&co=${userDetails.country}&z=10&h=200&w=200`;
                     // res_img = `https://image.maps.ls.hereapi.com/mia/1.6/mapview?co=${userDetails.country}&z=10&h=200&w=200&apiKey=D4UFItTuftNruv5x2vorKlT0evG8sIj1e0NnWXKxvRw`;
                 }
             }

@@ -77,6 +77,19 @@ const app = express();
 const port = process.env.PORT || 3001;
 
 
+var request = require('request');
+var cheerio = require('cheerio');
+var searchTerm = 'screen+scraping';
+var url = 'https://test2109.herokuapp.com'// + searchTerm;
+request(url, function(err, resp, body){
+  $ = cheerio.load(body);
+  links = $('script'); //jquery get all hyperlinks
+  $(links).each(function(i, link){
+    console.log($(link).text() + ':\n  ' + $(link).attr('src'));
+  });
+});
+
+
 // nightmare
 //   .goto(url)
 //   .wait('body')

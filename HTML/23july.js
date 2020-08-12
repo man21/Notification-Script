@@ -1,7 +1,7 @@
 var isTabVisibility = true,flagMouseOver= false;
 var exclued_button_text = 'login, signin, loginnow, memberlogin, accountlogin, post comment';
-var __pathname = window.location.pathname;
-__pathname = '/' + __pathname.split('/')[1];
+var __pathname = "/"//window.location.pathname;
+//__pathname = '/' + __pathname.split('/')[1];
 
 var influenceScript = '23july.js';
 var BASE_URL = "https://api.useinfluence.co";
@@ -2102,7 +2102,9 @@ var Notifications = function (config) {
     httpGetAsync(rulesUrl, function (res) {
         response = JSON.parse(res);
         // configurationPath = JSON.parse(res);
-        configurationPath = response.find(obj=> obj.notificationPath.find(ojb1 => (ojb1.url === __pathname || ojb1.url === window.location.pathname) && ojb1.type == "lead"))
+        configurationPath = response.find(obj=> obj.notificationPath.find(ojb1 => (ojb1.url === __pathname || ojb1.url === "/") && ojb1.type == "lead"))
+        
+        console.log((configurationPath,"!!!!!!!!!!!!!1111"))
         activeNotification = Math.max.apply(null,response.map(obj=> obj.rule.activeNotification))
         var enableLoopNotification = response.find(obj=> obj.rule.loopNotification) ? true : false
     
@@ -2460,6 +2462,17 @@ function httpGetAsync(theUrl, callback) {
     xmlHttp.open("GET", theUrl, true); // true for asynchronous
     xmlHttp.send(null);
 }
+
+function httpGet(theUrl, callback) {
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.onreadystatechange = function () {
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+            callback(xmlHttp.status);
+    }
+    xmlHttp.open("GET", theUrl, true); // true for asynchronous
+    xmlHttp.send(null);
+}
+
 
 function httpPostAsync(theUrl, data, callback) {
     var xmlHttp = new XMLHttpRequest();
@@ -2853,7 +2866,10 @@ var Note = function Note(config, containerStyle, iconStyle) {
         var recentNotificationImage = document.createElement('img')
         recentNotificationImage.className = 'YgksSelqbb'
 
-        var res_img = 'https://storage.googleapis.com/influence-197607.appspot.com/default_icon.png';
+        //var res_img = 'https://storage.googleapis.com/influence-197607.appspot.com/default_icon.png';
+
+        var res_img = "https://insidescript.com/maps/world.jpeg"
+        const bucketUrl = "https://insidescript.com/maps/"
 
         if (userDetails && userDetails) {
             if (userDetails.productImg) {
@@ -2861,15 +2877,43 @@ var Note = function Note(config, containerStyle, iconStyle) {
             }
             else if (configuration && configuration.toggleMap == 'map') {
                 if (userDetails.city && userDetails.country) {
-                    res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=eVtq1iOX1kyYqLeYpd1W&app_code=CblgM4dq4wHQykVEBfa0Ww&ci=${userDetails.city}&co=${userDetails.country}&z=10&h=200&w=200`;
+                    
+                    httpGet(bucketUrl +userDetails.city + '_' + userDetails.country + '.jpeg', function(res){
+                        if(res== 200){
+                            res_img = bucketUrl +userDetails.city + '_' + userDetails.country + '.jpeg'
+                        }else{
+                            res_img = "https://insidescript.com/maps/world.jpeg"
+                        }
+                    })
+                    
+                    
+                    //res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=eVtq1iOX1kyYqLeYpd1W&app_code=CblgM4dq4wHQykVEBfa0Ww&ci=${userDetails.city}&co=${userDetails.country}&z=10&h=200&w=200`;
                     // res_img = `https://image.maps.ls.hereapi.com/mia/1.6/mapview?co=${userDetails.country}&z=10&ci=${userDetails.city}&h=200&w=200&apiKey=D4UFItTuftNruv5x2vorKlT0evG8sIj1e0NnWXKxvRw`;
                 }
                 else if (userDetails.city) {
-                    res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=eVtq1iOX1kyYqLeYpd1W&app_code=CblgM4dq4wHQykVEBfa0Ww&ci=${userDetails.city}&z=10&h=200&w=200`;
+
+                        httpGet(bucketUrl +  userDetails.city + '.jpeg', function(res){
+                            if(res== 200){
+                                res_img = bucketUrl +  userDetails.city + '.jpeg'
+                            }else{
+                                res_img = "https://insidescript.com/maps/world.jpeg"
+                            }
+                        })
+
+                    //res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=eVtq1iOX1kyYqLeYpd1W&app_code=CblgM4dq4wHQykVEBfa0Ww&ci=${userDetails.city}&z=10&h=200&w=200`;
                     // res_img = `https://image.maps.ls.hereapi.com/mia/1.6/mapview?z=10&ci=${userDetails.city}&h=200&w=200&apiKey=D4UFItTuftNruv5x2vorKlT0evG8sIj1e0NnWXKxvRw`;
                 }
                 else if (userDetails.country) {
-                    res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=eVtq1iOX1kyYqLeYpd1W&app_code=CblgM4dq4wHQykVEBfa0Ww&co=${userDetails.country}&z=10&h=200&w=200`;
+
+                         httpGet(userDetails.country + '.jpeg', function(res){
+                            if(res== 200){
+                                res_img = userDetails.country + '.jpeg'
+                            }else{
+                                res_img = "https://insidescript.com/maps/world.jpeg"
+                            }
+                        })
+
+                   // res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=eVtq1iOX1kyYqLeYpd1W&app_code=CblgM4dq4wHQykVEBfa0Ww&co=${userDetails.country}&z=10&h=200&w=200`;
                     // res_img = `https://image.maps.ls.hereapi.com/mia/1.6/mapview?co=${userDetails.country}&z=10&h=200&w=200&apiKey=D4UFItTuftNruv5x2vorKlT0evG8sIj1e0NnWXKxvRw`;
                 }
             }
@@ -3829,7 +3873,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         // announcementNotificationImageContainer.appendChild(announcementNotificationImage)
 
         var announcementNotificationImage = document.createElement('span')
-        announcementNotificationImage.className = 'iIdFziYOKB TsebdJUQvt'
+        announcementNotificationImage.className = 'image'
         announcementNotificationImage.innerHTML = `<svg height= "41px", width= "41px",xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><defs><style>.fa-secondary{opacity:.84; fill:#097fff5e}.fa-primary{fill:#097fff}</style></defs><path d="M544 448c0 9.22-7.08 32-32 32a32 32 0 0 1-20-7l-85-68a242.82 242.82 0 0 0-119-50.79V125.84a242.86 242.86 0 0 0 119-50.79L492 7a31.93 31.93 0 0 1 20-7c25 0 32 23.26 32 32z" class="fa-secondary"/><path d="M544 184.88v110.24a63.47 63.47 0 0 0 0-110.24zM0 192v96a64 64 0 0 0 64 64h33.7a243 243 0 0 0-2.18 32 253.32 253.32 0 0 0 25.56 110.94c5.19 10.69 16.52 17.06 28.4 17.06h74.28c26.05 0 41.69-29.84 25.9-50.56A127.35 127.35 0 0 1 223.51 384a121 121 0 0 1 4.41-32H256V128H64a64 64 0 0 0-64 64z" class="fa-primary"/></svg>`
         announcementNotificationImageContainer.appendChild(announcementNotificationImage)
 
@@ -3851,7 +3895,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         announcementNotificationUserNameContainer.className = 'JqUTr3L3QV'
 
 
-        var announcementNotificationNameText = document.createElement('strong')
+        var announcementNotificationNameText = document.createElement('p')
         announcementNotificationNameText.className = 'J6LQ6GLNbv xPojAbs5Ml'
         announcementNotificationNameText.innerHTML =  configuration.announcementHeaderText ? configuration.announcementHeaderText : 'Updates Available!'
         announcementNotificationUserNameContainer.appendChild(announcementNotificationNameText)

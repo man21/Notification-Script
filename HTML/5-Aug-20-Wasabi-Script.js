@@ -2933,7 +2933,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         var recentNotificationCloseIcon = document.createElement('button')
         recentNotificationCloseIcon.id = 'notif_close'
         recentNotificationCloseIcon.className = 'qcXxmyzjdA'
-        recentNotificationCloseIcon.innerHTML = "+"
+        recentNotificationCloseIcon.innerHTML = "Hide"
         recentNotificationCloseContainer.appendChild(recentNotificationCloseIcon)
         recentNotiifcationUpperPartContainer.appendChild(recentNotificationCloseContainer)
 
@@ -3191,7 +3191,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
             var liveNotificationCloseIcon = document.createElement('button')
             liveNotificationCloseIcon.id = 'notif_close';
             liveNotificationCloseIcon.className ='jhfgdxsghj'
-            liveNotificationCloseIcon.innerHTML ="+"
+            liveNotificationCloseIcon.innerHTML ="Hide"
             liveNotificationCloseContainer.appendChild(liveNotificationCloseIcon)
          liveNotiifcationUpperPartContainer.appendChild(liveNotificationCloseContainer)
     
@@ -3347,7 +3347,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         var reviewNotificationCloseIcon = document.createElement('button')
         reviewNotificationCloseIcon.id = 'notif_close';
         reviewNotificationCloseIcon.className = 'E256pj3mJ4'
-        reviewNotificationCloseIcon.innerHTML = "+"
+        reviewNotificationCloseIcon.innerHTML = "Hide"
         reviewNotificationCloseContainer.appendChild(reviewNotificationCloseIcon)
         reviewNotiifcationUpperPartContainer.appendChild(reviewNotificationCloseContainer)
 
@@ -3719,7 +3719,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
             var bulkNotificationCloseIcon = document.createElement('button')
             bulkNotificationCloseIcon.id = 'notif_close';
             bulkNotificationCloseIcon.className ='knaKnioVnl'
-            bulkNotificationCloseIcon.innerHTML ="+"
+            bulkNotificationCloseIcon.innerHTML ="Hide"
             bulkNotificationCloseContainer.appendChild(bulkNotificationCloseIcon)
          bulkNotiifcationUpperPartContainer.appendChild(bulkNotificationCloseContainer)
     
@@ -3881,7 +3881,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         announcementNotificationCloseContainer.className = 'close-btn-container'
         var announcementNotificationCloseIcon = document.createElement('button')
         announcementNotificationCloseIcon.className = 'close-btn'
-        announcementNotificationCloseIcon.innerHTML = "+"
+        announcementNotificationCloseIcon.innerHTML = "Hide"
         announcementNotificationCloseContainer.appendChild(announcementNotificationCloseIcon)
         announcementNotiifcationUpperPartContainer.appendChild(announcementNotificationCloseContainer)
 

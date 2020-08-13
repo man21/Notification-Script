@@ -1017,10 +1017,10 @@
     position: absolute;
     /*right: 3px;*/
     /*box-shadow: 0 0px 1.5px 0 rgba(0, 0, 0, 0.6);*/
-    border-radius: 50%;
+    /*border-radius: 50%;*/
     cursor: pointer;
-    right: -6px;
-    top: -8px;
+    right: 10px;
+    top: -14px;
 }
 
 /*missing class added - raman*/
@@ -1028,18 +1028,18 @@
 .qcXxmyzjdA{
     display: inline-block;
     padding: 0.01px;
-    border-radius: 50%;
+    /*border-radius: 50%;*/
     margin: 0;
     height: 14px;
     width: 14px;
     font-size: 10.2px;
-    background: #fff;
+    /*background: #fff;*/
     color: #787878;
     /*transform: rotate(45deg);*/
     cursor: pointer;
     box-shadow: 0 0.3px 1.5px 0 rgba(0, 0, 0, 0.6);
-    -webkit-box-shadow: 0 0.3px 1.5px 0 rgba(0, 0, 0, 0.6);
-    -moz-box-shadow: 0 0.3px 1.5px 0 rgba(0, 0, 0, 0.6);
+    /*-webkit-box-shadow: 0 0.3px 1.5px 0 rgba(0, 0, 0, 0.6);*/
+    /*-moz-box-shadow: 0 0.3px 1.5px 0 rgba(0, 0, 0, 0.6);*/
     min-height: inherit;
     line-height: 1.01;
     border: 0.1px;
@@ -1051,7 +1051,7 @@
 /*missing hover class - raman*/
 /*close-btn-recent*/
 .qcXxmyzjdA:hover{
-    background: #6f6f6f;
+    /*background: #6f6f6f;*/
     box-shadow: none;
 }
 
@@ -1209,7 +1209,7 @@
         /*box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.26);*/
         height: 20px;
         width: 20px;
-        background-color: #fff;
+        /*background-color: #fff;*/
         position: absolute;
         top: 10px;
         right: -14px;

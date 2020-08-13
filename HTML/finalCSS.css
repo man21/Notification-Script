@@ -1033,19 +1033,20 @@
     height: 14px;
     width: 14px;
     font-size: 10.2px;
-    /*background: #fff;*/
+    background:transparent;
     color: #787878;
     /*transform: rotate(45deg);*/
     cursor: pointer;
-    box-shadow: 0 0.3px 1.5px 0 rgba(0, 0, 0, 0.6);
+    /*box-shadow: 0 0.3px 1.5px 0 rgba(0, 0, 0, 0.6);*/
     /*-webkit-box-shadow: 0 0.3px 1.5px 0 rgba(0, 0, 0, 0.6);*/
     /*-moz-box-shadow: 0 0.3px 1.5px 0 rgba(0, 0, 0, 0.6);*/
     min-height: inherit;
     line-height: 1.01;
-    border: 0.1px;
+    border: none;
     text-align: center;
     min-width: 14px;
     letter-spacing: inherit;
+    box-shadow: none;
 }
 
 /*missing hover class - raman*/

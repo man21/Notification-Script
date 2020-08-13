@@ -1020,7 +1020,7 @@
     /*border-radius: 50%;*/
     cursor: pointer;
     right: 10px;
-    top: -14px;
+    top: -20px;
 }
 
 /*missing class added - raman*/
@@ -1213,7 +1213,7 @@
         /*background-color: #fff;*/
         position: absolute;
         top: 10px;
-        right: -14px;
+        right: -20px;
         /*-webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.26);*/
         /*-moz-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.26);*/
     }

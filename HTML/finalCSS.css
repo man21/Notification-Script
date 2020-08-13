@@ -199,7 +199,7 @@
     font-size: 10.2px;
     background: #fff;
     color: #787878;
-    transform: rotate(45deg);
+    /*transform: rotate(45deg);*/
     cursor: pointer;
     box-shadow: 0 0.3px 1.5px 0 rgba(0, 0, 0, 0.6);
     -webkit-box-shadow: 0 0.3px 1.5px 0 rgba(0, 0, 0, 0.6);
@@ -355,7 +355,7 @@
         background-color: #fff;
         border-radius: 50%;
         border: none;
-        transform: rotate(45deg);
+        /*transform: rotate(45deg);*/
         padding: 0;
         height: 20px;
         width: 20px;
@@ -573,7 +573,7 @@
     font-size: 10.2px;
     background: #fff;
     color: #787878;
-    transform: rotate(45deg);
+    /*transform: rotate(45deg);*/
     cursor: pointer;
     box-shadow: 0 0.3px 1.5px 0 rgba(0, 0, 0, 0.6);
     -webkit-box-shadow: 0 0.3px 1.5px 0 rgba(0, 0, 0, 0.6);
@@ -721,7 +721,7 @@
         background-color: #fff;
         border-radius: 50%;
         border: none;
-        transform: rotate(45deg);
+        /*transform: rotate(45deg);*/
         padding: 0;
         height: 20px;
         width: 20px;
@@ -1034,7 +1034,7 @@
     font-size: 10.2px;
     background: #fff;
     color: #787878;
-    transform: rotate(45deg);
+    /*transform: rotate(45deg);*/
     cursor: pointer;
     box-shadow: 0 0.3px 1.5px 0 rgba(0, 0, 0, 0.6);
     -webkit-box-shadow: 0 0.3px 1.5px 0 rgba(0, 0, 0, 0.6);
@@ -1223,7 +1223,7 @@
         background-color: #fff;
         border-radius: 50%;
         border: none;
-        transform: rotate(45deg);
+        /*transform: rotate(45deg);*/
         padding: 0;
         height: 20px;
         width: 20px;
@@ -1483,7 +1483,7 @@
     font-size: 10.2px;
     background: #fff;
     color: #787878;
-    transform: rotate(45deg);
+    /*transform: rotate(45deg);*/
     cursor: pointer;
     box-shadow: 0 0.3px 1.5px 0 rgba(0, 0, 0, 0.6);
     -webkit-box-shadow: 0 0.3px 1.5px 0 rgba(0, 0, 0, 0.6);
@@ -1641,7 +1641,7 @@
         background-color: #fff;
         border-radius: 50%;
         border: none;
-        transform: rotate(45deg);
+        /*transform: rotate(45deg);*/
         padding: 0;
         height: 20px;
         width: 20px;
@@ -2106,7 +2106,7 @@
         background-color: #fff;
         border-radius: 50%;
         border: none;
-        transform: rotate(45deg);
+        /*transform: rotate(45deg);*/
         padding: 0;
         /*height: 22px;
         width: 22px;*/

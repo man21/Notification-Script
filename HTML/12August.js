@@ -3878,9 +3878,11 @@ var Note = function Note(config, containerStyle, iconStyle) {
         announcementNotiifcationUpperPartContainer.appendChild(announcementNotificationImageContainer)
 
         var announcementNotificationCloseContainer = document.createElement('div')
-        announcementNotificationCloseContainer.className = 'close-btn-container'
+        announcementNotificationCloseContainer.className = 'YDR83P698y'
+        announcementNotificationCloseContainer.style = config.rule.closeNotification ? 'display:block' : 'display:none';
         var announcementNotificationCloseIcon = document.createElement('button')
-        announcementNotificationCloseIcon.className = 'close-btn'
+        announcementNotificationCloseIcon.id = 'notif_close'
+        announcementNotificationCloseIcon.className = 'qcXxmyzjdA'
         announcementNotificationCloseIcon.innerHTML = "Hide"
         announcementNotificationCloseContainer.appendChild(announcementNotificationCloseIcon)
         announcementNotiifcationUpperPartContainer.appendChild(announcementNotificationCloseContainer)

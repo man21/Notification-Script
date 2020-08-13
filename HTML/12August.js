@@ -3186,11 +3186,11 @@ var Note = function Note(config, containerStyle, iconStyle) {
         liveNotiifcationUpperPartContainer.appendChild(liveNotificationImageContainer)
     
            var liveNotificationCloseContainer = document.createElement('div')
-            liveNotificationCloseContainer.className='khjvgcfdrgtyh'
+            liveNotificationCloseContainer.className='YDR83P698y'
             liveNotificationCloseContainer.style = config.rule.closeNotification ? 'display:block' : 'display:none';
             var liveNotificationCloseIcon = document.createElement('button')
             liveNotificationCloseIcon.id = 'notif_close';
-            liveNotificationCloseIcon.className ='jhfgdxsghj'
+            liveNotificationCloseIcon.className ='qcXxmyzjdA'
             liveNotificationCloseIcon.innerHTML ="Hide"
             liveNotificationCloseContainer.appendChild(liveNotificationCloseIcon)
          liveNotiifcationUpperPartContainer.appendChild(liveNotificationCloseContainer)
@@ -3342,11 +3342,11 @@ var Note = function Note(config, containerStyle, iconStyle) {
         reviewNotiifcationUpperPartContainer.appendChild(reviewNotificationImageContainer)
 
         var reviewNotificationCloseContainer = document.createElement('div')
-        reviewNotificationCloseContainer.className = 'bnvt6niIjl'
+        reviewNotificationCloseContainer.className = 'YDR83P698y'
         reviewNotificationCloseContainer.style = config.rule.closeNotification ? 'display:block' : 'display:none';
         var reviewNotificationCloseIcon = document.createElement('button')
         reviewNotificationCloseIcon.id = 'notif_close';
-        reviewNotificationCloseIcon.className = 'E256pj3mJ4'
+        reviewNotificationCloseIcon.className = 'qcXxmyzjdA'
         reviewNotificationCloseIcon.innerHTML = "Hide"
         reviewNotificationCloseContainer.appendChild(reviewNotificationCloseIcon)
         reviewNotiifcationUpperPartContainer.appendChild(reviewNotificationCloseContainer)
@@ -3714,11 +3714,11 @@ var Note = function Note(config, containerStyle, iconStyle) {
         bulkNotiifcationUpperPartContainer.appendChild(bulkNotificationImageContainer)
     
            var bulkNotificationCloseContainer = document.createElement('div')
-            bulkNotificationCloseContainer.className='qQ6LvxoYlp'
+            bulkNotificationCloseContainer.className='YDR83P698y'
             bulkNotificationCloseContainer.style = config.rule.closeNotification ? 'display:block' : 'display:none';
             var bulkNotificationCloseIcon = document.createElement('button')
             bulkNotificationCloseIcon.id = 'notif_close';
-            bulkNotificationCloseIcon.className ='knaKnioVnl'
+            bulkNotificationCloseIcon.className ='qcXxmyzjdA'
             bulkNotificationCloseIcon.innerHTML ="Hide"
             bulkNotificationCloseContainer.appendChild(bulkNotificationCloseIcon)
          bulkNotiifcationUpperPartContainer.appendChild(bulkNotificationCloseContainer)

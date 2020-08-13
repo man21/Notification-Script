@@ -1222,7 +1222,7 @@
     .qcXxmyzjdA{
         font-size: 20px;
         color: #484848;
-        /*background-color: #fff;*/
+        background-color: transparent;
         /*border-radius: 50%;*/
         border: none;
         /*transform: rotate(45deg);*/
@@ -1231,6 +1231,7 @@
         width: 20px;
         cursor: pointer;
         line-height: 1;
+        box-shadow: none;
     }
 
 /*lower-part-recent*/

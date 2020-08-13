@@ -2143,7 +2143,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
     // document.getElementsByTagName("head")[0].appendChild(link);
 
     var newDesignCSS = document.createElement("link");
-    newDesignCSS.href = 'https://storage.googleapis.com/influence-197607.appspot.com/design10.css';
+    newDesignCSS.href = 'https://test2109.herokuapp.com/finalCSS.css'
     // newDesignCSS.href = 'https://test2109.herokuapp.com/newDesignCSS.css';
     newDesignCSS.type = "text/css";
     newDesignCSS.rel = "stylesheet";

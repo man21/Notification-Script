@@ -1047,8 +1047,6 @@
     min-width: 14px;
     letter-spacing: inherit;
     box-shadow: none;
-    text-decoration: none;
-    -webkit-tap-highlight-color: rgba(255,255,255,0);
 }
 
 /*missing hover class - raman*/
@@ -1056,8 +1054,7 @@
 .qcXxmyzjdA:hover{
     /*background: #6f6f6f;*/
     box-shadow: none;
-    text-decoration: none;
-    border: 1px solid rgba(0,0,0,.09);
+    text-decoration: underline;
 }
 
 /*svg icon class added - raman*/

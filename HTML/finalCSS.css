@@ -1058,7 +1058,7 @@
 /*close-btn-recent*/
 .qcXxmyzjdA:hover{
     /*background: #6f6f6f;*/
-    color: #787878;
+    color: rgba(71,82,93,.4);;
     box-shadow: none;
     text-decoration: underline;
 }

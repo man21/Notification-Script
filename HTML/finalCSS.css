@@ -1796,35 +1796,26 @@
 
 /*main-text*/
 .xPojAbs5Ml{
-    font-size: 13px;
-    font-weight: 500;
+    font-size: 14px;
     font-style: normal;
     text-align: left;
     color: #47525d;
-    padding-right: 2px;
-    font-family: sans-serif;
     padding: 2px;
-    text-transform: capitalize;
-    background: aliceblue;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     line-height: 1.3rem;
-    margin-bottom: 2px;
-    width: fit-content;
     font-weight: bold;
-           
+    background-color: green;
 }
 
 /*secondary-text*/
 .OQD3VMK0CW{
     margin-top: 2px; 
-    font-size: 11px;
-    font-style: normal;
+    font-size: 14px;
     color: #47525d;
     line-height: 1.2;
-    font-family: sans-serif;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.8px;
     overflow: hidden;
     align-self: center;
     /* white-space: nowrap; */
@@ -1832,7 +1823,7 @@
     text-overflow: ellipsis;
     box-sizing: border-box;
     font-weight: 400;
-    margin-left: 1%;
+    margin-left: 2px;
 }
 
 .border{

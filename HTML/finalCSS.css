@@ -756,6 +756,7 @@
 .sisbMFuEGu{
     background-color: #fff;
     width: 346px;
+    position: relative;
     height: 85px !important;
     border-radius: 9px;
     padding: 2px 1px 2px 5.05px;
@@ -1822,7 +1823,7 @@
     font-size: 14px;
     color: #47525d;
     line-height: 1.2;
-    letter-spacing: 0.8px;
+    letter-spacing: 0.6px;
     overflow: hidden;
     align-self: center;
     /* white-space: nowrap; */

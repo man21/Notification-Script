@@ -3870,7 +3870,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         // announcementNotificationImageContainer.appendChild(announcementNotificationImage)
 
         var announcementNotificationImage = document.createElement('img') //span
-        announcementNotificationImage.className = 'image'
+        announcementNotificationImage.className = "A4S38Y254X" //'image'
 
         if (config.icon)
         announcementNotificationImage.setAttribute('src', config.icon);

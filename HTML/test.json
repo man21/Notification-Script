@@ -1,0 +1,13 @@
+{
+    "operationName": "createPolicy",
+    "variables": {
+        "policy": {
+            "isInitial": true,
+            "usesCookies": true,
+            "name": "test1",
+            "description": "test1",
+            "icon": "marketing"
+        }
+    },
+    "query": "fragment PolicyFragment on Policy {\n  id\n  version\n  slug\n  name\n  description\n  icon\n  isPaused\n  isMandatory\n  usesCookies\n  allowAnonymous\n  isInitial\n  type\n  usages {\n    id\n    datapoint {\n      id\n      name\n      __typename\n    }\n    purpose\n    __typename\n  }\n  providers {\n    id\n    name\n    privacyUrl\n    referenceId\n    __typename\n  }\n  history {\n    op\n    path\n    value\n    oldValue\n    date\n    entityType\n    __typename\n  }\n  __typename\n}\n\nmutation createPolicy($policy: CreatePolicyInput!) {\n  Policy {\n    create(policy: $policy) {\n      ...PolicyFragment\n      __typename\n    }\n    __typename\n  }\n}\n"
+}

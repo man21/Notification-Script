@@ -1,0 +1,63 @@
+{
+    "data": {
+        "initialPolicies": [
+            {
+                "id": "pol:db85bf5d-97ad-49a9-825d-172e35a6ceb1",
+                "version": "1.0.0",
+                "slug": "essential",
+                "name": "Essential",
+                "description": "This includes key features like page navigation and logging you in. The website cannot function without this",
+                "icon": "essential",
+                "isPaused": false,
+                "usesCookies": false,
+                "allowAnonymous": false,
+                "isInitial": true,
+                "type": "INFO",
+                "usages": [],
+                "providers": [
+                    {
+                        "id": "pdr:302084c2-c031-4cf0-bda3-0233cf18b1a4",
+                        "name": "tywmp.activehosted.com",
+                        "privacyUrl": null,
+                        "referenceId": ",tywmp.activehosted.com"
+                    }
+                ]
+            },
+            {
+                "id": "pol:bf918ce3-b9d1-4346-a4a5-6d304d843d51",
+                "version": "2.0.0",
+                "slug": "chat",
+                "name": "Live Chat",
+                "description": "If you have any feature suggestions or questions, you can enable this to talk to us about them",
+                "icon": "chat",
+                "isPaused": false,
+                "usesCookies": true,
+                "allowAnonymous": false,
+                "isInitial": true,
+                "type": "OPT_IN",
+                "usages": [],
+                "providers": [
+                    {
+                        "id": "pdr:8d68ebd7-17bc-4726-a41d-69d250d2e8e4",
+                        "name": "cdn.dashly.app",
+                        "privacyUrl": null,
+                        "referenceId": ",cdn.dashly.app"
+                    }
+                ]
+            }
+        ],
+        "appearance": {
+            "isV2": true,
+            "colorPrimary": "#545ca4",
+            "consentOnScroll": false,
+            "language": "en",
+            "outlineDeclineButton": false,
+            "position": "bottom-left",
+            "project_id": "prj:5decc90f-012f-4579-b498-d6e1e09591f1",
+            "removeBrandingTopLevel": false
+        },
+        "Policy": {
+            "getWithIds": []
+        }
+    }
+}

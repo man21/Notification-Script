@@ -2763,6 +2763,15 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
     function notificationDisplay(type, config, containerStyle, iconStyle, alignment) {
 
+        console.log(config, "------------------------------------------");
+
+        console.log(alignment, " =========================================== ");
+
+        console.log(iconStyle, " ***************************************************************** ");
+
+
+
+
     
         if (notifClosr_c4rF9Effgt985n7v4y5h)
             return;

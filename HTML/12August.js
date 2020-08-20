@@ -3534,7 +3534,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         } else if(fromAppType == 'facebook'){
             reviewNotificationFooterLogo.className = 'bXZsh24SLi'
             reviewNotificationFooterLogo.setAttribute('src', userReview ? "https://storage.googleapis.com/influence-197607.appspot.com/fbreview.jpg" :"")
-            reviewNotificationFooterLogo2.setAttribute('src', userReview ? "https://storage.googleapis.com/influence-197607.appspot.com/fbreview.jpg" : "")
+            reviewNotificationFooterLogo2.setAttribute('src', userReview ? "https://s3.wasabisys.com/influencelogo/dashimages/f_logo_RGB-Blue_58.png" : "")
        }
        else if(fromAppType == "stamped"){
         reviewNotificationFooterLogo.className = 'bXZsh24SLi'

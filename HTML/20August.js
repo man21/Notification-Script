@@ -4347,33 +4347,30 @@ function CookieFn() {
         announcementNotiifcationUpperPartContainer.appendChild(announcementNotificationTextContainer)
         announcementNotiifcationContainer.appendChild(announcementNotiifcationUpperPartContainer)
 
+
+
+        var t =  document.createElement('input')
+
+        t.style= " background-color: #4CAF50; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 40px; margin: 4px 2px; cursor: pointer;"
+
+        var text = document.createTextNode("YES")
+
+        
     
 
-        var announcementNotificationLowerTextContainer = document.createElement('div')
-        announcementNotificationLowerTextContainer.className = 'lWRoKQ6NO1'
+        // var announcementNotificationLowerTextContainer = document.createElement('div')
+        // announcementNotificationLowerTextContainer.className = 'lWRoKQ6NO1'
 
 
-        var announcementNotificationLowerPTag = document.createElement('p')
-        announcementNotificationLowerPTag.className = 'J6LQ6GLNbv'
+        // var announcementNotificationLowerPTag = document.createElement('p')
+        // announcementNotificationLowerPTag.className = 'J6LQ6GLNbv'
 
-        var announcementNotificationFooterPI =document.createElement('em')
-        announcementNotificationFooterPI.className = 'cYgeJnq9sT'
-        var announcementNotificationFooterverified = document.createElement('em')
-        announcementNotificationFooterverified.className = 'h1ELsuZ4Ha'
+        // var announcementNotificationFooterPI =document.createElement('em')
+        // announcementNotificationFooterPI.className = 'cYgeJnq9sT'
+        // var announcementNotificationFooterverified = document.createElement('em')
+        // announcementNotificationFooterverified.className = 'h1ELsuZ4Ha'
 
-        var announcementNotificationTick = document.createElement('Button')  //span
-
-        var text= document.createTextNode("YES")
-
-        announcementNotificationTick.appendChild(text)
-
-        var announcementNotificationTick1 = document.createElement('Button')  //span
-
-        var text1= document.createTextNode("No")
-
-        announcementNotificationTick1.appendChild(text1)
-        
-
+        // var announcementNotificationTick = document.createElement('span')
         // announcementNotificationTick.innerHTML = `<svg width="9" height="9" viewBox="0 0 524 524" xmlns="http://www.w3.org/2000/svg">
         // <defs>
         // <style>.cls-1 {
@@ -4403,21 +4400,21 @@ function CookieFn() {
         // announcementNotificationFooterverified.appendChild(announcementNotificationTick)
 
 
-        announcementNotificationFooterPI.appendChild(announcementNotificationFooterverified)
+        // announcementNotificationFooterPI.appendChild(announcementNotificationFooterverified)
 
-        var announcementNotificationFooterPoweredBy = document.createElement('a')
-        announcementNotificationFooterPoweredBy.setAttribute('href', "configuration.poweredByLink");
-        announcementNotificationFooterPoweredBy.setAttribute('rel', 'nofollow');
-        announcementNotificationFooterPoweredBy.setAttribute('target', '_blank');
+        // var announcementNotificationFooterPoweredBy = document.createElement('a')
+        // announcementNotificationFooterPoweredBy.setAttribute('href', "configuration.poweredByLink");
+        // announcementNotificationFooterPoweredBy.setAttribute('rel', 'nofollow');
+        // announcementNotificationFooterPoweredBy.setAttribute('target', '_blank');
 
-        announcementNotificationFooterPoweredBy.className = 'RmtBlrOYya'
-        announcementNotificationFooterPoweredBy.innerHTML = 'Influence'  //"Influence"
+        // announcementNotificationFooterPoweredBy.className = 'RmtBlrOYya'
+        // announcementNotificationFooterPoweredBy.innerHTML = 'Influence'  //"Influence"
 
-        announcementNotificationFooterPI.appendChild(announcementNotificationFooterPoweredBy)
-        announcementNotificationLowerPTag.appendChild(announcementNotificationFooterPI)
-       announcementNotificationLowerTextContainer.appendChild(announcementNotificationLowerPTag)
+        // announcementNotificationFooterPI.appendChild(announcementNotificationFooterPoweredBy)
+        //announcementNotificationLowerPTag.appendChild(announcementNotificationFooterPI)
+       // announcementNotificationLowerTextContainer.appendChild(announcementNotificationLowerPTag)
 
-       announcementNotiifcationContainer.appendChild(announcementNotificationLowerTextContainer)
+       // announcementNotiifcationContainer.appendChild(announcementNotificationLowerTextContainer)
 
         announcementContainer.appendChild(announcementNotiifcationContainer)
     

@@ -23,9 +23,6 @@ if (typeof Influence === 'undefined') {
      *
      */
     var Influence = function (options) {
-
-        console.log("#############################3")
-
         if (!(this instanceof Influence)) return new Influence(config);
         /**
          * New InfluenceTracker()
@@ -33,13 +30,11 @@ if (typeof Influence === 'undefined') {
          */
         tracker = new InfluenceTracker(options.trackingId);
          var notificationTimmer = setInterval(function () {
-             console.log("*********************")
            // if (document.readyState !== 'complete') return;
             notifications = new Notifications(options.trackingId);
             this.notificationsInstance = notifications;
             
             cookie = new CookieFunc(options.trackingId);
-            console.log(cookie, "$$$$$$$$$$$$$$$$$$$$$$4")
             this.notificationsInstance = cookie;
 
 
@@ -57,7 +52,6 @@ if (typeof Influence === 'undefined') {
 
     (function (Influence) {
         Influence.prototype.options = function () {
-            console.log("NOOOOOOOOOOOOOOOO")
             return this.options;
         };
 
@@ -2226,6 +2220,8 @@ var CookieFunc = function (config) {
      }
 
      if(response.appearance){
+
+        console.log("$$$$$$$$$$$$$$$$$$$")
         var cookieFn = new CookieFn({})
 
         var containerStyle = `

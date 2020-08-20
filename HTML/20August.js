@@ -4290,7 +4290,7 @@ function CookieFn() {
 
 
         var announcementContainer= document.createElement('div');
-        announcementContainer.style ="backgroundColor: red"
+        // announcementContainer.style ="backgroundColor: red"
 
         //  announcementContainer.style = type == 'announcement' ? "display:block" : "display:none";
 

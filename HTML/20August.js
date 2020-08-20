@@ -2143,8 +2143,8 @@ var Notifications = function (config) {
 
 
 var CookieFunc = function (config) {
-    console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@22")
-    if (!(this instanceof CookieFunc)) return new CookieFunc(config);
+    console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@22", config)
+    // if (!(this instanceof CookieFunc)) return new CookieFunc(config);
     this.config = config;
     // var rule;
     var rulesUrl = BASE_URL + '/rules/configuration/path1/' + config;

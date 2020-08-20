@@ -3527,7 +3527,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         if(fromAppType == 'google'){
         reviewNotificationFooterLogo.className = 'bXZsh24SLi'
-        reviewNotificationFooterLogo2.style.height = "6px"
+        reviewNotificationFooterLogo2.className = 'bXZsh24SLi'
 
         reviewNotificationFooterLogo.setAttribute('src', userReview ? 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/79341C01-B8BF-4484-AD66-B9314BAE4121.png':"")
        

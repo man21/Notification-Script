@@ -2221,7 +2221,7 @@ var CookieFunc = function (config) {
         }
      }
 
-     if(response.appearance){
+     if(response.data.appearance){
 
         console.log("$$$$$$$$$$$$$$$$$$$")
         var cookieFn = new CookieFn({})

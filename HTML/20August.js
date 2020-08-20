@@ -4341,7 +4341,7 @@ function CookieFn() {
 
         var announcementNotificationUpperSecondaryText = document.createElement('p')
         announcementNotificationUpperSecondaryText.className = 'J6LQ6GLNbv OQD3VMK0CW'
-        announcementNotificationUpperSecondaryText.innerHTML = "Know more about the latest updates"  
+        announcementNotificationUpperSecondaryText.innerHTML = "Cookie Description ..............................."  
 
         announcementNotificationTextContainer.appendChild(announcementNotificationUpperSecondaryText)
         announcementNotiifcationUpperPartContainer.appendChild(announcementNotificationTextContainer)

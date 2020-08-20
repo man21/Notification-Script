@@ -2154,6 +2154,8 @@ var CookieFunc = function (config) {
         //response = JSON.parse(res);
         // configurationPath = JSON.parse(res);
 
+        console.log("0000000000000000000000000000000000")
+
     response = {
         "data":{
            "initialPolicies":[

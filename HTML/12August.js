@@ -2799,12 +2799,12 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         setTimeout(function () {
             container.className = `animated_FPqR2bI7Mf_c ${config.rule.popupAnimationOut}`;
-        }, ((config.rule.displayTime) * 1000 + 1000)); // + 3000
+        }, ((config.rule.displayTime) * 1000 + 3000)); 
 
         setTimeout(function () {
             if(container && container.parentNode)
                 container.parentNode.removeChild(container)
-        }, ((config.rule.displayTime) * 1000 + 2000)); // 4000
+        }, ((config.rule.displayTime) * 1000 + 4000)); 
 
         document.body.appendChild(container);
         flagMouseOver = false;

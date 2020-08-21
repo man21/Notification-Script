@@ -2342,7 +2342,8 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
 
 
                                             console.log(((info.rule.displayTime + info.rule.delayBetween + 3) * (v - 1)) * 1000, "---------------------------------------")
-                                            // console.log(v, "VALUE OF V *****************************")
+                                           
+                                            console.log(v, "VALUE OF V *****************************")
 
                                             // console.log(info.rule.delayNotification, " delayNotification ################")
                                             // console.log(info.rule.delayBetween, " DELAY BETWEEN ################")

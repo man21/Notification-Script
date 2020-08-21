@@ -2354,11 +2354,10 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                                             return notificationTimeout(u, info, info.rule, key, notificationPath); }
                                     },(info.rule.delayNotification ? (randomDelayTime * 1000) : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v - 1)) * 1000));
                                    
-                                    console.log(info.rule.delayNotification, " delayNotification --------------");
-                                    console.log(info.rule.delayBetween, " DELAY BETWEEN ------------------")
-                                    
+                                    // console.log(info.rule.delayNotification, " delayNotification --------------");
 
-                                    console.log(info.rule.displayTime, " DISPLAY TIME -")                     
+                                    console.log(((info.rule.displayTime + info.rule.delayBetween + 3) * (v - 1)) * 1000, "%%%%%%%%%%%%%")
+                                                 
                                    tempRandomDelayTime = randomDelayTime;
                             } else {
                                 if (maxMinus > 1000) return;

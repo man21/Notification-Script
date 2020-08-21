@@ -2319,32 +2319,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                                 randomDelayTime = generateRandomNumber(randomDelayTime, tempRandomDelayTime, info.rule.displayTime, prevRandGap);
                                 prevRandGap = (randomDelayTime - tempRandomDelayTime - (info.rule.displayTime + 3));
                             }
-                            // console.log('========configuration',configuration);
                             if (configuration && configuration.activity) {
-
-                            //  randomDelayTime = 0;
-
-                            //     setTimeout(function () {
-                            //         if (info.visitorList || info.liveViewer || info.liveFollower) key = 'live';
-                            //         else if (info.numberOfUsers) key = 'identification';
-                            //         else if (info.userDetails) key = 'journey';
-                            //         else if (info.userReviews) key = 'review';
-                            //         else key = 'announcement'
-                            //         if(isTabVisibility){
-
-                            //             return notificationTimeout(u, info, info.rule, key, notificationPath); }
-                            //     //},(info.rule.delayNotification ? (randomDelayTime * 1000) : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v )) * 1000));
-                            // },(j==1 ? (info.rule.initialDelay) * 1000 : v==2 ? ((( info.rule.delayBetween) * (v-1)) * 1000) :  (info.rule.delayNotification ? (randomDelayTime * 1000) : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v-1)) * 1000) ));
-
-
-                            // console.log(j==1 ? (info.rule.initialDelay) * 1000 : v==1 ? ((info.rule.delayBetween ) * 1000 ) :  (info.rule.delayNotification ? (randomDelayTime * 1000) : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v)) * 1000) , "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-
-
-                            // console.log(j==1 ? (info.rule.initialDelay) * 1000 : v==1 ? ((info.rule.delayBetween - 5 ) * 1000 ) :  (info.rule.delayNotification ? (randomDelayTime * 1000) : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v)) * 1000) , "@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
-
-                            // console.log(j==1 ? (info.rule.initialDelay) * 1000 : v==1 ? (((info.rule.displayTime + info.rule.delayBetween + 3) * (v-1)) * 1000 ) :  (info.rule.delayNotification ? (randomDelayTime * 1000) : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v)) * 1000) , "11111111111111111111111111111111111")
-
-
 
                                 if (j == 1) {
                                     randomDelayTime = 0;
@@ -2370,26 +2345,9 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
 
                                             return notificationTimeout(u, info, info.rule, key, notificationPath); }
 
-                                 },(info.rule.delayNotification ? (randomDelayTime * 1000) : j==2 ? ( info.rule.delayBetween *1000)  : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v-1)) * 1000));
+                                 },(info.rule.delayNotification ? (randomDelayTime * 1000) : v==2 ? ( info.rule.delayBetween *1000)  : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v-1)) * 1000));
                                // },(v== 1 ? info.rule.delayBetween * 1000 : info.rule.delayNotification ? (randomDelayTime * 1000) : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v)) * 1000));
               
-
-                                 if(info.rule.delayNotification) {
-                                    console.log(randomDelayTime * 1000)
-                                    console.log("IF CONDITION !!!!!!!!!!!!!!!!!!!!!")
-                                 } else{
-                                     if(j==1){
-                                        console.log("++++++++++++++++++++++++++++++")
-                                     }else
-                                     if(j==2){
-                                        console.log( info.rule.delayBetween *1000) 
-                                         console.log("2ND IF CONDITION!!!!!!!!!!!!!!!!!!!!!!!!!!!!11 ")
-                                     }else{
-                                         console.log("------------------------")
-                                     }
-                                 }
-
-                                // console.log((info.rule.delayNotification ? (randomDelayTime * 1000) :((info.rule.displayTime + info.rule.delayBetween + 3) * (v)) * 1000), "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
                                    tempRandomDelayTime = randomDelayTime;
                             } else {
                                 if (maxMinus > 1000) return;

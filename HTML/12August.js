@@ -2357,7 +2357,6 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                                     }, (info.rule.initialDelay) * 1000);
                                 }
                                 else
-                                console.log(v, "!!!!!!!!!!!!!!!!!!!!!!!!!")
 
                                     setTimeout(function () {
                                         if (info.visitorList || info.liveViewer || info.liveFollower) key = 'live';
@@ -2366,6 +2365,9 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                                         else if (info.userReviews) key = 'review';
                                         else key = 'announcement'
                                         if(isTabVisibility){
+
+
+                                            console.log(v, "!!!!!!!!!!!!!!!!!!!!!!!!!")
 
                                             return notificationTimeout(u, info, info.rule, key, notificationPath); }
                                  },(info.rule.delayNotification ? (randomDelayTime * 1000) : ((info.rule.displayTime + info.rule.delayBetween) * (v )) * 1000));

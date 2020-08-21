@@ -2340,7 +2340,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                                         else key = 'announcement'
                                         if(isTabVisibility){
 
-                                            console.log(info.rule.displayTime, " DISPLAY TIME ################")
+                                            console.log(info.rule.delayNotification, " delayNotification ################")
                                             console.log(info.rule.delayBetween, " DELAY BETWEEN ################")
                                             
 

@@ -1588,7 +1588,6 @@
         -webkit-box-orient: vertical;
         overflow: hidden;
         display: -webkit-box;
-        overflow: initial;
         word-break: break-all;
     }
 

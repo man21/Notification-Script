@@ -2346,7 +2346,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                                             return notificationTimeout(u, info, info.rule, key, notificationPath); }
 
                                 // }, (info.rule.delayNotification ? (randomDelayTime * 1000) : v==1 ? 5000  : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v)) * 1000));
-                                },(v== 1 ? 14000 : info.rule.delayNotification ? (randomDelayTime * 1000) : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v)) * 1000));
+                                },(v== 1 ? 7000 : info.rule.delayNotification ? (randomDelayTime * 1000) : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v)) * 1000));
               
                                    tempRandomDelayTime = randomDelayTime;
                             } else {

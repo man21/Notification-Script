@@ -2380,11 +2380,11 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                                     console.log(randomDelayTime * 1000)
                                     console.log("IF CONDITION !!!!!!!!!!!!!!!!!!!!!")
                                  } else{
-                                     if(v==1){
+                                     if(v==2){
                                         console.log( info.rule.delayBetween *1000) 
                                          console.log("2ND IF CONDITION!!!!!!!!!!!!!!!!!!!!!!!!!!!!11 ")
                                      }else{
-                                         
+                                         console.log("------------------------")
                                      }
                                  }
 

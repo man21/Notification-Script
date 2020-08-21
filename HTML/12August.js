@@ -2334,7 +2334,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                                     }, (info.rule.initialDelay) * 1000);
                                 }
                                 else{
-                                    console.log(((info.rule.displayTime + info.rule.delayBetween + 3) * (v-1)), "$$$$$$$$$$$$$$$$$$$$$$$$$$$$444")
+                                    // console.log(((info.rule.displayTime + info.rule.delayBetween + 3) * (v-1)), "$$$$$$$$$$$$$$$$$$$$$$$$$$$$444")
                                 
 
                                     setTimeout(function () {

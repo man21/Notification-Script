@@ -2332,6 +2332,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                                         return notificationTimeout(u, info, info.rule, key, notificationPath);}
                                 }, (j==1 ? (info.rule.initialDelay) * 1000 : info.rule.delayNotification ? (randomDelayTime * 1000) :(((info.rule.displayTime + info.rule.delayBetween + 3) * (v)) * 1000)));
 
+                                console.log((j==1 ? (info.rule.initialDelay) * 1000 : info.rule.delayNotification ? (randomDelayTime * 1000) :(((info.rule.displayTime + info.rule.delayBetween + 3) * (v)) * 1000)), "@@@@@@@@@@@@@@@@@@@@@@@2")
                             //     if (j == 1) {
                             //         randomDelayTime = 0;
                             //         // console.log(v, "5555---------------" + new Date())

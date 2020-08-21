@@ -2320,7 +2320,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                             // console.log('========configuration',configuration);
                             if (configuration && configuration.activity) {
 
-                            // randomDelayTime = 0;
+                             randomDelayTime = 0;
 
                                 setTimeout(function () {
                                     if (info.visitorList || info.liveViewer || info.liveFollower) key = 'live';

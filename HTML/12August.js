@@ -2343,10 +2343,10 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                                         else key = 'announcement'
                                         if(isTabVisibility){
 
-                                            return notificationTimeout(u, info, info.rule, key, notificationPath); }
-
+                                           return notificationTimeout(u, info, info.rule, key, notificationPath); }
+                                        }, (info.rule.delayNotification ? (randomDelayTime * 1000) : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v-1)) * 1000));
                                 // }, (info.rule.delayNotification ? (randomDelayTime * 1000) : v==1 ? 5000  : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v)) * 1000));
-                                },(v== 1 ? 7000 : info.rule.delayNotification ? (randomDelayTime * 1000) : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v)) * 1000));
+                                // },(v== 1 ? 7000 : info.rule.delayNotification ? (randomDelayTime * 1000) : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v-1)) * 1000));
               
                                    tempRandomDelayTime = randomDelayTime;
                             } else {

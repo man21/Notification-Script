@@ -2320,45 +2320,45 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                             // console.log('========configuration',configuration);
                             if (configuration && configuration.activity) {
 
-                            // randomDelayTime = 0;
+                            randomDelayTime = 0;
 
-                            //     setTimeout(function () {
-                            //         if (info.visitorList || info.liveViewer || info.liveFollower) key = 'live';
-                            //         else if (info.numberOfUsers) key = 'identification';
-                            //         else if (info.userDetails) key = 'journey';
-                            //         else if (info.userReviews) key = 'review';
-                            //         else key = 'announcement'
-                            //         if(isTabVisibility){
+                                setTimeout(function () {
+                                    if (info.visitorList || info.liveViewer || info.liveFollower) key = 'live';
+                                    else if (info.numberOfUsers) key = 'identification';
+                                    else if (info.userDetails) key = 'journey';
+                                    else if (info.userReviews) key = 'review';
+                                    else key = 'announcement'
+                                    if(isTabVisibility){
 
-                            //             return notificationTimeout(u, info, info.rule, key, notificationPath); }
-                            //     //},(info.rule.delayNotification ? (randomDelayTime * 1000) : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v )) * 1000));
-                            // },(j==1 ? (info.rule.initialDelay) * 1000 : (info.rule.delayNotification ? (randomDelayTime * 1000) : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v)) * 1000) ));
+                                        return notificationTimeout(u, info, info.rule, key, notificationPath); }
+                                //},(info.rule.delayNotification ? (randomDelayTime * 1000) : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v )) * 1000));
+                            },(j==1 ? (info.rule.initialDelay) * 1000 : (info.rule.delayNotification ? (randomDelayTime * 1000) : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v)) * 1000) ));
 
 
-                                if (j == 1) {
-                                    randomDelayTime = 0;
-                                    setTimeout(function () {
-                                        if (info.visitorList || info.liveViewer || info.liveFollower) key = 'live';
-                                        else if (info.numberOfUsers) key = 'identification';
-                                        else if (info.userDetails) key = 'journey';
-                                        else if (info.userReviews) key = 'review';
-                                        else key = 'announcement'
-                                        if(isTabVisibility){
-                                            return notificationTimeout(u, info, info.rule, key, notificationPath);}
-                                    }, (info.rule.initialDelay) * 1000);
-                                }
-                                else
-                                    setTimeout(function () {
-                                        if (info.visitorList || info.liveViewer || info.liveFollower) key = 'live';
-                                        else if (info.numberOfUsers) key = 'identification';
-                                        else if (info.userDetails) key = 'journey';
-                                        else if (info.userReviews) key = 'review';
-                                        else key = 'announcement'
-                                        if(isTabVisibility){
+                                // if (j == 1) {
+                                //     randomDelayTime = 0;
+                                //     setTimeout(function () {
+                                //         if (info.visitorList || info.liveViewer || info.liveFollower) key = 'live';
+                                //         else if (info.numberOfUsers) key = 'identification';
+                                //         else if (info.userDetails) key = 'journey';
+                                //         else if (info.userReviews) key = 'review';
+                                //         else key = 'announcement'
+                                //         if(isTabVisibility){
+                                //             return notificationTimeout(u, info, info.rule, key, notificationPath);}
+                                //     }, (info.rule.initialDelay) * 1000);
+                                // }
+                                // else
+                                //     setTimeout(function () {
+                                //         if (info.visitorList || info.liveViewer || info.liveFollower) key = 'live';
+                                //         else if (info.numberOfUsers) key = 'identification';
+                                //         else if (info.userDetails) key = 'journey';
+                                //         else if (info.userReviews) key = 'review';
+                                //         else key = 'announcement'
+                                //         if(isTabVisibility){
 
-                                            return notificationTimeout(u, info, info.rule, key, notificationPath); }
-                                   // },(info.rule.delayNotification ? (randomDelayTime * 1000) : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v )) * 1000));
-                                },(v==1 ? (info.rule.delayBetween*1000) : (info.rule.delayNotification ? (randomDelayTime * 1000) : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v)) * 1000) ));
+                                //             return notificationTimeout(u, info, info.rule, key, notificationPath); }
+                                //    // },(info.rule.delayNotification ? (randomDelayTime * 1000) : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v )) * 1000));
+                                // },(v==1 ? (info.rule.delayBetween*1000) : (info.rule.delayNotification ? (randomDelayTime * 1000) : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v)) * 1000) ));
 
                                     console.log(v, " Value of v &&&&&&&&&&&&&&&&&&&&&")
                                   //  console.log(v == 1 ? (info.rule.delayBetween * 1000) : (info.rule.delayNotification ? (randomDelayTime * 1000) : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v-1 )) * 1000) , "%%%%%%%%%%%%%")

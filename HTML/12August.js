@@ -2353,6 +2353,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                                         else if (info.userReviews) key = 'review';
                                         else key = 'announcement'
                                         if(isTabVisibility){
+                                            console.log(v,"#####################3")
                                             return notificationTimeout(u, info, info.rule, key, notificationPath);}
                                     }, (info.rule.initialDelay) * 1000);
                                 }
@@ -2371,7 +2372,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
 
                                             return notificationTimeout(u, info, info.rule, key, notificationPath); }
                                  //},(info.rule.delayNotification ? (randomDelayTime * 1000) : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v-1)) * 1000));
-                                },(info.rule.delayNotification ? (randomDelayTime * 1000) : v==1 || v==2 ?  info.rule.delayBetween *1000 :((info.rule.displayTime + info.rule.delayBetween + 3) * (v-1)) * 1000));
+                                },(info.rule.delayNotification ? (randomDelayTime * 1000) : v==1 || v==2 ?  (info.rule.delayBetween *1000) :((info.rule.displayTime + info.rule.delayBetween + 3) * (v-1)) * 1000));
 
                                     // console.log((info.rule.delayNotification ? (randomDelayTime * 1000) : ((info.rule.displayTime + info.rule.delayBetween+3 ) * (v-1)) * 1000), " Value of v &&&&&&&&&&&&&&&&&&&&&")
                                     // console.log(v == 1 ? (info.rule.delayBetween * 1000) : (info.rule.delayNotification ? (randomDelayTime * 1000) : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v-1 )) * 1000) , "%%%%%%%%%%%%%")

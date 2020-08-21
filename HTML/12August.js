@@ -3488,6 +3488,9 @@ var Note = function Note(config, containerStyle, iconStyle) {
         var reviewNotificationUpperSecondaryText = document.createElement('div')
         reviewNotificationUpperSecondaryText.className = 'VxoCrsNjZR cwvnPVjfAZ'
 
+        var reviewNotificationUpperSecondaryTextPtag = document.createElement('p')
+        reviewNotificationUpperSecondaryTextPtag.className = 'BoXpolt5s'
+
     //     if (fromAppType == 'facebook')
     //     reviewNotificationUpperSecondaryText.innerHTML = 'Recommended us on Facebook';
     // else if (fromAppType == 'google') {
@@ -3496,19 +3499,21 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
     if(fromAppType == 'google'){
         if(userReview && userReview.review_text ) {
-            reviewNotificationUpperSecondaryText.innerHTML = userReview.review_text  //configuration.gglReviewText ? configuration.gglReviewText : 'Reviewed us on Google';         //"Awesome must have tool for every marketer or an online business! Easy to use, great uxui, and most importantly - gets more leads than any other platform."
+            reviewNotificationUpperSecondaryTextPtag.innerHTML = userReview.review_text  //configuration.gglReviewText ? configuration.gglReviewText : 'Reviewed us on Google';         //"Awesome must have tool for every marketer or an online business! Easy to use, great uxui, and most importantly - gets more leads than any other platform."
         }else{
-            reviewNotificationUpperSecondaryText.innerHTML = 'Reviewed us on Google';    
+            reviewNotificationUpperSecondaryTextPtag.innerHTML = 'Reviewed us on Google';    
         }
     }else if(fromAppType == 'stamped'){
-        reviewNotificationUpperSecondaryText.innerHTML = userReview && userReview.review_text ? userReview.review_text : 'Reviewed us on Stamped.io';           
+        reviewNotificationUpperSecondaryTextPtag.innerHTML = userReview && userReview.review_text ? userReview.review_text : 'Reviewed us on Stamped.io';           
     }else if(fromAppType == 'capterra'){
-        reviewNotificationUpperSecondaryText.innerHTML = userReview && userReview.review_text ? userReview.review_text : 'Reviewed us on Capterra';           
+        reviewNotificationUpperSecondaryTextPtag.innerHTML = userReview && userReview.review_text ? userReview.review_text : 'Reviewed us on Capterra';           
     }
     else if(fromAppType == 'facebook'){
-        reviewNotificationUpperSecondaryText.innerHTML = userReview && userReview.review_text ? userReview.review_text : 'Reviewed us on Facebook';           
+        reviewNotificationUpperSecondaryTextPtag.innerHTML = userReview && userReview.review_text ? userReview.review_text : 'Reviewed us on Facebook';           
     }
-     
+
+
+        reviewNotificationUpperSecondaryText.appendChild(reviewNotificationUpperSecondaryTextPtag)
         reviewNotificationTextContainer.appendChild(reviewNotificationUpperSecondaryText)
         reviewNotiifcationUpperPartContainer.appendChild(reviewNotificationTextContainer)
         reviewNotiifcationMainContainer.appendChild(reviewNotiifcationUpperPartContainer)

@@ -2334,7 +2334,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                                     }, (info.rule.initialDelay) * 1000);
                                 }
                                 else{
-                                    console.log(v, "$$$$$$$$$$$$$$$$$$$$$$$$$$$$444--------------------"+ new Date())
+                                    // console.log(v, "$$$$$$$$$$$$$$$$$$$$$$$$$$$$444--------------------"+ new Date())
                                 
 
                                     setTimeout(function () {
@@ -2349,6 +2349,8 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                                         //},(info.rule.delayNotification ? (randomDelayTime * 1000) : (((info.rule.displayTime + info.rule.delayBetween + 3) * (v-1)) * 1000) == 15  ? 30000 : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v-1)) * 1000 ));
                                  }, (info.rule.delayNotification ? (randomDelayTime * 1000) : v==2 ? (info.rule.displayTime + info.rule.delayBetween + 4 + v*v)*1000   : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v-1)) * 1000));
                                 // },(v== 1 ? 7000 : info.rule.delayNotification ? (randomDelayTime * 1000) : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v-1)) * 1000));
+                            
+                            console.log((info.rule.delayNotification ? (randomDelayTime * 1000) : v==2 ? (info.rule.displayTime + info.rule.delayBetween + 4 + v*v)*1000   : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v-1)) * 1000), "@@@@@@@@@@@@@@@@2")
                             }
                                 
                                    tempRandomDelayTime = randomDelayTime;

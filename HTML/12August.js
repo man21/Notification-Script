@@ -2321,7 +2321,6 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
 
 
                                 randomDelayTime = 0;
-                                // console.log(v, "5555---------------" + new Date())
 
                                 setTimeout(function () {
                                     if (info.visitorList || info.liveViewer || info.liveFollower) key = 'live';

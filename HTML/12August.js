@@ -2332,7 +2332,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
 
                                         return notificationTimeout(u, info, info.rule, key, notificationPath); }
                                 //},(info.rule.delayNotification ? (randomDelayTime * 1000) : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v )) * 1000));
-                            },(j==1 ? (info.rule.initialDelay) * 1000 : v==1 ? ((( info.rule.delayBetween) * (v-1)) * 1000) :  (info.rule.delayNotification ? (randomDelayTime * 1000) : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v)) * 1000) ));
+                            },(j==1 ? (info.rule.initialDelay) * 1000 : v==2 ? ((( info.rule.delayBetween) * (v-1)) * 1000) :  (info.rule.delayNotification ? (randomDelayTime * 1000) : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v-1)) * 1000) ));
 
 
                             console.log(j==1 ? (info.rule.initialDelay) * 1000 : v==1 ? ((info.rule.delayBetween ) * 1000 ) :  (info.rule.delayNotification ? (randomDelayTime * 1000) : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v)) * 1000) , "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")

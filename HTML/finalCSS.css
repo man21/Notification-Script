@@ -1332,11 +1332,14 @@
     font-family: sans-serif;
     letter-spacing: 0.13px;
     padding-left: 0px;
+    max-height: 45px;
+}
+
+.BoXpolt5s{
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
-    max-height: 45px;
 }
 
 /*border-review*/
@@ -1575,15 +1578,18 @@
     .cwvnPVjfAZ{
         margin-top: 0;
         padding-top: 1px;
-        padding-left: 0;
-        /*overflow: initial;*/
-        display: -webkit-box;
-        -webkit-line-clamp: 1;
-        -webkit-box-orient: vertical;
-        word-break: break-all;
+        padding-left: 0;        
         max-height: 50px;
         height: 50px;
+    }
+
+    .BoXpolt5s{
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
         overflow: hidden;
+        display: -webkit-box;
+        overflow: initial;
+        word-break: break-all;
     }
 
     /*image-container-review*/
@@ -1649,6 +1655,8 @@
     /*lower-part-review*/
     .eHy4QhDPOH{
         justify-content: flex-start;
+        margin-left: 2px;
+
     }
 
     /*text-container-review*/

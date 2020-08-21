@@ -2368,13 +2368,9 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                                         else key = 'announcement'
                                         if(isTabVisibility){
 
-
-                                            console.log(v, "!!!!!!!!!!!!!!!!!!!!!!!!!")
-
                                             return notificationTimeout(u, info, info.rule, key, notificationPath); }
 
-                                            console.log(v, "VALUE OF V ####################333")
-                                 },(info.rule.delayNotification ? (randomDelayTime * 1000) : v==2 ? ( info.rule.delayBetween *1000)  : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v-1)) * 1000));
+                                 },(info.rule.delayNotification ? (randomDelayTime * 1000) : j==2 ? ( info.rule.delayBetween *1000)  : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v-1)) * 1000));
                                // },(v== 1 ? info.rule.delayBetween * 1000 : info.rule.delayNotification ? (randomDelayTime * 1000) : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v)) * 1000));
               
 
@@ -2382,7 +2378,10 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                                     console.log(randomDelayTime * 1000)
                                     console.log("IF CONDITION !!!!!!!!!!!!!!!!!!!!!")
                                  } else{
-                                     if(v==2){
+                                     if(j==1){
+                                        console.log("++++++++++++++++++++++++++++++")
+                                     }else
+                                     if(j==2){
                                         console.log( info.rule.delayBetween *1000) 
                                          console.log("2ND IF CONDITION!!!!!!!!!!!!!!!!!!!!!!!!!!!!11 ")
                                      }else{

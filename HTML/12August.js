@@ -2373,7 +2373,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                                  //},(info.rule.delayNotification ? (randomDelayTime * 1000) : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v-1)) * 1000));
                                 },(info.rule.delayNotification ? (randomDelayTime * 1000) : v==1 ? ((info.rule.displayTime + info.rule.delayBetween + 3) * (v+1)* 1000) :((info.rule.displayTime + info.rule.delayBetween + 3) * (v-1)) * 1000));
               
-                                // console.log((info.rule.delayNotification ? (randomDelayTime * 1000) : v==1 ? ((info.rule.displayTime + info.rule.delayBetween + 3)* 1000) :((info.rule.displayTime + info.rule.delayBetween + 3) * (v-1)) * 1000), "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+                                console.log((info.rule.delayNotification ? (randomDelayTime * 1000) : v==1 ? ((info.rule.delayBetween + 3)* 1000) :((info.rule.displayTime + info.rule.delayBetween + 3) * (v-1)) * 1000), "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
                                    tempRandomDelayTime = randomDelayTime;
                             } else {
                                 if (maxMinus > 1000) return;

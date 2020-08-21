@@ -2323,6 +2323,8 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
 
                                 if (j == 1) {
                                     randomDelayTime = 0;
+                                    console.log(v, "5555---------------" + new Date())
+
                                     setTimeout(function () {
                                         if (info.visitorList || info.liveViewer || info.liveFollower) key = 'live';
                                         else if (info.numberOfUsers) key = 'identification';
@@ -2334,7 +2336,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                                     }, (info.rule.initialDelay) * 1000);
                                 }
                                 else{
-                                    // console.log(((info.rule.displayTime + info.rule.delayBetween + 3) * (v-1)), "$$$$$$$$$$$$$$$$$$$$$$$$$$$$444")
+                                    console.log(v, "$$$$$$$$$$$$$$$$$$$$$$$$$$$$444--------------------"+ new Date())
                                 
 
                                     setTimeout(function () {

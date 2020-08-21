@@ -2372,8 +2372,8 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                                             return notificationTimeout(u, info, info.rule, key, notificationPath); }
 
                                             console.log(v, "VALUE OF V ####################333")
-                                 //},(info.rule.delayNotification ? (randomDelayTime * 1000) : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v-1)) * 1000));
-                                },(v== 1 ? info.rule.delayBetween * 1000 : info.rule.delayNotification ? (randomDelayTime * 1000) : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v)) * 1000));
+                                 },(info.rule.delayNotification ? (randomDelayTime * 1000) : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v-1)) * 1000));
+                               // },(v== 1 ? info.rule.delayBetween * 1000 : info.rule.delayNotification ? (randomDelayTime * 1000) : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v)) * 1000));
               
                                 // console.log((info.rule.delayNotification ? (randomDelayTime * 1000) :((info.rule.displayTime + info.rule.delayBetween + 3) * (v)) * 1000), "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
                                    tempRandomDelayTime = randomDelayTime;

@@ -2247,6 +2247,8 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                         if (response.message && !response.message.error) {
                             // const info = response.message;
 
+                            console.log(v,"%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+
                             let configurations = info.configurations.filter(config => config.paths.indexOf(__pathname) > -1 || config.paths.indexOf(window.location.pathname) > -1);
                             configurations = info.rule.displayOnAllPages && !configurations.length ? info.configurations : configurations;
                             let paths = configurations.length > 1 && key == 'journey' ? configurations[pathIndex].paths : configurations.length ? configurations[0].paths : [];
@@ -2372,7 +2374,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                                             return notificationTimeout(u, info, info.rule, key, notificationPath); }
 
                                             console.log(v, "VALUE OF V ####################333")
-                                 },(info.rule.delayNotification ? (randomDelayTime * 1000) : v==1 ? ( info.rule.delayBetween *1000)  : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v-1)) * 1000));
+                                 },(info.rule.delayNotification ? (randomDelayTime * 1000) : v==2 ? ( info.rule.delayBetween *1000)  : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v-1)) * 1000));
                                // },(v== 1 ? info.rule.delayBetween * 1000 : info.rule.delayNotification ? (randomDelayTime * 1000) : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v)) * 1000));
               
 

@@ -4,7 +4,7 @@ var __pathname = window.location.pathname;
 __pathname = '/' + __pathname.split('/')[1];
 
 var influenceScript = '12August.js';
-var BASE_URL = "https://strapis.useinfluence.co";
+var BASE_URL = "https://strapi.useinfluence.co";
 
 document.addEventListener('visibilitychange', function (e) {
     document.hidden ? isTabVisibility = false : isTabVisibility = true;

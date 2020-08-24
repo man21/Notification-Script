@@ -4,7 +4,7 @@ var __pathname = window.location.pathname;
 __pathname = '/' + __pathname.split('/')[1];
 
 var influenceScript = '12August.js';
-var BASE_URL = "https://api.useinfluence.co";
+var BASE_URL = "https://strapis.useinfluence.co";
 
 document.addEventListener('visibilitychange', function (e) {
     document.hidden ? isTabVisibility = false : isTabVisibility = true;
@@ -2332,7 +2332,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                                         return notificationTimeout(u, info, info.rule, key, notificationPath);}
                                 }, (j==1 ? (info.rule.initialDelay) * 1000 : info.rule.delayNotification ? (randomDelayTime * 1000) :(((info.rule.displayTime + info.rule.delayBetween + 3) * (v-1)) * 1000)+ (info.rule.initialDelay) * 1000));
 
-                                console.log((j==1 ? (info.rule.initialDelay) * 1000 : info.rule.delayNotification ? (randomDelayTime * 1000) :(((info.rule.displayTime + info.rule.delayBetween + 3) * (v-1)) * 1000)+ (info.rule.initialDelay) * 1000), "@@@@@@@@@@@@@@@@@@@@@@@2")
+                                // console.log((j==1 ? (info.rule.initialDelay) * 1000 : info.rule.delayNotification ? (randomDelayTime * 1000) :(((info.rule.displayTime + info.rule.delayBetween + 3) * (v-1)) * 1000)+ (info.rule.initialDelay) * 1000), "@@@@@@@@@@@@@@@@@@@@@@@2")
                             //     if (j == 1) {
                             //         randomDelayTime = 0;
                             //         // console.log(v, "5555---------------" + new Date())
@@ -2870,6 +2870,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         var mainContainer = document.createElement('div');
 
 
+        
 
         var recentNotiifcationContainer = document.createElement('div')
         //recentNotiifcationContainer.className = 'notif-card';

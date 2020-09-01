@@ -2103,13 +2103,9 @@ var Notifications = function (config) {
     httpGetAsync(rulesUrl, function (res) {
         response = JSON.parse(res);
 
-        console.log(response, "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-
-        if(response && !response.error){
-            console.log(response, "####################")
-
+        if(response && !response.error)
             storeData = response.error 
-        }
+        
         // configurationPath = JSON.parse(res);
         configurationPath = response.find(obj=> obj.notificationPath.find(ojb1 => (ojb1.url === __pathname || ojb1.url === window.location.pathname) && ojb1.type == "lead"))
         activeNotification = Math.max.apply(null,response.map(obj=> obj.rule.activeNotification))
@@ -2665,7 +2661,9 @@ InfluenceTracker.prototype.tracker = function (info) {
         //Send the proper header information along with the request
         var url = BASE_URL + '/ws/log';
 
-        console.log(storeData, "###############################################3")
+
+        if(stores && storeData == true){
+
         if(configurationPath && data.category === 'formsubmit'){
             httpPostAsync(url, JSON.stringify(data), function (res) {
              });
@@ -2673,7 +2671,9 @@ InfluenceTracker.prototype.tracker = function (info) {
             httpPostAsync(url, JSON.stringify(data), function (res) {
             });
         }
+      }else{
 
+      }
         
 
         // if ("WebSocket" in window) {

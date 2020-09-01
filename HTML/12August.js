@@ -2662,7 +2662,7 @@ InfluenceTracker.prototype.tracker = function (info) {
         var url = BASE_URL + '/ws/log';
 
 
-        if(sstoreData == true){
+        if(storeData == true){
             console.log("@@@@@@@@@@@@@@@@@@2222")
 
         if(configurationPath && data.category === 'formsubmit'){

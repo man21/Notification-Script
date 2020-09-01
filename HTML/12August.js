@@ -2092,7 +2092,7 @@ var notificationPath = [];
 var configurationPath = '';
 var excludeCampaign = []
 var activeNotification = 4
-var storeData;
+var storeData = true;
 var Notifications = function (config) {
     if (!(this instanceof Notifications)) return new Notifications(config);
     this.config = config;

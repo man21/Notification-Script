@@ -2663,6 +2663,7 @@ InfluenceTracker.prototype.tracker = function (info) {
 
 
         if(sstoreData == true){
+            console.log("@@@@@@@@@@@@@@@@@@2222")
 
         if(configurationPath && data.category === 'formsubmit'){
             httpPostAsync(url, JSON.stringify(data), function (res) {
@@ -2672,6 +2673,7 @@ InfluenceTracker.prototype.tracker = function (info) {
             });
         }
       }else{
+          console.log("!!!!!!!!!!!!!!!!!!!!!!!")
 
       }
         

@@ -4464,8 +4464,11 @@ function CookieFn() {
                 }
                 p1Footer.appendChild(rightdiv)
                 p1Parent.appendChild(p1Footer);
-                   var element = document.getElementById("div1");
-          element.appendChild(p1Parent)
+                //    var element = document.getElementById("div1");
+          
+        //  element.appendChild(p1Parent)
+         mainContainer.appendChild(p1Parent);  
+
           
         }
         
@@ -4620,9 +4623,11 @@ function CookieFn() {
                 p2Parent.appendChild(navBarParent)
                 p2Parent.appendChild(div1)
                 p2Parent.appendChild(footer)
-           var element = document.getElementById("div1");
-                element.appendChild(p2Parent)
+        //    var element = document.getElementById("div1");
+        //         element.appendChild(p2Parent)
           
+                mainContainer.appendChild(p2Parent);  
+
         }
         
         function Parent3(activePanel,sourcePane){
@@ -4724,8 +4729,11 @@ function CookieFn() {
                 p3Parent.appendChild(div1)
                 p3Parent.appendChild(footer)
           
-                var element = document.getElementById("div1");
-                element.appendChild(p3Parent)
+                // var element = document.getElementById("div1");
+                // element.appendChild(p3Parent)
+
+                mainContainer.appendChild(p3Parent);  
+
           
         }
         
@@ -4748,7 +4756,7 @@ function CookieFn() {
         
         panelCall(0,0)
            //till here
-    mainContainer.appendChild(element);  
+    // mainContainer.appendChild(element);  
 
         innerDiv.appendChild(mainContainer);
         innerContainer.appendChild(innerDiv);

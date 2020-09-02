@@ -4366,15 +4366,14 @@ function CookieFn() {
         //         return;
         // };
 
-        container.style =  "z-index: 99999999999; position: fixed; bottom: 5px; left: 5px; " //alignment;
+        container.style =  "z-index: 99999999999; position: fixed; bottom: 2%; left: 2% " //alignment;
         var innerContainer = document.createElement('div');
         innerContainer.setAttribute("id", "FPqR3tRBqJeA3tRB7MM9_0");
         var innerDiv = document.createElement('div');
         var mainContainer = document.createElement('div');
-        mainContainer.style="left:10px;"
         var lockImg = document.createElement('img')
         lockImg.src  = 'lock.png' 
-        lockImg.style="bottom:0;left:0;width:50px;height:50px;"
+        lockImg.style="bottom:0;left:0;width:60px;height:60px;box-shadow: rgba(0, 0, 0, 0.8) 0px 4px 24px;"
         
         function Parent1(activePanel,sourcePanel){
     

@@ -2365,13 +2365,13 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
     newDesignCSS.id = "stylesheetID";
     document.getElementsByTagName("head")[0].appendChild(newDesignCSS);
 
-    var newDesignCSS = document.createElement("link");
-    newDesignCSS.href = 'https://test2109.herokuapp.com/cookieNotif.css'
+    var cookieNotif = document.createElement("link");
+    cookieNotif.href = 'https://test2109.herokuapp.com/cookieNotif.css'
     // newDesignCSS.href = 'https://test2109.herokuapp.com/newDesignCSS.css';
-    newDesignCSS.type = "text/css";
-    newDesignCSS.rel = "stylesheet";
-    newDesignCSS.id = "stylesheetID";
-    document.getElementsByTagName("head")[0].appendChild(newDesignCSS);
+    cookieNotif.type = "text/css";
+    cookieNotif.rel = "stylesheet";
+    cookieNotif.id = "stylesheetID";
+    document.getElementsByTagName("head")[0].appendChild(cookieNotif);
 
     // var animationLink = document.createElement("link");
     // animationLink.href = 'https://storage.googleapis.com/influence-197607.appspot.com/animate1.css';

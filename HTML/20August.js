@@ -4373,7 +4373,7 @@ function CookieFn() {
         var mainContainer = document.createElement('div');
         var lockImg = document.createElement('img')
         lockImg.src  = 'lock.png' 
-        lockImg.style="bottom:0;left:0;width:60px;height:60px;box-shadow: rgba(0, 0, 0, 0.8) 0px 4px 24px;"
+        lockImg.style="bottom:0;left:0;width:55px;height:55px;box-shadow: rgba(84, 92, 164, 0.5) 0px 4px 24px;border-radius: 50%;"
         
         function Parent1(activePanel,sourcePanel){
     

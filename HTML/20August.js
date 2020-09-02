@@ -4366,16 +4366,17 @@ function CookieFn() {
         //         return;
         // };
 
-        container.style =  "z-index: 99999999999; position: fixed; bottom: 30px; left: 50px " //alignment;
+        container.style =  "z-index: 99999999999; position: fixed; bottom: 0px; left: 0px " //alignment;
         var innerContainer = document.createElement('div');
         innerContainer.setAttribute("id", "FPqR3tRBqJeA3tRB7MM9_0");
         var innerDiv = document.createElement('div');
         var mainContainer = document.createElement('div');
+        innerDiv.style="bottom: 30px; left: 50px "
 
-
-
-
-
+        var lockImg = document.createElement('img')
+        lockImg.src  = 'lock.svg' 
+        lockImg.style="bottom:0;left:0;"
+        innerContainer.appendChild(lockImg)
         function Parent1(activePanel,sourcePanel){
     
             var p1Parent = document.createElement('div');
@@ -4472,9 +4473,9 @@ function CookieFn() {
           
         }
         
-        function Parent2(activePanel,sourcePane){
+        function Parent2(activePanel,sourcePanel){
           
-            console.log("p2parent",activePanel)
+           
                 var p2Parent = document.createElement('div');
         
                 p2Parent.className =

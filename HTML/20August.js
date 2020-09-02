@@ -4366,7 +4366,7 @@ function CookieFn() {
         //         return;
         // };
 
-        container.style =  "z-index: 99999999999; position: fixed; bottom: 30px;  " //alignment;
+        container.style =  "z-index: 99999999999; position: fixed; bottom: 30px; left: 50px " //alignment;
         var innerContainer = document.createElement('div');
         innerContainer.setAttribute("id", "FPqR3tRBqJeA3tRB7MM9_0");
         var innerDiv = document.createElement('div');

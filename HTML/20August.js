@@ -4380,376 +4380,377 @@ function CookieFn() {
 
 
         //to be changed
-        var activePanel;
-        var sourcePanel;
-       
+        function Parent1(activePanel,sourcePanel){
+    
+            var p1Parent = document.createElement('div');
         
-
-        function changePanelValue(to, source){
-            activePanel  = to
-            sourcePanel = source
-        }
-       
-
-        //Preview1
-        var p1Parent = document.createElement('div');
-
-        p1Parent.className =
-            activePanel === 0 ? `showPanel mainBoxStyle` : 'hidePanel1';
-
-        var p1Child = document.createElement('div');
-        p1Child.className = "childContainer";
-
-        var uLine = document.createElement('p');
-        uLine.className = "upperLine";
-
-        if (activePanel === 0 && sourcePanel === 1) {
-            var uLinenode = document.createTextNode("Save Preferences");
-        }
-        else {
-            var uLinenode = document.createTextNode("Can we store Cookie?");
-        }
-        uLine.appendChild(uLinenode);
-        p1Child.appendChild(uLine);
-        /*Inf*/
-        var aLine = document.createElement('a');
-        aLine.className = "upperLine";
-        var aLinenode = document.createTextNode("Inf");
-        aLine.appendChild(aLinenode);
-        p1Child.appendChild(aLine);
-        p1Parent.appendChild(p1Child);
-
-        var mLine = document.createElement('p');
-        mLine.className = "middleLine";
-
-        if (activePanel === 0 && sourcePanel === 1) {
-            var mLinenode = document.createTextNode("You've opted out of everything.");
-
-        }
-        else {
-            var mLinenode = document.createTextNode("These will be used to power trial and Marketing.");
-        }
-
-        mLine.appendChild(mLinenode);
-        p1Parent.appendChild(mLine);
-        //footer
-        var p1Footer = document.createElement('div');
-        p1Footer.style = "display:flex;justify-content:space-between;margin-top:36px;"
-
-        var customizeB = document.createElement('button');
-        customizeB.className = "generalBtnStyle leftBtn";
-        customizeB.onclick = ()=>{
-            panelCall(1,0)
+                p1Parent.className =
+                    activePanel === 0 ? `showPanel mainBoxStyle` : 'hidePanel1';
+        
+                var p1Child = document.createElement('div');
+                p1Child.className = "childContainer";
+        
+                var uLine = document.createElement('p');
+                uLine.className = "upperLine";
+        
+                if (activePanel === 0 && sourcePanel === 1) {
+                    var uLinenode = document.createTextNode("Save Preferences");
+                }
+                else {
+                    var uLinenode = document.createTextNode("Can we store Cookie?");
+                }
+                uLine.appendChild(uLinenode);
+                p1Child.appendChild(uLine);
+                /*Inf*/
+                var aLine = document.createElement('a');
+                aLine.className = "upperLine";
+                var aLinenode = document.createTextNode("Inf");
+                aLine.appendChild(aLinenode);
+                p1Child.appendChild(aLine);
+                p1Parent.appendChild(p1Child);
+        
+                var mLine = document.createElement('p');
+                mLine.className = "middleLine";
+        
+                if (activePanel === 0 && sourcePanel === 1) {
+                    var mLinenode = document.createTextNode("You've opted out of everything.");
+        
+                }
+                else {
+                    var mLinenode = document.createTextNode("These will be used to power trial and Marketing.");
+                }
+        
+                mLine.appendChild(mLinenode);
+                p1Parent.appendChild(mLine);
+                //footer
+                var p1Footer = document.createElement('div');
+                p1Footer.style = "display:flex;justify-content:space-between;margin-top:36px;"
+        
+                var customizeB = document.createElement('button');
+                customizeB.className = "generalBtnStyle leftBtn";
+                customizeB.onclick = ()=>{
+                    p1Parent.className = "hidePanel1"
+                    panelCall(1,0)
+                  
+                }
+                
+                if (activePanel === 0 && sourcePanel === 1) {
+                    customizeB.innerHTML = "No, Customize";
+        
+                }
+                else {
+                    customizeB.innerHTML = "Customize";
+        
+                }
+        
+        
+                p1Footer.appendChild(customizeB)
+                var rightdiv = document.createElement('div');
+                rightdiv.style = "display:flex";
+        
+                var NoB = document.createElement('button');
+                NoB.className = "generalBtnStyle filledBtn";
+                NoB.innerHTML = "No";
+        
+                var YesB = document.createElement('button');
+                YesB.className = "generalBtnStyle filledBtn";
+                YesB.innerHTML = "Yes";
+        
+                var ThatsOkayB = document.createElement('button');
+                ThatsOkayB.className = "generalBtnStyle filledBtn";
+                ThatsOkayB.innerHTML = "That's Okay";
+                if (activePanel === 0 && sourcePanel === 1) {
+                    rightdiv.appendChild(ThatsOkayB)
+                }
+                else {
+                    rightdiv.appendChild(YesB)
+                    rightdiv.appendChild(NoB)
+                }
+                p1Footer.appendChild(rightdiv)
+                p1Parent.appendChild(p1Footer);
+                   var element = document.getElementById("div1");
+          element.appendChild(p1Parent)
+          
         }
         
-        if (activePanel === 0 && sourcePanel === 1) {
-            customizeB.innerHTML = "No, Customize";
-
-        }
-        else {
-            customizeB.innerHTML = "Customize";
-
-        }
-
-
-        p1Footer.appendChild(customizeB)
-        var rightdiv = document.createElement('div');
-        rightdiv.style = "display:flex";
-
-        var NoB = document.createElement('button');
-        NoB.className = "generalBtnStyle filledBtn";
-        NoB.innerHTML = "No";
-
-        var YesB = document.createElement('button');
-        YesB.className = "generalBtnStyle filledBtn";
-        YesB.innerHTML = "Yes";
-
-        var ThatsOkayB = document.createElement('button');
-        ThatsOkayB.className = "generalBtnStyle filledBtn";
-        ThatsOkayB.innerHTML = "That's Okay";
-        if (activePanel === 0 && sourcePanel === 1) {
-            rightdiv.appendChild(ThatsOkayB)
-        }
-        else {
-            rightdiv.appendChild(YesB)
-            rightdiv.appendChild(NoB)
-        }
-        p1Footer.appendChild(rightdiv)
-        p1Parent.appendChild(p1Footer);
-        //preview2
-
-        console.log("p2parent",activePanel)
-        var p2Parent = document.createElement('div');
-
-        p2Parent.className =
-            activePanel === 1 ? `showPanel mainBoxStyle2` : 'hidePanel2';
-
-        var navBarParent = document.createElement('div')
-        navBarParent.className = "navBarParent"
-        var backNav = document.createElement("div");
-        backNav.className = "backNav"
-        backNav.innerHTML = `<svg
-         width="16"
-         height="16"
-         viewBox="0 0 16 16"
-         fill="none"
-         xmlns="http://www.w3.org/2000/svg"
-       >
-         <rect
-           width="1.33333"
-           height="9.33333"
-           rx="0.666667"
-           transform="matrix(0 -1 -1 0 12.6667 8.6665)"
-           fill="#979797"
-         ></rect>
-         <path
-           d="M8.47132 11.5284C8.73167 11.7888 8.73167 12.2109 8.47132 12.4712C8.21097 12.7316 7.78886 12.7316 7.52851 12.4712L3.52851 8.47124C3.27613 8.21886 3.2673 7.81246 3.50848 7.54935L7.17515 3.54935C7.42394 3.27794 7.84566 3.25961 8.11707 3.5084C8.38848 3.7572 8.40682 4.17891 8.15802 4.45032L4.92268 7.97979L8.47132 11.5284Z"
-           fill="currentColor"
-         ></path>
-       </svg> Back`
-        navBarParent.appendChild(backNav)
-        backNav.addEventListener("click",()=>{
-            changePanelValue(0,1)
-            panelCall(0,1)
-        })
-        var mainHeading = document.createElement('h1')
-        mainHeading.className = "mainHeading"
-        mainHeading.innerHTML = "Our Features"
-        navBarParent.appendChild(mainHeading)
-        var doneNav = document.createElement('div')
-        doneNav.className = "doneNav"
-        doneNav.innerHTML = "Done"
-
-        var div1 = document.createElement('div')
-        div1.className = "bodyParent1"
-        var div2 = document.createElement('div')
-        div1.className = "bodyParent1"
-        var div3 = document.createElement('div')
-        div1.className = "bodyParent1"
-        var ulist = document.createElement('ul')
-        ulist.style = "list-style-type:none; margin: 0%; padding: 5%;"
-        var listItem = document.createElement('li')
-        listItem.classList = "listItem"
-        var upperPart = document.createElement('div');
-        upperPart.className = "upperPart";
-        upperPart.innerHTML = `<svg
-                 style="
-                   color: rgb(88, 70, 109);
-                   transition: color 250ms ease 0s;
-                   margin-right: 12px;
-                   margin-top:0px;
-                   width: 16px;
-                   height: 16px;
-                   flex: 0 0 auto;
-                 "
-                 width=22
-                 height=22
-                 viewBox=0 0 22 22
-                 fill=none
+        function Parent2(activePanel,sourcePane){
+          
+            console.log("p2parent",activePanel)
+                var p2Parent = document.createElement('div');
+        
+                p2Parent.className =
+                    activePanel === 1 ? `showPanel mainBoxStyle2` : 'hidePanel1';
+        
+                var navBarParent = document.createElement('div')
+                navBarParent.className = "navBarParent"
+                var backNav = document.createElement("div");
+                backNav.className = "backNav"
+                backNav.innerHTML = `<svg
+                 width="16"
+                 height="16"
+                 viewBox="0 0 16 16"
+                 fill="none"
                  xmlns="http://www.w3.org/2000/svg"
-                 class="Icon__StyledIcon-sc-1fw5m9z-0 fkqTFd"
                >
+                 <rect
+                   width="1.33333"
+                   height="9.33333"
+                   rx="0.666667"
+                   transform="matrix(0 -1 -1 0 12.6667 8.6665)"
+                   fill="#979797"
+                 ></rect>
                  <path
-                   fill-rule="evenodd"
-                   clip-rule="evenodd"
+                   d="M8.47132 11.5284C8.73167 11.7888 8.73167 12.2109 8.47132 12.4712C8.21097 12.7316 7.78886 12.7316 7.52851 12.4712L3.52851 8.47124C3.27613 8.21886 3.2673 7.81246 3.50848 7.54935L7.17515 3.54935C7.42394 3.27794 7.84566 3.25961 8.11707 3.5084C8.38848 3.7572 8.40682 4.17891 8.15802 4.45032L4.92268 7.97979L8.47132 11.5284Z"
                    fill="currentColor"
-                   d="M9.67336 15.9639C9.67336 16.6963 10.6154 16.9944 11.0368 16.3954L15.8773 9.51496C16.2269 9.01804 15.8715 8.33341 15.2639 8.33341H12.4322C11.8799 8.33341 11.4322 7.8857 11.4322 7.33341V4.03628C11.4322 3.3039 10.4901 3.00574 10.0687 3.60474L5.22821 10.4852C4.87862 10.9821 5.23404 11.6667 5.84162 11.6667H8.67336C9.22564 11.6667 9.67336 12.1145 9.67336 12.6667V15.9639Z"
                  ></path>
-               </svg>`;
-
-        var headerText = document.createElement('p');
-        headerText.className = "headerText"
-        headerText.innerHTML = "Essential"
-
-        var switchContainer = document.createElement('div');
-        switchContainer.style="margin-left: 140%;";
+               </svg> Back`
+                navBarParent.appendChild(backNav)
+                backNav.addEventListener("click",()=>{
+                  p2Parent.className = "hidePanel1"
+                    panelCall(0,1)
+                })
+                var mainHeading = document.createElement('h1')
+                mainHeading.className = "mainHeading"
+                mainHeading.innerHTML = "Our Features"
+                navBarParent.appendChild(mainHeading)
+                var doneNav = document.createElement('div')
+                doneNav.className = "doneNav"
+                doneNav.innerHTML = "Done"
+        
+                var div1 = document.createElement('div')
+                div1.className = "bodyParent1"
+                var div2 = document.createElement('div')
+                div1.className = "bodyParent1"
+                var div3 = document.createElement('div')
+                div1.className = "bodyParent1"
+                var ulist = document.createElement('ul')
+                ulist.style = "list-style-type:none; margin: 0%; padding: 5%;"
+                var listItem = document.createElement('li')
+                listItem.classList = "listItem"
+                var upperPart = document.createElement('div');
+                upperPart.className = "upperPart";
+                upperPart.innerHTML = `<svg
+                         style="
+                           color: rgb(88, 70, 109);
+                           transition: color 250ms ease 0s;
+                           margin-right: 12px;
+                           margin-top:0px;
+                           width: 16px;
+                           height: 16px;
+                           flex: 0 0 auto;
+                         "
+                         width=22
+                         height=22
+                         viewBox=0 0 22 22
+                         fill=none
+                         xmlns="http://www.w3.org/2000/svg"
+                         class="Icon__StyledIcon-sc-1fw5m9z-0 fkqTFd"
+                       >
+                         <path
+                           fill-rule="evenodd"
+                           clip-rule="evenodd"
+                           fill="currentColor"
+                           d="M9.67336 15.9639C9.67336 16.6963 10.6154 16.9944 11.0368 16.3954L15.8773 9.51496C16.2269 9.01804 15.8715 8.33341 15.2639 8.33341H12.4322C11.8799 8.33341 11.4322 7.8857 11.4322 7.33341V4.03628C11.4322 3.3039 10.4901 3.00574 10.0687 3.60474L5.22821 10.4852C4.87862 10.9821 5.23404 11.6667 5.84162 11.6667H8.67336C9.22564 11.6667 9.67336 12.1145 9.67336 12.6667V15.9639Z"
+                         ></path>
+                       </svg>`;
+        
+                var headerText = document.createElement('p');
+                headerText.className = "headerText"
+                headerText.innerHTML = "Essential"
+        
+                var switchContainer = document.createElement('div');
+                switchContainer.style="margin-left: 140%;";
+                var switchLabel  = document.createElement('label');
+                switchLabel.className = "switch";
+                var checkboxInput = document.createElement('input');
+                checkboxInput.className = "checkbox";
+                var checkboxSpan = document.createElement('span');
+                checkboxSpan.className = "slider round";
+        
+                switchLabel.appendChild(checkboxInput)
+                switchLabel.appendChild(checkboxSpan)
+                switchContainer.appendChild(switchLabel)
+               upperPart.appendChild(headerText)
+               upperPart.appendChild(switchContainer)
+               listItem.appendChild(upperPart)
+               var lowerDiv =document.createElement('div')
+               lowerDiv.style ="padding-left:28px;margin-top:0%;"
+               var para =document.createElement('p')
+               para.className = "subText"
+               para.innerHTML = "This includes key features like page navigation and logging you in. The website cannot function without this"
+               var more = document.createElement('button')
+               more.className="moreDetailsButton"
+               more.onclick = ()=>{
+                 p2Parent.classname = "hidePanel1"
+                 panelCall(2,1)
+                                  ;}
+               more.innerHTML = "MoreDetails"
+               var imagesvg = document.createElement('span')
+               imagesvg.innerHTML = ` <svg
+                           style="margin-top:4px;"
+                           width=16
+                           height=16
+                           viewBox=0 0 16 16
+                           fill=none
+                           xmlns=http://www.w3.org/2000/svg
+                           class="Icon__StyledIcon-sc-1fw5m9z-0 PolicyList__Arrow-avna3w-0 jqvij"
+                         >
+                           <path
+                             fill-rule="evenodd"
+                             clip-rule="evenodd"
+                             fill="currentColor"
+                             d="M5.52843 4.47145C5.26808 4.2111 5.26808 3.78899 5.52843 3.52864C5.78878 3.26829 6.21089 3.26829 6.47124 3.52864L10.4712 7.52864C10.7236 7.78102 10.7325 8.18741 10.4913 8.45052L6.82461 12.4505C6.57581 12.7219 6.1541 12.7403 5.88269 12.4915C5.61127 12.2427 5.59294 11.821 5.84173 11.5496L9.07708 8.02009L5.52843 4.47145Z"
+                           ></path>
+                         </svg>`
+                         more.appendChild(imagesvg)
+                         lowerDiv.appendChild(para)
+                         lowerDiv.appendChild(more)
+                         listItem.appendChild(lowerDiv)
+                ulist.appendChild(listItem)
+                div3.appendChild(ulist);
+                div2.appendChild(div3);
+                div1.appendChild(div2);
+                //footer
+        
+                var footer = document.createElement('div')
+                footer.className = "footer"
+                var brand = document.createElement('p')
+                brand.style = "color:rgb(151, 151, 151);font-size:12px;font-weight:500;"
+                brand.innerHTML = "powered by Influence"
+                footer.appendChild(brand)
+        
+        
+                navBarParent.appendChild(doneNav)
+                p2Parent.appendChild(navBarParent)
+                p2Parent.appendChild(div1)
+                p2Parent.appendChild(footer)
+           var element = document.getElementById("div1");
+                element.appendChild(p2Parent)
+          
+        }
+        
+        function Parent3(activePanel,sourcePane){
+          
+            var p3Parent = document.createElement('div');
+        
+                p3Parent.className =
+                    activePanel === 2 ? `showDetailsPanel mainBoxStyle2 mainBoxStyle2` : 'hidePanel1';
+        
+                var navBarParent = document.createElement('div')
+                navBarParent.className = "navBarParent"
+                var backNav = document.createElement("div");
+                backNav.className = "backNav"
+                backNav.onclick = () =>{
+                  p2Parent.classname="hidePanel1"
+                  panelCall(1,2)
+                  
+                }
+                backNav.innerHTML = `<svg
+                 width="16"
+                 height="16"
+                 viewBox="0 0 16 16"
+                 fill="none"
+                 xmlns="http://www.w3.org/2000/svg"
+               >
+                 <rect
+                   width="1.33333"
+                   height="9.33333"
+                   rx="0.666667"
+                   transform="matrix(0 -1 -1 0 12.6667 8.6665)"
+                   fill="#979797"
+                 ></rect>
+                 <path
+                   d="M8.47132 11.5284C8.73167 11.7888 8.73167 12.2109 8.47132 12.4712C8.21097 12.7316 7.78886 12.7316 7.52851 12.4712L3.52851 8.47124C3.27613 8.21886 3.2673 7.81246 3.50848 7.54935L7.17515 3.54935C7.42394 3.27794 7.84566 3.25961 8.11707 3.5084C8.38848 3.7572 8.40682 4.17891 8.15802 4.45032L4.92268 7.97979L8.47132 11.5284Z"
+                   fill="currentColor"
+                 ></path>
+               </svg> Back`
+                navBarParent.appendChild(backNav)
+                var mainHeading = document.createElement('h1')
+                mainHeading.className = "mainHeading"
+                mainHeading.innerHTML = "Our Features"
+                navBarParent.appendChild(mainHeading)
+                var doneNav = document.createElement('div')
+                doneNav.className = "doneNav"
         var switchLabel  = document.createElement('label');
         switchLabel.className = "switch";
         var checkboxInput = document.createElement('input');
         checkboxInput.className = "checkbox";
         var checkboxSpan = document.createElement('span');
         checkboxSpan.className = "slider round";
-
+        
         switchLabel.appendChild(checkboxInput)
         switchLabel.appendChild(checkboxSpan)
-        switchContainer.appendChild(switchLabel)
-       upperPart.appendChild(headerText)
-       upperPart.appendChild(switchContainer)
-       listItem.appendChild(upperPart)
-       var lowerDiv =document.createElement('div')
-       lowerDiv.style ="padding-left:28px;margin-top:0%;"
-       var para =document.createElement('p')
-       para.className = "subText"
-       para.innerHTML = "This includes key features like page navigation and logging you in. The website cannot function without this"
-       var more = document.createElement('button')
-       more.className="moreDetailsButton"
-       more.onclick = ()=>{panelCall(2,1)}
-       more.innerHTML = "MoreDetails"
-       var imagesvg = document.createElement('span')
-       imagesvg.innerHTML = ` <svg
-                   style="margin-top:4px;"
-                   width=16
-                   height=16
-                   viewBox=0 0 16 16
-                   fill=none
-                   xmlns=http://www.w3.org/2000/svg
-                   class="Icon__StyledIcon-sc-1fw5m9z-0 PolicyList__Arrow-avna3w-0 jqvij"
-                 >
-                   <path
-                     fill-rule="evenodd"
-                     clip-rule="evenodd"
-                     fill="currentColor"
-                     d="M5.52843 4.47145C5.26808 4.2111 5.26808 3.78899 5.52843 3.52864C5.78878 3.26829 6.21089 3.26829 6.47124 3.52864L10.4712 7.52864C10.7236 7.78102 10.7325 8.18741 10.4913 8.45052L6.82461 12.4505C6.57581 12.7219 6.1541 12.7403 5.88269 12.4915C5.61127 12.2427 5.59294 11.821 5.84173 11.5496L9.07708 8.02009L5.52843 4.47145Z"
-                   ></path>
-                 </svg>`
-                 more.appendChild(imagesvg)
-                 lowerDiv.appendChild(para)
-                 lowerDiv.appendChild(more)
-                 listItem.appendChild(lowerDiv)
-        ulist.appendChild(listItem)
-        div3.appendChild(ulist);
-        div2.appendChild(div3);
-        div1.appendChild(div2);
-        //footer
-
-        var footer = document.createElement('div')
-        footer.className = "footer"
-        var brand = document.createElement('p')
-        brand.style = "color:rgb(151, 151, 151);font-size:12px;font-weight:500;"
-        brand.innerHTML = "powered by Influence"
-        footer.appendChild(brand)
-
-
+        doneNav.appendChild(switchLabel)
         navBarParent.appendChild(doneNav)
-        p2Parent.appendChild(navBarParent)
-        p2Parent.appendChild(div1)
-        p2Parent.appendChild(footer)
-
-        //preview3 
-
-        var p3Parent = document.createElement('div');
-
-        p3Parent.className =
-            activePanel === 2 ? `showPanel mainBoxStyle2` : 'hidePanel2';
-
-        var navBarParent = document.createElement('div')
-        navBarParent.className = "navBarParent"
-        var backNav = document.createElement("div");
-        backNav.className = "backNav"
-        backNav.onclick = () =>{panelCall(1,2)}
-        backNav.innerHTML = `<svg
-         width="16"
-         height="16"
-         viewBox="0 0 16 16"
-         fill="none"
-         xmlns="http://www.w3.org/2000/svg"
-       >
-         <rect
-           width="1.33333"
-           height="9.33333"
-           rx="0.666667"
-           transform="matrix(0 -1 -1 0 12.6667 8.6665)"
-           fill="#979797"
-         ></rect>
-         <path
-           d="M8.47132 11.5284C8.73167 11.7888 8.73167 12.2109 8.47132 12.4712C8.21097 12.7316 7.78886 12.7316 7.52851 12.4712L3.52851 8.47124C3.27613 8.21886 3.2673 7.81246 3.50848 7.54935L7.17515 3.54935C7.42394 3.27794 7.84566 3.25961 8.11707 3.5084C8.38848 3.7572 8.40682 4.17891 8.15802 4.45032L4.92268 7.97979L8.47132 11.5284Z"
-           fill="currentColor"
-         ></path>
-       </svg> Back`
-        navBarParent.appendChild(backNav)
-        var mainHeading = document.createElement('h1')
-        mainHeading.className = "mainHeading"
-        mainHeading.innerHTML = "Our Features"
-        navBarParent.appendChild(mainHeading)
-        var doneNav = document.createElement('div')
-        doneNav.className = "doneNav"
-var switchLabel  = document.createElement('label');
-switchLabel.className = "switch";
-var checkboxInput = document.createElement('input');
-checkboxInput.className = "checkbox";
-var checkboxSpan = document.createElement('span');
-checkboxSpan.className = "slider round";
-
-switchLabel.appendChild(checkboxInput)
-switchLabel.appendChild(checkboxSpan)
-doneNav.appendChild(switchLabel)
-navBarParent.appendChild(doneNav)
-        var div1 = document.createElement('div')
-        div1.className = "bodyParent1"
-        var div2 = document.createElement('div')
-        div1.className = "bodyParent2"
-        var div3 = document.createElement('div')
-        div1.className = "bodyParent3"
-        var ulist = document.createElement('div')
-        ulist.style = "list-style-type:none; margin: 0%; padding: 5%;"
-        var listItem = document.createElement('div')
-        listItem.classList = "listItemDetail"
-
-        var upperPart = document.createElement('div')
-        upperPart.className = "upperPart"
-    
-
-       var headerText = document.createElement('p')
-       headerText.className = "headerText"
-       headerText.innerHTML = "Essential"
-
-       upperPart.appendChild(headerText)
-
-       var lowerDiv =document.createElement('div')
-       lowerDiv.style ="margin-top:0%;"
-       var para =document.createElement('p')
-       para.className = "subText"
-       para.innerHTML = "This includes key features like page navigation and logging you in. The website cannot function without this"
-       lowerDiv.appendChild(para)
-       listItem.appendChild(upperPart)
-       listItem.appendChild(lowerDiv)
-        ulist.appendChild(listItem)
-        div3.appendChild(ulist);
-        div2.appendChild(div3);
-        div1.appendChild(div2);
-        //footer
-
-        var footer = document.createElement('div')
-        footer.className = "footer"
-        var brand = document.createElement('p')
-        brand.style = "color:rgb(151, 151, 151);font-size:12px;font-weight:500;"
-        brand.innerHTML = "powered by Influence"
-        footer.appendChild(brand)
-        navBarParent.appendChild(doneNav)
-        p3Parent.appendChild(navBarParent)
-        p3Parent.appendChild(div1)
-        p3Parent.appendChild(footer)
-        //var element = document.getElementById("div1");
-        //element.appendChild(p2Parent)
-        // activePanel === 0 ?
-        // element.appendChild(p1Parent)
-        // :
-        // activePanel === 1 ?
-        // element.appendChild(p2Parent)
-        // :
-        // activePanel === 2 ?
-        // element.appendChild(p3Parent)
-        // :
-        // element.appendChild(p1Parent)
-
-        function panelCall(to, source){
-          activePanel = to
-         changePanelValue(to,source)
-         console.log(activePanel)
-        var element = document.getElementById("div1");
-        activePanel === 0 ?
-        element.appendChild(p1Parent)
-        :
-        activePanel === 1 ?
-        element.appendChild(p2Parent)
-        :
-        activePanel === 2 ?
-        element.appendChild(p3Parent)
-        :
-        element.appendChild(p1Parent)
-    }
-    
-    panelCall(0,0)
+                var div1 = document.createElement('div')
+                div1.className = "bodyParent1"
+                var div2 = document.createElement('div')
+                div1.className = "bodyParent2"
+                var div3 = document.createElement('div')
+                div1.className = "bodyParent3"
+                var ulist = document.createElement('div')
+                ulist.style = "list-style-type:none; margin: 0%; padding: 5%;"
+                var listItem = document.createElement('div')
+                listItem.classList = "listItemDetail"
+        
+                var upperPart = document.createElement('div')
+                upperPart.className = "upperPart"
+            
+        
+               var headerText = document.createElement('p')
+               headerText.className = "headerText"
+               headerText.innerHTML = "Essential"
+        
+               upperPart.appendChild(headerText)
+        
+               var lowerDiv =document.createElement('div')
+               lowerDiv.style ="margin-top:0%;"
+               var para =document.createElement('p')
+               para.className = "subText"
+               para.innerHTML = "This includes key features like page navigation and logging you in. The website cannot function without this"
+               lowerDiv.appendChild(para)
+               listItem.appendChild(upperPart)
+               listItem.appendChild(lowerDiv)
+                ulist.appendChild(listItem)
+                div3.appendChild(ulist);
+                div2.appendChild(div3);
+                div1.appendChild(div2);
+                //footer
+        
+                var footer = document.createElement('div')
+                footer.className = "footer"
+                var brand = document.createElement('p')
+                brand.style = "color:rgb(151, 151, 151);font-size:12px;font-weight:500;"
+                brand.innerHTML = "powered by Influence"
+                footer.appendChild(brand)
+                navBarParent.appendChild(doneNav)
+                p3Parent.appendChild(navBarParent)
+                p3Parent.appendChild(div1)
+                p3Parent.appendChild(footer)
+          
+                var element = document.getElementById("div1");
+                element.appendChild(p3Parent)
+          
+        }
+        
+           function panelCall(to, source){
+            
+                  activePanel = to
+                  sourcePanel = source
+               
+                activePanel === 0 ?
+              Parent1(activePanel,sourcePanel)
+                :
+                activePanel === 1 ?
+               Parent2(activePanel,sourcePanel)
+                :
+                activePanel === 2 ?
+                Parent3(activePanel,sourcePanel)
+                :
+                Parent1(activePanel,sourcePanel)
+            }
+        
+        panelCall(0,0)
            //till here
     mainContainer.appendChild(element);  
 

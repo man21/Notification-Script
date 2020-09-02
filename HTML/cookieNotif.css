@@ -1,9 +1,10 @@
+
 .hidePanel1 {
     transform: translateY(700px);
     transform-origin: top;
     transition: transform 0.3s;
     overflow: hidden;
-    width: 350px
+    width: 350px;
 }
 
 .showPanel {
@@ -12,6 +13,17 @@
     transition: transform 0.3s;
     overflow: hidden;
 }
+
+.showDetailsPanel{
+transform: translateY(-50%);
+-webkit-animation: slide 0.5s forwards;
+-webkit-animation-delay: 2s;
+animation: slide 0.5s forwards;
+animation-delay: 2s;
+transition: transform 0.3s;
+overflow: hidden;
+}
+
 
 .mainBoxStyle {
     display: flex;

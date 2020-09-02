@@ -4641,7 +4641,7 @@ function CookieFn() {
                 var backNav = document.createElement("div");
                 backNav.className = "backNav"
                 backNav.onclick = () =>{
-                  p2Parent.classname="hidePanel1"
+                  p3Parent.classname="hidePanel1"
                   panelCall(1,2)
                   
                 }

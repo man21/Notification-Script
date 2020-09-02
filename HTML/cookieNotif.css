@@ -1,6 +1,6 @@
 
 .hidePanel1 {
-    transform: translateY(700px);
+    transform: translateY(0px);
     transform-origin: top;
     transition: transform 0.3s;
     overflow: hidden;
@@ -15,7 +15,7 @@
 }
 
 .showDetailsPanel{
-transform: translateY(-50%);
+transform: translateY(0px);
 -webkit-animation: slide 0.5s forwards;
 -webkit-animation-delay: 2s;
 animation: slide 0.5s forwards;

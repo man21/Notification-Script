@@ -4586,7 +4586,6 @@ function CookieFn() {
                more.innerHTML = "MoreDetails"
                var imagesvg = document.createElement('span')
                imagesvg.innerHTML = ` <svg
-                           style="margin-top:4px;"
                            width=16
                            height=16
                            viewBox=0 0 16 16

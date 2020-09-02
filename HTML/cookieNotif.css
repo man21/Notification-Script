@@ -75,6 +75,7 @@ overflow: hidden;
     justify-content: center;
     font-weight: bold;
     cursor: pointer;
+    font-size: 13.333px;
     box-sizing: border-box;
     user-select: none;
     padding: 0px 12px;

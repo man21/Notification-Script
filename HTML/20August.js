@@ -4371,10 +4371,10 @@ function CookieFn() {
         innerContainer.setAttribute("id", "FPqR3tRBqJeA3tRB7MM9_0");
         var innerDiv = document.createElement('div');
         var mainContainer = document.createElement('div');
-        innerDiv.style="bottom: 30px; left: 50px "
+        innerDiv.style="bottom: 30px; left: 50px;"
 
-        var lockImg = document.createElement('img')
-        lockImg.src  = 'lock.svg' 
+        var lockImg = document.createElement('div')
+        lockImg.src  = './lock.svg' 
         lockImg.style="bottom:0;left:0;"
         innerContainer.appendChild(lockImg)
         function Parent1(activePanel,sourcePanel){

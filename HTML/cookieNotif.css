@@ -1,6 +1,6 @@
 
 .hidePanel1 {
-    transform: translateY(0px);
+    transform: translateY(1000px);
     transform-origin: top;
     transition: transform 0.3s;
     overflow: hidden;

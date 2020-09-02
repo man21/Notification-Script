@@ -4519,9 +4519,9 @@ function CookieFn() {
                 var div1 = document.createElement('div')
                 div1.className = "bodyParent1"
                 var div2 = document.createElement('div')
-                div1.className = "bodyParent1"
+                div1.className = "bodyParent2"
                 var div3 = document.createElement('div')
-                div1.className = "bodyParent1"
+                div1.className = "bodyParent3"
                 var ulist = document.createElement('ul')
                 ulist.style = "list-style-type:none; margin: 0%; padding: 5%;"
                 var listItem = document.createElement('li')
@@ -4634,7 +4634,7 @@ function CookieFn() {
             var p3Parent = document.createElement('div');
         
                 p3Parent.className =
-                    activePanel === 2 ? `showDetailsPanel mainBoxStyle2 mainBoxStyle2` : 'hidePanel1';
+                    activePanel === 2 ? `showDetailsPanel mainBoxStyle2` : 'hidePanel1';
         
                 var navBarParent = document.createElement('div')
                 navBarParent.className = "navBarParent"

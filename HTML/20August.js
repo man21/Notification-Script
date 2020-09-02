@@ -2141,6 +2141,87 @@ var Notifications = function (config) {
     });
 };
 
+///
+var data =
+{
+    "campaign": {
+        "onBoarding": false,
+        "_id": "5f4dec0e74814a416e9582d2",
+        "campaignType": "default",
+        "campaignName": "test",
+        "websiteUrl": "test.com",
+        "profile": "5c6d4b8b98948500132d07e9",
+        "isActive": true,
+        "trackingId": "INF-3gbfcjjsd6vhvo",
+        "createdAt": "2020-09-01T06:37:02.778Z",
+        "updatedAt": "2020-09-01T06:37:02.778Z",
+        "__v": 0,
+        "id": "5f4dec0e74814a416e9582d2"
+    },
+    "configuration": {
+        "_id": "5f4dec0f74814a416e9582d3",
+        "activity": true,
+        "panelStyle": {
+            "noButtonStyle": "outline",
+            "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 1
+            }
+        },
+        "langName": {
+            "language": "en",
+            "name": "English"
+        },
+        "scrollToConsent": true,
+        "position": "left",
+        "customPromptText": "customPromptText",
+        "customAcceptText": "customAcceptText",
+        "brandingText": "brandingText",
+        "brandingStyle": "brandingStyle",
+        "poweredBy": "Influence",
+        "poweredByLink": "https://useinfluence.co",
+        "cookiecampaign": "5f4dec0e74814a416e9582d2",
+        "trackingId": "INF-3gbfcjjsd6vhvo",
+        "createdAt": "2020-09-01T06:37:03.149Z",
+        "updatedAt": "2020-09-01T06:37:03.149Z",
+        "__v": 0,
+        "id": "5f4dec0f74814a416e9582d3"
+    },
+    "microPolicies": [
+      {
+         "useCookie":true,
+         "essentialPolicy":true,
+         "cookieWidgets":false,
+         "_id":"5f4e13b68acd492ae77f74a3",
+         "name":"test",
+         "description":"test Policy Description",
+         "websiteUrl":"test.com",
+         "slug":"test",
+         "trackingId":"INF-3gbfcjjsd6vhvo",
+         "cookiecampaign":"5f4dec0e74814a416e9582d2",
+         "profile":"5f4dec0e74814a416e9582d2",
+         "createdAt":"2020-09-01T09:26:14.749Z",
+         "updatedAt":"2020-09-01T09:26:14.749Z",
+         "__v":0,
+         "id":"5f4e13b68acd492ae77f74a3",
+         "provider":[
+          {
+              "_id":"5f48ef30d0aae6670d49648b",
+              "name":"https://test2109.herokuapp.com",
+              "provider":"cdn.dashly.com",
+              "type":"esential",
+              "trackingId":"INF-3gbfcjjsd6vhvo",
+              "createdAt":"2020-08-28T11:49:04.611Z",
+              "updatedAt":"2020-08-28T11:49:04.611Z",
+              "id":"5f48ef30d0aae6670d49648b"
+          }
+      ]
+   }
+ ]
+} 
+///
 
 var CookieFunc = function (config) {
     console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@22", config)
@@ -4251,6 +4332,16 @@ function CookieFn() {
     };
 
    function notificationDisplay(type, config, containerStyle, iconStyle, alignment) {
+    //css
+
+    var newDesignCSS = document.createElement("link");
+    //newDesignCSS.href = 'https://test2109.herokuapp.com/finalCSS.css'
+    // newDesignCSS.href = 'https://test2109.herokuapp.com/newDesignCSS.css';
+    newDesignCSS.href = 'https://test2109.herokuapp.com/cookieNotif.css';
+    newDesignCSS.type = "text/css";
+    newDesignCSS.rel = "stylesheet";
+    newDesignCSS.id = "stylesheetID";
+    document.getElementsByTagName("head")[0].appendChild(newDesignCSS);
 
 
         var container = document.createElement('div');
@@ -4288,137 +4379,379 @@ function CookieFn() {
 
 
 
-
-        var announcementContainer= document.createElement('div');
-        // announcementContainer.style ="backgroundColor: red"
-
-        //  announcementContainer.style = type == 'announcement' ? "display:block" : "display:none";
-
-        var announcementNotiifcationContainer = document.createElement('div')
-        announcementNotiifcationContainer.className = 'Zn5De9iJFM';
-        announcementNotiifcationContainer.style =containerStyle
-
-        var announcementNotiifcationUpperPartContainer = document.createElement('div')
-        announcementNotiifcationUpperPartContainer.className = 'iIdFziYOKB'
-
-        // var announcementNotificationImageContainer = document.createElement('div')
-        // announcementNotificationImageContainer.className = 'TsebdJUQvt'
-
-        // var announcementNotificationImage = document.createElement('img') //span
-        // announcementNotificationImage.className = "A4S38Y254X" //'image'
-
-        // announcementNotificationImage.setAttribute('src', 'https://s3.wasabisys.com/influencelogo/logo/announcement.svg')
-
-        // announcementNotificationImageContainer.appendChild(announcementNotificationImage)
-
-
-        // announcementNotiifcationUpperPartContainer.appendChild(announcementNotificationImageContainer)
-
-        var announcementNotificationCloseContainer = document.createElement('div')
-        announcementNotificationCloseContainer.className = 'YDR83P698y'
-        // announcementNotificationCloseContainer.style = config.rule.closeNotification ? 'display:block' : 'display:none';
-        // var announcementNotificationCloseIcon = document.createElement('a')
-        // announcementNotificationCloseIcon.id = 'notif_close'
-        // announcementNotificationCloseIcon.className = 'qcXxmyzjdA'        // announcementNotificationCloseContainer.style = config.rule.closeNotification ? 'display:block' : 'display:none';
+        //to be changed
+        var activePanel;
+        var sourcePanel;
        
-        // announcementNotificationCloseIcon.innerHTML = "Hide"
-        // announcementNotificationCloseContainer.appendChild(announcementNotificationCloseIcon)
-        announcementNotiifcationUpperPartContainer.appendChild(announcementNotificationCloseContainer)
-
-        var announcementNotificationTextContainer = document.createElement('div')
-        announcementNotificationTextContainer.className = 'bm6LvHbM56'
-
-        var announcementNotificationUserNameContainer = document.createElement('div')
-        announcementNotificationUserNameContainer.className = 'JqUTr3L3QV'
-
-
-        var announcementNotificationNameText = document.createElement('p')
-        announcementNotificationNameText.className = 'J6LQ6GLNbv xPojAbs5Ml'
-        // announcementNotificationNameText.style= "margin-left: 45px; "
-        announcementNotificationNameText.innerHTML = 'Can we Store Cookies?'
-        announcementNotificationUserNameContainer.appendChild(announcementNotificationNameText)      
-        announcementNotificationTextContainer.appendChild(announcementNotificationUserNameContainer)
-
-        var announcementNotificationUpperSecondaryText = document.createElement('p')
-        announcementNotificationUpperSecondaryText.className = 'J6LQ6GLNbv OQD3VMK0CW'
-        announcementNotificationUpperSecondaryText.innerHTML = "Cookie Description ..............................."  
-
-        announcementNotificationTextContainer.appendChild(announcementNotificationUpperSecondaryText)
-        announcementNotiifcationUpperPartContainer.appendChild(announcementNotificationTextContainer)
-        announcementNotiifcationContainer.appendChild(announcementNotiifcationUpperPartContainer)
-
-
-
-        var t =  document.createElement('input')
-
-        t.style= " background-color: #4CAF50; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 40px; margin: 4px 2px; cursor: pointer;"
-
-        var text = document.createTextNode("YES")
-
         
+
+        function changePanelValue(to, source){
+            activePanel  = to
+            sourcePanel = source
+        }
+       
+
+        //Preview1
+        var p1Parent = document.createElement('div');
+
+        p1Parent.className =
+            activePanel === 0 ? `showPanel mainBoxStyle` : 'hidePanel1';
+
+        var p1Child = document.createElement('div');
+        p1Child.className = "childContainer";
+
+        var uLine = document.createElement('p');
+        uLine.className = "upperLine";
+
+        if (activePanel === 0 && sourcePanel === 1) {
+            var uLinenode = document.createTextNode("Save Preferences");
+        }
+        else {
+            var uLinenode = document.createTextNode("Can we store Cookie?");
+        }
+        uLine.appendChild(uLinenode);
+        p1Child.appendChild(uLine);
+        /*Inf*/
+        var aLine = document.createElement('a');
+        aLine.className = "upperLine";
+        var aLinenode = document.createTextNode("Inf");
+        aLine.appendChild(aLinenode);
+        p1Child.appendChild(aLine);
+        p1Parent.appendChild(p1Child);
+
+        var mLine = document.createElement('p');
+        mLine.className = "middleLine";
+
+        if (activePanel === 0 && sourcePanel === 1) {
+            var mLinenode = document.createTextNode("You've opted out of everything.");
+
+        }
+        else {
+            var mLinenode = document.createTextNode("These will be used to power trial and Marketing.");
+        }
+
+        mLine.appendChild(mLinenode);
+        p1Parent.appendChild(mLine);
+        //footer
+        var p1Footer = document.createElement('div');
+        p1Footer.style = "display:flex;justify-content:space-between;margin-top:36px;"
+
+        var customizeB = document.createElement('button');
+        customizeB.className = "generalBtnStyle leftBtn";
+        customizeB.onclick = ()=>{
+            panelCall(1,0)
+        }
+        
+        if (activePanel === 0 && sourcePanel === 1) {
+            customizeB.innerHTML = "No, Customize";
+
+        }
+        else {
+            customizeB.innerHTML = "Customize";
+
+        }
+
+
+        p1Footer.appendChild(customizeB)
+        var rightdiv = document.createElement('div');
+        rightdiv.style = "display:flex";
+
+        var NoB = document.createElement('button');
+        NoB.className = "generalBtnStyle filledBtn";
+        NoB.innerHTML = "No";
+
+        var YesB = document.createElement('button');
+        YesB.className = "generalBtnStyle filledBtn";
+        YesB.innerHTML = "Yes";
+
+        var ThatsOkayB = document.createElement('button');
+        ThatsOkayB.className = "generalBtnStyle filledBtn";
+        ThatsOkayB.innerHTML = "That's Okay";
+        if (activePanel === 0 && sourcePanel === 1) {
+            rightdiv.appendChild(ThatsOkayB)
+        }
+        else {
+            rightdiv.appendChild(YesB)
+            rightdiv.appendChild(NoB)
+        }
+        p1Footer.appendChild(rightdiv)
+        p1Parent.appendChild(p1Footer);
+        //preview2
+
+        console.log("p2parent",activePanel)
+        var p2Parent = document.createElement('div');
+
+        p2Parent.className =
+            activePanel === 1 ? `showPanel mainBoxStyle2` : 'hidePanel2';
+
+        var navBarParent = document.createElement('div')
+        navBarParent.className = "navBarParent"
+        var backNav = document.createElement("div");
+        backNav.className = "backNav"
+        backNav.innerHTML = `<svg
+         width="16"
+         height="16"
+         viewBox="0 0 16 16"
+         fill="none"
+         xmlns="http://www.w3.org/2000/svg"
+       >
+         <rect
+           width="1.33333"
+           height="9.33333"
+           rx="0.666667"
+           transform="matrix(0 -1 -1 0 12.6667 8.6665)"
+           fill="#979797"
+         ></rect>
+         <path
+           d="M8.47132 11.5284C8.73167 11.7888 8.73167 12.2109 8.47132 12.4712C8.21097 12.7316 7.78886 12.7316 7.52851 12.4712L3.52851 8.47124C3.27613 8.21886 3.2673 7.81246 3.50848 7.54935L7.17515 3.54935C7.42394 3.27794 7.84566 3.25961 8.11707 3.5084C8.38848 3.7572 8.40682 4.17891 8.15802 4.45032L4.92268 7.97979L8.47132 11.5284Z"
+           fill="currentColor"
+         ></path>
+       </svg> Back`
+        navBarParent.appendChild(backNav)
+        backNav.addEventListener("click",()=>{
+            changePanelValue(0,1)
+            panelCall(0,1)
+        })
+        var mainHeading = document.createElement('h1')
+        mainHeading.className = "mainHeading"
+        mainHeading.innerHTML = "Our Features"
+        navBarParent.appendChild(mainHeading)
+        var doneNav = document.createElement('div')
+        doneNav.className = "doneNav"
+        doneNav.innerHTML = "Done"
+
+        var div1 = document.createElement('div')
+        div1.className = "bodyParent1"
+        var div2 = document.createElement('div')
+        div1.className = "bodyParent1"
+        var div3 = document.createElement('div')
+        div1.className = "bodyParent1"
+        var ulist = document.createElement('ul')
+        ulist.style = "list-style-type:none; margin: 0%; padding: 5%;"
+        var listItem = document.createElement('li')
+        listItem.classList = "listItem"
+        var upperPart = document.createElement('div');
+        upperPart.className = "upperPart";
+        upperPart.innerHTML = `<svg
+                 style="
+                   color: rgb(88, 70, 109);
+                   transition: color 250ms ease 0s;
+                   margin-right: 12px;
+                   margin-top:0px;
+                   width: 16px;
+                   height: 16px;
+                   flex: 0 0 auto;
+                 "
+                 width=22
+                 height=22
+                 viewBox=0 0 22 22
+                 fill=none
+                 xmlns="http://www.w3.org/2000/svg"
+                 class="Icon__StyledIcon-sc-1fw5m9z-0 fkqTFd"
+               >
+                 <path
+                   fill-rule="evenodd"
+                   clip-rule="evenodd"
+                   fill="currentColor"
+                   d="M9.67336 15.9639C9.67336 16.6963 10.6154 16.9944 11.0368 16.3954L15.8773 9.51496C16.2269 9.01804 15.8715 8.33341 15.2639 8.33341H12.4322C11.8799 8.33341 11.4322 7.8857 11.4322 7.33341V4.03628C11.4322 3.3039 10.4901 3.00574 10.0687 3.60474L5.22821 10.4852C4.87862 10.9821 5.23404 11.6667 5.84162 11.6667H8.67336C9.22564 11.6667 9.67336 12.1145 9.67336 12.6667V15.9639Z"
+                 ></path>
+               </svg>`;
+
+        var headerText = document.createElement('p');
+        headerText.className = "headerText"
+        headerText.innerHTML = "Essential"
+
+        var switchContainer = document.createElement('div');
+        switchContainer.style="margin-left: 140%;";
+        var switchLabel  = document.createElement('label');
+        switchLabel.className = "switch";
+        var checkboxInput = document.createElement('input');
+        checkboxInput.className = "checkbox";
+        var checkboxSpan = document.createElement('span');
+        checkboxSpan.className = "slider round";
+
+        switchLabel.appendChild(checkboxInput)
+        switchLabel.appendChild(checkboxSpan)
+        switchContainer.appendChild(switchLabel)
+       upperPart.appendChild(headerText)
+       upperPart.appendChild(switchContainer)
+       listItem.appendChild(upperPart)
+       var lowerDiv =document.createElement('div')
+       lowerDiv.style ="padding-left:28px;margin-top:0%;"
+       var para =document.createElement('p')
+       para.className = "subText"
+       para.innerHTML = "This includes key features like page navigation and logging you in. The website cannot function without this"
+       var more = document.createElement('button')
+       more.className="moreDetailsButton"
+       more.onclick = ()=>{panelCall(2,1)}
+       more.innerHTML = "MoreDetails"
+       var imagesvg = document.createElement('span')
+       imagesvg.innerHTML = ` <svg
+                   style="margin-top:4px;"
+                   width=16
+                   height=16
+                   viewBox=0 0 16 16
+                   fill=none
+                   xmlns=http://www.w3.org/2000/svg
+                   class="Icon__StyledIcon-sc-1fw5m9z-0 PolicyList__Arrow-avna3w-0 jqvij"
+                 >
+                   <path
+                     fill-rule="evenodd"
+                     clip-rule="evenodd"
+                     fill="currentColor"
+                     d="M5.52843 4.47145C5.26808 4.2111 5.26808 3.78899 5.52843 3.52864C5.78878 3.26829 6.21089 3.26829 6.47124 3.52864L10.4712 7.52864C10.7236 7.78102 10.7325 8.18741 10.4913 8.45052L6.82461 12.4505C6.57581 12.7219 6.1541 12.7403 5.88269 12.4915C5.61127 12.2427 5.59294 11.821 5.84173 11.5496L9.07708 8.02009L5.52843 4.47145Z"
+                   ></path>
+                 </svg>`
+                 more.appendChild(imagesvg)
+                 lowerDiv.appendChild(para)
+                 lowerDiv.appendChild(more)
+                 listItem.appendChild(lowerDiv)
+        ulist.appendChild(listItem)
+        div3.appendChild(ulist);
+        div2.appendChild(div3);
+        div1.appendChild(div2);
+        //footer
+
+        var footer = document.createElement('div')
+        footer.className = "footer"
+        var brand = document.createElement('p')
+        brand.style = "color:rgb(151, 151, 151);font-size:12px;font-weight:500;"
+        brand.innerHTML = "powered by Influence"
+        footer.appendChild(brand)
+
+
+        navBarParent.appendChild(doneNav)
+        p2Parent.appendChild(navBarParent)
+        p2Parent.appendChild(div1)
+        p2Parent.appendChild(footer)
+
+        //preview3 
+
+        var p3Parent = document.createElement('div');
+
+        p3Parent.className =
+            activePanel === 2 ? `showPanel mainBoxStyle2` : 'hidePanel2';
+
+        var navBarParent = document.createElement('div')
+        navBarParent.className = "navBarParent"
+        var backNav = document.createElement("div");
+        backNav.className = "backNav"
+        backNav.onclick = () =>{panelCall(1,2)}
+        backNav.innerHTML = `<svg
+         width="16"
+         height="16"
+         viewBox="0 0 16 16"
+         fill="none"
+         xmlns="http://www.w3.org/2000/svg"
+       >
+         <rect
+           width="1.33333"
+           height="9.33333"
+           rx="0.666667"
+           transform="matrix(0 -1 -1 0 12.6667 8.6665)"
+           fill="#979797"
+         ></rect>
+         <path
+           d="M8.47132 11.5284C8.73167 11.7888 8.73167 12.2109 8.47132 12.4712C8.21097 12.7316 7.78886 12.7316 7.52851 12.4712L3.52851 8.47124C3.27613 8.21886 3.2673 7.81246 3.50848 7.54935L7.17515 3.54935C7.42394 3.27794 7.84566 3.25961 8.11707 3.5084C8.38848 3.7572 8.40682 4.17891 8.15802 4.45032L4.92268 7.97979L8.47132 11.5284Z"
+           fill="currentColor"
+         ></path>
+       </svg> Back`
+        navBarParent.appendChild(backNav)
+        var mainHeading = document.createElement('h1')
+        mainHeading.className = "mainHeading"
+        mainHeading.innerHTML = "Our Features"
+        navBarParent.appendChild(mainHeading)
+        var doneNav = document.createElement('div')
+        doneNav.className = "doneNav"
+var switchLabel  = document.createElement('label');
+switchLabel.className = "switch";
+var checkboxInput = document.createElement('input');
+checkboxInput.className = "checkbox";
+var checkboxSpan = document.createElement('span');
+checkboxSpan.className = "slider round";
+
+switchLabel.appendChild(checkboxInput)
+switchLabel.appendChild(checkboxSpan)
+doneNav.appendChild(switchLabel)
+navBarParent.appendChild(doneNav)
+        var div1 = document.createElement('div')
+        div1.className = "bodyParent1"
+        var div2 = document.createElement('div')
+        div1.className = "bodyParent2"
+        var div3 = document.createElement('div')
+        div1.className = "bodyParent3"
+        var ulist = document.createElement('div')
+        ulist.style = "list-style-type:none; margin: 0%; padding: 5%;"
+        var listItem = document.createElement('div')
+        listItem.classList = "listItemDetail"
+
+        var upperPart = document.createElement('div')
+        upperPart.className = "upperPart"
     
 
-        // var announcementNotificationLowerTextContainer = document.createElement('div')
-        // announcementNotificationLowerTextContainer.className = 'lWRoKQ6NO1'
+       var headerText = document.createElement('p')
+       headerText.className = "headerText"
+       headerText.innerHTML = "Essential"
 
+       upperPart.appendChild(headerText)
 
-        // var announcementNotificationLowerPTag = document.createElement('p')
-        // announcementNotificationLowerPTag.className = 'J6LQ6GLNbv'
+       var lowerDiv =document.createElement('div')
+       lowerDiv.style ="margin-top:0%;"
+       var para =document.createElement('p')
+       para.className = "subText"
+       para.innerHTML = "This includes key features like page navigation and logging you in. The website cannot function without this"
+       lowerDiv.appendChild(para)
+       listItem.appendChild(upperPart)
+       listItem.appendChild(lowerDiv)
+        ulist.appendChild(listItem)
+        div3.appendChild(ulist);
+        div2.appendChild(div3);
+        div1.appendChild(div2);
+        //footer
 
-        // var announcementNotificationFooterPI =document.createElement('em')
-        // announcementNotificationFooterPI.className = 'cYgeJnq9sT'
-        // var announcementNotificationFooterverified = document.createElement('em')
-        // announcementNotificationFooterverified.className = 'h1ELsuZ4Ha'
+        var footer = document.createElement('div')
+        footer.className = "footer"
+        var brand = document.createElement('p')
+        brand.style = "color:rgb(151, 151, 151);font-size:12px;font-weight:500;"
+        brand.innerHTML = "powered by Influence"
+        footer.appendChild(brand)
+        navBarParent.appendChild(doneNav)
+        p3Parent.appendChild(navBarParent)
+        p3Parent.appendChild(div1)
+        p3Parent.appendChild(footer)
+        //var element = document.getElementById("div1");
+        //element.appendChild(p2Parent)
+        // activePanel === 0 ?
+        // element.appendChild(p1Parent)
+        // :
+        // activePanel === 1 ?
+        // element.appendChild(p2Parent)
+        // :
+        // activePanel === 2 ?
+        // element.appendChild(p3Parent)
+        // :
+        // element.appendChild(p1Parent)
 
-        // var announcementNotificationTick = document.createElement('span')
-        // announcementNotificationTick.innerHTML = `<svg width="9" height="9" viewBox="0 0 524 524" xmlns="http://www.w3.org/2000/svg">
-        // <defs>
-        // <style>.cls-1 {
-        //         fill: #5d93fe;
-        //     }
-        //     .cls-2 {
-        //         fill: #5d93fe;
-        //         filter: url(#a);
-        //     }
-        //     .cls-3 {
-        //         fill: #fff;
-        //         fill-rule: evenodd;
-        //     }</style>
-        // <filter id="a" x="51" y="51" width="423" height="423" filterUnits="userSpaceOnUse">
-        // <feOffset in="SourceAlpha" result="offset"/>
-        // <feGaussianBlur result="blur" stdDeviation="2.236"/>
-        // <feFlood flood-opacity=".06" result="flood"/>
-        // <feComposite in2="blur" operator="in" result="composite"/>
-        // <feBlend in="SourceGraphic" result="blend"/>
-        // </filter>
-        // </defs>
-        // <circle class="cls-1" cx="262" cy="262" r="262"/>
-        // <circle class="cls-2" cx="262" cy="262" r="207"/>
-        // <path class="cls-3" transform="translate(-640 -238)" d="m833.89 478.95 81.132 65.065a9 9 0 0 1 1.391 12.652l-25.651 31.985a9 9 0 0 1-12.652 1.39l-81.132-65.065a9 9 0 0 1-1.391-12.652l25.651-31.985a9 9 0 0 1 12.652-1.39z"/>
-        // <path class="cls-3" transform="translate(-640 -238)" d="m846.25 552.7 127.39-144.5a9.721 9.721 0 0 1 13.35-1.047l29.679 24.286a8.9 8.9 0 0 1 1.08 12.862l-127.39 144.5a9.721 9.721 0 0 1-13.35 1.047l-29.675-24.286a8.9 8.9 0 0 1-1.087-12.861z"/>
-        // </svg>`
-        // announcementNotificationFooterverified.appendChild(announcementNotificationTick)
-
-
-        // announcementNotificationFooterPI.appendChild(announcementNotificationFooterverified)
-
-        // var announcementNotificationFooterPoweredBy = document.createElement('a')
-        // announcementNotificationFooterPoweredBy.setAttribute('href', "configuration.poweredByLink");
-        // announcementNotificationFooterPoweredBy.setAttribute('rel', 'nofollow');
-        // announcementNotificationFooterPoweredBy.setAttribute('target', '_blank');
-
-        // announcementNotificationFooterPoweredBy.className = 'RmtBlrOYya'
-        // announcementNotificationFooterPoweredBy.innerHTML = 'Influence'  //"Influence"
-
-        // announcementNotificationFooterPI.appendChild(announcementNotificationFooterPoweredBy)
-        //announcementNotificationLowerPTag.appendChild(announcementNotificationFooterPI)
-       // announcementNotificationLowerTextContainer.appendChild(announcementNotificationLowerPTag)
-
-       // announcementNotiifcationContainer.appendChild(announcementNotificationLowerTextContainer)
-
-        announcementContainer.appendChild(announcementNotiifcationContainer)
+        function panelCall(to, source){
+          activePanel = to
+         changePanelValue(to,source)
+         console.log(activePanel)
+        var element = document.getElementById("div1");
+        activePanel === 0 ?
+        element.appendChild(p1Parent)
+        :
+        activePanel === 1 ?
+        element.appendChild(p2Parent)
+        :
+        activePanel === 2 ?
+        element.appendChild(p3Parent)
+        :
+        element.appendChild(p1Parent)
+    }
     
-    mainContainer.appendChild(announcementContainer);  
+    panelCall(0,0)
+           //till here
+    mainContainer.appendChild(element);  
 
         innerDiv.appendChild(mainContainer);
         innerContainer.appendChild(innerDiv);

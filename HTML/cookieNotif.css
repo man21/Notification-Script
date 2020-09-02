@@ -7,6 +7,14 @@
     width: 350px;
 }
 
+.hidePanel2 {
+    transform: translateY(1000px);
+    transform-origin: top;
+    transition: transform 0.3s;
+    overflow: hidden;
+    width: 350px;
+}
+
 .showPanel {
     transform: translateY(0px);
     transform-origin: top;

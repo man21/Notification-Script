@@ -2365,6 +2365,14 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
     newDesignCSS.id = "stylesheetID";
     document.getElementsByTagName("head")[0].appendChild(newDesignCSS);
 
+    var newDesignCSS = document.createElement("link");
+    newDesignCSS.href = 'https://test2109.herokuapp.com/cookieNotif.css'
+    // newDesignCSS.href = 'https://test2109.herokuapp.com/newDesignCSS.css';
+    newDesignCSS.type = "text/css";
+    newDesignCSS.rel = "stylesheet";
+    newDesignCSS.id = "stylesheetID";
+    document.getElementsByTagName("head")[0].appendChild(newDesignCSS);
+
     // var animationLink = document.createElement("link");
     // animationLink.href = 'https://storage.googleapis.com/influence-197607.appspot.com/animate1.css';
     // animationLink.type = "text/css";
@@ -4332,17 +4340,6 @@ function CookieFn() {
     };
 
    function notificationDisplay(type, config, containerStyle, iconStyle, alignment) {
-    //css
-
-    var newDesignCSS = document.createElement("link");
-    //newDesignCSS.href = 'https://test2109.herokuapp.com/finalCSS.css'
-    // newDesignCSS.href = 'https://test2109.herokuapp.com/newDesignCSS.css';
-    newDesignCSS.href = 'https://test2109.herokuapp.com/cookieNotif.css';
-    newDesignCSS.type = "text/css";
-    newDesignCSS.rel = "stylesheet";
-    newDesignCSS.id = "stylesheetID";
-    document.getElementsByTagName("head")[0].appendChild(newDesignCSS);
-
 
         var container = document.createElement('div');
         container.setAttribute("id", "FPqR2DbIqJeA2DbI7MM9_0");
@@ -4379,7 +4376,6 @@ function CookieFn() {
 
 
 
-        //to be changed
         function Parent1(activePanel,sourcePanel){
     
             var p1Parent = document.createElement('div');

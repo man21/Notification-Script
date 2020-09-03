@@ -4617,6 +4617,35 @@ function CookieFn() {
                 var brand = document.createElement('p')
                 brand.style = "color:rgb(151, 151, 151);font-size:12px;font-weight:500;"
                 brand.innerHTML = "verified by Influence"
+
+                var blueTick = document.createElement('span')
+                blueTick.innerHTML=`<svg width="9" height="9" viewBox="0 0 524 524" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                <style>.cls-1 {
+                        fill: #5d93fe;
+                    }
+                    .cls-2 {
+                        fill: #5d93fe;
+                        filter: url(#a);
+                    }
+                    .cls-3 {
+                        fill: #fff;
+                        fill-rule: evenodd;
+                    }</style>
+                <filter id="a" x="51" y="51" width="423" height="423" filterUnits="userSpaceOnUse">
+                <feOffset in="SourceAlpha" result="offset"/>
+                <feGaussianBlur result="blur" stdDeviation="2.236"/>
+                <feFlood flood-opacity=".06" result="flood"/>
+                <feComposite in2="blur" operator="in" result="composite"/>
+                <feBlend in="SourceGraphic" result="blend"/>
+                </filter>
+                </defs>
+                <circle class="cls-1" cx="262" cy="262" r="262"/>
+                <circle class="cls-2" cx="262" cy="262" r="207"/>
+                <path class="cls-3" transform="translate(-640 -238)" d="m833.89 478.95 81.132 65.065a9 9 0 0 1 1.391 12.652l-25.651 31.985a9 9 0 0 1-12.652 1.39l-81.132-65.065a9 9 0 0 1-1.391-12.652l25.651-31.985a9 9 0 0 1 12.652-1.39z"/>
+                <path class="cls-3" transform="translate(-640 -238)" d="m846.25 552.7 127.39-144.5a9.721 9.721 0 0 1 13.35-1.047l29.679 24.286a8.9 8.9 0 0 1 1.08 12.862l-127.39 144.5a9.721 9.721 0 0 1-13.35 1.047l-29.675-24.286a8.9 8.9 0 0 1-1.087-12.861z"/>
+                </svg>`
+                footer.appendChild(blueTick)
                 footer.appendChild(brand)
         
         
@@ -4727,6 +4756,34 @@ function CookieFn() {
                 var brand = document.createElement('p')
                 brand.style = "color:rgb(151, 151, 151);font-size:12px;font-weight:500;"
                 brand.innerHTML = "verified by Influence"
+                var blueTick = document.createElement('span')
+                blueTick.innerHTML=`<svg width="9" height="9" viewBox="0 0 524 524" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                <style>.cls-1 {
+                        fill: #5d93fe;
+                    }
+                    .cls-2 {
+                        fill: #5d93fe;
+                        filter: url(#a);
+                    }
+                    .cls-3 {
+                        fill: #fff;
+                        fill-rule: evenodd;
+                    }</style>
+                <filter id="a" x="51" y="51" width="423" height="423" filterUnits="userSpaceOnUse">
+                <feOffset in="SourceAlpha" result="offset"/>
+                <feGaussianBlur result="blur" stdDeviation="2.236"/>
+                <feFlood flood-opacity=".06" result="flood"/>
+                <feComposite in2="blur" operator="in" result="composite"/>
+                <feBlend in="SourceGraphic" result="blend"/>
+                </filter>
+                </defs>
+                <circle class="cls-1" cx="262" cy="262" r="262"/>
+                <circle class="cls-2" cx="262" cy="262" r="207"/>
+                <path class="cls-3" transform="translate(-640 -238)" d="m833.89 478.95 81.132 65.065a9 9 0 0 1 1.391 12.652l-25.651 31.985a9 9 0 0 1-12.652 1.39l-81.132-65.065a9 9 0 0 1-1.391-12.652l25.651-31.985a9 9 0 0 1 12.652-1.39z"/>
+                <path class="cls-3" transform="translate(-640 -238)" d="m846.25 552.7 127.39-144.5a9.721 9.721 0 0 1 13.35-1.047l29.679 24.286a8.9 8.9 0 0 1 1.08 12.862l-127.39 144.5a9.721 9.721 0 0 1-13.35 1.047l-29.675-24.286a8.9 8.9 0 0 1-1.087-12.861z"/>
+                </svg>`
+                footer.appendChild(blueTick)
                 footer.appendChild(brand)
                 navBarParent.appendChild(doneNav)
                 p3Parent.appendChild(navBarParent)

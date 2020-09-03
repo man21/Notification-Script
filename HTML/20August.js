@@ -4422,7 +4422,6 @@ function CookieFn() {
                         while(mainContainer.hasChildNodes()) {
                             mainContainer.removeChild(mainContainer.childNodes[0]);
                           }
-                        }
                        
                      }
         
@@ -4441,7 +4440,6 @@ function CookieFn() {
                     while(mainContainer.hasChildNodes()) {
                         mainContainer.removeChild(mainContainer.childNodes[0]);
                       }
-                    }
                     }
         
                 var YesB = document.createElement('button');

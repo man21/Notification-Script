@@ -4616,7 +4616,7 @@ function CookieFn() {
                 footer.className = "footer"
                 var brand = document.createElement('p')
                 brand.style = "color:rgb(151, 151, 151);font-size:12px;font-weight:500;margin-bottom:0px"
-                brand.innerHTML = "verified by Influence"
+                brand.innerHTML = "Verified by Influence"
 
                 var blueTick = document.createElement('span')
                 blueTick.innerHTML=`<svg style="margin-top:0px;margin-right:8px;" width="9" height="9" viewBox="0 0 524 524" xmlns="http://www.w3.org/2000/svg">
@@ -4755,7 +4755,7 @@ function CookieFn() {
                 footer.className = "footer"
                 var brand = document.createElement('p')
                 brand.style = "color:rgb(151, 151, 151);font-size:12px;font-weight:500;margin-bottom:0px"
-                brand.innerHTML = "verified by Influence"
+                brand.innerHTML = "Verified by Influence"
 
                 var blueTick = document.createElement('span')
                 blueTick.innerHTML=`<svg style="margin-top:0px;margin-right:8px;" width="9" height="9" viewBox="0 0 524 524" xmlns="http://www.w3.org/2000/svg">

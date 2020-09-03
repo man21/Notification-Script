@@ -4466,6 +4466,9 @@ function CookieFn() {
                 //    var element = document.getElementById("div1");
           
         //  element.appendChild(p1Parent)
+        while(mainContainer.hasChildNodes()) {
+            mainContainer.removeChild(mainContainer.childNodes[0]);
+          }
          mainContainer.appendChild(p1Parent);  
         
           
@@ -4623,7 +4626,9 @@ function CookieFn() {
                 p2Parent.appendChild(footer)
         //    var element = document.getElementById("div1");
         //         element.appendChild(p2Parent)
-          
+        while(mainContainer.hasChildNodes()) {
+            mainContainer.removeChild(mainContainer.childNodes[0]);
+          }
                 mainContainer.appendChild(p2Parent);  
 
         }
@@ -4729,6 +4734,9 @@ function CookieFn() {
           
                 // var element = document.getElementById("div1");
                 // element.appendChild(p3Parent)
+                while(mainContainer.hasChildNodes()) {
+                    mainContainer.removeChild(mainContainer.childNodes[0]);
+                  }
 
                 mainContainer.appendChild(p3Parent);  
 

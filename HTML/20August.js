@@ -4353,6 +4353,7 @@ function CookieFn() {
         lockImg.src  = 'lock.png' 
         lockImg.style="bottom:0;left:0;width:55px;height:55px;box-shadow: rgba(84, 92, 164, 0.5) 0px 4px 24px;border-radius: 50%;"
         lockImg.onclick = ()=>{
+            var mainContainer = document.createElement('div');
             panelCall(0,0)
         }
         
@@ -4409,7 +4410,7 @@ function CookieFn() {
                 if (activePanel === 0 && sourcePanel === 1) {
                     customizeB.innerHTML = "No, Customize";
                     customizeB.onclick = ()=>{
-                       mainContainer.remove()
+                       mainContainer.removeChild()
                       
                     }
         
@@ -4434,7 +4435,7 @@ function CookieFn() {
                 NoB.innerHTML = "No";
                 NoB.onclick = () =>{
                     window.localStorage.setItem('influencepermission',`{enable: false}`)
-                    mainContainer.remove()
+                    mainContainer.removeChild()
                     }
         
                 var YesB = document.createElement('button');
@@ -4442,7 +4443,7 @@ function CookieFn() {
                 YesB.innerHTML = "Yes";
                 YesB.onclick = () =>{
                 window.localStorage.setItem('influencepermission',`{enable:true}`)
-                mainContainer.remove()
+                mainContainer.removeChild()
                 }
         
                 var ThatsOkayB = document.createElement('button');

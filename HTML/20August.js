@@ -2263,7 +2263,7 @@ var CookieFunc = function (config) {
                         "_id": "5f48ef30d0aae6670d49648b",
                         "name": "https://test2109.herokuapp.com",
                         "provider": "cdn.dashly.com",
-                        "type": "esential",
+                        "type": "test",
                         "trackingId": "INF-3gbfcjjsd6vhvo",
                         "createdAt": "2020-08-28T11:49:04.611Z",
                         "updatedAt": "2020-08-28T11:49:04.611Z",

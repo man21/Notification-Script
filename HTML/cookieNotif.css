@@ -254,6 +254,7 @@ overflow: hidden;
     font-style: normal;
     text-decoration: none;
     line-height: 1;
+    text-transform: capitalize;
 }
 
 .subText {

@@ -4549,6 +4549,9 @@ function CookieFn() {
                 switchLabel.className = "switch";
                 var checkboxInput = document.createElement('input');
                 checkboxInput.type = "checkbox";
+                checkboxInput.onchange = () =>{
+                    console.log("hey",checkboxInput.checked)
+                 }
                 var checkboxSpan = document.createElement('span');
                 checkboxSpan.className = "slider round";
                 switchLabel.appendChild(checkboxInput)
@@ -4697,6 +4700,9 @@ function CookieFn() {
                 switchLabel.className = "switch";
                 var checkboxInput = document.createElement('input');
                 checkboxInput.type = "checkbox";
+                checkboxInput.onchange = () =>{
+                    console.log("hey",checkboxInput.checked)
+                 }
                 var checkboxSpan = document.createElement('span');
                 checkboxSpan.className = "slider round";
         

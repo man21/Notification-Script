@@ -273,6 +273,7 @@ overflow: hidden;
     color: rgb(104, 104, 104);
     line-height: 22px;
     width: 100%;
+    margin-top:'5%';
 }
 
 .footer {

@@ -4566,7 +4566,7 @@ function CookieFn() {
                more.className="moreDetailsButton"
                more.onclick = ()=>{
                  p2Parent.classname = "hidePanel1"
-                 panelCall(2,1)
+                 panelCall(2,1,policy.provider)
                                   ;}
                more.innerHTML = "More Details"
                var imagesvg = document.createElement('span')
@@ -4648,7 +4648,8 @@ function CookieFn() {
 
         }
         
-        function Parent3(activePanel,sourcePane){
+        function Parent3(activePanel,sourcePane,arr){
+            console.log(arr)
           
             var p3Parent = document.createElement('div');
         
@@ -4788,7 +4789,7 @@ function CookieFn() {
           
         }
         
-           function panelCall(to, source){
+           function panelCall(to, source,arr){
             
                   activePanel = to
                   sourcePanel = source
@@ -4800,7 +4801,7 @@ function CookieFn() {
                Parent2(activePanel,sourcePanel)
                 :
                 activePanel === 2 ?
-                Parent3(activePanel,sourcePanel)
+                Parent3(activePanel,sourcePanel,arr)
                 :
                 Parent1(activePanel,sourcePanel)
             }

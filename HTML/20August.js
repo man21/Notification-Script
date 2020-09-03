@@ -4564,10 +4564,9 @@ function CookieFn() {
                 var switchLabel  = document.createElement('label');
                 switchLabel.className = "switch";
                 var checkboxInput = document.createElement('input');
-                checkboxInput.className = "checkbox";
+                checkboxInput.type = "checkbox";
                 var checkboxSpan = document.createElement('span');
                 checkboxSpan.className = "slider round";
-        
                 switchLabel.appendChild(checkboxInput)
                 switchLabel.appendChild(checkboxSpan)
                 switchContainer.appendChild(switchLabel)
@@ -4585,7 +4584,7 @@ function CookieFn() {
                  p2Parent.classname = "hidePanel1"
                  panelCall(2,1)
                                   ;}
-               more.innerHTML = "MoreDetails"
+               more.innerHTML = "More Details"
                var imagesvg = document.createElement('span')
                imagesvg.innerHTML = ` <svg
                            width=16
@@ -4612,11 +4611,12 @@ function CookieFn() {
                 div1.appendChild(div2);
                 //footer
         
-                var footer = document.createElement('div')
+                var footer = document.createElement('a')
+                footer.href = "https://app.useinfluence.co"
                 footer.className = "footer"
                 var brand = document.createElement('p')
                 brand.style = "color:rgb(151, 151, 151);font-size:12px;font-weight:500;"
-                brand.innerHTML = "powered by Influence"
+                brand.innerHTML = "verified by Influence"
                 footer.appendChild(brand)
         
         
@@ -4638,7 +4638,7 @@ function CookieFn() {
             var p3Parent = document.createElement('div');
         
                 p3Parent.className =
-                    activePanel === 2 ? `showDetailsPanel mainBoxStyle2` : 'hidePanel1';
+                    activePanel === 2 ? `showPanel mainBoxStyle2` : 'hidePanel1';
         
                 var navBarParent = document.createElement('div')
                 navBarParent.className = "navBarParent"
@@ -4675,12 +4675,12 @@ function CookieFn() {
                 navBarParent.appendChild(mainHeading)
                 var doneNav = document.createElement('div')
                 doneNav.className = "doneNav"
-        var switchLabel  = document.createElement('label');
-        switchLabel.className = "switch";
-        var checkboxInput = document.createElement('input');
-        checkboxInput.className = "checkbox";
-        var checkboxSpan = document.createElement('span');
-        checkboxSpan.className = "slider round";
+                var switchLabel  = document.createElement('label');
+                switchLabel.className = "switch";
+                var checkboxInput = document.createElement('input');
+                checkboxInput.type = "checkbox";
+                var checkboxSpan = document.createElement('span');
+                checkboxSpan.className = "slider round";
         
         switchLabel.appendChild(checkboxInput)
         switchLabel.appendChild(checkboxSpan)
@@ -4721,11 +4721,12 @@ function CookieFn() {
                 div1.appendChild(div2);
                 //footer
         
-                var footer = document.createElement('div')
+                var footer = document.createElement('a')
+                footer.href="https://app.useinfluence.co"
                 footer.className = "footer"
                 var brand = document.createElement('p')
                 brand.style = "color:rgb(151, 151, 151);font-size:12px;font-weight:500;"
-                brand.innerHTML = "powered by Influence"
+                brand.innerHTML = "verified by Influence"
                 footer.appendChild(brand)
                 navBarParent.appendChild(doneNav)
                 p3Parent.appendChild(navBarParent)

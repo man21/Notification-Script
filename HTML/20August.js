@@ -4404,25 +4404,16 @@ function CookieFn() {
         
                 var customizeB = document.createElement('button');
                 customizeB.className = "generalBtnStyle leftBtn";
-             
+                customizeB.onclick = ()=>{
+                    panelCall(1,0)
+                  
+                }
                 
                 if (activePanel === 0 && sourcePanel === 1) {
                     customizeB.innerHTML = "No, Customize";
-                    customizeB.onclick = ()=>{
-                        panelCall(1,0)
-                      
-                    }
-        
                 }
                 else {
                     customizeB.innerHTML = "Customize";
-                    
-                    customizeB.onclick = ()=>{
-                        while(mainContainer.hasChildNodes()) {
-                            mainContainer.removeChild(mainContainer.childNodes[0]);
-                          }
-                       
-                     }
         
                 }
         
@@ -4454,8 +4445,15 @@ function CookieFn() {
                 var ThatsOkayB = document.createElement('button');
                 ThatsOkayB.className = "generalBtnStyle filledBtn";
                 ThatsOkayB.innerHTML = "That's Okay";
+                ThatsOkayB.onclick = ()=>{
+                    while(mainContainer.hasChildNodes()) {
+                        mainContainer.removeChild(mainContainer.childNodes[0]);
+                      }
+                  
+                }
                 if (activePanel === 0 && sourcePanel === 1) {
                     rightdiv.appendChild(ThatsOkayB)
+                    
                 }
                 else {
                     rightdiv.appendChild(YesB)

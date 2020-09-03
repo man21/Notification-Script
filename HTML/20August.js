@@ -4410,18 +4410,18 @@ function CookieFn() {
                 if (activePanel === 0 && sourcePanel === 1) {
                     customizeB.innerHTML = "No, Customize";
                     customizeB.onclick = ()=>{
-                       mainContainer.removeChild()
+                        panelCall(1,0)
                       
                     }
         
                 }
                 else {
                     customizeB.innerHTML = "Customize";
+                    
                     customizeB.onclick = ()=>{
-                        p1Parent.className = "hidePanel1"
-                        panelCall(1,0)
-                      
-                    }
+                        mainContainer.removeChild()
+                       
+                     }
         
                 }
         

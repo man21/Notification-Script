@@ -4353,7 +4353,6 @@ function CookieFn() {
         lockImg.src  = 'lock.png' 
         lockImg.style="bottom:0;left:0;width:55px;height:55px;box-shadow: rgba(84, 92, 164, 0.5) 0px 4px 24px;border-radius: 50%;"
         lockImg.onclick = ()=>{
-            var mainContainer = document.createElement('div');
             panelCall(0,0)
         }
         

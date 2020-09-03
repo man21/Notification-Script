@@ -61,6 +61,7 @@ overflow: hidden;
     color: rgb(104, 104, 104);
     font-size: 12px;
     line-height: 1.2;
+    width: 100%;
 }
 
 .middleLine {

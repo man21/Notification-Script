@@ -4615,7 +4615,7 @@ function CookieFn() {
                 footer.href = "https://app.useinfluence.co"
                 footer.className = "footer"
                 var brand = document.createElement('p')
-                brand.style = "color:rgb(151, 151, 151);font-size:12px;font-weight:500;"
+                brand.style = "color:rgb(151, 151, 151);font-size:12px;font-weight:500;margin-bottom:0px"
                 brand.innerHTML = "verified by Influence"
 
                 var blueTick = document.createElement('span')
@@ -4754,10 +4754,11 @@ function CookieFn() {
                 footer.href="https://app.useinfluence.co"
                 footer.className = "footer"
                 var brand = document.createElement('p')
-                brand.style = "color:rgb(151, 151, 151);font-size:12px;font-weight:500;"
+                brand.style = "color:rgb(151, 151, 151);font-size:12px;font-weight:500;margin-bottom:0px"
                 brand.innerHTML = "verified by Influence"
+
                 var blueTick = document.createElement('span')
-                blueTick.innerHTML=`<svg style="margin-top:8px;margin-right:8px;" width="9" height="9" viewBox="0 0 524 524" xmlns="http://www.w3.org/2000/svg">
+                blueTick.innerHTML=`<svg style="margin-top:0px;margin-right:8px;" width="9" height="9" viewBox="0 0 524 524" xmlns="http://www.w3.org/2000/svg">
                 <defs>
                 <style>.cls-1 {
                         fill: #5d93fe;

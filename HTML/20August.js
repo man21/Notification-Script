@@ -4619,7 +4619,7 @@ function CookieFn() {
                 brand.innerHTML = "Verified by Influence"
 
                 var blueTick = document.createElement('span')
-                blueTick.innerHTML=`<svg style="margin-top:0px;margin-right:8px;" width="9" height="9" viewBox="0 0 524 524" xmlns="http://www.w3.org/2000/svg">
+                blueTick.innerHTML=`<svg style="margin-top:0px;margin-right:4px;" width="9" height="9" viewBox="0 0 524 524" xmlns="http://www.w3.org/2000/svg">
                 <defs>
                 <style>.cls-1 {
                         fill: #5d93fe;
@@ -4758,7 +4758,7 @@ function CookieFn() {
                 brand.innerHTML = "Verified by Influence"
 
                 var blueTick = document.createElement('span')
-                blueTick.innerHTML=`<svg style="margin-top:0px;margin-right:8px;" width="9" height="9" viewBox="0 0 524 524" xmlns="http://www.w3.org/2000/svg">
+                blueTick.innerHTML=`<svg style="margin-top:0px;margin-right:4px;" width="9" height="9" viewBox="0 0 524 524" xmlns="http://www.w3.org/2000/svg">
                 <defs>
                 <style>.cls-1 {
                         fill: #5d93fe;

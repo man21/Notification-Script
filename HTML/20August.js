@@ -4733,7 +4733,7 @@ function CookieFn() {
                lowerDiv.style ="margin-top:0%;"
                var para =document.createElement('p')
                para.className = "subText"
-               para.innerHTML = policy.description// "This includes key features like page navigation and logging you in. The website cannot function without this"
+               para.innerHTML = provider.description// "This includes key features like page navigation and logging you in. The website cannot function without this"
                lowerDiv.appendChild(para)
                listItem.appendChild(upperPart)
                listItem.appendChild(lowerDiv)

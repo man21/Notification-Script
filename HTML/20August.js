@@ -4542,7 +4542,7 @@ function CookieFn() {
                 headerText.innerHTML =  policy.slug //"Essential"
         
                 var switchContainer = document.createElement('div');
-                switchContainer.style="margin-left: 140%;";
+                switchContainer.style="position:fixed;right:5%";
                 var switchLabel  = document.createElement('label');
                 switchLabel.className = "switch";
                 var checkboxInput = document.createElement('input');

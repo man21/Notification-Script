@@ -4352,9 +4352,9 @@ function CookieFn() {
         var lockImg = document.createElement('img')
         lockImg.src  = 'lock.png' 
         lockImg.style="bottom:0;left:0;width:55px;height:55px;box-shadow: rgba(84, 92, 164, 0.5) 0px 4px 24px;border-radius: 50%;"
-        lockImg.addEventListener("click",()=>{
+        lockImg.onclick = ()=>{
             panelCall(0,0)
-        })
+        }
         
         function Parent1(activePanel,sourcePanel){
     
@@ -4428,7 +4428,7 @@ function CookieFn() {
                 NoB.className = "generalBtnStyle filledBtn";
                 NoB.innerHTML = "No";
                 NoB.onclick = () =>{
-                    window.localStorage.setItem('influencepermission',`{'enable': false}`)
+                    window.localStorage.setItem('influencepermission',`{enable: false}`)
                     mainContainer.remove()
                     }
         
@@ -4436,7 +4436,7 @@ function CookieFn() {
                 YesB.className = "generalBtnStyle filledBtn";
                 YesB.innerHTML = "Yes";
                 YesB.onclick = () =>{
-                window.localStorage.setItem('influencepermission',`{'enable':true}`)
+                window.localStorage.setItem('influencepermission',`{enable:true}`)
                 mainContainer.remove()
                 }
         

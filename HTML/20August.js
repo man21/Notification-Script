@@ -2267,7 +2267,9 @@ var CookieFunc = function (config) {
                         "trackingId": "INF-3gbfcjjsd6vhvo",
                         "createdAt": "2020-08-28T11:49:04.611Z",
                         "updatedAt": "2020-08-28T11:49:04.611Z",
-                        "id": "5f48ef30d0aae6670d49648b"
+                        "id": "5f48ef30d0aae6670d49648b",
+                        "description": "test Policy Description",
+
                     }
                 ]
             }
@@ -4708,8 +4710,12 @@ function CookieFn() {
                 div1.className = "bodyParent2"
                 var div3 = document.createElement('div')
                 div1.className = "bodyParent3"
-                var ulist = document.createElement('div')
+                var ulist = document.createElement('ul')
                 ulist.style = "list-style-type:none; margin: 0%; padding: 5%;"
+
+                arr.map(provider => {
+
+               
                 var listItem = document.createElement('div')
                 listItem.classList = "listItemDetail"
         
@@ -4719,7 +4725,7 @@ function CookieFn() {
         
                var headerText = document.createElement('p')
                headerText.className = "headerText"
-               headerText.innerHTML = "Essential"
+               headerText.innerHTML = provider.type
         
                upperPart.appendChild(headerText)
         
@@ -4727,11 +4733,12 @@ function CookieFn() {
                lowerDiv.style ="margin-top:0%;"
                var para =document.createElement('p')
                para.className = "subText"
-               para.innerHTML = "This includes key features like page navigation and logging you in. The website cannot function without this"
+               para.innerHTML = policy.description// "This includes key features like page navigation and logging you in. The website cannot function without this"
                lowerDiv.appendChild(para)
                listItem.appendChild(upperPart)
                listItem.appendChild(lowerDiv)
                 ulist.appendChild(listItem)
+            })
                 div3.appendChild(ulist);
                 div2.appendChild(div3);
                 div1.appendChild(div2);

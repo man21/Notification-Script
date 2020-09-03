@@ -4429,6 +4429,7 @@ function CookieFn() {
                 NoB.innerHTML = "No";
                 NoB.onclick = () =>{
                     window.localStorage.setItem(influencepermission,{'enable': false})
+                    mainContainer.remove()
                     }
         
                 var YesB = document.createElement('button');
@@ -4436,6 +4437,7 @@ function CookieFn() {
                 YesB.innerHTML = "Yes";
                 YesB.onclick = () =>{
                 window.localStorage.setItem(influencepermission,{'enable': true})
+                mainContainer.remove()
                 }
         
                 var ThatsOkayB = document.createElement('button');

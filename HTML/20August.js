@@ -4419,7 +4419,10 @@ function CookieFn() {
                     customizeB.innerHTML = "Customize";
                     
                     customizeB.onclick = ()=>{
-                        mainContainer.removeChild()
+                        while(mainContainer.hasChildNodes()) {
+                            mainContainer.removeChild(mainContainer.childNodes[0]);
+                          }
+                        }
                        
                      }
         
@@ -4435,7 +4438,10 @@ function CookieFn() {
                 NoB.innerHTML = "No";
                 NoB.onclick = () =>{
                     window.localStorage.setItem('influencepermission',`{enable: false}`)
-                    mainContainer.removeChild()
+                    while(mainContainer.hasChildNodes()) {
+                        mainContainer.removeChild(mainContainer.childNodes[0]);
+                      }
+                    }
                     }
         
                 var YesB = document.createElement('button');
@@ -4443,7 +4449,9 @@ function CookieFn() {
                 YesB.innerHTML = "Yes";
                 YesB.onclick = () =>{
                 window.localStorage.setItem('influencepermission',`{enable:true}`)
-                mainContainer.removeChild()
+                while(mainContainer.hasChildNodes()) {
+                    mainContainer.removeChild(mainContainer.childNodes[0]);
+                  }
                 }
         
                 var ThatsOkayB = document.createElement('button');

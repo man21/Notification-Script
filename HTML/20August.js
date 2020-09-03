@@ -4428,7 +4428,7 @@ function CookieFn() {
                 NoB.className = "generalBtnStyle filledBtn";
                 NoB.innerHTML = "No";
                 NoB.onclick = () =>{
-                    window.localStorage.setItem('influencepermission',{'enable': false})
+                    window.localStorage.setItem('influencepermission',`{'enable': false}`)
                     mainContainer.remove()
                     }
         
@@ -4436,7 +4436,7 @@ function CookieFn() {
                 YesB.className = "generalBtnStyle filledBtn";
                 YesB.innerHTML = "Yes";
                 YesB.onclick = () =>{
-                window.localStorage.setItem('influencepermission',{'enable': true})
+                window.localStorage.setItem('influencepermission',`{'enable':true}`)
                 mainContainer.remove()
                 }
         

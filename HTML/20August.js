@@ -4315,38 +4315,13 @@ function CookieFn() {
     
     microPolicies.map(policy =>{
 
-     if(policy.slug == "Essential1"){
-         finalCookieArr.push({id: policy._id, status: true})
-     }
-    })
-
-    console.log(cookieData, "############")
-
+        if(policy.slug == "Essential1"){
+            finalCookieArr.push({id: policy._id, status: true})
+        }
+        })
 
         var container = document.createElement('div');
         container.setAttribute("id", "FPqR2DbIqJeA2DbI7MM9_0");
-
-        // container.onclick = function (e) {
-        //     if (e.target.id == 'notif_close') {
-        //         notifClosr_c4rF9Effgt985n7v4y5h = true;
-        //         return container.parentNode.removeChild(container);
-        //     }
-
-        //     // if (e.target.id == 'cta' || e.target.id == 'ctatext') {
-        //     //     window.open(configuration.ctaHyperlinkUrl);
-        //     // }
-
-        //     if (configuration && configuration.poweredByLink && e.target.id == 'poweredBy') {
-        //         window.open(configuration.poweredByLink);
-        //     }
-            
-        //     if(userDetails && userDetails.productUrl && configuration && configuration.isEnablePurchaseNotificationUrl!==false)
-        //         window.open(userDetails.productUrl);
-        //     else if (configuration && configuration.notificationUrl)
-        //         window.open(configuration.notificationUrl);
-        //     else
-        //         return;
-        // };
 
         container.style =  "z-index: 99999999999; position: fixed; bottom: 2%; left: 2% " //alignment;
         var innerContainer = document.createElement('div');
@@ -4478,7 +4453,6 @@ function CookieFn() {
         
         function Parent2(activePanel,sourcePanel){
           
-           
                 var p2Parent = document.createElement('div');
         
                 p2Parent.className =
@@ -4530,12 +4504,7 @@ function CookieFn() {
                         setCookies(data.id, data.status)
                     })
 
-                   
-
-
-                    
-                    // var data = setCookies(policy._id, checkboxInput.checked)
-
+                
                 })
         
                 var div1 = document.createElement('div')
@@ -4594,13 +4563,10 @@ function CookieFn() {
                 checkboxInput.type = "checkbox";
                 checkboxInput.id= "idData"
 
-
-                
-                console.log(cookieData, " DATAAAAAAAAAAAA")
+                checkboxInput.disabled = policy.slug== "Essential1"
+               
 
                 if(cookieData.length <= 0){
-
-                    console.log("IF CONDIITION !!!!!!!!!!!!!")
 
                     if(policy.slug == "Essential1"){
                         checkboxInput.checked = true
@@ -4608,24 +4574,13 @@ function CookieFn() {
                     }else{
                         checkboxInput.checked = false
                         checkboxInput.disabled= false
-    
                     }
 
                 } else{
-
-
-                    console.log(policy,"ELSE CONDIITION !!!!!!!!!!!!!")
-
                     cookieData.map(data=>{
 
                         if(data.name == policy._id){
-
-                            console.log(data, ".....................QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQqq")
-
                             if(data.key === "true"){
-
-                                console.log(checkboxInput.checked = true , "ppppppppppppppppppppppppppppppp")
-
                                 checkboxInput.checked = true
 
                             }else{
@@ -4637,27 +4592,10 @@ function CookieFn() {
                     
                 }
                 
-                // if(policy.slug == "Essential1"){
-                //     checkboxInput.checked = true
-                //     checkboxInput.disabled= true
-                // }
+              
                 checkboxInput.onchange = () =>{
-
-
-                    // finalCookieArr.map(data =>{
-                    //     if(policy._id == data.id){
-                    //         Object.defineProperty(data, policy._id,
-                    //             Object.getOwnPropertyDescriptor(data, policy._id));
-                    //         delete data[policy._id];
-                    //     }
-                    // })
-
                    finalCookieArr = finalCookieArr.filter(data =>(data.id !== policy._id))
-
-                   console.log(finalCookieArr, "@@@@@@@@@@@@@@@@@@@@")
-                    
                     finalCookieArr.push({id: policy._id, status: checkboxInput.checked})
-
                     setCookies(policy._id, checkboxInput.checked)
                 }
                 var checkboxSpan = document.createElement('span');
@@ -4677,10 +4615,19 @@ function CookieFn() {
                para.innerHTML =  policy.description //"This includes key features like page navigation and logging you in. The website cannot function without this"
                var more = document.createElement('button')
                more.className="moreDetailsButton"
+               
+
+               function test(){
+                 return cookieData.filter(e=>(e.name === policy._id))[0]
+
+               }
                more.onclick = ()=>{
-                 p2Parent.classname = "hidePanel1"
-                 panelCall(2,1,policy.provider)
-                                  ;}
+
+                p2Parent.classname = "hidePanel1"
+                panelCall(2,1,policy.provider, test())
+                
+                
+                };
                more.innerHTML = "More Details"
                var imagesvg = document.createElement('span')
                imagesvg.innerHTML = ` <svg
@@ -4761,9 +4708,8 @@ function CookieFn() {
 
         }
         
-        function Parent3(activePanel,sourcePane,arr){
-            console.log(arr)
-          
+        function Parent3(activePanel,sourcePane,arr, individualCookieData){
+         
             var p3Parent = document.createElement('div');
         
                 p3Parent.className =
@@ -4808,6 +4754,8 @@ function CookieFn() {
                 switchLabel.className = "switch";
                 var checkboxInput = document.createElement('input');
                 checkboxInput.type = "checkbox";
+
+                checkboxInput.checked = individualCookieData ? individualCookieData.key : false
                 checkboxInput.onchange = () =>{
                     console.log("hey!!!!!!!!!!!!!1",checkboxInput.checked)
 
@@ -4913,7 +4861,8 @@ function CookieFn() {
           
         }
         
-           function panelCall(to, source,arr){
+           function panelCall(to, source,arr, individualCookieData){
+              
             
                   activePanel = to
                   sourcePanel = source
@@ -4925,7 +4874,7 @@ function CookieFn() {
                Parent2(activePanel,sourcePanel)
                 :
                 activePanel === 2 ?
-                Parent3(activePanel,sourcePanel,arr)
+                Parent3(activePanel,sourcePanel,arr,individualCookieData )
                 :
                 Parent1(activePanel,sourcePanel)
             }
@@ -4979,10 +4928,6 @@ function CookieFn() {
         
         name = name+"="
         const cookies = document.cookie.split(";")
-
-        console.log(cookies, "!!!!!!!!!!!!!!!**********!!!!!!!!11")
-
-        // console.log(cookies, "!!!!!!!!!!!!!!!!")
 
         var getCookieArr= []
 

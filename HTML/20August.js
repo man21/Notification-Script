@@ -4,7 +4,7 @@ var __pathname = window.location.pathname;
 __pathname = '/' + __pathname.split('/')[1];
 
 var influenceScript = '20August.js';
-var BASE_URL = "https://api.useinfluence.co";
+var BASE_URL = "https://strapi.useinfluence.co";
 
 
 document.addEventListener('visibilitychange', function (e) {
@@ -2158,12 +2158,12 @@ var CookieFunc = function (config) {
   
 
     
-    var rulesUrl = BASE_URL + '/rules/configuration/path1/' + config;
+    var cookieUrl = BASE_URL + '/cookie/campaign/notification/' + config;
 
 
-    httpGetAsync(rulesUrl, function (res) {
-        //response = JSON.parse(res);
-        // configurationPath = JSON.parse(res);
+    httpGetAsync(cookieUrl, function (res) {
+        
+        // response = JSON.parse(res);
 
 
     response = {

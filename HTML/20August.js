@@ -4308,25 +4308,19 @@ function CookieFn() {
 
     var finalCookieArr= [];
 
-    var cookieArr = []
+    // var cookieArr = []
 
+
+    var cookieData = getCookies();
+    
     microPolicies.map(policy =>{
-
-        console.log(policy, "POLICY!!!!!!")
-     var data=  getCookies(policy._id)
-
-     cookieArr.push(data)
-
 
      if(policy.slug == "Essential1"){
          finalCookieArr.push({id: policy._id, status: true})
      }
-
-
-
     })
 
-    console.log(cookieArr,"!!!!!!!!!!!!!!!!!!!!111111")
+    console.log(cookieData, "############")
 
 
         var container = document.createElement('div');
@@ -4555,14 +4549,9 @@ function CookieFn() {
 
                 ulist.style = "list-style-type:none; margin: 0%; padding: 5%;"
                 
-                
  
                 microPolicies.map(policy =>{
-                    
-
-
-                    // console.log(policy, "POLICY@@@@@@@@@@@@@@@@@@")
-               
+                                   
                 var listItem = document.createElement('li')
                 listItem.className = "listItem"
                 var upperPart = document.createElement('div');
@@ -4605,7 +4594,13 @@ function CookieFn() {
                 checkboxInput.type = "checkbox";
                 checkboxInput.id= "idData"
 
-                if(cookieArr.length > 0){
+
+                
+                console.log(cookieData, " DATAAAAAAAAAAAA")
+
+                if(cookieData.length <= 0){
+
+                    console.log("IF CONDIITION !!!!!!!!!!!!!")
 
                     if(policy.slug == "Essential1"){
                         checkboxInput.checked = true
@@ -4618,10 +4613,19 @@ function CookieFn() {
 
                 } else{
 
-                    cookieArr.map(data=>{
-                        if(data.name === policy._id){
 
-                            if(data.key == true){
+                    console.log(policy,"ELSE CONDIITION !!!!!!!!!!!!!")
+
+                    cookieData.map(data=>{
+
+                        if(data.name == policy._id){
+
+                            console.log(data, ".....................QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQqq")
+
+                            if(data.key === "true"){
+
+                                console.log(checkboxInput.checked = true , "ppppppppppppppppppppppppppppppp")
+
                                 checkboxInput.checked = true
 
                             }else{
@@ -4633,14 +4637,10 @@ function CookieFn() {
                     
                 }
                 
-                if(policy.slug == "Essential1"){
-                    checkboxInput.checked = true
-                    checkboxInput.disabled= true
-                }else{
-                    checkboxInput.checked = false
-                    checkboxInput.disabled= false
-
-                }
+                // if(policy.slug == "Essential1"){
+                //     checkboxInput.checked = true
+                //     checkboxInput.disabled= true
+                // }
                 checkboxInput.onchange = () =>{
 
 
@@ -4658,7 +4658,7 @@ function CookieFn() {
                     
                     finalCookieArr.push({id: policy._id, status: checkboxInput.checked})
 
-                    var data = setCookies(policy._id, checkboxInput.checked)
+                    setCookies(policy._id, checkboxInput.checked)
                 }
                 var checkboxSpan = document.createElement('span');
                 checkboxSpan.className = "slider round";
@@ -4945,6 +4945,9 @@ function CookieFn() {
 
     function setCookies(name, value){
 
+        const COOKIE_PREFIX = "Influence_";
+
+        name= COOKIE_PREFIX + name
                     var d = new Date();
                     d.setTime(d.setTime() + (1*24*60*60*1000))
 
@@ -4968,29 +4971,38 @@ function CookieFn() {
                 
     }
 
-    function getCookies(name){
+    function getCookies(){
+
+        const COOKIE_PREFIX = "Influence_";
+
 
         
         name = name+"="
         const cookies = document.cookie.split(";")
 
+        console.log(cookies, "!!!!!!!!!!!!!!!**********!!!!!!!!11")
+
         // console.log(cookies, "!!!!!!!!!!!!!!!!")
+
+        var getCookieArr= []
 
         for(var i = 0; i < cookies.length; i++) {
             var cookie = cookies[i]
-           if(cookie.indexOf(name) == 1){
 
-            name = cookie.split('=')[0];
+           if(cookie.indexOf(COOKIE_PREFIX) == 1){
+
+            console.log(cookie, "----------------------------")
+
+            name = cookie.split('=')[0].trim().substring(COOKIE_PREFIX.length);
 
             value = cookie.split('=')[1];
 
-            console.log({name: name, key : value},"-------------------------")
-               return {name: name, key : value}
-           }
+            getCookieArr.push({name: name, key : value})
+   
+         }
         }
-        
         // Return null if not found
-        return null;
+        return getCookieArr;
 
     }
 

@@ -1,3 +1,4 @@
+
 var isTabVisibility = true,flagMouseOver= false;
 var exclued_button_text = 'login, signin, loginnow, memberlogin, accountlogin, post comment';
 var __pathname = window.location.pathname;
@@ -4304,21 +4305,30 @@ function CookieFn() {
 
   async function notificationDisplay(configuration, microPolicies) {
 
-    // console.log(configuration, "!!!!!!!!!!!!!!!!")
 
-    // console.log(microPolicies, "@@@@@@@@@@@@@@@@@@@@@")
+    var finalCookieArr= [];
 
-//  var policy =  microPolicies.map(policy =>{
+    var cookieArr = []
 
-//         return policy
-//     })
+    microPolicies.map(policy =>{
 
-//     await Promise.all(policy)
+        console.log(policy, "POLICY!!!!!!")
+     var data=  getCookies(policy._id)
 
-//     console.log(policy, "!!!!!!!!!!!!!!!!!!!!1")
+     cookieArr.push(data)
 
 
-       
+     if(policy.slug == "Essential1"){
+         finalCookieArr.push({id: policy._id, status: true})
+     }
+
+
+
+    })
+
+    console.log(cookieArr,"!!!!!!!!!!!!!!!!!!!!111111")
+
+
         var container = document.createElement('div');
         container.setAttribute("id", "FPqR2DbIqJeA2DbI7MM9_0");
 
@@ -4515,6 +4525,24 @@ function CookieFn() {
                 var doneNav = document.createElement('div')
                 doneNav.className = "doneNav"
                 doneNav.innerHTML = "Done"
+
+                doneNav.addEventListener("click", function(){
+
+                    
+                    // console.log(finalCookieArr,"##########")
+
+                    finalCookieArr.map(data =>{
+
+                        setCookies(data.id, data.status)
+                    })
+
+                   
+
+
+                    
+                    // var data = setCookies(policy._id, checkboxInput.checked)
+
+                })
         
                 var div1 = document.createElement('div')
                 div1.className = "bodyParent1"
@@ -4523,11 +4551,17 @@ function CookieFn() {
                 var div3 = document.createElement('div')
                 div1.className = "bodyParent3"
                 var ulist = document.createElement('ul')
+                ulist.setAttribute("id", "qwe");
+
                 ulist.style = "list-style-type:none; margin: 0%; padding: 5%;"
                 
                 
  
                 microPolicies.map(policy =>{
+                    
+
+
+                    // console.log(policy, "POLICY@@@@@@@@@@@@@@@@@@")
                
                 var listItem = document.createElement('li')
                 listItem.className = "listItem"
@@ -4569,9 +4603,63 @@ function CookieFn() {
                 switchLabel.className = "switch";
                 var checkboxInput = document.createElement('input');
                 checkboxInput.type = "checkbox";
+                checkboxInput.id= "idData"
+
+                if(cookieArr.length > 0){
+
+                    if(policy.slug == "Essential1"){
+                        checkboxInput.checked = true
+                        checkboxInput.disabled= true
+                    }else{
+                        checkboxInput.checked = false
+                        checkboxInput.disabled= false
+    
+                    }
+
+                } else{
+
+                    cookieArr.map(data=>{
+                        if(data.name === policy._id){
+
+                            if(data.key == true){
+                                checkboxInput.checked = true
+
+                            }else{
+                                checkboxInput.checked = false
+
+                            }                            
+                        }
+                    })
+                    
+                }
+                
+                if(policy.slug == "Essential1"){
+                    checkboxInput.checked = true
+                    checkboxInput.disabled= true
+                }else{
+                    checkboxInput.checked = false
+                    checkboxInput.disabled= false
+
+                }
                 checkboxInput.onchange = () =>{
-                    console.log("hey",checkboxInput.checked)
-                 }
+
+
+                    // finalCookieArr.map(data =>{
+                    //     if(policy._id == data.id){
+                    //         Object.defineProperty(data, policy._id,
+                    //             Object.getOwnPropertyDescriptor(data, policy._id));
+                    //         delete data[policy._id];
+                    //     }
+                    // })
+
+                   finalCookieArr = finalCookieArr.filter(data =>(data.id !== policy._id))
+
+                   console.log(finalCookieArr, "@@@@@@@@@@@@@@@@@@@@")
+                    
+                    finalCookieArr.push({id: policy._id, status: checkboxInput.checked})
+
+                    var data = setCookies(policy._id, checkboxInput.checked)
+                }
                 var checkboxSpan = document.createElement('span');
                 checkboxSpan.className = "slider round";
                 switchLabel.appendChild(checkboxInput)
@@ -4721,7 +4809,10 @@ function CookieFn() {
                 var checkboxInput = document.createElement('input');
                 checkboxInput.type = "checkbox";
                 checkboxInput.onchange = () =>{
-                    console.log("hey",checkboxInput.checked)
+                    console.log("hey!!!!!!!!!!!!!1",checkboxInput.checked)
+
+                    // document.cookie = "key1 = value1;key2 = value2;expires = date";
+
                  }
                 var checkboxSpan = document.createElement('span');
                 checkboxSpan.className = "slider round";
@@ -4849,6 +4940,58 @@ function CookieFn() {
         container.appendChild(innerContainer);
        
         displayNotification(container, "config");
+    }
+
+
+    function setCookies(name, value){
+
+                    var d = new Date();
+                    d.setTime(d.setTime() + (1*24*60*60*1000))
+
+                    let expires = "expires="+ d.toUTCString();
+
+                    let sec= '';
+
+                    if(this._cookie_secure ==2){
+                        if(location.protocol){
+                            if(location.protocol == "https:"){ 
+                                sec= ';secure';
+                            }
+                        }
+                    } else if(this._cookie_secure == true){
+
+                        sec= ';secure';
+
+                    }
+
+                    document.cookie = name+ "="+ JSON.stringify(value)+ ";" +expires //+ "; path=" + path + sec
+                
+    }
+
+    function getCookies(name){
+
+        
+        name = name+"="
+        const cookies = document.cookie.split(";")
+
+        // console.log(cookies, "!!!!!!!!!!!!!!!!")
+
+        for(var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i]
+           if(cookie.indexOf(name) == 1){
+
+            name = cookie.split('=')[0];
+
+            value = cookie.split('=')[1];
+
+            console.log({name: name, key : value},"-------------------------")
+               return {name: name, key : value}
+           }
+        }
+        
+        // Return null if not found
+        return null;
+
     }
 
     return {

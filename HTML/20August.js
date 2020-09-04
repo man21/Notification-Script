@@ -4352,6 +4352,9 @@ function CookieFn() {
         var lockImg = document.createElement('img')
         lockImg.src  = 'lock.png' 
         lockImg.style="bottom:0;left:0;width:55px;height:55px;box-shadow: rgba(84, 92, 164, 0.5) 0px 4px 24px;border-radius: 50%;"
+        lockImg.onclick = ()=>{
+            panelCall(0,0)
+        }
         
         function Parent1(activePanel,sourcePanel){
     
@@ -4402,14 +4405,12 @@ function CookieFn() {
                 var customizeB = document.createElement('button');
                 customizeB.className = "generalBtnStyle leftBtn";
                 customizeB.onclick = ()=>{
-                    p1Parent.className = "hidePanel1"
                     panelCall(1,0)
                   
                 }
                 
                 if (activePanel === 0 && sourcePanel === 1) {
                     customizeB.innerHTML = "No, Customize";
-        
                 }
                 else {
                     customizeB.innerHTML = "Customize";
@@ -4424,16 +4425,35 @@ function CookieFn() {
                 var NoB = document.createElement('button');
                 NoB.className = "generalBtnStyle filledBtn";
                 NoB.innerHTML = "No";
+                NoB.onclick = () =>{
+                    window.localStorage.setItem('influencepermission',`{enable: false}`)
+                    while(mainContainer.hasChildNodes()) {
+                        mainContainer.removeChild(mainContainer.childNodes[0]);
+                      }
+                    }
         
                 var YesB = document.createElement('button');
                 YesB.className = "generalBtnStyle filledBtn";
                 YesB.innerHTML = "Yes";
+                YesB.onclick = () =>{
+                window.localStorage.setItem('influencepermission',`{enable:true}`)
+                while(mainContainer.hasChildNodes()) {
+                    mainContainer.removeChild(mainContainer.childNodes[0]);
+                  }
+                }
         
                 var ThatsOkayB = document.createElement('button');
                 ThatsOkayB.className = "generalBtnStyle filledBtn";
                 ThatsOkayB.innerHTML = "That's Okay";
+                ThatsOkayB.onclick = ()=>{
+                    while(mainContainer.hasChildNodes()) {
+                        mainContainer.removeChild(mainContainer.childNodes[0]);
+                      }
+                  
+                }
                 if (activePanel === 0 && sourcePanel === 1) {
                     rightdiv.appendChild(ThatsOkayB)
+                    
                 }
                 else {
                     rightdiv.appendChild(YesB)

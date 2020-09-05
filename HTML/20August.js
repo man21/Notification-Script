@@ -4437,6 +4437,7 @@ function CookieFn() {
                 NoB.className = "generalBtnStyle filledBtn";
                 NoB.innerHTML = "No";
                 NoB.onclick = () =>{
+
                     window.localStorage.setItem('influencepermission',`{enable: false}`)
                     while(mainContainer.hasChildNodes()) {
                         mainContainer.removeChild(mainContainer.childNodes[0]);
@@ -4447,6 +4448,15 @@ function CookieFn() {
                 YesB.className = "generalBtnStyle filledBtn";
                 YesB.innerHTML = "Yes";
                 YesB.onclick = () =>{
+                    microPolicies.map(policy =>{
+
+                        if(policy.slug == "Essential1"){
+                            finalCookieArr.push({id: policy._id, status: true})
+                        }else{
+                            finalCookieArr.push({id: policy._id, status: false})
+                
+                        }
+                        })
                 window.localStorage.setItem('influencepermission',`{enable:true}`)
                 while(mainContainer.hasChildNodes()) {
                     mainContainer.removeChild(mainContainer.childNodes[0]);

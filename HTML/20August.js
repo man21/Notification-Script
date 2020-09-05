@@ -2251,7 +2251,7 @@ var CookieFunc = function (config) {
                 "name": "test",
                 "description": "test Policy Description",
                 "websiteUrl": "test.com",
-                "slug": "Essential1",
+                "slug": "Essential11",
                 "trackingId": "INF-3gbfcjjsd6vhvo",
                 "cookiecampaign": "5f4dec0e74814a416e9582d2",
                 "profile": "5f4dec0e74814a416e9582d2",
@@ -4339,7 +4339,7 @@ function CookieFn() {
     var cookieData ;
 
     var finalCookieArr= [];
-
+    
      cookieData = getCookies();
     
     microPolicies.map(policy =>{
@@ -4351,6 +4351,18 @@ function CookieFn() {
 
         }
         })
+
+
+        var cookieIcon = document.createElement('img')
+        cookieIcon.src  = 'lock.png' 
+        cookieIcon.style="bottom:0;left:0;width:25px;height:25px;box-shadow: rgba(84, 92, 164, 0.5) 0px 4px 24px;border-radius: 50%;"
+        cookieIcon.onclick = ()=>{
+            // panelCall(0,0)
+            container.appendChild(innerContainer)
+
+            container.removeChild(cookieIcon)
+                        
+        }
 
         var container = document.createElement('div');
         container.setAttribute("id", "FPqR2DbIqJeA2DbI7MM9_0");
@@ -4365,10 +4377,13 @@ function CookieFn() {
         lockImg.style="bottom:0;left:0;width:55px;height:55px;box-shadow: rgba(84, 92, 164, 0.5) 0px 4px 24px;border-radius: 50%;"
         lockImg.onclick = ()=>{
             panelCall(0,0)
+            
         }
         
         function Parent1(activePanel,sourcePanel){
     
+            cookieData = getCookies();
+
             var p1Parent = document.createElement('div');
         
                 p1Parent.className =
@@ -4400,7 +4415,18 @@ function CookieFn() {
                 mLine.className = "middleLine";
         
                 if (activePanel === 0 && sourcePanel === 1) {
-                    var mLinenode = document.createTextNode("You've opted out of everything.");
+
+                    var dummy = []
+
+                   
+                    cookieData.map(data=>{
+                            if(data.key === "true"){
+                             var dataa =   microPolicies.find(o => o._id === data.name);
+                                dummy.push(dataa.name)
+                            } 
+                    })
+                    var mLinenode = document.createTextNode( dummy.length >0 ?  "You'll be accepting: "+ dummy.join(",") : "You havn't select anything");
+                    
         
                 }
                 else {
@@ -4417,6 +4443,10 @@ function CookieFn() {
                 customizeB.className = "generalBtnStyle leftBtn";
                 customizeB.onclick = ()=>{
                     panelCall(1,0)
+
+                    container.appendChild(innerContainer)
+
+                    container.removeChild(cookieIcon)
                   
                 }
                 
@@ -4438,11 +4468,19 @@ function CookieFn() {
                 NoB.innerHTML = "No";
                 NoB.onclick = () =>{
 
-                    window.localStorage.setItem('influencepermission',`{enable: false}`)
-                    while(mainContainer.hasChildNodes()) {
-                        mainContainer.removeChild(mainContainer.childNodes[0]);
-                      }
-                    }
+                    // window.localStorage.setItem('influencepermission',`{enable: false}`)
+                    window.localStorage.setItem('influencepermission', JSON.stringify({enable: false}))
+                    // while(mainContainer.hasChildNodes()) {
+                    //     mainContainer.removeChild(mainContainer.childNodes[0]);
+
+                    //     // container.removeChild(container.childNodes[0]);
+                    //     // container.appendChild(cookieIcon)
+                    //   }
+                    
+                 }
+
+                    
+
         
                 var YesB = document.createElement('button');
                 YesB.className = "generalBtnStyle filledBtn";
@@ -4456,20 +4494,37 @@ function CookieFn() {
                             finalCookieArr.push({id: policy._id, status: false})
                 
                         }
-                        })
-                window.localStorage.setItem('influencepermission',`{enable:true}`)
-                while(mainContainer.hasChildNodes()) {
-                    mainContainer.removeChild(mainContainer.childNodes[0]);
-                  }
+                    })
+                // window.localStorage.setItem('influencepermission',`{enable:true}`)
+                window.localStorage.setItem('influencepermission', JSON.stringify({enable: true}))
+
+                // while(mainContainer.hasChildNodes()) {
+                //     mainContainer.removeChild(mainContainer.childNodes[0]);
+
+                //     // container.removeChild(container.childNodes[0]);
+
+                //   }
+
+                
+
+                container.removeChild(container.childNodes[0]);
+
+                container.appendChild(cookieIcon)
+
                 }
         
                 var ThatsOkayB = document.createElement('button');
                 ThatsOkayB.className = "generalBtnStyle filledBtn";
                 ThatsOkayB.innerHTML = "That's Okay";
                 ThatsOkayB.onclick = ()=>{
-                    while(mainContainer.hasChildNodes()) {
-                        mainContainer.removeChild(mainContainer.childNodes[0]);
-                      }
+                
+                    // while(mainContainer.hasChildNodes()) {
+                    //     mainContainer.removeChild(mainContainer.childNodes[0]);
+                    //   }
+
+                    container.removeChild(container.childNodes[0]);
+
+                    container.appendChild(cookieIcon)
                   
                 }
                 if (activePanel === 0 && sourcePanel === 1) {
@@ -4539,17 +4594,14 @@ function CookieFn() {
                 doneNav.innerHTML = "Done"
 
                 doneNav.addEventListener("click", function(){
+                    finalCookieArr.map(data =>{ setCookies(data.id, data.status) })
+                    while(mainContainer.hasChildNodes()) {
+                        mainContainer.removeChild(mainContainer.childNodes[0]);
+                      }
 
-                    
-                    // console.log(finalCookieArr,"##########")
-
-                    finalCookieArr.map(data =>{
-
-                        setCookies(data.id, data.status)
-                    })
-
-                
                 })
+
+
         
                 var div1 = document.createElement('div')
                 div1.className = "bodyParent1"
@@ -4562,7 +4614,6 @@ function CookieFn() {
 
                 ulist.style = "list-style-type:none; margin: 0%; padding: 5%;"
                 
- 
                 microPolicies.map(policy =>{
                                    
                 var listItem = document.createElement('li')
@@ -4615,17 +4666,12 @@ function CookieFn() {
                     checkboxInput.disabled= true
                 }
 
-                
                     cookieData.map(data=>{
-
-
                         if(data.name == policy._id){
                             if(data.key === "true"){
                                 checkboxInput.checked = true
-
                             }else{
                                 checkboxInput.checked = false
-
                             }                            
                         }
                     })
@@ -4633,7 +4679,6 @@ function CookieFn() {
                 checkboxInput.onchange = () =>{
                    finalCookieArr = finalCookieArr.filter(data =>(data.id !== policy._id))
                     finalCookieArr.push({id: policy._id, status: checkboxInput.checked})
-
                     setCookies(policy._id, checkboxInput.checked)
                 }
                 var checkboxSpan = document.createElement('span');
@@ -4655,16 +4700,13 @@ function CookieFn() {
                more.className="moreDetailsButton"
                
 
-               function test(){
-                 return cookieData.filter(e=>(e.name === policy._id))[0]
+            //    function test(){
+            //      return cookieData.filter(e=>(e.name === policy._id))[0]
 
-               }
+            //    }
                more.onclick = ()=>{
-
                 p2Parent.classname = "hidePanel1"
                 panelCall(2,1,policy, policy._id)
-                
-                
                 };
                more.innerHTML = "More Details"
                var imagesvg = document.createElement('span')
@@ -4759,7 +4801,7 @@ function CookieFn() {
                 backNav.className = "backNav"
                 backNav.onclick = () =>{
                     
-                  p3Parent.classname="hidePanel1"
+                //   p3Parent.classname="hidePanel1"
                   panelCall(1,2)
                   
                 }
@@ -4795,12 +4837,7 @@ function CookieFn() {
                 var checkboxInput = document.createElement('input');
                 checkboxInput.type = "checkbox";
 
-
-                
-                
                 var d = getCookieById(policyData)
-
-                console.log(d, "$$$$$$$$$$$$444")
                 
                 checkboxInput.checked = d && d.key == "true" ? true : false
                 if(arr.slug == "Essential1"){
@@ -4808,8 +4845,6 @@ function CookieFn() {
                     checkboxInput.disabled= true
                 }
                 checkboxInput.onchange = (e) =>{
-
-                    console.log(e, "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ")
 
                     setCookies(arr._id, e.target.checked)
 
@@ -4937,11 +4972,26 @@ function CookieFn() {
            //till here
     // mainContainer.appendChild(element);  
         
-        innerDiv.appendChild(mainContainer);
+    
+    // JSON.parse(localStorage.getItem('influencepermission')).enable == false ?  innerDiv.appendChild(mainContainer) : " "
+      innerDiv.appendChild(mainContainer);
         innerDiv.appendChild(lockImg)
         innerContainer.appendChild(innerDiv);
-        container.appendChild(innerContainer);
-       
+        // container.appendChild(innerContainer);
+
+        var influencePermission = JSON.parse(localStorage.getItem('influencepermission'))
+
+        if(influencePermission && influencePermission.enable == true ){
+
+            container.appendChild(cookieIcon)
+
+        }else{
+            container.appendChild(innerContainer)
+        }
+     
+        // JSON.parse(localStorage.getItem('influencepermission')).enable == false ?  container.appendChild(innerContainer) : container.appendChild(lockImg)
+    
+        
         displayNotification(container, "config");
     }
 
@@ -4977,11 +5027,7 @@ function CookieFn() {
     }
 
     function getCookies(){
-
         const COOKIE_PREFIX = "Influence_";
-
-
-        
         name = name+"="
         const cookies = document.cookie.split(";")
 
@@ -4991,45 +5037,28 @@ function CookieFn() {
             var cookie = cookies[i]
 
            if(cookie.indexOf(COOKIE_PREFIX) == 1){
-
             name = cookie.split('=')[0].trim().substring(COOKIE_PREFIX.length);
-
             value = cookie.split('=')[1];
-
             getCookieArr.push({name: name, key : value})
-   
          }
         }
-        // Return null if not found
         return getCookieArr;
-
     }
 
-
     function getCookieById (name){
-        const COOKIE_PREFIX = "Influence_";
-
-
-        
+        const COOKIE_PREFIX = "Influence_";    
         name = name+"="
         const cookies = document.cookie.split(";")
 
         for(var i = 0; i < cookies.length; i++) {
             var cookie = cookies[i]
-
            if(cookie.indexOf(COOKIE_PREFIX+name) == 1){
-
-            name = cookie.split('=')[0].trim().substring(COOKIE_PREFIX.length);
-
-            value = cookie.split('=')[1];
-
+                name = cookie.split('=')[0].trim().substring(COOKIE_PREFIX.length);
+                value = cookie.split('=')[1];
 
             return {name: name, key: value}
-            //getCookieArr.push({name: name, key : value})
-   
          }
         }
-        // Return null if not found
         return null;
     }
 
@@ -5039,8 +5068,6 @@ function CookieFn() {
         }
     };
 };
-
-
 
 
 if (typeof module !== "undefined" && module.exports) module.exports = Note;

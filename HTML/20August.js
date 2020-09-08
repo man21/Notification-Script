@@ -4284,35 +4284,35 @@ function cookieblocker(microPolicies){
     // console.log(microPolicies, "!!!!!!!!11111")
 
     // var m =[]
-    microPolicies.map(e=>{
+    // microPolicies.map(e=>{
 
-        var d = getCookieById(e._id)
+    //     var d = getCookieById(e._id)
 
-        console.log(d, "#########")
+    //     console.log(d, "#########")
 
 
-        if(d.key == "true"){
-            e.provider.map(e =>{
-                console.log(e.provider)
+    //     if(d.key == "true"){
+    //         e.provider.map(e =>{
+    //             console.log(e.provider)
 
-                m.push(new RegExp(e.provider))
-            })
-        }
+    //             m.push(new RegExp(e.provider))
+    //         })
+    //     }
         
-    })
+    // })
 
 
 
 
 
 
-    window.YETT_BLACKLIST =  m
+    // window.YETT_BLACKLIST =  m
 
     
-    //     // Or a whitelist
-        window.YETT_WHITELIST = []
+    // //     // Or a whitelist
+    //     window.YETT_WHITELIST = []
 
-        console.log(YETT_BLACKLIST, "window.YETT_BLACKLIST @@@@@@@@@@@@")
+    //     console.log(YETT_BLACKLIST, "window.YETT_BLACKLIST @@@@@@@@@@@@")
 
     //     console.log(window.YETT_WHITELIST, "window.YETT_WHITELIST @@@@@@@@@@@@")
 
@@ -4323,13 +4323,13 @@ function cookieblocker(microPolicies){
 
     // srcc.setAttribute('src', "https://unpkg.com/yett");
 
-    var e = document.createElement("script");
-     e.type = "text/javascript", 
-      e.src = "https://unpkg.com/yett", 
-    //  document.getElementsByTagName("head")[1].appendChild(e);
+    // var e = document.createElement("script");
+    //  e.type = "text/javascript", 
+    //   e.src = "https://unpkg.com/yett", 
+    // //  document.getElementsByTagName("head")[1].appendChild(e);
 
 
-     console.log(document.getElementsByTagName("head")[1].appendChild(e))
+    //  console.log(document.getElementsByTagName("head")[1].appendChild(e))
    
 
 

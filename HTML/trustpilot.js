@@ -3362,11 +3362,11 @@ var Note = function Note(config, containerStyle, iconStyle) {
         reviewNotificationCloseContainer.appendChild(reviewNotificationCloseIcon)
         reviewNotiifcationUpperPartContainer.appendChild(reviewNotificationCloseContainer)
         //newly added for trust pilot
-        var reviewNotificationTitleContainer = document.createElement('p')
-        reviewNotificationTitleContainer.innerHTML = userReview && userReview.username ? userReview.username : 'Someone' 
-        reviewNotificationTitleContainer.style  = fromAppType === 'trustpilot'  ? 'display:block' : 'display:none';
-        reviewNotificationTitleContainer.className =  'J6LQ6GLNbv xPojAbs5Ml'
-        reviewNotiifcationUpperPartContainer.appendChild( reviewNotificationTitleContainer)
+        // var reviewNotificationTitleContainer = document.createElement('p')
+        // reviewNotificationTitleContainer.innerHTML = userReview && userReview.username ? userReview.username : 'Someone' 
+        // reviewNotificationTitleContainer.style  = fromAppType === 'trustpilot'  ? 'display:block' : 'display:none';
+        // reviewNotificationTitleContainer.className =  'xPojAbs5Ml'
+        // reviewNotiifcationUpperPartContainer.appendChild( reviewNotificationTitleContainer)
         //
         var reviewNotificationTextContainer = document.createElement('div')
         reviewNotificationTextContainer.className = 'Pw72iFZOEh'

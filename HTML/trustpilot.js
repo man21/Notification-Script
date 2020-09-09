@@ -3601,7 +3601,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         reviewNotificationFooterLogo.setAttribute('src', userReview ? "https://www.nudgify.com/wp-content/uploads/2020/06/capterra-icon.png" :"")
        }
        else if(fromAppType == "trustpilot"){
-        reviewNotificationFooterLogo.className = 'bXZsh24SLi'
+        //reviewNotificationFooterLogo.className = 'bXZsh24SLi'
         reviewNotificationFooterLogo.setAttribute('src', userReview ? "https://cdn.trustpilot.net/brand-assets/4.0.0/stars/stars-5.svg" : "")//"https://api.useinfluence.co/images/trustpilot.png" :"")
        }
 

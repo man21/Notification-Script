@@ -3414,7 +3414,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
             }
         }
 
-        reviewNotificationUpperStar.innerHTML= star
+        // reviewNotificationUpperStar.innerHTML= star
     }else if(fromAppType == 'stamped' || fromAppType == 'capterra') {
         var star = '';
         if (userReview && userReview.rating) {
@@ -3429,7 +3429,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
             }
         }
 
-        reviewNotificationUpperStar.innerHTML= star
+        // reviewNotificationUpperStar.innerHTML= star
 
     }else if(fromAppType == 'trustpilot') {
         var star = '';
@@ -3621,7 +3621,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         if(fromAppType == 'google'){
         var star = '';
-        if (userReview && userReview.rating) {
+        if (userReview && userReview.rating){
             for (let star_i = 0; star_i < userReview.rating; star_i++) {
                 star += `<svg version="1.1" style= "height: 10px; width: 10px" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                    viewBox="0 0 53.867 53.867" style="enable-background:new 0 0 53.867 53.867;" xml:space="preserve">
@@ -3629,7 +3629,23 @@ var Note = function Note(config, containerStyle, iconStyle) {
                     10.288,52.549 13.467,34.013 0,20.887 18.611,18.182 "/>
                   </svg>`
             }
-        }
+        } 
+        reviwNotificationFooterStar1.innerHTML= star
+    } else  if(fromAppType == 'trustpilot'){
+        var star = '';
+        if (userReview && userReview.rating){
+            for (let star_i = 0; star_i < userReview.rating; star_i++) {
+                star += `<svg style="height:12px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 96 96" version="1.1">
+                <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+                <g id="Trustpilot_ratings_5star-RGB" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                    <g fill-rule="nonzero">
+                    <rect id="Rectangle-path" fill="#00B67A" x="0" y="0" width="96" height="96"/>
+                    <path d="M48,64.7 L62.6,61 L68.7,79.8 L48,64.7 Z M81.6,40.4 L55.9,40.4 L48,16.2 L40.1,40.4 L14.4,40.4 L35.2,55.4 L27.3,79.6 L48.1,64.6 L60.9,55.4 L81.6,40.4 L81.6,40.4 L81.6,40.4 L81.6,40.4 Z" id="Shape" fill="#FFFFFF"/>    
+                    </g>
+                </g>
+            </svg>`
+            }
+        } 
         reviwNotificationFooterStar1.innerHTML= star
     }
 

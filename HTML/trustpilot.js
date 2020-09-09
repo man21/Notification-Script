@@ -3365,7 +3365,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         var reviewNotificationTitleContainer = document.createElement('p')
         reviewNotificationTitleContainer.innerHTML = userReview && userReview.username ? userReview.username : 'Someone' 
         reviewNotificationTitleContainer.style  = fromAppType === 'trustpilot'  ? 'display:block' : 'display:none';
-        reviewNotificationTitleContainer.className =  'xPojAbs5Ml'
+        reviewNotificationTitleContainer.className =  ''
         reviewNotiifcationUpperPartContainer.appendChild( reviewNotificationTitleContainer)
         //
         var reviewNotificationTextContainer = document.createElement('div')
@@ -3602,7 +3602,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
        }
        else if(fromAppType == "trustpilot"){
         reviewNotificationFooterLogo.className = 'bXZsh24SLi'
-        reviewNotificationFooterLogo.setAttribute('src', userReview ? "" : "")//"https://api.useinfluence.co/images/trustpilot.png" :"")
+        reviewNotificationFooterLogo.setAttribute('src', userReview ? "https://cdn.trustpilot.net/brand-assets/4.0.0/stars/stars-5.svg" : "")//"https://api.useinfluence.co/images/trustpilot.png" :"")
        }
 
 

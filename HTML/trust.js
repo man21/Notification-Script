@@ -3447,9 +3447,9 @@ var Note = function Note(config, containerStyle, iconStyle) {
              }
 
 
-             console.log(rect, "RECT!!!!!!!!!!!!!!!!!!!!!!!!!!!11")
+            //  console.log(rect, "RECT!!!!!!!!!!!!!!!!!!!!!!!!!!!11")
 
-             console.log(rect_Path, "rect_Path!!!!!!!!!!!!!!!!!!!!!!!!!!!11")
+            //  console.log(rect_Path, "rect_Path!!!!!!!!!!!!!!!!!!!!!!!!!!!11")
 
  
 
@@ -3464,6 +3464,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
                 </g>
             </g>
         </svg>`
+
+        console.log(star, "&&&&&&&&&&&&&&&&&&&&&&&")
             // for (let star_i = 0; star_i < userReview.rating; star_i++) {
             //     star += `<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
             //     viewBox="0 0 53.867 53.867" style="enable-background:new 0 0 53.867 53.867;" xml:space="preserve">
@@ -3543,9 +3545,9 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
              }
 
-             console.log(rect, "RECT!***************************!!!!!!!!!!!!!!!!11")
+            //  console.log(rect, "RECT!***************************!!!!!!!!!!!!!!!!11")
 
-             console.log(rect_Path, "rect_Path!**************************!!!!!!!!!!!!!11")
+            //  console.log(rect_Path, "rect_Path!**************************!!!!!!!!!!!!!11")
 
             star += `  <svg style="height:12px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 96 96" version="1.1">
             <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
@@ -3557,6 +3559,9 @@ var Note = function Note(config, containerStyle, iconStyle) {
                 </g>
             </g>
         </svg>`
+
+
+        console.log(star, "!!!!!!!!!!!!!!!!!!11111")
 
             // for (let star_i = 0; star_i < userReview.rating; star_i++) {
             //     star += `<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"

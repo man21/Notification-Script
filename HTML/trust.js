@@ -3453,6 +3453,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         reviewNotificationUpperStar.innerHTML= star
 
+        console.log(reviewNotificationUpperStar, "$$$$$$$$$$")
+
     }
     reviewNotificationUpperStarContainer.appendChild(reviewNotificationUpperStar)
 

@@ -3362,11 +3362,11 @@ var Note = function Note(config, containerStyle, iconStyle) {
         reviewNotificationCloseContainer.appendChild(reviewNotificationCloseIcon)
         reviewNotiifcationUpperPartContainer.appendChild(reviewNotificationCloseContainer)
         //newly added for trust pilot
-        // var reviewNotificationTitleContainer = document.createElement('p')
-        // reviewNotificationTitleContainer.innerHTML = userReview && userReview.username ? userReview.username : 'Someone' 
-        // reviewNotificationTitleContainer.style  = fromAppType === 'trustpilot'  ? 'display:block' : 'display:none';
-        // reviewNotificationTitleContainer.className =  'xPojAbs5Ml'
-        // reviewNotiifcationUpperPartContainer.appendChild( reviewNotificationTitleContainer)
+        var reviewNotificationTitleContainer = document.createElement('p')
+        reviewNotificationTitleContainer.innerHTML = userReview && userReview.username ? userReview.username : 'Someone' 
+        reviewNotificationTitleContainer.style  = fromAppType === 'trustpilot'  ? 'display:block' : 'display:none';
+        reviewNotificationTitleContainer.className =  'xPojAbs5Ml'
+        reviewNotiifcationUpperPartContainer.appendChild( reviewNotificationTitleContainer)
         //
         var reviewNotificationTextContainer = document.createElement('div')
         reviewNotificationTextContainer.className = 'Pw72iFZOEh'
@@ -3435,26 +3435,19 @@ var Note = function Note(config, containerStyle, iconStyle) {
     }else if(fromAppType == 'trustpilot') {
         var star = '';
         if (userReview && userReview.rating) {
-            // for (let star_i = 0; star_i < userReview.rating; star_i++) {
-            //     star += `<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-            //     viewBox="0 0 53.867 53.867" style="enable-background:new 0 0 53.867 53.867;" xml:space="preserve">
-            //      <polygon style="fill:rgb(255, 215, 0, 1);" points="26.934,1.318 35.256,18.182 53.867,20.887 40.4,34.013 43.579,52.549 26.934,43.798 
-            //      10.288,52.549 13.467,34.013 0,20.887 18.611,18.182 "/>
-            //    </svg>`
-            // }
-
-            star += `
-            <svg style="height:12px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 96 96" version="1.1">
-            <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
-            <g id="Trustpilot_ratings_5star-RGB" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                <g fill-rule="nonzero">
-                    <rect id="Rectangle-path" fill="#00B67A" x="0" y="0" width="96" height="96"/>
-                    <path d="M48,64.7 L62.6,61 L68.7,79.8 L48,64.7 Z M81.6,40.4 L55.9,40.4 L48,16.2 L40.1,40.4 L14.4,40.4 L35.2,55.4 L27.3,79.6 L48.1,64.6 L60.9,55.4 L81.6,40.4 L81.6,40.4 L81.6,40.4 L81.6,40.4 Z" id="Shape" fill="#FFFFFF"/>
+            for (let star_i = 0; star_i < userReview.rating; star_i++) {
+                star += `
+                <svg style="height:12px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 96 96" version="1.1">
+                <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+                <g id="Trustpilot_ratings_5star-RGB" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                    <g fill-rule="nonzero">
+                        <rect id="Rectangle-path" fill="#00B67A" x="0" y="0" width="96" height="96"/>
+                        <path d="M48,64.7 L62.6,61 L68.7,79.8 L48,64.7 Z M81.6,40.4 L55.9,40.4 L48,16.2 L40.1,40.4 L14.4,40.4 L35.2,55.4 L27.3,79.6 L48.1,64.6 L60.9,55.4 L81.6,40.4 L81.6,40.4 L81.6,40.4 L81.6,40.4 Z" id="Shape" fill="#FFFFFF"/>
+                    </g>
                 </g>
-            </g>
-        </svg>
-            `
-
+            </svg>
+                `
+            }
         }
 
         reviewNotificationUpperStar.innerHTML= star
@@ -3609,7 +3602,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
        }
        else if(fromAppType == "trustpilot"){
         reviewNotificationFooterLogo.className = 'bXZsh24SLi'
-        reviewNotificationFooterLogo.setAttribute('src', userReview ? "https://api.useinfluence.co/images/trustpilot.png" :"")
+        reviewNotificationFooterLogo.setAttribute('src', userReview ? "" : "")//"https://api.useinfluence.co/images/trustpilot.png" :"")
        }
 
 

@@ -3435,12 +3435,26 @@ var Note = function Note(config, containerStyle, iconStyle) {
         var star = '';
         if (userReview && userReview.rating) {
 
-            star += `  <svg style="height:12px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 96 96" version="1.1">
+            var rect ;
+            var rect_Path;
+            for(let i = 0; i < userReview.rating; i++) {
+               rect +=  <rect id="Rectangle-path" fill="#00B67A" x="0" y="0" width="96" height="96"/>
+            }
+
+            for(let i = 0; i < userReview.rating; i++) {
+                rect_Path += <path d="M48,64.7 L62.6,61 L68.7,79.8 L48,64.7 Z M81.6,40.4 L55.9,40.4 L48,16.2 L40.1,40.4 L14.4,40.4 L35.2,55.4 L27.3,79.6 L48.1,64.6 L60.9,55.4 L81.6,40.4 L81.6,40.4 L81.6,40.4 L81.6,40.4 Z" id="Shape" fill="#FFFFFF"/>
+
+             }
+ 
+
+            star += ` <svg style="height:12px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 96 96" version="1.1">
             <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
             <g id="Trustpilot_ratings_5star-RGB" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                 <g fill-rule="nonzero">
-                    <rect id="Rectangle-path" fill="#00B67A" x="0" y="0" width="96" height="96"/>
-                    <path d="M48,64.7 L62.6,61 L68.7,79.8 L48,64.7 Z M81.6,40.4 L55.9,40.4 L48,16.2 L40.1,40.4 L14.4,40.4 L35.2,55.4 L27.3,79.6 L48.1,64.6 L60.9,55.4 L81.6,40.4 L81.6,40.4 L81.6,40.4 L81.6,40.4 Z" id="Shape" fill="#FFFFFF"/>
+                    ${rect}
+                    ${rect_Path}
+
+                    
                 </g>
             </g>
         </svg>`
@@ -3512,12 +3526,24 @@ var Note = function Note(config, containerStyle, iconStyle) {
         var star = '';
         if (userReview && userReview.rating) {
 
+            var rect ;
+            var rect_Path;
+            for(let i = 0; i < userReview.rating; i++) {
+               rect +=  <rect id="Rectangle-path" fill="#00B67A" x="0" y="0" width="96" height="96"/>
+            }
+
+            for(let i = 0; i < userReview.rating; i++) {
+                rect_Path += <path d="M48,64.7 L62.6,61 L68.7,79.8 L48,64.7 Z M81.6,40.4 L55.9,40.4 L48,16.2 L40.1,40.4 L14.4,40.4 L35.2,55.4 L27.3,79.6 L48.1,64.6 L60.9,55.4 L81.6,40.4 L81.6,40.4 L81.6,40.4 L81.6,40.4 Z" id="Shape" fill="#FFFFFF"/>
+
+             }
+
             star += `  <svg style="height:12px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 96 96" version="1.1">
             <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
             <g id="Trustpilot_ratings_5star-RGB" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                 <g fill-rule="nonzero">
-                    <rect id="Rectangle-path" fill="#00B67A" x="0" y="0" width="96" height="96"/>
-                    <path d="M48,64.7 L62.6,61 L68.7,79.8 L48,64.7 Z M81.6,40.4 L55.9,40.4 L48,16.2 L40.1,40.4 L14.4,40.4 L35.2,55.4 L27.3,79.6 L48.1,64.6 L60.9,55.4 L81.6,40.4 L81.6,40.4 L81.6,40.4 L81.6,40.4 Z" id="Shape" fill="#FFFFFF"/>
+
+                ${rect}
+                ${rect_Path}
                 </g>
             </g>
         </svg>`

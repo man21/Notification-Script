@@ -3508,7 +3508,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
     else if(fromAppType == 'trustpilot' ){
         var star = '';
         if (userReview && userReview.rating) {
-            for (let star_i = 0; star_i < userReview.rating; star_i++) {
+            for (let star_i = 0; star_i <= 5; star_i++) {
                 star += `
                 <svg style="height:12px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 96 96" version="1.1">
             <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
@@ -3602,7 +3602,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
        }
        else if(fromAppType == "trustpilot"){
         //reviewNotificationFooterLogo.className = 'bXZsh24SLi'
-        reviewNotificationFooterLogo.setAttribute('src', userReview ? "https://cdn.trustpilot.net/brand-assets/4.0.0/stars/stars-5.svg" : "")//"https://api.useinfluence.co/images/trustpilot.png" :"")
+        reviewNotificationFooterLogo.setAttribute('src', userReview ? star : "")//"https://api.useinfluence.co/images/trustpilot.png" :"")
        }
 
 

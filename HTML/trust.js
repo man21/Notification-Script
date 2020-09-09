@@ -3367,6 +3367,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         var reviewNotificationUserNameContainer = document.createElement('div')
         reviewNotificationUserNameContainer.className = 'user-name-container-review'
+        reviewNotificationUserNameContainer.innerHTML= "SOMEONE"
+
 
 
         var reviewNotificationNameText = document.createElement('div')

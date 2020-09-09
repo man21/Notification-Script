@@ -3367,7 +3367,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         var reviewNotificationUserNameContainer = document.createElement('div')
         reviewNotificationUserNameContainer.className = 'user-name-container-review'
-        reviewNotificationUserNameContainer.innerHTML= "SOMEONE"
+       // reviewNotificationUserNameContainer.innerHTML = fromAppType== "trustpilot" && userReview && userReview.title ? userReview.title : "Someone"
 
 
 
@@ -3379,6 +3379,9 @@ var Note = function Note(config, containerStyle, iconStyle) {
         else if (fromAppType == 'google') {
         reviewNotificationNameText.innerHTML = userReview && userReview.username ? userReview.username : 'Someone' ;
         }
+        else if (fromAppType == 'trustpilot') {
+            reviewNotificationNameText.innerHTML = userReview && userReview.title ? userReview.title : 'Someone' ;
+            }
 
        // reviewNotificationNameText.innerHTML =    //'Aviel Sela'
         reviewNotificationUserNameContainer.appendChild(reviewNotificationNameText)

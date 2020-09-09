@@ -3599,7 +3599,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
        }
        else if(fromAppType == "trustpilot"){
         reviewNotificationFooterLogo.className = 'bXZsh24SLi'
-        reviewNotificationFooterLogo.setAttribute('src', userReview ? "https://www.nudgify.com/wp-content/uploads/2020/06/capterra-icon.png" :"")
+        reviewNotificationFooterLogo.setAttribute('src', userReview ? "https://api.useinfluence.co/images/trustpilot.png" :"")
        }
 
 

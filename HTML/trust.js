@@ -3393,6 +3393,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
             reviewNotificationNameText.innerHTML = userReview && userReview.username ? userReview.username : 'Someone' ;
             
             reviewNotificationNameText2.className = 'VxoCrsNjZR vR7cdCBJQH'
+            reviewNotificationNameText2.style = "margin-left: 4px"
 
             reviewNotificationNameText2.innerHTML = userReview && userReview.title ? userReview.title : 'Test'
 

@@ -3370,6 +3370,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         var reviewNotificationTextContainer = document.createElement('div')
         reviewNotificationTextContainer.className = 'Pw72iFZOEh'
 
+    
         var reviewNotificationUserNameContainer = document.createElement('div')
         reviewNotificationUserNameContainer.className = 'user-name-container-review'
        // reviewNotificationUserNameContainer.innerHTML = fromAppType== "trustpilot" && userReview && userReview.title ? userReview.title : "Someone"
@@ -3384,7 +3385,17 @@ var Note = function Note(config, containerStyle, iconStyle) {
         reviewNotificationNameText.innerHTML = userReview && userReview.username ? userReview.username : 'Someone' ;
         }
         else if (fromAppType == 'trustpilot') {
+
+            reviewNotificationUserNameContainer.style = "display: flex; align-items: center"
             reviewNotificationNameText.innerHTML = userReview && userReview.username ? userReview.username : 'Someone' ;
+            
+            var reviewNotificationNameText2 = document.createElement('div')
+            reviewNotificationNameText2.className = 'VxoCrsNjZR vR7cdCBJQH'
+
+            reviewNotificationNameText2.innerHTML = userReview && userReview.title ? userReview.title : 'Test'
+
+            reviewNotificationUserNameContainer.append(reviewNotificationNameText2)
+
         }
 
        // reviewNotificationNameText.innerHTML =    //'Aviel Sela'

@@ -3379,6 +3379,9 @@ var Note = function Note(config, containerStyle, iconStyle) {
         var reviewNotificationNameText = document.createElement('div')
         reviewNotificationNameText.className = 'VxoCrsNjZR vR7cdCBJQH'
 
+        var reviewNotificationNameText2 = document.createElement('div')
+
+
         if (fromAppType == 'facebook')
         reviewNotificationNameText.innerHTML = userReview.username   //'Recommended us on Facebook';
         else if (fromAppType == 'google') {
@@ -3389,17 +3392,18 @@ var Note = function Note(config, containerStyle, iconStyle) {
             reviewNotificationUserNameContainer.style = "display: flex; align-items: center"
             reviewNotificationNameText.innerHTML = userReview && userReview.username ? userReview.username : 'Someone' ;
             
-            var reviewNotificationNameText2 = document.createElement('div')
             reviewNotificationNameText2.className = 'VxoCrsNjZR vR7cdCBJQH'
 
             reviewNotificationNameText2.innerHTML = userReview && userReview.title ? userReview.title : 'Test'
 
-            reviewNotificationUserNameContainer.append(reviewNotificationNameText2)
 
         }
 
        // reviewNotificationNameText.innerHTML =    //'Aviel Sela'
         reviewNotificationUserNameContainer.appendChild(reviewNotificationNameText)
+
+        reviewNotificationUserNameContainer.append(reviewNotificationNameText2)
+
 
         var reviewNotificationUpperLogoContainer = document.createElement('div')
         reviewNotificationUpperLogoContainer.className = 'Se4hb14yxF'

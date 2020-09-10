@@ -2143,7 +2143,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
     // document.getElementsByTagName("head")[0].appendChild(link);
 
     var newDesignCSS = document.createElement("link");
-    newDesignCSS.href = 'https://storage.googleapis.com/influence-197607.appspot.com/design10.css';
+    newDesignCSS.href = 'https://storage.googleapis.com/influence-197607.appspot.com/design12.css';
     // newDesignCSS.href = 'https://test2109.herokuapp.com/newDesignCSS.css';
     newDesignCSS.type = "text/css";
     newDesignCSS.rel = "stylesheet";
@@ -3342,8 +3342,13 @@ var Note = function Note(config, containerStyle, iconStyle) {
         reviewNotificationImage.className = 'wIwWxk318I'
        // reviewNotificationImage.setAttribute('src', 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/5FCE8400-0616-426F-8BEA-F53136305123.png')
 
-
-        reviewNotificationImage.setAttribute('src', userReview && userReview.profileImg ? userReview.profileImg :(userReview ? 'https://lh3.ggpht.com/-HiICnzrd7xo/AAAAAAAAAAI/AAAAAAAAAAA/GcUbxXrSSYg/s128-c0x00000000-cc-rp-mo/photo.jpg': ""));
+       if (fromAppType == 'trustpilot'){
+            reviewNotificationImage.style = "background-color: rgba(16, 94, 250, 0.1); padding:5px"
+            reviewNotificationImage.setAttribute('src', userReview ? 'https://s3.wasabisys.com/influencelogo/logo/star-tp.svg': "")
+       }
+        else{
+            reviewNotificationImage.setAttribute('src', userReview && userReview.profileImg ? userReview.profileImg :(userReview ? 'https://lh3.ggpht.com/-HiICnzrd7xo/AAAAAAAAAAI/AAAAAAAAAAA/GcUbxXrSSYg/s128-c0x00000000-cc-rp-mo/photo.jpg': ""));
+        }
         //reviewNotificationImage.setAttribute('src', 'https://storage.googleapis.com/influence-197607.appspot.com/googlereview.png');
        // notifReviewImgContent.style = `padding: 11px; border-radius: 0; height: 50px; width: 50px;`;
 
@@ -3370,7 +3375,6 @@ var Note = function Note(config, containerStyle, iconStyle) {
        // reviewNotificationUserNameContainer.innerHTML = fromAppType== "trustpilot" && userReview && userReview.title ? userReview.title : "Someone"
 
 
-
         var reviewNotificationNameText = document.createElement('div')
         reviewNotificationNameText.className = 'VxoCrsNjZR vR7cdCBJQH'
 
@@ -3380,8 +3384,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
         reviewNotificationNameText.innerHTML = userReview && userReview.username ? userReview.username : 'Someone' ;
         }
         else if (fromAppType == 'trustpilot') {
-            reviewNotificationNameText.innerHTML = userReview && userReview.title ? userReview.title : 'Someone' ;
-            }
+            reviewNotificationNameText.innerHTML = userReview && userReview.username ? userReview.username : 'Someone' ;
+        }
 
        // reviewNotificationNameText.innerHTML =    //'Aviel Sela'
         reviewNotificationUserNameContainer.appendChild(reviewNotificationNameText)
@@ -3481,7 +3485,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         if (userReview && userReview.rating) {
             for (let star_i = 0; star_i < userReview.rating; star_i++) {
                 star += `<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                   viewBox="0 0 53.867 53.867" style="enable-background:new 0 0 53.867 53.867;" xml:space="preserve">
+                   viewBox="0 0 53.867 53.867" style="enable-background:new 0 0 53.867 53.867;height:12px;width:12px;margin:0.5px;" xml:space="preserve">
                     <polygon style="fill:rgb(255, 215, 0, 1);" points="26.934,1.318 35.256,18.182 53.867,20.887 40.4,34.013 43.579,52.549 26.934,43.798 
                     10.288,52.549 13.467,34.013 0,20.887 18.611,18.182 "/>
                   </svg>`
@@ -3509,10 +3513,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
     else if(fromAppType == 'trustpilot' ){
         var star = '';
         if (userReview && userReview.rating) {
-
             for (let star_i = 0; star_i < userReview.rating; star_i++) {
-                star += `
-                <svg style="height:12px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 96 96" version="1.1">
+                star += `<svg style="height:13px;margin:0.5px;padding:0.25px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 96 96" version="1.1">
                 <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
                 <g id="Trustpilot_ratings_5star-RGB" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                     <g fill-rule="nonzero">
@@ -3521,7 +3523,6 @@ var Note = function Note(config, containerStyle, iconStyle) {
                     </g>
                 </g>
             </svg>`
-               
             }
         }
 
@@ -3602,10 +3603,12 @@ var Note = function Note(config, containerStyle, iconStyle) {
         reviewNotificationFooterLogo.className = 'bXZsh24SLi'
         reviewNotificationFooterLogo.setAttribute('src', userReview ? "https://www.nudgify.com/wp-content/uploads/2020/06/capterra-icon.png" :"")
        }
-       else if(fromAppType == "trustpilot"){
-        reviewNotificationFooterLogo.className = 'bXZsh24SLi'
-        reviewNotificationFooterLogo.setAttribute('src', userReview ? "https://api.useinfluence.co/images/trustpilot.png" :"")
-       }
+       // else if(fromAppType == "trustpilot"){
+       //  reviewNotificationFooterLogo.className = 'bXZsh24SLi'
+       //  reviewNotificationFooterLogo.setAttribute('src', userReview ? "https://api.useinfluence.co/images/trustpilot.png" :"")
+       // }
+
+
 
         reviewNotificationFooterLogoContainer.appendChild(reviewNotificationFooterLogo)
 
@@ -3619,7 +3622,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         if(fromAppType == 'google'){
         var star = '';
-        if (userReview && userReview.rating){
+        if (userReview && userReview.rating) {
             for (let star_i = 0; star_i < userReview.rating; star_i++) {
                 star += `<svg version="1.1" style= "height: 10px; width: 10px" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                    viewBox="0 0 53.867 53.867" style="enable-background:new 0 0 53.867 53.867;" xml:space="preserve">
@@ -3627,7 +3630,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
                     10.288,52.549 13.467,34.013 0,20.887 18.611,18.182 "/>
                   </svg>`
             }
-        } 
+        }
         reviwNotificationFooterStar1.innerHTML= star
     } else  if(fromAppType == 'trustpilot'){
         var star = '';

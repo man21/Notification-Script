@@ -1070,7 +1070,7 @@ if (typeof Influence === 'undefined') {
                 waitOnTracker: false,
                 resolveGeo: true,
                 trackPageViews: true,
-                trackClicks: false,
+                trackClicks: true,
                 trackHashChanges: false,
                 trackEngagement: false,
                 trackLinkClicks: false,
@@ -1170,23 +1170,46 @@ if (typeof Influence === 'undefined') {
                 });
             }
 
-            // Track clicks
-            if (this.options.trackClicks) {
-                Events.onready(function () {
-                    // Track all clicks to the document:
-                    Events.onevent(document.body, 'click', true, function (e) {
-                        var ancestors = DomUtil.getAncestors(e.target);
+    
 
-                        // Do not track clicks on links, these are tracked separately!
-                        if (!ArrayUtil.exists(ancestors, function (e) { return e.tagName === 'A'; })) {
-                            self.track('click', {
-                                target: DomUtil.getNodeDescriptor(e.target)
-                            });
-                        }
-                    });
-                });
-            }
+            // if (this.options.trackClicks) {
 
+            //     Events.onready(function () {
+
+            //         Events.onevent(document.body, 'click', true, function (e) {
+
+            //             var ancestors = DomUtil.getAncestors(e.target);
+
+                        
+            //             // console.log(e.target.id, "%%%%%%%%%%%%%%%")
+
+            //             if(e.target.tagName === 'A'){
+            //                 self.track('click', {
+            //                     form: Util.merge({ formId: Util.genGuid() }, { link: ancestors[0].href})
+            //                 });
+            //             }
+            //         });
+
+            //     })
+              
+
+
+
+            //     // Events.onevent((e) => {
+            //     //     if (e.form) {
+            //     //         if (!e.form.formId) {
+            //     //             e.form.formId = Util.genGuid();
+            //     //         }
+            //     //         const btnText = e.form.querySelector('button[type="submit"]')? e.form.querySelector('button[type="submit"]').innerText :  e.form.querySelector('input[type="submit"]') ? e.form.querySelector('input[type="submit"]').value : e.form.querySelector('button[type="submit"]') ? e.form.querySelector('button[type="submit"]').value :''
+            //     //         const incluedForm = exclued_button_text.indexOf(btnText.toLowerCase().replace(/\s/g, "")) === -1
+            //     //         if (incluedForm) {
+            //     //             self.track('formsubmit', {
+            //     //             form: Util.merge({ formId: e.form.formId }, DomUtil.getFormData(e.form))
+            //     //         });
+            //     //         }
+            //     //     }
+            //     // });
+            // }
             // Track hash changes:
             if (this.options.trackHashChanges) {
                 Events.onhashchange(function (e) {
@@ -1262,6 +1285,8 @@ if (typeof Influence === 'undefined') {
                 Events.onevent(document.body, 'click', true, function (e) {
                     if (e.target && e.target.className && e.target.className.indexOf && e.target.className.indexOf('FPqR') !== -1) {
                         var ancestors = DomUtil.getAncestors(e.target);
+
+                        console.log(ancestors, "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1111")
                         self.track('click', {
                             target: DomUtil.getNodeDescriptor(e.target)
                         });
@@ -1269,6 +1294,7 @@ if (typeof Influence === 'undefined') {
                     else {
                         //for fetch submit event, for without <form></form>
                         var tagname = e.target.tagName;
+
                         var arrEmail = document.getElementsByName("email");
                         var strFName = document.getElementsByName("firstname").length > 0 ? document.getElementsByName("firstname")[0].value : '';
 
@@ -1301,7 +1327,7 @@ if (typeof Influence === 'undefined') {
                             }
                             if (strEmail) {
                                 self.track('formsubmit', {
-                                    form: Util.merge({ formId: Util.genGuid() }, { email: strEmail,firstname:strFName,lastname: strLName})
+                                    form: Util.merge({ formId: Util.genGuid() }, { email: strEmail,firstname:strFName,lastname: strLName, btnId: e.target.id })
                                 });
                             }
                         }

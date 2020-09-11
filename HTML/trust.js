@@ -1192,7 +1192,7 @@ if (typeof Influence === 'undefined') {
 
                 })
               
-
+            }
 
 
             //     // Events.onevent((e) => {

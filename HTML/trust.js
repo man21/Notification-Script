@@ -1186,8 +1186,7 @@ if (typeof Influence === 'undefined') {
                         if(e.target.tagName === 'A' && ancestors[0].href){
                             self.track('linkClick', {
                                 
-                                linkData: {linkUrl: ancestors[0].href,
-                                    linkId: ancestors[0].id}
+                                linkData: {linkUrl: ancestors[0].href, linkId: ancestors[0] && ancestors[0].id ? ancestors[0].id : ""}
                             });
                         }
                     });

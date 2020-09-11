@@ -1185,9 +1185,9 @@ if (typeof Influence === 'undefined') {
 
                         if(e.target.tagName === 'A' && ancestors[0].href){
                             self.track('linkClick', {
-                                linkUrl: ancestors[0].href,
-                                linkId: ancestors[0].id
                                 
+                                linkData: {linkUrl: ancestors[0].href,
+                                    linkId: ancestors[0].id}
                             });
                         }
                     });
@@ -2534,6 +2534,13 @@ InfluenceTracker.prototype.tracker = function (info) {
    
     if(info && info.value && info.value.event == 'mouseover') if(flagMouseOver) return; else flagMouseOver = true;
     var path = info.path;
+
+
+    if(info.value.event == 'linkClick'){
+        console.log.log(info, "%%%%%%%%%%%%%%55")
+
+        return
+    }
 
     var value = info.value;
     // if(info.value && info.value.target){

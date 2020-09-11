@@ -2537,7 +2537,7 @@ InfluenceTracker.prototype.tracker = function (info) {
 
 
     if(info.value.event == 'linkClick'){
-        console.log.log(info, "%%%%%%%%%%%%%%55")
+        console.log(info, "%%%%%%%%%%%%%%55")
 
         return
     }

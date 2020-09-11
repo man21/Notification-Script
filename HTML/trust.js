@@ -1183,7 +1183,7 @@ if (typeof Influence === 'undefined') {
                         
                          console.log(e.target.id, "%%%%%%%%%%%%%%%")
 
-                         console.log(ancestors[0] && ancestors[0].id ? ancestors[0].id : "", "--------------------------")
+                         console.log(ancestors[0] && ancestors[0].id ? ancestors[0].id : "123", "--------------------------")
                         if(e.target.tagName === 'A' && ancestors[0].href){
                             self.track('linkClick', {
 

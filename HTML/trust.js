@@ -1180,14 +1180,10 @@ if (typeof Influence === 'undefined') {
 
                         var ancestors = DomUtil.getAncestors(e.target);
 
-                        
-                         console.log(e.target.id, "%%%%%%%%%%%%%%%")
-
-                         console.log(ancestors[0] && ancestors[0].id ? ancestors[0].id : "123", "--------------------------")
                         if(e.target.tagName === 'A' && ancestors[0].href){
                             self.track('linkClick', {
 
-                                linkData:  Util.merge({ linkUrl: ancestors[0].href }, { linkId: ancestors[0] && ancestors[0].id ? ancestors[0].id : "no ID" })
+                                linkData:  Util.merge({ linkUrl: ancestors[0].href }, { linkId: ancestors[0] && ancestors[0].id ? ancestors[0].id : "formid" })
                                 
                             });
                         }
@@ -2539,8 +2535,6 @@ InfluenceTracker.prototype.tracker = function (info) {
 
     if(info.value.event == 'linkClick'){
         console.log(info, "%%%%%%%%%%%%%%55")
-
-        return
     }
 
     var value = info.value;
@@ -2678,7 +2672,7 @@ InfluenceTracker.prototype.tracker = function (info) {
         if(configurationPath && data.category === 'formsubmit'){
             httpPostAsync(url, JSON.stringify(data), function (res) {
              });
-        } else if(data.category === 'click' || data.category === 'mouseover' || data.category === 'notificationview' || data.category === 'pageview' ){
+        } else if(data.category === 'click' || data.category === 'mouseover' || data.category === 'notificationview' || data.category === 'pageview' || data.category ==='linkClick' ){
             httpPostAsync(url, JSON.stringify(data), function (res) {
             });
         }

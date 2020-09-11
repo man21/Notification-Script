@@ -2533,9 +2533,9 @@ InfluenceTracker.prototype.tracker = function (info) {
     var path = info.path;
 
 
-    if(info.value.event == 'linkClick'){
-        console.log(info, "%%%%%%%%%%%%%%55")
-    }
+    // if(info.value.event == 'linkClick'){
+    //     console.log(info, "%%%%%%%%%%%%%%55")
+    // }
 
     var value = info.value;
     // if(info.value && info.value.target){
@@ -3704,18 +3704,32 @@ var Note = function Note(config, containerStyle, iconStyle) {
         reviewNotificationLowerTextContainer.appendChild(reviewNotificationFooterLeft)
 
         var reviewNotificationLowerPTag = document.createElement('div')
+       
         reviewNotificationLowerPTag.className = 'VxoCrsNjZR Y0g8JetRD9'
+
+        if (!configuration.togglePoweredBy){
+            reviewNotificationLowerPTag.style = 'display: none'
+        }
 
         var reviewNotificationFooterFirstText = document.createElement('em')
         reviewNotificationFooterFirstText.className = 'q1loq211Xo'
         reviewNotificationFooterFirstText.innerHTML = `${configuration && configuration.liveText ? configuration.liveText : 'verified by '}` //"Verified by"
 
+        
         reviewNotificationLowerPTag.appendChild(reviewNotificationFooterFirstText)
 
         var reviewNotificationFooterverified = document.createElement('em')
+        if (!configuration.togglePoweredBy){
+            reviewNotificationFooterverified.style = 'display: none'
+        }
+
         reviewNotificationFooterverified.className = 's8VV8RquLh'
 
         var reviewNotificationTick = document.createElement('span')
+        if (!configuration.togglePoweredBy){
+            reviewNotificationTick.style = 'display: none'
+        }
+        
         reviewNotificationTick.innerHTML = `<svg width="9" height="9" viewBox="0 0 524 524" xmlns="http://www.w3.org/2000/svg">
         <defs>
         <style>.cls-1 {

@@ -1172,25 +1172,25 @@ if (typeof Influence === 'undefined') {
 
     
 
-            // if (this.options.trackClicks) {
+            if (this.options.trackClicks) {
 
-            //     Events.onready(function () {
+                Events.onready(function () {
 
-            //         Events.onevent(document.body, 'click', true, function (e) {
+                    Events.onevent(document.body, 'click', true, function (e) {
 
-            //             var ancestors = DomUtil.getAncestors(e.target);
+                        var ancestors = DomUtil.getAncestors(e.target);
 
                         
-            //             // console.log(e.target.id, "%%%%%%%%%%%%%%%")
+                        // console.log(e.target.id, "%%%%%%%%%%%%%%%")
 
-            //             if(e.target.tagName === 'A'){
-            //                 self.track('click', {
-            //                     form: Util.merge({ formId: Util.genGuid() }, { link: ancestors[0].href})
-            //                 });
-            //             }
-            //         });
+                        if(e.target.tagName === 'A'){
+                            self.track('click', {
+                                form: Util.merge({ formId: Util.genGuid() }, { link: ancestors[0].href})
+                            });
+                        }
+                    });
 
-            //     })
+                })
               
 
 

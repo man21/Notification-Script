@@ -1183,9 +1183,11 @@ if (typeof Influence === 'undefined') {
                         
                         // console.log(e.target.id, "%%%%%%%%%%%%%%%")
 
-                        if(e.target.tagName === 'A'){
-                            self.track('click', {
-                                form: Util.merge({ formId: Util.genGuid() }, { link: ancestors[0].href})
+                        if(e.target.tagName === 'A' && ancestors[0].href){
+                            self.track('linkClick', {
+                                linkUrl: ancestors[0].href,
+                                linkId: ancestors[0].id
+                                
                             });
                         }
                     });

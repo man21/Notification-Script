@@ -2211,6 +2211,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
         let startSecondLoop = result.length
 
         if (result.length == 6) {
+            console.log("HELLO")
             for (let i = 0; i < splittedUrls.length; i++) {
                 var notif = responseNotifications[i];
                 // console.log(notif, "NOtif ********************")

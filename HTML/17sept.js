@@ -2210,7 +2210,8 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
         let maxMinus=0;
         let startSecondLoop = result.length
 
-        if (result.length == 5) {
+        if (result.length == 6) {
+            console.log("HELLO")
             for (let i = 0; i < splittedUrls.length; i++) {
                 var notif = responseNotifications[i];
                 // console.log(notif, "NOtif ********************")
@@ -2225,7 +2226,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                 
                
                 if (j > loopCheckValue) {
-                    i = 6;
+                    i = 7;
                     //setTimeout(() => new Notifications(config), (('rule.loopNotification' ? 11988 : 24) + 12) * 1000);//11988
                     setTimeout(() => new Notifications(config), (11988 + 12) * 1000);
                     return;
@@ -2308,8 +2309,8 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                                 j = j - 1;
                                 if (loopCheckExit.indexOf(key[0]) == -1)
                                     loopCheckExit.push(key[0]);
-                                if (loopCheckExit.length == 5)
-                                    i = 6;
+                                if (loopCheckExit.length == 6)
+                                    i = 7;
                                 return;
                             }
 

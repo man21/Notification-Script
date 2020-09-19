@@ -3786,6 +3786,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         bulkNotiifcationContainer.style = type == 'identification' || 'custom' ? "display:block" : "display:none";
        // bulkNotiifcationContainer.style = containerStyle;
 
+       console.log(type , "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&777")
        var bulkNotiifcationMainContainer = document.createElement('div')
        bulkNotiifcationMainContainer.className = 'foc2x3WbXB';
        bulkNotiifcationMainContainer.style =containerStyle

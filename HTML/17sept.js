@@ -2193,7 +2193,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
             await httpGetAsync(url, function (res) {
                   response = JSON.parse(res);
 
-                
+                console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
                 responseNotifications = response.message;
                 if (!enableLoopNotification && response.totalCampaign) loopCheckValue = activeNotification * response.totalCampaign;
                 // console.log('-------cal-----')

@@ -2193,7 +2193,6 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
             await httpGetAsync(url, function (res) {
                   response = JSON.parse(res);
 
-                console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
                 responseNotifications = response.message;
                 if (!enableLoopNotification && response.totalCampaign) loopCheckValue = activeNotification * response.totalCampaign;
                 // console.log('-------cal-----')
@@ -2209,6 +2208,10 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
         let randomDelayTime = 0, tempRandomDelayTime = 0, prevRandGap = 0;
         let maxMinus=0;
         let startSecondLoop = result.length
+
+
+        console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+
 
         if (result.length == 6) {
             console.log("LENGTH ENTERED *****************")

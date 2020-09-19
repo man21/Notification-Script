@@ -3783,7 +3783,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         var bulkNotiifcationContainer = document.createElement('div')
     //     bulkNotiifcationContainer.className = 'notif-card';
-        bulkNotiifcationContainer.style = type == 'identification'|| 'custom' ? "display:block" : "display:none";
+        bulkNotiifcationContainer.style = type == 'identification' ? "display:block" : "display:none" || 'custom' ? "display:block" : "display:none";;
        // bulkNotiifcationContainer.style = containerStyle;
 
        var bulkNotiifcationMainContainer = document.createElement('div')

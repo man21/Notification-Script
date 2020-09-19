@@ -4,7 +4,7 @@ var __pathname = window.location.pathname;
 __pathname = '/' + __pathname.split('/')[1];
 
 var influenceScript = '17sept.js';
-var BASE_URL = "https://api.useinfluence.co";
+var BASE_URL = "https://strapi.useinfluence.co";
 
 document.addEventListener('visibilitychange', function (e) {
     document.hidden ? isTabVisibility = false : isTabVisibility = true;
@@ -2091,7 +2091,7 @@ function CountUp(target, startVal, endVal, decimals, duration, options) {
 var notificationPath = [];
 var configurationPath = '';
 var excludeCampaign = []
-var activeNotification = 4
+var activeNotification = 6
 var Notifications = function (config) {
     if (!(this instanceof Notifications)) return new Notifications(config);
     this.config = config;
@@ -2113,7 +2113,7 @@ var Notifications = function (config) {
         })
 
         // notificationPath = response.notificationPath;
-        var splittedUrls = ["live", "identification", "journey","review", "announcement"];
+        var splittedUrls = ["live", "identification", "journey","review", "announcement", "custom"];
         // var exclude_notificationPath = notificationPath.filter(notifPath => notifPath.type == 'display_exclude');
         // exclude_notificationPath = exclude_notificationPath.map(notifPath => notifPath.url);
         notificationPath = notificationPath.filter(notifPath => notifPath.type == 'display');
@@ -2210,7 +2210,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
         let maxMinus=0;
         let startSecondLoop = result.length
 
-        if (result.length == 5) {
+        if (result.length == 6) {
             for (let i = 0; i < splittedUrls.length; i++) {
                 var notif = responseNotifications[i];
                 // console.log(notif, "NOtif ********************")
@@ -2225,7 +2225,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                 
                
                 if (j > loopCheckValue) {
-                    i = 6;
+                    i = 7;
                     //setTimeout(() => new Notifications(config), (('rule.loopNotification' ? 11988 : 24) + 12) * 1000);//11988
                     setTimeout(() => new Notifications(config), (11988 + 12) * 1000);
                     return;
@@ -2308,8 +2308,8 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                                 j = j - 1;
                                 if (loopCheckExit.indexOf(key[0]) == -1)
                                     loopCheckExit.push(key[0]);
-                                if (loopCheckExit.length == 5)
-                                    i = 6;
+                                if (loopCheckExit.length == 6)
+                                    i = 7;
                                 return;
                             }
 
@@ -3783,7 +3783,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         var bulkNotiifcationContainer = document.createElement('div')
     //     bulkNotiifcationContainer.className = 'notif-card';
-        bulkNotiifcationContainer.style = type == 'identification' ? "display:block" : "display:none";
+        bulkNotiifcationContainer.style = type == 'identification' || 'custom' ? "display:block" : "display:none";
        // bulkNotiifcationContainer.style = containerStyle;
 
        var bulkNotiifcationMainContainer = document.createElement('div')

@@ -2343,6 +2343,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                                 //     },(info.rule.delayNotification ? (randomDelayTime * 1000) : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v - 1)) * 1000));
                                 randomDelayTime = 0;
 
+                                console.log(info, "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
                                 setTimeout(function () {
                                     if (info.visitorList || info.liveViewer || info.liveFollower) key = 'live';
                                     else if (info.numberOfUsers) key = 'identification';

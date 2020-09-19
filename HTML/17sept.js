@@ -2113,7 +2113,7 @@ var Notifications = function (config) {
         })
 
         // notificationPath = response.notificationPath;
-        var splittedUrls = ["live", "identification", "journey","review", "announcement"];
+        var splittedUrls = ["live", "identification", "journey","review", "announcement", "custom"];
         // var exclude_notificationPath = notificationPath.filter(notifPath => notifPath.type == 'display_exclude');
         // exclude_notificationPath = exclude_notificationPath.map(notifPath => notifPath.url);
         notificationPath = notificationPath.filter(notifPath => notifPath.type == 'display');
@@ -2211,7 +2211,6 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
         let startSecondLoop = result.length
 
         if (result.length == 6) {
-            console.log("HELLO")
             for (let i = 0; i < splittedUrls.length; i++) {
                 var notif = responseNotifications[i];
                 // console.log(notif, "NOtif ********************")
@@ -3784,7 +3783,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         var bulkNotiifcationContainer = document.createElement('div')
     //     bulkNotiifcationContainer.className = 'notif-card';
-        bulkNotiifcationContainer.style = type == 'identification' ? "display:block" : "display:none";
+        bulkNotiifcationContainer.style = type == 'identification'|| 'custom' ? "display:block" : "display:none";
        // bulkNotiifcationContainer.style = containerStyle;
 
        var bulkNotiifcationMainContainer = document.createElement('div')

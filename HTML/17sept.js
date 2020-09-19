@@ -2211,7 +2211,11 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
         let startSecondLoop = result.length
 
         if (result.length == 6) {
+            console.log("LENGTH ENTERED *****************")
             for (let i = 0; i < splittedUrls.length; i++) {
+
+                console.log("LENGTH ENTERED *****************222222222222222222")
+
                 var notif = responseNotifications[i];
                 // console.log(notif, "NOtif ********************")
                 var key = Object.keys(notif);
@@ -2294,6 +2298,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                             }
 
 
+                            console.log("HELLOOOOOOOOOOOOOOOOOOOOOOOOO")
                             //let userDetails = info.userDetails && info.userDetails.length && key == 'journey' ? info.userDetails.filter(user => user) : [];
                             let userDetails = info.userDetails;
                             let userReviews = info.userReviews;

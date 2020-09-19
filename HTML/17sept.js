@@ -2348,7 +2348,8 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                                     else if (info.numberOfUsers) key = 'identification';
                                     else if (info.userDetails) key = 'journey';
                                     else if (info.userReviews) key = 'review';
-                                    else key = 'announcement'
+                                    else if(info.configurations[0].configuration.announcementHeaderText) key = 'announcement' 
+                                    else key = 'custom'
                                     if(isTabVisibility){
                                         return notificationTimeout(u, info, info.rule, key, notificationPath);}
                                 }, (j==1 ? (info.rule.initialDelay) * 1000 : info.rule.delayNotification ? (randomDelayTime * 1000) :(((info.rule.displayTime + info.rule.delayBetween + 3) * (v-1)) * 1000) + (info.rule.initialDelay) * 1000));
@@ -3781,12 +3782,12 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
 
 
+
         var bulkNotiifcationContainer = document.createElement('div')
     //     bulkNotiifcationContainer.className = 'notif-card';
         bulkNotiifcationContainer.style = type == 'identification' || 'custom' ? "display:block" : "display:none";
        // bulkNotiifcationContainer.style = containerStyle;
 
-       console.log(type , "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&777")
        var bulkNotiifcationMainContainer = document.createElement('div')
        bulkNotiifcationMainContainer.className = 'foc2x3WbXB';
        bulkNotiifcationMainContainer.style =containerStyle

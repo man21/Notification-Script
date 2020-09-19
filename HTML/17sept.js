@@ -2210,7 +2210,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
         let startSecondLoop = result.length
 
 
-        console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+        console.log(result.length,"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
 
 
         if (result.length == 6) {

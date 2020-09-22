@@ -3,8 +3,8 @@ var exclued_button_text = 'login, signin, loginnow, memberlogin, accountlogin, p
 var __pathname = window.location.pathname;
 __pathname = '/' + __pathname.split('/')[1];
 
-var influenceScript = '17sept.js';
-var BASE_URL = "https://strapi.useinfluence.co";
+var influenceScript = 'something1.js';
+var BASE_URL = "https://api.useinfluence.co";
 
 document.addEventListener('visibilitychange', function (e) {
     document.hidden ? isTabVisibility = false : isTabVisibility = true;
@@ -514,7 +514,7 @@ if (typeof Influence === 'undefined') {
               const formObj = Util.parseQueryString(queryString)
               const objValue = Object.values(formObj)
               const email=objValue.find(o=>o.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi));
-              const firstname = formObj["customerFirstName"] || formObj["firstname"] || formObj["form_fields[name]"] || formObj["form_fields[firstname]"] || formObj["your-name"] || formObj["name"]  || formObj["NAMA"]|| formObj["FNAME"]  || formObj["customerFirstName"] || formObj["Fname"]  || formObj["nama"] || formObj["NAME"]  || formObj["FIRSTNAME"] || formObj["username"]  || formObj["FIRST NAME"] || formObj["UserName"]  || formObj["USERNAME"] || formObj["userName"]  || formObj["Username"] || formObj["user_id"] || formObj["ctl19$txtName"] || formObj["form_submission[name]"] || formObj["wpforms[fields][12]"] || formObj["checkout_offer[extra_contact_information][custom_14]"] || formObj["ctl00$ContentPlaceHolder1$txtFName"]
+              const firstname = formObj["customerFirstName"] || formObj["firstname"] || formObj["form_fields[name]"] || formObj["form_fields[firstname]"] || formObj["your-name"] || formObj["name"]  || formObj["NAMA"]|| formObj["FNAME"]  || formObj["customerFirstName"] || formObj["Fname"]  || formObj["nama"] || formObj["NAME"]  || formObj["FIRSTNAME"] || formObj["username"]  || formObj["FIRST NAME"] || formObj["UserName"]  || formObj["USERNAME"] || formObj["userName"]  || formObj["Username"] || formObj["user_id"] || formObj["ctl19$txtName"] || formObj["form_submission[name]"] || formObj["wpforms[fields][12]"] || formObj["checkout_offer[extra_contact_information][custom_14]"]
               const lastname = formObj["customerLastName"] || formObj["lastname"] || formObj["form_fields[lastname]"] || formObj["last-name"] || formObj["lname"] || formObj["LNAME"]  || formObj["customerLastName"] || formObj["Lname"]  || formObj["lnama"] || formObj["LNAME"]  || formObj["LASTNAME"] || formObj["LAST NAME"] 
               
               return({firstname: firstname ? firstname.replace('+',' '):'',lastname:lastname ? lastname.replace('+',' '):'',email})
@@ -1362,17 +1362,17 @@ if (typeof Influence === 'undefined') {
                 }
                 container.addEventListener('mouseover', function (e) {
                     self.track('mouseover', {
-                        target: DomUtil.getNodeDescriptor(e.target)         //DomUtil.getNodeDescriptor(e.target)
+                        target: DomUtil.genCssSelector(e.target)         //DomUtil.getNodeDescriptor(e.target)
                     });
                 });
                 container.addEventListener('click',  function (e) {
                     self.track('click', {
-                        target: DomUtil.getNodeDescriptor(e.target)         //DomUtil.genCssSelector(e.target)
+                        target: DomUtil.genCssSelector(e.target)         //DomUtil.getNodeDescriptor(e.target)
                     });
                 });
             }
             //notification view
-            new MutationObserver(function(mutations) {
+            new MutationObserver(function(mutations, observe) {
                 var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_0');
                 var in_dom = document.body.contains(element);
                 if(in_dom){
@@ -1380,7 +1380,7 @@ if (typeof Influence === 'undefined') {
                     self.track('notificationview', Util.merge(Env.getPageloadData(), { url: Util.parseUrl(url + '') }));
                 }
                 attachNotifcationListener(element, self);
-            }).observe(document.body, {childList: true});
+            }) //.observe(document.body, {childList: true});
         };
 
         /**
@@ -2091,7 +2091,7 @@ function CountUp(target, startVal, endVal, decimals, duration, options) {
 var notificationPath = [];
 var configurationPath = '';
 var excludeCampaign = []
-var activeNotification = 6
+var activeNotification = 4
 var Notifications = function (config) {
     if (!(this instanceof Notifications)) return new Notifications(config);
     this.config = config;
@@ -2113,7 +2113,7 @@ var Notifications = function (config) {
         })
 
         // notificationPath = response.notificationPath;
-        var splittedUrls = ["live", "identification", "journey","review", "announcement", "custom"];
+        var splittedUrls = ["live", "identification", "journey","review", "announcement"];
         // var exclude_notificationPath = notificationPath.filter(notifPath => notifPath.type == 'display_exclude');
         // exclude_notificationPath = exclude_notificationPath.map(notifPath => notifPath.url);
         notificationPath = notificationPath.filter(notifPath => notifPath.type == 'display');
@@ -2134,6 +2134,7 @@ var Notifications = function (config) {
 };
 
 async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotification, notificationPath, config) {
+    
     // var link = document.createElement("link");
     // link.href = "https://storage.googleapis.com/influence-197607.appspot.com/note3.css";
     // //link.href = "https://96bcb271.ngrok.io/style/note1-internal.css?q="+Math.random();
@@ -2141,9 +2142,10 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
     // link.rel = "stylesheet";
     // link.id = "stylesheetID";
     // document.getElementsByTagName("head")[0].appendChild(link);
+    
 
     var newDesignCSS = document.createElement("link");
-    newDesignCSS.href = 'https://storage.googleapis.com/influence-197607.appspot.com/design12.css';
+    newDesignCSS.href = 'https://storage.googleapis.com/influence-197607.appspot.com/design9.css';
     // newDesignCSS.href = 'https://test2109.herokuapp.com/newDesignCSS.css';
     newDesignCSS.type = "text/css";
     newDesignCSS.rel = "stylesheet";
@@ -2184,6 +2186,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
     var responseNotifications = [];
     var loopCheckValue = enableLoopNotification ? 1000 : activeNotification;
 
+
     let responseNotif = (callback) => {
         let splittedUrlsSingle = ['live']
         splittedUrlsSingle.map(async notifName => {
@@ -2193,6 +2196,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
             await httpGetAsync(url, function (res) {
                   response = JSON.parse(res);
 
+                
                 responseNotifications = response.message;
                 if (!enableLoopNotification && response.totalCampaign) loopCheckValue = activeNotification * response.totalCampaign;
                 // console.log('-------cal-----')
@@ -2203,22 +2207,16 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
 
     responseNotif((err, result, config) => {
         let m = 1;
-        let userLength = 1;
+        let userLength = 1;responseNotifications
         let loopCheckExit = [];
         let randomDelayTime = 0, tempRandomDelayTime = 0, prevRandGap = 0;
         let maxMinus=0;
         let startSecondLoop = result.length
 
+        console.log(result.length, "LENGTH ########################")
 
-        console.log(result.length,"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-
-
-        if (result.length == 6) {
-            console.log("LENGTH ENTERED *****************")
+        if (result.length == 5) {
             for (let i = 0; i < splittedUrls.length; i++) {
-
-                console.log("LENGTH ENTERED *****************222222222222222222")
-
                 var notif = responseNotifications[i];
                 // console.log(notif, "NOtif ********************")
                 var key = Object.keys(notif);
@@ -2231,8 +2229,10 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                 const infos = secondLoop ? responses.message_data.filter(obj=> excludeCampaign.indexOf(obj.rule.campaign) == -1 && obj.rule.loopNotification ) : responses.message_data.filter(obj=> excludeCampaign.indexOf(obj.rule.campaign) == -1 )
                 
                
+                console.log(j, "Values of J!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!111")
                 if (j > loopCheckValue) {
-                    i = 7;
+                    console.log("ENTEDED HERE--", j)
+                    i = 6;
                     //setTimeout(() => new Notifications(config), (('rule.loopNotification' ? 11988 : 24) + 12) * 1000);//11988
                     setTimeout(() => new Notifications(config), (11988 + 12) * 1000);
                     return;
@@ -2301,7 +2301,6 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                             }
 
 
-                            console.log("HELLOOOOOOOOOOOOOOOOOOOOOOOOO")
                             //let userDetails = info.userDetails && info.userDetails.length && key == 'journey' ? info.userDetails.filter(user => user) : [];
                             let userDetails = info.userDetails;
                             let userReviews = info.userReviews;
@@ -2316,8 +2315,8 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                                 j = j - 1;
                                 if (loopCheckExit.indexOf(key[0]) == -1)
                                     loopCheckExit.push(key[0]);
-                                if (loopCheckExit.length == 6)
-                                    i = 7;
+                                if (loopCheckExit.length == 5)
+                                    i = 6;
                                 return;
                             }
 
@@ -2327,41 +2326,28 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                             }
                             // console.log('========configuration',configuration);
                             if (configuration && configuration.activity) {
-                                // if (j == 1) {
-                                //     randomDelayTime = 0;
-                                //     setTimeout(function () {
-                                //         if (info.visitorList || info.liveViewer || info.liveFollower) key = 'live';
-                                //         else if (info.numberOfUsers) key = 'identification';
-                                //         else if (info.userDetails) key = 'journey';
-                                //         else if (info.userReviews) key = 'review';
-                                //         else key = 'announcement'
-                                //         if(isTabVisibility){
-                                //             return notificationTimeout(u, info, info.rule, key, notificationPath);}
-                                //     }, (info.rule.initialDelay) * 1000);
-                                // }
-                                // else
-                                //     setTimeout(function () {
-                                //         if (info.visitorList || info.liveViewer || info.liveFollower) key = 'live';
-                                //         else if (info.numberOfUsers) key = 'identification';
-                                //         else if (info.userDetails) key = 'journey';
-                                //         else if (info.userReviews) key = 'review';
-                                //         else key = 'announcement'
-                                //         if(isTabVisibility){
-                                //             return notificationTimeout(u, info, info.rule, key, notificationPath); }
-                                //     },(info.rule.delayNotification ? (randomDelayTime * 1000) : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v - 1)) * 1000));
-                                randomDelayTime = 0;
-
-                                console.log(info, "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
-                                setTimeout(function () {
-                                    if (info.visitorList || info.liveViewer || info.liveFollower) key = 'live';
-                                    else if (info.numberOfUsers) key = 'identification';
-                                    else if (info.userDetails) key = 'journey';
-                                    else if (info.userReviews) key = 'review';
-                                    else if(info.configurations[0].configuration.announcementHeaderText) key = 'announcement' 
-                                    else key = 'custom'
-                                    if(isTabVisibility){
-                                        return notificationTimeout(u, info, info.rule, key, notificationPath);}
-                                }, (j==1 ? (info.rule.initialDelay) * 1000 : info.rule.delayNotification ? (randomDelayTime * 1000) :(((info.rule.displayTime + info.rule.delayBetween + 3) * (v-1)) * 1000) + (info.rule.initialDelay) * 1000));
+                                if (j == 1) {
+                                    randomDelayTime = 0;
+                                    setTimeout(function () {
+                                        if (info.visitorList || info.liveViewer || info.liveFollower) key = 'live';
+                                        else if (info.numberOfUsers) key = 'identification';
+                                        else if (info.userDetails) key = 'journey';
+                                        else if (info.userReviews) key = 'review';
+                                        else key = 'announcement'
+                                        if(isTabVisibility){
+                                            return notificationTimeout(u, info, info.rule, key, notificationPath);}
+                                    }, (info.rule.initialDelay) * 1000);
+                                }
+                                else
+                                    setTimeout(function () {
+                                        if (info.visitorList || info.liveViewer || info.liveFollower) key = 'live';
+                                        else if (info.numberOfUsers) key = 'identification';
+                                        else if (info.userDetails) key = 'journey';
+                                        else if (info.userReviews) key = 'review';
+                                        else key = 'announcement'
+                                        if(isTabVisibility){
+                                            return notificationTimeout(u, info, info.rule, key, notificationPath); }
+                                    },(info.rule.delayNotification ? (randomDelayTime * 1000) : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v - 1)) * 1000));
                                 tempRandomDelayTime = randomDelayTime;
                             } else {
                                 if (maxMinus > 1000) return;
@@ -2482,16 +2468,6 @@ function httpGetAsync(theUrl, callback) {
     xmlHttp.send(null);
 }
 
-function httpGet(theUrl, callback) {
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.onreadystatechange = function () {
-        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
-            callback(xmlHttp.status);
-    }
-    xmlHttp.open("GET", theUrl, true); // true for asynchronous
-    xmlHttp.send(null);
-}
-
 function httpPostAsync(theUrl, data, callback) {
     var xmlHttp = new XMLHttpRequest();
     xmlHttp.onreadystatechange = function () {
@@ -2513,23 +2489,19 @@ function getEmailByInputType() {
 }
 
 InfluenceTracker.prototype.tracker = function (info) {
+
+     console.log(info, " INFO #########################################")
    
     if(info && info.value && info.value.event == 'mouseover') if(flagMouseOver) return; else flagMouseOver = true;
+   console.log(info.value.event, "#############333333")
     var path = info.path;
-
     var value = info.value;
-    // if(info.value && info.value.target){
-    //     delete info.value['target'];
-    //     value = info.value;
-    // }else{
-    //     value = info.value;
-    // }
     value['referrer'] = document.referrer;
     if (value && value.source && value.source.url && value.source.url.host)
         value.source.url.host = value.source.url.host.replace(/^www\./, '');
 
 
-        if(info.value.target && info.value.target.selector){
+        if(info.value.target){
 
             var notifType;
             
@@ -2544,31 +2516,31 @@ InfluenceTracker.prototype.tracker = function (info) {
             var reviewClassArr = ["y2UXzO2spo", "DyWfFTHh9R", "sD1KBJgziO", "wIwWxk318I" ,"bnvt6niIjl" ]
     
             announcementClassArr.some(function (element, index) {
-                if (info.value.target.selector.includes(element)) {
+                if (info.value.target.includes(element)) {
                     notifType = "announcement"
                 } 
             });
     
             liveClassArr.some(function (element, index) {
-                if (info.value.target.selector.includes(element)) {
+                if (info.value.target.includes(element)) {
                     notifType = "live"
                 } 
             });
     
             bulkClassArr.some(function (element, index) {
-                if (info.value.target.selector.includes(element)) {
+                if (info.value.target.includes(element)) {
                     notifType = "bulk"
                 } 
             });
     
             recentClassArr.some(function (element, index) {
-                if (info.value.target.selector.includes(element)) {
+                if (info.value.target.includes(element)) {
                     notifType = "recent"
                 } 
             });
     
             reviewClassArr.some(function (element, index) {
-                if (info.value.target.selector.includes(element)) {
+                if (info.value.target.includes(element)) {
                     notifType = "review"
                 } 
             });
@@ -2615,19 +2587,20 @@ InfluenceTracker.prototype.tracker = function (info) {
         // }
         // data.value.category=data.value.event;//user-events';
 
-        // console.log( configurationPath,  "CONFIGURATION PATH ==========================")
         if (configurationPath && configurationPath.rule && configurationPath.rule.displayOnAllPages){
 
-            // console.log(configurationPath.rule.campaign, "IF CONDIITON ***************************")
+        
             
             data.value.campaignId = configurationPath.rule.campaign;
             data.campaignId = configurationPath.rule.campaign;
        
         }else {
+
             if (configurationPath && configurationPath.notificationPath && configurationPath.notificationPath.length > 0) {
+
                 const dataNotifPath = configurationPath.notificationPath.filter(x => x.url == location.pathname && x.type == 'lead');
 
-                // console.log(dataNotifPath,"DATA NOTIFICATION PATH ***************************************")
+             console.log(dataNotifPath,"DATA NOTIFICATION PATH ***************************************")
 
                 // console.log(dataNotifPath[0].campaignId, "dataNotifPath[0].campaignId ===============================================")
                 if (dataNotifPath) //&& dataNotifPath.length > 0)
@@ -2649,15 +2622,18 @@ InfluenceTracker.prototype.tracker = function (info) {
 
         //Send the proper header information along with the request
         var url = BASE_URL + '/ws/log';
-        if(configurationPath && data.category === 'formsubmit'){
-            httpPostAsync(url, JSON.stringify(data), function (res) {
-             });
-        } else if(data.category === 'click' || data.category === 'mouseover' || data.category === 'notificationview' || data.category === 'pageview' ){
-            httpPostAsync(url, JSON.stringify(data), function (res) {
-            });
-        }
 
-        
+        console.log(data, "DATAAAAAAAAAAAAAAAAAAAa")
+
+        httpPostAsync(url, JSON.stringify(data), function (res) {
+          });
+        // if(configurationPath && data.category == 'formsubmit'){
+        //     httpPostAsync(url, JSON.stringify(data), function (res) {
+        //      });
+        // } else{
+        //     httpPostAsync(url, JSON.stringify(data), function (res) {
+        //     });
+        // }
 
         // if ("WebSocket" in window) {
         //     // Let us open a web socket
@@ -2884,55 +2860,24 @@ var Note = function Note(config, containerStyle, iconStyle) {
         var recentNotificationImage = document.createElement('img')
         recentNotificationImage.className = 'YgksSelqbb'
 
-        // var res_img = 'https://storage.googleapis.com/influence-197607.appspot.com/default_icon.png';
+        var res_img = 'https://storage.googleapis.com/influence-197607.appspot.com/default_icon.png';
 
-        // if (userDetails && userDetails) {
-        //     if (userDetails.productImg) {
-        //         res_img = userDetails.productImg;
-        //     }
-        //     else if (configuration && configuration.toggleMap == 'map') {
-        //         if (userDetails.city && userDetails.country) {
-        //             // res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=hbWDhMsvBHicDmqnO9Zb&app_code=UloQYTuh7LRTXjc4lDpa5Q&ci=${userDetails.city}&co=${userDetails.country}&z=10&h=200&w=200`;
-        //             res_img = `https://image.maps.ls.hereapi.com/mia/1.6/mapview?co=${userDetails.country}&z=10&ci=${userDetails.city}&h=200&w=200&apiKey=bqnejSYDD8ZDVnC9exfexyOEOfwevkIgHJQRBsxoXXg`;
-        //         }
-        //         else if (userDetails.city) {
-        //             // res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=hbWDhMsvBHicDmqnO9Zb&app_code=UloQYTuh7LRTXjc4lDpa5Q&ci=${userDetails.city}&z=10&h=200&w=200`;
-        //             res_img = `https://image.maps.ls.hereapi.com/mia/1.6/mapview?z=10&ci=${userDetails.city}&h=200&w=200&apiKey=bqnejSYDD8ZDVnC9exfexyOEOfwevkIgHJQRBsxoXXg`;
-        //         }
-        //         else if (userDetails.country) {
-        //             // res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=hbWDhMsvBHicDmqnO9Zb&app_code=UloQYTuh7LRTXjc4lDpa5Q&co=${userDetails.country}&z=10&h=200&w=200`;
-        //             res_img = `https://image.maps.ls.hereapi.com/mia/1.6/mapview?co=${userDetails.country}&z=10&h=200&w=200&apiKey=bqnejSYDD8ZDVnC9exfexyOEOfwevkIgHJQRBsxoXXg`;
-        //         }
-        //     }
-        //     else if (configuration && configuration.panelStyle) {
-        //         res_img = configuration.panelStyle.image;
-        //     }
-        // }
-        var res_img = "https://s3.wasabisys.com/insidescript.com/maps/world.jpeg"
-        const bucketUrl = "https://s3.wasabisys.com/insidescript.com/maps/"
         if (userDetails && userDetails) {
             if (userDetails.productImg) {
                 res_img = userDetails.productImg;
             }
             else if (configuration && configuration.toggleMap == 'map') {
                 if (userDetails.city && userDetails.country) {
-                    res_img = bucketUrl +userDetails.city + '_' + userDetails.country + '.jpeg'
-                    
-                    //res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=eVtq1iOX1kyYqLeYpd1W&app_code=CblgM4dq4wHQykVEBfa0Ww&ci=${userDetails.city}&co=${userDetails.country}&z=10&h=200&w=200`;
-                    // res_img = `https://image.maps.ls.hereapi.com/mia/1.6/mapview?co=${userDetails.country}&z=10&ci=${userDetails.city}&h=200&w=200&apiKey=D4UFItTuftNruv5x2vorKlT0evG8sIj1e0NnWXKxvRw`;
+                    res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=nqvDw8OijdJURKVv2PXX&app_code=_ATxq4kJdfRimhmZWN2pFQ&ci=${userDetails.city}&co=${userDetails.country}&z=10&h=200&w=200`;
+                    // res_img = `https://image.maps.ls.hereapi.com/mia/1.6/mapview?co=${userDetails.country}&z=10&ci=${userDetails.city}&h=200&w=200&apiKey=GnxMRg61uO4_XgMs5cSR8wZej8Bf-fiqtbngQ6pmLtg`;
                 }
                 else if (userDetails.city) {
-                        
-                    res_img = bucketUrl +  userDetails.city + '.jpeg'
-                            
-                    //res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=eVtq1iOX1kyYqLeYpd1W&app_code=CblgM4dq4wHQykVEBfa0Ww&ci=${userDetails.city}&z=10&h=200&w=200`;
-                    // res_img = `https://image.maps.ls.hereapi.com/mia/1.6/mapview?z=10&ci=${userDetails.city}&h=200&w=200&apiKey=D4UFItTuftNruv5x2vorKlT0evG8sIj1e0NnWXKxvRw`;
+                    res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=nqvDw8OijdJURKVv2PXX&app_code=_ATxq4kJdfRimhmZWN2pFQ&ci=${userDetails.city}&z=10&h=200&w=200`;
+                    // res_img = `https://image.maps.ls.hereapi.com/mia/1.6/mapview?z=10&ci=${userDetails.city}&h=200&w=200&apiKey=GnxMRg61uO4_XgMs5cSR8wZej8Bf-fiqtbngQ6pmLtg`;
                 }
                 else if (userDetails.country) {
-                    res_img = bucketUrl + userDetails.country + '.jpeg'
-                           
-                   // res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=eVtq1iOX1kyYqLeYpd1W&app_code=CblgM4dq4wHQykVEBfa0Ww&co=${userDetails.country}&z=10&h=200&w=200`;
-                    // res_img = `https://image.maps.ls.hereapi.com/mia/1.6/mapview?co=${userDetails.country}&z=10&h=200&w=200&apiKey=D4UFItTuftNruv5x2vorKlT0evG8sIj1e0NnWXKxvRw`;
+                    res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=nqvDw8OijdJURKVv2PXX&app_code=_ATxq4kJdfRimhmZWN2pFQ&co=${userDetails.country}&z=10&h=200&w=200`;
+                    // res_img = `https://image.maps.ls.hereapi.com/mia/1.6/mapview?co=${userDetails.country}&z=10&h=200&w=200&apiKey=GnxMRg61uO4_XgMs5cSR8wZej8Bf-fiqtbngQ6pmLtg`;
                 }
             }
             else if (configuration && configuration.panelStyle) {
@@ -3352,13 +3297,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
         reviewNotificationImage.className = 'wIwWxk318I'
        // reviewNotificationImage.setAttribute('src', 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/5FCE8400-0616-426F-8BEA-F53136305123.png')
 
-       if (fromAppType == 'trustpilot'){
-            reviewNotificationImage.style = "background-color: rgba(16, 94, 250, 0.1); padding:5px"
-            reviewNotificationImage.setAttribute('src', userReview ? 'https://s3.wasabisys.com/influencelogo/logo/star-tp.svg': "")
-       }
-        else{
-            reviewNotificationImage.setAttribute('src', userReview && userReview.profileImg ? userReview.profileImg :(userReview ? 'https://lh3.ggpht.com/-HiICnzrd7xo/AAAAAAAAAAI/AAAAAAAAAAA/GcUbxXrSSYg/s128-c0x00000000-cc-rp-mo/photo.jpg': ""));
-        }
+
+        reviewNotificationImage.setAttribute('src', userReview && userReview.profileImg ? userReview.profileImg :(userReview ? 'https://lh3.ggpht.com/-HiICnzrd7xo/AAAAAAAAAAI/AAAAAAAAAAA/GcUbxXrSSYg/s128-c0x00000000-cc-rp-mo/photo.jpg': ""));
         //reviewNotificationImage.setAttribute('src', 'https://storage.googleapis.com/influence-197607.appspot.com/googlereview.png');
        // notifReviewImgContent.style = `padding: 11px; border-radius: 0; height: 50px; width: 50px;`;
 
@@ -3380,41 +3320,21 @@ var Note = function Note(config, containerStyle, iconStyle) {
         var reviewNotificationTextContainer = document.createElement('div')
         reviewNotificationTextContainer.className = 'Pw72iFZOEh'
 
-    
         var reviewNotificationUserNameContainer = document.createElement('div')
         reviewNotificationUserNameContainer.className = 'user-name-container-review'
-       // reviewNotificationUserNameContainer.innerHTML = fromAppType== "trustpilot" && userReview && userReview.title ? userReview.title : "Someone"
 
 
         var reviewNotificationNameText = document.createElement('div')
         reviewNotificationNameText.className = 'VxoCrsNjZR vR7cdCBJQH'
-
-        var reviewNotificationNameText2 = document.createElement('div')
-
 
         if (fromAppType == 'facebook')
         reviewNotificationNameText.innerHTML = userReview.username   //'Recommended us on Facebook';
         else if (fromAppType == 'google') {
         reviewNotificationNameText.innerHTML = userReview && userReview.username ? userReview.username : 'Someone' ;
         }
-        else if (fromAppType == 'trustpilot') {
-
-            reviewNotificationUserNameContainer.style = "display: flex; align-items: center"
-            reviewNotificationNameText.innerHTML = userReview && userReview.username ? userReview.username : 'Someone' ;
-            
-            reviewNotificationNameText2.className = 'Teriosjk'
-            reviewNotificationNameText2.style = "display: none"
-
-            reviewNotificationNameText2.innerHTML = userReview && userReview.title ? userReview.title : 'Test'
-
-
-        }
 
        // reviewNotificationNameText.innerHTML =    //'Aviel Sela'
         reviewNotificationUserNameContainer.appendChild(reviewNotificationNameText)
-
-        reviewNotificationUserNameContainer.append(reviewNotificationNameText2)
-
 
         var reviewNotificationUpperLogoContainer = document.createElement('div')
         reviewNotificationUpperLogoContainer.className = 'Se4hb14yxF'
@@ -3445,45 +3365,9 @@ var Note = function Note(config, containerStyle, iconStyle) {
         }
 
         reviewNotificationUpperStar.innerHTML= star
-    }else if(fromAppType == 'stamped' || fromAppType == 'capterra') {
-        var star = '';
-        if (userReview && userReview.rating) {
-            for (let star_i = 0; star_i < userReview.rating; star_i++) {
-                star += `<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
-                width="12.000000pt" height="12.000000pt" viewBox="0 0 12.000000 12.000000"
-                preserveAspectRatio="xMidYMid meet">
-               <g transform="translate(0.000000,12.000000) scale(0.100000,-0.100000)"
-               fill="#000000" stroke="none">
-               </g>
-               </svg>`
-            }
-        }
-
-        reviewNotificationUpperStar.innerHTML= star
+    }else {
 
     }
-    // else if(fromAppType == 'trustpilot') {
-    //     //var star = '';
-    //     // if (userReview && userReview.rating) {
-    //     //     for (let star_i = 0; star_i < userReview.rating; star_i++) {
-    //     //         star += `<svg style="height:12px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 96 96" version="1.1">
-    //     //         <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
-    //     //         <g id="Trustpilot_ratings_5star-RGB" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-    //     //             <g fill-rule="nonzero">
-    //     //             <rect id="Rectangle-path" fill="#00B67A" x="0" y="0" width="96" height="96"/>
-    //     //             <path d="M48,64.7 L62.6,61 L68.7,79.8 L48,64.7 Z M81.6,40.4 L55.9,40.4 L48,16.2 L40.1,40.4 L14.4,40.4 L35.2,55.4 L27.3,79.6 L48.1,64.6 L60.9,55.4 L81.6,40.4 L81.6,40.4 L81.6,40.4 L81.6,40.4 Z" id="Shape" fill="#FFFFFF"/> 
-    //     //             a  
-                        
-    //     //             </g>
-    //     //         </g>
-    //     //     </svg>`
-    //     //     }
-    //     // }
-
-    //     reviewNotificationUpperStar.innerHTML= star
-
-
-    // }
     reviewNotificationUpperStarContainer.appendChild(reviewNotificationUpperStar)
 
 
@@ -3507,11 +3391,14 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
 
         if(fromAppType == 'google'){
+       
+
+
         var star = '';
         if (userReview && userReview.rating) {
             for (let star_i = 0; star_i < userReview.rating; star_i++) {
                 star += `<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                   viewBox="0 0 53.867 53.867" style="enable-background:new 0 0 53.867 53.867;height:12px;width:12px;margin:0.5px;" xml:space="preserve">
+                   viewBox="0 0 53.867 53.867" style="enable-background:new 0 0 53.867 53.867;" xml:space="preserve">
                     <polygon style="fill:rgb(255, 215, 0, 1);" points="26.934,1.318 35.256,18.182 53.867,20.887 40.4,34.013 43.579,52.549 26.934,43.798 
                     10.288,52.549 13.467,34.013 0,20.887 18.611,18.182 "/>
                   </svg>`
@@ -3519,41 +3406,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         }
 
         reviewNotificationStar1.innerHTML= star
-        
-    } else if(fromAppType == 'stamped' || fromAppType == 'capterra'){
-        var star = '';
-        if (userReview && userReview.rating) {
-            for (let star_i = 0; star_i < userReview.rating; star_i++) {
-                star += `<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
-                width="12.000000pt" height="12.000000pt" viewBox="0 0 12.000000 12.000000"
-                preserveAspectRatio="xMidYMid meet">
-               <g transform="translate(0.000000,12.000000) scale(0.100000,-0.100000)"
-               fill="#000000" stroke="none">
-               </g>
-               </svg>`
-            }
-        }
-
-        reviewNotificationStar1.innerHTML= star
-    }
-    else if(fromAppType == 'trustpilot' ){
-        var star = '';
-        if (userReview && userReview.rating) {
-            for (let star_i = 0; star_i < userReview.rating; star_i++) {
-                star += `<svg style="height:13px;margin:0.5px;padding:0.25px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 96 96" version="1.1">
-                <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
-                <g id="Trustpilot_ratings_5star-RGB" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                    <g fill-rule="nonzero">
-                    <rect id="Rectangle-path" fill="#00B67A" x="0" y="0" width="96" height="96"/>
-                    <path d="M48,64.7 L62.6,61 L68.7,79.8 L48,64.7 Z M81.6,40.4 L55.9,40.4 L48,16.2 L40.1,40.4 L14.4,40.4 L35.2,55.4 L27.3,79.6 L48.1,64.6 L60.9,55.4 L81.6,40.4 L81.6,40.4 L81.6,40.4 L81.6,40.4 Z" id="Shape" fill="#FFFFFF"/>    
-                    </g>
-                </g>
-            </svg>`
-            }
-        }
-
-        reviewNotificationStar1.innerHTML= star
-    }
+    } 
     reviewNotificationUpperStarContainer.appendChild(reviewNotificationStar1)
 
 
@@ -3571,23 +3424,11 @@ var Note = function Note(config, containerStyle, iconStyle) {
     //     reviewNotificationUpperSecondaryText.innerHTML = userReview && userReview.username ? userReview.username : 'Someone' + ' ' + configuration.gglReviewText ? configuration.gglReviewText : 'Reviewed us on Google';       
     // }
 
-    if(fromAppType == 'google'){
-        if(userReview && userReview.review_text ) {
-            reviewNotificationUpperSecondaryText.innerHTML = userReview.review_text  //configuration.gglReviewText ? configuration.gglReviewText : 'Reviewed us on Google';         //"Awesome must have tool for every marketer or an online business! Easy to use, great uxui, and most importantly - gets more leads than any other platform."
-        }else{
-            reviewNotificationUpperSecondaryText.innerHTML = 'Reviewed us on Google';    
-        }
-    }else if(fromAppType == 'stamped'){
-        reviewNotificationUpperSecondaryText.innerHTML = userReview && userReview.review_text ? userReview.review_text : 'Reviewed us on Stamped.io';           
-    }else if(fromAppType == 'capterra'){
-        reviewNotificationUpperSecondaryText.innerHTML = userReview && userReview.review_text ? userReview.review_text : 'Reviewed us on Capterra';           
-    }
-    else if(fromAppType == 'facebook'){
-        reviewNotificationUpperSecondaryText.innerHTML = userReview && userReview.review_text ? userReview.review_text : 'Reviewed us on Facebook';           
-    }
-    else if(fromAppType == 'trustpilot'){
-        reviewNotificationUpperSecondaryText.innerHTML = userReview && userReview.review_text ? userReview.review_text : 'Reviewed us on Trustpilot';           
-    }
+    if(userReview && userReview.review_text) {
+        reviewNotificationUpperSecondaryText.innerHTML = userReview.review_text  //configuration.gglReviewText ? configuration.gglReviewText : 'Reviewed us on Google';         //"Awesome must have tool for every marketer or an online business! Easy to use, great uxui, and most importantly - gets more leads than any other platform."
+     }else{
+         reviewNotificationUpperSecondaryText.innerHTML = 'Reviewed us on Google';    
+     }
      
         reviewNotificationTextContainer.appendChild(reviewNotificationUpperSecondaryText)
         reviewNotiifcationUpperPartContainer.appendChild(reviewNotificationTextContainer)
@@ -3616,26 +3457,10 @@ var Note = function Note(config, containerStyle, iconStyle) {
         if(fromAppType == 'google'){
         reviewNotificationFooterLogo.className = 'bXZsh24SLi'
         reviewNotificationFooterLogo.setAttribute('src', userReview ? 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/79341C01-B8BF-4484-AD66-B9314BAE4121.png':"")
-       
-        } else if(fromAppType == 'facebook'){
+       } else{
             reviewNotificationFooterLogo.className = 'bXZsh24SLi'
             reviewNotificationFooterLogo.setAttribute('src', userReview ? "https://storage.googleapis.com/influence-197607.appspot.com/fbreview.jpg" :"")
        }
-       else if(fromAppType == "stamped"){
-        reviewNotificationFooterLogo.className = 'bXZsh24SLi'
-        reviewNotificationFooterLogo.setAttribute('src', userReview ? "https://d33v4339jhl8k0.cloudfront.net/docs/assets/58ef18d32c7d3a52b42f7297/images/5d7323a62c7d3a7e9ae0df2b/68747470733a2f2f6431646568706833656d3566702e636c6f756466726f6e742e6e65742f73697465732f3538383830376139383138663731303030316539383235342f7468656d652f696d616765732f706167652f696e746567726174696f6e732f7374616d7065642f7374616d7065642d6c6f676f2e.png" :"")
-       }
-       else if(fromAppType == "capterra"){
-        reviewNotificationFooterLogo.className = 'bXZsh24SLi'
-        reviewNotificationFooterLogo.setAttribute('src', userReview ? "https://www.nudgify.com/wp-content/uploads/2020/06/capterra-icon.png" :"")
-       }
-       else if(fromAppType == "trustpilot"){
-        reviewNotificationFooterLogo.className = 'bXZsh24SLi'
-        reviewNotificationFooterLogo.style = "width:auto;height:15px;margin-right:5px;opacity:0.80;margin-top:-2px"
-        reviewNotificationFooterLogo.setAttribute('src', userReview ? "https://s3.wasabisys.com/influencelogo/logo/tp-assets.png" :"")
-       }
-
-
 
         reviewNotificationFooterLogoContainer.appendChild(reviewNotificationFooterLogo)
 
@@ -3651,7 +3476,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         var star = '';
         if (userReview && userReview.rating) {
             for (let star_i = 0; star_i < userReview.rating; star_i++) {
-                star += `<svg version="1.1" style= "height: 12px; width: 12px" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                star += `<svg version="1.1" style= "height: 10px; width: 10px" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                    viewBox="0 0 53.867 53.867" style="enable-background:new 0 0 53.867 53.867;" xml:space="preserve">
                     <polygon style="fill:rgb(255, 215, 0, 1);" points="26.934,1.318 35.256,18.182 53.867,20.887 40.4,34.013 43.579,52.549 26.934,43.798 
                     10.288,52.549 13.467,34.013 0,20.887 18.611,18.182 "/>
@@ -3659,25 +3484,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
             }
         }
         reviwNotificationFooterStar1.innerHTML= star
-    } else  if(fromAppType == 'trustpilot'){
-        var star = '';
-        if (userReview && userReview.rating){
-            for (let star_i = 0; star_i < userReview.rating; star_i++) {
-                star += `<svg style="height:11px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 96 96" version="1.1">
-                <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
-                <g id="Trustpilot_ratings_5star-RGB" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                    <g fill-rule="nonzero">
-                    <rect id="Rectangle-path" fill="#00B67A" x="0" y="0" width="96" height="96"/>
-                    <path d="M48,64.7 L62.6,61 L68.7,79.8 L48,64.7 Z M81.6,40.4 L55.9,40.4 L48,16.2 L40.1,40.4 L14.4,40.4 L35.2,55.4 L27.3,79.6 L48.1,64.6 L60.9,55.4 L81.6,40.4 L81.6,40.4 L81.6,40.4 L81.6,40.4 Z" id="Shape" fill="#FFFFFF"/>    
-                    </g>
-                </g>
-            </svg>`
-            }
-        } 
-        reviwNotificationFooterStar1.innerHTML= star
     }
-
-
         reviewNotificationFooterStarContainer.appendChild(reviwNotificationFooterStar1)
 
         reviewNotificationFooterLogoContainer.appendChild(reviewNotificationFooterStarContainer)
@@ -3791,10 +3598,9 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
 
 
-
         var bulkNotiifcationContainer = document.createElement('div')
     //     bulkNotiifcationContainer.className = 'notif-card';
-        bulkNotiifcationContainer.style = type == 'identification' || 'custom' ? "display:block" : "display:none";
+        bulkNotiifcationContainer.style = type == 'identification' ? "display:block" : "display:none";
        // bulkNotiifcationContainer.style = containerStyle;
 
        var bulkNotiifcationMainContainer = document.createElement('div')
@@ -3981,14 +3787,9 @@ var Note = function Note(config, containerStyle, iconStyle) {
         // announcementNotificationImage.setAttribute('src', 'https://app.useinfluence.co/static/media/fire-new.bece222f.png')
         // announcementNotificationImageContainer.appendChild(announcementNotificationImage)
 
-        var announcementNotificationImage = document.createElement('img') //span
-        announcementNotificationImage.className = "A4S38Y254X" //'image'
-
-        if (config.icon)
-        announcementNotificationImage.setAttribute('src', config.icon);
-        else
-        announcementNotificationImage.setAttribute('src', configuration.panelStyle.image ? configuration.panelStyle.image : 'https://s3.wasabisys.com/influencelogo/logo/announcement.svg')
-      //  announcementNotificationImage.innerHTML = `<svg height= "41px", width= "41px",xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><defs><style>.fa-secondary{opacity:.84; fill:#097fff5e}.fa-primary{fill:#097fff}</style></defs><path d="M544 448c0 9.22-7.08 32-32 32a32 32 0 0 1-20-7l-85-68a242.82 242.82 0 0 0-119-50.79V125.84a242.86 242.86 0 0 0 119-50.79L492 7a31.93 31.93 0 0 1 20-7c25 0 32 23.26 32 32z" class="fa-secondary"/><path d="M544 184.88v110.24a63.47 63.47 0 0 0 0-110.24zM0 192v96a64 64 0 0 0 64 64h33.7a243 243 0 0 0-2.18 32 253.32 253.32 0 0 0 25.56 110.94c5.19 10.69 16.52 17.06 28.4 17.06h74.28c26.05 0 41.69-29.84 25.9-50.56A127.35 127.35 0 0 1 223.51 384a121 121 0 0 1 4.41-32H256V128H64a64 64 0 0 0-64 64z" class="fa-primary"/></svg>`
+        var announcementNotificationImage = document.createElement('span')
+        announcementNotificationImage.className = 'image'
+        announcementNotificationImage.innerHTML = `<svg height= "41px", width= "41px",xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><defs><style>.fa-secondary{opacity:.84; fill:#097fff5e}.fa-primary{fill:#097fff}</style></defs><path d="M544 448c0 9.22-7.08 32-32 32a32 32 0 0 1-20-7l-85-68a242.82 242.82 0 0 0-119-50.79V125.84a242.86 242.86 0 0 0 119-50.79L492 7a31.93 31.93 0 0 1 20-7c25 0 32 23.26 32 32z" class="fa-secondary"/><path d="M544 184.88v110.24a63.47 63.47 0 0 0 0-110.24zM0 192v96a64 64 0 0 0 64 64h33.7a243 243 0 0 0-2.18 32 253.32 253.32 0 0 0 25.56 110.94c5.19 10.69 16.52 17.06 28.4 17.06h74.28c26.05 0 41.69-29.84 25.9-50.56A127.35 127.35 0 0 1 223.51 384a121 121 0 0 1 4.41-32H256V128H64a64 64 0 0 0-64 64z" class="fa-primary"/></svg>`
         announcementNotificationImageContainer.appendChild(announcementNotificationImage)
 
 

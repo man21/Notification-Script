@@ -2784,6 +2784,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
     function notificationDisplay(type, config, containerStyle, iconStyle, alignment) {
 
+        console.log(config, "%%%%%%%%%%%%%%%%%% CONFIG ")
+
     
         if (notifClosr_c4rF9Effgt985n7v4y5h)
             return;
@@ -3849,12 +3851,12 @@ var Note = function Note(config, containerStyle, iconStyle) {
         }
     //     bulkNotificationFirstText.style.color= background-color: #f3f7ff
 
-    if(type == 'identification'){
+    //if(type == 'identification'){
         numAnim = new CountUp(bulkNotificationFirstText, 0, numberOfUsers, 0, 3);
-    } else{
-        numAnim = new CountUp(bulkNotificationFirstText, 0, linkData.totalCount, 0, 3);
+    //} else{
+    //     numAnim = new CountUp(bulkNotificationFirstText, 0, linkData.totalC, 0, 3);
 
-    }
+    // }
         
        //  bulkNotificationFirstText.innerHTML = '11111  ' //numberOfUsers + "123 " // + configuration.visitorText
     

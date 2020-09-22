@@ -2836,6 +2836,11 @@ var Note = function Note(config, containerStyle, iconStyle) {
         let numberOfUsers = config.numberOfUsers;
         let userReview = config.userReviews;
 
+        let linkData = config.linkData;
+
+
+        console.log(linkData, "LINKDATA +++++++++++++++++++++");
+
         var container = document.createElement('div');
         container.setAttribute("id", "FPqR2DbIqJeA2DbI7MM9_0");
         container.onclick = function (e) {

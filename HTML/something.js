@@ -2771,7 +2771,6 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
     function notificationDisplay(type, config, containerStyle, iconStyle, alignment) {
 
-        console.log(config, "%%%%%%%%%%%%%%%%%% CONFIG ")
 
     
         if (notifClosr_c4rF9Effgt985n7v4y5h)
@@ -3840,11 +3839,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         }
     //     bulkNotificationFirstText.style.color= background-color: #f3f7ff
 
-    console.log("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-
-    console.log(linkData.totalCount, " linkData.totalCount,$$$$$$$$$$$$$$$$$$$$$$$$$444444")
-
-    console.log(linkData, " linkData,$$$$$$$$$$$$$$$$$$$$$$$$$444444")
+    
 
 
     if(type == 'identification'){
@@ -3876,7 +3871,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         if(type == "identification"){
             bulkNotificationSecondText.innerHTML = ` ${configuration ? configuration.otherText : ''} ${configuration ? configuration.contentText : ''} ${configuration && configuration.bulkText ? configuration.bulkText : 'in the last'} ${configuration.panelStyle.bulkData} ${configuration && configuration.bulkDaysLable ? configuration.bulkDaysLable : 'days'}`  //"signed up for influence in the last 7 days"
         }else{
-            bulkNotificationSecondText.innerHTML = ` ${configuration ? configuration.otherText : ''} ${configuration ? configuration.contentText : ''} ${configuration && configuration.bulkText ? configuration.bulkText : 'in the last'} ${configuration.panelStyle.bulkData} ${configuration && configuration.bulkDaysLable ? configuration.bulkDaysLable : 'days'}`  //"signed up for influence in the last 7 days"
+            bulkNotificationSecondText.innerHTML = ` ${configuration ? configuration.otherText : ''} ${configuration ? linkData.slug : ''} ${configuration && configuration.bulkText ? configuration.bulkText : 'in the last'} ${configuration.panelStyle.bulkData} ${configuration && configuration.bulkDaysLable ? configuration.bulkDaysLable : 'days'}`  //"signed up for influence in the last 7 days"
         }
 
          bulkNotificationPTag.appendChild(bulkNotificationFirstText)

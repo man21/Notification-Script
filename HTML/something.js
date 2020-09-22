@@ -2209,21 +2209,11 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
         let maxMinus=0;
         let startSecondLoop = result.length
 
-
-        console.log(result.length,"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-
-
         if (result.length == 6) {
-            console.log("LENGTH ENTERED *****************")
             for (let i = 0; i < splittedUrls.length; i++) {
 
-                console.log("LENGTH ENTERED *****************222222222222222222")
-
                 var notif = responseNotifications[i];
-                // console.log(notif, "NOtif ********************")
                 var key = Object.keys(notif);
-
-                // console.log(key, "KEY ***************")
                 responses = notif[key];
               
                 var secondLoop = (result.length * result.length) >= startSecondLoop ? false : true
@@ -2300,8 +2290,6 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                                 }
                             }
 
-
-                            console.log("HELLOOOOOOOOOOOOOOOOOOOOOOOOO")
                             //let userDetails = info.userDetails && info.userDetails.length && key == 'journey' ? info.userDetails.filter(user => user) : [];
                             let userDetails = info.userDetails;
                             let userReviews = info.userReviews;
@@ -2351,7 +2339,6 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                                 //     },(info.rule.delayNotification ? (randomDelayTime * 1000) : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v - 1)) * 1000));
                                 randomDelayTime = 0;
 
-                                console.log(info, "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
                                 setTimeout(function () {
                                     if (info.visitorList || info.liveViewer || info.liveFollower) key = 'live';
                                     else if (info.numberOfUsers) key = 'identification';
@@ -2837,9 +2824,6 @@ var Note = function Note(config, containerStyle, iconStyle) {
         let userReview = config.userReviews;
 
         let linkData = config.linkData;
-
-
-        console.log(linkData, "LINKDATA +++++++++++++++++++++");
 
         var container = document.createElement('div');
         container.setAttribute("id", "FPqR2DbIqJeA2DbI7MM9_0");
@@ -3856,12 +3840,20 @@ var Note = function Note(config, containerStyle, iconStyle) {
         }
     //     bulkNotificationFirstText.style.color= background-color: #f3f7ff
 
-    //if(type == 'identification'){
-        numAnim = new CountUp(bulkNotificationFirstText, 0, numberOfUsers, 0, 3);
-    //} else{
-    //     numAnim = new CountUp(bulkNotificationFirstText, 0, linkData.totalC, 0, 3);
+    console.log("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 
-    // }
+    console.log(linkData.totalCount, " linkData.totalCount,$$$$$$$$$$$$$$$$$$$$$$$$$444444")
+
+    console.log(linkData, " linkData,$$$$$$$$$$$$$$$$$$$$$$$$$444444")
+
+
+    if(type == 'identification'){
+        numAnim = new CountUp(bulkNotificationFirstText, 0, numberOfUsers, 0, 3);
+    } else{
+
+        numAnim = new CountUp(bulkNotificationFirstText, 0, linkData.totalCount, 0, 3);
+
+    }
         
        //  bulkNotificationFirstText.innerHTML = '11111  ' //numberOfUsers + "123 " // + configuration.visitorText
     

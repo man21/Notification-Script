@@ -2403,13 +2403,13 @@ function notificationTimeout(i, info, rule, key, notificationPath) {
     if(isMobile)
         switch (popupPositionInMobile) {
             case 'bottom':
-                alignment = "z-index: 99999999999; position: fixed; bottom: 20px;";
+                alignment = "z-index: 99999999999; position: fixed; bottom: 20px; height: 85px";
                 break;
             case 'top':
-                alignment = "z-index: 99999999999; position: fixed; top: 20px;";
+                alignment = "z-index: 99999999999; position: fixed; top: 20px; height: 85px";
                 break;
             default:
-                alignment = "z-index: 99999999999; position: fixed; bottom: 20px;";
+                alignment = "z-index: 99999999999; position: fixed; bottom: 20px; height: 85px";
         }
     else
         switch (displayPosition) {
@@ -3907,6 +3907,10 @@ var Note = function Note(config, containerStyle, iconStyle) {
             bulkNotificationLowerTextContainer.style = 'display: none'
         }
         bulkNotificationLowerTextContainer.className ='ZyQ5NX6Xi0'
+
+        if(type == "custom")
+            bulkNotificationLowerTextContainer.style = 'display: flex; align-items: center; justify-content: space-around'
+
     
         var bulkNotificationLowerPTag = document.createElement('div')
         bulkNotificationLowerPTag.className ='WyM33MZmTi QwrzAVKEx3'
@@ -3950,6 +3954,19 @@ var Note = function Note(config, containerStyle, iconStyle) {
         bulkNotificationFooterverified.appendChild(bulkNotificationTick)
     
         bulkNotificationLowerPTag.appendChild(bulkNotificationFooterverified)
+
+        if(type == "custom"){
+            var bulkNotificationSlugName= document.createElement('p')
+
+            bulkNotificationSlugName.style= 'font-size: 9px; color: blue;  line-height: 1.2; margin: 0px'
+
+            bulkNotificationSlugName.innerHTML = "HELLO World" 
+
+            bulkNotificationLowerTextContainer.appendChild(bulkNotificationSlugName)
+        }
+
+
+
     
         
         var bulkNotificationFooterPoweredBy = document.createElement('a')

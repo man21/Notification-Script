@@ -3909,7 +3909,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         bulkNotificationLowerTextContainer.className ='ZyQ5NX6Xi0'
 
         if(type == "custom")
-            bulkNotificationLowerTextContainer.style = 'display: flex; align-items: center; justify-content: space-around'
+            bulkNotificationLowerTextContainer.style = 'display: flex; align-items: center; justify-content: space-around '
 
     
         var bulkNotificationLowerPTag = document.createElement('div')
@@ -3957,10 +3957,6 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
       
 
-
-
-    
-        
         var bulkNotificationFooterPoweredBy = document.createElement('a')
 
         bulkNotificationFooterPoweredBy.setAttribute('href', configuration.poweredByLink);
@@ -3980,7 +3976,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
             bulkNotificationSlugName.style= 'font-size: 9px; color: blue;  line-height: 1.2; margin: 0px'
 
-            bulkNotificationSlugName.innerHTML = "HELLO World" 
+            bulkNotificationSlugName.innerHTML = linkData.slug
 
             bulkNotificationLowerTextContainer.appendChild(bulkNotificationSlugName)
         }

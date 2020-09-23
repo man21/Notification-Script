@@ -2848,7 +2848,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
                 return;
         };
 
-        // container.style = alignment;
+        container.style = alignment;
         var innerContainer = document.createElement('div');
         innerContainer.setAttribute("id", "FPqR3tRBqJeA3tRB7MM9_0");
         var innerDiv = document.createElement('div');

@@ -2848,7 +2848,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
                 return;
         };
 
-        container.style = alignment;
+        // container.style = alignment;
         var innerContainer = document.createElement('div');
         innerContainer.setAttribute("id", "FPqR3tRBqJeA3tRB7MM9_0");
         var innerDiv = document.createElement('div');
@@ -3801,9 +3801,17 @@ var Note = function Note(config, containerStyle, iconStyle) {
         bulkNotificationImage.className= 'A4S38Y254X'
 
         if (config.icon)
-        bulkNotificationImage.setAttribute('src', config.icon);
-        else
-        bulkNotificationImage.setAttribute('src', configuration.panelStyle.image ? configuration.panelStyle.image : 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/C77C11F2-0E34-49DE-97CC-10DF6C848B69.png')
+            bulkNotificationImage.setAttribute('src', config.icon);
+        else{
+            if(type == 'identification'){
+                bulkNotificationImage.setAttribute('src', configuration.panelStyle.image ? configuration.panelStyle.image : 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/C77C11F2-0E34-49DE-97CC-10DF6C848B69.png')
+            }else{
+                bulkNotificationImage.setAttribute('src', configuration.panelStyle.image ? configuration.panelStyle.image : 'https://s3.wasabisys.com/influencelogo/logo/click.svg')
+
+            }
+        }
+       
+       
         if (configuration.panelStyle && configuration.panelStyle.image) {
            // notifBulkImg.style = `padding:${configuration.panelStyle.imagePadding}px; border-radius: 0;`;
            // notifBulkImg.className = 'FPqR37xpqJeA37xp7MM9_IMG FPqRqg5HqJmAqu5I7MM9C';
@@ -3839,16 +3847,11 @@ var Note = function Note(config, containerStyle, iconStyle) {
         }
     //     bulkNotificationFirstText.style.color= background-color: #f3f7ff
 
-    
-
-
-    if(type == 'identification'){
-        numAnim = new CountUp(bulkNotificationFirstText, 0, numberOfUsers, 0, 3);
-    } else{
-
-        numAnim = new CountUp(bulkNotificationFirstText, 0, linkData.totalCount, 0, 3);
-
-    }
+        if(type == 'identification'){
+            numAnim = new CountUp(bulkNotificationFirstText, 0, numberOfUsers, 0, 3);
+        } else{
+            numAnim = new CountUp(bulkNotificationFirstText, 0, linkData.totalCount, 0, 3);
+        }
         
        //  bulkNotificationFirstText.innerHTML = '11111  ' //numberOfUsers + "123 " // + configuration.visitorText
     

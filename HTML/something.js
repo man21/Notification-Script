@@ -3955,15 +3955,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
     
         bulkNotificationLowerPTag.appendChild(bulkNotificationFooterverified)
 
-        if(type == "custom"){
-            var bulkNotificationSlugName= document.createElement('p')
-
-            bulkNotificationSlugName.style= 'font-size: 9px; color: blue;  line-height: 1.2; margin: 0px'
-
-            bulkNotificationSlugName.innerHTML = "HELLO World" 
-
-            bulkNotificationLowerTextContainer.appendChild(bulkNotificationSlugName)
-        }
+      
 
 
 
@@ -3982,6 +3974,16 @@ var Note = function Note(config, containerStyle, iconStyle) {
     
     
         bulkNotificationLowerTextContainer.appendChild(bulkNotificationLowerPTag)
+
+        if(type == "custom"){
+            var bulkNotificationSlugName= document.createElement('p')
+
+            bulkNotificationSlugName.style= 'font-size: 9px; color: blue;  line-height: 1.2; margin: 0px'
+
+            bulkNotificationSlugName.innerHTML = "HELLO World" 
+
+            bulkNotificationLowerTextContainer.appendChild(bulkNotificationSlugName)
+        }
         bulkNotiifcationMainContainer.appendChild(bulkNotificationLowerTextContainer)
         bulkNotiifcationContainer.appendChild(bulkNotiifcationMainContainer)
 

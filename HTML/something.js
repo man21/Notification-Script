@@ -2320,7 +2320,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                                 }
                             }
 
-                            console.log(info, "***********************")
+                            console.log(info.linkData, "***********************")
 
                             //let userDetails = info.userDetails && info.userDetails.length && key == 'journey' ? info.userDetails.filter(user => user) : [];
                             let userDetails = info.userDetails;

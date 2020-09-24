@@ -2786,12 +2786,12 @@ var Note = function Note(config, containerStyle, iconStyle) {
             elem[0].remove();
         }
 
-        console.log(numAnim, "*********************************************")
-        if (!numAnim || !numAnim.error) {
-            numAnim.start();
-        } else {
-            console.error(numAnim.error);
-        }
+        // console.log(numAnim, "*********************************************")
+        // if (!numAnim || !numAnim.error) {
+        //     numAnim.start();
+        // } else {
+        //     console.error(numAnim.error);
+        // }
 
         setTimeout(function () {
             container.className = `animated_FPqR2bI7Mf_c ${config.rule.popupAnimationOut}`;

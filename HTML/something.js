@@ -1170,22 +1170,49 @@ if (typeof Influence === 'undefined') {
                 });
             }
 
+
+
+
+
             // Track clicks
+            // if (this.options.trackClicks) {
+            //     Events.onready(function () {
+            //         // Track all clicks to the document:
+            //         Events.onevent(document.body, 'click', true, function (e) {
+            //             var ancestors = DomUtil.getAncestors(e.target);
+
+            //             // Do not track clicks on links, these are tracked separately!
+            //             if (!ArrayUtil.exists(ancestors, function (e) { return e.tagName === 'A'; })) {
+            //                 self.track('linkClick', {
+            //                     target: DomUtil.getNodeDescriptor(e.target)
+            //                 });
+            //             }
+            //         });
+            //     });
+            // }
+
+
             if (this.options.trackClicks) {
+
                 Events.onready(function () {
-                    // Track all clicks to the document:
+
                     Events.onevent(document.body, 'click', true, function (e) {
+
                         var ancestors = DomUtil.getAncestors(e.target);
 
-                        // Do not track clicks on links, these are tracked separately!
-                        if (!ArrayUtil.exists(ancestors, function (e) { return e.tagName === 'A'; })) {
-                            self.track('click', {
-                                target: DomUtil.getNodeDescriptor(e.target)
+                        if(e.target.tagName === 'A' && ancestors[0].href){
+                            self.track('linkClick', {
+
+                                linkData:  Util.merge({ linkUrl: ancestors[0].href }, { linkId: ancestors[0] && ancestors[0].id ? ancestors[0].id : "formid" })
+                                
                             });
                         }
                     });
-                });
+
+                })
+              
             }
+
 
             // Track hash changes:
             if (this.options.trackHashChanges) {
@@ -2639,7 +2666,7 @@ InfluenceTracker.prototype.tracker = function (info) {
         if(configurationPath && data.category === 'formsubmit'){
             httpPostAsync(url, JSON.stringify(data), function (res) {
              });
-        } else if(data.category === 'click' || data.category === 'mouseover' || data.category === 'notificationview' || data.category === 'pageview' ){
+        } else if(data.category === 'click' || data.category === 'mouseover' || data.category === 'notificationview' || data.category === 'pageview' || data.category ==='linkClick'  ){
             httpPostAsync(url, JSON.stringify(data), function (res) {
             });
         }

@@ -15,9 +15,10 @@ const configurationRoutes = require('./routes/configuration');
 const dataUsageRouter = require('./routes/dataUsage');
 
 const thirdPartyRouter = require('./routes/thirdParty');
-
-
 const mongoose = require('mongoose');
+
+
+
 
 
 
@@ -29,54 +30,44 @@ const mongoose = require('mongoose');
 // var cheerio = require('cheerio');
 // var url = 'http://localhost:3002'
 
-
-
-
 // request(url, function(err, resp, body){
 //   // $ = cheerio.load(body);
-
 //   var jsLink = []
-
 //    $ = cheerio.load(body, {xmlMode: true});
-
 //    var  str = $('script:not([src])')[0].children[0].data
-
 //   links = $('script'); 
 //   $(links).each(function(i, link){
-
 //     var data ;
 //     data =   $(link).attr('src') 
-
 //     if(data == undefined){
-
 //       var first  = str.indexOf(".src")
 //       data = str.slice(first, str.indexOf('.js', first )).replace(/\s/g,'').slice(6)+ ".js"
 //       // console.log(data, "!!!!!!!!!!11")
 //     } 
-
 //     var arr = data.split("/");
-
 //     var result =  arr[2]
-
-
 //     if(!result.includes("bootstrap") || !result.includes("jquery") ||  !result.includes("bootstrapcdn")){
-
-
 //       if(!jsLink.includes(result)){ 
 //         jsLink.push(result)
-  
 //       }
 //     }
-
-
-   
-
 //     // console.log(data)
 //     //console.log($(link).text() + ':\n  ' + $(link).attr('src'));
 //   });
 
 //   // console.log(jsLink)
 // });
+
+
+
+
+
+
+
+
+
+
+
 
 
 

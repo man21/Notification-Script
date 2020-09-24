@@ -2785,6 +2785,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
         while (elem.length > 0 ){
             elem[0].remove();
         }
+
+        console.log(numAnim, "*********************************************")
         if (!numAnim.error) {
             numAnim.start();
         } else {

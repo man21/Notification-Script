@@ -3917,7 +3917,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
             bulkNotificationSecondText.innerHTML = ` ${configuration ? configuration.otherText : ''} ${configuration ? configuration.contentText : ''} ${configuration && configuration.bulkText ? configuration.bulkText : 'in the last'} ${configuration.panelStyle.bulkData} ${configuration && configuration.bulkDaysLable ? configuration.bulkDaysLable : 'days'}`  //"signed up for influence in the last 7 days"
         }else {
 
-            bulkNotificationSecondText.innerHTML = ` ${configuration ? configuration.otherText : ''} <b>${configuration ? linkData.slug : ''} </b> ${configuration && configuration.bulkText ? configuration.bulkText : 'in the last'} ${configuration.panelStyle.bulkData} ${configuration && configuration.bulkDaysLable ? configuration.bulkDaysLable : 'days'}`  //"signed up for influence in the last 7 days"
+            bulkNotificationSecondText.innerHTML = ` ${configuration ? configuration.otherText : ''} <b>${configuration ? linkData && linkData.slug ? linkData.slug: "link" : ''} </b> ${configuration && configuration.bulkText ? configuration.bulkText : 'in the last'} ${configuration.panelStyle.bulkData} ${configuration && configuration.bulkDaysLable ? configuration.bulkDaysLable : 'days'}`  //"signed up for influence in the last 7 days"
         }
 
          bulkNotificationPTag.appendChild(bulkNotificationFirstText)

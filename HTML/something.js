@@ -2786,11 +2786,11 @@ var Note = function Note(config, containerStyle, iconStyle) {
             elem[0].remove();
         }
 
-            if (!numAnim.error) {
-                numAnim.start();
-            } else {
-                console.error(numAnim.error);
-            }
+        if (!numAnim.error) {
+            numAnim.start();
+        } else {
+            console.error(numAnim.error);
+        }
         
 
         setTimeout(function () {
@@ -3890,9 +3890,9 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
             console.log(linkData, "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1111")
 
-            bulkNotificationFirstText.innerHTML = linkData && linkData.totalCount ?  linkData.totalCount: 0
+            //bulkNotificationFirstText.innerHTML = linkData && linkData.totalCount ?  linkData.totalCount: 0
 
-            // numAnim = new CountUp(bulkNotificationFirstText, 0, linkData.totalCount , 0, 3);
+         numAnim = new CountUp(bulkNotificationFirstText, 0, linkData && linkData.totalCount ?  linkData.totalCount: 0, 0, 3);
         }
         
        //  bulkNotificationFirstText.innerHTML = '11111  ' //numberOfUsers + "123 " // + configuration.visitorText

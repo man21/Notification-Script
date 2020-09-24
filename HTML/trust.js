@@ -1180,6 +1180,8 @@ if (typeof Influence === 'undefined') {
 
                         var ancestors = DomUtil.getAncestors(e.target);
 
+                        console.log(ancestors, "**************************************************")
+
                         if(e.target.tagName === 'A' && ancestors[0].href){
                             self.track('linkClick', {
 

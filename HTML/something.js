@@ -2787,7 +2787,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         }
 
         console.log(numAnim, "*********************************************")
-        if(numAnim === undefined){
+        if(numAnim == undefined){
 
             console.error(numAnim)
         }else{

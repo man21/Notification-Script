@@ -2787,7 +2787,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         }
 
         console.log(numAnim, "*********************************************")
-        if (!numAnim.error) {
+        if (!numAnim || !numAnim.error) {
             numAnim.start();
         } else {
             console.error(numAnim.error);

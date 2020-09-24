@@ -2320,15 +2320,15 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                                 }
                             }
 
-                            console.log(info.linkData, "***********************")
+                            // console.log(info.linkData.totalCount, "***********************")
 
                             //let userDetails = info.userDetails && info.userDetails.length && key == 'journey' ? info.userDetails.filter(user => user) : [];
                             let userDetails = info.userDetails;
                             let userReviews = info.userReviews;
                             let numberOfUsers = info.numberOfUsers && key == 'identification' ? info.numberOfUsers : 0;
-                            // let totalCount = info.linkData.totalCount && key == 'custom' ? info.linkData.totalCount : 0;
+                            let totalCount = info.linkData.totalCount && key == 'custom' ? info.linkData.totalCount : 0;
 
-                            
+                            console.log(info.linkData.totalCount && key == 'custom' ? info.linkData.totalCount : 0, "************************")
                             liveVisitorCount = liveVisitorCount == 0 ? 1 : liveVisitorCount;
                             //if (((key == 'journey' && !userDetails.length) ||
                             if (((key == 'journey' && !userDetails) ||

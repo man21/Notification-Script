@@ -2328,7 +2328,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                             let numberOfUsers = info.numberOfUsers && key == 'identification' ? info.numberOfUsers : 0;
                             // let totalCount = info.linkData.totalCount && key == 'custom' ? info.linkData.totalCount : 0;
 
-                            console.log(info.linkData && key == 'custom' ? "info.linkData.totalCount ": 0, "************************")
+                            console.log(info.linkData && key == 'custom' ? info.linkData.totalCount : 0, "************************")
                            
                             liveVisitorCount = liveVisitorCount == 0 ? 1 : liveVisitorCount;
                             //if (((key == 'journey' && !userDetails.length) ||

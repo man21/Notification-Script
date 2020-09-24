@@ -1070,7 +1070,7 @@ if (typeof Influence === 'undefined') {
                 waitOnTracker: false,
                 resolveGeo: true,
                 trackPageViews: true,
-                trackClicks: false,
+                trackClicks: true,
                 trackHashChanges: false,
                 trackEngagement: false,
                 trackLinkClicks: false,
@@ -1199,6 +1199,7 @@ if (typeof Influence === 'undefined') {
                     Events.onevent(document.body, 'click', true, function (e) {
 
                         var ancestors = DomUtil.getAncestors(e.target);
+
                         console.log(ancestors, "**************************************************")
 
 

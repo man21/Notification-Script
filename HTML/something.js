@@ -4019,7 +4019,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
             bulkNotificationSlugName.style= 'font-size: 9px; color: blue;  line-height: 1.2; margin: 0px'
 
-            bulkNotificationSlugName.innerHTML = linkData.slug
+            bulkNotificationSlugName.innerHTML = linkData && linkData.slug?linkData.slug : "link"
 
             bulkNotificationLowerTextContainer.appendChild(bulkNotificationSlugName)
         }

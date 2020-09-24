@@ -3884,10 +3884,13 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         if(type == 'identification'){
             numAnim = new CountUp(bulkNotificationFirstText, 0, numberOfUsers, 0, 3);
-        } else if(type == "custom"){
+        } else if(type == 'custom') {
 
             console.log(linkData, "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1111")
-            numAnim = new CountUp(bulkNotificationFirstText, 0, linkData.totalCount , 0, 3);
+
+            bulkNotificationFirstText.innerHTML = linkData.totalCount
+
+            // numAnim = new CountUp(bulkNotificationFirstText, 0, linkData.totalCount , 0, 3);
         }
         
        //  bulkNotificationFirstText.innerHTML = '11111  ' //numberOfUsers + "123 " // + configuration.visitorText

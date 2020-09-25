@@ -3821,7 +3821,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         var bulkNotiifcationContainer = document.createElement('div')
     //     bulkNotiifcationContainer.className = 'notif-card';
-        bulkNotiifcationContainer.style = type == 'identification' || 'custom' ? "display:block" : "display:none";
+        bulkNotiifcationContainer.style = type == 'identification'? "display:block" : "display:none";
        // bulkNotiifcationContainer.style = containerStyle;
 
        var bulkNotiifcationMainContainer = document.createElement('div')
@@ -3840,12 +3840,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         if (config.icon)
             bulkNotificationImage.setAttribute('src', config.icon);
         else{
-            if(type == 'identification'){
-                bulkNotificationImage.setAttribute('src', configuration.panelStyle.image ? configuration.panelStyle.image : 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/C77C11F2-0E34-49DE-97CC-10DF6C848B69.png')
-            }else{
-                bulkNotificationImage.setAttribute('src', configuration.panelStyle.image ? configuration.panelStyle.image : 'https://s3.wasabisys.com/influencelogo/logo/click.svg')
-
-            }
+            bulkNotificationImage.setAttribute('src', configuration.panelStyle.image ? configuration.panelStyle.image : 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/C77C11F2-0E34-49DE-97CC-10DF6C848B69.png')     
         }
        
        
@@ -3884,17 +3879,9 @@ var Note = function Note(config, containerStyle, iconStyle) {
         }
     //     bulkNotificationFirstText.style.color= background-color: #f3f7ff
 
-        if(type == 'identification'){
-            numAnim = new CountUp(bulkNotificationFirstText, 0, numberOfUsers, 0, 3);
-        } else {
-
-            console.log(linkData, "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1111")
-
-            //bulkNotificationFirstText.innerHTML = linkData && linkData.totalCount ?  linkData.totalCount: 0
-
-         numAnim = new CountUp(bulkNotificationFirstText, 0, linkData && linkData.totalCount ?  linkData.totalCount: 0, 0, 3);
-        }
-        
+           numAnim = new CountUp(bulkNotificationFirstText, 0, numberOfUsers, 0, 3);
+       
+         
        //  bulkNotificationFirstText.innerHTML = '11111  ' //numberOfUsers + "123 " // + configuration.visitorText
     
 
@@ -3913,12 +3900,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
         var timeDiff = Math.abs(date2.getTime() - date1.getTime());
         var dayDifference = Math.ceil(timeDiff / (1000 * 3600 * 24));
 
-        if(type == "identification"){
-            bulkNotificationSecondText.innerHTML = ` ${configuration ? configuration.otherText : ''} ${configuration ? configuration.contentText : ''} ${configuration && configuration.bulkText ? configuration.bulkText : 'in the last'} ${configuration.panelStyle.bulkData} ${configuration && configuration.bulkDaysLable ? configuration.bulkDaysLable : 'days'}`  //"signed up for influence in the last 7 days"
-        }else {
-
-            bulkNotificationSecondText.innerHTML = ` ${configuration ? configuration.otherText : ''} <b>${configuration ? linkData && linkData.slug ? linkData.slug: "link" : ''} </b> ${configuration && configuration.bulkText ? configuration.bulkText : 'in the last'} ${configuration.panelStyle.bulkData} ${configuration && configuration.bulkDaysLable ? configuration.bulkDaysLable : 'days'}`  //"signed up for influence in the last 7 days"
-        }
+        bulkNotificationSecondText.innerHTML = ` ${configuration ? configuration.otherText : ''} ${configuration ? configuration.contentText : ''} ${configuration && configuration.bulkText ? configuration.bulkText : 'in the last'} ${configuration.panelStyle.bulkData} ${configuration && configuration.bulkDaysLable ? configuration.bulkDaysLable : 'days'}`  //"signed up for influence in the last 7 days"
+     
 
          bulkNotificationPTag.appendChild(bulkNotificationFirstText)
 
@@ -3951,8 +3934,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
         }
         bulkNotificationLowerTextContainer.className ='ZyQ5NX6Xi0'
 
-        if(type == "custom")
-            bulkNotificationLowerTextContainer.style = 'display: flex; align-items: center; justify-content: space-around '
+        // if(type == "custom")
+        //     bulkNotificationLowerTextContainer.style = 'display: flex; align-items: center; justify-content: space-around '
 
     
         var bulkNotificationLowerPTag = document.createElement('div')
@@ -4014,15 +3997,15 @@ var Note = function Note(config, containerStyle, iconStyle) {
     
         bulkNotificationLowerTextContainer.appendChild(bulkNotificationLowerPTag)
 
-        if(type == "custom"){
-            var bulkNotificationSlugName= document.createElement('p')
+        // if(type == "custom"){
+        //     var bulkNotificationSlugName= document.createElement('p')
 
-            bulkNotificationSlugName.style= 'font-size: 9px; color: blue;  line-height: 1.2; margin: 0px'
+        //     bulkNotificationSlugName.style= 'font-size: 9px; color: blue;  line-height: 1.2; margin: 0px'
 
-            bulkNotificationSlugName.innerHTML = linkData && linkData.slug?linkData.slug : "link"
+        //     bulkNotificationSlugName.innerHTML = linkData && linkData.slug?linkData.slug : "link"
 
-            bulkNotificationLowerTextContainer.appendChild(bulkNotificationSlugName)
-        }
+        //     bulkNotificationLowerTextContainer.appendChild(bulkNotificationSlugName)
+        // }
         bulkNotiifcationMainContainer.appendChild(bulkNotificationLowerTextContainer)
         bulkNotiifcationContainer.appendChild(bulkNotiifcationMainContainer)
 
@@ -4175,6 +4158,208 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
 
 
+
+
+        var customNotiifcationContainer = document.createElement('div')
+        //     bulkNotiifcationContainer.className = 'notif-card';
+        customNotiifcationContainer.style = type == 'custom'? "display:block" : "display:none";
+           // bulkNotiifcationContainer.style = containerStyle;
+    
+           var bulkNotiifcationMainContainer = document.createElement('div')
+           bulkNotiifcationMainContainer.className = 'foc2x3WbXB';
+           bulkNotiifcationMainContainer.style =containerStyle
+    
+            var bulkNotiifcationUpperPartContainer = document.createElement('div')
+            bulkNotiifcationUpperPartContainer.className= 'aiqUT4q94o'
+        
+            var bulkNotificationImageContainer = document.createElement('div')
+            bulkNotificationImageContainer.className= 'VyDVZdCWdx'
+        
+            var bulkNotificationImage = document.createElement('img')
+            bulkNotificationImage.className= 'A4S38Y254X'
+    
+            if (config.icon)
+                bulkNotificationImage.setAttribute('src', config.icon);
+            else{
+                bulkNotificationImage.setAttribute('src', configuration.panelStyle.image ? configuration.panelStyle.image : 'https://s3.wasabisys.com/influencelogo/logo/click.svg')
+            }
+           
+           
+            if (configuration.panelStyle && configuration.panelStyle.image) {
+               // notifBulkImg.style = `padding:${configuration.panelStyle.imagePadding}px; border-radius: 0;`;
+               // notifBulkImg.className = 'FPqR37xpqJeA37xp7MM9_IMG FPqRqg5HqJmAqu5I7MM9C';
+            }
+    
+          //  bulkNotificationImage.setAttribute('src', 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/C77C11F2-0E34-49DE-97CC-10DF6C848B69.png')
+        
+            bulkNotificationImageContainer.appendChild(bulkNotificationImage)
+        
+            bulkNotiifcationUpperPartContainer.appendChild(bulkNotificationImageContainer)
+        
+               var bulkNotificationCloseContainer = document.createElement('div')
+                bulkNotificationCloseContainer.className='qQ6LvxoYlp'
+                bulkNotificationCloseContainer.style = config.rule.closeNotification ? 'display:block' : 'display:none';
+                var bulkNotificationCloseIcon = document.createElement('button')
+                bulkNotificationCloseIcon.id = 'notif_close';
+                bulkNotificationCloseIcon.className ='knaKnioVnl'
+                bulkNotificationCloseIcon.innerHTML ="+"
+                bulkNotificationCloseContainer.appendChild(bulkNotificationCloseIcon)
+             bulkNotiifcationUpperPartContainer.appendChild(bulkNotificationCloseContainer)
+        
+             var bulkNotificationTextContainer = document.createElement('div')
+             bulkNotificationTextContainer.className= 'Jxf0sUFKNw'
+        
+            var bulkNotificationPTag = document.createElement('div')
+            bulkNotificationPTag.className ='WyM33MZmTi'
+        
+            var bulkNotificationFirstText = document.createElement('em')
+            bulkNotificationFirstText.className= 'FocLFPnCyM Kbulz3yVQa'
+            bulkNotificationFirstText.style.backgroundColor = "#f3f7ff";
+            if (configuration && configuration.panelStyle && configuration.panelStyle.color) {
+                bulkNotificationFirstText.style = `color: rgb(${configuration.panelStyle.color.r},${configuration.panelStyle.color.g},${configuration.panelStyle.color.b});`
+            }
+        //     bulkNotificationFirstText.style.color= background-color: #f3f7ff
+    
+             numAnim = new CountUp(bulkNotificationFirstText, 0, linkData && linkData.totalCount ?  linkData.totalCount: 0, 0, 3);
+           // }
+            
+           //  bulkNotificationFirstText.innerHTML = '11111  ' //numberOfUsers + "123 " // + configuration.visitorText
+        
+    
+            var bulkNotificationSecondText = document.createElement('em')
+            bulkNotificationSecondText.className= 'Wvoh0jbGb2'
+    
+            var today = new Date();
+            var dd = today.getDate();
+            var mm = today.getMonth() + 1; //January is 0!
+            var yyyy = today.getFullYear();     
+            if (dd < 10) { dd = '0' + dd }
+            if (mm < 10) { mm = '0' + mm }
+            today = yyyy + '/' + mm + '/' + dd;
+            var date2 = new Date(today);
+            var date1 = new Date(config.rule.createdAt);
+            var timeDiff = Math.abs(date2.getTime() - date1.getTime());
+            var dayDifference = Math.ceil(timeDiff / (1000 * 3600 * 24));
+    
+            bulkNotificationSecondText.innerHTML = ` ${configuration ? configuration.otherText : ''} <b>${configuration ? linkData && linkData.slug ? linkData.slug: "link" : ''} </b> ${configuration && configuration.bulkText ? configuration.bulkText : 'in the last'} ${configuration.panelStyle.bulkData} ${configuration && configuration.bulkDaysLable ? configuration.bulkDaysLable : 'days'}`  //"signed up for influence in the last 7 days"
+          
+    
+             bulkNotificationPTag.appendChild(bulkNotificationFirstText)
+    
+             var bulkNotificationFirstText2= document.createElement('em')
+                bulkNotificationFirstText2.className = 'FocLFPnCyM YNK4CEgEKV'
+                bulkNotificationFirstText2.style.backgroundColor = "#f3f7ff";
+                if (configuration && configuration.panelStyle && configuration.panelStyle.color) {
+                    bulkNotificationFirstText2.style = `color: rgb(${configuration.panelStyle.color.r},${configuration.panelStyle.color.g},${configuration.panelStyle.color.b});`
+                }
+                bulkNotificationFirstText2.style.paddingLeft = "0px";
+                bulkNotificationFirstText2.innerHTML= configuration.visitorText  //people
+                bulkNotificationPTag.appendChild(bulkNotificationFirstText2)
+         
+             bulkNotificationPTag.appendChild(bulkNotificationSecondText)
+            bulkNotificationTextContainer.appendChild(bulkNotificationPTag)
+             bulkNotiifcationUpperPartContainer.appendChild(bulkNotificationTextContainer)
+        
+             bulkNotiifcationMainContainer.appendChild(bulkNotiifcationUpperPartContainer)
+        
+            var bulkNotificationBorder = document.createElement('div')
+            if (!configuration.togglePoweredBy) {
+                bulkNotificationBorder.style = 'display: none'
+            }
+            bulkNotificationBorder.className='zwnmZYXtFz'
+            bulkNotiifcationMainContainer.appendChild(bulkNotificationBorder)
+        
+            var bulkNotificationLowerTextContainer= document.createElement('div')
+            if(!configuration.togglePoweredBy){
+                bulkNotificationLowerTextContainer.style = 'display: none'
+            }
+            bulkNotificationLowerTextContainer.className ='ZyQ5NX6Xi0'
+    
+            // if(type == "custom")
+                bulkNotificationLowerTextContainer.style = 'display: flex; align-items: center; justify-content: space-around '
+    
+        
+            var bulkNotificationLowerPTag = document.createElement('div')
+            bulkNotificationLowerPTag.className ='WyM33MZmTi QwrzAVKEx3'
+        
+            var bulkNotificationFooterFirstText = document.createElement('em')
+            bulkNotificationFooterFirstText.className= 'cndnnNxkVv'
+            bulkNotificationFooterFirstText.innerHTML = configuration.recentText2 ? configuration.recentText2 : 'Verified by '  //"Verified by"
+        
+            bulkNotificationLowerPTag.appendChild(bulkNotificationFooterFirstText)
+        
+            var bulkNotificationFooterverified = document.createElement('em')
+            bulkNotificationFooterverified.className= 'SxMMtXX6gU'
+        
+            var bulkNotificationTick = document.createElement('span')
+            bulkNotificationTick.innerHTML = `<svg width="9" height="9" viewBox="0 0 524 524" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+            <style>.cls-1 {
+                    fill: #5d93fe;
+                }
+                .cls-2 {
+                    fill: #5d93fe;
+                    filter: url(#a);
+                }
+                .cls-3 {
+                    fill: #fff;
+                    fill-rule: evenodd;
+                }</style>
+            <filter id="a" x="51" y="51" width="423" height="423" filterUnits="userSpaceOnUse">
+            <feOffset in="SourceAlpha" result="offset"/>
+            <feGaussianBlur result="blur" stdDeviation="2.236"/>
+            <feFlood flood-opacity=".06" result="flood"/>
+            <feComposite in2="blur" operator="in" result="composite"/>
+            <feBlend in="SourceGraphic" result="blend"/>
+            </filter>
+            </defs>
+            <circle class="cls-1" cx="262" cy="262" r="262"/>
+            <circle class="cls-2" cx="262" cy="262" r="207"/>
+            <path class="cls-3" transform="translate(-640 -238)" d="m833.89 478.95 81.132 65.065a9 9 0 0 1 1.391 12.652l-25.651 31.985a9 9 0 0 1-12.652 1.39l-81.132-65.065a9 9 0 0 1-1.391-12.652l25.651-31.985a9 9 0 0 1 12.652-1.39z"/>
+            <path class="cls-3" transform="translate(-640 -238)" d="m846.25 552.7 127.39-144.5a9.721 9.721 0 0 1 13.35-1.047l29.679 24.286a8.9 8.9 0 0 1 1.08 12.862l-127.39 144.5a9.721 9.721 0 0 1-13.35 1.047l-29.675-24.286a8.9 8.9 0 0 1-1.087-12.861z"/>
+            </svg>`
+            bulkNotificationFooterverified.appendChild(bulkNotificationTick)
+        
+            bulkNotificationLowerPTag.appendChild(bulkNotificationFooterverified)
+    
+          
+    
+            var bulkNotificationFooterPoweredBy = document.createElement('a')
+    
+            bulkNotificationFooterPoweredBy.setAttribute('href', configuration.poweredByLink);
+            bulkNotificationFooterPoweredBy.setAttribute('rel', 'nofollow');
+            bulkNotificationFooterPoweredBy.setAttribute('target', '_blank');
+    
+            bulkNotificationFooterPoweredBy.className= 'Q9bSwcf36B'
+            bulkNotificationFooterPoweredBy.innerHTML = configuration.poweredBy ? configuration.poweredBy : 'Influence'   //"Influence"
+        
+            bulkNotificationLowerPTag.appendChild(bulkNotificationFooterPoweredBy)
+        
+        
+            bulkNotificationLowerTextContainer.appendChild(bulkNotificationLowerPTag)
+    
+            //if(type == "custom"){
+                var bulkNotificationSlugName= document.createElement('p')
+    
+                bulkNotificationSlugName.style= 'font-size: 9px; color: blue;  line-height: 1.2; margin: 0px'
+    
+                bulkNotificationSlugName.innerHTML = linkData && linkData.slug?linkData.slug : "link"
+    
+                bulkNotificationLowerTextContainer.appendChild(bulkNotificationSlugName)
+            //}
+            bulkNotiifcationMainContainer.appendChild(bulkNotificationLowerTextContainer)
+            customNotiifcationContainer.appendChild(bulkNotiifcationMainContainer)
+
+
+
+
+
+
+
+
+
+
+
         var innerNotifCTAContainer = document.createElement('div');
         innerNotifCTAContainer.style = configuration.toggleCTA ? 'display:flex;justify-content:flex-end;' : 'display:none';
         innerNotifCTAContainer.setAttribute("id", "cta");
@@ -4219,6 +4404,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
     mainContainer.appendChild(recentNotiifcationContainer);
     mainContainer.appendChild(reviewNotiifcationContainer);
     mainContainer.appendChild(announcementContainer);  
+    mainContainer.appendChild(customNotiifcationContainer)
 
     // console.log(mainContainer,"Main Container Data")
 

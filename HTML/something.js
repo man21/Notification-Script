@@ -3879,6 +3879,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
         }
     //     bulkNotificationFirstText.style.color= background-color: #f3f7ff
 
+    console.log(numberOfUsers, "%%%%%%%%%%%%%%%%%%%%%%%%%")
+
            numAnim = new CountUp(bulkNotificationFirstText, 0, numberOfUsers, 0, 3);
        
          

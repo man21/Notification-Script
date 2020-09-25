@@ -3881,10 +3881,10 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
     console.log(numberOfUsers, "%%%%%%%%%%%%%%%%%%%%%%%%%")
 
-           numAnim = new CountUp(bulkNotificationFirstText, 0, numberOfUsers, 0, 3);
+         //  numAnim = new CountUp(bulkNotificationFirstText, 0, numberOfUsers, 0, 3);
        
          
-       //  bulkNotificationFirstText.innerHTML = '11111  ' //numberOfUsers + "123 " // + configuration.visitorText
+        bulkNotificationFirstText.innerHTML = numberOfUsers //numberOfUsers + "123 " // + configuration.visitorText
     
 
         var bulkNotificationSecondText = document.createElement('em')

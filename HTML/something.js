@@ -4227,7 +4227,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
             //  numAnim = new CountUp(bulkNotificationFirstText, 0, linkData && linkData.totalCount ?  linkData.totalCount: 0, 0, 3);
            // }
             
-            bulkNotificationFirstText.innerHTML = inkData && linkData.totalCount ?  linkData.totalCount: 0 //numberOfUsers + "123 " // + configuration.visitorText
+            bulkNotificationFirstText.innerHTML = linkData && linkData.totalCount ?  linkData.totalCount: 0 //numberOfUsers + "123 " // + configuration.visitorText
         
     
             var bulkNotificationSecondText = document.createElement('em')

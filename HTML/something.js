@@ -4224,10 +4224,10 @@ var Note = function Note(config, containerStyle, iconStyle) {
             }
         //     bulkNotificationFirstText.style.color= background-color: #f3f7ff
     
-            //  numAnim = new CountUp(bulkNotificationFirstText, 0, linkData && linkData.totalCount ?  linkData.totalCount: 0, 0, 3);
+             numAnim = new CountUp(bulkNotificationFirstText, 0, linkData && linkData.totalCount ?  linkData.totalCount: 0, 0, 3);
            // }
             
-            bulkNotificationFirstText.innerHTML = linkData && linkData.totalCount ?  linkData.totalCount: 0 //numberOfUsers + "123 " // + configuration.visitorText
+            // bulkNotificationFirstText.innerHTML = linkData && linkData.totalCount ?  linkData.totalCount: 0 //numberOfUsers + "123 " // + configuration.visitorText
         
     
             var bulkNotificationSecondText = document.createElement('em')

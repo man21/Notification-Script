@@ -59,20 +59,6 @@ const mongoose = require('mongoose');
 // });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 mongoose.connect("mongodb+srv://admin_abc:admin_abc@tehcollegeplacement-an6dx.mongodb.net/cookie?retryWrites=true&w=majority",
   {
     useNewUrlParser: true,
@@ -88,9 +74,6 @@ mongoose.connect("mongodb+srv://admin_abc:admin_abc@tehcollegeplacement-an6dx.mo
 //body parser middlewares
 app.use(bodyParser.json({ limit: '20mb' }));
 app.use(bodyParser.urlencoded({ extended: false }));
-
-
-
 
 
 // app.use(hsts({ maxAge: 5184000 }));

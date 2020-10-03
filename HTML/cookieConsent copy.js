@@ -34,8 +34,8 @@ if (typeof Influence === 'undefined') {
         tracker = new InfluenceTracker(options.trackingId);
          var notificationTimmer = setInterval(function () {
            // if (document.readyState !== 'complete') return;
-            // notifications = new Notifications(options.trackingId);
-            // this.notificationsInstance = notifications;
+            notifications = new Notifications(options.trackingId);
+            this.notificationsInstance = notifications;
             
             cookie = new CookieFunc(options.trackingId);
             this.notificationsInstance = cookie;
@@ -2099,53 +2099,55 @@ function CountUp(target, startVal, endVal, decimals, duration, options) {
     if (self.initialize()) self.printValue(self.startVal);
 };
 
-// var notificationPath = [];
+var notificationPath = [];
 var configurationPath = '';
-// var excludeCampaign = []
-// var activeNotification = 4
-// var Notifications = function (config) {
-//     if (!(this instanceof Notifications)) return new Notifications(config);
-//     this.config = config;
-//     var rule;
-//     var rulesUrl = BASE_URL + '/rules/configuration/path1/' + config;
-//     // var rulesUrl = "http://localhost:1337/rules/configuration/path/INF-3gbfcjjsd6vhvo"
+var excludeCampaign = []
+var activeNotification = 4
+var Notifications = function (config) {
+    if (!(this instanceof Notifications)) return new Notifications(config);
+    this.config = config;
+    var rule;
+    var rulesUrl = BASE_URL + '/rules/configuration/path1/' + config;
+    // var rulesUrl = "http://localhost:1337/rules/configuration/path/INF-3gbfcjjsd6vhvo"
 
-//     httpGetAsync(rulesUrl, function (res) {
-//         response = JSON.parse(res);
-//         // configurationPath = JSON.parse(res);
-//         configurationPath = response.find(obj=> obj.notificationPath.find(ojb1 => (ojb1.url === __pathname || ojb1.url === window.location.pathname) && ojb1.type == "lead"))
-//         activeNotification = Math.max.apply(null,response.map(obj=> obj.rule.activeNotification))
-//         var enableLoopNotification = response.find(obj=> obj.rule.loopNotification) ? true : false
+    httpGetAsync(rulesUrl, function (res) {
+        response = JSON.parse(res);
+        // configurationPath = JSON.parse(res);
+        configurationPath = response.find(obj=> obj.notificationPath.find(ojb1 => (ojb1.url === __pathname || ojb1.url === window.location.pathname) && ojb1.type == "lead"))
+        activeNotification = Math.max.apply(null,response.map(obj=> obj.rule.activeNotification))
+        var enableLoopNotification = response.find(obj=> obj.rule.loopNotification) ? true : false
     
-//         JSON.parse(res||"[]").map(obj=> {
-//             var notificationList = notificationPath.concat(obj.notificationPath)
-//            notificationPath = notificationList
-//            excludeCampaign=notificationList.filter(obj=> obj.type === "display_exclude" &&  (obj.url === __pathname || obj.url === window.location.pathname)).map(cmId=> cmId.campaignId)
-//         })
+        JSON.parse(res||"[]").map(obj=> {
+            var notificationList = notificationPath.concat(obj.notificationPath)
+           notificationPath = notificationList
+           excludeCampaign=notificationList.filter(obj=> obj.type === "display_exclude" &&  (obj.url === __pathname || obj.url === window.location.pathname)).map(cmId=> cmId.campaignId)
+        })
 
-//         // notificationPath = response.notificationPath;
-//         var splittedUrls = ["live", "identification", "journey","review", "announcement"];
-//         // var exclude_notificationPath = notificationPath.filter(notifPath => notifPath.type == 'display_exclude');
-//         // exclude_notificationPath = exclude_notificationPath.map(notifPath => notifPath.url);
-//         notificationPath = notificationPath.filter(notifPath => notifPath.type == 'display');
-//         notificationPath = notificationPath.map(notifPath => notifPath.url);
-//         var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-//         var disabledOnMobile =  response.find(obj=> obj.rule.hideNotification);
-//         // if (rule && (rule.displayOnAllPages || notificationPath.indexOf(__pathname) != -1 || notificationPath.indexOf(window.location.pathname) != -1) && (exclude_notificationPath.indexOf(__pathname)==-1 && exclude_notificationPath.indexOf(window.location.pathname)==-1) && !(isMobile && rule.hideNotification)) {
-//             // if ((notificationPath.indexOf(__pathname) != -1 || notificationPath.indexOf(window.location.pathname) != -1 || response.find(obj=> obj.rule.displayOnAllPages)) &&  !(isMobile && disabledOnMobile)) {
-//             //     loopThroughSplittedNotifications(splittedUrls, enableLoopNotification, notificationPath, config);
-//             // }
-//         // loopThroughSplittedNotifications(splittedUrls, rule, notificationPath, config);
+        // notificationPath = response.notificationPath;
+        var splittedUrls = ["live", "identification", "journey","review", "announcement"];
+        // var exclude_notificationPath = notificationPath.filter(notifPath => notifPath.type == 'display_exclude');
+        // exclude_notificationPath = exclude_notificationPath.map(notifPath => notifPath.url);
+        notificationPath = notificationPath.filter(notifPath => notifPath.type == 'display');
+        notificationPath = notificationPath.map(notifPath => notifPath.url);
+        var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        var disabledOnMobile =  response.find(obj=> obj.rule.hideNotification);
+        // if (rule && (rule.displayOnAllPages || notificationPath.indexOf(__pathname) != -1 || notificationPath.indexOf(window.location.pathname) != -1) && (exclude_notificationPath.indexOf(__pathname)==-1 && exclude_notificationPath.indexOf(window.location.pathname)==-1) && !(isMobile && rule.hideNotification)) {
+            if ((notificationPath.indexOf(__pathname) != -1 || notificationPath.indexOf(window.location.pathname) != -1 || response.find(obj=> obj.rule.displayOnAllPages)) &&  !(isMobile && disabledOnMobile)) {
+                loopThroughSplittedNotifications(splittedUrls, enableLoopNotification, notificationPath, config);
+            }
+        // loopThroughSplittedNotifications(splittedUrls, rule, notificationPath, config);
 
-//         // console.log("Exclued Path--------->>",exclude_notificationPath)
+        // console.log("Exclued Path--------->>",exclude_notificationPath)
 
 
 
-//     });
-// };
+    });
+};
 
 
 var CookieFunc = function (config) {
+    // console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@22", config)
+    // if (!(this instanceof CookieFunc)) return new CookieFunc(config);
     this.config = config;
     // var rule;
 
@@ -2156,6 +2158,17 @@ var CookieFunc = function (config) {
     cookieNotif.id = "stylesheetID";
     document.getElementsByTagName("head")[0].appendChild(cookieNotif);
 
+  
+
+    
+    var cookieUrl = BASE_URL + '/rules/configuration/path1/' + config;
+
+
+    httpGetAsync(cookieUrl, function (res) {
+        
+        // response = JSON.parse(res);
+
+        console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
 
 
     response = {
@@ -2315,238 +2328,242 @@ var CookieFunc = function (config) {
 
      }
 
- 
+       
+
+
+
+    });
 };
 
-// async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotification, notificationPath, config) {
-//     // var link = document.createElement("link");
-//     // link.href = "https://storage.googleapis.com/influence-197607.appspot.com/note3.css";
-//     // //link.href = "https://96bcb271.ngrok.io/style/note1-internal.css?q="+Math.random();
-//     // link.type = "text/css";
-//     // link.rel = "stylesheet";
-//     // link.id = "stylesheetID";
-//     // document.getElementsByTagName("head")[0].appendChild(link);
+async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotification, notificationPath, config) {
+    // var link = document.createElement("link");
+    // link.href = "https://storage.googleapis.com/influence-197607.appspot.com/note3.css";
+    // //link.href = "https://96bcb271.ngrok.io/style/note1-internal.css?q="+Math.random();
+    // link.type = "text/css";
+    // link.rel = "stylesheet";
+    // link.id = "stylesheetID";
+    // document.getElementsByTagName("head")[0].appendChild(link);
 
-//     var newDesignCSS = document.createElement("link");
-//     newDesignCSS.href = 'https://test2109.herokuapp.com/finalCSS.css'
-//     // newDesignCSS.href = 'https://test2109.herokuapp.com/newDesignCSS.css';
-//     newDesignCSS.type = "text/css";
-//     newDesignCSS.rel = "stylesheet";
-//     newDesignCSS.id = "stylesheetID";
-//     document.getElementsByTagName("head")[0].appendChild(newDesignCSS);
-
-
-//     // var animationLink = document.createElement("link");
-//     // animationLink.href = 'https://storage.googleapis.com/influence-197607.appspot.com/animate1.css';
-//     // animationLink.type = "text/css";
-//     // animationLink.rel = "stylesheet";
-//     // animationLink.id = "stylesheetID";
-//     // document.getElementsByTagName("head")[0].appendChild(animationLink);
-
-//     // var announcementLink = document.createElement("link");
-//     // announcementLink.href = 'https://test2109.herokuapp.com/accouncement.css';
-//     // announcementLink.type = "text/css";
-//     // announcementLink.rel = "stylesheet";
-//     // announcementLink.id = "stylesheetID";
-//     // document.getElementsByTagName("head")[0].appendChild(announcementLink);
+    var newDesignCSS = document.createElement("link");
+    newDesignCSS.href = 'https://test2109.herokuapp.com/finalCSS.css'
+    // newDesignCSS.href = 'https://test2109.herokuapp.com/newDesignCSS.css';
+    newDesignCSS.type = "text/css";
+    newDesignCSS.rel = "stylesheet";
+    newDesignCSS.id = "stylesheetID";
+    document.getElementsByTagName("head")[0].appendChild(newDesignCSS);
 
 
-//     // var fontCSS = document.createElement("link");
-//     // fontCSS.href = 'https://fonts.googleapis.com/css?family=Lato|Poppins:300,400,500,600,700&display=swap';
-//     // fontCSS.type = "text/css";
-//     // fontCSS.rel = "stylesheet";
-//     // fontCSS.id = "stylesheetID";
-//     // document.getElementsByTagName("head")[0].appendChild(fontCSS);
+    // var animationLink = document.createElement("link");
+    // animationLink.href = 'https://storage.googleapis.com/influence-197607.appspot.com/animate1.css';
+    // animationLink.type = "text/css";
+    // animationLink.rel = "stylesheet";
+    // animationLink.id = "stylesheetID";
+    // document.getElementsByTagName("head")[0].appendChild(animationLink);
+
+    // var announcementLink = document.createElement("link");
+    // announcementLink.href = 'https://test2109.herokuapp.com/accouncement.css';
+    // announcementLink.type = "text/css";
+    // announcementLink.rel = "stylesheet";
+    // announcementLink.id = "stylesheetID";
+    // document.getElementsByTagName("head")[0].appendChild(announcementLink);
 
 
-//     // var fontJS = document.createElement("script");
-//     // fontJS.src = 'https://use.fontawesome.com/343c65acc3.js';
-//     // document.getElementsByTagName("head")[0].appendChild(fontJS);
+    // var fontCSS = document.createElement("link");
+    // fontCSS.href = 'https://fonts.googleapis.com/css?family=Lato|Poppins:300,400,500,600,700&display=swap';
+    // fontCSS.type = "text/css";
+    // fontCSS.rel = "stylesheet";
+    // fontCSS.id = "stylesheetID";
+    // document.getElementsByTagName("head")[0].appendChild(fontCSS);
 
-//     // console.log("notification........>",{splittedUrls, rule, notificationPath, config, activeNotification})
+
+    // var fontJS = document.createElement("script");
+    // fontJS.src = 'https://use.fontawesome.com/343c65acc3.js';
+    // document.getElementsByTagName("head")[0].appendChild(fontJS);
+
+    // console.log("notification........>",{splittedUrls, rule, notificationPath, config, activeNotification})
 
 
-//     let j = 1;
-//     var responseNotifications = [];
-//     var loopCheckValue = enableLoopNotification ? 1000 : activeNotification;
+    let j = 1;
+    var responseNotifications = [];
+    var loopCheckValue = enableLoopNotification ? 1000 : activeNotification;
 
-//     let responseNotif = (callback) => {
-//         let splittedUrlsSingle = ['live']
-//         splittedUrlsSingle.map(async notifName => {
-//             // var url = BASE_URL + '/elasticsearch/search/' + "INF-3gbfcjjsd6vhvo" + '?type=' + notifName;
-//             var url = BASE_URL + '/elasticsearch/search/' + config + '?type=' + notifName;
-//             // var url = 'https://api.useinfluence.co/elasticsearch/search/' + config + '?type=' + notifName;
-//             await httpGetAsync(url, function (res) {
-//                   response = JSON.parse(res);
+    let responseNotif = (callback) => {
+        let splittedUrlsSingle = ['live']
+        splittedUrlsSingle.map(async notifName => {
+            // var url = BASE_URL + '/elasticsearch/search/' + "INF-3gbfcjjsd6vhvo" + '?type=' + notifName;
+            var url = BASE_URL + '/elasticsearch/search/' + config + '?type=' + notifName;
+            // var url = 'https://api.useinfluence.co/elasticsearch/search/' + config + '?type=' + notifName;
+            await httpGetAsync(url, function (res) {
+                  response = JSON.parse(res);
 
                 
-//                 responseNotifications = response.message;
-//                 if (!enableLoopNotification && response.totalCampaign) loopCheckValue = activeNotification * response.totalCampaign;
-//                 // console.log('-------cal-----')
-//                 callback(null, responseNotifications, config)
-//             });
-//         });
-//     }
+                responseNotifications = response.message;
+                if (!enableLoopNotification && response.totalCampaign) loopCheckValue = activeNotification * response.totalCampaign;
+                // console.log('-------cal-----')
+                callback(null, responseNotifications, config)
+            });
+        });
+    }
 
-//     responseNotif((err, result, config) => {
-//         let m = 1;
-//         let userLength = 1;
-//         let loopCheckExit = [];
-//         let randomDelayTime = 0, tempRandomDelayTime = 0, prevRandGap = 0;
-//         let maxMinus=0;
-//         let startSecondLoop = result.length
+    responseNotif((err, result, config) => {
+        let m = 1;
+        let userLength = 1;
+        let loopCheckExit = [];
+        let randomDelayTime = 0, tempRandomDelayTime = 0, prevRandGap = 0;
+        let maxMinus=0;
+        let startSecondLoop = result.length
 
-//         if (result.length == 5) {
-//             for (let i = 0; i < splittedUrls.length; i++) {
-//                 var notif = responseNotifications[i];
-//                 // console.log(notif, "NOtif ********************")
-//                 var key = Object.keys(notif);
+        if (result.length == 5) {
+            for (let i = 0; i < splittedUrls.length; i++) {
+                var notif = responseNotifications[i];
+                // console.log(notif, "NOtif ********************")
+                var key = Object.keys(notif);
 
-//                 // console.log(key, "KEY ***************")
-//                 responses = notif[key];
+                // console.log(key, "KEY ***************")
+                responses = notif[key];
               
-//                 var secondLoop = (result.length * result.length) >= startSecondLoop ? false : true
+                var secondLoop = (result.length * result.length) >= startSecondLoop ? false : true
 
-//                 const infos = secondLoop ? responses.message_data.filter(obj=> excludeCampaign.indexOf(obj.rule.campaign) == -1 && obj.rule.loopNotification ) : responses.message_data.filter(obj=> excludeCampaign.indexOf(obj.rule.campaign) == -1 )
+                const infos = secondLoop ? responses.message_data.filter(obj=> excludeCampaign.indexOf(obj.rule.campaign) == -1 && obj.rule.loopNotification ) : responses.message_data.filter(obj=> excludeCampaign.indexOf(obj.rule.campaign) == -1 )
                 
                
-//                 if (j > loopCheckValue) {
-//                     i = 6;
-//                     //setTimeout(() => new Notifications(config), (('rule.loopNotification' ? 11988 : 24) + 12) * 1000);//11988
-//                     setTimeout(() => new Notifications(config), (11988 + 12) * 1000);
-//                     return;
-//                 }
+                if (j > loopCheckValue) {
+                    i = 6;
+                    //setTimeout(() => new Notifications(config), (('rule.loopNotification' ? 11988 : 24) + 12) * 1000);//11988
+                    setTimeout(() => new Notifications(config), (11988 + 12) * 1000);
+                    return;
+                }
                 
-//                 if(infos.length==0){
-//                     if (loopCheckExit.indexOf(key[0]) == -1)
-//                         loopCheckExit.push(key[0]);
-//                     if (i == splittedUrls.length - 1) {
-//                         i = -1;
-//                     }
-//                     return
-//                 }
-//                 startSecondLoop= startSecondLoop+result.length
-//                 for (let inff = 0; inff < infos.length; inff++) {
-//                     const info = infos[inff];
+                if(infos.length==0){
+                    if (loopCheckExit.indexOf(key[0]) == -1)
+                        loopCheckExit.push(key[0]);
+                    if (i == splittedUrls.length - 1) {
+                        i = -1;
+                    }
+                    return
+                }
+                startSecondLoop= startSecondLoop+result.length
+                for (let inff = 0; inff < infos.length; inff++) {
+                    const info = infos[inff];
 
-//                     (function (u, v) {
-//                         if (response.message && !response.message.error) {
-//                             // const info = response.message;
+                    (function (u, v) {
+                        if (response.message && !response.message.error) {
+                            // const info = response.message;
 
-//                             let configurations = info.configurations.filter(config => config.paths.indexOf(__pathname) > -1 || config.paths.indexOf(window.location.pathname) > -1);
-//                             configurations = info.rule.displayOnAllPages && !configurations.length ? info.configurations : configurations;
-//                             let paths = configurations.length > 1 && key == 'journey' ? configurations[pathIndex].paths : configurations.length ? configurations[0].paths : [];
+                            let configurations = info.configurations.filter(config => config.paths.indexOf(__pathname) > -1 || config.paths.indexOf(window.location.pathname) > -1);
+                            configurations = info.rule.displayOnAllPages && !configurations.length ? info.configurations : configurations;
+                            let paths = configurations.length > 1 && key == 'journey' ? configurations[pathIndex].paths : configurations.length ? configurations[0].paths : [];
                             
-//                             let configuration;
+                            let configuration;
 
-//                             if (configurations.length)
-//                                 configuration = configurations.length > 1 && key == 'journey' ? configurations[pathIndex].configuration : configurations.length ? configurations[0].configuration : {};
-//                             else
-//                                 configuration = undefined;
+                            if (configurations.length)
+                                configuration = configurations.length > 1 && key == 'journey' ? configurations[pathIndex].configuration : configurations.length ? configurations[0].configuration : {};
+                            else
+                                configuration = undefined;
 
-//                             let liveVisitorCount =0;
-//                             if (key == 'live') {
-//                                 if (info.visitorList) {
-//                                     const arrLive = info.visitorList.filter(visitor => paths.indexOf(visitor.key) > -1);
-//                                     let totalSum = 0;
-//                                     for (let tl = 0; tl < arrLive.length; tl++) {
-//                                         const objLive = arrLive[tl];
-//                                         totalSum += objLive.unique_visitors.value;
-//                                     }
-//                                     liveVisitorCount = totalSum;//info.visitorList.filter(visitor => paths.indexOf(visitor.key) > -1).length;
-//                                 }
-//                                 else if (info.liveViewer)
-//                                     liveVisitorCount = info.liveViewer ? info.liveViewer.viewers : 0;
-//                                 else if (info.liveFollower)
-//                                     liveVisitorCount = info.liveFollower ? info.liveFollower.followers : 0;
-//                             }
+                            let liveVisitorCount =0;
+                            if (key == 'live') {
+                                if (info.visitorList) {
+                                    const arrLive = info.visitorList.filter(visitor => paths.indexOf(visitor.key) > -1);
+                                    let totalSum = 0;
+                                    for (let tl = 0; tl < arrLive.length; tl++) {
+                                        const objLive = arrLive[tl];
+                                        totalSum += objLive.unique_visitors.value;
+                                    }
+                                    liveVisitorCount = totalSum;//info.visitorList.filter(visitor => paths.indexOf(visitor.key) > -1).length;
+                                }
+                                else if (info.liveViewer)
+                                    liveVisitorCount = info.liveViewer ? info.liveViewer.viewers : 0;
+                                else if (info.liveFollower)
+                                    liveVisitorCount = info.liveFollower ? info.liveFollower.followers : 0;
+                            }
 
-//                             if (info.rule.displayOnAllPages) {
-//                                 if (key == 'live') {
-//                                     if (info.visitorList) {
-//                                         const arrLive = info.visitorList;
-//                                         let totalSum = 0;
-//                                         for (let tl = 0; tl < arrLive.length; tl++) {
-//                                             const objLive = arrLive[tl];
-//                                             totalSum += objLive.unique_visitors.value;
-//                                         }
-//                                         liveVisitorCount = totalSum;//info.visitorList.length;
-//                                     }
-//                                     else if (info.liveViewer)
-//                                         liveVisitorCount = info.liveViewer ? info.liveViewer.viewers : 0;
-//                                     else if (info.liveFollower)
-//                                         liveVisitorCount = info.liveFollower ? info.liveFollower.followers : 0;
-//                                 }
-//                             }
+                            if (info.rule.displayOnAllPages) {
+                                if (key == 'live') {
+                                    if (info.visitorList) {
+                                        const arrLive = info.visitorList;
+                                        let totalSum = 0;
+                                        for (let tl = 0; tl < arrLive.length; tl++) {
+                                            const objLive = arrLive[tl];
+                                            totalSum += objLive.unique_visitors.value;
+                                        }
+                                        liveVisitorCount = totalSum;//info.visitorList.length;
+                                    }
+                                    else if (info.liveViewer)
+                                        liveVisitorCount = info.liveViewer ? info.liveViewer.viewers : 0;
+                                    else if (info.liveFollower)
+                                        liveVisitorCount = info.liveFollower ? info.liveFollower.followers : 0;
+                                }
+                            }
 
 
-//                             //let userDetails = info.userDetails && info.userDetails.length && key == 'journey' ? info.userDetails.filter(user => user) : [];
-//                             let userDetails = info.userDetails;
-//                             let userReviews = info.userReviews;
-//                             let numberOfUsers = info.numberOfUsers && key == 'identification' ? info.numberOfUsers : 0;
-//                             liveVisitorCount = liveVisitorCount == 0 ? 1 : liveVisitorCount;
-//                             //if (((key == 'journey' && !userDetails.length) ||
-//                             if (((key == 'journey' && !userDetails) ||
-//                                 (key == 'review' && !userReviews) ||
-//                                 (key == 'identification' && !numberOfUsers) ||
-//                                 (key == 'live' && (!liveVisitorCount || (configuration && Number(configuration.panelStyle.liveVisitorCount) >= liveVisitorCount)))
-//                             ) || (configuration && !configuration.activity)) {
-//                                 j = j - 1;
-//                                 if (loopCheckExit.indexOf(key[0]) == -1)
-//                                     loopCheckExit.push(key[0]);
-//                                 if (loopCheckExit.length == 5)
-//                                     i = 6;
-//                                 return;
-//                             }
+                            //let userDetails = info.userDetails && info.userDetails.length && key == 'journey' ? info.userDetails.filter(user => user) : [];
+                            let userDetails = info.userDetails;
+                            let userReviews = info.userReviews;
+                            let numberOfUsers = info.numberOfUsers && key == 'identification' ? info.numberOfUsers : 0;
+                            liveVisitorCount = liveVisitorCount == 0 ? 1 : liveVisitorCount;
+                            //if (((key == 'journey' && !userDetails.length) ||
+                            if (((key == 'journey' && !userDetails) ||
+                                (key == 'review' && !userReviews) ||
+                                (key == 'identification' && !numberOfUsers) ||
+                                (key == 'live' && (!liveVisitorCount || (configuration && Number(configuration.panelStyle.liveVisitorCount) >= liveVisitorCount)))
+                            ) || (configuration && !configuration.activity)) {
+                                j = j - 1;
+                                if (loopCheckExit.indexOf(key[0]) == -1)
+                                    loopCheckExit.push(key[0]);
+                                if (loopCheckExit.length == 5)
+                                    i = 6;
+                                return;
+                            }
 
-//                             if (info.rule.delayNotification) {
-//                                 randomDelayTime = generateRandomNumber(randomDelayTime, tempRandomDelayTime, info.rule.displayTime, prevRandGap);
-//                                 prevRandGap = (randomDelayTime - tempRandomDelayTime - (info.rule.displayTime + 3));
-//                             }
-//                             // console.log('========configuration',configuration);
-//                             if (configuration && configuration.activity) {
-//                                 if (j == 1) {
-//                                     randomDelayTime = 0;
-//                                     setTimeout(function () {
-//                                         if (info.visitorList || info.liveViewer || info.liveFollower) key = 'live';
-//                                         else if (info.numberOfUsers) key = 'identification';
-//                                         else if (info.userDetails) key = 'journey';
-//                                         else if (info.userReviews) key = 'review';
-//                                         else key = 'announcement'
-//                                         if(isTabVisibility){
-//                                             return notificationTimeout(u, info, info.rule, key, notificationPath);}
-//                                     }, (info.rule.initialDelay) * 1000);
-//                                 }
-//                                 else
-//                                     setTimeout(function () {
-//                                         if (info.visitorList || info.liveViewer || info.liveFollower) key = 'live';
-//                                         else if (info.numberOfUsers) key = 'identification';
-//                                         else if (info.userDetails) key = 'journey';
-//                                         else if (info.userReviews) key = 'review';
-//                                         else key = 'announcement'
-//                                         if(isTabVisibility){
-//                                             return notificationTimeout(u, info, info.rule, key, notificationPath); }
-//                                     },(info.rule.delayNotification ? (randomDelayTime * 1000) : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v - 1)) * 1000));
-//                                 tempRandomDelayTime = randomDelayTime;
-//                             } else {
-//                                 if (maxMinus > 1000) return;
-//                                 j = j - 1;
-//                                 maxMinus++;
-//                             }
-//                         }
-//                     })(i, j);
+                            if (info.rule.delayNotification) {
+                                randomDelayTime = generateRandomNumber(randomDelayTime, tempRandomDelayTime, info.rule.displayTime, prevRandGap);
+                                prevRandGap = (randomDelayTime - tempRandomDelayTime - (info.rule.displayTime + 3));
+                            }
+                            // console.log('========configuration',configuration);
+                            if (configuration && configuration.activity) {
+                                if (j == 1) {
+                                    randomDelayTime = 0;
+                                    setTimeout(function () {
+                                        if (info.visitorList || info.liveViewer || info.liveFollower) key = 'live';
+                                        else if (info.numberOfUsers) key = 'identification';
+                                        else if (info.userDetails) key = 'journey';
+                                        else if (info.userReviews) key = 'review';
+                                        else key = 'announcement'
+                                        if(isTabVisibility){
+                                            return notificationTimeout(u, info, info.rule, key, notificationPath);}
+                                    }, (info.rule.initialDelay) * 1000);
+                                }
+                                else
+                                    setTimeout(function () {
+                                        if (info.visitorList || info.liveViewer || info.liveFollower) key = 'live';
+                                        else if (info.numberOfUsers) key = 'identification';
+                                        else if (info.userDetails) key = 'journey';
+                                        else if (info.userReviews) key = 'review';
+                                        else key = 'announcement'
+                                        if(isTabVisibility){
+                                            return notificationTimeout(u, info, info.rule, key, notificationPath); }
+                                    },(info.rule.delayNotification ? (randomDelayTime * 1000) : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v - 1)) * 1000));
+                                tempRandomDelayTime = randomDelayTime;
+                            } else {
+                                if (maxMinus > 1000) return;
+                                j = j - 1;
+                                maxMinus++;
+                            }
+                        }
+                    })(i, j);
 
-//                     j++;
+                    j++;
 
-//                     if (i == splittedUrls.length - 1) {
-//                         i = -1;
-//                     }
-//                 }
+                    if (i == splittedUrls.length - 1) {
+                        i = -1;
+                    }
+                }
 
-//             }
-//         }
-//     });
-// }
+            }
+        }
+    });
+}
 
 function generateRandomNumber(randomDelayTime, tempRandomDelayTime, displayTime, prevRandGap) {
     var rand = (Math.floor(Math.random() * 10) + 5 + randomDelayTime + (displayTime + 3));
@@ -2917,1352 +2934,1352 @@ var aDay = 24 * 60 * 60;
 
 
 let k_c6ba2870 = 0, pathIndex = 0, notifClosr_c4rF9Effgt985n7v4y5h;
-// var Note = function Note(config, containerStyle, iconStyle) {
-//     var numAnim;
+var Note = function Note(config, containerStyle, iconStyle) {
+    var numAnim;
    
-//     function displayNotification(container, config) {
+    function displayNotification(container, config) {
 
-//         let className = `animated_FPqR2bI7Mf_c ${config.rule.popupAnimationIn}`;
-//         container.className =  className;
-//         const elem = document.getElementsByClassName(className);
-//         while (elem.length > 0 ){
-//             elem[0].remove();
-//         }
-//         if (!numAnim.error) {
-//             numAnim.start();
-//         } else {
-//             console.error(numAnim.error);
-//         }
+        let className = `animated_FPqR2bI7Mf_c ${config.rule.popupAnimationIn}`;
+        container.className =  className;
+        const elem = document.getElementsByClassName(className);
+        while (elem.length > 0 ){
+            elem[0].remove();
+        }
+        if (!numAnim.error) {
+            numAnim.start();
+        } else {
+            console.error(numAnim.error);
+        }
 
-//         setTimeout(function () {
-//             container.className = `animated_FPqR2bI7Mf_c ${config.rule.popupAnimationOut}`;
-//         }, ((config.rule.displayTime) * 1000) + 3000);
+        setTimeout(function () {
+            container.className = `animated_FPqR2bI7Mf_c ${config.rule.popupAnimationOut}`;
+        }, ((config.rule.displayTime) * 1000) + 3000);
 
-//         setTimeout(function () {
-//             if(container && container.parentNode)
-//                 container.parentNode.removeChild(container)
-//         }, ((config.rule.displayTime) * 1000 + 4000));
+        setTimeout(function () {
+            if(container && container.parentNode)
+                container.parentNode.removeChild(container)
+        }, ((config.rule.displayTime) * 1000 + 4000));
 
-//         document.body.appendChild(container);
-//         flagMouseOver = false;
-//     };
+        document.body.appendChild(container);
+        flagMouseOver = false;
+    };
 
-//     function notificationDisplay(type, config, containerStyle, iconStyle, alignment) {
+    function notificationDisplay(type, config, containerStyle, iconStyle, alignment) {
 
     
-//         if (notifClosr_c4rF9Effgt985n7v4y5h)
-//             return;
-//         let configurations = config.configurations.filter(config => config.paths.indexOf(__pathname) > -1 || config.paths.indexOf(window.location.pathname) > -1);
-//         configurations = config.rule.displayOnAllPages && !configurations.length ? config.configurations : configurations;
+        if (notifClosr_c4rF9Effgt985n7v4y5h)
+            return;
+        let configurations = config.configurations.filter(config => config.paths.indexOf(__pathname) > -1 || config.paths.indexOf(window.location.pathname) > -1);
+        configurations = config.rule.displayOnAllPages && !configurations.length ? config.configurations : configurations;
 
-//         let configuration;
-//         let paths = configurations.length > 1 && type == 'journey' ? configurations[pathIndex].paths : configurations.length ? configurations[0].paths : [];
+        let configuration;
+        let paths = configurations.length > 1 && type == 'journey' ? configurations[pathIndex].paths : configurations.length ? configurations[0].paths : [];
 
-//         if (configurations.length)
-//             configuration = configurations.length > 1 && type == 'journey' ? configurations[pathIndex].configuration : configurations.length ? configurations[0].configuration : {};
-//         else
-//             configuration = {};
+        if (configurations.length)
+            configuration = configurations.length > 1 && type == 'journey' ? configurations[pathIndex].configuration : configurations.length ? configurations[0].configuration : {};
+        else
+            configuration = {};
 
-//         let liveVisitorCount = 0;
-//         if (config.visitorList) {
-//             const arrLive = config.visitorList.filter(visitor => paths.indexOf(visitor.key) > -1);
-//             let totalSum = 0;
-//             for (let tl = 0; tl < arrLive.length; tl++) {
-//                 const objLive = arrLive[tl];
-//                 totalSum += objLive.unique_visitors.value;
-//             }
-//             liveVisitorCount = config.visitorList ? totalSum : configuration && configuration.panelStyle ? configuration.panelStyle.liveVisitorCount : 1;
-//             // liveVisitorCount = config.visitorList ? config.visitorList.filter(visitor => paths.indexOf(visitor.key) > -1).length : configuration && configuration.panelStyle ? configuration.panelStyle.liveVisitorCount : 1;
-//         }
+        let liveVisitorCount = 0;
+        if (config.visitorList) {
+            const arrLive = config.visitorList.filter(visitor => paths.indexOf(visitor.key) > -1);
+            let totalSum = 0;
+            for (let tl = 0; tl < arrLive.length; tl++) {
+                const objLive = arrLive[tl];
+                totalSum += objLive.unique_visitors.value;
+            }
+            liveVisitorCount = config.visitorList ? totalSum : configuration && configuration.panelStyle ? configuration.panelStyle.liveVisitorCount : 1;
+            // liveVisitorCount = config.visitorList ? config.visitorList.filter(visitor => paths.indexOf(visitor.key) > -1).length : configuration && configuration.panelStyle ? configuration.panelStyle.liveVisitorCount : 1;
+        }
 
-//         if (config.rule.displayOnAllPages) {
-//             if (config.visitorList){
-//                 const arrLive = config.visitorList;
-//                 let totalSum = 0;
-//                 for (let tl = 0; tl < arrLive.length; tl++) {
-//                     const objLive = arrLive[tl];
-//                     totalSum += objLive.unique_visitors.value;
-//                 }
-//                 liveVisitorCount = config.visitorList ? totalSum : configuration && configuration.panelStyle ? configuration.panelStyle.liveVisitorCount : 1;
-//                 //liveVisitorCount = config.visitorList ? config.visitorList.length : configuration && configuration.panelStyle ? configuration.panelStyle.liveVisitorCount : 1;
-//             }
-//         }
+        if (config.rule.displayOnAllPages) {
+            if (config.visitorList){
+                const arrLive = config.visitorList;
+                let totalSum = 0;
+                for (let tl = 0; tl < arrLive.length; tl++) {
+                    const objLive = arrLive[tl];
+                    totalSum += objLive.unique_visitors.value;
+                }
+                liveVisitorCount = config.visitorList ? totalSum : configuration && configuration.panelStyle ? configuration.panelStyle.liveVisitorCount : 1;
+                //liveVisitorCount = config.visitorList ? config.visitorList.length : configuration && configuration.panelStyle ? configuration.panelStyle.liveVisitorCount : 1;
+            }
+        }
 
-//         if (config.liveViewer)
-//             liveVisitorCount = config.liveViewer ? config.liveViewer.viewers : 1;
+        if (config.liveViewer)
+            liveVisitorCount = config.liveViewer ? config.liveViewer.viewers : 1;
 
-//         if (config.liveFollower)
-//             liveVisitorCount = config.liveFollower ? config.liveFollower.followers : 1;
+        if (config.liveFollower)
+            liveVisitorCount = config.liveFollower ? config.liveFollower.followers : 1;
 
-//         //let userDetails = config.userDetails && config.userDetails.length ? config.userDetails.filter(user => user) : [];
-//         let userDetails = config.userDetails;
-//         let numberOfUsers = config.numberOfUsers;
-//         let userReview = config.userReviews;
+        //let userDetails = config.userDetails && config.userDetails.length ? config.userDetails.filter(user => user) : [];
+        let userDetails = config.userDetails;
+        let numberOfUsers = config.numberOfUsers;
+        let userReview = config.userReviews;
 
-//         var container = document.createElement('div');
-//         container.setAttribute("id", "FPqR2DbIqJeA2DbI7MM9_0");
-//         container.onclick = function (e) {
-//             if (e.target.id == 'notif_close') {
-//                 notifClosr_c4rF9Effgt985n7v4y5h = true;
-//                 return container.parentNode.removeChild(container);
-//             }
+        var container = document.createElement('div');
+        container.setAttribute("id", "FPqR2DbIqJeA2DbI7MM9_0");
+        container.onclick = function (e) {
+            if (e.target.id == 'notif_close') {
+                notifClosr_c4rF9Effgt985n7v4y5h = true;
+                return container.parentNode.removeChild(container);
+            }
 
-//             if (e.target.id == 'cta' || e.target.id == 'ctatext') {
-//                 window.open(configuration.ctaHyperlinkUrl);
-//             }
+            if (e.target.id == 'cta' || e.target.id == 'ctatext') {
+                window.open(configuration.ctaHyperlinkUrl);
+            }
 
-//             if (configuration && configuration.poweredByLink && e.target.id == 'poweredBy') {
-//                 window.open(configuration.poweredByLink);
-//             }
+            if (configuration && configuration.poweredByLink && e.target.id == 'poweredBy') {
+                window.open(configuration.poweredByLink);
+            }
             
-//             if(userDetails && userDetails.productUrl && configuration && configuration.isEnablePurchaseNotificationUrl!==false)
-//                 window.open(userDetails.productUrl);
-//             else if (configuration && configuration.notificationUrl)
-//                 window.open(configuration.notificationUrl);
-//             else
-//                 return;
-//         };
+            if(userDetails && userDetails.productUrl && configuration && configuration.isEnablePurchaseNotificationUrl!==false)
+                window.open(userDetails.productUrl);
+            else if (configuration && configuration.notificationUrl)
+                window.open(configuration.notificationUrl);
+            else
+                return;
+        };
 
-//         container.style = alignment;
-//         var innerContainer = document.createElement('div');
-//         innerContainer.setAttribute("id", "FPqR3tRBqJeA3tRB7MM9_0");
-//         var innerDiv = document.createElement('div');
-//         var mainContainer = document.createElement('div');
+        container.style = alignment;
+        var innerContainer = document.createElement('div');
+        innerContainer.setAttribute("id", "FPqR3tRBqJeA3tRB7MM9_0");
+        var innerDiv = document.createElement('div');
+        var mainContainer = document.createElement('div');
 
 
 
-//         var recentNotiifcationContainer = document.createElement('div')
-//         //recentNotiifcationContainer.className = 'notif-card';
-//         recentNotiifcationContainer.style = type == 'journey' ? "display:block" : "display:none";
-//         //recentNotiifcationContainer.style = containerStyle;
+        var recentNotiifcationContainer = document.createElement('div')
+        //recentNotiifcationContainer.className = 'notif-card';
+        recentNotiifcationContainer.style = type == 'journey' ? "display:block" : "display:none";
+        //recentNotiifcationContainer.style = containerStyle;
 
-//         var recentNotiifcationMainContainer = document.createElement('div')
-//         recentNotiifcationMainContainer.className = 'sisbMFuEGu';
-//          recentNotiifcationMainContainer.style = containerStyle
+        var recentNotiifcationMainContainer = document.createElement('div')
+        recentNotiifcationMainContainer.className = 'sisbMFuEGu';
+         recentNotiifcationMainContainer.style = containerStyle
 
-//         var recentNotiifcationUpperPartContainer = document.createElement('div')
-//         recentNotiifcationUpperPartContainer.className = 'CTTTs8uT13'
+        var recentNotiifcationUpperPartContainer = document.createElement('div')
+        recentNotiifcationUpperPartContainer.className = 'CTTTs8uT13'
 
-//         var recentNotificationImageContainer = document.createElement('div')
-//         recentNotificationImageContainer.className = 'XIwR5JMPFF'
+        var recentNotificationImageContainer = document.createElement('div')
+        recentNotificationImageContainer.className = 'XIwR5JMPFF'
 
-//         var recentNotificationImage = document.createElement('img')
-//         recentNotificationImage.className = 'YgksSelqbb'
+        var recentNotificationImage = document.createElement('img')
+        recentNotificationImage.className = 'YgksSelqbb'
 
-//         // var res_img = 'https://storage.googleapis.com/influence-197607.appspot.com/default_icon.png';
+        // var res_img = 'https://storage.googleapis.com/influence-197607.appspot.com/default_icon.png';
 
-//         // if (userDetails && userDetails) {
-//         //     if (userDetails.productImg) {
-//         //         res_img = userDetails.productImg;
-//         //     }
-//         //     else if (configuration && configuration.toggleMap == 'map') {
-//         //         if (userDetails.city && userDetails.country) {
-//         //             // res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=hbWDhMsvBHicDmqnO9Zb&app_code=UloQYTuh7LRTXjc4lDpa5Q&ci=${userDetails.city}&co=${userDetails.country}&z=10&h=200&w=200`;
-//         //             res_img = `https://image.maps.ls.hereapi.com/mia/1.6/mapview?co=${userDetails.country}&z=10&ci=${userDetails.city}&h=200&w=200&apiKey=bqnejSYDD8ZDVnC9exfexyOEOfwevkIgHJQRBsxoXXg`;
-//         //         }
-//         //         else if (userDetails.city) {
-//         //             // res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=hbWDhMsvBHicDmqnO9Zb&app_code=UloQYTuh7LRTXjc4lDpa5Q&ci=${userDetails.city}&z=10&h=200&w=200`;
-//         //             res_img = `https://image.maps.ls.hereapi.com/mia/1.6/mapview?z=10&ci=${userDetails.city}&h=200&w=200&apiKey=bqnejSYDD8ZDVnC9exfexyOEOfwevkIgHJQRBsxoXXg`;
-//         //         }
-//         //         else if (userDetails.country) {
-//         //             // res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=hbWDhMsvBHicDmqnO9Zb&app_code=UloQYTuh7LRTXjc4lDpa5Q&co=${userDetails.country}&z=10&h=200&w=200`;
-//         //             res_img = `https://image.maps.ls.hereapi.com/mia/1.6/mapview?co=${userDetails.country}&z=10&h=200&w=200&apiKey=bqnejSYDD8ZDVnC9exfexyOEOfwevkIgHJQRBsxoXXg`;
-//         //         }
-//         //     }
-//         //     else if (configuration && configuration.panelStyle) {
-//         //         res_img = configuration.panelStyle.image;
-//         //     }
-//         // }
-//         var res_img = "https://s3.wasabisys.com/insidescript.com/maps/world.jpeg"
-//         const bucketUrl = "https://s3.wasabisys.com/insidescript.com/maps/"
-//         if (userDetails && userDetails) {
-//             if (userDetails.productImg) {
-//                 res_img = userDetails.productImg;
-//             }
-//             else if (configuration && configuration.toggleMap == 'map') {
-//                 if (userDetails.city && userDetails.country) {
-//                     res_img = bucketUrl +userDetails.city + '_' + userDetails.country + '.jpeg'
+        // if (userDetails && userDetails) {
+        //     if (userDetails.productImg) {
+        //         res_img = userDetails.productImg;
+        //     }
+        //     else if (configuration && configuration.toggleMap == 'map') {
+        //         if (userDetails.city && userDetails.country) {
+        //             // res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=hbWDhMsvBHicDmqnO9Zb&app_code=UloQYTuh7LRTXjc4lDpa5Q&ci=${userDetails.city}&co=${userDetails.country}&z=10&h=200&w=200`;
+        //             res_img = `https://image.maps.ls.hereapi.com/mia/1.6/mapview?co=${userDetails.country}&z=10&ci=${userDetails.city}&h=200&w=200&apiKey=bqnejSYDD8ZDVnC9exfexyOEOfwevkIgHJQRBsxoXXg`;
+        //         }
+        //         else if (userDetails.city) {
+        //             // res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=hbWDhMsvBHicDmqnO9Zb&app_code=UloQYTuh7LRTXjc4lDpa5Q&ci=${userDetails.city}&z=10&h=200&w=200`;
+        //             res_img = `https://image.maps.ls.hereapi.com/mia/1.6/mapview?z=10&ci=${userDetails.city}&h=200&w=200&apiKey=bqnejSYDD8ZDVnC9exfexyOEOfwevkIgHJQRBsxoXXg`;
+        //         }
+        //         else if (userDetails.country) {
+        //             // res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=hbWDhMsvBHicDmqnO9Zb&app_code=UloQYTuh7LRTXjc4lDpa5Q&co=${userDetails.country}&z=10&h=200&w=200`;
+        //             res_img = `https://image.maps.ls.hereapi.com/mia/1.6/mapview?co=${userDetails.country}&z=10&h=200&w=200&apiKey=bqnejSYDD8ZDVnC9exfexyOEOfwevkIgHJQRBsxoXXg`;
+        //         }
+        //     }
+        //     else if (configuration && configuration.panelStyle) {
+        //         res_img = configuration.panelStyle.image;
+        //     }
+        // }
+        var res_img = "https://s3.wasabisys.com/insidescript.com/maps/world.jpeg"
+        const bucketUrl = "https://s3.wasabisys.com/insidescript.com/maps/"
+        if (userDetails && userDetails) {
+            if (userDetails.productImg) {
+                res_img = userDetails.productImg;
+            }
+            else if (configuration && configuration.toggleMap == 'map') {
+                if (userDetails.city && userDetails.country) {
+                    res_img = bucketUrl +userDetails.city + '_' + userDetails.country + '.jpeg'
                     
-//                     //res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=eVtq1iOX1kyYqLeYpd1W&app_code=CblgM4dq4wHQykVEBfa0Ww&ci=${userDetails.city}&co=${userDetails.country}&z=10&h=200&w=200`;
-//                     // res_img = `https://image.maps.ls.hereapi.com/mia/1.6/mapview?co=${userDetails.country}&z=10&ci=${userDetails.city}&h=200&w=200&apiKey=D4UFItTuftNruv5x2vorKlT0evG8sIj1e0NnWXKxvRw`;
-//                 }
-//                 else if (userDetails.city) {
+                    //res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=eVtq1iOX1kyYqLeYpd1W&app_code=CblgM4dq4wHQykVEBfa0Ww&ci=${userDetails.city}&co=${userDetails.country}&z=10&h=200&w=200`;
+                    // res_img = `https://image.maps.ls.hereapi.com/mia/1.6/mapview?co=${userDetails.country}&z=10&ci=${userDetails.city}&h=200&w=200&apiKey=D4UFItTuftNruv5x2vorKlT0evG8sIj1e0NnWXKxvRw`;
+                }
+                else if (userDetails.city) {
                         
-//                     res_img = bucketUrl +  userDetails.city + '.jpeg'
+                    res_img = bucketUrl +  userDetails.city + '.jpeg'
                             
-//                     //res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=eVtq1iOX1kyYqLeYpd1W&app_code=CblgM4dq4wHQykVEBfa0Ww&ci=${userDetails.city}&z=10&h=200&w=200`;
-//                     // res_img = `https://image.maps.ls.hereapi.com/mia/1.6/mapview?z=10&ci=${userDetails.city}&h=200&w=200&apiKey=D4UFItTuftNruv5x2vorKlT0evG8sIj1e0NnWXKxvRw`;
-//                 }
-//                 else if (userDetails.country) {
-//                     res_img = userDetails.country + '.jpeg'
+                    //res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=eVtq1iOX1kyYqLeYpd1W&app_code=CblgM4dq4wHQykVEBfa0Ww&ci=${userDetails.city}&z=10&h=200&w=200`;
+                    // res_img = `https://image.maps.ls.hereapi.com/mia/1.6/mapview?z=10&ci=${userDetails.city}&h=200&w=200&apiKey=D4UFItTuftNruv5x2vorKlT0evG8sIj1e0NnWXKxvRw`;
+                }
+                else if (userDetails.country) {
+                    res_img = userDetails.country + '.jpeg'
                            
-//                    // res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=eVtq1iOX1kyYqLeYpd1W&app_code=CblgM4dq4wHQykVEBfa0Ww&co=${userDetails.country}&z=10&h=200&w=200`;
-//                     // res_img = `https://image.maps.ls.hereapi.com/mia/1.6/mapview?co=${userDetails.country}&z=10&h=200&w=200&apiKey=D4UFItTuftNruv5x2vorKlT0evG8sIj1e0NnWXKxvRw`;
-//                 }
-//             }
-//             else if (configuration && configuration.panelStyle) {
-//                 res_img = configuration.panelStyle.image;
-//             }
-//         }
+                   // res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=eVtq1iOX1kyYqLeYpd1W&app_code=CblgM4dq4wHQykVEBfa0Ww&co=${userDetails.country}&z=10&h=200&w=200`;
+                    // res_img = `https://image.maps.ls.hereapi.com/mia/1.6/mapview?co=${userDetails.country}&z=10&h=200&w=200&apiKey=D4UFItTuftNruv5x2vorKlT0evG8sIj1e0NnWXKxvRw`;
+                }
+            }
+            else if (configuration && configuration.panelStyle) {
+                res_img = configuration.panelStyle.image;
+            }
+        }
 
-//         recentNotificationImage.setAttribute('src', res_img ? res_img : "https://storage.googleapis.com/influence-197607.appspot.com/user_icon.png");
-//         recentNotificationImage.style = iconStyle;
-//         //recentNotificationImage.setAttribute('src', 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/5FCE8400-0616-426F-8BEA-F53136305123.png')
-//         recentNotificationImageContainer.appendChild(recentNotificationImage)
-
-
-//         recentNotiifcationUpperPartContainer.appendChild(recentNotificationImageContainer)
-
-//         var recentNotificationCloseContainer = document.createElement('div')
-//         recentNotificationCloseContainer.className = 'YDR83P698y'
-//         recentNotificationCloseContainer.style = config.rule.closeNotification ? 'display:block' : 'display:none';
-//         var recentNotificationCloseIcon = document.createElement('a')
-//         recentNotificationCloseIcon.id = 'notif_close'
-//         recentNotificationCloseIcon.className = 'qcXxmyzjdA'
-//         recentNotificationCloseIcon.innerHTML = "Hide"
-//         recentNotificationCloseContainer.appendChild(recentNotificationCloseIcon)
-//         recentNotiifcationUpperPartContainer.appendChild(recentNotificationCloseContainer)
-
-//         var recentNotificationTextContainer = document.createElement('div')
-//         recentNotificationTextContainer.className = 'nm9yXLhzoO'
-
-//         var recentNotificationNameText = document.createElement('div')
-//          recentNotificationNameText.className = 'C1Q4m1N5gw Q7ng9a2YqP'
-//          if (configuration && configuration.panelStyle && configuration.panelStyle.color) {
-//             recentNotificationNameText.style = `color: rgb(${configuration.panelStyle.color.r},${configuration.panelStyle.color.g},${configuration.panelStyle.color.b});`
-//         }
-//          var res_name = userDetails && userDetails ? userDetails.username ? userDetails.username : userDetails.response.json.value.form.firstname : null;
-//         if (res_name && res_name.trim().length == 0) res_name = 'Someone';
-//         res_name = res_name ? res_name.replace(/[0-9]/g, '').toLowerCase().split('.').join(' ').split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ') : res_name;
-//         if (res_name && res_name.split(' ').length > 1 && configuration.isHideLastname == true) {
-//             res_name = res_name.split(' ')[0];
-//         }
-//         if (configuration && configuration.toggleHideName) {
-//             res_name = configuration.usernameText;
-//         }
-//         var user_details = userDetails && userDetails ?
-//             userDetails.city && userDetails.country && res_name && !configuration.isHideFullLocation ?
-//                 `${res_name} ${(!configuration.isHideCityLocation || !configuration.isHideCountryLocation) ? configuration && configuration.recentText1 ? configuration.recentText1 : 'from' : ''} ${!configuration.isHideCityLocation ? userDetails.city : ''}${!configuration.isHideCityLocation && !configuration.isHideCountryLocation ? ', ' : ''} ${!configuration.isHideCountryLocation ? userDetails.country : ''}`
-//                 :
-//                 userDetails.city && res_name && !configuration.isHideFullLocation && !configuration.isHideCityLocation?
-//                     `${res_name} ${configuration && configuration.recentText1 ? configuration.recentText1 : 'from'} ${userDetails.city}`
-//                     :
-//                     userDetails.country && res_name && !configuration.isHideFullLocation && !configuration.isHideCountryLocation?
-//                         `${res_name} ${configuration && configuration.recentText1 ? configuration.recentText1 : 'from'} ${userDetails.country}`
-//                         :
-//                         res_name ?
-//                             `${res_name}`
-//                             :
-//                             "Anonymous"
-//             : "Anonymous";
-
-//          recentNotificationNameText.innerHTML = user_details  //'Samuel from Seattle, Washington'
-
-//          recentNotificationTextContainer.appendChild(recentNotificationNameText)
-
-//           var recentNotificationUpperSecondaryText = document.createElement('div')
-//         recentNotificationUpperSecondaryText.className = 'C1Q4m1N5gw AApOh2Bpqu'
-
-//         if(configuration.panelStyle.secondaryColor){
-//             recentNotificationUpperSecondaryText.style = `color: rgb(${configuration.panelStyle.secondaryColor.r},${configuration.panelStyle.secondaryColor.g},${configuration.panelStyle.secondaryColor.b});`
-//            }
+        recentNotificationImage.setAttribute('src', res_img ? res_img : "https://storage.googleapis.com/influence-197607.appspot.com/user_icon.png");
+        recentNotificationImage.style = iconStyle;
+        //recentNotificationImage.setAttribute('src', 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/5FCE8400-0616-426F-8BEA-F53136305123.png')
+        recentNotificationImageContainer.appendChild(recentNotificationImage)
 
 
-//         if (userDetails && userDetails && userDetails.productName)
-//         recentNotificationUpperSecondaryText.innerHTML = configuration.orderText + ' ' + userDetails.productName
-//         else
-//         recentNotificationUpperSecondaryText.innerHTML = configuration.otherText + ' ' + configuration.contentText;
+        recentNotiifcationUpperPartContainer.appendChild(recentNotificationImageContainer)
 
-//         //recentNotificationUpperSecondaryText.innerHTML = "recently bought a Mexican teriyaki pizza!"
+        var recentNotificationCloseContainer = document.createElement('div')
+        recentNotificationCloseContainer.className = 'YDR83P698y'
+        recentNotificationCloseContainer.style = config.rule.closeNotification ? 'display:block' : 'display:none';
+        var recentNotificationCloseIcon = document.createElement('a')
+        recentNotificationCloseIcon.id = 'notif_close'
+        recentNotificationCloseIcon.className = 'qcXxmyzjdA'
+        recentNotificationCloseIcon.innerHTML = "Hide"
+        recentNotificationCloseContainer.appendChild(recentNotificationCloseIcon)
+        recentNotiifcationUpperPartContainer.appendChild(recentNotificationCloseContainer)
 
-//         recentNotificationTextContainer.appendChild(recentNotificationUpperSecondaryText)
+        var recentNotificationTextContainer = document.createElement('div')
+        recentNotificationTextContainer.className = 'nm9yXLhzoO'
+
+        var recentNotificationNameText = document.createElement('div')
+         recentNotificationNameText.className = 'C1Q4m1N5gw Q7ng9a2YqP'
+         if (configuration && configuration.panelStyle && configuration.panelStyle.color) {
+            recentNotificationNameText.style = `color: rgb(${configuration.panelStyle.color.r},${configuration.panelStyle.color.g},${configuration.panelStyle.color.b});`
+        }
+         var res_name = userDetails && userDetails ? userDetails.username ? userDetails.username : userDetails.response.json.value.form.firstname : null;
+        if (res_name && res_name.trim().length == 0) res_name = 'Someone';
+        res_name = res_name ? res_name.replace(/[0-9]/g, '').toLowerCase().split('.').join(' ').split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ') : res_name;
+        if (res_name && res_name.split(' ').length > 1 && configuration.isHideLastname == true) {
+            res_name = res_name.split(' ')[0];
+        }
+        if (configuration && configuration.toggleHideName) {
+            res_name = configuration.usernameText;
+        }
+        var user_details = userDetails && userDetails ?
+            userDetails.city && userDetails.country && res_name && !configuration.isHideFullLocation ?
+                `${res_name} ${(!configuration.isHideCityLocation || !configuration.isHideCountryLocation) ? configuration && configuration.recentText1 ? configuration.recentText1 : 'from' : ''} ${!configuration.isHideCityLocation ? userDetails.city : ''}${!configuration.isHideCityLocation && !configuration.isHideCountryLocation ? ', ' : ''} ${!configuration.isHideCountryLocation ? userDetails.country : ''}`
+                :
+                userDetails.city && res_name && !configuration.isHideFullLocation && !configuration.isHideCityLocation?
+                    `${res_name} ${configuration && configuration.recentText1 ? configuration.recentText1 : 'from'} ${userDetails.city}`
+                    :
+                    userDetails.country && res_name && !configuration.isHideFullLocation && !configuration.isHideCountryLocation?
+                        `${res_name} ${configuration && configuration.recentText1 ? configuration.recentText1 : 'from'} ${userDetails.country}`
+                        :
+                        res_name ?
+                            `${res_name}`
+                            :
+                            "Anonymous"
+            : "Anonymous";
+
+         recentNotificationNameText.innerHTML = user_details  //'Samuel from Seattle, Washington'
+
+         recentNotificationTextContainer.appendChild(recentNotificationNameText)
+
+          var recentNotificationUpperSecondaryText = document.createElement('div')
+        recentNotificationUpperSecondaryText.className = 'C1Q4m1N5gw AApOh2Bpqu'
+
+        if(configuration.panelStyle.secondaryColor){
+            recentNotificationUpperSecondaryText.style = `color: rgb(${configuration.panelStyle.secondaryColor.r},${configuration.panelStyle.secondaryColor.g},${configuration.panelStyle.secondaryColor.b});`
+           }
 
 
-//         recentNotiifcationUpperPartContainer.appendChild(recentNotificationTextContainer)
-//         recentNotiifcationMainContainer.appendChild(recentNotiifcationUpperPartContainer)
+        if (userDetails && userDetails && userDetails.productName)
+        recentNotificationUpperSecondaryText.innerHTML = configuration.orderText + ' ' + userDetails.productName
+        else
+        recentNotificationUpperSecondaryText.innerHTML = configuration.otherText + ' ' + configuration.contentText;
 
-//         var recentNotificationBorder = document.createElement('div')
-//         recentNotificationBorder.className = 'w6k3Avv5zW'
-//         recentNotiifcationMainContainer.appendChild(recentNotificationBorder)
+        //recentNotificationUpperSecondaryText.innerHTML = "recently bought a Mexican teriyaki pizza!"
 
-//         var recentNotificationLowerTextContainer = document.createElement('div')
-//         recentNotificationLowerTextContainer.className = 'dEFGtUaiiu'
+        recentNotificationTextContainer.appendChild(recentNotificationUpperSecondaryText)
 
-//         var recentNotificationFooterLeft = document.createElement('div')
-//         recentNotificationFooterLeft.className = 'o9zv1YAYbn'
-//         var recentNotificationFooterLeftText = document.createElement('div')
-//         recentNotificationFooterLeftText.className = 'Habz07uygm'
-//         var timeStamp = userDetails && userDetails ? userDetails.timestamp : new Date();
-//         recentNotificationFooterLeftText.innerHTML = 'updated ' +timeStamp ? timeSince(new Date(new Date(timeStamp) - aDay).toISOString(),configuration) : "Not available ";
-//         // recentNotificationFooterLeftText.innerHTML = "updated 9 min ago"
+
+        recentNotiifcationUpperPartContainer.appendChild(recentNotificationTextContainer)
+        recentNotiifcationMainContainer.appendChild(recentNotiifcationUpperPartContainer)
+
+        var recentNotificationBorder = document.createElement('div')
+        recentNotificationBorder.className = 'w6k3Avv5zW'
+        recentNotiifcationMainContainer.appendChild(recentNotificationBorder)
+
+        var recentNotificationLowerTextContainer = document.createElement('div')
+        recentNotificationLowerTextContainer.className = 'dEFGtUaiiu'
+
+        var recentNotificationFooterLeft = document.createElement('div')
+        recentNotificationFooterLeft.className = 'o9zv1YAYbn'
+        var recentNotificationFooterLeftText = document.createElement('div')
+        recentNotificationFooterLeftText.className = 'Habz07uygm'
+        var timeStamp = userDetails && userDetails ? userDetails.timestamp : new Date();
+        recentNotificationFooterLeftText.innerHTML = 'updated ' +timeStamp ? timeSince(new Date(new Date(timeStamp) - aDay).toISOString(),configuration) : "Not available ";
+        // recentNotificationFooterLeftText.innerHTML = "updated 9 min ago"
      
-//          recentNotificationFooterLeft.appendChild(recentNotificationFooterLeftText)
+         recentNotificationFooterLeft.appendChild(recentNotificationFooterLeftText)
         
-//         recentNotificationLowerTextContainer.appendChild(recentNotificationFooterLeft)
+        recentNotificationLowerTextContainer.appendChild(recentNotificationFooterLeft)
 
-//         var recentNotificationLowerPTag = document.createElement('div')
-//         // console.log("togglepoweredby", configuration.togglePoweredBy)
-//         if (!configuration.togglePoweredBy){
-//             recentNotificationLowerPTag.style = 'display: none'
-//         }
-//         recentNotificationLowerPTag.className = 'C1Q4m1N5gw OCvwHZZuMd'
+        var recentNotificationLowerPTag = document.createElement('div')
+        // console.log("togglepoweredby", configuration.togglePoweredBy)
+        if (!configuration.togglePoweredBy){
+            recentNotificationLowerPTag.style = 'display: none'
+        }
+        recentNotificationLowerPTag.className = 'C1Q4m1N5gw OCvwHZZuMd'
 
-//         var recentNotificationFooterFirstText = document.createElement('em')
-//         recentNotificationFooterFirstText.className = 'JeSkWc3iVZ'
-//         recentNotificationFooterFirstText.innerHTML = `${configuration && configuration.recentText2 ? configuration.recentText2 : 'verified by'}`;   //"Verified by"
+        var recentNotificationFooterFirstText = document.createElement('em')
+        recentNotificationFooterFirstText.className = 'JeSkWc3iVZ'
+        recentNotificationFooterFirstText.innerHTML = `${configuration && configuration.recentText2 ? configuration.recentText2 : 'verified by'}`;   //"Verified by"
 
-//         recentNotificationLowerPTag.appendChild(recentNotificationFooterFirstText)
+        recentNotificationLowerPTag.appendChild(recentNotificationFooterFirstText)
 
-//         var recentNotificationFooterverified = document.createElement('em')
-//         recentNotificationFooterverified.className = 'TLKvGQLGMV'
+        var recentNotificationFooterverified = document.createElement('em')
+        recentNotificationFooterverified.className = 'TLKvGQLGMV'
 
-//         var recentNotificationTick = document.createElement('span')
-//         recentNotificationTick.className = "Kh4bINB0G4"
-//         recentNotificationTick.innerHTML = `<svg width="10" height="10" viewBox="0 0 524 524" xmlns="http://www.w3.org/2000/svg">
-//         <defs>
-//         <style>.cls-1 {
-//                 fill: #5d93fe;
-//             }
-//             .cls-2 {
-//                 fill: #5d93fe;
-//                 filter: url(#a);
-//             }
-//             .cls-3 {
-//                 fill: #fff;
-//                 fill-rule: evenodd;
-//             }</style>
-//         <filter id="a" x="51" y="51" width="423" height="423" filterUnits="userSpaceOnUse">
-//         <feOffset in="SourceAlpha" result="offset"/>
-//         <feGaussianBlur result="blur" stdDeviation="2.236"/>
-//         <feFlood flood-opacity=".06" result="flood"/>
-//         <feComposite in2="blur" operator="in" result="composite"/>
-//         <feBlend in="SourceGraphic" result="blend"/>
-//         </filter>
-//         </defs>
-//         <circle class="cls-1" cx="262" cy="262" r="262"/>
-//         <circle class="cls-2" cx="262" cy="262" r="207"/>
-//         <path class="cls-3" transform="translate(-640 -238)" d="m833.89 478.95 81.132 65.065a9 9 0 0 1 1.391 12.652l-25.651 31.985a9 9 0 0 1-12.652 1.39l-81.132-65.065a9 9 0 0 1-1.391-12.652l25.651-31.985a9 9 0 0 1 12.652-1.39z"/>
-//         <path class="cls-3" transform="translate(-640 -238)" d="m846.25 552.7 127.39-144.5a9.721 9.721 0 0 1 13.35-1.047l29.679 24.286a8.9 8.9 0 0 1 1.08 12.862l-127.39 144.5a9.721 9.721 0 0 1-13.35 1.047l-29.675-24.286a8.9 8.9 0 0 1-1.087-12.861z"/>
-//         </svg>`
-//         recentNotificationFooterverified.appendChild(recentNotificationTick)
+        var recentNotificationTick = document.createElement('span')
+        recentNotificationTick.className = "Kh4bINB0G4"
+        recentNotificationTick.innerHTML = `<svg width="10" height="10" viewBox="0 0 524 524" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+        <style>.cls-1 {
+                fill: #5d93fe;
+            }
+            .cls-2 {
+                fill: #5d93fe;
+                filter: url(#a);
+            }
+            .cls-3 {
+                fill: #fff;
+                fill-rule: evenodd;
+            }</style>
+        <filter id="a" x="51" y="51" width="423" height="423" filterUnits="userSpaceOnUse">
+        <feOffset in="SourceAlpha" result="offset"/>
+        <feGaussianBlur result="blur" stdDeviation="2.236"/>
+        <feFlood flood-opacity=".06" result="flood"/>
+        <feComposite in2="blur" operator="in" result="composite"/>
+        <feBlend in="SourceGraphic" result="blend"/>
+        </filter>
+        </defs>
+        <circle class="cls-1" cx="262" cy="262" r="262"/>
+        <circle class="cls-2" cx="262" cy="262" r="207"/>
+        <path class="cls-3" transform="translate(-640 -238)" d="m833.89 478.95 81.132 65.065a9 9 0 0 1 1.391 12.652l-25.651 31.985a9 9 0 0 1-12.652 1.39l-81.132-65.065a9 9 0 0 1-1.391-12.652l25.651-31.985a9 9 0 0 1 12.652-1.39z"/>
+        <path class="cls-3" transform="translate(-640 -238)" d="m846.25 552.7 127.39-144.5a9.721 9.721 0 0 1 13.35-1.047l29.679 24.286a8.9 8.9 0 0 1 1.08 12.862l-127.39 144.5a9.721 9.721 0 0 1-13.35 1.047l-29.675-24.286a8.9 8.9 0 0 1-1.087-12.861z"/>
+        </svg>`
+        recentNotificationFooterverified.appendChild(recentNotificationTick)
 
-//         recentNotificationLowerPTag.appendChild(recentNotificationFooterverified)
+        recentNotificationLowerPTag.appendChild(recentNotificationFooterverified)
 
-//         var recentNotificationFooterPoweredBy = document.createElement('a')
+        var recentNotificationFooterPoweredBy = document.createElement('a')
 
-//         recentNotificationFooterPoweredBy.setAttribute('href', configuration.poweredByLink);
-//         recentNotificationFooterPoweredBy.setAttribute('rel', 'nofollow');
-//         recentNotificationFooterPoweredBy.setAttribute('target', '_blank');
+        recentNotificationFooterPoweredBy.setAttribute('href', configuration.poweredByLink);
+        recentNotificationFooterPoweredBy.setAttribute('rel', 'nofollow');
+        recentNotificationFooterPoweredBy.setAttribute('target', '_blank');
 
-//         recentNotificationFooterPoweredBy.className = 'M7XEUSC5mc'
-//         recentNotificationFooterPoweredBy.innerHTML = configuration.poweredBy ? configuration.poweredBy : 'Influence'; //"Influence"
+        recentNotificationFooterPoweredBy.className = 'M7XEUSC5mc'
+        recentNotificationFooterPoweredBy.innerHTML = configuration.poweredBy ? configuration.poweredBy : 'Influence'; //"Influence"
 
-//         recentNotificationLowerPTag.appendChild(recentNotificationFooterPoweredBy)
+        recentNotificationLowerPTag.appendChild(recentNotificationFooterPoweredBy)
 
-//         var recentNotificationFooterDot = document.createElement('em')
-//         recentNotificationFooterDot.className = 'vuYBgve3cU'
-//         recentNotificationFooterDot.innerHTML = "."
+        var recentNotificationFooterDot = document.createElement('em')
+        recentNotificationFooterDot.className = 'vuYBgve3cU'
+        recentNotificationFooterDot.innerHTML = "."
 
-//         // removed by raman
-//         // var recentNotificationFooterCircle = document.createElement('span')
-//         // recentNotificationFooterCircle.innerHTML = "."
+        // removed by raman
+        // var recentNotificationFooterCircle = document.createElement('span')
+        // recentNotificationFooterCircle.innerHTML = "."
 
-//         // recentNotificationFooterDot.appendChild(recentNotificationFooterCircle)
-//         recentNotificationLowerPTag.appendChild(recentNotificationFooterDot)
+        // recentNotificationFooterDot.appendChild(recentNotificationFooterCircle)
+        recentNotificationLowerPTag.appendChild(recentNotificationFooterDot)
 
-//         var recentNotificationFooterMobileTimeContainer = document.createElement('em')
-//         recentNotificationFooterMobileTimeContainer.className = 'W8oo4ja6cK'
-//         var timeStamp = userDetails && userDetails ? userDetails.timestamp : new Date();
-//         recentNotificationFooterMobileTimeContainer.innerHTML = timeStamp ? timeSince(new Date(new Date(timeStamp) - aDay).toISOString(),configuration) : "Not available ";
-//        // recentNotificationFooterMobileTimeContainer.innerHTML = '9 mins ago'
+        var recentNotificationFooterMobileTimeContainer = document.createElement('em')
+        recentNotificationFooterMobileTimeContainer.className = 'W8oo4ja6cK'
+        var timeStamp = userDetails && userDetails ? userDetails.timestamp : new Date();
+        recentNotificationFooterMobileTimeContainer.innerHTML = timeStamp ? timeSince(new Date(new Date(timeStamp) - aDay).toISOString(),configuration) : "Not available ";
+       // recentNotificationFooterMobileTimeContainer.innerHTML = '9 mins ago'
 
-//         recentNotificationLowerPTag.appendChild(recentNotificationFooterMobileTimeContainer)
+        recentNotificationLowerPTag.appendChild(recentNotificationFooterMobileTimeContainer)
 
-//         recentNotificationLowerTextContainer.appendChild(recentNotificationLowerPTag)
+        recentNotificationLowerTextContainer.appendChild(recentNotificationLowerPTag)
 
-//         recentNotiifcationMainContainer.appendChild(recentNotificationLowerTextContainer)
+        recentNotiifcationMainContainer.appendChild(recentNotificationLowerTextContainer)
 
-//         recentNotiifcationContainer.appendChild(recentNotiifcationMainContainer)
-
-
+        recentNotiifcationContainer.appendChild(recentNotiifcationMainContainer)
 
 
 
 
-//         var notificationLiveContainer = document.createElement('div')
-//         //notificationLiveContainer.className = 'oiuytretg';
-//         notificationLiveContainer.style = type == 'live' ? "display:block" : "display:none";
-//        //notificationLiveContainer.style= containerStyle
-//        // notificationLiveContainer.style = containerStyle;
+
+
+        var notificationLiveContainer = document.createElement('div')
+        //notificationLiveContainer.className = 'oiuytretg';
+        notificationLiveContainer.style = type == 'live' ? "display:block" : "display:none";
+       //notificationLiveContainer.style= containerStyle
+       // notificationLiveContainer.style = containerStyle;
        
-//        var notificationLiveMainContainer = document.createElement('div');
-//        notificationLiveMainContainer.className= 'oiuytretg';
-//        notificationLiveMainContainer.style = containerStyle;
+       var notificationLiveMainContainer = document.createElement('div');
+       notificationLiveMainContainer.className= 'oiuytretg';
+       notificationLiveMainContainer.style = containerStyle;
 
          
 
-//         var liveNotiifcationUpperPartContainer = document.createElement('div')
-//         liveNotiifcationUpperPartContainer.className= 'jihuygtfrdes'
-//         //liveNotiifcationUpperPartContainer.style = containerStyle;
+        var liveNotiifcationUpperPartContainer = document.createElement('div')
+        liveNotiifcationUpperPartContainer.className= 'jihuygtfrdes'
+        //liveNotiifcationUpperPartContainer.style = containerStyle;
     
-//         var liveNotificationImageContainer = document.createElement('div')
-//         liveNotificationImageContainer.className= 'jhgfdfghb'
+        var liveNotificationImageContainer = document.createElement('div')
+        liveNotificationImageContainer.className= 'jhgfdfghb'
 
 
 
-//         var liveNotificationAnimationContainer= document.createElement('div')
-//                 liveNotificationAnimationContainer.className= 'animation-wrapper'
+        var liveNotificationAnimationContainer= document.createElement('div')
+                liveNotificationAnimationContainer.className= 'animation-wrapper'
 
-//                 var liveNotificationAnimationCircle= document.createElement('div')
-//                 liveNotificationAnimationCircle.className= 'animationClass'
+                var liveNotificationAnimationCircle= document.createElement('div')
+                liveNotificationAnimationCircle.className= 'animationClass'
 
-//                 var liveNotificationAnimationCircle2= document.createElement('div')
-//                 liveNotificationAnimationCircle2.className= 'circle-2'
-//                 if(configuration.panelStyle.iconBGColor){
-//                     liveNotificationAnimationCircle2.style= `background: rgb(${configuration.panelStyle.iconBGColor.r},${configuration.panelStyle.iconBGColor.g},${configuration.panelStyle.iconBGColor.b});`
-//                 }
+                var liveNotificationAnimationCircle2= document.createElement('div')
+                liveNotificationAnimationCircle2.className= 'circle-2'
+                if(configuration.panelStyle.iconBGColor){
+                    liveNotificationAnimationCircle2.style= `background: rgb(${configuration.panelStyle.iconBGColor.r},${configuration.panelStyle.iconBGColor.g},${configuration.panelStyle.iconBGColor.b});`
+                }
 
-//                 liveNotificationAnimationCircle.appendChild(liveNotificationAnimationCircle2)
+                liveNotificationAnimationCircle.appendChild(liveNotificationAnimationCircle2)
 
-//                 liveNotificationAnimationContainer.appendChild(liveNotificationAnimationCircle)
+                liveNotificationAnimationContainer.appendChild(liveNotificationAnimationCircle)
 
-//                 liveNotificationImageContainer.appendChild(liveNotificationAnimationContainer)
+                liveNotificationImageContainer.appendChild(liveNotificationAnimationContainer)
 
 
 
 
 
     
-//     //     var liveNotificationImage = document.createElement('div')
-//     //     liveNotificationImage.className= 'klhjgyf'
+    //     var liveNotificationImage = document.createElement('div')
+    //     liveNotificationImage.className= 'klhjgyf'
 
 
-//     //     if (configuration.panelStyle && configuration.panelStyle.image) {
-//     //        // notifLiveImgContainer.className = "FPqRH0WDqJeAH0WD7MM9_1";
-//     //         //notifLiveImg.classList = "FPqRh0ePqJeAh0eP7MM9_1";
-//     //        // var notifLiveImgContent = document.createElement('img');
-//     //         //notifLiveImgContent.className = "FPqRqg5HqJmAqu5I7MM9C";
-//     //         liveNotificationImage.setAttribute('src', configuration.panelStyle.image);
-//     //         liveNotificationImage.style = `padding: ${configuration.panelStyle.imagePadding ? configuration.panelStyle.imagePadding + 'px' : '11px'}; border-radius: 0; height: 50px; width: 50px;`;
-//     //        // notifLiveImg.appendChild(notifLiveImgContent);
-//     //     } else {
-//     //         if (config.liveViewer && config.liveViewer.icon) {
+    //     if (configuration.panelStyle && configuration.panelStyle.image) {
+    //        // notifLiveImgContainer.className = "FPqRH0WDqJeAH0WD7MM9_1";
+    //         //notifLiveImg.classList = "FPqRh0ePqJeAh0eP7MM9_1";
+    //        // var notifLiveImgContent = document.createElement('img');
+    //         //notifLiveImgContent.className = "FPqRqg5HqJmAqu5I7MM9C";
+    //         liveNotificationImage.setAttribute('src', configuration.panelStyle.image);
+    //         liveNotificationImage.style = `padding: ${configuration.panelStyle.imagePadding ? configuration.panelStyle.imagePadding + 'px' : '11px'}; border-radius: 0; height: 50px; width: 50px;`;
+    //        // notifLiveImg.appendChild(notifLiveImgContent);
+    //     } else {
+    //         if (config.liveViewer && config.liveViewer.icon) {
                 
-//     //             liveNotificationImage.setAttribute('src', config.liveViewer.icon);
-//     //             liveNotificationImage.style = 'padding: 2px; border-radius: 0; height: 50px; width: 120px;';
+    //             liveNotificationImage.setAttribute('src', config.liveViewer.icon);
+    //             liveNotificationImage.style = 'padding: 2px; border-radius: 0; height: 50px; width: 120px;';
                 
-//     //         }
-//     //         else if (config.liveFollower && config.liveFollower.icon) {
+    //         }
+    //         else if (config.liveFollower && config.liveFollower.icon) {
                
-//     //             liveNotificationImage.setAttribute('src', config.liveFollower.icon);
-//     //             liveNotificationImage.style = 'padding: 2px; border-radius: 0; height: 50px; width: 120px;';
+    //             liveNotificationImage.setAttribute('src', config.liveFollower.icon);
+    //             liveNotificationImage.style = 'padding: 2px; border-radius: 0; height: 50px; width: 120px;';
                 
-//     //         }
-//     //         else {
+    //         }
+    //         else {
                 
-//     //             liveNotificationImage.style=`background: rgb(${configuration.panelStyle.iconBGColor ? configuration.panelStyle.iconBGColor.r : 0}, ${configuration.panelStyle.iconBGColor ? configuration.panelStyle.iconBGColor.g : 149}, ${configuration.panelStyle.iconBGColor ? configuration.panelStyle.iconBGColor.b : 247}, ${configuration.panelStyle.iconBGColor ? configuration.panelStyle.iconBGColor.a : 1})`
-//     //         }
-//     //     }
+    //             liveNotificationImage.style=`background: rgb(${configuration.panelStyle.iconBGColor ? configuration.panelStyle.iconBGColor.r : 0}, ${configuration.panelStyle.iconBGColor ? configuration.panelStyle.iconBGColor.g : 149}, ${configuration.panelStyle.iconBGColor ? configuration.panelStyle.iconBGColor.b : 247}, ${configuration.panelStyle.iconBGColor ? configuration.panelStyle.iconBGColor.a : 1})`
+    //         }
+    //     }
 
 
-//     //    // liveNotificationImage.setAttribute('src', config.liveViewer.icon)
+    //    // liveNotificationImage.setAttribute('src', config.liveViewer.icon)
     
-//     //     liveNotificationImageContainer.appendChild(liveNotificationImage)
+    //     liveNotificationImageContainer.appendChild(liveNotificationImage)
     
-//         liveNotiifcationUpperPartContainer.appendChild(liveNotificationImageContainer)
+        liveNotiifcationUpperPartContainer.appendChild(liveNotificationImageContainer)
     
-//            var liveNotificationCloseContainer = document.createElement('div')
-//             liveNotificationCloseContainer.className='YDR83P698y'
-//             liveNotificationCloseContainer.style = config.rule.closeNotification ? 'display:block' : 'display:none';
-//             var liveNotificationCloseIcon = document.createElement('a')
-//             liveNotificationCloseIcon.id = 'notif_close';
-//             liveNotificationCloseIcon.className ='qcXxmyzjdA'
-//             liveNotificationCloseIcon.innerHTML ="Hide"
-//             liveNotificationCloseContainer.appendChild(liveNotificationCloseIcon)
-//          liveNotiifcationUpperPartContainer.appendChild(liveNotificationCloseContainer)
+           var liveNotificationCloseContainer = document.createElement('div')
+            liveNotificationCloseContainer.className='YDR83P698y'
+            liveNotificationCloseContainer.style = config.rule.closeNotification ? 'display:block' : 'display:none';
+            var liveNotificationCloseIcon = document.createElement('a')
+            liveNotificationCloseIcon.id = 'notif_close';
+            liveNotificationCloseIcon.className ='qcXxmyzjdA'
+            liveNotificationCloseIcon.innerHTML ="Hide"
+            liveNotificationCloseContainer.appendChild(liveNotificationCloseIcon)
+         liveNotiifcationUpperPartContainer.appendChild(liveNotificationCloseContainer)
     
-//          var liveNotificationTextContainer = document.createElement('div')
-//          liveNotificationTextContainer.className= 'bvxgfxchgcg'
+         var liveNotificationTextContainer = document.createElement('div')
+         liveNotificationTextContainer.className= 'bvxgfxchgcg'
     
-//         var liveNotificationPTag = document.createElement('div')
-//         liveNotificationPTag.className ='lkhuf'
+        var liveNotificationPTag = document.createElement('div')
+        liveNotificationPTag.className ='lkhuf'
     
-//         var liveNotificationFirstText = document.createElement('em')
-//         liveNotificationFirstText.className= 'oiuyftgc'
-//         //liveNotificationFirstText.style.backgroundColor = "black";
-//         if (configuration && configuration.panelStyle && configuration.panelStyle.color) {
-//             liveNotificationFirstText.style = `color: rgb(${configuration.panelStyle.color.r},${configuration.panelStyle.color.g},${configuration.panelStyle.color.b});`
-//         }
-//         liveNotificationFirstText.innerHTML = liveVisitorCount == 0 ? 1 : liveVisitorCount + ' ' + ` ${configuration.visitorText}`      //"21 People"
+        var liveNotificationFirstText = document.createElement('em')
+        liveNotificationFirstText.className= 'oiuyftgc'
+        //liveNotificationFirstText.style.backgroundColor = "black";
+        if (configuration && configuration.panelStyle && configuration.panelStyle.color) {
+            liveNotificationFirstText.style = `color: rgb(${configuration.panelStyle.color.r},${configuration.panelStyle.color.g},${configuration.panelStyle.color.b});`
+        }
+        liveNotificationFirstText.innerHTML = liveVisitorCount == 0 ? 1 : liveVisitorCount + ' ' + ` ${configuration.visitorText}`      //"21 People"
     
-//         var liveNotificationSecondText = document.createElement('em')
-//         liveNotificationSecondText.className= 'jhjfdrtfgvgj'
+        var liveNotificationSecondText = document.createElement('em')
+        liveNotificationSecondText.className= 'jhjfdrtfgvgj'
 
-//         // if (configuration && configuration.panelStyle && configuration.panelStyle.color) {
-//         //  liveNotificationSecondText.style = `color: rgb(${configuration.panelStyle.color.r},${configuration.panelStyle.color.g},${configuration.panelStyle.color.b});`
-//         // }
+        // if (configuration && configuration.panelStyle && configuration.panelStyle.color) {
+        //  liveNotificationSecondText.style = `color: rgb(${configuration.panelStyle.color.r},${configuration.panelStyle.color.g},${configuration.panelStyle.color.b});`
+        // }
 
-//         liveNotificationSecondText.innerHTML = ` ${configuration.liveVisitorText}`;
-//         if(config.liveViewer)
-//         liveNotificationSecondText.innerHTML =` ${configuration.liveViewerText}`;
-//         else if(config.liveFollower)
-//         liveNotificationSecondText.innerHTML =` ${configuration.liveFollowerText}`;
-
-
-//        // liveNotificationSecondText.innerHTML =    //"are viewing this side"
-//          liveNotificationPTag.appendChild(liveNotificationFirstText)
-//          liveNotificationPTag.appendChild(liveNotificationSecondText)
-//         liveNotificationTextContainer.appendChild(liveNotificationPTag)
-//          liveNotiifcationUpperPartContainer.appendChild(liveNotificationTextContainer)
-    
-//          notificationLiveMainContainer.appendChild(liveNotiifcationUpperPartContainer)
-    
-//         var liveNotificationBorder = document.createElement('div')
-//         if (!configuration.togglePoweredBy) {
-//             liveNotificationBorder.style = 'display: none'
-//         }
-//         liveNotificationBorder.className='hvhvyhjvg'
-//         notificationLiveMainContainer.appendChild(liveNotificationBorder)
-    
-//         var liveNotificationLowerTextContainer= document.createElement('div')
-//         if(!configuration.togglePoweredBy){
-//             liveNotificationLowerTextContainer.style = 'display: none'
-//         }
-//         liveNotificationLowerTextContainer.className ='kbhgcghv'
-    
-//         var liveNotificationLowerPTag = document.createElement('div')
-//         liveNotificationLowerPTag.className ='lkhuf jvygcghv'
-    
-//         var liveNotificationFooterFirstText = document.createElement('em')
-//         liveNotificationFooterFirstText.className= 'uytdr'
-//         liveNotificationFooterFirstText.innerHTML = `${configuration && configuration.liveText ? configuration.liveText : 'verified by '}`  //"Verified by"
-    
-//         liveNotificationLowerPTag.appendChild(liveNotificationFooterFirstText)
-    
-//         var liveNotificationFooterverified = document.createElement('em')
-//         liveNotificationFooterverified.className= 'lkjhgvftg'
-    
-//         var liveNotificationTick = document.createElement('span')
-//         liveNotificationTick.innerHTML =`<svg width="9" height="9" viewBox="0 0 524 524" xmlns="http://www.w3.org/2000/svg">
-//         <defs>
-//         <style>.cls-1 {
-//                 fill: #5d93fe;
-//             }
-//             .cls-2 {
-//                 fill: #5d93fe;
-//                 filter: url(#a);
-//             }
-//             .cls-3 {
-//                 fill: #fff;
-//                 fill-rule: evenodd;
-//             }</style>
-//         <filter id="a" x="51" y="51" width="423" height="423" filterUnits="userSpaceOnUse">
-//         <feOffset in="SourceAlpha" result="offset"/>
-//         <feGaussianBlur result="blur" stdDeviation="2.236"/>
-//         <feFlood flood-opacity=".06" result="flood"/>
-//         <feComposite in2="blur" operator="in" result="composite"/>
-//         <feBlend in="SourceGraphic" result="blend"/>
-//         </filter>
-//         </defs>
-//         <circle class="cls-1" cx="262" cy="262" r="262"/>
-//         <circle class="cls-2" cx="262" cy="262" r="207"/>
-//         <path class="cls-3" transform="translate(-640 -238)" d="m833.89 478.95 81.132 65.065a9 9 0 0 1 1.391 12.652l-25.651 31.985a9 9 0 0 1-12.652 1.39l-81.132-65.065a9 9 0 0 1-1.391-12.652l25.651-31.985a9 9 0 0 1 12.652-1.39z"/>
-//         <path class="cls-3" transform="translate(-640 -238)" d="m846.25 552.7 127.39-144.5a9.721 9.721 0 0 1 13.35-1.047l29.679 24.286a8.9 8.9 0 0 1 1.08 12.862l-127.39 144.5a9.721 9.721 0 0 1-13.35 1.047l-29.675-24.286a8.9 8.9 0 0 1-1.087-12.861z"/>
-//         </svg>`
-//         liveNotificationFooterverified.appendChild(liveNotificationTick)
-    
-//         liveNotificationLowerPTag.appendChild(liveNotificationFooterverified)
-    
-//         var liveNotificationFooterPoweredBy = document.createElement('a')
-
-//         liveNotificationFooterPoweredBy.setAttribute('href', configuration.poweredByLink);
-//         liveNotificationFooterPoweredBy.setAttribute('rel', 'nofollow');
-//         liveNotificationFooterPoweredBy.setAttribute('target', '_blank');
-//         liveNotificationFooterPoweredBy.className= 'jbhftyftgckjgyh'
-//         liveNotificationFooterPoweredBy.innerHTML = configuration.poweredBy ? configuration.poweredBy : 'Influence'  //"Influence"
-    
-//         liveNotificationLowerPTag.appendChild(liveNotificationFooterPoweredBy)
-    
-    
-//         liveNotificationLowerTextContainer.appendChild(liveNotificationLowerPTag)
-
-//         notificationLiveMainContainer.appendChild(liveNotificationLowerTextContainer)
-
-//          notificationLiveContainer.appendChild(notificationLiveMainContainer)
+        liveNotificationSecondText.innerHTML = ` ${configuration.liveVisitorText}`;
+        if(config.liveViewer)
+        liveNotificationSecondText.innerHTML =` ${configuration.liveViewerText}`;
+        else if(config.liveFollower)
+        liveNotificationSecondText.innerHTML =` ${configuration.liveFollowerText}`;
 
 
+       // liveNotificationSecondText.innerHTML =    //"are viewing this side"
+         liveNotificationPTag.appendChild(liveNotificationFirstText)
+         liveNotificationPTag.appendChild(liveNotificationSecondText)
+        liveNotificationTextContainer.appendChild(liveNotificationPTag)
+         liveNotiifcationUpperPartContainer.appendChild(liveNotificationTextContainer)
+    
+         notificationLiveMainContainer.appendChild(liveNotiifcationUpperPartContainer)
+    
+        var liveNotificationBorder = document.createElement('div')
+        if (!configuration.togglePoweredBy) {
+            liveNotificationBorder.style = 'display: none'
+        }
+        liveNotificationBorder.className='hvhvyhjvg'
+        notificationLiveMainContainer.appendChild(liveNotificationBorder)
+    
+        var liveNotificationLowerTextContainer= document.createElement('div')
+        if(!configuration.togglePoweredBy){
+            liveNotificationLowerTextContainer.style = 'display: none'
+        }
+        liveNotificationLowerTextContainer.className ='kbhgcghv'
+    
+        var liveNotificationLowerPTag = document.createElement('div')
+        liveNotificationLowerPTag.className ='lkhuf jvygcghv'
+    
+        var liveNotificationFooterFirstText = document.createElement('em')
+        liveNotificationFooterFirstText.className= 'uytdr'
+        liveNotificationFooterFirstText.innerHTML = `${configuration && configuration.liveText ? configuration.liveText : 'verified by '}`  //"Verified by"
+    
+        liveNotificationLowerPTag.appendChild(liveNotificationFooterFirstText)
+    
+        var liveNotificationFooterverified = document.createElement('em')
+        liveNotificationFooterverified.className= 'lkjhgvftg'
+    
+        var liveNotificationTick = document.createElement('span')
+        liveNotificationTick.innerHTML =`<svg width="9" height="9" viewBox="0 0 524 524" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+        <style>.cls-1 {
+                fill: #5d93fe;
+            }
+            .cls-2 {
+                fill: #5d93fe;
+                filter: url(#a);
+            }
+            .cls-3 {
+                fill: #fff;
+                fill-rule: evenodd;
+            }</style>
+        <filter id="a" x="51" y="51" width="423" height="423" filterUnits="userSpaceOnUse">
+        <feOffset in="SourceAlpha" result="offset"/>
+        <feGaussianBlur result="blur" stdDeviation="2.236"/>
+        <feFlood flood-opacity=".06" result="flood"/>
+        <feComposite in2="blur" operator="in" result="composite"/>
+        <feBlend in="SourceGraphic" result="blend"/>
+        </filter>
+        </defs>
+        <circle class="cls-1" cx="262" cy="262" r="262"/>
+        <circle class="cls-2" cx="262" cy="262" r="207"/>
+        <path class="cls-3" transform="translate(-640 -238)" d="m833.89 478.95 81.132 65.065a9 9 0 0 1 1.391 12.652l-25.651 31.985a9 9 0 0 1-12.652 1.39l-81.132-65.065a9 9 0 0 1-1.391-12.652l25.651-31.985a9 9 0 0 1 12.652-1.39z"/>
+        <path class="cls-3" transform="translate(-640 -238)" d="m846.25 552.7 127.39-144.5a9.721 9.721 0 0 1 13.35-1.047l29.679 24.286a8.9 8.9 0 0 1 1.08 12.862l-127.39 144.5a9.721 9.721 0 0 1-13.35 1.047l-29.675-24.286a8.9 8.9 0 0 1-1.087-12.861z"/>
+        </svg>`
+        liveNotificationFooterverified.appendChild(liveNotificationTick)
+    
+        liveNotificationLowerPTag.appendChild(liveNotificationFooterverified)
+    
+        var liveNotificationFooterPoweredBy = document.createElement('a')
+
+        liveNotificationFooterPoweredBy.setAttribute('href', configuration.poweredByLink);
+        liveNotificationFooterPoweredBy.setAttribute('rel', 'nofollow');
+        liveNotificationFooterPoweredBy.setAttribute('target', '_blank');
+        liveNotificationFooterPoweredBy.className= 'jbhftyftgckjgyh'
+        liveNotificationFooterPoweredBy.innerHTML = configuration.poweredBy ? configuration.poweredBy : 'Influence'  //"Influence"
+    
+        liveNotificationLowerPTag.appendChild(liveNotificationFooterPoweredBy)
+    
+    
+        liveNotificationLowerTextContainer.appendChild(liveNotificationLowerPTag)
+
+        notificationLiveMainContainer.appendChild(liveNotificationLowerTextContainer)
+
+         notificationLiveContainer.appendChild(notificationLiveMainContainer)
 
 
-//         //***************** start for review notification ********************//
-//         // console.log('====userReview',userReview.fromApp)
-//         const fromAppType = userReview ? userReview.fromApp :'';
 
 
-//         var reviewNotiifcationContainer = document.createElement('div')
-//         // reviewNotiifcationContainer.className = 'notif-card-review';
-//         reviewNotiifcationContainer.style= type == 'review' ? "display:block" : "display:none";
+        //***************** start for review notification ********************//
+        // console.log('====userReview',userReview.fromApp)
+        const fromAppType = userReview ? userReview.fromApp :'';
+
+
+        var reviewNotiifcationContainer = document.createElement('div')
+        // reviewNotiifcationContainer.className = 'notif-card-review';
+        reviewNotiifcationContainer.style= type == 'review' ? "display:block" : "display:none";
 
         
-//         var reviewNotiifcationMainContainer = document.createElement('div')
-//         reviewNotiifcationMainContainer.className = 'y2UXzO2spo';
-//         reviewNotiifcationMainContainer.style = containerStyle; 
+        var reviewNotiifcationMainContainer = document.createElement('div')
+        reviewNotiifcationMainContainer.className = 'y2UXzO2spo';
+        reviewNotiifcationMainContainer.style = containerStyle; 
 
-//         var reviewNotiifcationUpperPartContainer = document.createElement('div')
-//         reviewNotiifcationUpperPartContainer.className = 'DyWfFTHh9R'
+        var reviewNotiifcationUpperPartContainer = document.createElement('div')
+        reviewNotiifcationUpperPartContainer.className = 'DyWfFTHh9R'
 
-//         var reviewNotificationImageContainer = document.createElement('div')
-//         reviewNotificationImageContainer.className = 'sD1KBJgziO'
+        var reviewNotificationImageContainer = document.createElement('div')
+        reviewNotificationImageContainer.className = 'sD1KBJgziO'
 
-//         var reviewNotificationImage = document.createElement('img')
-//         reviewNotificationImage.className = 'wIwWxk318I'
-//        // reviewNotificationImage.setAttribute('src', 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/5FCE8400-0616-426F-8BEA-F53136305123.png')
-
-
-//         reviewNotificationImage.setAttribute('src', userReview && userReview.profileImg ? userReview.profileImg :(userReview ? 'https://lh3.ggpht.com/-HiICnzrd7xo/AAAAAAAAAAI/AAAAAAAAAAA/GcUbxXrSSYg/s128-c0x00000000-cc-rp-mo/photo.jpg': ""));
-//         //reviewNotificationImage.setAttribute('src', 'https://storage.googleapis.com/influence-197607.appspot.com/googlereview.png');
-//        // notifReviewImgContent.style = `padding: 11px; border-radius: 0; height: 50px; width: 50px;`;
-
-//         reviewNotificationImageContainer.appendChild(reviewNotificationImage)
+        var reviewNotificationImage = document.createElement('img')
+        reviewNotificationImage.className = 'wIwWxk318I'
+       // reviewNotificationImage.setAttribute('src', 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/5FCE8400-0616-426F-8BEA-F53136305123.png')
 
 
-//         reviewNotiifcationUpperPartContainer.appendChild(reviewNotificationImageContainer)
+        reviewNotificationImage.setAttribute('src', userReview && userReview.profileImg ? userReview.profileImg :(userReview ? 'https://lh3.ggpht.com/-HiICnzrd7xo/AAAAAAAAAAI/AAAAAAAAAAA/GcUbxXrSSYg/s128-c0x00000000-cc-rp-mo/photo.jpg': ""));
+        //reviewNotificationImage.setAttribute('src', 'https://storage.googleapis.com/influence-197607.appspot.com/googlereview.png');
+       // notifReviewImgContent.style = `padding: 11px; border-radius: 0; height: 50px; width: 50px;`;
 
-//         var reviewNotificationCloseContainer = document.createElement('div')
-//         reviewNotificationCloseContainer.className = 'YDR83P698y'
-//         reviewNotificationCloseContainer.style = config.rule.closeNotification ? 'display:block' : 'display:none';
-//         var reviewNotificationCloseIcon = document.createElement('a')
-//         reviewNotificationCloseIcon.id = 'notif_close';
-//         reviewNotificationCloseIcon.className = 'qcXxmyzjdA'
-//         reviewNotificationCloseIcon.innerHTML = "Hide"
-//         reviewNotificationCloseContainer.appendChild(reviewNotificationCloseIcon)
-//         reviewNotiifcationUpperPartContainer.appendChild(reviewNotificationCloseContainer)
-
-//         var reviewNotificationTextContainer = document.createElement('div')
-//         reviewNotificationTextContainer.className = 'Pw72iFZOEh'
-
-//         var reviewNotificationUserNameContainer = document.createElement('div')
-//         reviewNotificationUserNameContainer.className = 'user-name-container-review'
+        reviewNotificationImageContainer.appendChild(reviewNotificationImage)
 
 
-//         var reviewNotificationNameText = document.createElement('div')
-//         reviewNotificationNameText.className = 'VxoCrsNjZR vR7cdCBJQH'
+        reviewNotiifcationUpperPartContainer.appendChild(reviewNotificationImageContainer)
 
-//         if (fromAppType == 'facebook')
-//         reviewNotificationNameText.innerHTML = userReview.username   //'Recommended us on Facebook';
-//         else if (fromAppType == 'google') {
-//         reviewNotificationNameText.innerHTML = userReview && userReview.username ? userReview.username : 'Someone' ;
-//         }
+        var reviewNotificationCloseContainer = document.createElement('div')
+        reviewNotificationCloseContainer.className = 'YDR83P698y'
+        reviewNotificationCloseContainer.style = config.rule.closeNotification ? 'display:block' : 'display:none';
+        var reviewNotificationCloseIcon = document.createElement('a')
+        reviewNotificationCloseIcon.id = 'notif_close';
+        reviewNotificationCloseIcon.className = 'qcXxmyzjdA'
+        reviewNotificationCloseIcon.innerHTML = "Hide"
+        reviewNotificationCloseContainer.appendChild(reviewNotificationCloseIcon)
+        reviewNotiifcationUpperPartContainer.appendChild(reviewNotificationCloseContainer)
 
-//        // reviewNotificationNameText.innerHTML =    //'Aviel Sela'
-//         reviewNotificationUserNameContainer.appendChild(reviewNotificationNameText)
+        var reviewNotificationTextContainer = document.createElement('div')
+        reviewNotificationTextContainer.className = 'Pw72iFZOEh'
 
-//         var reviewNotificationUpperLogoContainer = document.createElement('div')
-//         reviewNotificationUpperLogoContainer.className = 'Se4hb14yxF'
-
-//         var reviewNotificationUpperLogo = document.createElement('img')
-//         reviewNotificationUpperLogo.className = 'bXZsh24SLi'
-//         reviewNotificationUpperLogo.setAttribute('src', userReview ? 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/79341C01-B8BF-4484-AD66-B9314BAE4121.png': "")
-
-
-//         reviewNotificationUpperLogoContainer.appendChild(reviewNotificationUpperLogo)
+        var reviewNotificationUserNameContainer = document.createElement('div')
+        reviewNotificationUserNameContainer.className = 'user-name-container-review'
 
 
-//         var reviewNotificationUpperStarContainer = document.createElement('div')
-//         reviewNotificationUpperStarContainer.className = 'r0wMxd4rAu'
+        var reviewNotificationNameText = document.createElement('div')
+        reviewNotificationNameText.className = 'VxoCrsNjZR vR7cdCBJQH'
+
+        if (fromAppType == 'facebook')
+        reviewNotificationNameText.innerHTML = userReview.username   //'Recommended us on Facebook';
+        else if (fromAppType == 'google') {
+        reviewNotificationNameText.innerHTML = userReview && userReview.username ? userReview.username : 'Someone' ;
+        }
+
+       // reviewNotificationNameText.innerHTML =    //'Aviel Sela'
+        reviewNotificationUserNameContainer.appendChild(reviewNotificationNameText)
+
+        var reviewNotificationUpperLogoContainer = document.createElement('div')
+        reviewNotificationUpperLogoContainer.className = 'Se4hb14yxF'
+
+        var reviewNotificationUpperLogo = document.createElement('img')
+        reviewNotificationUpperLogo.className = 'bXZsh24SLi'
+        reviewNotificationUpperLogo.setAttribute('src', userReview ? 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/79341C01-B8BF-4484-AD66-B9314BAE4121.png': "")
 
 
-//         var reviewNotificationUpperStar = document.createElement('span')
-//         if(fromAppType == 'google'){
-//         var star = '';
-//         if (userReview && userReview.rating) {
-//             for (let star_i = 0; star_i < userReview.rating; star_i++) {
-//                 star += `<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-//                    viewBox="0 0 53.867 53.867" style="enable-background:new 0 0 53.867 53.867;" xml:space="preserve">
-//                     <polygon style="fill:rgb(255, 215, 0, 1);" points="26.934,1.318 35.256,18.182 53.867,20.887 40.4,34.013 43.579,52.549 26.934,43.798 
-//                     10.288,52.549 13.467,34.013 0,20.887 18.611,18.182 "/>
-//                   </svg>`
-//             }
-//         }
-
-//         reviewNotificationUpperStar.innerHTML= star
-//     }else if(fromAppType == 'stamped' || fromAppType == 'capterra') {
-//         var star = '';
-//         if (userReview && userReview.rating) {
-//             for (let star_i = 0; star_i < userReview.rating; star_i++) {
-//                 star += `<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
-//                 width="12.000000pt" height="12.000000pt" viewBox="0 0 12.000000 12.000000"
-//                 preserveAspectRatio="xMidYMid meet">
-//                <g transform="translate(0.000000,12.000000) scale(0.100000,-0.100000)"
-//                fill="#000000" stroke="none">
-//                </g>
-//                </svg>`
-//             }
-//         }
-
-//         reviewNotificationUpperStar.innerHTML= star
-
-//     }
-//     reviewNotificationUpperStarContainer.appendChild(reviewNotificationUpperStar)
+        reviewNotificationUpperLogoContainer.appendChild(reviewNotificationUpperLogo)
 
 
-//         // var star = '';
-//         // if (userReview && userReview.rating) {
-//         //     for (let star_i = 0; star_i < userReview.rating; star_i++) {
-//         //         star += `<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-//         //            viewBox="0 0 53.867 53.867" style="enable-background:new 0 0 53.867 53.867;" xml:space="preserve">
-//         //             <polygon style="fill:rgb(255, 215, 0, 1);" points="26.934,1.318 35.256,18.182 53.867,20.887 40.4,34.013 43.579,52.549 26.934,43.798 
-//         //             10.288,52.549 13.467,34.013 0,20.887 18.611,18.182 "/>
-//         //           </svg>`
-//         //     }
-//         // }
-
-//         // console.log(star ,"STAR VALUE in REVIEW NOTIFICATIOn")
-//         // reviewNotificationUpperStarContainer.innerHTML= star
-
-//         //console.log(reviewNotificationUpperStarContainer,"YES")
-
-//         var reviewNotificationStar1 = document.createElement('span')
+        var reviewNotificationUpperStarContainer = document.createElement('div')
+        reviewNotificationUpperStarContainer.className = 'r0wMxd4rAu'
 
 
-//         if(fromAppType == 'google'){
-//         var star = '';
-//         if (userReview && userReview.rating) {
-//             for (let star_i = 0; star_i < userReview.rating; star_i++) {
-//                 star += `<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-//                    viewBox="0 0 53.867 53.867" style="enable-background:new 0 0 53.867 53.867;" xml:space="preserve">
-//                     <polygon style="fill:rgb(255, 215, 0, 1);" points="26.934,1.318 35.256,18.182 53.867,20.887 40.4,34.013 43.579,52.549 26.934,43.798 
-//                     10.288,52.549 13.467,34.013 0,20.887 18.611,18.182 "/>
-//                   </svg>`
-//             }
-//         }
+        var reviewNotificationUpperStar = document.createElement('span')
+        if(fromAppType == 'google'){
+        var star = '';
+        if (userReview && userReview.rating) {
+            for (let star_i = 0; star_i < userReview.rating; star_i++) {
+                star += `<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                   viewBox="0 0 53.867 53.867" style="enable-background:new 0 0 53.867 53.867;" xml:space="preserve">
+                    <polygon style="fill:rgb(255, 215, 0, 1);" points="26.934,1.318 35.256,18.182 53.867,20.887 40.4,34.013 43.579,52.549 26.934,43.798 
+                    10.288,52.549 13.467,34.013 0,20.887 18.611,18.182 "/>
+                  </svg>`
+            }
+        }
 
-//         reviewNotificationStar1.innerHTML= star
+        reviewNotificationUpperStar.innerHTML= star
+    }else if(fromAppType == 'stamped' || fromAppType == 'capterra') {
+        var star = '';
+        if (userReview && userReview.rating) {
+            for (let star_i = 0; star_i < userReview.rating; star_i++) {
+                star += `<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+                width="12.000000pt" height="12.000000pt" viewBox="0 0 12.000000 12.000000"
+                preserveAspectRatio="xMidYMid meet">
+               <g transform="translate(0.000000,12.000000) scale(0.100000,-0.100000)"
+               fill="#000000" stroke="none">
+               </g>
+               </svg>`
+            }
+        }
+
+        reviewNotificationUpperStar.innerHTML= star
+
+    }
+    reviewNotificationUpperStarContainer.appendChild(reviewNotificationUpperStar)
+
+
+        // var star = '';
+        // if (userReview && userReview.rating) {
+        //     for (let star_i = 0; star_i < userReview.rating; star_i++) {
+        //         star += `<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+        //            viewBox="0 0 53.867 53.867" style="enable-background:new 0 0 53.867 53.867;" xml:space="preserve">
+        //             <polygon style="fill:rgb(255, 215, 0, 1);" points="26.934,1.318 35.256,18.182 53.867,20.887 40.4,34.013 43.579,52.549 26.934,43.798 
+        //             10.288,52.549 13.467,34.013 0,20.887 18.611,18.182 "/>
+        //           </svg>`
+        //     }
+        // }
+
+        // console.log(star ,"STAR VALUE in REVIEW NOTIFICATIOn")
+        // reviewNotificationUpperStarContainer.innerHTML= star
+
+        //console.log(reviewNotificationUpperStarContainer,"YES")
+
+        var reviewNotificationStar1 = document.createElement('span')
+
+
+        if(fromAppType == 'google'){
+        var star = '';
+        if (userReview && userReview.rating) {
+            for (let star_i = 0; star_i < userReview.rating; star_i++) {
+                star += `<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                   viewBox="0 0 53.867 53.867" style="enable-background:new 0 0 53.867 53.867;" xml:space="preserve">
+                    <polygon style="fill:rgb(255, 215, 0, 1);" points="26.934,1.318 35.256,18.182 53.867,20.887 40.4,34.013 43.579,52.549 26.934,43.798 
+                    10.288,52.549 13.467,34.013 0,20.887 18.611,18.182 "/>
+                  </svg>`
+            }
+        }
+
+        reviewNotificationStar1.innerHTML= star
         
-//     } else if(fromAppType == 'stamped' || fromAppType == 'capterra'){
-//         var star = '';
-//         if (userReview && userReview.rating) {
-//             for (let star_i = 0; star_i < userReview.rating; star_i++) {
-//                 star += `<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
-//                 width="12.000000pt" height="12.000000pt" viewBox="0 0 12.000000 12.000000"
-//                 preserveAspectRatio="xMidYMid meet">
-//                <g transform="translate(0.000000,12.000000) scale(0.100000,-0.100000)"
-//                fill="#000000" stroke="none">
-//                </g>
-//                </svg>`
-//             }
-//         }
+    } else if(fromAppType == 'stamped' || fromAppType == 'capterra'){
+        var star = '';
+        if (userReview && userReview.rating) {
+            for (let star_i = 0; star_i < userReview.rating; star_i++) {
+                star += `<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+                width="12.000000pt" height="12.000000pt" viewBox="0 0 12.000000 12.000000"
+                preserveAspectRatio="xMidYMid meet">
+               <g transform="translate(0.000000,12.000000) scale(0.100000,-0.100000)"
+               fill="#000000" stroke="none">
+               </g>
+               </svg>`
+            }
+        }
 
-//         reviewNotificationStar1.innerHTML= star
-//     }
-//     reviewNotificationUpperStarContainer.appendChild(reviewNotificationStar1)
+        reviewNotificationStar1.innerHTML= star
+    }
+    reviewNotificationUpperStarContainer.appendChild(reviewNotificationStar1)
 
 
-//         reviewNotificationUpperLogoContainer.appendChild(reviewNotificationUpperStarContainer)
+        reviewNotificationUpperLogoContainer.appendChild(reviewNotificationUpperStarContainer)
 
-//         reviewNotificationUserNameContainer.appendChild(reviewNotificationUpperLogoContainer)
-//         reviewNotificationTextContainer.appendChild(reviewNotificationUserNameContainer)
+        reviewNotificationUserNameContainer.appendChild(reviewNotificationUpperLogoContainer)
+        reviewNotificationTextContainer.appendChild(reviewNotificationUserNameContainer)
 
-//         var reviewNotificationUpperSecondaryText = document.createElement('div')
-//         reviewNotificationUpperSecondaryText.className = 'VxoCrsNjZR cwvnPVjfAZ'
+        var reviewNotificationUpperSecondaryText = document.createElement('div')
+        reviewNotificationUpperSecondaryText.className = 'VxoCrsNjZR cwvnPVjfAZ'
 
-//     //     if (fromAppType == 'facebook')
-//     //     reviewNotificationUpperSecondaryText.innerHTML = 'Recommended us on Facebook';
-//     // else if (fromAppType == 'google') {
-//     //     reviewNotificationUpperSecondaryText.innerHTML = userReview && userReview.username ? userReview.username : 'Someone' + ' ' + configuration.gglReviewText ? configuration.gglReviewText : 'Reviewed us on Google';       
-//     // }
+    //     if (fromAppType == 'facebook')
+    //     reviewNotificationUpperSecondaryText.innerHTML = 'Recommended us on Facebook';
+    // else if (fromAppType == 'google') {
+    //     reviewNotificationUpperSecondaryText.innerHTML = userReview && userReview.username ? userReview.username : 'Someone' + ' ' + configuration.gglReviewText ? configuration.gglReviewText : 'Reviewed us on Google';       
+    // }
 
-//     if(fromAppType == 'google'){
-//         if(userReview && userReview.review_text ) {
-//             reviewNotificationUpperSecondaryText.innerHTML = userReview.review_text  //configuration.gglReviewText ? configuration.gglReviewText : 'Reviewed us on Google';         //"Awesome must have tool for every marketer or an online business! Easy to use, great uxui, and most importantly - gets more leads than any other platform."
-//         }else{
-//             reviewNotificationUpperSecondaryText.innerHTML = 'Reviewed us on Google';    
-//         }
-//     }else if(fromAppType == 'stamped'){
-//         reviewNotificationUpperSecondaryText.innerHTML = userReview && userReview.review_text ? userReview.review_text : 'Reviewed us on Stamped.io';           
-//     }else if(fromAppType == 'capterra'){
-//         reviewNotificationUpperSecondaryText.innerHTML = userReview && userReview.review_text ? userReview.review_text : 'Reviewed us on Capterra';           
-//     }
-//     else if(fromAppType == 'facebook'){
-//         reviewNotificationUpperSecondaryText.innerHTML = userReview && userReview.review_text ? userReview.review_text : 'Reviewed us on Facebook';           
-//     }
+    if(fromAppType == 'google'){
+        if(userReview && userReview.review_text ) {
+            reviewNotificationUpperSecondaryText.innerHTML = userReview.review_text  //configuration.gglReviewText ? configuration.gglReviewText : 'Reviewed us on Google';         //"Awesome must have tool for every marketer or an online business! Easy to use, great uxui, and most importantly - gets more leads than any other platform."
+        }else{
+            reviewNotificationUpperSecondaryText.innerHTML = 'Reviewed us on Google';    
+        }
+    }else if(fromAppType == 'stamped'){
+        reviewNotificationUpperSecondaryText.innerHTML = userReview && userReview.review_text ? userReview.review_text : 'Reviewed us on Stamped.io';           
+    }else if(fromAppType == 'capterra'){
+        reviewNotificationUpperSecondaryText.innerHTML = userReview && userReview.review_text ? userReview.review_text : 'Reviewed us on Capterra';           
+    }
+    else if(fromAppType == 'facebook'){
+        reviewNotificationUpperSecondaryText.innerHTML = userReview && userReview.review_text ? userReview.review_text : 'Reviewed us on Facebook';           
+    }
      
-//         reviewNotificationTextContainer.appendChild(reviewNotificationUpperSecondaryText)
-//         reviewNotiifcationUpperPartContainer.appendChild(reviewNotificationTextContainer)
-//         reviewNotiifcationMainContainer.appendChild(reviewNotiifcationUpperPartContainer)
+        reviewNotificationTextContainer.appendChild(reviewNotificationUpperSecondaryText)
+        reviewNotiifcationUpperPartContainer.appendChild(reviewNotificationTextContainer)
+        reviewNotiifcationMainContainer.appendChild(reviewNotiifcationUpperPartContainer)
 
-//         var reviewNotificationBorder = document.createElement('div')
-//         reviewNotificationBorder.className = 'Nit4f0puNC'
-//         reviewNotiifcationMainContainer.appendChild(reviewNotificationBorder)
+        var reviewNotificationBorder = document.createElement('div')
+        reviewNotificationBorder.className = 'Nit4f0puNC'
+        reviewNotiifcationMainContainer.appendChild(reviewNotificationBorder)
 
-//         var reviewNotificationLowerTextContainer = document.createElement('div')
-//         reviewNotificationLowerTextContainer.className = 'eHy4QhDPOH'
+        var reviewNotificationLowerTextContainer = document.createElement('div')
+        reviewNotificationLowerTextContainer.className = 'eHy4QhDPOH'
 
-//         var reviewNotificationFooterLeft = document.createElement('div')
-//         reviewNotificationFooterLeft.className = 'SHtHNHI4jR'
+        var reviewNotificationFooterLeft = document.createElement('div')
+        reviewNotificationFooterLeft.className = 'SHtHNHI4jR'
 
-//         var reviewNotificationFooterLeftText = document.createElement('div')
-//         reviewNotificationFooterLeftText.className = 'vcfYyKTme5'
-//         reviewNotificationFooterLeftText.innerHTML = "updated 9 min ago"
-//         reviewNotificationFooterLeftText.style = "display: none"
-//         reviewNotificationFooterLeft.appendChild(reviewNotificationFooterLeftText)
-//         var reviewNotificationFooterLogoContainer = document.createElement('div')
-//         reviewNotificationFooterLogoContainer.className = 'PI5MfWQuUH'
+        var reviewNotificationFooterLeftText = document.createElement('div')
+        reviewNotificationFooterLeftText.className = 'vcfYyKTme5'
+        reviewNotificationFooterLeftText.innerHTML = "updated 9 min ago"
+        reviewNotificationFooterLeftText.style = "display: none"
+        reviewNotificationFooterLeft.appendChild(reviewNotificationFooterLeftText)
+        var reviewNotificationFooterLogoContainer = document.createElement('div')
+        reviewNotificationFooterLogoContainer.className = 'PI5MfWQuUH'
 
-//         var reviewNotificationFooterLogo = document.createElement('img')
+        var reviewNotificationFooterLogo = document.createElement('img')
 
-//         if(fromAppType == 'google'){
-//         reviewNotificationFooterLogo.className = 'bXZsh24SLi'
-//         reviewNotificationFooterLogo.setAttribute('src', userReview ? 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/79341C01-B8BF-4484-AD66-B9314BAE4121.png':"")
+        if(fromAppType == 'google'){
+        reviewNotificationFooterLogo.className = 'bXZsh24SLi'
+        reviewNotificationFooterLogo.setAttribute('src', userReview ? 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/79341C01-B8BF-4484-AD66-B9314BAE4121.png':"")
        
-//         } else if(fromAppType == 'facebook'){
-//             reviewNotificationFooterLogo.className = 'bXZsh24SLi'
-//             reviewNotificationFooterLogo.setAttribute('src', userReview ? "https://storage.googleapis.com/influence-197607.appspot.com/fbreview.jpg" :"")
-//        }
-//        else if(fromAppType == "stamped"){
-//         reviewNotificationFooterLogo.className = 'bXZsh24SLi'
-//         reviewNotificationFooterLogo.setAttribute('src', userReview ? "https://d33v4339jhl8k0.cloudfront.net/docs/assets/58ef18d32c7d3a52b42f7297/images/5d7323a62c7d3a7e9ae0df2b/68747470733a2f2f6431646568706833656d3566702e636c6f756466726f6e742e6e65742f73697465732f3538383830376139383138663731303030316539383235342f7468656d652f696d616765732f706167652f696e746567726174696f6e732f7374616d7065642f7374616d7065642d6c6f676f2e.png" :"")
-//        }
-//        else if(fromAppType == "capterra"){
-//         reviewNotificationFooterLogo.className = 'bXZsh24SLi'
-//         reviewNotificationFooterLogo.setAttribute('src', userReview ? "https://www.nudgify.com/wp-content/uploads/2020/06/capterra-icon.png" :"")
-//        }
+        } else if(fromAppType == 'facebook'){
+            reviewNotificationFooterLogo.className = 'bXZsh24SLi'
+            reviewNotificationFooterLogo.setAttribute('src', userReview ? "https://storage.googleapis.com/influence-197607.appspot.com/fbreview.jpg" :"")
+       }
+       else if(fromAppType == "stamped"){
+        reviewNotificationFooterLogo.className = 'bXZsh24SLi'
+        reviewNotificationFooterLogo.setAttribute('src', userReview ? "https://d33v4339jhl8k0.cloudfront.net/docs/assets/58ef18d32c7d3a52b42f7297/images/5d7323a62c7d3a7e9ae0df2b/68747470733a2f2f6431646568706833656d3566702e636c6f756466726f6e742e6e65742f73697465732f3538383830376139383138663731303030316539383235342f7468656d652f696d616765732f706167652f696e746567726174696f6e732f7374616d7065642f7374616d7065642d6c6f676f2e.png" :"")
+       }
+       else if(fromAppType == "capterra"){
+        reviewNotificationFooterLogo.className = 'bXZsh24SLi'
+        reviewNotificationFooterLogo.setAttribute('src', userReview ? "https://www.nudgify.com/wp-content/uploads/2020/06/capterra-icon.png" :"")
+       }
 
 
-//         reviewNotificationFooterLogoContainer.appendChild(reviewNotificationFooterLogo)
+        reviewNotificationFooterLogoContainer.appendChild(reviewNotificationFooterLogo)
 
-//         var reviewNotificationFooterStarContainer = document.createElement('div')
-//         reviewNotificationFooterStarContainer.className = 'r0wMxd4rAu'
+        var reviewNotificationFooterStarContainer = document.createElement('div')
+        reviewNotificationFooterStarContainer.className = 'r0wMxd4rAu'
 
-//         //reviewNotificationFooterStarContainer.innerHTML= star
+        //reviewNotificationFooterStarContainer.innerHTML= star
 
-//         var reviwNotificationFooterStar1 = document.createElement('span')
-//         reviwNotificationFooterStar1.style= "display: flex"
+        var reviwNotificationFooterStar1 = document.createElement('span')
+        reviwNotificationFooterStar1.style= "display: flex"
 
-//         if(fromAppType == 'google'){
-//         var star = '';
-//         if (userReview && userReview.rating) {
-//             for (let star_i = 0; star_i < userReview.rating; star_i++) {
-//                 star += `<svg version="1.1" style= "height: 10px; width: 10px" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-//                    viewBox="0 0 53.867 53.867" style="enable-background:new 0 0 53.867 53.867;" xml:space="preserve">
-//                     <polygon style="fill:rgb(255, 215, 0, 1);" points="26.934,1.318 35.256,18.182 53.867,20.887 40.4,34.013 43.579,52.549 26.934,43.798 
-//                     10.288,52.549 13.467,34.013 0,20.887 18.611,18.182 "/>
-//                   </svg>`
-//             }
-//         }
-//         reviwNotificationFooterStar1.innerHTML= star
-//     }
+        if(fromAppType == 'google'){
+        var star = '';
+        if (userReview && userReview.rating) {
+            for (let star_i = 0; star_i < userReview.rating; star_i++) {
+                star += `<svg version="1.1" style= "height: 10px; width: 10px" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                   viewBox="0 0 53.867 53.867" style="enable-background:new 0 0 53.867 53.867;" xml:space="preserve">
+                    <polygon style="fill:rgb(255, 215, 0, 1);" points="26.934,1.318 35.256,18.182 53.867,20.887 40.4,34.013 43.579,52.549 26.934,43.798 
+                    10.288,52.549 13.467,34.013 0,20.887 18.611,18.182 "/>
+                  </svg>`
+            }
+        }
+        reviwNotificationFooterStar1.innerHTML= star
+    }
 
 
-//         reviewNotificationFooterStarContainer.appendChild(reviwNotificationFooterStar1)
+        reviewNotificationFooterStarContainer.appendChild(reviwNotificationFooterStar1)
 
-//         reviewNotificationFooterLogoContainer.appendChild(reviewNotificationFooterStarContainer)
-//         reviewNotificationFooterLeft.appendChild(reviewNotificationFooterLogoContainer)
-//         reviewNotificationLowerTextContainer.appendChild(reviewNotificationFooterLeft)
+        reviewNotificationFooterLogoContainer.appendChild(reviewNotificationFooterStarContainer)
+        reviewNotificationFooterLeft.appendChild(reviewNotificationFooterLogoContainer)
+        reviewNotificationLowerTextContainer.appendChild(reviewNotificationFooterLeft)
 
-//         var reviewNotificationLowerPTag = document.createElement('div')
-//         reviewNotificationLowerPTag.className = 'VxoCrsNjZR Y0g8JetRD9'
+        var reviewNotificationLowerPTag = document.createElement('div')
+        reviewNotificationLowerPTag.className = 'VxoCrsNjZR Y0g8JetRD9'
 
-//         var reviewNotificationFooterFirstText = document.createElement('em')
-//         reviewNotificationFooterFirstText.className = 'q1loq211Xo'
-//         reviewNotificationFooterFirstText.innerHTML = `${configuration && configuration.liveText ? configuration.liveText : 'verified by '}` //"Verified by"
+        var reviewNotificationFooterFirstText = document.createElement('em')
+        reviewNotificationFooterFirstText.className = 'q1loq211Xo'
+        reviewNotificationFooterFirstText.innerHTML = `${configuration && configuration.liveText ? configuration.liveText : 'verified by '}` //"Verified by"
 
-//         reviewNotificationLowerPTag.appendChild(reviewNotificationFooterFirstText)
+        reviewNotificationLowerPTag.appendChild(reviewNotificationFooterFirstText)
 
-//         var reviewNotificationFooterverified = document.createElement('em')
-//         reviewNotificationFooterverified.className = 's8VV8RquLh'
+        var reviewNotificationFooterverified = document.createElement('em')
+        reviewNotificationFooterverified.className = 's8VV8RquLh'
 
-//         var reviewNotificationTick = document.createElement('span')
-//         reviewNotificationTick.innerHTML = `<svg width="9" height="9" viewBox="0 0 524 524" xmlns="http://www.w3.org/2000/svg">
-//         <defs>
-//         <style>.cls-1 {
-//                 fill: #5d93fe;
-//             }
-//             .cls-2 {
-//                 fill: #5d93fe;
-//                 filter: url(#a);
-//             }
-//             .cls-3 {
-//                 fill: #fff;
-//                 fill-rule: evenodd;
-//             }</style>
-//         <filter id="a" x="51" y="51" width="423" height="423" filterUnits="userSpaceOnUse">
-//         <feOffset in="SourceAlpha" result="offset"/>
-//         <feGaussianBlur result="blur" stdDeviation="2.236"/>
-//         <feFlood flood-opacity=".06" result="flood"/>
-//         <feComposite in2="blur" operator="in" result="composite"/>
-//         <feBlend in="SourceGraphic" result="blend"/>
-//         </filter>
-//         </defs>
-//         <circle class="cls-1" cx="262" cy="262" r="262"/>
-//         <circle class="cls-2" cx="262" cy="262" r="207"/>
-//         <path class="cls-3" transform="translate(-640 -238)" d="m833.89 478.95 81.132 65.065a9 9 0 0 1 1.391 12.652l-25.651 31.985a9 9 0 0 1-12.652 1.39l-81.132-65.065a9 9 0 0 1-1.391-12.652l25.651-31.985a9 9 0 0 1 12.652-1.39z"/>
-//         <path class="cls-3" transform="translate(-640 -238)" d="m846.25 552.7 127.39-144.5a9.721 9.721 0 0 1 13.35-1.047l29.679 24.286a8.9 8.9 0 0 1 1.08 12.862l-127.39 144.5a9.721 9.721 0 0 1-13.35 1.047l-29.675-24.286a8.9 8.9 0 0 1-1.087-12.861z"/>
-//         </svg>`
-//         reviewNotificationFooterverified.appendChild(reviewNotificationTick)
+        var reviewNotificationTick = document.createElement('span')
+        reviewNotificationTick.innerHTML = `<svg width="9" height="9" viewBox="0 0 524 524" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+        <style>.cls-1 {
+                fill: #5d93fe;
+            }
+            .cls-2 {
+                fill: #5d93fe;
+                filter: url(#a);
+            }
+            .cls-3 {
+                fill: #fff;
+                fill-rule: evenodd;
+            }</style>
+        <filter id="a" x="51" y="51" width="423" height="423" filterUnits="userSpaceOnUse">
+        <feOffset in="SourceAlpha" result="offset"/>
+        <feGaussianBlur result="blur" stdDeviation="2.236"/>
+        <feFlood flood-opacity=".06" result="flood"/>
+        <feComposite in2="blur" operator="in" result="composite"/>
+        <feBlend in="SourceGraphic" result="blend"/>
+        </filter>
+        </defs>
+        <circle class="cls-1" cx="262" cy="262" r="262"/>
+        <circle class="cls-2" cx="262" cy="262" r="207"/>
+        <path class="cls-3" transform="translate(-640 -238)" d="m833.89 478.95 81.132 65.065a9 9 0 0 1 1.391 12.652l-25.651 31.985a9 9 0 0 1-12.652 1.39l-81.132-65.065a9 9 0 0 1-1.391-12.652l25.651-31.985a9 9 0 0 1 12.652-1.39z"/>
+        <path class="cls-3" transform="translate(-640 -238)" d="m846.25 552.7 127.39-144.5a9.721 9.721 0 0 1 13.35-1.047l29.679 24.286a8.9 8.9 0 0 1 1.08 12.862l-127.39 144.5a9.721 9.721 0 0 1-13.35 1.047l-29.675-24.286a8.9 8.9 0 0 1-1.087-12.861z"/>
+        </svg>`
+        reviewNotificationFooterverified.appendChild(reviewNotificationTick)
 
-//         reviewNotificationLowerPTag.appendChild(reviewNotificationFooterverified)
+        reviewNotificationLowerPTag.appendChild(reviewNotificationFooterverified)
 
-//         var reviewNotificationFooterPoweredBy = document.createElement('a')
+        var reviewNotificationFooterPoweredBy = document.createElement('a')
 
-//         reviewNotificationFooterPoweredBy.setAttribute('href', configuration.poweredByLink);
-//         reviewNotificationFooterPoweredBy.setAttribute('rel', 'nofollow');
-//         reviewNotificationFooterPoweredBy.setAttribute('target', '_blank');
+        reviewNotificationFooterPoweredBy.setAttribute('href', configuration.poweredByLink);
+        reviewNotificationFooterPoweredBy.setAttribute('rel', 'nofollow');
+        reviewNotificationFooterPoweredBy.setAttribute('target', '_blank');
 
        
-//         reviewNotificationFooterPoweredBy.className = 'y35sRsZztl'
-//         reviewNotificationFooterPoweredBy.innerHTML = configuration.poweredBy ? configuration.poweredBy : 'Influence' //"Influence"
+        reviewNotificationFooterPoweredBy.className = 'y35sRsZztl'
+        reviewNotificationFooterPoweredBy.innerHTML = configuration.poweredBy ? configuration.poweredBy : 'Influence' //"Influence"
 
-//         reviewNotificationLowerPTag.appendChild(reviewNotificationFooterPoweredBy)
+        reviewNotificationLowerPTag.appendChild(reviewNotificationFooterPoweredBy)
 
-//         var reviewNotificationFooterDot = document.createElement('em')
-//         reviewNotificationFooterDot.className = 'Vo6H8NISoP'
+        var reviewNotificationFooterDot = document.createElement('em')
+        reviewNotificationFooterDot.className = 'Vo6H8NISoP'
 
-//         // var reviewNotificationFooterCircle = document.createElement('span')
-//         // reviewNotificationFooterCircle.innerHTML = `<svg width="9" height="9" viewBox="0 0 524 524" xmlns="http://www.w3.org/2000/svg">
-//         // <defs>
-//         // <style>.cls-1 {
-//         //         fill: #5d93fe;
-//         //     }
-//         //     .cls-2 {
-//         //         fill: #5d93fe;
-//         //         filter: url(#a);
-//         //     }
-//         //     .cls-3 {
-//         //         fill: #fff;
-//         //         fill-rule: evenodd;
-//         //     }</style>
-//         // <filter id="a" x="51" y="51" width="423" height="423" filterUnits="userSpaceOnUse">
-//         // <feOffset in="SourceAlpha" result="offset"/>
-//         // <feGaussianBlur result="blur" stdDeviation="2.236"/>
-//         // <feFlood flood-opacity=".06" result="flood"/>
-//         // <feComposite in2="blur" operator="in" result="composite"/>
-//         // <feBlend in="SourceGraphic" result="blend"/>
-//         // </filter>
-//         // </defs>
-//         // <circle class="cls-1" cx="262" cy="262" r="262"/>
-//         // <circle class="cls-2" cx="262" cy="262" r="207"/>
-//         // <path class="cls-3" transform="translate(-640 -238)" d="m833.89 478.95 81.132 65.065a9 9 0 0 1 1.391 12.652l-25.651 31.985a9 9 0 0 1-12.652 1.39l-81.132-65.065a9 9 0 0 1-1.391-12.652l25.651-31.985a9 9 0 0 1 12.652-1.39z"/>
-//         // <path class="cls-3" transform="translate(-640 -238)" d="m846.25 552.7 127.39-144.5a9.721 9.721 0 0 1 13.35-1.047l29.679 24.286a8.9 8.9 0 0 1 1.08 12.862l-127.39 144.5a9.721 9.721 0 0 1-13.35 1.047l-29.675-24.286a8.9 8.9 0 0 1-1.087-12.861z"/>
-//         // </svg>`
+        // var reviewNotificationFooterCircle = document.createElement('span')
+        // reviewNotificationFooterCircle.innerHTML = `<svg width="9" height="9" viewBox="0 0 524 524" xmlns="http://www.w3.org/2000/svg">
+        // <defs>
+        // <style>.cls-1 {
+        //         fill: #5d93fe;
+        //     }
+        //     .cls-2 {
+        //         fill: #5d93fe;
+        //         filter: url(#a);
+        //     }
+        //     .cls-3 {
+        //         fill: #fff;
+        //         fill-rule: evenodd;
+        //     }</style>
+        // <filter id="a" x="51" y="51" width="423" height="423" filterUnits="userSpaceOnUse">
+        // <feOffset in="SourceAlpha" result="offset"/>
+        // <feGaussianBlur result="blur" stdDeviation="2.236"/>
+        // <feFlood flood-opacity=".06" result="flood"/>
+        // <feComposite in2="blur" operator="in" result="composite"/>
+        // <feBlend in="SourceGraphic" result="blend"/>
+        // </filter>
+        // </defs>
+        // <circle class="cls-1" cx="262" cy="262" r="262"/>
+        // <circle class="cls-2" cx="262" cy="262" r="207"/>
+        // <path class="cls-3" transform="translate(-640 -238)" d="m833.89 478.95 81.132 65.065a9 9 0 0 1 1.391 12.652l-25.651 31.985a9 9 0 0 1-12.652 1.39l-81.132-65.065a9 9 0 0 1-1.391-12.652l25.651-31.985a9 9 0 0 1 12.652-1.39z"/>
+        // <path class="cls-3" transform="translate(-640 -238)" d="m846.25 552.7 127.39-144.5a9.721 9.721 0 0 1 13.35-1.047l29.679 24.286a8.9 8.9 0 0 1 1.08 12.862l-127.39 144.5a9.721 9.721 0 0 1-13.35 1.047l-29.675-24.286a8.9 8.9 0 0 1-1.087-12.861z"/>
+        // </svg>`
 
-//         // reviewNotificationFooterDot.appendChild(reviewNotificationFooterCircle)
-//         reviewNotificationLowerPTag.appendChild(reviewNotificationFooterDot)
+        // reviewNotificationFooterDot.appendChild(reviewNotificationFooterCircle)
+        reviewNotificationLowerPTag.appendChild(reviewNotificationFooterDot)
 
-//         var reviewNotificationFooterMobileTimeContainer = document.createElement('em')
-//         reviewNotificationFooterMobileTimeContainer.className = 'qT51DYlYRH'
-//         reviewNotificationFooterMobileTimeContainer.innerHTML ='        ' //'9 mins ago'
+        var reviewNotificationFooterMobileTimeContainer = document.createElement('em')
+        reviewNotificationFooterMobileTimeContainer.className = 'qT51DYlYRH'
+        reviewNotificationFooterMobileTimeContainer.innerHTML ='        ' //'9 mins ago'
 
-//         reviewNotificationLowerPTag.appendChild(reviewNotificationFooterMobileTimeContainer)
+        reviewNotificationLowerPTag.appendChild(reviewNotificationFooterMobileTimeContainer)
 
-//         reviewNotificationLowerTextContainer.appendChild(reviewNotificationLowerPTag)
+        reviewNotificationLowerTextContainer.appendChild(reviewNotificationLowerPTag)
 
-//         reviewNotiifcationMainContainer.appendChild(reviewNotificationLowerTextContainer)
-//         reviewNotiifcationContainer.appendChild(reviewNotiifcationMainContainer)
-
-
-
-
-//         //***************** end for review notification ********************//
+        reviewNotiifcationMainContainer.appendChild(reviewNotificationLowerTextContainer)
+        reviewNotiifcationContainer.appendChild(reviewNotiifcationMainContainer)
 
 
 
-//         var bulkNotiifcationContainer = document.createElement('div')
-//     //     bulkNotiifcationContainer.className = 'notif-card';
-//         bulkNotiifcationContainer.style = type == 'identification' ? "display:block" : "display:none";
-//        // bulkNotiifcationContainer.style = containerStyle;
 
-//        var bulkNotiifcationMainContainer = document.createElement('div')
-//        bulkNotiifcationMainContainer.className = 'foc2x3WbXB';
-//        bulkNotiifcationMainContainer.style =containerStyle
+        //***************** end for review notification ********************//
 
-//         var bulkNotiifcationUpperPartContainer = document.createElement('div')
-//         bulkNotiifcationUpperPartContainer.className= 'aiqUT4q94o'
+
+
+        var bulkNotiifcationContainer = document.createElement('div')
+    //     bulkNotiifcationContainer.className = 'notif-card';
+        bulkNotiifcationContainer.style = type == 'identification' ? "display:block" : "display:none";
+       // bulkNotiifcationContainer.style = containerStyle;
+
+       var bulkNotiifcationMainContainer = document.createElement('div')
+       bulkNotiifcationMainContainer.className = 'foc2x3WbXB';
+       bulkNotiifcationMainContainer.style =containerStyle
+
+        var bulkNotiifcationUpperPartContainer = document.createElement('div')
+        bulkNotiifcationUpperPartContainer.className= 'aiqUT4q94o'
     
-//         var bulkNotificationImageContainer = document.createElement('div')
-//         bulkNotificationImageContainer.className= 'VyDVZdCWdx'
+        var bulkNotificationImageContainer = document.createElement('div')
+        bulkNotificationImageContainer.className= 'VyDVZdCWdx'
     
-//         var bulkNotificationImage = document.createElement('img')
-//         bulkNotificationImage.className= 'A4S38Y254X'
+        var bulkNotificationImage = document.createElement('img')
+        bulkNotificationImage.className= 'A4S38Y254X'
 
-//         if (config.icon)
-//         bulkNotificationImage.setAttribute('src', config.icon);
-//         else
-//         bulkNotificationImage.setAttribute('src', configuration.panelStyle.image ? configuration.panelStyle.image : 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/C77C11F2-0E34-49DE-97CC-10DF6C848B69.png')
-//         if (configuration.panelStyle && configuration.panelStyle.image) {
-//            // notifBulkImg.style = `padding:${configuration.panelStyle.imagePadding}px; border-radius: 0;`;
-//            // notifBulkImg.className = 'FPqR37xpqJeA37xp7MM9_IMG FPqRqg5HqJmAqu5I7MM9C';
-//         }
+        if (config.icon)
+        bulkNotificationImage.setAttribute('src', config.icon);
+        else
+        bulkNotificationImage.setAttribute('src', configuration.panelStyle.image ? configuration.panelStyle.image : 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/C77C11F2-0E34-49DE-97CC-10DF6C848B69.png')
+        if (configuration.panelStyle && configuration.panelStyle.image) {
+           // notifBulkImg.style = `padding:${configuration.panelStyle.imagePadding}px; border-radius: 0;`;
+           // notifBulkImg.className = 'FPqR37xpqJeA37xp7MM9_IMG FPqRqg5HqJmAqu5I7MM9C';
+        }
 
-//       //  bulkNotificationImage.setAttribute('src', 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/C77C11F2-0E34-49DE-97CC-10DF6C848B69.png')
+      //  bulkNotificationImage.setAttribute('src', 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/C77C11F2-0E34-49DE-97CC-10DF6C848B69.png')
     
-//         bulkNotificationImageContainer.appendChild(bulkNotificationImage)
+        bulkNotificationImageContainer.appendChild(bulkNotificationImage)
     
-//         bulkNotiifcationUpperPartContainer.appendChild(bulkNotificationImageContainer)
+        bulkNotiifcationUpperPartContainer.appendChild(bulkNotificationImageContainer)
     
-//            var bulkNotificationCloseContainer = document.createElement('div')
-//             bulkNotificationCloseContainer.className='YDR83P698y'
-//             bulkNotificationCloseContainer.style = config.rule.closeNotification ? 'display:block' : 'display:none';
-//             var bulkNotificationCloseIcon = document.createElement('a')
-//             bulkNotificationCloseIcon.id = 'notif_close';
-//             bulkNotificationCloseIcon.className ='qcXxmyzjdA'
-//             bulkNotificationCloseIcon.innerHTML ="Hide"
-//             bulkNotificationCloseContainer.appendChild(bulkNotificationCloseIcon)
-//          bulkNotiifcationUpperPartContainer.appendChild(bulkNotificationCloseContainer)
+           var bulkNotificationCloseContainer = document.createElement('div')
+            bulkNotificationCloseContainer.className='YDR83P698y'
+            bulkNotificationCloseContainer.style = config.rule.closeNotification ? 'display:block' : 'display:none';
+            var bulkNotificationCloseIcon = document.createElement('a')
+            bulkNotificationCloseIcon.id = 'notif_close';
+            bulkNotificationCloseIcon.className ='qcXxmyzjdA'
+            bulkNotificationCloseIcon.innerHTML ="Hide"
+            bulkNotificationCloseContainer.appendChild(bulkNotificationCloseIcon)
+         bulkNotiifcationUpperPartContainer.appendChild(bulkNotificationCloseContainer)
     
-//          var bulkNotificationTextContainer = document.createElement('div')
-//          bulkNotificationTextContainer.className= 'Jxf0sUFKNw'
+         var bulkNotificationTextContainer = document.createElement('div')
+         bulkNotificationTextContainer.className= 'Jxf0sUFKNw'
     
-//         var bulkNotificationPTag = document.createElement('div')
-//         bulkNotificationPTag.className ='WyM33MZmTi'
+        var bulkNotificationPTag = document.createElement('div')
+        bulkNotificationPTag.className ='WyM33MZmTi'
     
-//         var bulkNotificationFirstText = document.createElement('em')
-//         bulkNotificationFirstText.className= 'FocLFPnCyM Kbulz3yVQa'
-//         bulkNotificationFirstText.style.backgroundColor = "#f3f7ff";
-//         if (configuration && configuration.panelStyle && configuration.panelStyle.color) {
-//             bulkNotificationFirstText.style = `color: rgb(${configuration.panelStyle.color.r},${configuration.panelStyle.color.g},${configuration.panelStyle.color.b});`
-//         }
-//     //     bulkNotificationFirstText.style.color= background-color: #f3f7ff
-//         numAnim = new CountUp(bulkNotificationFirstText, 0, numberOfUsers, 0, 3);
-//        //  bulkNotificationFirstText.innerHTML = '11111  ' //numberOfUsers + "123 " // + configuration.visitorText
+        var bulkNotificationFirstText = document.createElement('em')
+        bulkNotificationFirstText.className= 'FocLFPnCyM Kbulz3yVQa'
+        bulkNotificationFirstText.style.backgroundColor = "#f3f7ff";
+        if (configuration && configuration.panelStyle && configuration.panelStyle.color) {
+            bulkNotificationFirstText.style = `color: rgb(${configuration.panelStyle.color.r},${configuration.panelStyle.color.g},${configuration.panelStyle.color.b});`
+        }
+    //     bulkNotificationFirstText.style.color= background-color: #f3f7ff
+        numAnim = new CountUp(bulkNotificationFirstText, 0, numberOfUsers, 0, 3);
+       //  bulkNotificationFirstText.innerHTML = '11111  ' //numberOfUsers + "123 " // + configuration.visitorText
     
 
-//         var bulkNotificationSecondText = document.createElement('em')
-//         bulkNotificationSecondText.className= 'Wvoh0jbGb2'
+        var bulkNotificationSecondText = document.createElement('em')
+        bulkNotificationSecondText.className= 'Wvoh0jbGb2'
 
-//         var today = new Date();
-//         var dd = today.getDate();
-//         var mm = today.getMonth() + 1; //January is 0!
-//         var yyyy = today.getFullYear();     
-//         if (dd < 10) { dd = '0' + dd }
-//         if (mm < 10) { mm = '0' + mm }
-//         today = yyyy + '/' + mm + '/' + dd;
-//         var date2 = new Date(today);
-//         var date1 = new Date(config.rule.createdAt);
-//         var timeDiff = Math.abs(date2.getTime() - date1.getTime());
-//         var dayDifference = Math.ceil(timeDiff / (1000 * 3600 * 24));
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth() + 1; //January is 0!
+        var yyyy = today.getFullYear();     
+        if (dd < 10) { dd = '0' + dd }
+        if (mm < 10) { mm = '0' + mm }
+        today = yyyy + '/' + mm + '/' + dd;
+        var date2 = new Date(today);
+        var date1 = new Date(config.rule.createdAt);
+        var timeDiff = Math.abs(date2.getTime() - date1.getTime());
+        var dayDifference = Math.ceil(timeDiff / (1000 * 3600 * 24));
 
-//         bulkNotificationSecondText.innerHTML = ` ${configuration ? configuration.otherText : ''} ${configuration ? configuration.contentText : ''} ${configuration && configuration.bulkText ? configuration.bulkText : 'in the last'} ${configuration.panelStyle.bulkData} ${configuration && configuration.bulkDaysLable ? configuration.bulkDaysLable : 'days'}`  //"signed up for influence in the last 7 days"
-//          bulkNotificationPTag.appendChild(bulkNotificationFirstText)
+        bulkNotificationSecondText.innerHTML = ` ${configuration ? configuration.otherText : ''} ${configuration ? configuration.contentText : ''} ${configuration && configuration.bulkText ? configuration.bulkText : 'in the last'} ${configuration.panelStyle.bulkData} ${configuration && configuration.bulkDaysLable ? configuration.bulkDaysLable : 'days'}`  //"signed up for influence in the last 7 days"
+         bulkNotificationPTag.appendChild(bulkNotificationFirstText)
 
-//          var bulkNotificationFirstText2= document.createElement('em')
-//             bulkNotificationFirstText2.className = 'FocLFPnCyM YNK4CEgEKV'
-//             bulkNotificationFirstText2.style.backgroundColor = "#f3f7ff";
-//             if (configuration && configuration.panelStyle && configuration.panelStyle.color) {
-//                 bulkNotificationFirstText2.style = `color: rgb(${configuration.panelStyle.color.r},${configuration.panelStyle.color.g},${configuration.panelStyle.color.b});`
-//             }
-//             bulkNotificationFirstText2.style.paddingLeft = "0px";
-//             bulkNotificationFirstText2.innerHTML= configuration.visitorText  //people
-//             bulkNotificationPTag.appendChild(bulkNotificationFirstText2)
+         var bulkNotificationFirstText2= document.createElement('em')
+            bulkNotificationFirstText2.className = 'FocLFPnCyM YNK4CEgEKV'
+            bulkNotificationFirstText2.style.backgroundColor = "#f3f7ff";
+            if (configuration && configuration.panelStyle && configuration.panelStyle.color) {
+                bulkNotificationFirstText2.style = `color: rgb(${configuration.panelStyle.color.r},${configuration.panelStyle.color.g},${configuration.panelStyle.color.b});`
+            }
+            bulkNotificationFirstText2.style.paddingLeft = "0px";
+            bulkNotificationFirstText2.innerHTML= configuration.visitorText  //people
+            bulkNotificationPTag.appendChild(bulkNotificationFirstText2)
      
-//          bulkNotificationPTag.appendChild(bulkNotificationSecondText)
-//         bulkNotificationTextContainer.appendChild(bulkNotificationPTag)
-//          bulkNotiifcationUpperPartContainer.appendChild(bulkNotificationTextContainer)
+         bulkNotificationPTag.appendChild(bulkNotificationSecondText)
+        bulkNotificationTextContainer.appendChild(bulkNotificationPTag)
+         bulkNotiifcationUpperPartContainer.appendChild(bulkNotificationTextContainer)
     
-//          bulkNotiifcationMainContainer.appendChild(bulkNotiifcationUpperPartContainer)
+         bulkNotiifcationMainContainer.appendChild(bulkNotiifcationUpperPartContainer)
     
-//         var bulkNotificationBorder = document.createElement('div')
-//         if (!configuration.togglePoweredBy) {
-//             bulkNotificationBorder.style = 'display: none'
-//         }
-//         bulkNotificationBorder.className='zwnmZYXtFz'
-//         bulkNotiifcationMainContainer.appendChild(bulkNotificationBorder)
+        var bulkNotificationBorder = document.createElement('div')
+        if (!configuration.togglePoweredBy) {
+            bulkNotificationBorder.style = 'display: none'
+        }
+        bulkNotificationBorder.className='zwnmZYXtFz'
+        bulkNotiifcationMainContainer.appendChild(bulkNotificationBorder)
     
-//         var bulkNotificationLowerTextContainer= document.createElement('div')
-//         if(!configuration.togglePoweredBy){
-//             bulkNotificationLowerTextContainer.style = 'display: none'
-//         }
-//         bulkNotificationLowerTextContainer.className ='ZyQ5NX6Xi0'
+        var bulkNotificationLowerTextContainer= document.createElement('div')
+        if(!configuration.togglePoweredBy){
+            bulkNotificationLowerTextContainer.style = 'display: none'
+        }
+        bulkNotificationLowerTextContainer.className ='ZyQ5NX6Xi0'
     
-//         var bulkNotificationLowerPTag = document.createElement('div')
-//         bulkNotificationLowerPTag.className ='WyM33MZmTi QwrzAVKEx3'
+        var bulkNotificationLowerPTag = document.createElement('div')
+        bulkNotificationLowerPTag.className ='WyM33MZmTi QwrzAVKEx3'
     
-//         var bulkNotificationFooterFirstText = document.createElement('em')
-//         bulkNotificationFooterFirstText.className= 'cndnnNxkVv'
-//         bulkNotificationFooterFirstText.innerHTML = configuration.recentText2 ? configuration.recentText2 : 'Verified by '  //"Verified by"
+        var bulkNotificationFooterFirstText = document.createElement('em')
+        bulkNotificationFooterFirstText.className= 'cndnnNxkVv'
+        bulkNotificationFooterFirstText.innerHTML = configuration.recentText2 ? configuration.recentText2 : 'Verified by '  //"Verified by"
     
-//         bulkNotificationLowerPTag.appendChild(bulkNotificationFooterFirstText)
+        bulkNotificationLowerPTag.appendChild(bulkNotificationFooterFirstText)
     
-//         var bulkNotificationFooterverified = document.createElement('em')
-//         bulkNotificationFooterverified.className= 'SxMMtXX6gU'
+        var bulkNotificationFooterverified = document.createElement('em')
+        bulkNotificationFooterverified.className= 'SxMMtXX6gU'
     
-//         var bulkNotificationTick = document.createElement('span')
-//         bulkNotificationTick.innerHTML = `<svg width="9" height="9" viewBox="0 0 524 524" xmlns="http://www.w3.org/2000/svg">
-//         <defs>
-//         <style>.cls-1 {
-//                 fill: #5d93fe;
-//             }
-//             .cls-2 {
-//                 fill: #5d93fe;
-//                 filter: url(#a);
-//             }
-//             .cls-3 {
-//                 fill: #fff;
-//                 fill-rule: evenodd;
-//             }</style>
-//         <filter id="a" x="51" y="51" width="423" height="423" filterUnits="userSpaceOnUse">
-//         <feOffset in="SourceAlpha" result="offset"/>
-//         <feGaussianBlur result="blur" stdDeviation="2.236"/>
-//         <feFlood flood-opacity=".06" result="flood"/>
-//         <feComposite in2="blur" operator="in" result="composite"/>
-//         <feBlend in="SourceGraphic" result="blend"/>
-//         </filter>
-//         </defs>
-//         <circle class="cls-1" cx="262" cy="262" r="262"/>
-//         <circle class="cls-2" cx="262" cy="262" r="207"/>
-//         <path class="cls-3" transform="translate(-640 -238)" d="m833.89 478.95 81.132 65.065a9 9 0 0 1 1.391 12.652l-25.651 31.985a9 9 0 0 1-12.652 1.39l-81.132-65.065a9 9 0 0 1-1.391-12.652l25.651-31.985a9 9 0 0 1 12.652-1.39z"/>
-//         <path class="cls-3" transform="translate(-640 -238)" d="m846.25 552.7 127.39-144.5a9.721 9.721 0 0 1 13.35-1.047l29.679 24.286a8.9 8.9 0 0 1 1.08 12.862l-127.39 144.5a9.721 9.721 0 0 1-13.35 1.047l-29.675-24.286a8.9 8.9 0 0 1-1.087-12.861z"/>
-//         </svg>`
-//         bulkNotificationFooterverified.appendChild(bulkNotificationTick)
+        var bulkNotificationTick = document.createElement('span')
+        bulkNotificationTick.innerHTML = `<svg width="9" height="9" viewBox="0 0 524 524" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+        <style>.cls-1 {
+                fill: #5d93fe;
+            }
+            .cls-2 {
+                fill: #5d93fe;
+                filter: url(#a);
+            }
+            .cls-3 {
+                fill: #fff;
+                fill-rule: evenodd;
+            }</style>
+        <filter id="a" x="51" y="51" width="423" height="423" filterUnits="userSpaceOnUse">
+        <feOffset in="SourceAlpha" result="offset"/>
+        <feGaussianBlur result="blur" stdDeviation="2.236"/>
+        <feFlood flood-opacity=".06" result="flood"/>
+        <feComposite in2="blur" operator="in" result="composite"/>
+        <feBlend in="SourceGraphic" result="blend"/>
+        </filter>
+        </defs>
+        <circle class="cls-1" cx="262" cy="262" r="262"/>
+        <circle class="cls-2" cx="262" cy="262" r="207"/>
+        <path class="cls-3" transform="translate(-640 -238)" d="m833.89 478.95 81.132 65.065a9 9 0 0 1 1.391 12.652l-25.651 31.985a9 9 0 0 1-12.652 1.39l-81.132-65.065a9 9 0 0 1-1.391-12.652l25.651-31.985a9 9 0 0 1 12.652-1.39z"/>
+        <path class="cls-3" transform="translate(-640 -238)" d="m846.25 552.7 127.39-144.5a9.721 9.721 0 0 1 13.35-1.047l29.679 24.286a8.9 8.9 0 0 1 1.08 12.862l-127.39 144.5a9.721 9.721 0 0 1-13.35 1.047l-29.675-24.286a8.9 8.9 0 0 1-1.087-12.861z"/>
+        </svg>`
+        bulkNotificationFooterverified.appendChild(bulkNotificationTick)
     
-//         bulkNotificationLowerPTag.appendChild(bulkNotificationFooterverified)
+        bulkNotificationLowerPTag.appendChild(bulkNotificationFooterverified)
     
         
-//         var bulkNotificationFooterPoweredBy = document.createElement('a')
+        var bulkNotificationFooterPoweredBy = document.createElement('a')
 
-//         bulkNotificationFooterPoweredBy.setAttribute('href', configuration.poweredByLink);
-//         bulkNotificationFooterPoweredBy.setAttribute('rel', 'nofollow');
-//         bulkNotificationFooterPoweredBy.setAttribute('target', '_blank');
+        bulkNotificationFooterPoweredBy.setAttribute('href', configuration.poweredByLink);
+        bulkNotificationFooterPoweredBy.setAttribute('rel', 'nofollow');
+        bulkNotificationFooterPoweredBy.setAttribute('target', '_blank');
 
-//         bulkNotificationFooterPoweredBy.className= 'Q9bSwcf36B'
-//         bulkNotificationFooterPoweredBy.innerHTML = configuration.poweredBy ? configuration.poweredBy : 'Influence'   //"Influence"
+        bulkNotificationFooterPoweredBy.className= 'Q9bSwcf36B'
+        bulkNotificationFooterPoweredBy.innerHTML = configuration.poweredBy ? configuration.poweredBy : 'Influence'   //"Influence"
     
-//         bulkNotificationLowerPTag.appendChild(bulkNotificationFooterPoweredBy)
+        bulkNotificationLowerPTag.appendChild(bulkNotificationFooterPoweredBy)
     
     
-//         bulkNotificationLowerTextContainer.appendChild(bulkNotificationLowerPTag)
-//         bulkNotiifcationMainContainer.appendChild(bulkNotificationLowerTextContainer)
-//         bulkNotiifcationContainer.appendChild(bulkNotiifcationMainContainer)
+        bulkNotificationLowerTextContainer.appendChild(bulkNotificationLowerPTag)
+        bulkNotiifcationMainContainer.appendChild(bulkNotificationLowerTextContainer)
+        bulkNotiifcationContainer.appendChild(bulkNotiifcationMainContainer)
 
 
 
 
-//         var announcementContainer= document.createElement('div');
+        var announcementContainer= document.createElement('div');
 
-//          announcementContainer.style = type == 'announcement' ? "display:block" : "display:none";
+         announcementContainer.style = type == 'announcement' ? "display:block" : "display:none";
 
-//         var announcementNotiifcationContainer = document.createElement('div')
-//         announcementNotiifcationContainer.className = 'Zn5De9iJFM';
-//         announcementNotiifcationContainer.style =containerStyle
+        var announcementNotiifcationContainer = document.createElement('div')
+        announcementNotiifcationContainer.className = 'Zn5De9iJFM';
+        announcementNotiifcationContainer.style =containerStyle
 
-//         var announcementNotiifcationUpperPartContainer = document.createElement('div')
-//         announcementNotiifcationUpperPartContainer.className = 'iIdFziYOKB'
+        var announcementNotiifcationUpperPartContainer = document.createElement('div')
+        announcementNotiifcationUpperPartContainer.className = 'iIdFziYOKB'
 
-//         var announcementNotificationImageContainer = document.createElement('div')
-//         announcementNotificationImageContainer.className = 'TsebdJUQvt'
+        var announcementNotificationImageContainer = document.createElement('div')
+        announcementNotificationImageContainer.className = 'TsebdJUQvt'
 
-//         // var announcementNotificationImage = document.createElement('img')
-//         // announcementNotificationImage.className = 'RKbF8wBwAa'
-//         // announcementNotificationImage.setAttribute('src', 'https://app.useinfluence.co/static/media/fire-new.bece222f.png')
-//         // announcementNotificationImageContainer.appendChild(announcementNotificationImage)
+        // var announcementNotificationImage = document.createElement('img')
+        // announcementNotificationImage.className = 'RKbF8wBwAa'
+        // announcementNotificationImage.setAttribute('src', 'https://app.useinfluence.co/static/media/fire-new.bece222f.png')
+        // announcementNotificationImageContainer.appendChild(announcementNotificationImage)
 
-//         var announcementNotificationImage = document.createElement('img') //span
-//         announcementNotificationImage.className = "A4S38Y254X" //'image'
+        var announcementNotificationImage = document.createElement('img') //span
+        announcementNotificationImage.className = "A4S38Y254X" //'image'
 
-//         if (config.icon)
-//         announcementNotificationImage.setAttribute('src', config.icon);
-//         else
-//         announcementNotificationImage.setAttribute('src', configuration.panelStyle.image ? configuration.panelStyle.image : 'https://s3.wasabisys.com/influencelogo/logo/announcement.svg')
-//       //  announcementNotificationImage.innerHTML = `<svg height= "41px", width= "41px",xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><defs><style>.fa-secondary{opacity:.84; fill:#097fff5e}.fa-primary{fill:#097fff}</style></defs><path d="M544 448c0 9.22-7.08 32-32 32a32 32 0 0 1-20-7l-85-68a242.82 242.82 0 0 0-119-50.79V125.84a242.86 242.86 0 0 0 119-50.79L492 7a31.93 31.93 0 0 1 20-7c25 0 32 23.26 32 32z" class="fa-secondary"/><path d="M544 184.88v110.24a63.47 63.47 0 0 0 0-110.24zM0 192v96a64 64 0 0 0 64 64h33.7a243 243 0 0 0-2.18 32 253.32 253.32 0 0 0 25.56 110.94c5.19 10.69 16.52 17.06 28.4 17.06h74.28c26.05 0 41.69-29.84 25.9-50.56A127.35 127.35 0 0 1 223.51 384a121 121 0 0 1 4.41-32H256V128H64a64 64 0 0 0-64 64z" class="fa-primary"/></svg>`
-//         announcementNotificationImageContainer.appendChild(announcementNotificationImage)
-
-
-//         announcementNotiifcationUpperPartContainer.appendChild(announcementNotificationImageContainer)
-
-//         var announcementNotificationCloseContainer = document.createElement('div')
-//         announcementNotificationCloseContainer.className = 'YDR83P698y'
-//         announcementNotificationCloseContainer.style = config.rule.closeNotification ? 'display:block' : 'display:none';
-//         var announcementNotificationCloseIcon = document.createElement('a')
-//         announcementNotificationCloseIcon.id = 'notif_close'
-//         announcementNotificationCloseIcon.className = 'qcXxmyzjdA'
-//         announcementNotificationCloseIcon.innerHTML = "Hide"
-//         announcementNotificationCloseContainer.appendChild(announcementNotificationCloseIcon)
-//         announcementNotiifcationUpperPartContainer.appendChild(announcementNotificationCloseContainer)
-
-//         var announcementNotificationTextContainer = document.createElement('div')
-//         announcementNotificationTextContainer.className = 'bm6LvHbM56'
-
-//         var announcementNotificationUserNameContainer = document.createElement('div')
-//         announcementNotificationUserNameContainer.className = 'JqUTr3L3QV'
+        if (config.icon)
+        announcementNotificationImage.setAttribute('src', config.icon);
+        else
+        announcementNotificationImage.setAttribute('src', configuration.panelStyle.image ? configuration.panelStyle.image : 'https://s3.wasabisys.com/influencelogo/logo/announcement.svg')
+      //  announcementNotificationImage.innerHTML = `<svg height= "41px", width= "41px",xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><defs><style>.fa-secondary{opacity:.84; fill:#097fff5e}.fa-primary{fill:#097fff}</style></defs><path d="M544 448c0 9.22-7.08 32-32 32a32 32 0 0 1-20-7l-85-68a242.82 242.82 0 0 0-119-50.79V125.84a242.86 242.86 0 0 0 119-50.79L492 7a31.93 31.93 0 0 1 20-7c25 0 32 23.26 32 32z" class="fa-secondary"/><path d="M544 184.88v110.24a63.47 63.47 0 0 0 0-110.24zM0 192v96a64 64 0 0 0 64 64h33.7a243 243 0 0 0-2.18 32 253.32 253.32 0 0 0 25.56 110.94c5.19 10.69 16.52 17.06 28.4 17.06h74.28c26.05 0 41.69-29.84 25.9-50.56A127.35 127.35 0 0 1 223.51 384a121 121 0 0 1 4.41-32H256V128H64a64 64 0 0 0-64 64z" class="fa-primary"/></svg>`
+        announcementNotificationImageContainer.appendChild(announcementNotificationImage)
 
 
-//         var announcementNotificationNameText = document.createElement('p')
-//         announcementNotificationNameText.className = 'J6LQ6GLNbv xPojAbs5Ml'
-//         announcementNotificationNameText.innerHTML =  configuration.announcementHeaderText ? configuration.announcementHeaderText : 'Updates Available!'
-//         announcementNotificationUserNameContainer.appendChild(announcementNotificationNameText)
+        announcementNotiifcationUpperPartContainer.appendChild(announcementNotificationImageContainer)
+
+        var announcementNotificationCloseContainer = document.createElement('div')
+        announcementNotificationCloseContainer.className = 'YDR83P698y'
+        announcementNotificationCloseContainer.style = config.rule.closeNotification ? 'display:block' : 'display:none';
+        var announcementNotificationCloseIcon = document.createElement('a')
+        announcementNotificationCloseIcon.id = 'notif_close'
+        announcementNotificationCloseIcon.className = 'qcXxmyzjdA'
+        announcementNotificationCloseIcon.innerHTML = "Hide"
+        announcementNotificationCloseContainer.appendChild(announcementNotificationCloseIcon)
+        announcementNotiifcationUpperPartContainer.appendChild(announcementNotificationCloseContainer)
+
+        var announcementNotificationTextContainer = document.createElement('div')
+        announcementNotificationTextContainer.className = 'bm6LvHbM56'
+
+        var announcementNotificationUserNameContainer = document.createElement('div')
+        announcementNotificationUserNameContainer.className = 'JqUTr3L3QV'
+
+
+        var announcementNotificationNameText = document.createElement('p')
+        announcementNotificationNameText.className = 'J6LQ6GLNbv xPojAbs5Ml'
+        announcementNotificationNameText.innerHTML =  configuration.announcementHeaderText ? configuration.announcementHeaderText : 'Updates Available!'
+        announcementNotificationUserNameContainer.appendChild(announcementNotificationNameText)
 
       
-//         announcementNotificationTextContainer.appendChild(announcementNotificationUserNameContainer)
+        announcementNotificationTextContainer.appendChild(announcementNotificationUserNameContainer)
 
-//         var announcementNotificationUpperSecondaryText = document.createElement('p')
-//         announcementNotificationUpperSecondaryText.className = 'J6LQ6GLNbv OQD3VMK0CW'
-//         announcementNotificationUpperSecondaryText.innerHTML = configuration.announcementSubText ?  configuration.announcementSubText : "Know more about the latest updates"  //"Awesome must have tool for every marketer or an online business! Easy to use, great uxui, and most importantly - gets more leads than any other platform."
+        var announcementNotificationUpperSecondaryText = document.createElement('p')
+        announcementNotificationUpperSecondaryText.className = 'J6LQ6GLNbv OQD3VMK0CW'
+        announcementNotificationUpperSecondaryText.innerHTML = configuration.announcementSubText ?  configuration.announcementSubText : "Know more about the latest updates"  //"Awesome must have tool for every marketer or an online business! Easy to use, great uxui, and most importantly - gets more leads than any other platform."
 
-//         announcementNotificationTextContainer.appendChild(announcementNotificationUpperSecondaryText)
-//         announcementNotiifcationUpperPartContainer.appendChild(announcementNotificationTextContainer)
-//         announcementNotiifcationContainer.appendChild(announcementNotiifcationUpperPartContainer)
+        announcementNotificationTextContainer.appendChild(announcementNotificationUpperSecondaryText)
+        announcementNotiifcationUpperPartContainer.appendChild(announcementNotificationTextContainer)
+        announcementNotiifcationContainer.appendChild(announcementNotiifcationUpperPartContainer)
 
     
 
-//         var announcementNotificationLowerTextContainer = document.createElement('div')
-//         announcementNotificationLowerTextContainer.className = 'lWRoKQ6NO1'
+        var announcementNotificationLowerTextContainer = document.createElement('div')
+        announcementNotificationLowerTextContainer.className = 'lWRoKQ6NO1'
 
-//         // var announcementNotificationFooterLeft = document.createElement('div')
-
-      
-//         // announcementNotificationLowerTextContainer.appendChild(announcementNotificationFooterLeft)
-
-//         var announcementNotificationLowerPTag = document.createElement('p')
-//         announcementNotificationLowerPTag.className = 'J6LQ6GLNbv'
-
-//         var announcementNotificationFooterPI =document.createElement('em')
-//         announcementNotificationFooterPI.className = 'cYgeJnq9sT'
-//         var announcementNotificationFooterverified = document.createElement('em')
-//         announcementNotificationFooterverified.className = 'h1ELsuZ4Ha'
-
-//         // var announcementNotificationTick = document.createElement('i')
-//         // announcementNotificationTick.className = 'fa fa-check-circle'
-//         // announcementNotificationFooterverified.appendChild(announcementNotificationTick)
-
-//         var announcementNotificationTick = document.createElement('span')
-//         announcementNotificationTick.innerHTML = `<svg width="9" height="9" viewBox="0 0 524 524" xmlns="http://www.w3.org/2000/svg">
-//         <defs>
-//         <style>.cls-1 {
-//                 fill: #5d93fe;
-//             }
-//             .cls-2 {
-//                 fill: #5d93fe;
-//                 filter: url(#a);
-//             }
-//             .cls-3 {
-//                 fill: #fff;
-//                 fill-rule: evenodd;
-//             }</style>
-//         <filter id="a" x="51" y="51" width="423" height="423" filterUnits="userSpaceOnUse">
-//         <feOffset in="SourceAlpha" result="offset"/>
-//         <feGaussianBlur result="blur" stdDeviation="2.236"/>
-//         <feFlood flood-opacity=".06" result="flood"/>
-//         <feComposite in2="blur" operator="in" result="composite"/>
-//         <feBlend in="SourceGraphic" result="blend"/>
-//         </filter>
-//         </defs>
-//         <circle class="cls-1" cx="262" cy="262" r="262"/>
-//         <circle class="cls-2" cx="262" cy="262" r="207"/>
-//         <path class="cls-3" transform="translate(-640 -238)" d="m833.89 478.95 81.132 65.065a9 9 0 0 1 1.391 12.652l-25.651 31.985a9 9 0 0 1-12.652 1.39l-81.132-65.065a9 9 0 0 1-1.391-12.652l25.651-31.985a9 9 0 0 1 12.652-1.39z"/>
-//         <path class="cls-3" transform="translate(-640 -238)" d="m846.25 552.7 127.39-144.5a9.721 9.721 0 0 1 13.35-1.047l29.679 24.286a8.9 8.9 0 0 1 1.08 12.862l-127.39 144.5a9.721 9.721 0 0 1-13.35 1.047l-29.675-24.286a8.9 8.9 0 0 1-1.087-12.861z"/>
-//         </svg>`
-//         announcementNotificationFooterverified.appendChild(announcementNotificationTick)
-
-
-//         announcementNotificationFooterPI.appendChild(announcementNotificationFooterverified)
-
-//         var announcementNotificationFooterPoweredBy = document.createElement('a')
-//         announcementNotificationFooterPoweredBy.setAttribute('href', configuration.poweredByLink);
-//         announcementNotificationFooterPoweredBy.setAttribute('rel', 'nofollow');
-//         announcementNotificationFooterPoweredBy.setAttribute('target', '_blank');
-
-//         announcementNotificationFooterPoweredBy.className = 'RmtBlrOYya'
-//         announcementNotificationFooterPoweredBy.innerHTML =  configuration.poweredBy ? configuration.poweredBy : 'Influence'  //"Influence"
-
-//         announcementNotificationFooterPI.appendChild(announcementNotificationFooterPoweredBy)
-//         announcementNotificationLowerPTag.appendChild(announcementNotificationFooterPI)
-
-//         // var announcementNotificationFooterButtonDiv = document.createElement('em')
-
-//         // var announcementNotificationFooterButton = document.createElement('button')
-//         // announcementNotificationFooterButton.className = 'buttonF'
-//         // announcementNotificationFooterButton.innerHTML = "Book Now"
-//         // announcementNotificationFooterButtonDiv.appendChild(announcementNotificationFooterButton)
-//         // announcementNotificationLowerPTag.appendChild(announcementNotificationFooterButtonDiv)
+        // var announcementNotificationFooterLeft = document.createElement('div')
 
       
-//         announcementNotificationLowerTextContainer.appendChild(announcementNotificationLowerPTag)
+        // announcementNotificationLowerTextContainer.appendChild(announcementNotificationFooterLeft)
 
-//         announcementNotiifcationContainer.appendChild(announcementNotificationLowerTextContainer)
+        var announcementNotificationLowerPTag = document.createElement('p')
+        announcementNotificationLowerPTag.className = 'J6LQ6GLNbv'
 
-//         announcementContainer.appendChild(announcementNotiifcationContainer)
+        var announcementNotificationFooterPI =document.createElement('em')
+        announcementNotificationFooterPI.className = 'cYgeJnq9sT'
+        var announcementNotificationFooterverified = document.createElement('em')
+        announcementNotificationFooterverified.className = 'h1ELsuZ4Ha'
+
+        // var announcementNotificationTick = document.createElement('i')
+        // announcementNotificationTick.className = 'fa fa-check-circle'
+        // announcementNotificationFooterverified.appendChild(announcementNotificationTick)
+
+        var announcementNotificationTick = document.createElement('span')
+        announcementNotificationTick.innerHTML = `<svg width="9" height="9" viewBox="0 0 524 524" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+        <style>.cls-1 {
+                fill: #5d93fe;
+            }
+            .cls-2 {
+                fill: #5d93fe;
+                filter: url(#a);
+            }
+            .cls-3 {
+                fill: #fff;
+                fill-rule: evenodd;
+            }</style>
+        <filter id="a" x="51" y="51" width="423" height="423" filterUnits="userSpaceOnUse">
+        <feOffset in="SourceAlpha" result="offset"/>
+        <feGaussianBlur result="blur" stdDeviation="2.236"/>
+        <feFlood flood-opacity=".06" result="flood"/>
+        <feComposite in2="blur" operator="in" result="composite"/>
+        <feBlend in="SourceGraphic" result="blend"/>
+        </filter>
+        </defs>
+        <circle class="cls-1" cx="262" cy="262" r="262"/>
+        <circle class="cls-2" cx="262" cy="262" r="207"/>
+        <path class="cls-3" transform="translate(-640 -238)" d="m833.89 478.95 81.132 65.065a9 9 0 0 1 1.391 12.652l-25.651 31.985a9 9 0 0 1-12.652 1.39l-81.132-65.065a9 9 0 0 1-1.391-12.652l25.651-31.985a9 9 0 0 1 12.652-1.39z"/>
+        <path class="cls-3" transform="translate(-640 -238)" d="m846.25 552.7 127.39-144.5a9.721 9.721 0 0 1 13.35-1.047l29.679 24.286a8.9 8.9 0 0 1 1.08 12.862l-127.39 144.5a9.721 9.721 0 0 1-13.35 1.047l-29.675-24.286a8.9 8.9 0 0 1-1.087-12.861z"/>
+        </svg>`
+        announcementNotificationFooterverified.appendChild(announcementNotificationTick)
+
+
+        announcementNotificationFooterPI.appendChild(announcementNotificationFooterverified)
+
+        var announcementNotificationFooterPoweredBy = document.createElement('a')
+        announcementNotificationFooterPoweredBy.setAttribute('href', configuration.poweredByLink);
+        announcementNotificationFooterPoweredBy.setAttribute('rel', 'nofollow');
+        announcementNotificationFooterPoweredBy.setAttribute('target', '_blank');
+
+        announcementNotificationFooterPoweredBy.className = 'RmtBlrOYya'
+        announcementNotificationFooterPoweredBy.innerHTML =  configuration.poweredBy ? configuration.poweredBy : 'Influence'  //"Influence"
+
+        announcementNotificationFooterPI.appendChild(announcementNotificationFooterPoweredBy)
+        announcementNotificationLowerPTag.appendChild(announcementNotificationFooterPI)
+
+        // var announcementNotificationFooterButtonDiv = document.createElement('em')
+
+        // var announcementNotificationFooterButton = document.createElement('button')
+        // announcementNotificationFooterButton.className = 'buttonF'
+        // announcementNotificationFooterButton.innerHTML = "Book Now"
+        // announcementNotificationFooterButtonDiv.appendChild(announcementNotificationFooterButton)
+        // announcementNotificationLowerPTag.appendChild(announcementNotificationFooterButtonDiv)
+
+      
+        announcementNotificationLowerTextContainer.appendChild(announcementNotificationLowerPTag)
+
+        announcementNotiifcationContainer.appendChild(announcementNotificationLowerTextContainer)
+
+        announcementContainer.appendChild(announcementNotiifcationContainer)
 
 
 
 
-//         var innerNotifCTAContainer = document.createElement('div');
-//         innerNotifCTAContainer.style = configuration.toggleCTA ? 'display:flex;justify-content:flex-end;' : 'display:none';
-//         innerNotifCTAContainer.setAttribute("id", "cta");
-//         var innerInnerNotifCTAContainer = document.createElement('div');
-//         innerInnerNotifCTAContainer.setAttribute("id", "ctatext");
-//         if (configuration && configuration.panelStyle)
-//             innerInnerNotifCTAContainer.style = `
-//                 background-color: rgb(${configuration.panelStyle.ctaBackgroundColor ? configuration.panelStyle.ctaBackgroundColor.r : 0}, ${configuration.panelStyle.ctaBackgroundColor ? configuration.panelStyle.ctaBackgroundColor.g : 0}, ${configuration.panelStyle.ctaBackgroundColor ? configuration.panelStyle.ctaBackgroundColor.b : 0}, ${configuration.panelStyle.ctaBackgroundColor ? configuration.panelStyle.ctaBackgroundColor.a : 0});
-//                 width: auto;
-//                 border: ${configuration.panelStyle.ctaBorderWidth}px solid rgb(${configuration.panelStyle.ctaBorderColor ? configuration.panelStyle.ctaBorderColor.r : 0}, ${configuration.panelStyle.ctaBorderColor ? configuration.panelStyle.ctaBorderColor.g : 0}, ${configuration.panelStyle.ctaBorderColor ? configuration.panelStyle.ctaBorderColor.b : 0}, ${configuration.panelStyle.ctaBorderColor ? configuration.panelStyle.ctaBorderColor.a : 0});
-//                 border-radius: ${configuration.panelStyle.ctaRadius}px;
-//                 color: rgb(${configuration.panelStyle.ctaTextColor ? configuration.panelStyle.ctaTextColor.r : 0}, ${configuration.panelStyle.ctaTextColor ? configuration.panelStyle.ctaTextColor.g : 0}, ${configuration.panelStyle.ctaTextColor ? configuration.panelStyle.ctaTextColor.b : 0}, ${configuration.panelStyle.ctaTextColor ? configuration.panelStyle.ctaTextColor.a : 0});
-//                 height: 20.5px;
-//                 font-size: 10px;
-//                 font-family: inherit;
-//                 font-weight: normal;
-//                 pointer-events: auto;
-//                 overflow: hidden;
-//                 position: relative;
-//                 float: right;
-//                 font-weight: 400;
-//                 margin-bottom: ${configuration.isCTATop ? '4px' : '0px'};
-//                 margin-top: ${!configuration.isCTATop ? '3px' : '0px'};
-//                 margin-right: 25px;
-//                 padding: 6px 14px;
-//                 box-sizing: border-box;
-//                 line-height: 1em;
-//                 box-shadow: 0 0 1px rgba(0,0,0,.2), 0 1px 2px rgba(0,0,0,.15), 0 5px 50px rgba(0,0,0,.15);
-//                 cursor: pointer;
-//                 opacity: 0.95;
-//             `;
-//         var createCTAText = document.createTextNode(configuration.ctaButtonText);
-//         innerInnerNotifCTAContainer.appendChild(createCTAText);
-//         innerNotifCTAContainer.appendChild(innerInnerNotifCTAContainer);
+        var innerNotifCTAContainer = document.createElement('div');
+        innerNotifCTAContainer.style = configuration.toggleCTA ? 'display:flex;justify-content:flex-end;' : 'display:none';
+        innerNotifCTAContainer.setAttribute("id", "cta");
+        var innerInnerNotifCTAContainer = document.createElement('div');
+        innerInnerNotifCTAContainer.setAttribute("id", "ctatext");
+        if (configuration && configuration.panelStyle)
+            innerInnerNotifCTAContainer.style = `
+                background-color: rgb(${configuration.panelStyle.ctaBackgroundColor ? configuration.panelStyle.ctaBackgroundColor.r : 0}, ${configuration.panelStyle.ctaBackgroundColor ? configuration.panelStyle.ctaBackgroundColor.g : 0}, ${configuration.panelStyle.ctaBackgroundColor ? configuration.panelStyle.ctaBackgroundColor.b : 0}, ${configuration.panelStyle.ctaBackgroundColor ? configuration.panelStyle.ctaBackgroundColor.a : 0});
+                width: auto;
+                border: ${configuration.panelStyle.ctaBorderWidth}px solid rgb(${configuration.panelStyle.ctaBorderColor ? configuration.panelStyle.ctaBorderColor.r : 0}, ${configuration.panelStyle.ctaBorderColor ? configuration.panelStyle.ctaBorderColor.g : 0}, ${configuration.panelStyle.ctaBorderColor ? configuration.panelStyle.ctaBorderColor.b : 0}, ${configuration.panelStyle.ctaBorderColor ? configuration.panelStyle.ctaBorderColor.a : 0});
+                border-radius: ${configuration.panelStyle.ctaRadius}px;
+                color: rgb(${configuration.panelStyle.ctaTextColor ? configuration.panelStyle.ctaTextColor.r : 0}, ${configuration.panelStyle.ctaTextColor ? configuration.panelStyle.ctaTextColor.g : 0}, ${configuration.panelStyle.ctaTextColor ? configuration.panelStyle.ctaTextColor.b : 0}, ${configuration.panelStyle.ctaTextColor ? configuration.panelStyle.ctaTextColor.a : 0});
+                height: 20.5px;
+                font-size: 10px;
+                font-family: inherit;
+                font-weight: normal;
+                pointer-events: auto;
+                overflow: hidden;
+                position: relative;
+                float: right;
+                font-weight: 400;
+                margin-bottom: ${configuration.isCTATop ? '4px' : '0px'};
+                margin-top: ${!configuration.isCTATop ? '3px' : '0px'};
+                margin-right: 25px;
+                padding: 6px 14px;
+                box-sizing: border-box;
+                line-height: 1em;
+                box-shadow: 0 0 1px rgba(0,0,0,.2), 0 1px 2px rgba(0,0,0,.15), 0 5px 50px rgba(0,0,0,.15);
+                cursor: pointer;
+                opacity: 0.95;
+            `;
+        var createCTAText = document.createTextNode(configuration.ctaButtonText);
+        innerInnerNotifCTAContainer.appendChild(createCTAText);
+        innerNotifCTAContainer.appendChild(innerInnerNotifCTAContainer);
 
 
-//     if (configuration.isCTATop)
-//     mainContainer.appendChild(innerNotifCTAContainer);
+    if (configuration.isCTATop)
+    mainContainer.appendChild(innerNotifCTAContainer);
 
-//     mainContainer.appendChild(bulkNotiifcationContainer);
-//     mainContainer.appendChild(notificationLiveContainer);
-//     mainContainer.appendChild(recentNotiifcationContainer);
-//     mainContainer.appendChild(reviewNotiifcationContainer);
-//     mainContainer.appendChild(announcementContainer);  
+    mainContainer.appendChild(bulkNotiifcationContainer);
+    mainContainer.appendChild(notificationLiveContainer);
+    mainContainer.appendChild(recentNotiifcationContainer);
+    mainContainer.appendChild(reviewNotiifcationContainer);
+    mainContainer.appendChild(announcementContainer);  
 
-//     // console.log(mainContainer,"Main Container Data")
+    // console.log(mainContainer,"Main Container Data")
 
-//         if (!configuration.isCTATop)
-//         mainContainer.appendChild(innerNotifCTAContainer);
+        if (!configuration.isCTATop)
+        mainContainer.appendChild(innerNotifCTAContainer);
 
-//         innerDiv.appendChild(mainContainer);
-//         innerContainer.appendChild(innerDiv);
-//         container.appendChild(innerContainer);
+        innerDiv.appendChild(mainContainer);
+        innerContainer.appendChild(innerDiv);
+        container.appendChild(innerContainer);
        
 
-//         if (type == 'journey' && userDetails && userDetails.length > k_c6ba2870) {
-//             k_c6ba2870++;
-//             k_c6ba2870 = k_c6ba2870 == userDetails.length ? 0 : k_c6ba2870;
-//         } else if (type == 'journey' && userDetails && userDetails.length <= k_c6ba2870) {
-//             k_c6ba2870 = 0;
-//         }
+        if (type == 'journey' && userDetails && userDetails.length > k_c6ba2870) {
+            k_c6ba2870++;
+            k_c6ba2870 = k_c6ba2870 == userDetails.length ? 0 : k_c6ba2870;
+        } else if (type == 'journey' && userDetails && userDetails.length <= k_c6ba2870) {
+            k_c6ba2870 = 0;
+        }
 
-//         if (k_c6ba2870 == 0) {
-//             if (type == 'journey' && configurations.length - 1 > pathIndex) {
-//                 pathIndex = pathIndex + 1;
-//             } else if (type == 'journey' && configurations.length - 1 <= pathIndex) {
-//                 pathIndex = 0;
-//             }
-//         }
+        if (k_c6ba2870 == 0) {
+            if (type == 'journey' && configurations.length - 1 > pathIndex) {
+                pathIndex = pathIndex + 1;
+            } else if (type == 'journey' && configurations.length - 1 <= pathIndex) {
+                pathIndex = 0;
+            }
+        }
 
-//         displayNotification(container, config);
-//     }
+        displayNotification(container, config);
+    }
 
-//     return {
-//         notificationdisplay: function notificationdisplay(type, config, containerStyle, iconStyle, alignment) {
-//             notificationDisplay(type, config, containerStyle, iconStyle, alignment);
-//         }
-//     };
-// };
+    return {
+        notificationdisplay: function notificationdisplay(type, config, containerStyle, iconStyle, alignment) {
+            notificationDisplay(type, config, containerStyle, iconStyle, alignment);
+        }
+    };
+};
 
 function cookieblocker(microPolicies){
     var m =[]
@@ -5291,7 +5308,397 @@ Influence = typeof Influence === 'undefined' ? require('../server') : Influence;
 
 (async function () {
 
+    
+
+// var   response = {
+//     "campaign": {
+//         "onBoarding": false,
+//         "_id": "5f4dec0e74814a416e9582d2",
+//         "campaignType": "default",
+//         "campaignName": "test",
+//         "websiteUrl": "test.com",
+//         "profile": "5c6d4b8b98948500132d07e9",
+//         "isActive": true,
+//         "trackingId": "INF-3gbfcjjsd6vhvo",
+//         "createdAt": "2020-09-01T06:37:02.778Z",
+//         "updatedAt": "2020-09-01T06:37:02.778Z",
+//         "__v": 0,
+//         "id": "5f4dec0e74814a416e9582d2"
+//     },
+//     "configuration": {
+//         "_id": "5f4dec0f74814a416e9582d3",
+//         "activity": true,
+//         "panelStyle": {
+//             "noButtonStyle": "outline",
+//             "color": {
+//                 "r": 0,
+//                 "g": 0,
+//                 "b": 0,
+//                 "a": 1
+//             }
+//         },
+//         "langName": {
+//             "language": "en",
+//             "name": "English"
+//         },
+//         "scrollToConsent": true,
+//         "position": "left",
+//         "customPromptText": "customPromptText",
+//         "customAcceptText": "customAcceptText",
+//         "brandingText": "brandingText",
+//         "brandingStyle": "brandingStyle",
+//         "poweredBy": "Influence",
+//         "poweredByLink": "https://useinfluence.co",
+//         "cookiecampaign": "5f4dec0e74814a416e9582d2",
+//         "trackingId": "INF-3gbfcjjsd6vhvo",
+//         "createdAt": "2020-09-01T06:37:03.149Z",
+//         "updatedAt": "2020-09-01T06:37:03.149Z",
+//         "__v": 0,
+//         "id": "5f4dec0f74814a416e9582d3"
+//     },
+//     "microPolicies": [
+//         {
+//             "useCookie": true,
+//             "essentialPolicy": true,
+//             "cookieWidgets": false,
+//             "_id": "5f4e13b68acd492ae77f74a3",
+//             "name": "test",
+//             "description": "test Policy Description",
+//             "websiteUrl": "test.com",
+//             "slug": "test",
+//             "trackingId": "INF-3gbfcjjsd6vhvo",
+//             "cookiecampaign": "5f4dec0e74814a416e9582d2",
+//             "profile": "5f4dec0e74814a416e9582d2",
+//             "createdAt": "2020-09-01T09:26:14.749Z",
+//             "updatedAt": "2020-09-01T09:26:14.749Z",
+//             "__v": 0,
+//             "id": "5f4e13b68acd492ae77f74a3",
+//             "provider": [
+//                 {
+//                     "_id": "5f48ef30d0aae6670d49648b",
+//                     "name": "https://test2109.herokuapp.com",
+//                     "provider": "ajax.googleapis.com",
+//                     "type": "esential",
+//                     "trackingId": "INF-3gbfcjjsd6vhvo",
+//                     "createdAt": "2020-08-28T11:49:04.611Z",
+//                     "updatedAt": "2020-08-28T11:49:04.611Z",
+//                     "id": "5f48ef30d0aae6670d49648b"
+//                 }
+//             ]
+//         },
+//         {
+//             "useCookie": true,
+//             "essentialPolicy": true,
+//             "cookieWidgets": false,
+//             "_id": "5f4e13b68acd492ae77f74a4",
+//             "name": "test",
+//             "description": "test Policy Description",
+//             "websiteUrl": "test.com",
+//             "slug": "Essential11",
+//             "trackingId": "INF-3gbfcjjsd6vhvo",
+//             "cookiecampaign": "5f4dec0e74814a416e9582d2",
+//             "profile": "5f4dec0e74814a416e9582d2",
+//             "createdAt": "2020-09-01T09:26:14.749Z",
+//             "updatedAt": "2020-09-01T09:26:14.749Z",
+//             "__v": 0,
+//             "id": "5f4e13b68acd492ae77f74a3",
+//             "provider": [
+//                 {
+//                     "_id": "5f48ef30d0aae6670d49648b",
+//                     "name": "https://test2109.herokuapp.com",
+//                     "provider": "www.googletagmanager.com",
+//                     "type": "test",
+//                     "trackingId": "INF-3gbfcjjsd6vhvo",
+//                     "createdAt": "2020-08-28T11:49:04.611Z",
+//                     "updatedAt": "2020-08-28T11:49:04.611Z",
+//                     "id": "5f48ef30d0aae6670d49648b",
+//                     "description": "test Policy Description",
+
+//                 }
+//             ]
+//         },
+//         {
+//             "useCookie": true,
+//             "essentialPolicy": true,
+//             "cookieWidgets": false,
+//             "_id": "5f4e13b68acd492ae77f74a1",
+//             "name": "Hello",
+//             "description": "Hello Policy Description",
+//             "websiteUrl": "test.com",
+//             "slug": "Hello",
+//             "trackingId": "INF-3gbfcjjsd6vhvo",
+//             "cookiecampaign": "5f4dec0e74814a416e9582d2",
+//             "profile": "5f4dec0e74814a416e9582d2",
+//             "createdAt": "2020-09-01T09:26:14.749Z",
+//             "updatedAt": "2020-09-01T09:26:14.749Z",
+//             "__v": 0,
+//             "id": "5f4e13b68acd492ae77f74a3",
+//             "provider": [
+//                 {
+//                     "_id": "5f48ef30d0aae6670d49648b",
+//                     "name": "https://test2109.herokuapp.com",
+//                     "provider": "cdn.dashly.app",
+//                     "type": "test",
+//                     "trackingId": "INF-3gbfcjjsd6vhvo",
+//                     "createdAt": "2020-08-28T11:49:04.611Z",
+//                     "updatedAt": "2020-08-28T11:49:04.611Z",
+//                     "id": "5f48ef30d0aae6670d49648b",
+//                     "description": "test Policy Description",
+
+//                 }
+//             ]
+//         }
+//     ]
+// }
+
+
+// var m =[]
+// response.microPolicies.map(e=>{
+
+//     var d = getCookieById(e._id)
+
+//     if(d && d.key == "true"){
+//         e.provider.map(e =>{
+//             console.log(e.provider)
+
+//             m.push(new RegExp(e.provider))
+//         })
+//     }
+    
+// })
+
+
+// window.YETT_BLACKLIST = m
+
+
+// function getCookieById (name){
+//     const COOKIE_PREFIX = "Influence_";    
+//     name = name+"="
+//     const cookies = document.cookie.split(";")
+
+//     for(var i = 0; i < cookies.length; i++) {
+//         var cookie = cookies[i]
+//        if(cookie.indexOf(COOKIE_PREFIX+name) == 1){
+//             name = cookie.split('=')[0].trim().substring(COOKIE_PREFIX.length);
+//             value = cookie.split('=')[1];
+
+//         return {name: name, key: value}
+//      }
+//     }
+//     return null;
+// }
+
+//  !(function (t, e) {
+
+//         "object" == typeof exports && "undefined" != typeof module ? e(exports) : "function" == typeof define && define.amd ? define(["exports"], e) : e(((t = t || self).yett = {}));
+//     })(this, function (t) {
+//         "use strict";
+//         function o(e, t) {
+
+//             return (
+//                 e &&
+//                 (!t || t !== c) &&
+//                 (!s.blacklist ||
+//                     s.blacklist.some(function (t) {
+//                         return t.test(e);
+//                     })) &&
+//                 (!s.whitelist ||
+//                     s.whitelist.every(function (t) {
+//                         return !t.test(e);
+//                     }))
+//             );
+//         }
+//         function l(t) {
+
+//             console.log(t, "tttttttttttttttttttttttttttt")
+//             var e = t.getAttribute("src");
+//             return (
+//                 (s.blacklist &&
+//                     s.blacklist.every(function (t) {
+//                         return !t.test(e);
+//                     })) ||
+//                 (s.whitelist &&
+//                     s.whitelist.some(function (t) {
+//                         return t.test(e);
+//                     }))
+//             );
+//         }
+//         var c = "javascript/blocked",
+//             s = { blacklist: window.YETT_BLACKLIST , whitelist: window.YETT_WHITELIST },
+//             u = { blacklisted: [] },
+//             f = new MutationObserver(function (t) {
+//                 for (var e = 0; e < t.length; e++)
+//                     for (
+//                         var i = t[e].addedNodes,
+//                             r = function (t) {
+//                                 var r = i[t];
+//                                 if (1 === r.nodeType && "SCRIPT" === r.tagName) {
+//                                     var e = r.src,
+//                                         n = r.type;
+//                                     if (o(e, n)) {
+//                                         u.blacklisted.push([r, r.type]), (r.type = c);
+//                                         r.addEventListener("beforescriptexecute", function t(e) {
+//                                             r.getAttribute("type") === c && e.preventDefault(), r.removeEventListener("beforescriptexecute", t);
+//                                         }),
+//                                             r.parentElement && r.parentElement.removeChild(r);
+//                                     }
+//                                 }
+//                             },
+//                             n = 0;
+//                         n < i.length;
+//                         n++
+//                     )
+//                         r(n);
+//             });
+
+//         f.observe(document.documentElement, { childList: !0, subtree: !0 });
+//         var i = document.createElement,
+//             a = { src: Object.getOwnPropertyDescriptor(HTMLScriptElement.prototype, "src"), type: Object.getOwnPropertyDescriptor(HTMLScriptElement.prototype, "type") };
+//         function p(t, e) {
+//             return (
+//                 (function (t) {
+//                     if (Array.isArray(t)) return t;
+//                 })(t) ||
+//                 (function (t, e) {
+//                     if ("undefined" == typeof Symbol || !(Symbol.iterator in Object(t))) return;
+//                     var r = [],
+//                         n = !0,
+//                         i = !1,
+//                         o = void 0;
+//                     try {
+//                         for (var c, a = t[Symbol.iterator](); !(n = (c = a.next()).done) && (r.push(c.value), !e || r.length !== e); n = !0);
+//                     } catch (t) {
+//                         (i = !0), (o = t);
+//                     } finally {
+//                         try {
+//                             n || null == a.return || a.return();
+//                         } finally {
+//                             if (i) throw o;
+//                         }
+//                     }
+//                     return r;
+//                 })(t, e) ||
+//                 r(t, e) ||
+//                 (function () {
+//                     throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+//                 })()
+//             );
+//         }
+//         function y(t) {
+//             return (
+//                 (function (t) {
+//                     if (Array.isArray(t)) return n(t);
+//                 })(t) ||
+//                 (function (t) {
+//                     if ("undefined" != typeof Symbol && Symbol.iterator in Object(t)) return Array.from(t);
+//                 })(t) ||
+//                 r(t) ||
+//                 (function () {
+//                     throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+//                 })()
+//             );
+//         }
+//         function r(t, e) {
+//             if (t) {
+//                 if ("string" == typeof t) return n(t, e);
+//                 var r = Object.prototype.toString.call(t).slice(8, -1);
+//                 return "Object" === r && t.constructor && (r = t.constructor.name), "Map" === r || "Set" === r ? Array.from(t) : "Arguments" === r || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r) ? n(t, e) : void 0;
+//             }
+//         }
+//         function n(t, e) {
+//             (null == e || e > t.length) && (e = t.length);
+//             for (var r = 0, n = new Array(e); r < e; r++) n[r] = t[r];
+//             return n;
+//         }
+//         document.createElement = function () {
+//             for (var t = arguments.length, e = new Array(t), r = 0; r < t; r++) e[r] = arguments[r];
+//             if ("script" !== e[0].toLowerCase()) return i.bind(document).apply(void 0, e);
+//             var n = i.bind(document).apply(void 0, e);
+//             try {
+//                 Object.defineProperties(n, {
+//                     src: {
+//                         get: function () {
+//                             return a.src.get.call(this);
+//                         },
+//                         set: function (t) {
+//                             o(t, n.type) && a.type.set.call(this, c), a.src.set.call(this, t);
+//                         },
+//                     },
+//                     type: {
+//                         set: function (t) {
+//                             var e = o(n.src, n.type) ? c : t;
+//                             a.type.set.call(this, e);
+//                         },
+//                     },
+//                 }),
+//                     (n.setAttribute = function (t, e) {
+//                         "type" === t || "src" === t ? (n[t] = e) : HTMLScriptElement.prototype.setAttribute.call(n, t, e);
+//                     });
+//             } catch (t) {
+//                 console.warn("Yett: unable to prevent script execution for script src ", n.src, ".\n", 'A likely cause would be because you are using a third-party browser extension that monkey patches the "document.createElement" function.');
+//             }
+//             return n;
+//         };
+//         var d = new RegExp("[|\\{}()[\\]^$+*?.]", "g");
+//         (t.unblock = function () {
+//             for (var t = arguments.length, r = new Array(t), e = 0; e < t; e++) r[e] = arguments[e];
+//             r.length < 1
+//                 ? ((s.blacklist = []), (s.whitelist = []))
+//                 : (s.blacklist &&
+//                     (s.blacklist = s.blacklist.filter(function (e) {
+//                         return r.every(function (t) {
+//                             return "string" == typeof t ? !e.test(t) : t instanceof RegExp ? e.toString() !== t.toString() : void 0;
+//                         });
+//                     })),
+//                 s.whitelist &&
+//                     (s.whitelist = [].concat(
+//                         y(s.whitelist),
+//                         y(
+//                             r.map(function (e) {
+//                                     if ("string" == typeof e) {
+//                                         var r = ".*" + e.replace(d, "\\$&") + ".*";
+//                                         if (
+//                                             s.whitelist.every(function (t) {
+//                                                 return t.toString() !== r.toString();
+//                                             })
+//                                         )
+//                                             return new RegExp(r);
+//                                     } else if (
+//                                         e instanceof RegExp &&
+//                                         s.whitelist.every(function (t) {
+//                                             return t.toString() !== e.toString();
+//                                         })
+//                                     )
+//                                         return e;
+//                                     return null;
+//                                 })
+//                                 .filter(Boolean)
+//                         )
+//                     )));
+//             for (var n = document.querySelectorAll('script[type="'.concat(c, '"]')), i = 0; i < n.length; i++) {
+//                 var o = n[i];
+//                 l(o) && (u.blacklisted.push([o, "application/javascript"]), o.parentElement.removeChild(o));
+//             }
+//             var a = 0;
+//             y(u.blacklisted).forEach(function (t, e) {
+//                 var r = p(t, 2),
+//                     n = r[0],
+//                     i = r[1];
+//                 if (l(n)) {
+//                     var o = document.createElement("script");
+//                     for (var c in (o.setAttribute("src", n.src), o.setAttribute("type", i || "application/javascript"), n)) c.startsWith("on") && (o[c] = n[c]);
+//                     document.head.appendChild(o), u.blacklisted.splice(e - a, 1), a++;
+//                 }
+//             }),
+//                 s.blacklist && s.blacklist.length < 1 && f.disconnect();
+//         }),
+//             Object.defineProperty(t, "__esModule", { value: !0 });
+//     });
+   
+
+
     var scripts = await document.getElementsByTagName('script');
+
 
     var myScript;
     for (let i = 0; i < scripts.length; i++) {

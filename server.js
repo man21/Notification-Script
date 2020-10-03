@@ -17,9 +17,139 @@ const dataUsageRouter = require('./routes/dataUsage');
 const thirdPartyRouter = require('./routes/thirdParty');
 const mongoose = require('mongoose');
 
+const beautify = require('js-beautify')
+
+const fetch = require('node-fetch')
+
+
+const AWS = require('aws-sdk');
+
+const fs = require('fs');
+
+var minify = require('terser')
+
+const BUCKET_NAME = 'pixels';
+const KEY = 'scribe-analytics.js';
+
+const JSON_API = 'https://jsonplaceholder.typicode.com/todos/1';
+
+
+const ACCESS_KEY = '6VNLBJMI1HA911G0UFVO';
+const SECRET_KEY = 'SiZk68LCAIGH38oIOhRJ3hVuuXAhHj5Wt0GA785R';
+
+
+var wasabiEndpoint = new AWS.Endpoint("s3.wasabisys.com");
+
+    var s3 = new AWS.S3({
+      endpoint: wasabiEndpoint,
+      accessKeyId: ACCESS_KEY,
+      secretAccessKey: SECRET_KEY,
+      region: "us-east-1",
+      httpOptions: { timeout: 180000 }
+    });
+
+
+    /* 
+    * @param {*} str
+    * checks if str is a valid JSON object
+    * returns boolean
+    */
+   function isJson(str) {
+     try {
+         JSON.parse(str);
+     } catch (e) {
+         return false;
+     }
+     return true;
+   }
 
 
 
+   app.post('/addData', function (req, res) {
+    try {
+      // read file from S3
+      fs.readFile(path.resolve(__dirname, `${KEY}`), "utf8", (err, data) => {
+        if (err) {
+          console.log(err);
+          return res.status(500).send({
+            message: err
+          });
+        }
+
+        const fileBody = beautify(data, { indent_size: 2, space_in_empty_paren: true });
+        const fileBodyArray = fileBody.split('\n');
+
+        const variableName = 'apiDataResponse';
+
+        fetch(JSON_API)
+          .then(res => res.text())
+          .then(async (body) => {
+            // check if json is valid
+            if (!isJson(body)) {
+              return res.status(400).send({
+                message: 'Invalid JSON from API response'
+              });
+            }
+
+            let lineNumber = 0;
+            while(!fileBodyArray[lineNumber].includes(`${variableName} =`)) {
+              lineNumber += 1;
+            }
+
+            const variableLine = fileBodyArray[lineNumber].split('=');
+
+            let run = variableLine[1].includes('[]') ? false : true;
+            let endLine = lineNumber + 1;
+
+            while(run) {
+              run = fileBodyArray[endLine].includes('}]') ? false : true;
+              endLine += 1;
+            }
+
+            let newLines = `${variableLine[0]}= ${JSON.stringify([JSON.parse(body)])};`;
+            fileBodyArray.splice(lineNumber, (endLine - lineNumber), newLines);
+
+            // const minifiedJS = await minify(fileBodyArray.join('\n'), {
+            //   output: {
+            //     comments: false,
+            //     keep_quoted_props: true
+            //   },
+            //   compress: {
+            //     booleans: false,
+            //     collapse_vars: false,
+            //     reduce_vars: false,
+            //     top_retain: [variableName] },
+            //   mangle: false
+            // });
+
+            await s3.putObject({
+              Bucket: BUCKET_NAME,
+              Key: KEY,
+              ContentType:'binary',
+              Body: Buffer.from(fileBodyArray.join('\n'), 'binary'),
+              ACL:'public-read'
+            }).promise();
+
+            res.status(200).send({
+              message: 'success',
+              url: `https://${BUCKET_NAME}.s3.ap-south-1.amazonaws.com/${KEY}`
+            });
+
+          }).catch((err) => {
+            // log error
+            console.log(err);
+            res.status(500).send({
+              message: err
+            });
+          })
+      });
+    } catch (err) {
+      // log error
+      res.status(500).send({
+        message: 'Something went wrong'
+      });
+    }
+   })
 
 
 

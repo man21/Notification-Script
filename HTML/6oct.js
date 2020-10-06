@@ -3710,7 +3710,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
         reviwNotificationFooterStar1.innerHTML= star
     } else if(fromAppType == 'facebook'){
         reviwNotificationFooterStar1 = reviwNotificationFooterStar1 = document.createElement('img')
-        reviwNotificationFooterStar1.setAttribute('src', userReview ? "https://d33v4339jhl8k0.cloudfront.net/docs/assets/58ef18d32c7d3a52b42f7297/images/5d7323a62c7d3a7e9ae0df2b/68747470733a2f2f6431646568706833656d3566702e636c6f756466726f6e742e6e65742f73697465732f3538383830376139383138663731303030316539383235342f7468656d652f696d616765732f706167652f696e746567726174696f6e732f7374616d7065642f7374616d7065642d6c6f676f2e.png" :"")
+        reviwNotificationFooterStar1.style= "display: flex"
+        reviwNotificationFooterStar1.setAttribute('src', userReview ? "https://storage.googleapis.com/influence-197607.appspot.com/fbreview.jpg" :"")
     }
 
 

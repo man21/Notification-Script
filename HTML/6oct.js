@@ -3673,10 +3673,11 @@ var Note = function Note(config, containerStyle, iconStyle) {
         //reviewNotificationFooterStarContainer.innerHTML= star
 
         var reviwNotificationFooterStar1 
-        reviwNotificationFooterStar1.style= "display: flex"
 
         if(fromAppType == 'google'){
             reviwNotificationFooterStar1 = document.createElement('span')
+            reviwNotificationFooterStar1.style= "display: flex"
+
         var star = '';
         if (userReview && userReview.rating) {
             for (let star_i = 0; star_i < userReview.rating; star_i++) {
@@ -3690,6 +3691,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         reviwNotificationFooterStar1.innerHTML= star
     } else  if(fromAppType == 'trustpilot'){
         reviwNotificationFooterStar1 =  reviwNotificationFooterStar1 = document.createElement('span')
+        reviwNotificationFooterStar1.style= "display: flex"
 
         var star = '';
         if (userReview && userReview.rating){

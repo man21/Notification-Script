@@ -3711,6 +3711,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
     } else if(fromAppType == 'facebook'){
         reviwNotificationFooterStar1 = reviwNotificationFooterStar1 = document.createElement('img')
         reviwNotificationFooterStar1.style= "display: flex"
+        reviwNotificationFooterStar1.className = 'bXZsh24SLi'
+
         reviwNotificationFooterStar1.setAttribute('src', userReview ? "https://storage.googleapis.com/influence-197607.appspot.com/fbreview.jpg" :"")
     }
 

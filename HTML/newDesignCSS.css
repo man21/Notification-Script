@@ -2868,6 +2868,7 @@ svg{
     -webkit-animation-name: fadeIn;
     animation-name: fadeIn;
     animation-duration: 2s;
+    transition-timing-function: ease-in-out;
 
 }
 
@@ -3029,7 +3030,9 @@ svg{
 .fadeOut {
     -webkit-animation-name: fadeOut;
     animation-name: fadeOut;
-    animation-duration: 2s
+    animation-duration: 2s;
+    transition-timing-function: ease-in-out;
+
 }
 
 @-webkit-keyframes fadeOutDown {

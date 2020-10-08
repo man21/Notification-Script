@@ -4870,15 +4870,8 @@ function CookieFn() {
                 checkboxInput.id= "idData"
                 checkboxInput.className = "generalInputCheckboxClass"
 
-                // checkboxInput.disabled = policy.essentialPolicy== true
-               
+                checkboxInput.disabled= policy.essentialPolicy
 
-                if(policy.essentialPolicy == true){
-                    // checkboxInput.removeClassName("inputCheckboxClass")
-                    // checkboxInput.className = "disabledInputCheckboxClass"
-                    checkboxInput.checked = true
-                    checkboxInput.disabled= true
-                }
 
                     cookieData.map(data=>{
                         if(data.name == policy._id){
@@ -4904,7 +4897,7 @@ function CookieFn() {
                upperPart.appendChild(switchContainer)
                listItem.appendChild(upperPart)
 
-           
+
                var lowerDiv =document.createElement('div')
                lowerDiv.style ="padding-left:28px;margin-top:0%;"
                var para =document.createElement('p')
@@ -5052,7 +5045,7 @@ function CookieFn() {
                 checkboxInput.type = "checkbox";
 
                 checkboxInput.className = "generalInputCheckboxClass"
-
+                checkboxInput.disabled= arr.essentialPolicy
                 var d = getCookieById(policyData)
                 
                 checkboxInput.checked = d && d.key == "true" ? true : false

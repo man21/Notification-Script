@@ -4287,7 +4287,7 @@ function cookieblocker(microPolicies){
     var m =[]
     microPolicies.map(e=>{
         var d = getCookieById(e._id)
-        if(d && d.key == "true"){
+        if(d && d.key){
             e.provider.map(e =>{
                 m.push(new RegExp(e.provider))
             })
@@ -4553,15 +4553,32 @@ function CookieFn() {
     
     microPolicies.map(policy =>{
 
-        console.log(policy, "$$$$$$$$$$$$$$$$$$$$$$$$4")
+        if(cookieData.length>0){
+            cookieData.map(data=>{
+                if(data.name == policy._id){
+                    finalCookieArr.push({id: data.name, status: data.key})
+                } else if(policy.essentialPolicy){
+                    finalCookieArr.push({id: policy._id, status: true})
+                }else{
+                    finalCookieArr.push({id: policy._id, status: false})
+                }
+            })
+         }else{
+            if(policy.essentialPolicy){
+                finalCookieArr.push({id: policy._id, status: true})
+            }else{
+                finalCookieArr.push({id: policy._id, status: false})
+            }
+         }
 
-        if(policy.essentialPolicy == true){
-            finalCookieArr.push({id: policy._id, status: true})
-        }else{
-            finalCookieArr.push({id: policy._id, status: false})
+            // if(policy.essentialPolicy){
+            //     finalCookieArr.push({id: policy._id, status: true})
+            // }else{
+            //     finalCookieArr.push({id: policy._id, status: false})
 
-        }
+            // }
         })
+
 
 
         var cookieIcon = document.createElement('img')
@@ -4631,7 +4648,7 @@ function CookieFn() {
 
                    
                     cookieData.map(data=>{
-                            if(data.key === "true"){
+                            if(data.key){
                              var dataa =   microPolicies.find(o => o._id === data.name);
                                 dummy.push(dataa.name)
                             } 
@@ -4679,6 +4696,8 @@ function CookieFn() {
                 NoB.innerHTML = "No";
                 NoB.onclick = () =>{
 
+                    finalCookieArr.map(data =>setCookies(data.id, data.status))
+                    
                     // window.localStorage.setItem('influencepermission',`{enable: false}`)
                     window.localStorage.setItem('influencepermission', JSON.stringify({enable: false}))
                     // while(mainContainer.hasChildNodes()) {
@@ -4687,25 +4706,29 @@ function CookieFn() {
                     //     // container.removeChild(container.childNodes[0]);
                     //     // container.appendChild(cookieIcon)
                     //   }
+                    container.removeChild(container.childNodes[0]);
+
+                    container.appendChild(cookieIcon)
                     
                  }
 
-                    
-
-        
                 var YesB = document.createElement('button');
                 YesB.className = "generalBtnStyle filledBtn";
                 YesB.innerHTML = "Yes";
                 YesB.onclick = () =>{
-                    microPolicies.map(policy =>{
+                    // microPolicies.map(policy =>{
 
-                        if(policy.slug == "Essential1"){
-                            finalCookieArr.push({id: policy._id, status: true})
-                        }else{
-                            finalCookieArr.push({id: policy._id, status: false})
+                    //     if(policy.essentialPolicy){
+                    //         finalCookieArr.push({id: policy._id, status: false})
+                    //     }else{
+                    //         finalCookieArr.push({id: policy._id, status: false})
                 
-                        }
-                    })
+                    //     }
+                    // })
+
+                    finalCookieArr.map(data =>setCookies(data.id, data.status))
+
+
                 // window.localStorage.setItem('influencepermission',`{enable:true}`)
                 window.localStorage.setItem('influencepermission', JSON.stringify({enable: true}))
 
@@ -4716,8 +4739,7 @@ function CookieFn() {
 
                 //   }
 
-                
-
+            
                 container.removeChild(container.childNodes[0]);
 
                 container.appendChild(cookieIcon)
@@ -4805,10 +4827,19 @@ function CookieFn() {
                 doneNav.innerHTML = "Done"
 
                 doneNav.addEventListener("click", function(){
-                    finalCookieArr.map(data =>{ setCookies(data.id, data.status) })
-                    while(mainContainer.hasChildNodes()) {
-                        mainContainer.removeChild(mainContainer.childNodes[0]);
-                      }
+                    // finalCookieArr.map(data =>{ setCookies(data.id, data.status) })
+
+                    finalCookieArr.map(data =>setCookies(data.id, data.status))
+                    window.localStorage.setItem('influencepermission', JSON.stringify({enable: true}))
+
+
+                    container.removeChild(container.childNodes[0]);
+
+                    container.appendChild(cookieIcon)
+
+                    // while(mainContainer.hasChildNodes()) {
+                    //     mainContainer.removeChild(mainContainer.childNodes[0]);
+                    //   }
 
                 })
 
@@ -4882,7 +4913,7 @@ function CookieFn() {
 
                     cookieData.map(data=>{
                         if(data.name == policy._id){
-                            if(data.key === "true"){
+                            if(data.key){
                                 checkboxInput.checked = true
                             }else{
                                 checkboxInput.checked = false
@@ -5055,7 +5086,7 @@ function CookieFn() {
 
                 var d = getCookieById(policyData)
                 
-                checkboxInput.checked = d && d.key == "true" ? true : false
+                checkboxInput.checked = d && d.key? true : false
                 if(arr.slug == "Essential1"){
                     checkboxInput.checked = true
                     checkboxInput.disabled= true
@@ -5218,7 +5249,7 @@ function CookieFn() {
 
         const COOKIE_PREFIX = "Influence_";
 
-        name= COOKIE_PREFIX + name
+             name= COOKIE_PREFIX + name
                     var d = new Date();
                     d.setTime(d.setTime() + (1*24*60*60*1000))
 
@@ -5242,6 +5273,12 @@ function CookieFn() {
                 
     }
 
+
+
+    /**
+     * retrieve data from user's Cookie storage
+     * @return ``` [{name: "NAME", key: true/false}] ```
+     */
     function getCookies(){
         const COOKIE_PREFIX = "Influence_";
         name = name+"="
@@ -5256,7 +5293,8 @@ function CookieFn() {
 
             name = cookie.split('=')[0].trim().substring(COOKIE_PREFIX.length);
             value = cookie.split('=')[1];
-            getCookieArr.push({name: name, key : value})
+
+            getCookieArr.push({name: name, key : value == "true"? true : false})
          }
         }
         return getCookieArr;
@@ -5383,7 +5421,7 @@ var   response = {
                 {
                     "_id": "5f48ef30d0aae6670d49648b",
                     "name": "https://test2109.herokuapp.com",
-                    "provider": "cdn.dashly.app",
+                    "provider": "cdn.dashly.app1",
                     "type": "esential",
                     "trackingId": "INF-3gbfcjjsd6vhvo",
                     "createdAt": "2020-08-28T11:49:04.611Z",
@@ -5412,7 +5450,7 @@ var   response = {
                 {
                     "_id": "5f48ef30d0aae6670d49648b",
                     "name": "https://test2109.herokuapp.com",
-                    "provider": "www.googletagmanager.com",
+                    "provider": "cdn.dashly.app",
                     "type": "test",
                     "trackingId": "INF-3gbfcjjsd6vhvo",
                     "createdAt": "2020-08-28T11:49:04.611Z",
@@ -5466,7 +5504,7 @@ response.microPolicies.map(e=>{
 
     var d = getCookieById(e._id)
 
-    if(d && d.key == "true"){
+    if(d && d.key){
         e.provider.map(e =>{
             console.log(e.provider)
 
@@ -5477,8 +5515,7 @@ response.microPolicies.map(e=>{
 })
 
 
-window.YETT_BLACKLIST = m
-
+window.YETT_BLACKLIST = m 
 
 function getCookieById (name){
     const COOKIE_PREFIX = "Influence_";    
@@ -5519,7 +5556,6 @@ function getCookieById (name){
         }
         function l(t) {
 
-            console.log(t, "tttttttttttttttttttttttttttt")
             var e = t.getAttribute("src");
             return (
                 (s.blacklist &&

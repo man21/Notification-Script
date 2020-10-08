@@ -372,6 +372,9 @@ a:hover {
 input:checked+.slider {
     background-color: #20c997;
 }
+input:disabled+.slider {
+    background-color: #71debd;
+}
 
 input:focus+.slider {
     box-shadow: 0 0 1px #20c997;

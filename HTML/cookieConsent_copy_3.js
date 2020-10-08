@@ -2152,7 +2152,7 @@ var CookieFunc = function (config) {
     // var rule;
 
     var cookieNotif = document.createElement("link");
-    cookieNotif.href = 'https://test2109.herokuapp.com/cookieNotif.css'
+    cookieNotif.href = "http://localhost:3002/cookieNotif.css" //'https://test2109.herokuapp.com/cookieNotif.css'
     cookieNotif.type = "text/css";
     cookieNotif.rel = "stylesheet";
     cookieNotif.id = "stylesheetID";
@@ -4553,7 +4553,9 @@ function CookieFn() {
     
     microPolicies.map(policy =>{
 
-        if(policy.slug == "Essential1"){
+        console.log(policy, "$$$$$$$$$$$$$$$$$$$$$$$$4")
+
+        if(policy.essentialPolicy == true){
             finalCookieArr.push({id: policy._id, status: true})
         }else{
             finalCookieArr.push({id: policy._id, status: false})
@@ -4857,7 +4859,7 @@ function CookieFn() {
         
                 var headerText = document.createElement('p');
                 headerText.className = "headerText"
-                headerText.innerHTML =  policy.slug //"Essential"
+                headerText.innerHTML =  policy.name //"Essential"
         
                 var switchContainer = document.createElement('div');
                 switchContainer.style="position:relative;"
@@ -4866,11 +4868,14 @@ function CookieFn() {
                 var checkboxInput = document.createElement('input');
                 checkboxInput.type = "checkbox";
                 checkboxInput.id= "idData"
+                checkboxInput.className = "generalInputCheckboxClass"
 
-                checkboxInput.disabled = policy.slug== "Essential1"
+                // checkboxInput.disabled = policy.essentialPolicy== true
                
 
-                if(policy.slug == "Essential1"){
+                if(policy.essentialPolicy == true){
+                    // checkboxInput.removeClassName("inputCheckboxClass")
+                    // checkboxInput.className = "disabledInputCheckboxClass"
                     checkboxInput.checked = true
                     checkboxInput.disabled= true
                 }
@@ -5045,6 +5050,8 @@ function CookieFn() {
                 switchLabel.className = "switch";
                 var checkboxInput = document.createElement('input');
                 checkboxInput.type = "checkbox";
+
+                checkboxInput.className = "generalInputCheckboxClass"
 
                 var d = getCookieById(policyData)
                 
@@ -5242,14 +5249,11 @@ function CookieFn() {
 
         var getCookieArr= []
 
-        console.log(cookies, "%%%%%%%%%%%%%%%555")
-
         for(var i = 0; i < cookies.length; i++) {
             var cookie = cookies[i]
 
            if(cookie.indexOf(COOKIE_PREFIX) == 1){
 
-            console.log(cookie,"!!!!!!!!!!!!!!!!!11")
             name = cookie.split('=')[0].trim().substring(COOKIE_PREFIX.length);
             value = cookie.split('=')[1];
             getCookieArr.push({name: name, key : value})
@@ -5364,7 +5368,7 @@ var   response = {
             "essentialPolicy": true,
             "cookieWidgets": false,
             "_id": "5f4e13b68acd492ae77f74a3",
-            "name": "test",
+            "name": "cdn.dashly.app",
             "description": "test Policy Description",
             "websiteUrl": "test.com",
             "slug": "test",
@@ -5390,7 +5394,7 @@ var   response = {
         },
         {
             "useCookie": true,
-            "essentialPolicy": true,
+            "essentialPolicy": false,
             "cookieWidgets": false,
             "_id": "5f4e13b68acd492ae77f74a4",
             "name": "test",
@@ -5421,7 +5425,7 @@ var   response = {
         },
         {
             "useCookie": true,
-            "essentialPolicy": true,
+            "essentialPolicy": false,
             "cookieWidgets": false,
             "_id": "5f4e13b68acd492ae77f74a1",
             "name": "Hello",

@@ -2152,7 +2152,7 @@ var CookieFunc = function (config) {
     // var rule;
 
     var cookieNotif = document.createElement("link");
-    cookieNotif.href = "http://localhost:3002/cookieNotif.css" //'https://test2109.herokuapp.com/cookieNotif.css'
+    cookieNotif.href = 'https://test2109.herokuapp.com/cookieNotif.css'
     cookieNotif.type = "text/css";
     cookieNotif.rel = "stylesheet";
     cookieNotif.id = "stylesheetID";

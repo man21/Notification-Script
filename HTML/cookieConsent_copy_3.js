@@ -4901,7 +4901,12 @@ function CookieFn() {
                 checkboxInput.id= "idData"
                 checkboxInput.className = "generalInputCheckboxClass"
 
-                checkboxInput.disabled= policy.essentialPolicy
+                // checkboxInput.disabled= policy.essentialPolicy
+
+                if(policy.essentialPolicy == true){
+                    checkboxInput.checked = true
+                    checkboxInput.disabled = true
+                }
 
 
                     cookieData.map(data=>{
@@ -5076,7 +5081,12 @@ function CookieFn() {
                 checkboxInput.type = "checkbox";
 
                 checkboxInput.className = "generalInputCheckboxClass"
-                checkboxInput.disabled= arr.essentialPolicy
+                // checkboxInput.disabled= arr.essentialPolicy
+
+                if(policy.essentialPolicy == true){
+                    checkboxInput.checked = true
+                    checkboxInput.disabled = true
+                }
                 var d = getCookieById(policyData)
                 
                 checkboxInput.checked = d && d.key? true : false

@@ -2378,7 +2378,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                                     else if (info.numberOfUsers) key = 'identification';
                                     else if (info.userDetails) key = 'journey';
                                     else if (info.userReviews) key = 'review';
-                                    else if(info.linkData.totalCount) key = 'custom';
+                                    // else if(info.linkData.totalCount) key = 'custom';
                                     // else if(info.configurations[0].configuration.announcementHeaderText) key = 'announcement' 
                                     else key = 'announcement'
                                     if(isTabVisibility){

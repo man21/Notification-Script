@@ -1,19 +1,14 @@
-
 var isTabVisibility = true,flagMouseOver= false;
 var exclued_button_text = 'login, signin, loginnow, memberlogin, accountlogin, post comment';
 var __pathname = window.location.pathname;
 __pathname = '/' + __pathname.split('/')[1];
 
-var influenceScript = 'cookieConsent_copy_3.js';
-var BASE_URL = "https://strapi.useinfluence.co";
-
-var m =[]
-
+var influenceScript = '9octAnnouncement.js';
+var BASE_URL = "https://api.useinfluence.co";
 
 document.addEventListener('visibilitychange', function (e) {
     document.hidden ? isTabVisibility = false : isTabVisibility = true;
 });
-
 
 if (typeof Influence === 'undefined') {
     /**
@@ -26,6 +21,7 @@ if (typeof Influence === 'undefined') {
      *
      */
     var Influence = function (options) {
+
         if (!(this instanceof Influence)) return new Influence(config);
         /**
          * New InfluenceTracker()
@@ -36,11 +32,6 @@ if (typeof Influence === 'undefined') {
            // if (document.readyState !== 'complete') return;
             notifications = new Notifications(options.trackingId);
             this.notificationsInstance = notifications;
-            
-            cookie = new CookieFunc(options.trackingId);
-            this.notificationsInstance = cookie;
-
-
             clearInterval(notificationTimmer);
          }, 100);
 
@@ -523,7 +514,7 @@ if (typeof Influence === 'undefined') {
               const formObj = Util.parseQueryString(queryString)
               const objValue = Object.values(formObj)
               const email=objValue.find(o=>o.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi));
-              const firstname = formObj["customerFirstName"] || formObj["firstname"] || formObj["form_fields[name]"] || formObj["form_fields[firstname]"] || formObj["your-name"] || formObj["name"]  || formObj["NAMA"]|| formObj["FNAME"]  || formObj["customerFirstName"] || formObj["Fname"]  || formObj["nama"] || formObj["NAME"]  || formObj["FIRSTNAME"] || formObj["username"]  || formObj["FIRST NAME"] || formObj["UserName"]  || formObj["USERNAME"] || formObj["userName"]  || formObj["Username"] || formObj["user_id"] || formObj["ctl19$txtName"] || formObj["form_submission[name]"] || formObj["wpforms[fields][12]"] || formObj["checkout_offer[extra_contact_information][custom_14]"]
+              const firstname = formObj["customerFirstName"] || formObj["firstname"] || formObj["form_fields[name]"] || formObj["form_fields[firstname]"] || formObj["your-name"] || formObj["name"]  || formObj["NAMA"]|| formObj["FNAME"]  || formObj["customerFirstName"] || formObj["Fname"]  || formObj["nama"] || formObj["NAME"]  || formObj["FIRSTNAME"] || formObj["username"]  || formObj["FIRST NAME"] || formObj["UserName"]  || formObj["USERNAME"] || formObj["userName"]  || formObj["Username"] || formObj["user_id"] || formObj["ctl19$txtName"] || formObj["form_submission[name]"] || formObj["wpforms[fields][12]"] || formObj["checkout_offer[extra_contact_information][custom_14]"] || formObj["ctl00$ContentPlaceHolder1$txtFName"]
               const lastname = formObj["customerLastName"] || formObj["lastname"] || formObj["form_fields[lastname]"] || formObj["last-name"] || formObj["lname"] || formObj["LNAME"]  || formObj["customerLastName"] || formObj["Lname"]  || formObj["lnama"] || formObj["LNAME"]  || formObj["LASTNAME"] || formObj["LAST NAME"] 
               
               return({firstname: firstname ? firstname.replace('+',' '):'',lastname:lastname ? lastname.replace('+',' '):'',email})
@@ -1079,7 +1070,7 @@ if (typeof Influence === 'undefined') {
                 waitOnTracker: false,
                 resolveGeo: true,
                 trackPageViews: true,
-                trackClicks: false,
+                trackClicks: true,
                 trackHashChanges: false,
                 trackEngagement: false,
                 trackLinkClicks: false,
@@ -1179,22 +1170,52 @@ if (typeof Influence === 'undefined') {
                 });
             }
 
+
+
+
+
             // Track clicks
+            // if (this.options.trackClicks) {
+            //     Events.onready(function () {
+            //         // Track all clicks to the document:
+            //         Events.onevent(document.body, 'click', true, function (e) {
+            //             var ancestors = DomUtil.getAncestors(e.target);
+
+            //             // Do not track clicks on links, these are tracked separately!
+            //             if (!ArrayUtil.exists(ancestors, function (e) { return e.tagName === 'A'; })) {
+            //                 self.track('linkClick', {
+            //                     target: DomUtil.getNodeDescriptor(e.target)
+            //                 });
+            //             }
+            //         });
+            //     });
+            // }
+
+
             if (this.options.trackClicks) {
+
                 Events.onready(function () {
-                    // Track all clicks to the document:
+
                     Events.onevent(document.body, 'click', true, function (e) {
+
                         var ancestors = DomUtil.getAncestors(e.target);
 
-                        // Do not track clicks on links, these are tracked separately!
-                        if (!ArrayUtil.exists(ancestors, function (e) { return e.tagName === 'A'; })) {
-                            self.track('click', {
-                                target: DomUtil.getNodeDescriptor(e.target)
+                        // console.log(ancestors, "**************************************************")
+
+
+                        if(e.target.tagName === 'A' && ancestors[0].href){
+                            self.track('linkClick', {
+
+                                linkData:  Util.merge({ linkUrl: ancestors[0].href }, { linkId: ancestors[0] && ancestors[0].id ? ancestors[0].id : "formid" })
+                                
                             });
                         }
                     });
-                });
+
+                })
+              
             }
+
 
             // Track hash changes:
             if (this.options.trackHashChanges) {
@@ -1310,7 +1331,7 @@ if (typeof Influence === 'undefined') {
                             }
                             if (strEmail) {
                                 self.track('formsubmit', {
-                                    form: Util.merge({ formId: Util.genGuid() }, { email: strEmail,firstname:strFName,lastname: strLName})
+                                    form: Util.merge({ formId: Util.genGuid() }, { email: strEmail,firstname:strFName,lastname: strLName, btnId: e.target.id})
                                 });
                             }
                         }
@@ -1840,8 +1861,6 @@ if (typeof Influence === 'undefined') {
 //     });
 // }
 
-
-
 var InfluenceTracker = function (config) {
     if (!(this instanceof InfluenceTracker)) return new InfluenceTracker(config);
 
@@ -1983,7 +2002,7 @@ function CountUp(target, startVal, endVal, decimals, duration, options) {
             return true;
         }
         else {
-            self.error = '[CountUp] startVal (' + startVal + ') or endVal (' + endVal + ') is not a number';
+            // self.error = '[CountUp] startVal (' + startVal + ') or endVal (' + endVal + ') is not a number';
             return false;
         }
     };
@@ -2102,7 +2121,7 @@ function CountUp(target, startVal, endVal, decimals, duration, options) {
 var notificationPath = [];
 var configurationPath = '';
 var excludeCampaign = []
-var activeNotification = 4
+var activeNotification = 6
 var Notifications = function (config) {
     if (!(this instanceof Notifications)) return new Notifications(config);
     this.config = config;
@@ -2124,7 +2143,7 @@ var Notifications = function (config) {
         })
 
         // notificationPath = response.notificationPath;
-        var splittedUrls = ["live", "identification", "journey","review", "announcement"];
+        var splittedUrls = ["live", "identification", "journey","review", "announcement", "custom"];
         // var exclude_notificationPath = notificationPath.filter(notifPath => notifPath.type == 'display_exclude');
         // exclude_notificationPath = exclude_notificationPath.map(notifPath => notifPath.url);
         notificationPath = notificationPath.filter(notifPath => notifPath.type == 'display');
@@ -2144,199 +2163,6 @@ var Notifications = function (config) {
     });
 };
 
-
-var CookieFunc = function (config) {
-    // console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@22", config)
-    // if (!(this instanceof CookieFunc)) return new CookieFunc(config);
-    this.config = config;
-    // var rule;
-
-    var cookieNotif = document.createElement("link");
-    cookieNotif.href = 'https://test2109.herokuapp.com/cookieNotif.css'
-    cookieNotif.type = "text/css";
-    cookieNotif.rel = "stylesheet";
-    cookieNotif.id = "stylesheetID";
-    document.getElementsByTagName("head")[0].appendChild(cookieNotif);
-
-  
-    // var cookieFn = new CookieFn({})
-
-    // cookieFn.notificationdisplay( response.configuration, response.microPolicies);
-    
-    // var cookieUrl = BASE_URL + '/rules/configuration/path1/' + config;
-
-
-    // httpGetAsync(cookieUrl, function (res) {
-        
-    //     // response = JSON.parse(res);
-
-    //     console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-
-
-    // response = {
-    //     "campaign": {
-    //         "onBoarding": false,
-    //         "_id": "5f4dec0e74814a416e9582d2",
-    //         "campaignType": "default",
-    //         "campaignName": "test",
-    //         "websiteUrl": "test.com",
-    //         "profile": "5c6d4b8b98948500132d07e9",
-    //         "isActive": true,
-    //         "trackingId": "INF-3gbfcjjsd6vhvo",
-    //         "createdAt": "2020-09-01T06:37:02.778Z",
-    //         "updatedAt": "2020-09-01T06:37:02.778Z",
-    //         "__v": 0,
-    //         "id": "5f4dec0e74814a416e9582d2"
-    //     },
-    //     "configuration": {
-    //         "_id": "5f4dec0f74814a416e9582d3",
-    //         "activity": true,
-    //         "panelStyle": {
-    //             "noButtonStyle": "outline",
-    //             "color": {
-    //                 "r": 0,
-    //                 "g": 0,
-    //                 "b": 0,
-    //                 "a": 1
-    //             }
-    //         },
-    //         "langName": {
-    //             "language": "en",
-    //             "name": "English"
-    //         },
-    //         "scrollToConsent": true,
-    //         "position": "left",
-    //         "customPromptText": "customPromptText",
-    //         "customAcceptText": "customAcceptText",
-    //         "brandingText": "brandingText",
-    //         "brandingStyle": "brandingStyle",
-    //         "poweredBy": "Influence",
-    //         "poweredByLink": "https://useinfluence.co",
-    //         "cookiecampaign": "5f4dec0e74814a416e9582d2",
-    //         "trackingId": "INF-3gbfcjjsd6vhvo",
-    //         "createdAt": "2020-09-01T06:37:03.149Z",
-    //         "updatedAt": "2020-09-01T06:37:03.149Z",
-    //         "__v": 0,
-    //         "id": "5f4dec0f74814a416e9582d3"
-    //     },
-    //     "microPolicies": [
-    //         {
-    //             "useCookie": true,
-    //             "essentialPolicy": true,
-    //             "cookieWidgets": false,
-    //             "_id": "5f4e13b68acd492ae77f74a3",
-    //             "name": "test",
-    //             "description": "test Policy Description",
-    //             "websiteUrl": "test.com",
-    //             "slug": "test",
-    //             "trackingId": "INF-3gbfcjjsd6vhvo",
-    //             "cookiecampaign": "5f4dec0e74814a416e9582d2",
-    //             "profile": "5f4dec0e74814a416e9582d2",
-    //             "createdAt": "2020-09-01T09:26:14.749Z",
-    //             "updatedAt": "2020-09-01T09:26:14.749Z",
-    //             "__v": 0,
-    //             "id": "5f4e13b68acd492ae77f74a3",
-    //             "provider": [
-    //                 {
-    //                     "_id": "5f48ef30d0aae6670d49648b",
-    //                     "name": "https://test2109.herokuapp.com",
-    //                     "provider": "cdn.dashly.com",
-    //                     "type": "esential",
-    //                     "trackingId": "INF-3gbfcjjsd6vhvo",
-    //                     "createdAt": "2020-08-28T11:49:04.611Z",
-    //                     "updatedAt": "2020-08-28T11:49:04.611Z",
-    //                     "id": "5f48ef30d0aae6670d49648b"
-    //                 }
-    //             ]
-    //         },
-    //         {
-    //             "useCookie": true,
-    //             "essentialPolicy": true,
-    //             "cookieWidgets": false,
-    //             "_id": "5f4e13b68acd492ae77f74a4",
-    //             "name": "test",
-    //             "description": "test Policy Description",
-    //             "websiteUrl": "test.com",
-    //             "slug": "Essential11",
-    //             "trackingId": "INF-3gbfcjjsd6vhvo",
-    //             "cookiecampaign": "5f4dec0e74814a416e9582d2",
-    //             "profile": "5f4dec0e74814a416e9582d2",
-    //             "createdAt": "2020-09-01T09:26:14.749Z",
-    //             "updatedAt": "2020-09-01T09:26:14.749Z",
-    //             "__v": 0,
-    //             "id": "5f4e13b68acd492ae77f74a3",
-    //             "provider": [
-    //                 {
-    //                     "_id": "5f48ef30d0aae6670d49648b",
-    //                     "name": "https://test2109.herokuapp.com",
-    //                     "provider": "bootstrap",
-    //                     "type": "test",
-    //                     "trackingId": "INF-3gbfcjjsd6vhvo",
-    //                     "createdAt": "2020-08-28T11:49:04.611Z",
-    //                     "updatedAt": "2020-08-28T11:49:04.611Z",
-    //                     "id": "5f48ef30d0aae6670d49648b",
-    //                     "description": "test Policy Description",
-
-    //                 }
-    //             ]
-    //         },
-    //         {
-    //             "useCookie": true,
-    //             "essentialPolicy": true,
-    //             "cookieWidgets": false,
-    //             "_id": "5f4e13b68acd492ae77f74a1",
-    //             "name": "Hello",
-    //             "description": "Hello Policy Description",
-    //             "websiteUrl": "test.com",
-    //             "slug": "Hello",
-    //             "trackingId": "INF-3gbfcjjsd6vhvo",
-    //             "cookiecampaign": "5f4dec0e74814a416e9582d2",
-    //             "profile": "5f4dec0e74814a416e9582d2",
-    //             "createdAt": "2020-09-01T09:26:14.749Z",
-    //             "updatedAt": "2020-09-01T09:26:14.749Z",
-    //             "__v": 0,
-    //             "id": "5f4e13b68acd492ae77f74a3",
-    //             "provider": [
-    //                 {
-    //                     "_id": "5f48ef30d0aae6670d49648b",
-    //                     "name": "https://test2109.herokuapp.com",
-    //                     "provider": "tywmp.activehosted.com",
-    //                     "type": "test",
-    //                     "trackingId": "INF-3gbfcjjsd6vhvo",
-    //                     "createdAt": "2020-08-28T11:49:04.611Z",
-    //                     "updatedAt": "2020-08-28T11:49:04.611Z",
-    //                     "id": "5f48ef30d0aae6670d49648b",
-    //                     "description": "test Policy Description",
-
-    //                 }
-    //             ]
-    //         }
-    //     ]
-    // }
-
-    //  if(response){
-
-    //     var cookieFn = new CookieFn({})
-
-    //     // var containerStyle = `
-    //     // color: rgb(${44}, ${102}, ${195}, ${1}) !important;`
-
-
-
-    //     //cookieblocker(response.microPolicies)
-
-    //     // cookieFn.notificationdisplay("key", "info", containerStyle, "iconStyle", "alignment");
-    //     cookieFn.notificationdisplay( response.configuration, response.microPolicies);
-
-    //  }
-
-       
-
-
-
-    // });
-};
-
 async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotification, notificationPath, config) {
     // var link = document.createElement("link");
     // link.href = "https://storage.googleapis.com/influence-197607.appspot.com/note3.css";
@@ -2347,13 +2173,12 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
     // document.getElementsByTagName("head")[0].appendChild(link);
 
     var newDesignCSS = document.createElement("link");
-    newDesignCSS.href = 'https://test2109.herokuapp.com/finalCSS.css'
+    newDesignCSS.href = 'https://storage.googleapis.com/influence-197607.appspot.com/design12.css';
     // newDesignCSS.href = 'https://test2109.herokuapp.com/newDesignCSS.css';
     newDesignCSS.type = "text/css";
     newDesignCSS.rel = "stylesheet";
     newDesignCSS.id = "stylesheetID";
     document.getElementsByTagName("head")[0].appendChild(newDesignCSS);
-
 
     // var animationLink = document.createElement("link");
     // animationLink.href = 'https://storage.googleapis.com/influence-197607.appspot.com/animate1.css';
@@ -2398,7 +2223,6 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
             await httpGetAsync(url, function (res) {
                   response = JSON.parse(res);
 
-                
                 responseNotifications = response.message;
                 if (!enableLoopNotification && response.totalCampaign) loopCheckValue = activeNotification * response.totalCampaign;
                 // console.log('-------cal-----')
@@ -2415,13 +2239,11 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
         let maxMinus=0;
         let startSecondLoop = result.length
 
-        if (result.length == 5) {
+        if (result.length == 6) {
             for (let i = 0; i < splittedUrls.length; i++) {
-                var notif = responseNotifications[i];
-                // console.log(notif, "NOtif ********************")
-                var key = Object.keys(notif);
 
-                // console.log(key, "KEY ***************")
+                var notif = responseNotifications[i];
+                var key = Object.keys(notif);
                 responses = notif[key];
               
                 var secondLoop = (result.length * result.length) >= startSecondLoop ? false : true
@@ -2430,7 +2252,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                 
                
                 if (j > loopCheckValue) {
-                    i = 6;
+                    i = 7;
                     //setTimeout(() => new Notifications(config), (('rule.loopNotification' ? 11988 : 24) + 12) * 1000);//11988
                     setTimeout(() => new Notifications(config), (11988 + 12) * 1000);
                     return;
@@ -2503,18 +2325,21 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                             let userDetails = info.userDetails;
                             let userReviews = info.userReviews;
                             let numberOfUsers = info.numberOfUsers && key == 'identification' ? info.numberOfUsers : 0;
+                            let totalCount = info.linkData && info.linkData.totalCount && key == 'custom' ? info.linkData.totalCount : 0;
+                           
                             liveVisitorCount = liveVisitorCount == 0 ? 1 : liveVisitorCount;
                             //if (((key == 'journey' && !userDetails.length) ||
                             if (((key == 'journey' && !userDetails) ||
                                 (key == 'review' && !userReviews) ||
                                 (key == 'identification' && !numberOfUsers) ||
+                                (key == 'custom' && !totalCount) ||
                                 (key == 'live' && (!liveVisitorCount || (configuration && Number(configuration.panelStyle.liveVisitorCount) >= liveVisitorCount)))
                             ) || (configuration && !configuration.activity)) {
                                 j = j - 1;
                                 if (loopCheckExit.indexOf(key[0]) == -1)
                                     loopCheckExit.push(key[0]);
-                                if (loopCheckExit.length == 5)
-                                    i = 6;
+                                if (loopCheckExit.length == 6)
+                                    i = 7;
                                 return;
                             }
 
@@ -2524,28 +2349,41 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                             }
                             // console.log('========configuration',configuration);
                             if (configuration && configuration.activity) {
-                                if (j == 1) {
-                                    randomDelayTime = 0;
-                                    setTimeout(function () {
-                                        if (info.visitorList || info.liveViewer || info.liveFollower) key = 'live';
-                                        else if (info.numberOfUsers) key = 'identification';
-                                        else if (info.userDetails) key = 'journey';
-                                        else if (info.userReviews) key = 'review';
-                                        else key = 'announcement'
-                                        if(isTabVisibility){
-                                            return notificationTimeout(u, info, info.rule, key, notificationPath);}
-                                    }, (info.rule.initialDelay) * 1000);
-                                }
-                                else
-                                    setTimeout(function () {
-                                        if (info.visitorList || info.liveViewer || info.liveFollower) key = 'live';
-                                        else if (info.numberOfUsers) key = 'identification';
-                                        else if (info.userDetails) key = 'journey';
-                                        else if (info.userReviews) key = 'review';
-                                        else key = 'announcement'
-                                        if(isTabVisibility){
-                                            return notificationTimeout(u, info, info.rule, key, notificationPath); }
-                                    },(info.rule.delayNotification ? (randomDelayTime * 1000) : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v - 1)) * 1000));
+                                // if (j == 1) {
+                                //     randomDelayTime = 0;
+                                //     setTimeout(function () {
+                                //         if (info.visitorList || info.liveViewer || info.liveFollower) key = 'live';
+                                //         else if (info.numberOfUsers) key = 'identification';
+                                //         else if (info.userDetails) key = 'journey';
+                                //         else if (info.userReviews) key = 'review';
+                                //         else key = 'announcement'
+                                //         if(isTabVisibility){
+                                //             return notificationTimeout(u, info, info.rule, key, notificationPath);}
+                                //     }, (info.rule.initialDelay) * 1000);
+                                // }
+                                // else
+                                //     setTimeout(function () {
+                                //         if (info.visitorList || info.liveViewer || info.liveFollower) key = 'live';
+                                //         else if (info.numberOfUsers) key = 'identification';
+                                //         else if (info.userDetails) key = 'journey';
+                                //         else if (info.userReviews) key = 'review';
+                                //         else key = 'announcement'
+                                //         if(isTabVisibility){
+                                //             return notificationTimeout(u, info, info.rule, key, notificationPath); }
+                                //     },(info.rule.delayNotification ? (randomDelayTime * 1000) : ((info.rule.displayTime + info.rule.delayBetween + 3) * (v - 1)) * 1000));
+                                randomDelayTime = 0;
+
+                                setTimeout(function () {
+                                    if (info.visitorList || info.liveViewer || info.liveFollower) key = 'live';
+                                    else if (info.numberOfUsers) key = 'identification';
+                                    else if (info.userDetails) key = 'journey';
+                                    else if (info.userReviews) key = 'review';
+                                    else if(info.linkData.totalCount) key = 'custom';
+                                    // else if(info.configurations[0].configuration.announcementHeaderText) key = 'announcement' 
+                                    else key = 'announcement'
+                                    if(isTabVisibility){
+                                        return notificationTimeout(u, info, info.rule, key, notificationPath);}
+                                }, (j==1 ? (info.rule.initialDelay) * 1000 : info.rule.delayNotification ? (randomDelayTime * 1000) :(((info.rule.displayTime + info.rule.delayBetween + 3) * (v-1)) * 1000) + (info.rule.initialDelay) * 1000));
                                 tempRandomDelayTime = randomDelayTime;
                             } else {
                                 if (maxMinus > 1000) return;
@@ -2600,13 +2438,13 @@ function notificationTimeout(i, info, rule, key, notificationPath) {
     if(isMobile)
         switch (popupPositionInMobile) {
             case 'bottom':
-                alignment = "z-index: 99999999999; position: fixed; bottom: 20px;";
+                alignment = "z-index: 99999999999; position: fixed; bottom: 20px; height: 100px";
                 break;
             case 'top':
-                alignment = "z-index: 99999999999; position: fixed; top: 20px;";
+                alignment = "z-index: 99999999999; position: fixed; top: 10px; height: 100px";
                 break;
             default:
-                alignment = "z-index: 99999999999; position: fixed; bottom: 20px;";
+                alignment = "z-index: 99999999999; position: fixed; bottom: 20px; height: 100px";
         }
     else
         switch (displayPosition) {
@@ -2836,7 +2674,7 @@ InfluenceTracker.prototype.tracker = function (info) {
         if(configurationPath && data.category === 'formsubmit'){
             httpPostAsync(url, JSON.stringify(data), function (res) {
              });
-        } else if(data.category === 'click' || data.category === 'mouseover' || data.category === 'notificationview' || data.category === 'pageview' ){
+        } else if(data.category === 'click' || data.category === 'mouseover' || data.category === 'notificationview' || data.category === 'pageview' || data.category ==='linkClick'  ){
             httpPostAsync(url, JSON.stringify(data), function (res) {
             });
         }
@@ -2947,11 +2785,13 @@ var Note = function Note(config, containerStyle, iconStyle) {
         while (elem.length > 0 ){
             elem[0].remove();
         }
+
         if (!numAnim.error) {
             numAnim.start();
         } else {
             console.error(numAnim.error);
         }
+        
 
         setTimeout(function () {
             container.className = `animated_FPqR2bI7Mf_c ${config.rule.popupAnimationOut}`;
@@ -2967,6 +2807,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
     };
 
     function notificationDisplay(type, config, containerStyle, iconStyle, alignment) {
+
 
     
         if (notifClosr_c4rF9Effgt985n7v4y5h)
@@ -3017,6 +2858,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
         let userDetails = config.userDetails;
         let numberOfUsers = config.numberOfUsers;
         let userReview = config.userReviews;
+
+        let linkCount = config.linkData;
 
         var container = document.createElement('div');
         container.setAttribute("id", "FPqR2DbIqJeA2DbI7MM9_0");
@@ -3113,7 +2956,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
                     // res_img = `https://image.maps.ls.hereapi.com/mia/1.6/mapview?z=10&ci=${userDetails.city}&h=200&w=200&apiKey=D4UFItTuftNruv5x2vorKlT0evG8sIj1e0NnWXKxvRw`;
                 }
                 else if (userDetails.country) {
-                    res_img = userDetails.country + '.jpeg'
+                    res_img = bucketUrl + userDetails.country + '.jpeg'
                            
                    // res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=eVtq1iOX1kyYqLeYpd1W&app_code=CblgM4dq4wHQykVEBfa0Ww&co=${userDetails.country}&z=10&h=200&w=200`;
                     // res_img = `https://image.maps.ls.hereapi.com/mia/1.6/mapview?co=${userDetails.country}&z=10&h=200&w=200&apiKey=D4UFItTuftNruv5x2vorKlT0evG8sIj1e0NnWXKxvRw`;
@@ -3135,10 +2978,10 @@ var Note = function Note(config, containerStyle, iconStyle) {
         var recentNotificationCloseContainer = document.createElement('div')
         recentNotificationCloseContainer.className = 'YDR83P698y'
         recentNotificationCloseContainer.style = config.rule.closeNotification ? 'display:block' : 'display:none';
-        var recentNotificationCloseIcon = document.createElement('a')
+        var recentNotificationCloseIcon = document.createElement('button')
         recentNotificationCloseIcon.id = 'notif_close'
         recentNotificationCloseIcon.className = 'qcXxmyzjdA'
-        recentNotificationCloseIcon.innerHTML = "Hide"
+        recentNotificationCloseIcon.innerHTML = "+"
         recentNotificationCloseContainer.appendChild(recentNotificationCloseIcon)
         recentNotiifcationUpperPartContainer.appendChild(recentNotificationCloseContainer)
 
@@ -3391,12 +3234,12 @@ var Note = function Note(config, containerStyle, iconStyle) {
         liveNotiifcationUpperPartContainer.appendChild(liveNotificationImageContainer)
     
            var liveNotificationCloseContainer = document.createElement('div')
-            liveNotificationCloseContainer.className='YDR83P698y'
+            liveNotificationCloseContainer.className='khjvgcfdrgtyh'
             liveNotificationCloseContainer.style = config.rule.closeNotification ? 'display:block' : 'display:none';
-            var liveNotificationCloseIcon = document.createElement('a')
+            var liveNotificationCloseIcon = document.createElement('button')
             liveNotificationCloseIcon.id = 'notif_close';
-            liveNotificationCloseIcon.className ='qcXxmyzjdA'
-            liveNotificationCloseIcon.innerHTML ="Hide"
+            liveNotificationCloseIcon.className ='jhfgdxsghj'
+            liveNotificationCloseIcon.innerHTML ="+"
             liveNotificationCloseContainer.appendChild(liveNotificationCloseIcon)
          liveNotiifcationUpperPartContainer.appendChild(liveNotificationCloseContainer)
     
@@ -3536,8 +3379,13 @@ var Note = function Note(config, containerStyle, iconStyle) {
         reviewNotificationImage.className = 'wIwWxk318I'
        // reviewNotificationImage.setAttribute('src', 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/5FCE8400-0616-426F-8BEA-F53136305123.png')
 
-
-        reviewNotificationImage.setAttribute('src', userReview && userReview.profileImg ? userReview.profileImg :(userReview ? 'https://lh3.ggpht.com/-HiICnzrd7xo/AAAAAAAAAAI/AAAAAAAAAAA/GcUbxXrSSYg/s128-c0x00000000-cc-rp-mo/photo.jpg': ""));
+       if (fromAppType == 'trustpilot'){
+            reviewNotificationImage.style = "background-color: rgba(16, 94, 250, 0.1); padding:5px"
+            reviewNotificationImage.setAttribute('src', userReview ? 'https://s3.wasabisys.com/influencelogo/logo/star-tp.svg': "")
+       }
+        else{
+            reviewNotificationImage.setAttribute('src', userReview && userReview.profileImg ? userReview.profileImg :(userReview ? 'https://lh3.ggpht.com/-HiICnzrd7xo/AAAAAAAAAAI/AAAAAAAAAAA/GcUbxXrSSYg/s128-c0x00000000-cc-rp-mo/photo.jpg': ""));
+        }
         //reviewNotificationImage.setAttribute('src', 'https://storage.googleapis.com/influence-197607.appspot.com/googlereview.png');
        // notifReviewImgContent.style = `padding: 11px; border-radius: 0; height: 50px; width: 50px;`;
 
@@ -3547,33 +3395,53 @@ var Note = function Note(config, containerStyle, iconStyle) {
         reviewNotiifcationUpperPartContainer.appendChild(reviewNotificationImageContainer)
 
         var reviewNotificationCloseContainer = document.createElement('div')
-        reviewNotificationCloseContainer.className = 'YDR83P698y'
+        reviewNotificationCloseContainer.className = 'bnvt6niIjl'
         reviewNotificationCloseContainer.style = config.rule.closeNotification ? 'display:block' : 'display:none';
-        var reviewNotificationCloseIcon = document.createElement('a')
+        var reviewNotificationCloseIcon = document.createElement('button')
         reviewNotificationCloseIcon.id = 'notif_close';
-        reviewNotificationCloseIcon.className = 'qcXxmyzjdA'
-        reviewNotificationCloseIcon.innerHTML = "Hide"
+        reviewNotificationCloseIcon.className = 'E256pj3mJ4'
+        reviewNotificationCloseIcon.innerHTML = "+"
         reviewNotificationCloseContainer.appendChild(reviewNotificationCloseIcon)
         reviewNotiifcationUpperPartContainer.appendChild(reviewNotificationCloseContainer)
 
         var reviewNotificationTextContainer = document.createElement('div')
         reviewNotificationTextContainer.className = 'Pw72iFZOEh'
 
+    
         var reviewNotificationUserNameContainer = document.createElement('div')
         reviewNotificationUserNameContainer.className = 'user-name-container-review'
+       // reviewNotificationUserNameContainer.innerHTML = fromAppType== "trustpilot" && userReview && userReview.title ? userReview.title : "Someone"
 
 
         var reviewNotificationNameText = document.createElement('div')
         reviewNotificationNameText.className = 'VxoCrsNjZR vR7cdCBJQH'
+
+        var reviewNotificationNameText2 = document.createElement('div')
+
 
         if (fromAppType == 'facebook')
         reviewNotificationNameText.innerHTML = userReview.username   //'Recommended us on Facebook';
         else if (fromAppType == 'google') {
         reviewNotificationNameText.innerHTML = userReview && userReview.username ? userReview.username : 'Someone' ;
         }
+        else if (fromAppType == 'trustpilot') {
+
+            reviewNotificationUserNameContainer.style = "display: flex; align-items: center"
+            reviewNotificationNameText.innerHTML = userReview && userReview.username ? userReview.username : 'Someone' ;
+            
+            reviewNotificationNameText2.className = 'Teriosjk'
+            reviewNotificationNameText2.style = "margin-left: 5px"
+
+            reviewNotificationNameText2.innerHTML = userReview && userReview.title ? userReview.title : '(reviewed us)'
+
+
+        }
 
        // reviewNotificationNameText.innerHTML =    //'Aviel Sela'
         reviewNotificationUserNameContainer.appendChild(reviewNotificationNameText)
+
+        reviewNotificationUserNameContainer.append(reviewNotificationNameText2)
+
 
         var reviewNotificationUpperLogoContainer = document.createElement('div')
         reviewNotificationUpperLogoContainer.className = 'Se4hb14yxF'
@@ -3621,6 +3489,28 @@ var Note = function Note(config, containerStyle, iconStyle) {
         reviewNotificationUpperStar.innerHTML= star
 
     }
+    // else if(fromAppType == 'trustpilot') {
+    //     //var star = '';
+    //     // if (userReview && userReview.rating) {
+    //     //     for (let star_i = 0; star_i < userReview.rating; star_i++) {
+    //     //         star += `<svg style="height:12px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 96 96" version="1.1">
+    //     //         <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    //     //         <g id="Trustpilot_ratings_5star-RGB" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+    //     //             <g fill-rule="nonzero">
+    //     //             <rect id="Rectangle-path" fill="#00B67A" x="0" y="0" width="96" height="96"/>
+    //     //             <path d="M48,64.7 L62.6,61 L68.7,79.8 L48,64.7 Z M81.6,40.4 L55.9,40.4 L48,16.2 L40.1,40.4 L14.4,40.4 L35.2,55.4 L27.3,79.6 L48.1,64.6 L60.9,55.4 L81.6,40.4 L81.6,40.4 L81.6,40.4 L81.6,40.4 Z" id="Shape" fill="#FFFFFF"/> 
+    //     //             a  
+                        
+    //     //             </g>
+    //     //         </g>
+    //     //     </svg>`
+    //     //     }
+    //     // }
+
+    //     reviewNotificationUpperStar.innerHTML= star
+
+
+    // }
     reviewNotificationUpperStarContainer.appendChild(reviewNotificationUpperStar)
 
 
@@ -3648,7 +3538,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         if (userReview && userReview.rating) {
             for (let star_i = 0; star_i < userReview.rating; star_i++) {
                 star += `<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                   viewBox="0 0 53.867 53.867" style="enable-background:new 0 0 53.867 53.867;" xml:space="preserve">
+                   viewBox="0 0 53.867 53.867" style="enable-background:new 0 0 53.867 53.867;height:12px;width:12px;margin:0.5px;" xml:space="preserve">
                     <polygon style="fill:rgb(255, 215, 0, 1);" points="26.934,1.318 35.256,18.182 53.867,20.887 40.4,34.013 43.579,52.549 26.934,43.798 
                     10.288,52.549 13.467,34.013 0,20.887 18.611,18.182 "/>
                   </svg>`
@@ -3668,6 +3558,24 @@ var Note = function Note(config, containerStyle, iconStyle) {
                fill="#000000" stroke="none">
                </g>
                </svg>`
+            }
+        }
+
+        reviewNotificationStar1.innerHTML= star
+    }
+    else if(fromAppType == 'trustpilot' ){
+        var star = '';
+        if (userReview && userReview.rating) {
+            for (let star_i = 0; star_i < userReview.rating; star_i++) {
+                star += `<svg style="height:13px;margin:0.5px;padding:0.25px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 96 96" version="1.1">
+                <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+                <g id="Trustpilot_ratings_5star-RGB" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                    <g fill-rule="nonzero">
+                    <rect id="Rectangle-path" fill="#00B67A" x="0" y="0" width="96" height="96"/>
+                    <path d="M48,64.7 L62.6,61 L68.7,79.8 L48,64.7 Z M81.6,40.4 L55.9,40.4 L48,16.2 L40.1,40.4 L14.4,40.4 L35.2,55.4 L27.3,79.6 L48.1,64.6 L60.9,55.4 L81.6,40.4 L81.6,40.4 L81.6,40.4 L81.6,40.4 Z" id="Shape" fill="#FFFFFF"/>    
+                    </g>
+                </g>
+            </svg>`
             }
         }
 
@@ -3703,6 +3611,9 @@ var Note = function Note(config, containerStyle, iconStyle) {
     }
     else if(fromAppType == 'facebook'){
         reviewNotificationUpperSecondaryText.innerHTML = userReview && userReview.review_text ? userReview.review_text : 'Reviewed us on Facebook';           
+    }
+    else if(fromAppType == 'trustpilot'){
+        reviewNotificationUpperSecondaryText.innerHTML = userReview && userReview.review_text ? userReview.review_text : 'Reviewed us on Trustpilot';           
     }
      
         reviewNotificationTextContainer.appendChild(reviewNotificationUpperSecondaryText)
@@ -3743,8 +3654,14 @@ var Note = function Note(config, containerStyle, iconStyle) {
        }
        else if(fromAppType == "capterra"){
         reviewNotificationFooterLogo.className = 'bXZsh24SLi'
-        reviewNotificationFooterLogo.setAttribute('src', userReview ? "https://www.nudgify.com/wp-content/uploads/2020/06/capterra-icon.png" :"")
+        reviewNotificationFooterLogo.setAttribute('src', userReview ? "https://s3.wasabisys.com/influencelogo/logo/capterra_logo.svg" :"")
        }
+       else if(fromAppType == "trustpilot"){
+        reviewNotificationFooterLogo.className = 'bXZsh24SLi'
+        reviewNotificationFooterLogo.style = "width:auto;height:15px;margin-right:5px;opacity:0.80;margin-top:-2px"
+        reviewNotificationFooterLogo.setAttribute('src', userReview ? "https://s3.wasabisys.com/influencelogo/logo/tp-assets.png" :"")
+       }
+
 
 
         reviewNotificationFooterLogoContainer.appendChild(reviewNotificationFooterLogo)
@@ -3769,6 +3686,22 @@ var Note = function Note(config, containerStyle, iconStyle) {
             }
         }
         reviwNotificationFooterStar1.innerHTML= star
+    } else  if(fromAppType == 'trustpilot'){
+        var star = '';
+        if (userReview && userReview.rating){
+            for (let star_i = 0; star_i < userReview.rating; star_i++) {
+                star += `<svg style="height:12px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 96 96" version="1.1">
+                <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+                <g id="Trustpilot_ratings_5star-RGB" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                    <g fill-rule="nonzero">
+                    <rect id="Rectangle-path" fill="#00B67A" x="0" y="0" width="96" height="96"/>
+                    <path d="M48,64.7 L62.6,61 L68.7,79.8 L48,64.7 Z M81.6,40.4 L55.9,40.4 L48,16.2 L40.1,40.4 L14.4,40.4 L35.2,55.4 L27.3,79.6 L48.1,64.6 L60.9,55.4 L81.6,40.4 L81.6,40.4 L81.6,40.4 L81.6,40.4 Z" id="Shape" fill="#FFFFFF"/>    
+                    </g>
+                </g>
+            </svg>`
+            }
+        } 
+        reviwNotificationFooterStar1.innerHTML= star
     }
 
 
@@ -3781,6 +3714,10 @@ var Note = function Note(config, containerStyle, iconStyle) {
         var reviewNotificationLowerPTag = document.createElement('div')
         reviewNotificationLowerPTag.className = 'VxoCrsNjZR Y0g8JetRD9'
 
+        if (!configuration.togglePoweredBy){
+            reviewNotificationLowerPTag.style = 'display: none'
+        }
+
         var reviewNotificationFooterFirstText = document.createElement('em')
         reviewNotificationFooterFirstText.className = 'q1loq211Xo'
         reviewNotificationFooterFirstText.innerHTML = `${configuration && configuration.liveText ? configuration.liveText : 'verified by '}` //"Verified by"
@@ -3788,9 +3725,19 @@ var Note = function Note(config, containerStyle, iconStyle) {
         reviewNotificationLowerPTag.appendChild(reviewNotificationFooterFirstText)
 
         var reviewNotificationFooterverified = document.createElement('em')
+
+        if (!configuration.togglePoweredBy){
+            reviewNotificationFooterverified.style = 'display: none'
+        }
+
         reviewNotificationFooterverified.className = 's8VV8RquLh'
 
         var reviewNotificationTick = document.createElement('span')
+
+        if (!configuration.togglePoweredBy){
+            reviewNotificationTick.style = 'display: none'
+        }
+
         reviewNotificationTick.innerHTML = `<svg width="9" height="9" viewBox="0 0 524 524" xmlns="http://www.w3.org/2000/svg">
         <defs>
         <style>.cls-1 {
@@ -3885,9 +3832,10 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
 
 
+
         var bulkNotiifcationContainer = document.createElement('div')
     //     bulkNotiifcationContainer.className = 'notif-card';
-        bulkNotiifcationContainer.style = type == 'identification' ? "display:block" : "display:none";
+        bulkNotiifcationContainer.style = type == 'identification'? "display:block" : "display:none";
        // bulkNotiifcationContainer.style = containerStyle;
 
        var bulkNotiifcationMainContainer = document.createElement('div')
@@ -3904,9 +3852,12 @@ var Note = function Note(config, containerStyle, iconStyle) {
         bulkNotificationImage.className= 'A4S38Y254X'
 
         if (config.icon)
-        bulkNotificationImage.setAttribute('src', config.icon);
-        else
-        bulkNotificationImage.setAttribute('src', configuration.panelStyle.image ? configuration.panelStyle.image : 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/C77C11F2-0E34-49DE-97CC-10DF6C848B69.png')
+            bulkNotificationImage.setAttribute('src', config.icon);
+        else{
+            bulkNotificationImage.setAttribute('src', configuration.panelStyle.image ? configuration.panelStyle.image : 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/C77C11F2-0E34-49DE-97CC-10DF6C848B69.png')     
+        }
+       
+       
         if (configuration.panelStyle && configuration.panelStyle.image) {
            // notifBulkImg.style = `padding:${configuration.panelStyle.imagePadding}px; border-radius: 0;`;
            // notifBulkImg.className = 'FPqR37xpqJeA37xp7MM9_IMG FPqRqg5HqJmAqu5I7MM9C';
@@ -3919,12 +3870,12 @@ var Note = function Note(config, containerStyle, iconStyle) {
         bulkNotiifcationUpperPartContainer.appendChild(bulkNotificationImageContainer)
     
            var bulkNotificationCloseContainer = document.createElement('div')
-            bulkNotificationCloseContainer.className='YDR83P698y'
+            bulkNotificationCloseContainer.className='qQ6LvxoYlp'
             bulkNotificationCloseContainer.style = config.rule.closeNotification ? 'display:block' : 'display:none';
-            var bulkNotificationCloseIcon = document.createElement('a')
+            var bulkNotificationCloseIcon = document.createElement('button')
             bulkNotificationCloseIcon.id = 'notif_close';
-            bulkNotificationCloseIcon.className ='qcXxmyzjdA'
-            bulkNotificationCloseIcon.innerHTML ="Hide"
+            bulkNotificationCloseIcon.className ='knaKnioVnl'
+            bulkNotificationCloseIcon.innerHTML ="+"
             bulkNotificationCloseContainer.appendChild(bulkNotificationCloseIcon)
          bulkNotiifcationUpperPartContainer.appendChild(bulkNotificationCloseContainer)
     
@@ -3941,8 +3892,15 @@ var Note = function Note(config, containerStyle, iconStyle) {
             bulkNotificationFirstText.style = `color: rgb(${configuration.panelStyle.color.r},${configuration.panelStyle.color.g},${configuration.panelStyle.color.b});`
         }
     //     bulkNotificationFirstText.style.color= background-color: #f3f7ff
+
+    // console.log(numberOfUsers, "%%%%%%%%%%%%%%%%%%%%%%%%%")
         numAnim = new CountUp(bulkNotificationFirstText, 0, numberOfUsers, 0, 3);
-       //  bulkNotificationFirstText.innerHTML = '11111  ' //numberOfUsers + "123 " // + configuration.visitorText
+
+
+         //  numAnim = new CountUp(bulkNotificationFirstText, 0, numberOfUsers, 0, 3);
+       
+         
+        //bulkNotificationFirstText.innerHTML = numberOfUsers //numberOfUsers + "123 " // + configuration.visitorText
     
 
         var bulkNotificationSecondText = document.createElement('em')
@@ -3961,7 +3919,9 @@ var Note = function Note(config, containerStyle, iconStyle) {
         var dayDifference = Math.ceil(timeDiff / (1000 * 3600 * 24));
 
         bulkNotificationSecondText.innerHTML = ` ${configuration ? configuration.otherText : ''} ${configuration ? configuration.contentText : ''} ${configuration && configuration.bulkText ? configuration.bulkText : 'in the last'} ${configuration.panelStyle.bulkData} ${configuration && configuration.bulkDaysLable ? configuration.bulkDaysLable : 'days'}`  //"signed up for influence in the last 7 days"
-         bulkNotificationPTag.appendChild(bulkNotificationFirstText)
+     
+
+        bulkNotificationPTag.appendChild(bulkNotificationFirstText)
 
          var bulkNotificationFirstText2= document.createElement('em')
             bulkNotificationFirstText2.className = 'FocLFPnCyM YNK4CEgEKV'
@@ -3991,6 +3951,10 @@ var Note = function Note(config, containerStyle, iconStyle) {
             bulkNotificationLowerTextContainer.style = 'display: none'
         }
         bulkNotificationLowerTextContainer.className ='ZyQ5NX6Xi0'
+
+        // if(type == "custom")
+        //     bulkNotificationLowerTextContainer.style = 'display: flex; align-items: center; justify-content: space-around '
+
     
         var bulkNotificationLowerPTag = document.createElement('div')
         bulkNotificationLowerPTag.className ='WyM33MZmTi QwrzAVKEx3'
@@ -4034,8 +3998,9 @@ var Note = function Note(config, containerStyle, iconStyle) {
         bulkNotificationFooterverified.appendChild(bulkNotificationTick)
     
         bulkNotificationLowerPTag.appendChild(bulkNotificationFooterverified)
-    
-        
+
+      
+
         var bulkNotificationFooterPoweredBy = document.createElement('a')
 
         bulkNotificationFooterPoweredBy.setAttribute('href', configuration.poweredByLink);
@@ -4049,6 +4014,16 @@ var Note = function Note(config, containerStyle, iconStyle) {
     
     
         bulkNotificationLowerTextContainer.appendChild(bulkNotificationLowerPTag)
+
+        // if(type == "custom"){
+        //     var bulkNotificationSlugName= document.createElement('p')
+
+        //     bulkNotificationSlugName.style= 'font-size: 9px; color: blue;  line-height: 1.2; margin: 0px'
+
+        //     bulkNotificationSlugName.innerHTML = linkData && linkData.slug?linkData.slug : "link"
+
+        //     bulkNotificationLowerTextContainer.appendChild(bulkNotificationSlugName)
+        // }
         bulkNotiifcationMainContainer.appendChild(bulkNotificationLowerTextContainer)
         bulkNotiifcationContainer.appendChild(bulkNotiifcationMainContainer)
 
@@ -4058,6 +4033,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
         var announcementContainer= document.createElement('div');
 
          announcementContainer.style = type == 'announcement' ? "display:block" : "display:none";
+
+         console.log(configuration.announcementHeaderText, "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
 
         var announcementNotiifcationContainer = document.createElement('div')
         announcementNotiifcationContainer.className = 'Zn5De9iJFM';
@@ -4088,12 +4065,10 @@ var Note = function Note(config, containerStyle, iconStyle) {
         announcementNotiifcationUpperPartContainer.appendChild(announcementNotificationImageContainer)
 
         var announcementNotificationCloseContainer = document.createElement('div')
-        announcementNotificationCloseContainer.className = 'YDR83P698y'
-        announcementNotificationCloseContainer.style = config.rule.closeNotification ? 'display:block' : 'display:none';
-        var announcementNotificationCloseIcon = document.createElement('a')
-        announcementNotificationCloseIcon.id = 'notif_close'
-        announcementNotificationCloseIcon.className = 'qcXxmyzjdA'
-        announcementNotificationCloseIcon.innerHTML = "Hide"
+        announcementNotificationCloseContainer.className = 'close-btn-container'
+        var announcementNotificationCloseIcon = document.createElement('button')
+        announcementNotificationCloseIcon.className = 'close-btn'
+        announcementNotificationCloseIcon.innerHTML = "+"
         announcementNotificationCloseContainer.appendChild(announcementNotificationCloseIcon)
         announcementNotiifcationUpperPartContainer.appendChild(announcementNotificationCloseContainer)
 
@@ -4203,6 +4178,208 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
 
 
+
+
+        var customNotiifcationContainer = document.createElement('div')
+        //     bulkNotiifcationContainer.className = 'notif-card';
+        customNotiifcationContainer.style = type == 'custom'? "display:block" : "display:none";
+           // bulkNotiifcationContainer.style = containerStyle;
+    
+           var bulkNotiifcationMainContainer = document.createElement('div')
+           bulkNotiifcationMainContainer.className = 'foc2x3WbXB';
+           bulkNotiifcationMainContainer.style =containerStyle
+    
+            var bulkNotiifcationUpperPartContainer = document.createElement('div')
+            bulkNotiifcationUpperPartContainer.className= 'aiqUT4q94o'
+        
+            var bulkNotificationImageContainer = document.createElement('div')
+            bulkNotificationImageContainer.className= 'VyDVZdCWdx'
+        
+            var bulkNotificationImage = document.createElement('img')
+            bulkNotificationImage.className= 'A4S38Y254X'
+    
+            if (config.icon)
+                bulkNotificationImage.setAttribute('src', config.icon);
+            else{
+                bulkNotificationImage.setAttribute('src', configuration.panelStyle.image ? configuration.panelStyle.image : 'https://s3.wasabisys.com/influencelogo/logo/click.svg')
+            }
+           
+           
+            if (configuration.panelStyle && configuration.panelStyle.image) {
+               // notifBulkImg.style = `padding:${configuration.panelStyle.imagePadding}px; border-radius: 0;`;
+               // notifBulkImg.className = 'FPqR37xpqJeA37xp7MM9_IMG FPqRqg5HqJmAqu5I7MM9C';
+            }
+    
+          //  bulkNotificationImage.setAttribute('src', 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/C77C11F2-0E34-49DE-97CC-10DF6C848B69.png')
+        
+            bulkNotificationImageContainer.appendChild(bulkNotificationImage)
+        
+            bulkNotiifcationUpperPartContainer.appendChild(bulkNotificationImageContainer)
+        
+               var bulkNotificationCloseContainer = document.createElement('div')
+                bulkNotificationCloseContainer.className='qQ6LvxoYlp'
+                bulkNotificationCloseContainer.style = config.rule.closeNotification ? 'display:block' : 'display:none';
+                var bulkNotificationCloseIcon = document.createElement('button')
+                bulkNotificationCloseIcon.id = 'notif_close';
+                bulkNotificationCloseIcon.className ='knaKnioVnl'
+                bulkNotificationCloseIcon.innerHTML ="+"
+                bulkNotificationCloseContainer.appendChild(bulkNotificationCloseIcon)
+             bulkNotiifcationUpperPartContainer.appendChild(bulkNotificationCloseContainer)
+        
+             var bulkNotificationTextContainer = document.createElement('div')
+             bulkNotificationTextContainer.className= 'Jxf0sUFKNw'
+        
+            var bulkNotificationPTag = document.createElement('div')
+            bulkNotificationPTag.className ='WyM33MZmTi'
+        
+            var bulkNotificationFirstText = document.createElement('em')
+            bulkNotificationFirstText.className= 'FocLFPnCyM Kbulz3yVQa'
+            bulkNotificationFirstText.style.backgroundColor = "#f3f7ff";
+            if (configuration && configuration.panelStyle && configuration.panelStyle.color) {
+                bulkNotificationFirstText.style = `color: rgb(${configuration.panelStyle.color.r},${configuration.panelStyle.color.g},${configuration.panelStyle.color.b});`
+            }
+        //     bulkNotificationFirstText.style.color= background-color: #f3f7ff
+    
+            //  numAnim = new CountUp(bulkNotificationFirstText, 0, linkData && linkData.totalCount ?  linkData.totalCount: 0, 0, 3);
+           // }
+            
+            bulkNotificationFirstText.innerHTML = linkCount && linkCount.totalCount ?  linkCount.totalCount: 0 //numberOfUsers + "123 " // + configuration.visitorText
+        
+    
+            var bulkNotificationSecondText = document.createElement('em')
+            bulkNotificationSecondText.className= 'Wvoh0jbGb2'
+    
+            var today = new Date();
+            var dd = today.getDate();
+            var mm = today.getMonth() + 1; //January is 0!
+            var yyyy = today.getFullYear();     
+            if (dd < 10) { dd = '0' + dd }
+            if (mm < 10) { mm = '0' + mm }
+            today = yyyy + '/' + mm + '/' + dd;
+            var date2 = new Date(today);
+            var date1 = new Date(config.rule.createdAt);
+            var timeDiff = Math.abs(date2.getTime() - date1.getTime());
+            var dayDifference = Math.ceil(timeDiff / (1000 * 3600 * 24));
+    
+            bulkNotificationSecondText.innerHTML = ` ${configuration ? configuration.otherText : ''} <b>${configuration ? linkCount && linkCount.slug ? linkCount.slug: "link" : ''} </b> ${configuration && configuration.bulkText ? configuration.bulkText : 'in the last'} ${configuration.panelStyle.bulkData} ${configuration && configuration.bulkDaysLable ? configuration.bulkDaysLable : 'days'}`  //"signed up for influence in the last 7 days"
+          
+    
+             bulkNotificationPTag.appendChild(bulkNotificationFirstText)
+    
+             var bulkNotificationFirstText2= document.createElement('em')
+                bulkNotificationFirstText2.className = 'FocLFPnCyM YNK4CEgEKV'
+                bulkNotificationFirstText2.style.backgroundColor = "#f3f7ff";
+                if (configuration && configuration.panelStyle && configuration.panelStyle.color) {
+                    bulkNotificationFirstText2.style = `color: rgb(${configuration.panelStyle.color.r},${configuration.panelStyle.color.g},${configuration.panelStyle.color.b});`
+                }
+                bulkNotificationFirstText2.style.paddingLeft = "0px";
+                bulkNotificationFirstText2.innerHTML= configuration.visitorText  //people
+                bulkNotificationPTag.appendChild(bulkNotificationFirstText2)
+         
+             bulkNotificationPTag.appendChild(bulkNotificationSecondText)
+            bulkNotificationTextContainer.appendChild(bulkNotificationPTag)
+             bulkNotiifcationUpperPartContainer.appendChild(bulkNotificationTextContainer)
+        
+             bulkNotiifcationMainContainer.appendChild(bulkNotiifcationUpperPartContainer)
+        
+            var bulkNotificationBorder = document.createElement('div')
+            if (!configuration.togglePoweredBy) {
+                bulkNotificationBorder.style = 'display: none'
+            }
+            bulkNotificationBorder.className='zwnmZYXtFz'
+            bulkNotiifcationMainContainer.appendChild(bulkNotificationBorder)
+        
+            var bulkNotificationLowerTextContainer= document.createElement('div')
+            if(!configuration.togglePoweredBy){
+                bulkNotificationLowerTextContainer.style = 'display: none'
+            }
+            bulkNotificationLowerTextContainer.className ='ZyQ5NX6Xi0'
+    
+            // if(type == "custom")
+                bulkNotificationLowerTextContainer.style = 'display: flex; align-items: center; justify-content: space-around '
+    
+        
+            var bulkNotificationLowerPTag = document.createElement('div')
+            bulkNotificationLowerPTag.className ='WyM33MZmTi QwrzAVKEx3'
+        
+            var bulkNotificationFooterFirstText = document.createElement('em')
+            bulkNotificationFooterFirstText.className= 'cndnnNxkVv'
+            bulkNotificationFooterFirstText.innerHTML = configuration.recentText2 ? configuration.recentText2 : ' '  //"Verified by"text
+        
+            bulkNotificationLowerPTag.appendChild(bulkNotificationFooterFirstText)
+        
+            var bulkNotificationFooterverified = document.createElement('em')
+            bulkNotificationFooterverified.className= 'SxMMtXX6gU'
+        
+            var bulkNotificationTick = document.createElement('span')
+            bulkNotificationTick.innerHTML = `<svg width="9" height="9" viewBox="0 0 524 524" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+            <style>.cls-1 {
+                    fill: #5d93fe;
+                }
+                .cls-2 {
+                    fill: #5d93fe;
+                    filter: url(#a);
+                }
+                .cls-3 {
+                    fill: #fff;
+                    fill-rule: evenodd;
+                }</style>
+            <filter id="a" x="51" y="51" width="423" height="423" filterUnits="userSpaceOnUse">
+            <feOffset in="SourceAlpha" result="offset"/>
+            <feGaussianBlur result="blur" stdDeviation="2.236"/>
+            <feFlood flood-opacity=".06" result="flood"/>
+            <feComposite in2="blur" operator="in" result="composite"/>
+            <feBlend in="SourceGraphic" result="blend"/>
+            </filter>
+            </defs>
+            <circle class="cls-1" cx="262" cy="262" r="262"/>
+            <circle class="cls-2" cx="262" cy="262" r="207"/>
+            <path class="cls-3" transform="translate(-640 -238)" d="m833.89 478.95 81.132 65.065a9 9 0 0 1 1.391 12.652l-25.651 31.985a9 9 0 0 1-12.652 1.39l-81.132-65.065a9 9 0 0 1-1.391-12.652l25.651-31.985a9 9 0 0 1 12.652-1.39z"/>
+            <path class="cls-3" transform="translate(-640 -238)" d="m846.25 552.7 127.39-144.5a9.721 9.721 0 0 1 13.35-1.047l29.679 24.286a8.9 8.9 0 0 1 1.08 12.862l-127.39 144.5a9.721 9.721 0 0 1-13.35 1.047l-29.675-24.286a8.9 8.9 0 0 1-1.087-12.861z"/>
+            </svg>`
+            bulkNotificationFooterverified.appendChild(bulkNotificationTick)
+        
+            bulkNotificationLowerPTag.appendChild(bulkNotificationFooterverified)
+    
+          
+    
+            var bulkNotificationFooterPoweredBy = document.createElement('a')
+    
+            bulkNotificationFooterPoweredBy.setAttribute('href', configuration.poweredByLink);
+            bulkNotificationFooterPoweredBy.setAttribute('rel', 'nofollow');
+            bulkNotificationFooterPoweredBy.setAttribute('target', '_blank');
+    
+            bulkNotificationFooterPoweredBy.className= 'Q9bSwcf36B'
+            bulkNotificationFooterPoweredBy.innerHTML = configuration.poweredBy ? configuration.poweredBy : 'Influence'   //"Influence"
+        
+            bulkNotificationLowerPTag.appendChild(bulkNotificationFooterPoweredBy)
+        
+        
+            bulkNotificationLowerTextContainer.appendChild(bulkNotificationLowerPTag)
+    
+            //if(type == "custom"){
+                var bulkNotificationSlugName= document.createElement('p')
+    
+                bulkNotificationSlugName.style= 'font-size: 9px; color: blue;  line-height: 1.2; margin: 0px'
+    
+                bulkNotificationSlugName.innerHTML = linkCount && linkCount.slug?linkCount.slug : "link"
+    
+                bulkNotificationLowerTextContainer.appendChild(bulkNotificationSlugName)
+            //}
+            bulkNotiifcationMainContainer.appendChild(bulkNotificationLowerTextContainer)
+            customNotiifcationContainer.appendChild(bulkNotiifcationMainContainer)
+
+
+
+
+
+
+
+
+
+
+
         var innerNotifCTAContainer = document.createElement('div');
         innerNotifCTAContainer.style = configuration.toggleCTA ? 'display:flex;justify-content:flex-end;' : 'display:none';
         innerNotifCTAContainer.setAttribute("id", "cta");
@@ -4247,6 +4424,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
     mainContainer.appendChild(recentNotiifcationContainer);
     mainContainer.appendChild(reviewNotiifcationContainer);
     mainContainer.appendChild(announcementContainer);  
+    mainContainer.appendChild(customNotiifcationContainer)
 
     // console.log(mainContainer,"Main Container Data")
 
@@ -4283,1637 +4461,15 @@ var Note = function Note(config, containerStyle, iconStyle) {
     };
 };
 
-function cookieblocker(microPolicies){
-    var m =[]
-    microPolicies.map(e=>{
-        var d = getCookieById(e._id)
-        if(d && d.key){
-            e.provider.map(e =>{
-                m.push(new RegExp(e.provider))
-            })
-        }
-    })
-    window.YETT_BLACKLIST =  m //[ /cdn.dashly.app/ ]  //m
-        // window.YETT_WHITELIST = []
-   
-   
-        !(function (t, e) {
 
-            "object" == typeof exports && "undefined" != typeof module ? e(exports) : "function" == typeof define && define.amd ? define(["exports"], e) : e(((t = t || self).yett = {}));
-        })(this, function (t) {
-            "use strict";
-            function o(e, t) {
-    
-                return (
-                    e &&
-                    (!t || t !== c) &&
-                    (!s.blacklist ||
-                        s.blacklist.some(function (t) {
-                            return t.test(e);
-                        })) &&
-                    (!s.whitelist ||
-                        s.whitelist.every(function (t) {
-                            return !t.test(e);
-                        }))
-                );
-            }
-            function l(t) {
-    
-                console.log(t, "tttttttttttttttttttttttttttt")
-                var e = t.getAttribute("src");
-                return (
-                    (s.blacklist &&
-                        s.blacklist.every(function (t) {
-                            return !t.test(e);
-                        })) ||
-                    (s.whitelist &&
-                        s.whitelist.some(function (t) {
-                            return t.test(e);
-                        }))
-                );
-            }
-            var c = "javascript/blocked",
-                s = { blacklist: window.YETT_BLACKLIST , whitelist: window.YETT_WHITELIST },
-                u = { blacklisted: [] },
-                f = new MutationObserver(function (t) {
-                    for (var e = 0; e < t.length; e++)
-                        for (
-                            var i = t[e].addedNodes,
-                                r = function (t) {
-                                    var r = i[t];
-                                    if (1 === r.nodeType && "SCRIPT" === r.tagName) {
-                                        var e = r.src,
-                                            n = r.type;
-                                        if (o(e, n)) {
-                                            u.blacklisted.push([r, r.type]), (r.type = c);
-                                            r.addEventListener("beforescriptexecute", function t(e) {
-                                                r.getAttribute("type") === c && e.preventDefault(), r.removeEventListener("beforescriptexecute", t);
-                                            }),
-                                                r.parentElement && r.parentElement.removeChild(r);
-                                        }
-                                    }
-                                },
-                                n = 0;
-                            n < i.length;
-                            n++
-                        )
-                            r(n);
-                });
-    
-            f.observe(document.documentElement, { childList: !0, subtree: !0 });
-            var i = document.createElement,
-                a = { src: Object.getOwnPropertyDescriptor(HTMLScriptElement.prototype, "src"), type: Object.getOwnPropertyDescriptor(HTMLScriptElement.prototype, "type") };
-            function p(t, e) {
-                return (
-                    (function (t) {
-                        if (Array.isArray(t)) return t;
-                    })(t) ||
-                    (function (t, e) {
-                        if ("undefined" == typeof Symbol || !(Symbol.iterator in Object(t))) return;
-                        var r = [],
-                            n = !0,
-                            i = !1,
-                            o = void 0;
-                        try {
-                            for (var c, a = t[Symbol.iterator](); !(n = (c = a.next()).done) && (r.push(c.value), !e || r.length !== e); n = !0);
-                        } catch (t) {
-                            (i = !0), (o = t);
-                        } finally {
-                            try {
-                                n || null == a.return || a.return();
-                            } finally {
-                                if (i) throw o;
-                            }
-                        }
-                        return r;
-                    })(t, e) ||
-                    r(t, e) ||
-                    (function () {
-                        throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-                    })()
-                );
-            }
-            function y(t) {
-                return (
-                    (function (t) {
-                        if (Array.isArray(t)) return n(t);
-                    })(t) ||
-                    (function (t) {
-                        if ("undefined" != typeof Symbol && Symbol.iterator in Object(t)) return Array.from(t);
-                    })(t) ||
-                    r(t) ||
-                    (function () {
-                        throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-                    })()
-                );
-            }
-            function r(t, e) {
-                if (t) {
-                    if ("string" == typeof t) return n(t, e);
-                    var r = Object.prototype.toString.call(t).slice(8, -1);
-                    return "Object" === r && t.constructor && (r = t.constructor.name), "Map" === r || "Set" === r ? Array.from(t) : "Arguments" === r || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r) ? n(t, e) : void 0;
-                }
-            }
-            function n(t, e) {
-                (null == e || e > t.length) && (e = t.length);
-                for (var r = 0, n = new Array(e); r < e; r++) n[r] = t[r];
-                return n;
-            }
-            document.createElement = function () {
-                for (var t = arguments.length, e = new Array(t), r = 0; r < t; r++) e[r] = arguments[r];
-                if ("script" !== e[0].toLowerCase()) return i.bind(document).apply(void 0, e);
-                var n = i.bind(document).apply(void 0, e);
-                try {
-                    Object.defineProperties(n, {
-                        src: {
-                            get: function () {
-                                return a.src.get.call(this);
-                            },
-                            set: function (t) {
-                                o(t, n.type) && a.type.set.call(this, c), a.src.set.call(this, t);
-                            },
-                        },
-                        type: {
-                            set: function (t) {
-                                var e = o(n.src, n.type) ? c : t;
-                                a.type.set.call(this, e);
-                            },
-                        },
-                    }),
-                        (n.setAttribute = function (t, e) {
-                            "type" === t || "src" === t ? (n[t] = e) : HTMLScriptElement.prototype.setAttribute.call(n, t, e);
-                        });
-                } catch (t) {
-                    console.warn("Yett: unable to prevent script execution for script src ", n.src, ".\n", 'A likely cause would be because you are using a third-party browser extension that monkey patches the "document.createElement" function.');
-                }
-                return n;
-            };
-            var d = new RegExp("[|\\{}()[\\]^$+*?.]", "g");
-            (t.unblock = function () {
-                for (var t = arguments.length, r = new Array(t), e = 0; e < t; e++) r[e] = arguments[e];
-                r.length < 1
-                    ? ((s.blacklist = []), (s.whitelist = []))
-                    : (s.blacklist &&
-                        (s.blacklist = s.blacklist.filter(function (e) {
-                            return r.every(function (t) {
-                                return "string" == typeof t ? !e.test(t) : t instanceof RegExp ? e.toString() !== t.toString() : void 0;
-                            });
-                        })),
-                    s.whitelist &&
-                        (s.whitelist = [].concat(
-                            y(s.whitelist),
-                            y(
-                                r.map(function (e) {
-                                        if ("string" == typeof e) {
-                                            var r = ".*" + e.replace(d, "\\$&") + ".*";
-                                            if (
-                                                s.whitelist.every(function (t) {
-                                                    return t.toString() !== r.toString();
-                                                })
-                                            )
-                                                return new RegExp(r);
-                                        } else if (
-                                            e instanceof RegExp &&
-                                            s.whitelist.every(function (t) {
-                                                return t.toString() !== e.toString();
-                                            })
-                                        )
-                                            return e;
-                                        return null;
-                                    })
-                                    .filter(Boolean)
-                            )
-                        )));
-                for (var n = document.querySelectorAll('script[type="'.concat(c, '"]')), i = 0; i < n.length; i++) {
-                    var o = n[i];
-                    l(o) && (u.blacklisted.push([o, "application/javascript"]), o.parentElement.removeChild(o));
-                }
-                var a = 0;
-                y(u.blacklisted).forEach(function (t, e) {
-                    var r = p(t, 2),
-                        n = r[0],
-                        i = r[1];
-                    if (l(n)) {
-                        var o = document.createElement("script");
-                        for (var c in (o.setAttribute("src", n.src), o.setAttribute("type", i || "application/javascript"), n)) c.startsWith("on") && (o[c] = n[c]);
-                        document.head.appendChild(o), u.blacklisted.splice(e - a, 1), a++;
-                    }
-                }),
-                    s.blacklist && s.blacklist.length < 1 && f.disconnect();
-            }),
-                Object.defineProperty(t, "__esModule", { value: !0 });
-        });
 
-}
-
-
-function CookieFn() {
-
-    var numAnim;
-   
-    function displayNotification(container, config) {
-
-
-        let className = `animated_FPqR2bI7Mf_c `; //${config.rule.popupAnimationIn}
-        container.className =  className;
-        const elem = document.getElementsByClassName(className);
-        while (elem.length > 0 ){
-            elem[0].remove();
-        }
-        // if (!numAnim.error) {
-        //     numAnim.start();
-        // } else {
-        //     console.error(numAnim.error);
-        // }
-
-        // setTimeout(function () {
-        //     container.className = `animated_FPqR2bI7Mf_c `; //${config.rule.popupAnimationOut}
-        // }, ((1) * 1000) + 3000);
-
-        // setTimeout(function () {
-        //     if(container && container.parentNode)
-        //         container.parentNode.removeChild(container)
-        // }, ((1) * 1000 + 4000));
-
-
-        // document.body.appendChild(container);
-
-        document.documentElement.appendChild(container);
-
-        flagMouseOver = false;
-    };
-
-  async function notificationDisplay(configuration, microPolicies) {
-
-    var cookieData ;
-
-    var finalCookieArr= [];
-    
-     cookieData = getCookies();
-    
-    microPolicies.map(policy =>{
-
-        if(cookieData.length>0){
-            cookieData.map(data=>{
-                if(data.name == policy._id){
-                    finalCookieArr.push({id: data.name, status: data.key})
-                } else if(policy.essentialPolicy){
-                    finalCookieArr.push({id: policy._id, status: true})
-                }else{
-                    finalCookieArr.push({id: policy._id, status: false})
-                }
-            })
-         }else{
-            if(policy.essentialPolicy){
-                finalCookieArr.push({id: policy._id, status: true})
-            }else{
-                finalCookieArr.push({id: policy._id, status: false})
-            }
-         }
-
-            // if(policy.essentialPolicy){
-            //     finalCookieArr.push({id: policy._id, status: true})
-            // }else{
-            //     finalCookieArr.push({id: policy._id, status: false})
-
-            // }
-        })
-
-
-
-        var cookieIcon = document.createElement('img')
-        cookieIcon.src  = 'lock.png' 
-        cookieIcon.style="bottom:0;left:0;width:25px;height:25px;box-shadow: rgba(84, 92, 164, 0.5) 0px 4px 24px;border-radius: 50%;"
-        cookieIcon.onclick = ()=>{
-            // panelCall(0,0)
-            container.appendChild(innerContainer)
-
-            container.removeChild(cookieIcon)
-                        
-        }
-
-        var container = document.createElement('div');
-        container.setAttribute("id", "FPqR2DbIqJeA2DbI7MM9_0");
-
-        container.style =  "z-index: 99999999999; position: fixed; bottom: 2%; left: 2% " //alignment;
-        var innerContainer = document.createElement('div');
-        innerContainer.setAttribute("id", "FPqR3tRBqJeA3tRB7MM9_0");
-        var innerDiv = document.createElement('div');
-        var mainContainer = document.createElement('div');
-        var lockImg = document.createElement('img')
-        lockImg.src  = 'lock.png' 
-        lockImg.style="bottom:0;left:0;width:55px;height:55px;box-shadow: rgba(84, 92, 164, 0.5) 0px 4px 24px;border-radius: 50%;"
-        lockImg.onclick = ()=>{
-            panelCall(0,0)
-            
-        }
-        
-        function Parent1(activePanel,sourcePanel){
-    
-            cookieData = getCookies();
-
-            var p1Parent = document.createElement('div');
-        
-                p1Parent.className =
-                    activePanel === 0 ? `showPanel mainBoxStyle` : 'hidePanel1';
-        
-                var p1Child = document.createElement('div');
-                p1Child.className = "childContainer";
-        
-                var uLine = document.createElement('p');
-                uLine.className = "upperLine";
-        
-                if (activePanel === 0 && sourcePanel === 1) {
-                    var uLinenode = document.createTextNode("Save Preferences");
-                }
-                else {
-                    var uLinenode = document.createTextNode("Can we store Cookie?");
-                }
-                uLine.appendChild(uLinenode);
-                p1Child.appendChild(uLine);
-                /*Inf*/
-                var aLine = document.createElement('a');
-                aLine.className = "upperLine";
-                var aLinenode = document.createTextNode("Inf");
-                aLine.appendChild(aLinenode);
-                p1Child.appendChild(aLine);
-                p1Parent.appendChild(p1Child);
-        
-                var mLine = document.createElement('p');
-                mLine.className = "middleLine";
-        
-                if (activePanel === 0 && sourcePanel === 1) {
-
-                    var dummy = []
-
-                   
-                    cookieData.map(data=>{
-                            if(data.key){
-                             var dataa =   microPolicies.find(o => o._id === data.name);
-                                dummy.push(dataa.name)
-                            } 
-                    })
-                    var mLinenode = document.createTextNode( dummy.length >0 ?  "You'll be accepting: "+ dummy.join(",") : "You havn't select anything");
-                    
-        
-                }
-                else {
-                    var mLinenode = document.createTextNode("These will be used to power trial and Marketing.");
-                }
-        
-                mLine.appendChild(mLinenode);
-                p1Parent.appendChild(mLine);
-                //footer
-                var p1Footer = document.createElement('div');
-                p1Footer.style = "display:flex;justify-content:space-between;margin-top:36px;"
-        
-                var customizeB = document.createElement('button');
-                customizeB.className = "generalBtnStyle leftBtn";
-                customizeB.onclick = ()=>{
-                    panelCall(1,0)
-
-                    container.appendChild(innerContainer)
-
-                    container.removeChild(cookieIcon)
-                  
-                }
-                
-                if (activePanel === 0 && sourcePanel === 1) {
-                    customizeB.innerHTML = "No, Customize";
-                }
-                else {
-                    customizeB.innerHTML = "Customize";
-        
-                }
-        
-        
-                p1Footer.appendChild(customizeB)
-                var rightdiv = document.createElement('div');
-                rightdiv.style = "display:flex";
-        
-                var NoB = document.createElement('button');
-                NoB.className = "generalBtnStyle filledBtn";
-                NoB.innerHTML = "No";
-                NoB.onclick = () =>{
-
-                    finalCookieArr.map(data =>setCookies(data.id, data.status))
-                    
-                    // window.localStorage.setItem('influencepermission',`{enable: false}`)
-                    window.localStorage.setItem('influencepermission', JSON.stringify({enable: false}))
-                    // while(mainContainer.hasChildNodes()) {
-                    //     mainContainer.removeChild(mainContainer.childNodes[0]);
-
-                    //     // container.removeChild(container.childNodes[0]);
-                    //     // container.appendChild(cookieIcon)
-                    //   }
-                    container.removeChild(container.childNodes[0]);
-
-                    container.appendChild(cookieIcon)
-                    
-                 }
-
-                var YesB = document.createElement('button');
-                YesB.className = "generalBtnStyle filledBtn";
-                YesB.innerHTML = "Yes";
-                YesB.onclick = () =>{
-                    // microPolicies.map(policy =>{
-
-                    //     if(policy.essentialPolicy){
-                    //         finalCookieArr.push({id: policy._id, status: false})
-                    //     }else{
-                    //         finalCookieArr.push({id: policy._id, status: false})
-                
-                    //     }
-                    // })
-
-                    finalCookieArr.map(data =>setCookies(data.id, data.status))
-
-
-                // window.localStorage.setItem('influencepermission',`{enable:true}`)
-                window.localStorage.setItem('influencepermission', JSON.stringify({enable: true}))
-
-                // while(mainContainer.hasChildNodes()) {
-                //     mainContainer.removeChild(mainContainer.childNodes[0]);
-
-                //     // container.removeChild(container.childNodes[0]);
-
-                //   }
-
-            
-                container.removeChild(container.childNodes[0]);
-
-                container.appendChild(cookieIcon)
-
-                }
-        
-                var ThatsOkayB = document.createElement('button');
-                ThatsOkayB.className = "generalBtnStyle filledBtn";
-                ThatsOkayB.innerHTML = "That's Okay";
-                ThatsOkayB.onclick = ()=>{
-                
-                    // while(mainContainer.hasChildNodes()) {
-                    //     mainContainer.removeChild(mainContainer.childNodes[0]);
-                    //   }
-
-                    container.removeChild(container.childNodes[0]);
-
-                    container.appendChild(cookieIcon)
-                  
-                }
-                if (activePanel === 0 && sourcePanel === 1) {
-                    rightdiv.appendChild(ThatsOkayB)
-                    
-                }
-                else {
-                    rightdiv.appendChild(YesB)
-                    rightdiv.appendChild(NoB)
-                }
-                p1Footer.appendChild(rightdiv)
-                p1Parent.appendChild(p1Footer);
-                //    var element = document.getElementById("div1");
-          
-        //  element.appendChild(p1Parent)
-        while(mainContainer.hasChildNodes()) {
-            mainContainer.removeChild(mainContainer.childNodes[0]);
-          }
-         mainContainer.appendChild(p1Parent);  
-        
-          
-        }
-        
-        function Parent2(activePanel,sourcePanel){
-
-             cookieData = getCookies();
-          
-                var p2Parent = document.createElement('div');
-        
-                p2Parent.className =
-                    activePanel === 1 ? `showPanel mainBoxStyle2` : 'hidePanel1';
-        
-                var navBarParent = document.createElement('div')
-                navBarParent.className = "navBarParent"
-                var backNav = document.createElement("div");
-                backNav.className = "backNav"
-                backNav.innerHTML = `<svg
-                 width="16"
-                 height="16"
-                 viewBox="0 0 16 16"
-                 fill="none"
-                 xmlns="http://www.w3.org/2000/svg"
-               >
-                 <rect
-                   width="1.33333"
-                   height="9.33333"
-                   rx="0.666667"
-                   transform="matrix(0 -1 -1 0 12.6667 8.6665)"
-                   fill="#979797"
-                 ></rect>
-                 <path
-                   d="M8.47132 11.5284C8.73167 11.7888 8.73167 12.2109 8.47132 12.4712C8.21097 12.7316 7.78886 12.7316 7.52851 12.4712L3.52851 8.47124C3.27613 8.21886 3.2673 7.81246 3.50848 7.54935L7.17515 3.54935C7.42394 3.27794 7.84566 3.25961 8.11707 3.5084C8.38848 3.7572 8.40682 4.17891 8.15802 4.45032L4.92268 7.97979L8.47132 11.5284Z"
-                   fill="currentColor"
-                 ></path>
-               </svg> Back`
-                navBarParent.appendChild(backNav)
-                backNav.addEventListener("click",()=>{
-                  p2Parent.className = "hidePanel1"
-                    panelCall(0,1)
-                })
-                var mainHeading = document.createElement('h1')
-                mainHeading.className = "mainHeading"
-                mainHeading.innerHTML = "Our Features"
-                navBarParent.appendChild(mainHeading)
-                var doneNav = document.createElement('div')
-                doneNav.className = "doneNav"
-                doneNav.innerHTML = "Done"
-
-                doneNav.addEventListener("click", function(){
-                    // finalCookieArr.map(data =>{ setCookies(data.id, data.status) })
-
-                    finalCookieArr.map(data =>setCookies(data.id, data.status))
-                    window.localStorage.setItem('influencepermission', JSON.stringify({enable: true}))
-
-
-                    container.removeChild(container.childNodes[0]);
-
-                    container.appendChild(cookieIcon)
-
-                    // while(mainContainer.hasChildNodes()) {
-                    //     mainContainer.removeChild(mainContainer.childNodes[0]);
-                    //   }
-
-                })
-
-
-        
-                var div1 = document.createElement('div')
-                div1.className = "bodyParent1"
-                var div2 = document.createElement('div')
-                div1.className = "bodyParent2"
-                var div3 = document.createElement('div')
-                div1.className = "bodyParent3"
-                var ulist = document.createElement('ul')
-                ulist.setAttribute("id", "qwe");
-
-                ulist.style = "list-style-type:none; margin: 0%; padding: 5%;"
-                
-                microPolicies.map(policy =>{
-                                   
-                var listItem = document.createElement('li')
-                listItem.className = "listItem"
-                var upperPart = document.createElement('div');
-                upperPart.className = "upperPart";
-                upperPart.innerHTML = 
-                `<svg
-                         style="
-                           color: rgb(88, 70, 109);
-                           transition: color 250ms ease 0s;
-                           margin-right: 12px;
-                           margin-top:0px;
-                           width: 16px;
-                           height: 16px;
-                           flex: 0 0 auto;
-                         "
-                         width=22
-                         height=22
-                         viewBox= "0 0 22 22"
-                         fill=none
-                         xmlns="http://www.w3.org/2000/svg"
-                         class="Icon__StyledIcon-sc-1fw5m9z-0 fkqTFd"
-                       >
-                         <path
-                           fill-rule="evenodd"
-                           clip-rule="evenodd"
-                           fill="currentColor"
-                           d="M9.67336 15.9639C9.67336 16.6963 10.6154 16.9944 11.0368 16.3954L15.8773 9.51496C16.2269 9.01804 15.8715 8.33341 15.2639 8.33341H12.4322C11.8799 8.33341 11.4322 7.8857 11.4322 7.33341V4.03628C11.4322 3.3039 10.4901 3.00574 10.0687 3.60474L5.22821 10.4852C4.87862 10.9821 5.23404 11.6667 5.84162 11.6667H8.67336C9.22564 11.6667 9.67336 12.1145 9.67336 12.6667V15.9639Z"
-                         ></path>
-                       </svg>`;
-        
-                var headerText = document.createElement('p');
-                headerText.className = "headerText"
-                headerText.innerHTML =  policy.name //"Essential"
-        
-                var switchContainer = document.createElement('div');
-                switchContainer.style="position:relative;"
-                var switchLabel  = document.createElement('label');
-                switchLabel.className = "switch";
-                var checkboxInput = document.createElement('input');
-                checkboxInput.type = "checkbox";
-                checkboxInput.id= "idData"
-                checkboxInput.className = "generalInputCheckboxClass"
-
-                // checkboxInput.disabled= policy.essentialPolicy
-
-                if(policy.essentialPolicy == true){
-                    checkboxInput.checked = true
-                    checkboxInput.disabled = true
-                }
-
-
-                    cookieData.map(data=>{
-                        if(data.name == policy._id){
-                            if(data.key){
-                                checkboxInput.checked = true
-                            }else{
-                                checkboxInput.checked = false
-                            }                            
-                        }
-                    })
-              
-                checkboxInput.onchange = () =>{
-                   finalCookieArr = finalCookieArr.filter(data =>(data.id !== policy._id))
-                    finalCookieArr.push({id: policy._id, status: checkboxInput.checked})
-                    setCookies(policy._id, checkboxInput.checked)
-                }
-                var checkboxSpan = document.createElement('span');
-                checkboxSpan.className = "slider round";
-                switchLabel.appendChild(checkboxInput)
-                switchLabel.appendChild(checkboxSpan)
-                switchContainer.appendChild(switchLabel)
-               upperPart.appendChild(headerText)
-               upperPart.appendChild(switchContainer)
-               listItem.appendChild(upperPart)
-
-
-               var lowerDiv =document.createElement('div')
-               lowerDiv.style ="padding-left:28px;margin-top:0%;"
-               var para =document.createElement('p')
-               para.className = "subText"
-               para.innerHTML =  policy.description //"This includes key features like page navigation and logging you in. The website cannot function without this"
-               var more = document.createElement('button')
-               more.className="moreDetailsButton"
-               
-
-            //    function test(){
-            //      return cookieData.filter(e=>(e.name === policy._id))[0]
-
-            //    }
-               more.onclick = ()=>{
-                p2Parent.classname = "hidePanel1"
-                panelCall(2,1,policy, policy._id)
-                };
-               more.innerHTML = "More Details"
-               var imagesvg = document.createElement('span')
-               imagesvg.innerHTML = ` <svg
-                           width=16
-                           height=16
-                           viewBox= "0 0 16 16"
-                           fill=none
-                           xmlns=http://www.w3.org/2000/svg
-                           class="Icon__StyledIcon-sc-1fw5m9z-0 PolicyList__Arrow-avna3w-0 jqvij"
-                         >
-                           <path
-                             fill-rule="evenodd"
-                             clip-rule="evenodd"
-                             fill="currentColor"
-                             d="M5.52843 4.47145C5.26808 4.2111 5.26808 3.78899 5.52843 3.52864C5.78878 3.26829 6.21089 3.26829 6.47124 3.52864L10.4712 7.52864C10.7236 7.78102 10.7325 8.18741 10.4913 8.45052L6.82461 12.4505C6.57581 12.7219 6.1541 12.7403 5.88269 12.4915C5.61127 12.2427 5.59294 11.821 5.84173 11.5496L9.07708 8.02009L5.52843 4.47145Z"
-                           ></path>
-                         </svg>`
-                         more.appendChild(imagesvg)
-                         lowerDiv.appendChild(para)
-                         lowerDiv.appendChild(more)
-                         listItem.appendChild(lowerDiv)
-                 
-                ulist.appendChild(listItem)
-                })
-                div3.appendChild(ulist);
-                div2.appendChild(div3);
-                div1.appendChild(div2);
-                //footer
-        
-                var footer = document.createElement('a')
-                footer.href = "https://app.useinfluence.co"
-                footer.className = "footer"
-                var brand = document.createElement('p')
-                brand.style = "color:rgb(151, 151, 151);font-size:12px;font-weight:500;margin-bottom:0px"
-                brand.innerHTML = "Verified by Influence"
-
-                var blueTick = document.createElement('span')
-                blueTick.innerHTML=`<svg style="margin-top:0px;margin-right:4px;" width="9" height="9" viewBox="0 0 524 524" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                <style>.cls-1 {
-                        fill: #5d93fe;
-                    }
-                    .cls-2 {
-                        fill: #5d93fe;
-                        filter: url(#a);
-                    }
-                    .cls-3 {
-                        fill: #fff;
-                        fill-rule: evenodd;
-                    }</style>
-                <filter id="a" x="51" y="51" width="423" height="423" filterUnits="userSpaceOnUse">
-                <feOffset in="SourceAlpha" result="offset"/>
-                <feGaussianBlur result="blur" stdDeviation="2.236"/>
-                <feFlood flood-opacity=".06" result="flood"/>
-                <feComposite in2="blur" operator="in" result="composite"/>
-                <feBlend in="SourceGraphic" result="blend"/>
-                </filter>
-                </defs>
-                <circle class="cls-1" cx="262" cy="262" r="262"/>
-                <circle class="cls-2" cx="262" cy="262" r="207"/>
-                <path class="cls-3" transform="translate(-640 -238)" d="m833.89 478.95 81.132 65.065a9 9 0 0 1 1.391 12.652l-25.651 31.985a9 9 0 0 1-12.652 1.39l-81.132-65.065a9 9 0 0 1-1.391-12.652l25.651-31.985a9 9 0 0 1 12.652-1.39z"/>
-                <path class="cls-3" transform="translate(-640 -238)" d="m846.25 552.7 127.39-144.5a9.721 9.721 0 0 1 13.35-1.047l29.679 24.286a8.9 8.9 0 0 1 1.08 12.862l-127.39 144.5a9.721 9.721 0 0 1-13.35 1.047l-29.675-24.286a8.9 8.9 0 0 1-1.087-12.861z"/>
-                </svg>`
-                footer.appendChild(blueTick)
-                footer.appendChild(brand)
-        
-        
-                navBarParent.appendChild(doneNav)
-                p2Parent.appendChild(navBarParent)
-                p2Parent.appendChild(div1)
-                p2Parent.appendChild(footer)
-        //    var element = document.getElementById("div1");
-        //         element.appendChild(p2Parent)
-        while(mainContainer.hasChildNodes()) {
-            mainContainer.removeChild(mainContainer.childNodes[0]);
-          }
-                mainContainer.appendChild(p2Parent);  
-
-        }
-        
-        function Parent3(activePanel,sourcePane,arr, policyData){
-         
-            var p3Parent = document.createElement('div');
-        
-                p3Parent.className =
-                    activePanel === 2 ? `showPanel mainBoxStyle2` : 'hidePanel1';
-        
-                var navBarParent = document.createElement('div')
-                navBarParent.className = "navBarParent"
-                var backNav = document.createElement("div");
-                backNav.className = "backNav"
-                backNav.onclick = () =>{
-                    
-                //   p3Parent.classname="hidePanel1"
-                  panelCall(1,2)
-                  
-                }
-                backNav.innerHTML = `<svg
-                 width="16"
-                 height="16"
-                 viewBox="0 0 16 16"
-                 fill="none"
-                 xmlns="http://www.w3.org/2000/svg"
-               >
-                 <rect
-                   width="1.33333"
-                   height="9.33333"
-                   rx="0.666667"
-                   transform="matrix(0 -1 -1 0 12.6667 8.6665)"
-                   fill="#979797"
-                 ></rect>
-                 <path
-                   d="M8.47132 11.5284C8.73167 11.7888 8.73167 12.2109 8.47132 12.4712C8.21097 12.7316 7.78886 12.7316 7.52851 12.4712L3.52851 8.47124C3.27613 8.21886 3.2673 7.81246 3.50848 7.54935L7.17515 3.54935C7.42394 3.27794 7.84566 3.25961 8.11707 3.5084C8.38848 3.7572 8.40682 4.17891 8.15802 4.45032L4.92268 7.97979L8.47132 11.5284Z"
-                   fill="currentColor"
-                 ></path>
-               </svg> Back`
-
-                navBarParent.appendChild(backNav)
-                var mainHeading = document.createElement('h1')
-                mainHeading.className = "mainHeading"
-                mainHeading.innerHTML = "Our Features"
-                navBarParent.appendChild(mainHeading)
-                var doneNav = document.createElement('div')
-                doneNav.className = "doneNav"
-                var switchLabel  = document.createElement('label');
-                switchLabel.className = "switch";
-                var checkboxInput = document.createElement('input');
-                checkboxInput.type = "checkbox";
-
-                checkboxInput.className = "generalInputCheckboxClass"
-                // checkboxInput.disabled= arr.essentialPolicy
-
-                if(policy.essentialPolicy == true){
-                    checkboxInput.checked = true
-                    checkboxInput.disabled = true
-                }
-                var d = getCookieById(policyData)
-                
-                checkboxInput.checked = d && d.key? true : false
-                if(arr.slug == "Essential1"){
-                    checkboxInput.checked = true
-                    checkboxInput.disabled= true
-                }
-                checkboxInput.onchange = (e) =>{
-
-                    setCookies(arr._id, e.target.checked)
-
-                    // document.cookie = "key1 = value1;key2 = value2;expires = date";
-
-                 }
-                var checkboxSpan = document.createElement('span');
-                checkboxSpan.className = "slider round";
-        
-        switchLabel.appendChild(checkboxInput)
-        switchLabel.appendChild(checkboxSpan)
-        doneNav.appendChild(switchLabel)
-        navBarParent.appendChild(doneNav)
-                var div1 = document.createElement('div')
-                div1.className = "bodyParent1"
-                var div2 = document.createElement('div')
-                div1.className = "bodyParent2"
-                var div3 = document.createElement('div')
-                div1.className = "bodyParent3"
-                var ulist = document.createElement('ul')
-                ulist.style = "list-style-type:none; margin: 0%; padding: 5%;"
-
-               // arr.map(policy => {
-
-               
-                var listItem = document.createElement('div')
-                listItem.classList = "listItemDetail"
-        
-                var upperPart = document.createElement('div')
-                upperPart.className = "upperPart"
-            
-        
-               var headerText = document.createElement('p')
-               headerText.className = "headerText"
-               headerText.innerHTML = arr.slug
-        
-               upperPart.appendChild(headerText)
-        
-               var lowerDiv =document.createElement('div')
-               lowerDiv.style ="margin-top:0%;"
-               var para =document.createElement('p')
-               para.className = "subText"
-               para.innerHTML = arr.description// "This includes key features like page navigation and logging you in. The website cannot function without this"
-               lowerDiv.appendChild(para)
-               listItem.appendChild(upperPart)
-               listItem.appendChild(lowerDiv)
-                ulist.appendChild(listItem)
-            //})
-                div3.appendChild(ulist);
-                div2.appendChild(div3);
-                div1.appendChild(div2);
-                //footer
-        
-                var footer = document.createElement('a')
-                footer.href="https://app.useinfluence.co"
-                footer.className = "footer"
-                var brand = document.createElement('p')
-                brand.style = "color:rgb(151, 151, 151);font-size:12px;font-weight:500;margin-bottom:0px"
-                brand.innerHTML = "Verified by Influence"
-
-                var blueTick = document.createElement('span')
-                blueTick.innerHTML=`<svg style="margin-top:0px;margin-right:4px;" width="9" height="9" viewBox="0 0 524 524" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                <style>.cls-1 {
-                        fill: #5d93fe;
-                    }
-                    .cls-2 {
-                        fill: #5d93fe;
-                        filter: url(#a);
-                    }
-                    .cls-3 {
-                        fill: #fff;
-                        fill-rule: evenodd;
-                    }</style>
-                <filter id="a" x="51" y="51" width="423" height="423" filterUnits="userSpaceOnUse">
-                <feOffset in="SourceAlpha" result="offset"/>
-                <feGaussianBlur result="blur" stdDeviation="2.236"/>
-                <feFlood flood-opacity=".06" result="flood"/>
-                <feComposite in2="blur" operator="in" result="composite"/>
-                <feBlend in="SourceGraphic" result="blend"/>
-                </filter>
-                </defs>
-                <circle class="cls-1" cx="262" cy="262" r="262"/>
-                <circle class="cls-2" cx="262" cy="262" r="207"/>
-                <path class="cls-3" transform="translate(-640 -238)" d="m833.89 478.95 81.132 65.065a9 9 0 0 1 1.391 12.652l-25.651 31.985a9 9 0 0 1-12.652 1.39l-81.132-65.065a9 9 0 0 1-1.391-12.652l25.651-31.985a9 9 0 0 1 12.652-1.39z"/>
-                <path class="cls-3" transform="translate(-640 -238)" d="m846.25 552.7 127.39-144.5a9.721 9.721 0 0 1 13.35-1.047l29.679 24.286a8.9 8.9 0 0 1 1.08 12.862l-127.39 144.5a9.721 9.721 0 0 1-13.35 1.047l-29.675-24.286a8.9 8.9 0 0 1-1.087-12.861z"/>
-                </svg>`
-                footer.appendChild(blueTick)
-                footer.appendChild(brand)
-                navBarParent.appendChild(doneNav)
-                p3Parent.appendChild(navBarParent)
-                p3Parent.appendChild(div1)
-                p3Parent.appendChild(footer)
-          
-                // var element = document.getElementById("div1");
-                // element.appendChild(p3Parent)
-                while(mainContainer.hasChildNodes()) {
-                    mainContainer.removeChild(mainContainer.childNodes[0]);
-                  }
-
-                mainContainer.appendChild(p3Parent);  
-
-          
-        }
-        
-           function panelCall(to, source,arr, policyId){
-              
-            
-                  activePanel = to
-                  sourcePanel = source
-               
-                activePanel === 0 ?
-              Parent1(activePanel,sourcePanel)
-                :
-                activePanel === 1 ?
-               Parent2(activePanel,sourcePanel)
-                :
-                activePanel === 2 ?
-                Parent3(activePanel,sourcePanel,arr,policyId )
-                :
-                Parent1(activePanel,sourcePanel)
-            }
-        
-        panelCall(0,0)
-           //till here
-    // mainContainer.appendChild(element);  
-        
-    
-    // JSON.parse(localStorage.getItem('influencepermission')).enable == false ?  innerDiv.appendChild(mainContainer) : " "
-      innerDiv.appendChild(mainContainer);
-        innerDiv.appendChild(lockImg)
-        innerContainer.appendChild(innerDiv);
-        // container.appendChild(innerContainer);
-
-        var influencePermission = JSON.parse(localStorage.getItem('influencepermission'))
-
-        if(influencePermission && influencePermission.enable == true ){
-
-            container.appendChild(cookieIcon)
-
-        }else{
-            container.appendChild(innerContainer)
-        }
-     
-        // JSON.parse(localStorage.getItem('influencepermission')).enable == false ?  container.appendChild(innerContainer) : container.appendChild(lockImg)
-    
-        
-        displayNotification(container, "config");
-    }
-
-
-    function setCookies(name, value){
-
-        console.log(name, value, "$$$$$$$$$$$")
-
-        const COOKIE_PREFIX = "Influence_";
-
-             name= COOKIE_PREFIX + name
-                    var d = new Date();
-                    d.setTime(d.setTime() + (1*24*60*60*1000))
-
-                    let expires = "expires="+ d.toUTCString();
-
-                    let sec= '';
-
-                    if(this._cookie_secure ==2){
-                        if(location.protocol){
-                            if(location.protocol == "https:"){ 
-                                sec= ';secure';
-                            }
-                        }
-                    } else if(this._cookie_secure == true){
-
-                        sec= ';secure';
-
-                    }
-
-                    document.cookie = name+ "="+ JSON.stringify(value)+ ";" +expires //+ "; path=" + path + sec
-                
-    }
-
-
-
-    /**
-     * retrieve data from user's Cookie storage
-     * @return ``` [{name: "NAME", key: true/false}] ```
-     */
-    function getCookies(){
-        const COOKIE_PREFIX = "Influence_";
-        name = name+"="
-        const cookies = document.cookie.split(";")
-
-        var getCookieArr= []
-
-        for(var i = 0; i < cookies.length; i++) {
-            var cookie = cookies[i]
-
-           if(cookie.indexOf(COOKIE_PREFIX) == 1){
-
-            name = cookie.split('=')[0].trim().substring(COOKIE_PREFIX.length);
-            value = cookie.split('=')[1];
-
-            getCookieArr.push({name: name, key : value == "true"? true : false})
-         }
-        }
-        return getCookieArr;
-    }
-
-    function getCookieById (name){
-        const COOKIE_PREFIX = "Influence_";    
-        name = name+"="
-        const cookies = document.cookie.split(";")
-
-        for(var i = 0; i < cookies.length; i++) {
-            var cookie = cookies[i]
-           if(cookie.indexOf(COOKIE_PREFIX+name) == 1){
-                name = cookie.split('=')[0].trim().substring(COOKIE_PREFIX.length);
-                value = cookie.split('=')[1];
-
-            return {name: name, key: value}
-         }
-        }
-        return null;
-    }
-
-    return {
-        notificationdisplay: function notificationdisplay(type, config, containerStyle, iconStyle, alignment) {
-            notificationDisplay(type, config, containerStyle, iconStyle, alignment);
-        }
-    };
-};
-
-function getCookieById (name){
-    const COOKIE_PREFIX = "Influence_";    
-    name = name+"="
-    const cookies = document.cookie.split(";")
-
-    for(var i = 0; i < cookies.length; i++) {
-        var cookie = cookies[i]
-       if(cookie.indexOf(COOKIE_PREFIX+name) == 1){
-            name = cookie.split('=')[0].trim().substring(COOKIE_PREFIX.length);
-            value = cookie.split('=')[1];
-
-        return {name: name, key: value}
-     }
-    }
-    return null;
-}
 
 if (typeof module !== "undefined" && module.exports) module.exports = Note;
 Influence = typeof Influence === 'undefined' ? require('../server') : Influence;
 
 
-
-if (typeof module !== "undefined" && module.exports) module.exports = CookieFn;
-Influence = typeof Influence === 'undefined' ? require('../server') : Influence;
-
-
 (async function () {
-
-    var response = {
-        "host":"test2109.herokuapp.com",
-        "campaign":{
-           "onBoarding":true,
-           "uniqueVisitors":0,
-           "_id":"5f7db8482b3590001c052f21",
-           "campaignName":"test2109",
-           "protocol":"https:",
-           "websiteUrl":"test2109.herokuapp.com",
-           "profile":"5c6d4b8b98948500132d07e9",
-           "isActive":true,
-           "trackingId":"INF-3gbfcjjsd6vhvo",
-           "createdAt":"2020-10-07T12:44:56.141Z",
-           "updatedAt":"2020-10-07T12:45:17.336Z",
-           "__v":0,
-           "id":"5f7db8482b3590001c052f21"
-        },
-        "configuration":{
-           "_id":"5f7db8482b3590001c052f22",
-           "panelStyle":{
-              "color":{
-                 "r":0,
-                 "g":0,
-                 "b":0,
-                 "a":1
-              },
-              "noButtonStyle":"outline"
-           },
-           "langName":{
-              "name":{
-                 "language":"en",
-                 "name":"English"
-              }
-           },
-           "scrollToConsent":true,
-           "position":"left",
-           "customPromptText":"jjujriofjriojfiorjfiojfoijrf",
-           "customAcceptText":"customAcceptText",
-           "poweredBy":"Influence",
-           "poweredByLink":"https://useinfluence.co",
-           "cookiecampaign":"5f7db8482b3590001c052f21",
-           "trackingId":"INF-3gbfcjjsd6vhvo",
-           "createdAt":"2020-10-07T12:44:56.160Z",
-           "updatedAt":"2020-10-08T09:51:01.745Z",
-           "__v":0,
-           "id":"5f7db8482b3590001c052f22"
-        },
-        "microPolicies":[
-           {
-              "useCookie":false,
-              "essentialPolicy":false,
-              "cookieWidgets":false,
-              "_id":"5f7db85d2b3590001c052f27",
-              "name":"maxcdn.bootstrapcdn.com",
-              "description":"",
-              "websiteUrl":"test2109.herokuapp.com",
-              "slug":"marketing",
-              "trackingId":"INF-3gbfcjjsd6vhvo",
-              "cookieCampaign":"5f7db8482b3590001c052f21",
-              "profile":"5c6d4b8698948500132d07e7",
-              "createdAt":"2020-10-07T12:45:17.330Z",
-              "updatedAt":"2020-10-07T12:45:17.330Z",
-              "__v":0,
-              "id":"5f7db85d2b3590001c052f27",
-              "provider":[
-                 {
-                    "_id":"5f7db85d2b3590001c052f2a",
-                    "name":"test2109.herokuapp.com",
-                    "provider":"maxcdn.bootstrapcdn.com",
-                    "type":"marketing",
-                    "trackingId":"INF-3gbfcjjsd6vhvo",
-                    "createdAt":"2020-10-07T12:45:17.387Z",
-                    "updatedAt":"2020-10-07T12:45:17.387Z",
-                    "id":"5f7db85d2b3590001c052f2a"
-                 }
-              ]
-           },
-           {
-              "useCookie":false,
-              "essentialPolicy":false,
-              "cookieWidgets":false,
-              "_id":"5f7db85d2b3590001c052f24",
-              "name":"ajax.googleapis.com",
-              "description":"",
-              "websiteUrl":"test2109.herokuapp.com",
-              "slug":"essential",
-              "trackingId":"INF-3gbfcjjsd6vhvo",
-              "cookieCampaign":"5f7db8482b3590001c052f21",
-              "profile":"5c6d4b8698948500132d07e7",
-              "createdAt":"2020-10-07T12:45:17.327Z",
-              "updatedAt":"2020-10-07T12:45:17.327Z",
-              "__v":0,
-              "id":"5f7db85d2b3590001c052f24",
-              "provider":[
-                 {
-                    "_id":"5f7db85d2b3590001c052f2b",
-                    "name":"test2109.herokuapp.com",
-                    "provider":"ajax.googleapis.com",
-                    "type":"essential",
-                    "trackingId":"INF-3gbfcjjsd6vhvo",
-                    "createdAt":"2020-10-07T12:45:17.390Z",
-                    "updatedAt":"2020-10-07T12:45:17.390Z",
-                    "id":"5f7db85d2b3590001c052f2b"
-                 }
-              ]
-           },
-           {
-              "useCookie":false,
-              "essentialPolicy":false,
-              "cookieWidgets":false,
-              "_id":"5f7db85d2b3590001c052f23",
-              "name":"Dashly",
-              "description":"Test Description for Dashly 23",
-              "websiteUrl":"test2109.herokuapp.com",
-              "slug":"essential",
-              "trackingId":"INF-3gbfcjjsd6vhvo",
-              "cookieCampaign":"5f7db8482b3590001c052f21",
-              "profile":"5c6d4b8698948500132d07e7",
-              "createdAt":"2020-10-07T12:45:17.326Z",
-              "updatedAt":"2020-10-08T09:49:17.323Z",
-              "__v":0,
-              "id":"5f7db85d2b3590001c052f23",
-              "provider":[
-                 {
-                    "_id":"5f7db85d2b3590001c052f29",
-                    "name":"cdn.dashly.app",
-                    "provider":"cdn.dashly.app",
-                    "type":"essential",
-                    "trackingId":"INF-3gbfcjjsd6vhvo",
-                    "createdAt":"2020-10-07T12:45:17.385Z",
-                    "updatedAt":"2020-10-07T12:45:17.385Z",
-                    "id":"5f7db85d2b3590001c052f29"
-                 }
-              ]
-           },
-           {
-              "useCookie":false,
-              "essentialPolicy":false,
-              "cookieWidgets":false,
-              "_id":"5f7db85d2b3590001c052f25",
-              "name":"s3.amazonaws.com",
-              "description":"",
-              "websiteUrl":"test2109.herokuapp.com",
-              "slug":"essential",
-              "trackingId":"INF-3gbfcjjsd6vhvo",
-              "cookieCampaign":"5f7db8482b3590001c052f21",
-              "profile":"5c6d4b8698948500132d07e7",
-              "createdAt":"2020-10-07T12:45:17.328Z",
-              "updatedAt":"2020-10-07T12:45:17.328Z",
-              "__v":0,
-              "id":"5f7db85d2b3590001c052f25",
-              "provider":[
-                 {
-                    "_id":"5f7db85d2b3590001c052f2c",
-                    "name":"test2109.herokuapp.com",
-                    "provider":"s3.amazonaws.com",
-                    "type":"essential",
-                    "trackingId":"INF-3gbfcjjsd6vhvo",
-                    "createdAt":"2020-10-07T12:45:17.392Z",
-                    "updatedAt":"2020-10-07T12:45:17.392Z",
-                    "id":"5f7db85d2b3590001c052f2c"
-                 }
-              ]
-           }
-        ]
-     }
-    
-
-// var   response = {
-//     "campaign": {
-//         "onBoarding": false,
-//         "_id": "5f4dec0e74814a416e9582d2",
-//         "campaignType": "default",
-//         "campaignName": "test",
-//         "websiteUrl": "test.com",
-//         "profile": "5c6d4b8b98948500132d07e9",
-//         "isActive": true,
-//         "trackingId": "INF-3gbfcjjsd6vhvo",
-//         "createdAt": "2020-09-01T06:37:02.778Z",
-//         "updatedAt": "2020-09-01T06:37:02.778Z",
-//         "__v": 0,
-//         "id": "5f4dec0e74814a416e9582d2"
-//     },
-//     "configuration": {
-//         "_id": "5f4dec0f74814a416e9582d3",
-//         "activity": true,
-//         "panelStyle": {
-//             "noButtonStyle": "outline",
-//             "color": {
-//                 "r": 0,
-//                 "g": 0,
-//                 "b": 0,
-//                 "a": 1
-//             }
-//         },
-//         "langName": {
-//             "language": "en",
-//             "name": "English"
-//         },
-//         "scrollToConsent": true,
-//         "position": "left",
-//         "customPromptText": "customPromptText",
-//         "customAcceptText": "customAcceptText",
-//         "brandingText": "brandingText",
-//         "brandingStyle": "brandingStyle",
-//         "poweredBy": "Influence",
-//         "poweredByLink": "https://useinfluence.co",
-//         "cookiecampaign": "5f4dec0e74814a416e9582d2",
-//         "trackingId": "INF-3gbfcjjsd6vhvo",
-//         "createdAt": "2020-09-01T06:37:03.149Z",
-//         "updatedAt": "2020-09-01T06:37:03.149Z",
-//         "__v": 0,
-//         "id": "5f4dec0f74814a416e9582d3"
-//     },
-//     "microPolicies": [
-//         {
-//             "useCookie": true,
-//             "essentialPolicy": true,
-//             "cookieWidgets": false,
-//             "_id": "5f4e13b68acd492ae77f74a3",
-//             "name": "cdn.dashly.app",
-//             "description": "test Policy Description",
-//             "websiteUrl": "test.com",
-//             "slug": "test",
-//             "trackingId": "INF-3gbfcjjsd6vhvo",
-//             "cookiecampaign": "5f4dec0e74814a416e9582d2",
-//             "profile": "5f4dec0e74814a416e9582d2",
-//             "createdAt": "2020-09-01T09:26:14.749Z",
-//             "updatedAt": "2020-09-01T09:26:14.749Z",
-//             "__v": 0,
-//             "id": "5f4e13b68acd492ae77f74a3",
-//             "provider": [
-//                 {
-//                     "_id": "5f48ef30d0aae6670d49648b",
-//                     "name": "https://test2109.herokuapp.com",
-//                     "provider": "cdn.dashly.app1",
-//                     "type": "esential",
-//                     "trackingId": "INF-3gbfcjjsd6vhvo",
-//                     "createdAt": "2020-08-28T11:49:04.611Z",
-//                     "updatedAt": "2020-08-28T11:49:04.611Z",
-//                     "id": "5f48ef30d0aae6670d49648b"
-//                 }
-//             ]
-//         },
-//         {
-//             "useCookie": true,
-//             "essentialPolicy": false,
-//             "cookieWidgets": false,
-//             "_id": "5f4e13b68acd492ae77f74a4",
-//             "name": "test",
-//             "description": "test Policy Description",
-//             "websiteUrl": "test.com",
-//             "slug": "Essential11",
-//             "trackingId": "INF-3gbfcjjsd6vhvo",
-//             "cookiecampaign": "5f4dec0e74814a416e9582d2",
-//             "profile": "5f4dec0e74814a416e9582d2",
-//             "createdAt": "2020-09-01T09:26:14.749Z",
-//             "updatedAt": "2020-09-01T09:26:14.749Z",
-//             "__v": 0,
-//             "id": "5f4e13b68acd492ae77f74a3",
-//             "provider": [
-//                 {
-//                     "_id": "5f48ef30d0aae6670d49648b",
-//                     "name": "https://test2109.herokuapp.com",
-//                     "provider": "cdn.dashly.app",
-//                     "type": "test",
-//                     "trackingId": "INF-3gbfcjjsd6vhvo",
-//                     "createdAt": "2020-08-28T11:49:04.611Z",
-//                     "updatedAt": "2020-08-28T11:49:04.611Z",
-//                     "id": "5f48ef30d0aae6670d49648b",
-//                     "description": "test Policy Description",
-
-//                 }
-//             ]
-//         },
-//         {
-//             "useCookie": true,
-//             "essentialPolicy": false,
-//             "cookieWidgets": false,
-//             "_id": "5f4e13b68acd492ae77f74a1",
-//             "name": "Hello",
-//             "description": "Hello Policy Description",
-//             "websiteUrl": "test.com",
-//             "slug": "Hello",
-//             "trackingId": "INF-3gbfcjjsd6vhvo",
-//             "cookiecampaign": "5f4dec0e74814a416e9582d2",
-//             "profile": "5f4dec0e74814a416e9582d2",
-//             "createdAt": "2020-09-01T09:26:14.749Z",
-//             "updatedAt": "2020-09-01T09:26:14.749Z",
-//             "__v": 0,
-//             "id": "5f4e13b68acd492ae77f74a3",
-//             "provider": [
-//                 {
-//                     "_id": "5f48ef30d0aae6670d49648b",
-//                     "name": "https://test2109.herokuapp.com",
-//                     "provider": "cdn.dashly.app",
-//                     "type": "test",
-//                     "trackingId": "INF-3gbfcjjsd6vhvo",
-//                     "createdAt": "2020-08-28T11:49:04.611Z",
-//                     "updatedAt": "2020-08-28T11:49:04.611Z",
-//                     "id": "5f48ef30d0aae6670d49648b",
-//                     "description": "test Policy Description",
-
-//                 }
-//             ]
-//         }
-//     ]
-// }
-
-var cookieFn = new CookieFn({})
-
-cookieFn.notificationdisplay( response.configuration, response.microPolicies);
-
-var m =[]
-response.microPolicies.map(e=>{
-
-    var d = getCookieById(e._id)
-
-    if(d && d.key){
-        e.provider.map(e =>{
-            console.log(e.provider)
-
-            m.push(new RegExp(e.provider))
-        })
-    }
-    
-})
-
-
-window.YETT_BLACKLIST = m 
-
-function getCookieById (name){
-    const COOKIE_PREFIX = "Influence_";    
-    name = name+"="
-    const cookies = document.cookie.split(";")
-
-    for(var i = 0; i < cookies.length; i++) {
-        var cookie = cookies[i]
-       if(cookie.indexOf(COOKIE_PREFIX+name) == 1){
-            name = cookie.split('=')[0].trim().substring(COOKIE_PREFIX.length);
-            value = cookie.split('=')[1];
-
-        return {name: name, key: value}
-     }
-    }
-    return null;
-}
-
- !(function (t, e) {
-
-        "object" == typeof exports && "undefined" != typeof module ? e(exports) : "function" == typeof define && define.amd ? define(["exports"], e) : e(((t = t || self).yett = {}));
-    })(this, function (t) {
-        "use strict";
-        function o(e, t) {
-
-            return (
-                e &&
-                (!t || t !== c) &&
-                (!s.blacklist ||
-                    s.blacklist.some(function (t) {
-                        return t.test(e);
-                    })) &&
-                (!s.whitelist ||
-                    s.whitelist.every(function (t) {
-                        return !t.test(e);
-                    }))
-            );
-        }
-        function l(t) {
-
-            var e = t.getAttribute("src");
-            return (
-                (s.blacklist &&
-                    s.blacklist.every(function (t) {
-                        return !t.test(e);
-                    })) ||
-                (s.whitelist &&
-                    s.whitelist.some(function (t) {
-                        return t.test(e);
-                    }))
-            );
-        }
-        var c = "javascript/blocked",
-            s = { blacklist: window.YETT_BLACKLIST , whitelist: window.YETT_WHITELIST },
-            u = { blacklisted: [] },
-            f = new MutationObserver(function (t) {
-                for (var e = 0; e < t.length; e++)
-                    for (
-                        var i = t[e].addedNodes,
-                            r = function (t) {
-                                var r = i[t];
-                                if (1 === r.nodeType && "SCRIPT" === r.tagName) {
-                                    var e = r.src,
-                                        n = r.type;
-                                    if (o(e, n)) {
-                                        u.blacklisted.push([r, r.type]), (r.type = c);
-                                        r.addEventListener("beforescriptexecute", function t(e) {
-                                            r.getAttribute("type") === c && e.preventDefault(), r.removeEventListener("beforescriptexecute", t);
-                                        }),
-                                            r.parentElement && r.parentElement.removeChild(r);
-                                    }
-                                }
-                            },
-                            n = 0;
-                        n < i.length;
-                        n++
-                    )
-                        r(n);
-            });
-
-        f.observe(document.documentElement, { childList: !0, subtree: !0 });
-        var i = document.createElement,
-            a = { src: Object.getOwnPropertyDescriptor(HTMLScriptElement.prototype, "src"), type: Object.getOwnPropertyDescriptor(HTMLScriptElement.prototype, "type") };
-        function p(t, e) {
-            return (
-                (function (t) {
-                    if (Array.isArray(t)) return t;
-                })(t) ||
-                (function (t, e) {
-                    if ("undefined" == typeof Symbol || !(Symbol.iterator in Object(t))) return;
-                    var r = [],
-                        n = !0,
-                        i = !1,
-                        o = void 0;
-                    try {
-                        for (var c, a = t[Symbol.iterator](); !(n = (c = a.next()).done) && (r.push(c.value), !e || r.length !== e); n = !0);
-                    } catch (t) {
-                        (i = !0), (o = t);
-                    } finally {
-                        try {
-                            n || null == a.return || a.return();
-                        } finally {
-                            if (i) throw o;
-                        }
-                    }
-                    return r;
-                })(t, e) ||
-                r(t, e) ||
-                (function () {
-                    throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-                })()
-            );
-        }
-        function y(t) {
-            return (
-                (function (t) {
-                    if (Array.isArray(t)) return n(t);
-                })(t) ||
-                (function (t) {
-                    if ("undefined" != typeof Symbol && Symbol.iterator in Object(t)) return Array.from(t);
-                })(t) ||
-                r(t) ||
-                (function () {
-                    throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-                })()
-            );
-        }
-        function r(t, e) {
-            if (t) {
-                if ("string" == typeof t) return n(t, e);
-                var r = Object.prototype.toString.call(t).slice(8, -1);
-                return "Object" === r && t.constructor && (r = t.constructor.name), "Map" === r || "Set" === r ? Array.from(t) : "Arguments" === r || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r) ? n(t, e) : void 0;
-            }
-        }
-        function n(t, e) {
-            (null == e || e > t.length) && (e = t.length);
-            for (var r = 0, n = new Array(e); r < e; r++) n[r] = t[r];
-            return n;
-        }
-        document.createElement = function () {
-            for (var t = arguments.length, e = new Array(t), r = 0; r < t; r++) e[r] = arguments[r];
-            if ("script" !== e[0].toLowerCase()) return i.bind(document).apply(void 0, e);
-            var n = i.bind(document).apply(void 0, e);
-            try {
-                Object.defineProperties(n, {
-                    src: {
-                        get: function () {
-                            return a.src.get.call(this);
-                        },
-                        set: function (t) {
-                            o(t, n.type) && a.type.set.call(this, c), a.src.set.call(this, t);
-                        },
-                    },
-                    type: {
-                        set: function (t) {
-                            var e = o(n.src, n.type) ? c : t;
-                            a.type.set.call(this, e);
-                        },
-                    },
-                }),
-                    (n.setAttribute = function (t, e) {
-                        "type" === t || "src" === t ? (n[t] = e) : HTMLScriptElement.prototype.setAttribute.call(n, t, e);
-                    });
-            } catch (t) {
-                console.warn("Yett: unable to prevent script execution for script src ", n.src, ".\n", 'A likely cause would be because you are using a third-party browser extension that monkey patches the "document.createElement" function.');
-            }
-            return n;
-        };
-        var d = new RegExp("[|\\{}()[\\]^$+*?.]", "g");
-        (t.unblock = function () {
-            for (var t = arguments.length, r = new Array(t), e = 0; e < t; e++) r[e] = arguments[e];
-            r.length < 1
-                ? ((s.blacklist = []), (s.whitelist = []))
-                : (s.blacklist &&
-                    (s.blacklist = s.blacklist.filter(function (e) {
-                        return r.every(function (t) {
-                            return "string" == typeof t ? !e.test(t) : t instanceof RegExp ? e.toString() !== t.toString() : void 0;
-                        });
-                    })),
-                s.whitelist &&
-                    (s.whitelist = [].concat(
-                        y(s.whitelist),
-                        y(
-                            r.map(function (e) {
-                                    if ("string" == typeof e) {
-                                        var r = ".*" + e.replace(d, "\\$&") + ".*";
-                                        if (
-                                            s.whitelist.every(function (t) {
-                                                return t.toString() !== r.toString();
-                                            })
-                                        )
-                                            return new RegExp(r);
-                                    } else if (
-                                        e instanceof RegExp &&
-                                        s.whitelist.every(function (t) {
-                                            return t.toString() !== e.toString();
-                                        })
-                                    )
-                                        return e;
-                                    return null;
-                                })
-                                .filter(Boolean)
-                        )
-                    )));
-            for (var n = document.querySelectorAll('script[type="'.concat(c, '"]')), i = 0; i < n.length; i++) {
-                var o = n[i];
-                l(o) && (u.blacklisted.push([o, "application/javascript"]), o.parentElement.removeChild(o));
-            }
-            var a = 0;
-            y(u.blacklisted).forEach(function (t, e) {
-                var r = p(t, 2),
-                    n = r[0],
-                    i = r[1];
-                if (l(n)) {
-                    var o = document.createElement("script");
-                    for (var c in (o.setAttribute("src", n.src), o.setAttribute("type", i || "application/javascript"), n)) c.startsWith("on") && (o[c] = n[c]);
-                    document.head.appendChild(o), u.blacklisted.splice(e - a, 1), a++;
-                }
-            }),
-                s.blacklist && s.blacklist.length < 1 && f.disconnect();
-        }),
-            Object.defineProperty(t, "__esModule", { value: !0 });
-    });
-   
-
-
     var scripts = await document.getElementsByTagName('script');
-
-
     var myScript;
     for (let i = 0; i < scripts.length; i++) {
         if (scripts[i].src.split('?')[0].indexOf(influenceScript) !== -1)
@@ -5921,7 +4477,6 @@ function getCookieById (name){
     }
 
     var queryString = myScript ? myScript.src.replace(/^[^\?]+\??/, '') : '';
-
 
     function parseQuery(query) {
         var Params = new Object();
@@ -5939,8 +4494,6 @@ function getCookieById (name){
     }
 
     var params = parseQuery(queryString);
-
-
 
     if (params.trackingId) {
         new Influence({

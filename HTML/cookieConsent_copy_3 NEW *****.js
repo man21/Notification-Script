@@ -2832,18 +2832,14 @@ InfluenceTracker.prototype.tracker = function (info) {
         data.category = data && data.value ? data.value.event : '';
 
         //Send the proper header information along with the request
-        var url = BASE_URL + '/ws/cookie/log';
-        if(data.category === 'pageview' ){
+        var url = BASE_URL + '/ws/log';
+        if(configurationPath && data.category === 'formsubmit'){
+            httpPostAsync(url, JSON.stringify(data), function (res) {
+             });
+        } else if(data.category === 'click' || data.category === 'mouseover' || data.category === 'notificationview' || data.category === 'pageview' ){
             httpPostAsync(url, JSON.stringify(data), function (res) {
             });
         }
-        // if(configurationPath && data.category === 'formsubmit'){
-        //     httpPostAsync(url, JSON.stringify(data), function (res) {
-        //      });
-        // } else if(data.category === 'click' || data.category === 'mouseover' || data.category === 'notificationview' || data.category === 'pageview' ){
-        //     httpPostAsync(url, JSON.stringify(data), function (res) {
-        //     });
-        // }
 
         
 
@@ -5467,7 +5463,7 @@ Influence = typeof Influence === 'undefined' ? require('../server') : Influence;
            },
            {
               "useCookie":false,
-              "essentialPolicy":true,
+              "essentialPolicy":false,
               "cookieWidgets":false,
               "_id":"5f7db85d2b3590001c052f23",
               "name":"Dashly",

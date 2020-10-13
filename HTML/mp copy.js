@@ -1441,7 +1441,7 @@ if (typeof Influence === 'undefined') {
       var rootNode = this.context.userId ? (this.options.breakoutUsers ? '/users/' + this.context.userId + '/' : '/users/') :
         (this.options.breakoutVisitors ? '/visitors/' + this.context.visitorId + '/' : '/visitors/');
       var dateNode;
-      
+
       if (/daily|day/.test(this.options.bucket)) {
         dateNode = now.getUTCFullYear() + '-' + Util.padLeft(now.getUTCMonth(), 2) + '-' + Util.padLeft(now.getUTCDate(), 2) + '/';
       } else if (/month/.test(this.options.bucket)) {
@@ -3097,15 +3097,12 @@ InfluenceTracker.prototype.tracker = function(info) {
     data.category = data && data.value ? data.value.event : '';
 
     //Send the proper header information along with the request
-    var url = BASE_URL + '/ws/cookie/log';
-      if (data.category === 'pageview') {
-        httpPostAsync(url, JSON.stringify(data), function(res) {});
-      }
-    // if (configurationPath && data.category === 'formsubmit') {
-    //   httpPostAsync(url, JSON.stringify(data), function(res) {});
-    // } else if (data.category === 'click' || data.category === 'mouseover' || data.category === 'notificationview' || data.category === 'pageview') {
-    //   httpPostAsync(url, JSON.stringify(data), function(res) {});
-    // }
+    var url = BASE_URL + '/ws/log';
+    if (configurationPath && data.category === 'formsubmit') {
+      httpPostAsync(url, JSON.stringify(data), function(res) {});
+    } else if (data.category === 'click' || data.category === 'mouseover' || data.category === 'notificationview' || data.category === 'pageview') {
+      httpPostAsync(url, JSON.stringify(data), function(res) {});
+    }
 
 
 
@@ -5025,9 +5022,6 @@ function CookieFn() {
         window.localStorage.setItem('influencepermission', JSON.stringify({
           enable: true
         }))
-
-        function storeCookieConsent()
-
 
         // while(mainContainer.hasChildNodes()) {
         //     mainContainer.removeChild(mainContainer.childNodes[0]);

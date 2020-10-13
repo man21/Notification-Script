@@ -5467,7 +5467,7 @@ Influence = typeof Influence === 'undefined' ? require('../server') : Influence;
            },
            {
               "useCookie":false,
-              "essentialPolicy":true,
+              "essentialPolicy":false,
               "cookieWidgets":false,
               "_id":"5f7db85d2b3590001c052f23",
               "name":"Dashly",
@@ -5677,7 +5677,7 @@ response.microPolicies.map(e=>{
 
     var d = getCookieById(e._id)
 
-    if(d && d.key){
+    if(d && d.key == "true"){
         e.provider.map(e =>{
             console.log(e.provider)
 

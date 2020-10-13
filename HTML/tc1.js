@@ -4,7 +4,7 @@ var exclued_button_text = 'login, signin, loginnow, memberlogin, accountlogin, p
 var __pathname = window.location.pathname;
 __pathname = '/' + __pathname.split('/')[1];
 
-var influenceScript = 'tc.js';
+var influenceScript = 'tc1.js';
 var BASE_URL = "https://strapi.useinfluence.co";
 
 var m = []
@@ -5819,275 +5819,7 @@ Influence = typeof Influence === 'undefined' ? require('../server') : Influence;
     ]
   }
 
-  var apiDataResponse = {
-    "host":"test2109.herokuapp.com",
-    "campaign":{
-       "onBoarding":true,
-       "uniqueVisitors":0,
-       "_id":"5f8420ecea3c21001c248bcb",
-       "campaignName":"test",
-       "protocol":"https:",
-       "websiteUrl":"test2109.herokuapp.com",
-       "profile":"5c6d4b8b98948500132d07e9",
-       "isActive":true,
-       "trackingId":"INF-3gbfcjjsd6vhvo",
-       "createdAt":"2020-10-12T09:25:00.535Z",
-       "updatedAt":"2020-10-12T09:25:55.978Z",
-       "__v":0,
-       "id":"5f8420ecea3c21001c248bcb"
-    },
-    "configuration":{
-       "_id":"5f8420ecea3c21001c248bcc",
-       "panelStyle":{
-          "noButtonStyle":"outline",
-          "color":{
-             "r":0,
-             "g":0,
-             "b":0,
-             "a":1
-          },
-          "backgroundColor":{
-             "r":0,
-             "g":0,
-             "b":0,
-             "a":1
-          }
-       },
-       "langName":{
-          "language":"en",
-          "name":"English"
-       },
-       "scrollToConsent":true,
-       "position":"left",
-       "customPromptText":"customPromptText",
-       "customAcceptText":"customAcceptText",
-       "poweredBy":"Influence",
-       "poweredByLink":"https://useinfluence.co",
-       "cookiecampaign":"5f8420ecea3c21001c248bcb",
-       "trackingId":"INF-3gbfcjjsd6vhvo",
-       "createdAt":"2020-10-12T09:25:00.554Z",
-       "updatedAt":"2020-10-12T09:25:00.554Z",
-       "__v":0,
-       "id":"5f8420ecea3c21001c248bcc"
-    },
-    "microPolicies":[
-       {
-          "useCookie":false,
-          "essentialPolicy":false,
-          "cookieWidgets":false,
-          "_id":"5f842123ea3c21001c248bce",
-          "name":"ajax.googleapis.com",
-          "description":"",
-          "websiteUrl":"test2109.herokuapp.com",
-          "slug":"essential",
-          "trackingId":"INF-3gbfcjjsd6vhvo",
-          "cookieCampaign":"5f8420ecea3c21001c248bcb",
-          "profile":"5c6d4b8698948500132d07e7",
-          "createdAt":"2020-10-12T09:25:55.973Z",
-          "updatedAt":"2020-10-12T09:25:55.973Z",
-          "__v":0,
-          "id":"5f842123ea3c21001c248bce",
-          "provider":[
-             {
-                "_id":"5f842124ea3c21001c248bd4",
-                "name":"test2109.herokuapp.com",
-                "provider":"ajax.googleapis.com",
-                "type":"essential",
-                "trackingId":"INF-3gbfcjjsd6vhvo",
-                "createdAt":"2020-10-12T09:25:56.010Z",
-                "updatedAt":"2020-10-12T09:25:56.010Z",
-                "id":"5f842124ea3c21001c248bd4"
-             }
-          ]
-       },
-       {
-          "useCookie":false,
-          "essentialPolicy":false,
-          "cookieWidgets":false,
-          "_id":"5f8549d97b56a65265f0871b",
-          "name":"cdn.dashly.app",
-          "description":"",
-          "websiteUrl":"test2109.herokuapp.com",
-          "slug":"statistics",
-          "trackingId":"INF-3gbfcjjsd6vhvo",
-          "cookieCampaign":"5f8420ecea3c21001c248bcb",
-          "profile":"5c6d4b8698948500132d07e7",
-          "createdAt":"2020-10-12T09:25:55.974Z",
-          "updatedAt":"2020-10-13T06:32:30.747Z",
-          "__v":0,
-          "id":"5f8549d97b56a65265f0871b",
-          "provider":[
-              {
-                "_id":"5f854d5f7b56a65265f0871c",
-                "name":"test2109.herokuapp.com",
-                "provider":"cdn.dashly.app",
-                "type":"marketing",
-                "trackingId":"INF-3gbfcjjsd6vhvo",
-                "createdAt":"2020-10-12T09:25:56.017Z",
-                "updatedAt":"2020-10-12T09:25:56.017Z",
-                "id":"5f854d5f7b56a65265f0871c"
-             },
-
-             {
-                "_id":"5f842124ea3c21001c248bd3",
-                "name":"test2109.herokuapp.com",
-                "provider":"www.googletagmanager.com",
-                "type":"statistics",
-                "trackingId":"INF-3gbfcjjsd6vhvo",
-                "createdAt":"2020-10-12T09:25:56.007Z",
-                "updatedAt":"2020-10-12T09:25:56.007Z",
-                "id":"5f842124ea3c21001c248bd3"
-             }
-             
-          ]
-       },
-       {
-          "useCookie":false,
-          "essentialPolicy":false,
-          "cookieWidgets":false,
-          "_id":"5f842123ea3c21001c248bd0",
-          "name":"s3.amazonaws.com",
-          "description":"",
-          "websiteUrl":"test2109.herokuapp.com",
-          "slug":"marketing",
-          "trackingId":"INF-3gbfcjjsd6vhvo",
-          "cookieCampaign":"5f8420ecea3c21001c248bcb",
-          "profile":"5c6d4b8698948500132d07e7",
-          "createdAt":"2020-10-12T09:25:55.974Z",
-          "updatedAt":"2020-10-12T09:25:55.974Z",
-          "__v":0,
-          "id":"5f842123ea3c21001c248bd0",
-          "provider":[
-             {
-                "_id":"5f842124ea3c21001c248bd7",
-                "name":"test2109.herokuapp.com",
-                "provider":"s3.amazonaws.com",
-                "type":"marketing",
-                "trackingId":"INF-3gbfcjjsd6vhvo",
-                "createdAt":"2020-10-12T09:25:56.017Z",
-                "updatedAt":"2020-10-12T09:25:56.017Z",
-                "id":"5f842124ea3c21001c248bd7"
-             }
-          ]
-       },
-       {
-          "useCookie":false,
-          "essentialPolicy":false,
-          "cookieWidgets":false,
-          "_id":"5f842123ea3c21001c248bd1",
-          "name":"tywmp.activehosted.com",
-          "description":"",
-          "websiteUrl":"test2109.herokuapp.com",
-          "slug":"liveChat",
-          "trackingId":"INF-3gbfcjjsd6vhvo",
-          "cookieCampaign":"5f8420ecea3c21001c248bcb",
-          "profile":"5c6d4b8698948500132d07e7",
-          "createdAt":"2020-10-12T09:25:55.974Z",
-          "updatedAt":"2020-10-12T09:25:55.974Z",
-          "__v":0,
-          "id":"5f842123ea3c21001c248bd1",
-          "provider":[
-             {
-                "_id":"5f842124ea3c21001c248bd5",
-                "name":"test2109.herokuapp.com",
-                "provider":"tywmp.activehosted.com",
-                "type":"liveChat",
-                "trackingId":"INF-3gbfcjjsd6vhvo",
-                "createdAt":"2020-10-12T09:25:56.011Z",
-                "updatedAt":"2020-10-12T09:25:56.011Z",
-                "id":"5f842124ea3c21001c248bd5"
-             }
-          ]
-       },
-       {
-          "useCookie":false,
-          "essentialPolicy":false,
-          "cookieWidgets":false,
-          "_id":"5f842123ea3c21001c248bcf",
-          "name":"www.googletagmanager.com",
-          "description":"",
-          "websiteUrl":"test2109.herokuapp.com",
-          "slug":"statistics",
-          "trackingId":"INF-3gbfcjjsd6vhvo",
-          "cookieCampaign":"5f8420ecea3c21001c248bcb",
-          "profile":"5c6d4b8698948500132d07e7",
-          "createdAt":"2020-10-12T09:25:55.974Z",
-          "updatedAt":"2020-10-13T06:26:34.543Z",
-          "__v":0,
-          "id":"5f842123ea3c21001c248bcf",
-          "provider":[
-             {
-                "_id":"5f842124ea3c21001c248bd3",
-                "name":"test2109.herokuapp.com",
-                "provider":"www.googletagmanager.com",
-                "type":"statistics",
-                "trackingId":"INF-3gbfcjjsd6vhvo",
-                "createdAt":"2020-10-12T09:25:56.007Z",
-                "updatedAt":"2020-10-12T09:25:56.007Z",
-                "id":"5f842124ea3c21001c248bd3"
-             }
-          ]
-       },
-       {
-          "useCookie":false,
-          "essentialPolicy":false,
-          "cookieWidgets":false,
-          "_id":"5f842123ea3c21001c248bd2",
-          "name":"maxcdn.bootstrapcdn.com",
-          "description":"",
-          "websiteUrl":"test2109.herokuapp.com",
-          "slug":"location",
-          "trackingId":"INF-3gbfcjjsd6vhvo",
-          "cookieCampaign":"5f8420ecea3c21001c248bcb",
-          "profile":"5c6d4b8698948500132d07e7",
-          "createdAt":"2020-10-12T09:25:55.975Z",
-          "updatedAt":"2020-10-12T09:25:55.975Z",
-          "__v":0,
-          "id":"5f842123ea3c21001c248bd2",
-          "provider":[
-             {
-                "_id":"5f842124ea3c21001c248bd8",
-                "name":"test2109.herokuapp.com",
-                "provider":"maxcdn.bootstrapcdn.com",
-                "type":"location",
-                "trackingId":"INF-3gbfcjjsd6vhvo",
-                "createdAt":"2020-10-12T09:25:56.022Z",
-                "updatedAt":"2020-10-12T09:25:56.022Z",
-                "id":"5f842124ea3c21001c248bd8"
-             }
-          ]
-       },
-       {
-          "useCookie":false,
-          "essentialPolicy":false,
-          "cookieWidgets":false,
-          "_id":"5f842123ea3c21001c248bcd",
-          "name":"test2109.herokuapp.com",
-          "description":"",
-          "websiteUrl":"test2109.herokuapp.com",
-          "slug":"marketing",
-          "trackingId":"INF-3gbfcjjsd6vhvo",
-          "cookieCampaign":"5f8420ecea3c21001c248bcb",
-          "profile":"5c6d4b8698948500132d07e7",
-          "createdAt":"2020-10-12T09:25:55.972Z",
-          "updatedAt":"2020-10-12T09:25:55.972Z",
-          "__v":0,
-          "id":"5f842123ea3c21001c248bcd",
-          "provider":[
-             {
-                "_id":"5f842124ea3c21001c248bd6",
-                "name":"test2109.herokuapp.com",
-                "provider":"test2109.herokuapp.com",
-                "type":"marketing",
-                "trackingId":"INF-3gbfcjjsd6vhvo",
-                "createdAt":"2020-10-12T09:25:56.013Z",
-                "updatedAt":"2020-10-12T09:25:56.013Z",
-                "id":"5f842124ea3c21001c248bd6"
-             }
-          ]
-       }
-    ]
- }
+  var apiDataResponse = {"host":"test2109.herokuapp.com","campaign":{"onBoarding":true,"uniqueVisitors":0,"_id":"5f8420ecea3c21001c248bcb","campaignName":"test","protocol":"https:","websiteUrl":"test2109.herokuapp.com","profile":"5c6d4b8b98948500132d07e9","isActive":true,"trackingId":"INF-3gbfcjjsd6vhvo","createdAt":"2020-10-12T09:25:00.535Z","updatedAt":"2020-10-12T09:25:55.978Z","__v":0,"id":"5f8420ecea3c21001c248bcb"},"configuration":{"_id":"5f8420ecea3c21001c248bcc","panelStyle":{"noButtonStyle":"outline","color":{"r":0,"g":0,"b":0,"a":1},"backgroundColor":{"r":0,"g":0,"b":0,"a":1}},"langName":{"language":"en","name":"English"},"scrollToConsent":true,"position":"left","customPromptText":"customPromptText","customAcceptText":"customAcceptText","poweredBy":"Influence","poweredByLink":"https://useinfluence.co","cookiecampaign":"5f8420ecea3c21001c248bcb","trackingId":"INF-3gbfcjjsd6vhvo","createdAt":"2020-10-12T09:25:00.554Z","updatedAt":"2020-10-12T09:25:00.554Z","__v":0,"id":"5f8420ecea3c21001c248bcc"},"microPolicies":[{"useCookie":false,"essentialPolicy":false,"cookieWidgets":false,"_id":"5f842123ea3c21001c248bcd","name":"test2109.herokuapp.com","description":"","websiteUrl":"test2109.herokuapp.com","slug":"marketing","trackingId":"INF-3gbfcjjsd6vhvo","cookieCampaign":"5f8420ecea3c21001c248bcb","profile":"5c6d4b8698948500132d07e7","createdAt":"2020-10-12T09:25:55.972Z","updatedAt":"2020-10-12T09:25:55.972Z","__v":0,"id":"5f842123ea3c21001c248bcd","provider":[{"_id":"5f842124ea3c21001c248bd6","name":"test2109.herokuapp.com","provider":"test2109.herokuapp.com","type":"marketing","trackingId":"INF-3gbfcjjsd6vhvo","createdAt":"2020-10-12T09:25:56.013Z","updatedAt":"2020-10-12T09:25:56.013Z","id":"5f842124ea3c21001c248bd6"}]},{"useCookie":false,"essentialPolicy":false,"cookieWidgets":false,"_id":"5f842123ea3c21001c248bcf","name":"www.googletagmanager.com","description":"","websiteUrl":"test2109.herokuapp.com","slug":"statistics","trackingId":"INF-3gbfcjjsd6vhvo","cookieCampaign":"5f8420ecea3c21001c248bcb","profile":"5c6d4b8698948500132d07e7","createdAt":"2020-10-12T09:25:55.974Z","updatedAt":"2020-10-13T06:26:34.543Z","__v":0,"id":"5f842123ea3c21001c248bcf","provider":[{"_id":"5f842124ea3c21001c248bd3","name":"test2109.herokuapp.com","provider":"www.googletagmanager.com","type":"statistics","trackingId":"INF-3gbfcjjsd6vhvo","createdAt":"2020-10-12T09:25:56.007Z","updatedAt":"2020-10-12T09:25:56.007Z","id":"5f842124ea3c21001c248bd3"}]},{"useCookie":false,"essentialPolicy":false,"cookieWidgets":false,"_id":"5f842123ea3c21001c248bd2","name":"maxcdn.bootstrapcdn.com","description":"","websiteUrl":"test2109.herokuapp.com","slug":"location","trackingId":"INF-3gbfcjjsd6vhvo","cookieCampaign":"5f8420ecea3c21001c248bcb","profile":"5c6d4b8698948500132d07e7","createdAt":"2020-10-12T09:25:55.975Z","updatedAt":"2020-10-12T09:25:55.975Z","__v":0,"id":"5f842123ea3c21001c248bd2","provider":[{"_id":"5f842124ea3c21001c248bd8","name":"test2109.herokuapp.com","provider":"maxcdn.bootstrapcdn.com","type":"location","trackingId":"INF-3gbfcjjsd6vhvo","createdAt":"2020-10-12T09:25:56.022Z","updatedAt":"2020-10-12T09:25:56.022Z","id":"5f842124ea3c21001c248bd8"}]},{"useCookie":false,"essentialPolicy":false,"cookieWidgets":false,"_id":"5f842123ea3c21001c248bd0","name":"s3.amazonaws.com","description":"","websiteUrl":"test2109.herokuapp.com","slug":"marketing","trackingId":"INF-3gbfcjjsd6vhvo","cookieCampaign":"5f8420ecea3c21001c248bcb","profile":"5c6d4b8698948500132d07e7","createdAt":"2020-10-12T09:25:55.974Z","updatedAt":"2020-10-12T09:25:55.974Z","__v":0,"id":"5f842123ea3c21001c248bd0","provider":[{"_id":"5f842124ea3c21001c248bd7","name":"test2109.herokuapp.com","provider":"s3.amazonaws.com","type":"marketing","trackingId":"INF-3gbfcjjsd6vhvo","createdAt":"2020-10-12T09:25:56.017Z","updatedAt":"2020-10-12T09:25:56.017Z","id":"5f842124ea3c21001c248bd7"}]},{"useCookie":false,"essentialPolicy":false,"cookieWidgets":false,"_id":"5f842123ea3c21001c248bce","name":"ajax.googleapis.com","description":"","websiteUrl":"test2109.herokuapp.com","slug":"essential","trackingId":"INF-3gbfcjjsd6vhvo","cookieCampaign":"5f8420ecea3c21001c248bcb","profile":"5c6d4b8698948500132d07e7","createdAt":"2020-10-12T09:25:55.973Z","updatedAt":"2020-10-12T09:25:55.973Z","__v":0,"id":"5f842123ea3c21001c248bce","provider":[{"_id":"5f842124ea3c21001c248bd4","name":"test2109.herokuapp.com","provider":"ajax.googleapis.com","type":"essential","trackingId":"INF-3gbfcjjsd6vhvo","createdAt":"2020-10-12T09:25:56.010Z","updatedAt":"2020-10-12T09:25:56.010Z","id":"5f842124ea3c21001c248bd4"}]},{"useCookie":false,"essentialPolicy":false,"cookieWidgets":false,"_id":"5f8549d97b56a65265f0871b","name":"cdn.dashly.app","description":"","websiteUrl":"test2109.herokuapp.com","slug":"statistics","trackingId":"INF-3gbfcjjsd6vhvo","cookieCampaign":"5f8420ecea3c21001c248bcb","profile":"5c6d4b8698948500132d07e7","createdAt":"2020-10-12T09:25:55.974Z","updatedAt":"2020-10-13T07:01:32.537Z","__v":0,"id":"5f8549d97b56a65265f0871b","provider":[{"_id":"5f854d5f7b56a65265f0871c","name":"test2109.herokuapp.com","provider":"cdn.dashly.app","type":"location","trackingId":"INF-3gbfcjjsd6vhvo","createdAt":"2020-10-12T09:25:56.022Z","updatedAt":"2020-10-12T09:25:56.022Z","id":"5f854d5f7b56a65265f0871c"}]},{"useCookie":false,"essentialPolicy":false,"cookieWidgets":false,"_id":"5f842123ea3c21001c248bd1","name":"tywmp.activehosted.com","description":"","websiteUrl":"test2109.herokuapp.com","slug":"liveChat","trackingId":"INF-3gbfcjjsd6vhvo","cookieCampaign":"5f8420ecea3c21001c248bcb","profile":"5c6d4b8698948500132d07e7","createdAt":"2020-10-12T09:25:55.974Z","updatedAt":"2020-10-12T09:25:55.974Z","__v":0,"id":"5f842123ea3c21001c248bd1","provider":[{"_id":"5f842124ea3c21001c248bd5","name":"test2109.herokuapp.com","provider":"tywmp.activehosted.com","type":"liveChat","trackingId":"INF-3gbfcjjsd6vhvo","createdAt":"2020-10-12T09:25:56.011Z","updatedAt":"2020-10-12T09:25:56.011Z","id":"5f842124ea3c21001c248bd5"}]}]};
 
 
 
@@ -6101,18 +5833,25 @@ Influence = typeof Influence === 'undefined' ? require('../server') : Influence;
 
     var d = getCookieById(e._id)
 
-    console.log(d, "$$$$$$$$$$$$$$$$$")
 
-    if (d && d.key == "false") {
+    if (d && d.key == "true") {
       e.provider.map(p => {
-        if(d.name == e._id){
-        m.push(new RegExp(p.provider))
+        if (d.name == e._id) {
+          m.push(new RegExp(p.provider))
         }
       })
     }
 
-  })
 
+    // if(d && d.key == "true"){
+    //     e.provider.map(e =>{
+    //         console.log(e.provider)
+
+    //         m.push(new RegExp(e.provider))
+    //     })
+    // }
+
+  })
 
 
   window.YETT_BLACKLIST = m

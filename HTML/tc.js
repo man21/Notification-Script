@@ -5383,7 +5383,7 @@ function CookieFn() {
       checkboxInput.className = "generalInputCheckboxClass"
       // checkboxInput.disabled= arr.essentialPolicy
 
-      if (policy.essentialPolicy == true) {
+      if (arr.essentialPolicy == true) {
         checkboxInput.checked = true
         checkboxInput.disabled = true
       }
@@ -5439,6 +5439,7 @@ function CookieFn() {
       para.className = "subText"
       para.innerHTML = arr.description // "This includes key features like page navigation and logging you in. The website cannot function without this"
       lowerDiv.appendChild(para)
+
       listItem.appendChild(upperPart)
       listItem.appendChild(lowerDiv)
       ulist.appendChild(listItem)
@@ -5877,7 +5878,7 @@ Influence = typeof Influence === 'undefined' ? require('../server') : Influence;
           "cookieWidgets":false,
           "_id":"5f842123ea3c21001c248bce",
           "name":"ajax.googleapis.com",
-          "description":"",
+          "description":"AJAX GOOGLE APISSSS",
           "websiteUrl":"test2109.herokuapp.com",
           "slug":"essential",
           "trackingId":"INF-3gbfcjjsd6vhvo",
@@ -5898,6 +5899,32 @@ Influence = typeof Influence === 'undefined' ? require('../server') : Influence;
                 "updatedAt":"2020-10-12T09:25:56.010Z",
                 "id":"5f842124ea3c21001c248bd4"
              }
+          ],
+          "thirdParty": [
+            {
+              "name": "PRIUVACY POLICY",
+              "url" :"https:gogole.com"
+            },
+            {
+              "name": "PRIUVACY POLICY2",
+              "url" :"https:gogole.com"
+            },
+            {
+              "name": "PRIUVACY POLICY3",
+              "url" :"https:gogole.com"
+            },
+            {
+              "name": "PRIUVACY POLICY4",
+              "url" :"https:gogole.com"
+            },
+            {
+              "name": "PRIUVACY POLICY5",
+              "url" :"https:gogole.com"
+            },
+            {
+              "name": "PRIUVACY POLICY6",
+              "url" :"https:gogole.com"
+            }
           ]
        },
        {
@@ -5906,7 +5933,7 @@ Influence = typeof Influence === 'undefined' ? require('../server') : Influence;
           "cookieWidgets":false,
           "_id":"5f8549d97b56a65265f0871b",
           "name":"cdn.dashly.app",
-          "description":"",
+          "description":"DASHLY DESCRIPTION @@@@@@@@@@@@@@@@@",
           "websiteUrl":"test2109.herokuapp.com",
           "slug":"statistics",
           "trackingId":"INF-3gbfcjjsd6vhvo",
@@ -5939,6 +5966,20 @@ Influence = typeof Influence === 'undefined' ? require('../server') : Influence;
                 "id":"5f842124ea3c21001c248bd3"
              }
              
+          ],
+          "thirdParty":[
+            {
+              "name": "PRIUVACY POLICY",
+              "url" :"https:gogole.com"
+            },
+            {
+              "name": "PRIUVACY POLICY2",
+              "url" :"https:gogole.com"
+            },
+            {
+              "name": "PRIUVACY POLICY3",
+              "url" :"https:gogole.com"
+            },
           ]
        },
        {
@@ -5976,7 +6017,7 @@ Influence = typeof Influence === 'undefined' ? require('../server') : Influence;
           "cookieWidgets":false,
           "_id":"5f842123ea3c21001c248bd1",
           "name":"tywmp.activehosted.com",
-          "description":"",
+          "description":"ACTIVE CAMPAIGNS##################",
           "websiteUrl":"test2109.herokuapp.com",
           "slug":"liveChat",
           "trackingId":"INF-3gbfcjjsd6vhvo",
@@ -6005,7 +6046,7 @@ Influence = typeof Influence === 'undefined' ? require('../server') : Influence;
           "cookieWidgets":false,
           "_id":"5f842123ea3c21001c248bcf",
           "name":"www.googletagmanager.com",
-          "description":"",
+          "description":"GOOGLE TAG MANAGER*****************",
           "websiteUrl":"test2109.herokuapp.com",
           "slug":"statistics",
           "trackingId":"INF-3gbfcjjsd6vhvo",
@@ -6034,7 +6075,7 @@ Influence = typeof Influence === 'undefined' ? require('../server') : Influence;
           "cookieWidgets":false,
           "_id":"5f842123ea3c21001c248bd2",
           "name":"maxcdn.bootstrapcdn.com",
-          "description":"",
+          "description":"BOOTSTRAP DESCRIPTION ####################33",
           "websiteUrl":"test2109.herokuapp.com",
           "slug":"location",
           "trackingId":"INF-3gbfcjjsd6vhvo",
@@ -6063,7 +6104,7 @@ Influence = typeof Influence === 'undefined' ? require('../server') : Influence;
           "cookieWidgets":false,
           "_id":"5f842123ea3c21001c248bcd",
           "name":"test2109.herokuapp.com",
-          "description":"",
+          "description":"test2109 description ##############",
           "websiteUrl":"test2109.herokuapp.com",
           "slug":"marketing",
           "trackingId":"INF-3gbfcjjsd6vhvo",

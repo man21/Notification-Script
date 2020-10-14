@@ -5383,7 +5383,7 @@ function CookieFn() {
       checkboxInput.className = "generalInputCheckboxClass"
       // checkboxInput.disabled= arr.essentialPolicy
 
-      if (policy.essentialPolicy == true) {
+      if (arr.essentialPolicy == true) {
         checkboxInput.checked = true
         checkboxInput.disabled = true
       }
@@ -5823,13 +5823,13 @@ Influence = typeof Influence === 'undefined' ? require('../server') : Influence;
 
 
 
-  if(apiDataResponse && apiDataResponse.host != window.location.hostname.replace(/^(?:https?:\/\/)?(?:www\.)?/i, "").split('/')[0])
+  // if(apiDataResponse && apiDataResponse.host != window.location.hostname.replace(/^(?:https?:\/\/)?(?:www\.)?/i, "").split('/')[0])
 
-  return console.log("Domain Mismatch")
+  // return console.log("Domain Mismatch")
 
 
-  if(apiDataResponse && !apiDataResponse.campaign.isActive)
-    return console.log("Campaign is Inactive")
+  // if(apiDataResponse && !apiDataResponse.campaign.isActive)
+  //   return console.log("Campaign is Inactive")
   var cookieFn = new CookieFn({})
 
   cookieFn.notificationdisplay(apiDataResponse.configuration, apiDataResponse.microPolicies);

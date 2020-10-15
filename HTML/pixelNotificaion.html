@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="pixelNotification.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="mainContainer">
+        <div class="upperContainer">
+            <img src="https://s3.wasabisys.com/influencelogo/websiteImages/icons/icon_woBckg.png" alt="logo">
+            <p class="installedLine">
+                <span class="greenLogo"></span>
+                <span>Installed!</span>
+            </p>
+        </div>
+        <div class="lowerContainer">
+            <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="lock"
+                class="svg-inline--fa fa-lock fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 448 512">
+                <path fill="currentColor"
+                    d="M400 224h-24v-72C376 68.2 307.8 0 224 0S72 68.2 72 152v72H48c-26.5 0-48 21.5-48 48v192c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V272c0-26.5-21.5-48-48-48zm-104 0H152v-72c0-39.7 32.3-72 72-72s72 32.3 72 72v72z">
+                </path>
+            </svg>
+            <p class="lowerLine">Only you can see this</p>
+        </div>
+    </div>
+
+</body>
+
+<script>
+    var pixelNotifMainContainer = document.createElement("div")
+    pixelNotifMainContainer.className = "mainContainer"
+
+    var upperContainer = document.createElement("div")
+    upperContainer.className = "upperContainer"
+
+    var upperContainerImg = document.createElement("img")
+    upperContainerImg.src = "https://s3.wasabisys.com/influencelogo/websiteImages/icons/icon_woBckg.png"
+
+    var installedLine = document.createElement('div')
+    installedLine.className = "installedLine"
+
+    var greenLogoSpan = document.createElement("span")
+    greenLogoSpan.className = "greenLogo"
+
+    var installedText = document.createElement("span")
+    installedText.innerHTML = "Installed!"
+
+    var installedText = document.createElement("span")
+    installedText.innerHTML = "Installed"
+
+    var lowerContainer = document.createElement("div")
+    lowerContainer.className = "lowerContainer"
+
+    var lowerContainerSvg = document.createElement("span")
+    lowerContainerSvg.innerHTML = `<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="lock"
+                class="svg-inline--fa fa-lock fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 448 512">
+                <path fill="currentColor"
+                    d="M400 224h-24v-72C376 68.2 307.8 0 224 0S72 68.2 72 152v72H48c-26.5 0-48 21.5-48 48v192c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V272c0-26.5-21.5-48-48-48zm-104 0H152v-72c0-39.7 32.3-72 72-72s72 32.3 72 72v72z">
+                </path>
+            </svg>`
+
+    var lowerLine = document.createElement("p")
+    lowerLine.className = "lowerLine"
+    lowerLine.innerHTML = "Only you can see this"
+
+
+    pixelNotifMainContainer.appendChild(upperContainer)
+
+
+
+    document.body.appendChild(pixelNotifMainContainer)
+</script>
+
+</html>

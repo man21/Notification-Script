@@ -246,7 +246,7 @@ overflow: hidden;
     font-weight: 600;
     font-size: 13px;
     line-height: inherit;
-    color: inherit;
+    color: rgb(104, 104, 104);
     display: flex;
     -webkit-box-align: center;
     align-items: center;
@@ -259,12 +259,11 @@ overflow: hidden;
 
 .subText {
     color: rgb(104, 104, 104);
-    line-height: 150%;
     font-size: 12px;
     font-style: normal;
     font-weight: normal;
     text-decoration: none;
-    margin: auto
+    margin: auto;
 }
 
 .upperPart {
@@ -400,8 +399,6 @@ input:checked+.slider:before {
 }
 
 .listItemDetail {
-    display: flex;
-    flex-direction: column;
     width: 100%;
     margin-top: 5%;
     align-items: flex-start;
@@ -411,4 +408,21 @@ input:checked+.slider:before {
     -webkit-font-smoothing: antialiased;
     border-image:
         'radialGradient(rgba(0, 0, 0, 0.3), transparent 90%) 0 0 1 / 1 / 0 stretch'
+}
+
+.chipsContainer .chipStyle{
+    color: rgb(104, 104, 104);
+    margin: 0;
+    display: inline-block;
+    padding: 5px 8px;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 150%;
+    margin-right: 5px !important;
+    border-radius: 24px;
+    margin-bottom: 5px !important;
+    text-decoration: none;
+    background-color: rgba(242,242,242);
+    cursor: default;
 }

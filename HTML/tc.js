@@ -2414,7 +2414,7 @@ var CookieFunc = function(config) {
   // var rule;
 
   var cookieNotif = document.createElement("link");
-  cookieNotif.href = 'https://test2109.herokuapp.com/cookieNotif.css'
+  cookieNotif.href = 'http://localhost:3002/cookieNotif.css'
   cookieNotif.type = "text/css";
   cookieNotif.rel = "stylesheet";
   cookieNotif.id = "stylesheetID";
@@ -5401,6 +5401,8 @@ function CookieFn() {
         // document.cookie = "key1 = value1;key2 = value2;expires = date";
 
       }
+
+      console.log('arr----------------------------', arr)
       var checkboxSpan = document.createElement('span');
       checkboxSpan.className = "slider round";
 
@@ -5440,10 +5442,116 @@ function CookieFn() {
       para.innerHTML = arr.description // "This includes key features like page navigation and logging you in. The website cannot function without this"
       lowerDiv.appendChild(para)
 
+      
+      
       listItem.appendChild(upperPart)
       listItem.appendChild(lowerDiv)
+
+
       ulist.appendChild(listItem)
-      //})
+
+      
+      
+      
+      //------------------------------------------- Cookie panel 3 desing thirdparty -----------------------------------------------
+
+
+      console.log('arr.thirdparty--', arr.thirdParty)
+      if(arr.thirdParty !== undefined && arr.thirdParty !== null && arr.thirdParty.length !==0){
+
+      
+      var listItem = document.createElement('div')
+      listItem.classList = "listItemDetail"
+
+      var upperPart = document.createElement('div')
+      upperPart.className = "upperPart"
+
+
+      var headerText = document.createElement('p')
+      headerText.className = "headerText"
+      headerText.innerHTML = "Who do we share data with?"
+
+      upperPart.appendChild(headerText)
+
+      var lowerDiv = document.createElement('div')
+      lowerDiv.style = "margin-top:0%;"
+      var para = document.createElement('div')
+      para.className = "chipsContainer"
+      // para.innerHTML = arr.description // "This includes key features like page navigation and logging you in. The website cannot function without this"
+
+      arr.thirdParty.map((thirdparty)=>{
+        var chip = document.createElement('a')
+        chip.className = "chipStyle"
+        chip.style.cursor = "pointer"
+        chip.innerHTML=thirdparty.name
+        chip.href = thirdparty.url
+        chip.target="_blank"
+        para.appendChild(chip)
+      })
+
+
+
+
+      lowerDiv.appendChild(para)
+    
+      
+      listItem.appendChild(upperPart)
+      listItem.appendChild(lowerDiv)
+
+      ulist.appendChild(listItem)
+
+      }
+      
+
+      // ------------------------ Cookie 3 panel data usage---------------------------
+
+      if(arr.dataUsage !== undefined && arr.dataUsage !== null && arr.dataUsage.length !==0){
+
+      
+        var listItem = document.createElement('div')
+        listItem.classList = "listItemDetail"
+  
+        var upperPart = document.createElement('div')
+        upperPart.className = "upperPart"
+  
+  
+        var headerText = document.createElement('p')
+        headerText.className = "headerText"
+        headerText.innerHTML = "What data do we share?"
+  
+        upperPart.appendChild(headerText)
+  
+        var lowerDiv = document.createElement('div')
+        lowerDiv.style = "margin-top:0%;"
+        var para = document.createElement('div')
+        para.className = "chipsContainer"
+        // para.innerHTML = arr.description // "This includes key features like page navigation and logging you in. The website cannot function without this"
+  
+        arr.dataUsage.map((data)=>{
+          var chip = document.createElement('span')
+          chip.className = "chipStyle"
+          chip.innerHTML=data.name
+          chip.title = data.url
+          chip.target="_blank"
+          para.appendChild(chip)
+        })
+  
+  
+  
+  
+        lowerDiv.appendChild(para)
+      
+        
+        listItem.appendChild(upperPart)
+        listItem.appendChild(lowerDiv)
+  
+        ulist.appendChild(listItem)
+  
+        }
+
+
+
+
       div3.appendChild(ulist);
       div2.appendChild(div3);
       div1.appendChild(div2);
@@ -5878,7 +5986,7 @@ Influence = typeof Influence === 'undefined' ? require('../server') : Influence;
           "cookieWidgets":false,
           "_id":"5f842123ea3c21001c248bce",
           "name":"ajax.googleapis.com",
-          "description":"AJAX GOOGLE APISSSS",
+          "description":"AJAX google fasdfadf asdf asd adf adsf asfd asdf adsf aesf asdfasdfasdfas asdfsadfa sdfasdfdsa asdf",
           "websiteUrl":"test2109.herokuapp.com",
           "slug":"essential",
           "trackingId":"INF-3gbfcjjsd6vhvo",
@@ -5910,6 +6018,31 @@ Influence = typeof Influence === 'undefined' ? require('../server') : Influence;
               "url" :"https:gogole.com"
             },
             {
+              "name": "PRIUVACY POLICY3",
+              "url" :"https:gogole.com"
+            },
+            {
+              "name": "PRIUVACY POLICY4",
+              "url" :"https:gogole.com"
+            },
+            {
+              "name": "PRIUVACY POLICY5",
+              "url" :"https:gogole.com"
+            },
+            {
+              "name": "PRIUVACY POLICY6",
+              "url" :"https:gogole.com"
+            }
+          ],
+          "dataUsage": [
+            {
+              "name": "PRIUVACY POLICY",
+              "url" :"https:gogole.com"
+            },
+            {
+              "name": "PRIUVACY POLICY2",
+              "url" :"https:gogole.com"
+            },
               "name": "PRIUVACY POLICY3",
               "url" :"https:gogole.com"
             },

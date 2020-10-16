@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <div class="mainContainer">
+    <!-- <div class="mainContainer">
         <div class="upperContainer">
             <img src="https://s3.wasabisys.com/influencelogo/websiteImages/icons/icon_woBckg.png" alt="logo">
             <p class="installedLine">
@@ -27,7 +27,7 @@
             </svg>
             <p class="lowerLine">Only you can see this</p>
         </div>
-    </div>
+    </div> -->
 
 </body>
 
@@ -41,17 +41,28 @@
     var upperContainerImg = document.createElement("img")
     upperContainerImg.src = "https://s3.wasabisys.com/influencelogo/websiteImages/icons/icon_woBckg.png"
 
+    upperContainer.appendChild(upperContainerImg)
+
     var installedLine = document.createElement('div')
     installedLine.className = "installedLine"
 
     var greenLogoSpan = document.createElement("span")
     greenLogoSpan.className = "greenLogo"
 
+    installedLine.appendChild(greenLogoSpan)
+
     var installedText = document.createElement("span")
     installedText.innerHTML = "Installed!"
+    installedLine.appendChild(installedText)
+
 
     var installedText = document.createElement("span")
     installedText.innerHTML = "Installed"
+
+    upperContainer.appendChild(installedLine)
+
+    pixelNotifMainContainer.appendChild(upperContainer)
+
 
     var lowerContainer = document.createElement("div")
     lowerContainer.className = "lowerContainer"
@@ -70,10 +81,12 @@
     lowerLine.innerHTML = "Only you can see this"
 
 
-    pixelNotifMainContainer.appendChild(upperContainer)
 
+    lowerContainer.appendChild(lowerContainerSvg)
 
+    lowerContainer.appendChild(lowerLine)
 
+    pixelNotifMainContainer.appendChild(lowerContainer)
     document.body.appendChild(pixelNotifMainContainer)
 </script>
 

@@ -2140,19 +2140,14 @@ var Notifications = function (config) {
     // var rulesUrl = "http://localhost:1337/rules/configuration/path/INF-3gbfcjjsd6vhvo"
 
     httpGetAsync(rulesUrl, function (res) {
-        // response = JSON.parse(res);
+        response = JSON.parse(res);
 
-        var response = {ip: {IpAddress: "223.190.122.63"}}
+        // var response = {ip: {IpAddress: "223.190.122.631"}}
         if(response && response.ip){
           Geo.geoip(function (position) {
-            // console.log(position.ip,"######!!!!!!!!!!!!!!!!!!!"+ response.ip.)
-
-                if(position.ip == response.ip.IpAddress){
-                    // console.log("@@@@@@@@@@@@222222")
+                if(position.ip == JSON.parse(res).ip.IpAddress){
                   pixelPopUp()
-
                 }
-    
             });
         }
         // configurationPath = JSON.parse(res);
@@ -2189,7 +2184,70 @@ var Notifications = function (config) {
 
 async function pixelPopUp(){
 
-    alert("HELLO")
+    var newDesignCSS = document.createElement("link");
+    newDesignCSS.href = 'http://localhost:3002/pixelNotification.css';
+    // newDesignCSS.href = 'https://test2109.herokuapp.com/newDesignCSS.css';
+    newDesignCSS.type = "text/css";
+    newDesignCSS.rel = "stylesheet";
+    newDesignCSS.id = "stylesheetID";
+    document.getElementsByTagName("head")[0].appendChild(newDesignCSS);
+
+    var pixelNotifMainContainer = document.createElement("div")
+    pixelNotifMainContainer.className = "mainContainer"
+
+    var upperContainer = document.createElement("div")
+    upperContainer.className = "upperContainer"
+
+    var upperContainerImg = document.createElement("img")
+    upperContainerImg.src = "https://s3.wasabisys.com/influencelogo/websiteImages/icons/icon_woBckg.png"
+
+    upperContainer.appendChild(upperContainerImg)
+
+    var installedLine = document.createElement('div')
+    installedLine.className = "installedLine"
+
+    var greenLogoSpan = document.createElement("span")
+    greenLogoSpan.className = "greenLogo"
+
+    installedLine.appendChild(greenLogoSpan)
+
+    var installedText = document.createElement("span")
+    installedText.innerHTML = "Installed!"
+    installedLine.appendChild(installedText)
+
+
+    var installedText = document.createElement("span")
+    installedText.innerHTML = "Installed"
+
+    upperContainer.appendChild(installedLine)
+
+    pixelNotifMainContainer.appendChild(upperContainer)
+
+
+    var lowerContainer = document.createElement("div")
+    lowerContainer.className = "lowerContainer"
+
+    var lowerContainerSvg = document.createElement("span")
+    lowerContainerSvg.innerHTML = `<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="lock"
+                class="svg-inline--fa fa-lock fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 448 512">
+                <path fill="currentColor"
+                    d="M400 224h-24v-72C376 68.2 307.8 0 224 0S72 68.2 72 152v72H48c-26.5 0-48 21.5-48 48v192c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V272c0-26.5-21.5-48-48-48zm-104 0H152v-72c0-39.7 32.3-72 72-72s72 32.3 72 72v72z">
+                </path>
+            </svg>`
+
+    var lowerLine = document.createElement("p")
+    lowerLine.className = "lowerLine"
+    lowerLine.innerHTML = "Only you can see this"
+
+
+
+    lowerContainer.appendChild(lowerContainerSvg)
+
+    lowerContainer.appendChild(lowerLine)
+
+    pixelNotifMainContainer.appendChild(lowerContainer)
+    document.body.appendChild(pixelNotifMainContainer)
 
 }
 

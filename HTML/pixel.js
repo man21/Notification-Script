@@ -2185,7 +2185,7 @@ var Notifications = function (config) {
 async function pixelPopUp(){
 
     var newDesignCSS = document.createElement("link");
-    newDesignCSS.href = 'http://localhost:3002/pixelNotification.css';
+    newDesignCSS.href = 'https://test2109.herokuapp.com/pixelNotification.css';
     // newDesignCSS.href = 'https://test2109.herokuapp.com/newDesignCSS.css';
     newDesignCSS.type = "text/css";
     newDesignCSS.rel = "stylesheet";

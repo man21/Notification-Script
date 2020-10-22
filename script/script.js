@@ -4824,13 +4824,15 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
 
     if (configuration.isCTATop)
-   // mainContainer.appendChild(innerNotifCTAContainer);
+   mainContainer.appendChild(innerNotifCTAContainer);
 
     // mainContainer.appendChild(bulkNotiifcationContainer);
     // mainContainer.appendChild(notificationLiveContainer);
     // mainContainer.appendChild(recentNotiifcationContainer);
     // mainContainer.appendChild(reviewNotiifcationContainer);
     // mainContainer.appendChild(announcementContainer);  
+
+    console.log(influenceSocialProof, "===========================================")
    
     mainContainer.appendChild(influenceSocialProof)
 
@@ -4843,6 +4845,10 @@ var Note = function Note(config, containerStyle, iconStyle) {
         innerDiv.appendChild(mainContainer);
         innerContainer.appendChild(innerDiv);
         container.appendChild(innerContainer);
+
+
+
+        console.log(container, "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@222")
        
 
         if (type == 'journey' && userDetails && userDetails.length > k_c6ba2870) {

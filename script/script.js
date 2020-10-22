@@ -3189,6 +3189,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
             }
         }
 
+        console.log(res_img, "++++++++++++++++++++++++++")
         // "https://s3.wasabisys.com/influencelogo/logo/click.svg"
         
         leftSideCreator(ACTIVE_NOTIFICATION_TYPE, res_img )

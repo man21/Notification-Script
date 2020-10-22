@@ -2940,7 +2940,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         /**
          * Create and return element left side container of the notification
          */
-        const leftSideContainer = (type, imageSrc) => {
+        const leftSideContainer = () => {
             const leftContainer = divCreator("div", `leftContainer ${ACTIVE_NOTIFICATION_TYPE}-leftContainer`)
             return leftContainer
         }
@@ -2957,6 +2957,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
         
         
         const leftSideCreator = (type, imageSrc) => {
+
+            console.log(type+ "-------------------"+ imageSrc, "+++++++++++++++++++++++++++++++++")
             if (type === "live") {
             const animationWrapper = divCreator("div", "animation-wrapper")
             const animationClass = divCreator("div", "animationClass")
@@ -2971,6 +2973,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
                 "src",
                 imageSrc
             )
+
+            console.log(imageElement, "imageElement!!!!!!!!!!!!!!!!!!!!!!!!11")
             leftSideElement.appendChild(imageElement)
             }
         }
@@ -3189,7 +3193,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
             }
         }
 
-        console.log(res_img, "++++++++++++++++++++++++++")
+        console.log
         // "https://s3.wasabisys.com/influencelogo/logo/click.svg"
         
         leftSideCreator(ACTIVE_NOTIFICATION_TYPE, res_img )

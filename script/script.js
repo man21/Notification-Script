@@ -3189,8 +3189,9 @@ var Note = function Note(config, containerStyle, iconStyle) {
             }
         }
 
+        // "https://s3.wasabisys.com/influencelogo/logo/click.svg"
         
-        leftSideCreator(ACTIVE_NOTIFICATION_TYPE, "https://s3.wasabisys.com/influencelogo/logo/click.svg")
+        leftSideCreator(ACTIVE_NOTIFICATION_TYPE, res_img )
         rightSideTextCreator(ACTIVE_NOTIFICATION_TYPE)
         footerCreator(ACTIVE_NOTIFICATION_TYPE)
         
@@ -4818,10 +4819,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
     // mainContainer.appendChild(reviewNotiifcationContainer);
     // mainContainer.appendChild(announcementContainer);  
    
-    console.log(influenceSocialProof, "++++++++++++++++++++++++++++++++++++")
     mainContainer.appendChild(influenceSocialProof)
 
-    console.log(mainContainer, "--------------------------------------------------")
 
     // console.log(mainContainer,"Main Container Data")
 

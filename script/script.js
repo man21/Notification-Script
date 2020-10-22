@@ -2974,8 +2974,10 @@ var Note = function Note(config, containerStyle, iconStyle) {
                 imageSrc
             )
 
-            console.log(imageElement, "imageElement!!!!!!!!!!!!!!!!!!!!!!!!11")
             leftSideElement.appendChild(imageElement)
+
+            console.log(leftSideElement, "leftSideElement !!!!!!!!!!!!!!!!!!!!!!!!11")
+
             }
         }
         
@@ -3142,6 +3144,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
         const rightSideElement = rightSideContainer()
         const footerElement = footerContainer()
         const leftSideElement = leftSideContainer()
+
+        console.log(leftSideElement, "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
 
         var res_img;
 

@@ -2892,11 +2892,6 @@ var Note = function Note(config, containerStyle, iconStyle) {
         var innerDiv = document.createElement('div');
         var mainContainer = document.createElement('div');
 
-
-
-
-
-
         // console.log(type, "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5")
         const ACTIVE_NOTIFICATION_TYPE = type
 
@@ -4835,7 +4830,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
     // mainContainer.appendChild(reviewNotiifcationContainer);
     // mainContainer.appendChild(announcementContainer);  
 
-    console.log(influenceSocialProof, "===========================================")
+    // console.log(influenceSocialProof, "===========================================")
    
     mainContainer.appendChild(influenceSocialProof)
 
@@ -4851,7 +4846,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
 
 
-        console.log(container, "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@222")
+        // console.log(container, "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@222")
        
 
         if (type == 'journey' && userDetails && userDetails.length > k_c6ba2870) {

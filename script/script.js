@@ -2902,6 +2902,59 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
 
 
+
+        var res_img;
+
+
+
+        if(ACTIVE_NOTIFICATION_TYPE == "journey"){    
+         res_img = "https://s3.wasabisys.com/insidescript.com/maps/world.jpeg"
+        const bucketUrl = "https://s3.wasabisys.com/insidescript.com/maps/"
+        if (userDetails && userDetails) {
+            if (userDetails.productImg) {
+                res_img = userDetails.productImg;
+            }
+            else if (configuration && configuration.toggleMap == 'map') {
+                if (userDetails.city && userDetails.country) {
+                    res_img = bucketUrl +userDetails.city + '_' + userDetails.country + '.jpeg'
+                }
+                else if (userDetails.city) {
+                    res_img = bucketUrl +  userDetails.city + '.jpeg'
+                }
+                else if (userDetails.country) {
+                    res_img = bucketUrl + userDetails.country + '.jpeg'
+                }
+            }
+            else if (configuration && configuration.panelStyle) {
+                res_img = configuration.panelStyle.image;
+            }
+
+          res_img =  res_img ? res_img : "https://storage.googleapis.com/influence-197607.appspot.com/user_icon.png"
+        }
+        } else if(ACTIVE_NOTIFICATION_TYPE == "review"){
+            res_img = userReview && userReview.profileImg ? userReview.profileImg :(userReview ? 'https://lh3.ggpht.com/-HiICnzrd7xo/AAAAAAAAAAI/AAAAAAAAAAA/GcUbxXrSSYg/s128-c0x00000000-cc-rp-mo/photo.jpg': "")
+        } else if( ACTIVE_NOTIFICATION_TYPE == "identification"){
+
+            if(config.icon){
+                res_img =config.icon
+            }else{
+                res_img =configuration.panelStyle.image ? configuration.panelStyle.image : 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/C77C11F2-0E34-49DE-97CC-10DF6C848B69.png'
+            }
+
+        } else if(ACTIVE_NOTIFICATION_TYPE == "announcement"){
+           res_img = configuration.panelStyle.image ? configuration.panelStyle.image : 'https://s3.wasabisys.com/influencelogo/logo/announcement.svg'
+        
+        }else if(ACTIVE_NOTIFICATION_TYPE == "custom"){
+
+            if(config.icon){
+                res_img =config.icon
+            }else{
+                res_img = configuration.panelStyle.image ? configuration.panelStyle.image : 'https://s3.wasabisys.com/influencelogo/logo/click.svg'
+            }
+        }
+
+
+
         /**
          * Creates HTML Node with given type
          * @param {String} HTMLTag HTML Element type
@@ -3147,57 +3200,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         console.log(leftSideElement, "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
 
-        var res_img;
+       
 
-
-
-        if(ACTIVE_NOTIFICATION_TYPE == "journey"){    
-         res_img = "https://s3.wasabisys.com/insidescript.com/maps/world.jpeg"
-        const bucketUrl = "https://s3.wasabisys.com/insidescript.com/maps/"
-        if (userDetails && userDetails) {
-            if (userDetails.productImg) {
-                res_img = userDetails.productImg;
-            }
-            else if (configuration && configuration.toggleMap == 'map') {
-                if (userDetails.city && userDetails.country) {
-                    res_img = bucketUrl +userDetails.city + '_' + userDetails.country + '.jpeg'
-                }
-                else if (userDetails.city) {
-                    res_img = bucketUrl +  userDetails.city + '.jpeg'
-                }
-                else if (userDetails.country) {
-                    res_img = bucketUrl + userDetails.country + '.jpeg'
-                }
-            }
-            else if (configuration && configuration.panelStyle) {
-                res_img = configuration.panelStyle.image;
-            }
-
-          res_img =  res_img ? res_img : "https://storage.googleapis.com/influence-197607.appspot.com/user_icon.png"
-        }
-        } else if(ACTIVE_NOTIFICATION_TYPE == "review"){
-            res_img = userReview && userReview.profileImg ? userReview.profileImg :(userReview ? 'https://lh3.ggpht.com/-HiICnzrd7xo/AAAAAAAAAAI/AAAAAAAAAAA/GcUbxXrSSYg/s128-c0x00000000-cc-rp-mo/photo.jpg': "")
-        } else if( ACTIVE_NOTIFICATION_TYPE == "identification"){
-
-            if(config.icon){
-                res_img =config.icon
-            }else{
-                res_img =configuration.panelStyle.image ? configuration.panelStyle.image : 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/C77C11F2-0E34-49DE-97CC-10DF6C848B69.png'
-            }
-
-        } else if(ACTIVE_NOTIFICATION_TYPE == "announcement"){
-           res_img = configuration.panelStyle.image ? configuration.panelStyle.image : 'https://s3.wasabisys.com/influencelogo/logo/announcement.svg'
-        
-        }else if(ACTIVE_NOTIFICATION_TYPE == "custom"){
-
-            if(config.icon){
-                res_img =config.icon
-            }else{
-                res_img = configuration.panelStyle.image ? configuration.panelStyle.image : 'https://s3.wasabisys.com/influencelogo/logo/click.svg'
-            }
-        }
-
-        console.log
         // "https://s3.wasabisys.com/influencelogo/logo/click.svg"
         
         leftSideCreator(ACTIVE_NOTIFICATION_TYPE, res_img )

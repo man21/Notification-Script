@@ -3009,7 +3009,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         }
         
         
-        const leftSideCreator = (type) => {
+        const leftSideCreator = (type, imageSrc) => {
 
             // console.log(type+ "-------------------"+ imageSrc, "+++++++++++++++++++++++++++++++++")
             if (type === "live") {
@@ -3024,8 +3024,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
             const imageElement = divCreator("img", `imageStyle ${type + "-imageStyle"}`)
             imageElement.setAttribute(
                 "src",
-                "https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/C77C11F2-0E34-49DE-97CC-10DF6C848B69.png"
-            )
+                imageSrc
+                )
 
             leftSideElement.appendChild(imageElement)
 
@@ -3198,13 +3198,13 @@ var Note = function Note(config, containerStyle, iconStyle) {
         const footerElement = footerContainer()
         const leftSideElement = leftSideContainer()
 
-        console.log(leftSideElement, "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
+        // console.log(leftSideElement, "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
 
        
 
         // "https://s3.wasabisys.com/influencelogo/logo/click.svg"
         
-        leftSideCreator(ACTIVE_NOTIFICATION_TYPE )
+        leftSideCreator(ACTIVE_NOTIFICATION_TYPE, res_img )
         rightSideTextCreator(ACTIVE_NOTIFICATION_TYPE)
         footerCreator(ACTIVE_NOTIFICATION_TYPE)
         

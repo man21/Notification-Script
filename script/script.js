@@ -2896,6 +2896,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
 
 
+        console.log(type, "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5")
         const ACTIVE_NOTIFICATION_TYPE = type
 
 
@@ -3108,7 +3109,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
             "https://useinfluence.co"
             )
         
-            if (type === "recent") {
+
+            if (type == "journey") {
             let timeElement = timeElementCreator("9 min(s) ago")
             mainContainer.style = "justify-content: space-between"
             mainContainer.appendChild(timeElement)
@@ -3137,6 +3139,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
         const leftSideElement = leftSideContainer()
 
         var res_img;
+
+
 
         if(ACTIVE_NOTIFICATION_TYPE == "journey"){    
          res_img = "https://s3.wasabisys.com/insidescript.com/maps/world.jpeg"

@@ -2896,7 +2896,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
 
 
-        console.log(type, "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5")
+        // console.log(type, "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5")
         const ACTIVE_NOTIFICATION_TYPE = type
 
 
@@ -3189,7 +3189,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         }
 
         
-        leftSideCreator(ACTIVE_NOTIFICATION_TYPE, res_img)
+        leftSideCreator(ACTIVE_NOTIFICATION_TYPE, "https://s3.wasabisys.com/influencelogo/logo/click.svg")
         rightSideTextCreator(ACTIVE_NOTIFICATION_TYPE)
         footerCreator(ACTIVE_NOTIFICATION_TYPE)
         

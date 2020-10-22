@@ -2905,6 +2905,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         var res_img;
 
+        var rightSideUpperText = "DUMMY DATA"
 
 
         if(ACTIVE_NOTIFICATION_TYPE == "journey"){    
@@ -2934,6 +2935,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
         } else if(ACTIVE_NOTIFICATION_TYPE == "review"){
             res_img = userReview && userReview.profileImg ? userReview.profileImg :(userReview ? 'https://lh3.ggpht.com/-HiICnzrd7xo/AAAAAAAAAAI/AAAAAAAAAAA/GcUbxXrSSYg/s128-c0x00000000-cc-rp-mo/photo.jpg': "")
         } else if( ACTIVE_NOTIFICATION_TYPE == "identification"){
+
+            rightSideUpperText = numberOfUsers
 
             if(config.icon){
                 res_img =config.icon
@@ -3034,13 +3037,13 @@ var Note = function Note(config, containerStyle, iconStyle) {
             }
         }
         
-        const rightSideTextCreator = (type) => {
+        const rightSideTextCreator = (type, upperText) => {
             const styleClass = ["live", "bulk", "custom"].includes(type)
             ? "singleLineContent"
             : "twoLineContent"
             let bulkNotif = divCreator("div", "lineWrapper")
             let lineElement = divCreator("p", styleClass)
-            let span1Element = divCreator("span", "span1Element", "2000 people")
+            let span1Element = divCreator("span", "span1Element", upperText)
             let span2Element = divCreator(
             "span",
             "span2Element",
@@ -3205,7 +3208,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         // "https://s3.wasabisys.com/influencelogo/logo/click.svg"
         
         leftSideCreator(ACTIVE_NOTIFICATION_TYPE, res_img )
-        rightSideTextCreator(ACTIVE_NOTIFICATION_TYPE)
+        rightSideTextCreator(ACTIVE_NOTIFICATION_TYPE, rightSideUpperText)
         footerCreator(ACTIVE_NOTIFICATION_TYPE)
         
         rightFlexContainer.appendChild(rightSideElement)

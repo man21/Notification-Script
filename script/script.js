@@ -3164,7 +3164,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         }
         } else if(ACTIVE_NOTIFICATION_TYPE == "review"){
             res_img = userReview && userReview.profileImg ? userReview.profileImg :(userReview ? 'https://lh3.ggpht.com/-HiICnzrd7xo/AAAAAAAAAAI/AAAAAAAAAAA/GcUbxXrSSYg/s128-c0x00000000-cc-rp-mo/photo.jpg': "")
-        } else if( ACTIVE_NOTIFICATION_TYPE = "identification"){
+        } else if( ACTIVE_NOTIFICATION_TYPE == "identification"){
 
             if(config.icon){
                 res_img =config.icon
@@ -3172,10 +3172,10 @@ var Note = function Note(config, containerStyle, iconStyle) {
                 res_img =configuration.panelStyle.image ? configuration.panelStyle.image : 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/C77C11F2-0E34-49DE-97CC-10DF6C848B69.png'
             }
 
-        } else if(ACTIVE_NOTIFICATION_TYPE = "announcement"){
+        } else if(ACTIVE_NOTIFICATION_TYPE == "announcement"){
            res_img = configuration.panelStyle.image ? configuration.panelStyle.image : 'https://s3.wasabisys.com/influencelogo/logo/announcement.svg'
         
-        }else if(ACTIVE_NOTIFICATION_TYPE = "custom"){
+        }else if(ACTIVE_NOTIFICATION_TYPE == "custom"){
 
             if(config.icon){
                 res_img =config.icon

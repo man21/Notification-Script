@@ -211,7 +211,7 @@ app.use(compression());
 
 // app.use(express.static(path.join(__dirname, 'HTML')));
 
-app.use('/', express.static(path.join(__dirname, 'HTML')))
+app.use('/', express.static(path.join(__dirname, 'script')))
 
 
 app.use('/provider', providerRoutes);

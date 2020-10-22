@@ -2775,6 +2775,7 @@ var aDay = 24 * 60 * 60;
 
 let k_c6ba2870 = 0, pathIndex = 0, notifClosr_c4rF9Effgt985n7v4y5h;
 var Note = function Note(config, containerStyle, iconStyle) {
+   
     var numAnim;
    
     function displayNotification(container, config) {
@@ -2786,11 +2787,11 @@ var Note = function Note(config, containerStyle, iconStyle) {
             elem[0].remove();
         }
 
-        if (!numAnim.error) {
-            numAnim.start();
-        } else {
-            console.error(numAnim.error);
-        }
+        // if (!numAnim.error) {
+        //     numAnim.start();
+        // } else {
+        //     console.error(numAnim.error);
+        // }
         
 
         setTimeout(function () {

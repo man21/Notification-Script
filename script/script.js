@@ -3011,7 +3011,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         
         const leftSideCreator = (type, imageSrc) => {
 
-            console.log(type+ "-------------------"+ imageSrc, "+++++++++++++++++++++++++++++++++")
+            // console.log(type+ "-------------------"+ imageSrc, "+++++++++++++++++++++++++++++++++")
             if (type === "live") {
             const animationWrapper = divCreator("div", "animation-wrapper")
             const animationClass = divCreator("div", "animationClass")
@@ -3024,7 +3024,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
             const imageElement = divCreator("img", `imageStyle ${type + "-imageStyle"}`)
             imageElement.setAttribute(
                 "src",
-                imageSrc
+                "https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/C77C11F2-0E34-49DE-97CC-10DF6C848B69.png"
             )
 
             leftSideElement.appendChild(imageElement)

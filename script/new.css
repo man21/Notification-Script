@@ -102,6 +102,10 @@
     margin-left: 5px;
   }
 
+  .singleLineContent{
+    margin:0;
+  }
+
   .span2Element{
     line-height: 1;
     box-sizing: border-box;
@@ -405,6 +409,37 @@
     overflow: hidden;
     align-self: center;
     word-break: break-all;
+  }
+
+  /* ---------------- Custom Style-------- */
+
+  .parentContentWrapper .leftContainer .custom-imageStyle{
+    width:56px;
+    height: 56px;
+  }
+
+  .custom-span1Element{
+    line-height: 1;
+    box-sizing: border-box;
+    font-size: 15px;
+    font-weight: 700;
+    font-style: normal;
+    text-align: left;
+    padding-right: 5px;
+    letter-spacing: .1px;
+    border-radius: 0 4px 4px 0;
+    color: rgb(0, 149, 247);
+    padding-left: 0px;
+  }
+
+  .custom-span2Element{
+    font-size: 11.9px;
+    font-style: normal;
+    color: #686b82;
+    line-height: 1.3;
+    letter-spacing: -.13px;
+    padding-left: 2px;
+    word-break: break-word;
   }
   
   @media only screen and (max-width: 600px){

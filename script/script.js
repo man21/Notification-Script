@@ -3140,7 +3140,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
             : "twoLineContent"
             let bulkNotif = divCreator("div", "lineWrapper")
             let lineElement = divCreator("p", styleClass)
-            let span1Element = divCreator("span", "span1Element", upperText)
+            let span1Element = divCreator("span", "span1Element", upperText + '' + configuration.visitorText)
 
             if(type === "identification"){
              numAnim = new CountUp(span1Element, 0, upperText, 0, 3);

@@ -3134,7 +3134,6 @@ var Note = function Note(config, containerStyle, iconStyle) {
         }
         
         const rightSideTextCreator = (type, upperText, secondaryText) => {
-            console.log( configuration.visitorText, "--------------------------")
             const styleClass = ["live", "identification", "custom"].includes(type)
             ? "singleLineContent"
             : "twoLineContent"
@@ -3147,7 +3146,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
             
              let visitorTextElement = divCreator("span", "visitorTextElement", configuration.visitorText)
 
-             span1Element.insertAdjacentElement('afterend', visitorTextElement)
+             span1Element.insertAdjacentElement('beforeend', visitorTextElement)
             }
             // numAnim = new CountUp(bulkNotificationFirstText, 0, numberOfUsers, 0, 3);
 

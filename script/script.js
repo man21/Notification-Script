@@ -3241,7 +3241,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
             mainContainer.style = "justify-content: center"
             }
         
-            if (!configuration.togglePoweredBy)
+            if (configuration.togglePoweredBy)
             mainContainer.appendChild(brandingElement)
         
             footerElement.appendChild(mainContainer)

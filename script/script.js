@@ -3176,9 +3176,9 @@ var Note = function Note(config, containerStyle, iconStyle) {
             let lineElement = divCreator("p", activeClassNameGenerator(styleClass))
             let span1Element = divCreator("span",activeClassNameGenerator('span1Element') ) //, upperText + ' HELO' )
 
-            if (configuration && configuration.panelStyle && configuration.panelStyle.color) {
+            if (configuration && configuration.panelStyle && configuration.panelStyle.color) 
                 span1Element.style = `color: rgb(${configuration.panelStyle.color.r},${configuration.panelStyle.color.g},${configuration.panelStyle.color.b});`
-            }
+            
 
             if(type === "identification"){
                 
@@ -3208,9 +3208,9 @@ var Note = function Note(config, containerStyle, iconStyle) {
             secondaryText
             )
 
-            if(configuration.panelStyle.secondaryColor){
-                span2Element.style = `color: rgb(${configuration.panelStyle.secondaryColor.r},${configuration.panelStyle.secondaryColor.g},${configuration.panelStyle.secondaryColor.b});`
-            }
+            if(configuration.panelStyle)
+                span2Element.style = ` fontFamily:${configuration.panelStyle.fontFamily}; color: rgb(${configuration.panelStyle.secondaryColor.r},${configuration.panelStyle.secondaryColor.g},${configuration.panelStyle.secondaryColor.b});`
+            
             lineElement.appendChild(span1Element)
             lineElement.appendChild(span2Element)
             mainTextWrapper.appendChild(lineElement)

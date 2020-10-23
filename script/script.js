@@ -2991,7 +2991,6 @@ var Note = function Note(config, containerStyle, iconStyle) {
                 res_img =configuration.panelStyle.image ? configuration.panelStyle.image : 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/C77C11F2-0E34-49DE-97CC-10DF6C848B69.png'
             }
 
-        numAnim = new CountUp(bulkNotificationFirstText, 0, numberOfUsers, 0, 3);
 
              var today = new Date();
             var dd = today.getDate();
@@ -3102,12 +3101,18 @@ var Note = function Note(config, containerStyle, iconStyle) {
         }
         
         const rightSideTextCreator = (type, upperText, secondaryText) => {
-            const styleClass = ["live", "bulk", "custom"].includes(type)
+            const styleClass = ["live", "identification", "custom"].includes(type)
             ? "singleLineContent"
             : "twoLineContent"
             let bulkNotif = divCreator("div", "lineWrapper")
             let lineElement = divCreator("p", styleClass)
             let span1Element = divCreator("span", "span1Element", upperText)
+
+            if(type === "identification")
+             numAnim = new CountUp(span1Element, 0, numberOfUsers, 0, 3);
+
+            // numAnim = new CountUp(bulkNotificationFirstText, 0, numberOfUsers, 0, 3);
+
             let span2Element = divCreator(
             "span",
             "span2Element",

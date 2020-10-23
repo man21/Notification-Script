@@ -2991,6 +2991,23 @@ var Note = function Note(config, containerStyle, iconStyle) {
                 res_img =configuration.panelStyle.image ? configuration.panelStyle.image : 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/C77C11F2-0E34-49DE-97CC-10DF6C848B69.png'
             }
 
+        numAnim = new CountUp(bulkNotificationFirstText, 0, numberOfUsers, 0, 3);
+
+             var today = new Date();
+            var dd = today.getDate();
+            var mm = today.getMonth() + 1; //January is 0!
+            var yyyy = today.getFullYear();     
+            if (dd < 10) { dd = '0' + dd }
+            if (mm < 10) { mm = '0' + mm }
+            today = yyyy + '/' + mm + '/' + dd;
+            var date2 = new Date(today);
+            var date1 = new Date(config.rule.createdAt);
+            var timeDiff = Math.abs(date2.getTime() - date1.getTime());
+            var dayDifference = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+            secondaryText = ` ${configuration ? configuration.otherText : ''} ${configuration ? configuration.contentText : ''} ${configuration && configuration.bulkText ? configuration.bulkText : 'in the last'} ${configuration.panelStyle.bulkData} ${configuration && configuration.bulkDaysLable ? configuration.bulkDaysLable : 'days'}`  //"signed up for influence in the last 7 days"
+     
+
         } else if(ACTIVE_NOTIFICATION_TYPE == "announcement"){
            res_img = configuration.panelStyle.image ? configuration.panelStyle.image : 'https://s3.wasabisys.com/influencelogo/logo/announcement.svg'
         

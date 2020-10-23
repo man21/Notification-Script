@@ -3030,6 +3030,22 @@ var Note = function Note(config, containerStyle, iconStyle) {
                 res_img = configuration.panelStyle.image ? configuration.panelStyle.image : 'https://s3.wasabisys.com/influencelogo/logo/click.svg'
             }
 
+            res_name =  linkCount && linkCount.totalCount ?  linkCount.totalCount: 0 //numberOfUsers + "123 " // + configuration.visitorText
+
+                        var today = new Date();
+                        var dd = today.getDate();
+                        var mm = today.getMonth() + 1; //January is 0!
+                        var yyyy = today.getFullYear();     
+                        if (dd < 10) { dd = '0' + dd }
+                        if (mm < 10) { mm = '0' + mm }
+                        today = yyyy + '/' + mm + '/' + dd;
+                        var date2 = new Date(today);
+                        var date1 = new Date(config.rule.createdAt);
+                        var timeDiff = Math.abs(date2.getTime() - date1.getTime());
+                        var dayDifference = Math.ceil(timeDiff / (1000 * 3600 * 24));
+    
+            secondaryText =  ` ${configuration ? configuration.otherText : ''} <b>${configuration ? linkCount && linkCount.slug ? linkCount.slug: "link" : ''} </b> ${configuration && configuration.bulkText ? configuration.bulkText : 'in the last'} ${configuration.panelStyle.bulkData} ${configuration && configuration.bulkDaysLable ? configuration.bulkDaysLable : 'days'}`  //"signed up for influence in the last 7 days"
+
 
             verifiedBy = `${configuration && configuration.recentText2 ? configuration.recentText2 : 'verified by'}`;   //"Verified by"
             poweredByLink=   configuration.poweredByLink
@@ -3200,7 +3216,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
             }
         
             const customSlugBtnCreator = () => {
-            const slugBtn = divCreator("button", "customSlugBtn", "slug")
+            const slug=  linkCount && linkCount.slug?linkCount.slug : "link"
+            const slugBtn = divCreator("button", "customSlugBtn", slug)
             return slugBtn
             }
         

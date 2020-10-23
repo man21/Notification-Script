@@ -2983,7 +2983,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
             res_img = userReview && userReview.profileImg ? userReview.profileImg :(userReview ? 'https://lh3.ggpht.com/-HiICnzrd7xo/AAAAAAAAAAI/AAAAAAAAAAA/GcUbxXrSSYg/s128-c0x00000000-cc-rp-mo/photo.jpg': "")
         } else if( ACTIVE_NOTIFICATION_TYPE == "identification"){
 
-            rightSideUpperText = numberOfUsers
+            res_name = numberOfUsers
 
             if(config.icon){
                 res_img =config.icon
@@ -3101,6 +3101,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         }
         
         const rightSideTextCreator = (type, upperText, secondaryText) => {
+            console.log(upperText, "--------------------------")
             const styleClass = ["live", "identification", "custom"].includes(type)
             ? "singleLineContent"
             : "twoLineContent"

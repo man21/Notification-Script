@@ -2981,6 +2981,10 @@ var Note = function Note(config, containerStyle, iconStyle) {
         
         } else if(ACTIVE_NOTIFICATION_TYPE == "review"){
             res_img = userReview && userReview.profileImg ? userReview.profileImg :(userReview ? 'https://lh3.ggpht.com/-HiICnzrd7xo/AAAAAAAAAAI/AAAAAAAAAAA/GcUbxXrSSYg/s128-c0x00000000-cc-rp-mo/photo.jpg': "")
+
+            verifiedBy = `${configuration && configuration.recentText2 ? configuration.recentText2 : 'verified by'}`;   //"Verified by"
+            poweredByLink=   configuration.poweredByLink
+            poweredBy=  configuration.poweredBy ? configuration.poweredBy : 'Influence'; 
         } else if( ACTIVE_NOTIFICATION_TYPE == "identification"){
 
             res_name = numberOfUsers
@@ -3007,15 +3011,17 @@ var Note = function Note(config, containerStyle, iconStyle) {
             secondaryText = ` ${configuration ? configuration.otherText : ''} ${configuration ? configuration.contentText : ''} ${configuration && configuration.bulkText ? configuration.bulkText : 'in the last'} ${configuration.panelStyle.bulkData} ${configuration && configuration.bulkDaysLable ? configuration.bulkDaysLable : 'days'}`  //"signed up for influence in the last 7 days"
      
             verifiedBy = `${configuration && configuration.recentText2 ? configuration.recentText2 : 'verified by'}`;   //"Verified by"
-
-                    poweredByLink=   configuration.poweredByLink
-
-                    poweredBy=  configuration.poweredBy ? configuration.poweredBy : 'Influence'; 
+            poweredByLink=   configuration.poweredByLink
+            poweredBy=  configuration.poweredBy ? configuration.poweredBy : 'Influence'; 
     
 
         } else if(ACTIVE_NOTIFICATION_TYPE == "announcement"){
            res_img = configuration.panelStyle.image ? configuration.panelStyle.image : 'https://s3.wasabisys.com/influencelogo/logo/announcement.svg'
         
+
+           verifiedBy = `${configuration && configuration.recentText2 ? configuration.recentText2 : 'verified by'}`;   //"Verified by"
+            poweredByLink=   configuration.poweredByLink
+            poweredBy=  configuration.poweredBy ? configuration.poweredBy : 'Influence'; 
         }else if(ACTIVE_NOTIFICATION_TYPE == "custom"){
 
             if(config.icon){
@@ -3023,6 +3029,11 @@ var Note = function Note(config, containerStyle, iconStyle) {
             }else{
                 res_img = configuration.panelStyle.image ? configuration.panelStyle.image : 'https://s3.wasabisys.com/influencelogo/logo/click.svg'
             }
+
+
+            verifiedBy = `${configuration && configuration.recentText2 ? configuration.recentText2 : 'verified by'}`;   //"Verified by"
+            poweredByLink=   configuration.poweredByLink
+            poweredBy=  configuration.poweredBy ? configuration.poweredBy : 'Influence'; 
         }
 
 

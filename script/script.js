@@ -3220,7 +3220,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         const footerElement = footerContainer()
         const leftSideElement = leftSideContainer()
 
-        // console.log(leftSideElement, "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
+        console.log(res_name, "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
 
        
 

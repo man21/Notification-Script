@@ -3161,7 +3161,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
             : "twoLineContent"
             let mainTextWrapper = divCreator("div", activeClassNameGenerator('lineWrapper'))
             let lineElement = divCreator("p", activeClassNameGenerator(styleClass))
-            let span1Element = divCreator("span", ) //, upperText + ' HELO' )
+            let span1Element = divCreator("span",activeClassNameGenerator('span1Element') ) //, upperText + ' HELO' )
 
             if(type === "identification"){
                 

@@ -3134,19 +3134,21 @@ var Note = function Note(config, containerStyle, iconStyle) {
         }
         
         const rightSideTextCreator = (type, upperText, secondaryText) => {
+
+            console.log(configuration.visitorText, "=========================")
             const styleClass = ["live", "identification", "custom"].includes(type)
             ? "singleLineContent"
             : "twoLineContent"
             let bulkNotif = divCreator("div", "lineWrapper")
             let lineElement = divCreator("p", styleClass)
-            let span1Element = divCreator("span", "span1Element", upperText + '' + configuration.visitorText)
+            let span1Element = divCreator("span", "span1Element", upperText + ' HELO' )
 
             if(type === "identification"){
-             numAnim = new CountUp(span1Element, 0, upperText, 0, 3);
-            
-             let visitorTextElement = divCreator("span", "visitorTextElement", configuration.visitorText)
+                
+                let visitorTextElement = divCreator("span", "visitorTextElement", configuration.visitorText)
+                span1Element.insertAdjacentElement('beforeend', visitorTextElement)
 
-             span1Element.insertAdjacentElement('beforeend', visitorTextElement)
+             numAnim = new CountUp(span1Element, 0, upperText, 0, 3);             
             }
             // numAnim = new CountUp(bulkNotificationFirstText, 0, numberOfUsers, 0, 3);
 

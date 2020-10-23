@@ -2787,11 +2787,11 @@ var Note = function Note(config, containerStyle, iconStyle) {
             elem[0].remove();
         }
 
-        // if (!numAnim.error) {
-        //     numAnim.start();
-        // } else {
-        //     console.error(numAnim.error);
-        // }
+        if (!numAnim.error) {
+            numAnim.start();
+        } else {
+            console.error(numAnim.error);
+        }
         
 
         setTimeout(function () {
@@ -3141,15 +3141,22 @@ var Note = function Note(config, containerStyle, iconStyle) {
             : "twoLineContent"
             let bulkNotif = divCreator("div", "lineWrapper")
             let lineElement = divCreator("p", styleClass)
-            let span1Element = divCreator("span", "span1Element", upperText + ' HELO' )
+            let span1Element = divCreator("span", "span1Element") //, upperText + ' HELO' )
 
-            // if(type === "identification"){
+            if(type === "identification"){
                 
-            //     let visitorTextElement = divCreator("span", "visitorTextElement", configuration.visitorText)
-            //     span1Element.insertAdjacentElement('beforeend', visitorTextElement)
+                var numberText = divCreator("span", "visitorTextElement", upperText)
 
-            //  numAnim = new CountUp(span1Element, 0, upperText, 0, 3);             
-            // }
+                let visitorTextElement = divCreator("span", "visitorTextElement", configuration.visitorText)
+                // span1Element.insertAdjacentElement('beforeend', visitorTextElement)
+
+                span1Element.appendChild(numberText)
+                span1Element.appendChild(visitorTextElement)
+
+             numAnim = new CountUp(span1Element, 0, upperText, 0, 3);             
+            }else
+                span1Element.innerHTML = upperText
+                
             // numAnim = new CountUp(bulkNotificationFirstText, 0, numberOfUsers, 0, 3);
 
             let span2Element = divCreator(

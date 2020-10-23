@@ -2906,7 +2906,17 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         // var brandingNameHide= ""
 
-        if(ACTIVE_NOTIFICATION_TYPE == "journey"){    
+        if(ACTIVE_NOTIFICATION_TYPE == "live"){
+
+
+            res_name = liveVisitorCount == 0 ? 1 : liveVisitorCount + ' ' + ` ${configuration.visitorText}`      //"21 People"
+
+            secondaryText = `${configuration && configuration.liveText ? configuration.liveText : 'verified by '}`  //"Verified by"
+            verifiedBy = `${configuration && configuration.recentText2 ? configuration.recentText2 : 'verified by'}`;   //"Verified by"
+            poweredByLink=   configuration.poweredByLink
+            poweredBy=  configuration.poweredBy ? configuration.poweredBy : 'Influence'; 
+
+        }else if(ACTIVE_NOTIFICATION_TYPE == "journey"){    
          res_img = "https://s3.wasabisys.com/insidescript.com/maps/world.jpeg"
         const bucketUrl = "https://s3.wasabisys.com/insidescript.com/maps/"
             if (userDetails && userDetails) {

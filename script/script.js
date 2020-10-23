@@ -2907,7 +2907,13 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         // var brandingNameHide= ""
 
-        const activeClassNameGenerator = (styleClass) => `${styleClass} ${ACTIVE_NOTIFICATION_TYPE}-${styleClass}`
+        
+
+        /**
+         * Generates classNames for active notifications. Attach another class with active notif type
+         * @param {String} styleClass classname
+         */
+        const activeClassNameGenerator = (styleClass) => (`${styleClass} ${ACTIVE_NOTIFICATION_TYPE}-${styleClass}`)
 
         if(ACTIVE_NOTIFICATION_TYPE == "live"){
             res_name = liveVisitorCount == 0 ? 1 : liveVisitorCount + ' ' + ` ${configuration.visitorText}`      //"21 People"
@@ -3187,7 +3193,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
             let span2Element = divCreator(
             "span",
-            "span2Element",
+            activeClassNameGenerator('span2Element'),
             secondaryText
             )
             lineElement.appendChild(span1Element)

@@ -369,7 +369,7 @@
 
   /* -------------------- */
 
-  .announcement-imageStyle{
+  .parentContentWrapper .leftContainer .announcement-imageStyle{
     width:56px;
     height: 56px;
   }

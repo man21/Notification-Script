@@ -3140,7 +3140,11 @@ var Note = function Note(config, containerStyle, iconStyle) {
             if (type === "live") {
             const animationWrapper = divCreator("div", "animation-wrapper")
             const animationClass = divCreator("div", "animationClass")
-            const circle_2 = divCreator("div", "circle-2")
+            let circle_2 = divCreator("div", "circle-2")
+
+            if(configuration.panelStyle.iconBGColor){
+                circle_2.style= `background: rgb(${configuration.panelStyle.iconBGColor.r},${configuration.panelStyle.iconBGColor.g},${configuration.panelStyle.iconBGColor.b});`
+            }
         
             animationClass.appendChild(circle_2)
             animationWrapper.appendChild(animationClass)

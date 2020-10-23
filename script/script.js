@@ -3063,7 +3063,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
          */
         const divCreator = (HTMLTag, classNames, innerHTML) => {
             let d = document.createElement(HTMLTag)
-            if (classNames) d.className = `${classNames} -${ACTIVE_NOTIFICATION_TYPE}`
+            if (classNames) d.className = `${classNames}`
             if (innerHTML) d.innerHTML = innerHTML
             return d
         }

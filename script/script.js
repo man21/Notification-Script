@@ -3208,7 +3208,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
             secondaryText
             )
 
-            if(configuration && configuration.panelStyle)
+            if(configuration && configuration.panelStyle && configuration.panelStyle.secondaryColor)
                 span2Element.style = `font-family:${configuration.panelStyle.fontFamily}; color: rgb(${configuration.panelStyle.secondaryColor.r},${configuration.panelStyle.secondaryColor.g},${configuration.panelStyle.secondaryColor.b});`
             
             lineElement.appendChild(span1Element)

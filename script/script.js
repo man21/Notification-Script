@@ -3352,6 +3352,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         }
         
         const influenceSocialProof = divCreator("div", "influence-social-proof")
+        influenceSocialProof.style =containerStyle
         const parentContentWrapper = divCreator("div", "parentContentWrapper")
         const rightFlexContainer = divCreator("div", "rightFlexContainer")
         

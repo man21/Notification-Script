@@ -3209,7 +3209,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
             )
 
             if(configuration.panelStyle)
-                span2Element.style = ` fontFamily:${configuration.panelStyle.fontFamily}; color: rgb(${configuration.panelStyle.secondaryColor.r},${configuration.panelStyle.secondaryColor.g},${configuration.panelStyle.secondaryColor.b});`
+                span2Element.style = ` font-faamily:${configuration.panelStyle.fontFamily}; color: rgb(${configuration.panelStyle.secondaryColor.r},${configuration.panelStyle.secondaryColor.g},${configuration.panelStyle.secondaryColor.b});`
             
             lineElement.appendChild(span1Element)
             lineElement.appendChild(span2Element)

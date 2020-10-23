@@ -2908,9 +2908,12 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         if(ACTIVE_NOTIFICATION_TYPE == "live"){
 
+            console.log(" ENTERED HERE")
+
 
             res_name = liveVisitorCount == 0 ? 1 : liveVisitorCount + ' ' + ` ${configuration.visitorText}`      //"21 People"
 
+            console.log(res_name, " -----------------------============")
             secondaryText = `${configuration && configuration.liveText ? configuration.liveText : 'verified by '}`  //"Verified by"
             verifiedBy = `${configuration && configuration.recentText2 ? configuration.recentText2 : 'verified by'}`;   //"Verified by"
             poweredByLink=   configuration.poweredByLink

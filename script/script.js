@@ -2907,6 +2907,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         // var brandingNameHide= ""
 
+        const activeClassNameGenerator = (styleClass) => `${styleClass} ${ACTIVE_NOTIFICATION_TYPE}-${styleClass}`
+
         if(ACTIVE_NOTIFICATION_TYPE == "live"){
             res_name = liveVisitorCount == 0 ? 1 : liveVisitorCount + ' ' + ` ${configuration.visitorText}`      //"21 People"
             secondaryText = `${configuration && configuration.liveText ? configuration.liveText : 'verified by '}`  //"Verified by"
@@ -3157,9 +3159,9 @@ var Note = function Note(config, containerStyle, iconStyle) {
             const styleClass = ["live", "identification", "custom"].includes(type)
             ? "singleLineContent"
             : "twoLineContent"
-            let bulkNotif = divCreator("div", "lineWrapper")
-            let lineElement = divCreator("p", styleClass)
-            let span1Element = divCreator("span", "span1Element") //, upperText + ' HELO' )
+            let mainTextWrapper = divCreator("div", activeClassNameGenerator('lineWrapper'))
+            let lineElement = divCreator("p", activeClassNameGenerator(styleClass))
+            let span1Element = divCreator("span", ) //, upperText + ' HELO' )
 
             if(type === "identification"){
                 
@@ -3190,8 +3192,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
             )
             lineElement.appendChild(span1Element)
             lineElement.appendChild(span2Element)
-            bulkNotif.appendChild(lineElement)
-            rightSideElement.appendChild(bulkNotif)
+            mainTextWrapper.appendChild(lineElement)
+            rightSideElement.appendChild(mainTextWrapper)
         }
         
         const checkSVG = `<svg width="10" height="10" viewBox="0 0 524 524" xmlns="http://www.w3.org/2000/svg">

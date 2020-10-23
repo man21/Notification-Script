@@ -315,16 +315,15 @@
     letter-spacing: -.13px;
     padding-left: 2px;
     word-break: break-word;
+    -webkit-line-clamp: 2;
   }
 
 
   .journey-twoLineContent{
     margin: 0;
-    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     line-height: 1;
     overflow: hidden;
-    display: -webkit-box;
     direction: inherit;
   }
   

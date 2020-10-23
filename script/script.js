@@ -3177,7 +3177,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
             let span1Element = divCreator("span",activeClassNameGenerator('span1Element') ) //, upperText + ' HELO' )
 
             if (configuration && configuration.panelStyle && configuration.panelStyle.color) 
-                span1Element.style = `color: rgb(${configuration.panelStyle.color.r},${configuration.panelStyle.color.g},${configuration.panelStyle.color.b});`
+                span1Element.style = `font-family:${configuration.panelStyle.fontFamily}; color: rgb(${configuration.panelStyle.color.r},${configuration.panelStyle.color.g},${configuration.panelStyle.color.b});`
             
 
             if(type === "identification"){
@@ -3209,7 +3209,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
             )
 
             if(configuration.panelStyle)
-                span2Element.style = ` font-family:${configuration.panelStyle.fontFamily}; color: rgb(${configuration.panelStyle.secondaryColor.r},${configuration.panelStyle.secondaryColor.g},${configuration.panelStyle.secondaryColor.b});`
+                span2Element.style = `font-family:${configuration.panelStyle.fontFamily}; color: rgb(${configuration.panelStyle.secondaryColor.r},${configuration.panelStyle.secondaryColor.g},${configuration.panelStyle.secondaryColor.b});`
             
             lineElement.appendChild(span1Element)
             lineElement.appendChild(span2Element)

@@ -2959,6 +2959,9 @@ var Note = function Note(config, containerStyle, iconStyle) {
                     secondaryText= configuration.orderText + ' ' + userDetails.productName
                     else
                     secondaryText= configuration.otherText + ' ' + configuration.contentText;
+       
+                    var timeStamp = userDetails && userDetails ? userDetails.timestamp : new Date();
+                    footerTimeStamped=  'updated ' +timeStamp ? timeSince(new Date(new Date(timeStamp) - aDay).toISOString(),configuration) : "Not available ";
         } else if(ACTIVE_NOTIFICATION_TYPE == "review"){
             res_img = userReview && userReview.profileImg ? userReview.profileImg :(userReview ? 'https://lh3.ggpht.com/-HiICnzrd7xo/AAAAAAAAAAI/AAAAAAAAAAA/GcUbxXrSSYg/s128-c0x00000000-cc-rp-mo/photo.jpg': "")
         } else if( ACTIVE_NOTIFICATION_TYPE == "identification"){
@@ -3201,7 +3204,9 @@ var Note = function Note(config, containerStyle, iconStyle) {
         
 
             if (type == "journey") {
-            let timeElement = timeElementCreator("9 min(s) ago")
+                var timeStamp = userDetails && userDetails ? userDetails.timestamp : new Date();
+            var footerTimeStamped=  'updated ' +timeStamp ? timeSince(new Date(new Date(timeStamp) - aDay).toISOString(),configuration) : "Not available ";
+            let timeElement = timeElementCreator(footerTimeStamped) //"9 min(s) ago"
             mainContainer.style = "justify-content: space-between"
             mainContainer.appendChild(timeElement)
             } else if( type === "custom"){

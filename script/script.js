@@ -3145,8 +3145,30 @@ var Note = function Note(config, containerStyle, iconStyle) {
             const animationClass = divCreator("div", "animationClass")
             let circle_2 = divCreator("div", "circle-2")
 
+                let dynamicStyles = null
+
+                function addAnimation(r, g, b) {
+                    if (!dynamicStyles) {
+                        dynamicStyles = document.createElement("style")
+                        dynamicStyles.type = "text/css"
+                        document.head.appendChild(dynamicStyles)
+                    }
+
+                    animationStyle = `
+                        @keyframes dynamicPulseAnimation { 
+                            0% { box-shadow: 0 0 0 0 rgba(${r},${g},${b},.4); }
+                            100% {  box-shadow: 0 0 0 19px rgba(${r},${g},${b},0); }
+                        }
+                        `
+
+                    dynamicStyles.sheet.insertRule(animationStyle, dynamicStyles.length)
+                }
+
             if(configuration.panelStyle.iconBGColor){
                 circle_2.style= `background: rgb(${configuration.panelStyle.iconBGColor.r},${configuration.panelStyle.iconBGColor.g},${configuration.panelStyle.iconBGColor.b});`
+                addAnimation(configuration.panelStyle.iconBGColor.r, configuration.panelStyle.iconBGColor.g, configuration.panelStyle.iconBGColor.b)
+                circle_2.style.animation = "dynamicPulseAnimation linear infinite 1.5s"
+                animationClass.style.animation = "dynamicPulseAnimation 3s linear infinite"
             }
         
             animationClass.appendChild(circle_2)

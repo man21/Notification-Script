@@ -2923,7 +2923,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
                     //  liveNotificationSecondText.style = `color: rgb(${configuration.panelStyle.color.r},${configuration.panelStyle.color.g},${configuration.panelStyle.color.b});`
                     // }
 
-                secondaryText ` ${configuration.liveVisitorText}`;
+                secondaryText = ` ${configuration.liveVisitorText}`;
                 if(config.liveViewer)
                 secondaryText = ` ${configuration.liveViewerText}`;
                 else if(config.liveFollower)

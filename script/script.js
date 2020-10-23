@@ -2787,11 +2787,11 @@ var Note = function Note(config, containerStyle, iconStyle) {
             elem[0].remove();
         }
 
-        if (!numAnim.error) {
-            numAnim.start();
-        } else {
-            console.error(numAnim.error);
-        }
+        // if (!numAnim.error) {
+        //     numAnim.start();
+        // } else {
+        //     console.error(numAnim.error);
+        // }
         
 
         setTimeout(function () {
@@ -3143,13 +3143,13 @@ var Note = function Note(config, containerStyle, iconStyle) {
             let lineElement = divCreator("p", styleClass)
             let span1Element = divCreator("span", "span1Element", upperText + ' HELO' )
 
-            if(type === "identification"){
+            // if(type === "identification"){
                 
-                let visitorTextElement = divCreator("span", "visitorTextElement", configuration.visitorText)
-                span1Element.insertAdjacentElement('beforeend', visitorTextElement)
+            //     let visitorTextElement = divCreator("span", "visitorTextElement", configuration.visitorText)
+            //     span1Element.insertAdjacentElement('beforeend', visitorTextElement)
 
-             numAnim = new CountUp(span1Element, 0, upperText, 0, 3);             
-            }
+            //  numAnim = new CountUp(span1Element, 0, upperText, 0, 3);             
+            // }
             // numAnim = new CountUp(bulkNotificationFirstText, 0, numberOfUsers, 0, 3);
 
             let span2Element = divCreator(

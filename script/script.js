@@ -2787,11 +2787,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
             elem[0].remove();
         }
 
-        if (!numAnim.error) {
-            numAnim.start();
-        } else {
-            console.error(numAnim.error);
-        }
+       
         
 
         setTimeout(function () {
@@ -3152,6 +3148,12 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
                 span1Element.appendChild(numberText)
                 span1Element.appendChild(visitorTextElement)
+
+                if (!numAnim.error) {
+                    numAnim.start();
+                } else {
+                    console.error(numAnim.error);
+                }
 
                 numAnim = new CountUp(numberText, 0, upperText, 0, 3);             
             }else

@@ -2904,6 +2904,12 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         var secondaryText = ''
 
+        var verifiedBy =""
+        var poweredBy = ""
+        var poweredByLink = ""
+
+        // var brandingNameHide= ""
+
         if(ACTIVE_NOTIFICATION_TYPE == "journey"){    
          res_img = "https://s3.wasabisys.com/insidescript.com/maps/world.jpeg"
         const bucketUrl = "https://s3.wasabisys.com/insidescript.com/maps/"
@@ -2962,6 +2968,17 @@ var Note = function Note(config, containerStyle, iconStyle) {
        
                     var timeStamp = userDetails && userDetails ? userDetails.timestamp : new Date();
                     footerTimeStamped=  'updated ' +timeStamp ? timeSince(new Date(new Date(timeStamp) - aDay).toISOString(),configuration) : "Not available ";
+      
+                // Footer
+                    
+
+                    verifiedBy = `${configuration && configuration.recentText2 ? configuration.recentText2 : 'verified by'}`;   //"Verified by"
+
+                    poweredByLink=   configuration.poweredByLink
+
+                    poweredBy=  configuration.poweredBy ? configuration.poweredBy : 'Influence'; 
+    
+        
         } else if(ACTIVE_NOTIFICATION_TYPE == "review"){
             res_img = userReview && userReview.profileImg ? userReview.profileImg :(userReview ? 'https://lh3.ggpht.com/-HiICnzrd7xo/AAAAAAAAAAI/AAAAAAAAAAA/GcUbxXrSSYg/s128-c0x00000000-cc-rp-mo/photo.jpg': "")
         } else if( ACTIVE_NOTIFICATION_TYPE == "identification"){
@@ -3112,7 +3129,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         <path class="cls-3" transform="translate(-640 -238)" d="m846.25 552.7 127.39-144.5a9.721 9.721 0 0 1 13.35-1.047l29.679 24.286a8.9 8.9 0 0 1 1.08 12.862l-127.39 144.5a9.721 9.721 0 0 1-13.35 1.047l-29.675-24.286a8.9 8.9 0 0 1-1.087-12.861z"></path>
         </svg>`
         
-        const footerCreator = (type) => {
+        const footerCreator = (type, verifiedByText, poweredByText, poweredByLink) => {
             /**
              * Create and returns Branding element
              * @param {String} verifiedBy Verified by text
@@ -3196,15 +3213,18 @@ var Note = function Note(config, containerStyle, iconStyle) {
             * Main parent container of footer.
             */
             let mainContainer = divCreator("div", "footerWrapper")
-            let brandingElement = brandingElementCreator(
-            "by",
-            "influence",
-            "https://useinfluence.co"
-            )
-        
 
+                let brandingElement = brandingElementCreator(
+                    verifiedByText,
+                    poweredByText,
+                    poweredByLink
+                )
+                // "by",
+                // "influence",
+                // "https://useinfluence.co"
+        
             if (type == "journey") {
-                var timeStamp = userDetails && userDetails ? userDetails.timestamp : new Date();
+            var timeStamp = userDetails && userDetails ? userDetails.timestamp : new Date();
             var footerTimeStamped=  'updated ' +timeStamp ? timeSince(new Date(new Date(timeStamp) - aDay).toISOString(),configuration) : "Not available ";
             let timeElement = timeElementCreator(footerTimeStamped) //"9 min(s) ago"
             mainContainer.style = "justify-content: space-between"
@@ -3221,7 +3241,9 @@ var Note = function Note(config, containerStyle, iconStyle) {
             mainContainer.style = "justify-content: center"
             }
         
+            if (configuration.togglePoweredBy)
             mainContainer.appendChild(brandingElement)
+        
             footerElement.appendChild(mainContainer)
         }
         
@@ -3233,7 +3255,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         const footerElement = footerContainer()
         const leftSideElement = leftSideContainer()
 
-        console.log(res_name, "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
+        // console.log(res_name, "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
 
        
 
@@ -3241,7 +3263,11 @@ var Note = function Note(config, containerStyle, iconStyle) {
         
         leftSideCreator(ACTIVE_NOTIFICATION_TYPE, res_img )
         rightSideTextCreator(ACTIVE_NOTIFICATION_TYPE, res_name, secondaryText)
-        footerCreator(ACTIVE_NOTIFICATION_TYPE)
+        
+        
+            // brandingNameHide = 'display: none'
+            footerCreator(ACTIVE_NOTIFICATION_TYPE, verifiedBy, poweredBy, poweredByLink)
+        
         
         rightFlexContainer.appendChild(rightSideElement)
         rightFlexContainer.appendChild(footerElement)

@@ -2902,6 +2902,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         var res_name = "Someone"
 
+        var secondaryText = ''
 
         if(ACTIVE_NOTIFICATION_TYPE == "journey"){    
          res_img = "https://s3.wasabisys.com/insidescript.com/maps/world.jpeg"
@@ -2951,6 +2952,13 @@ var Note = function Note(config, containerStyle, iconStyle) {
                                     :
                                     "Anonymous"
                     : "Anonymous";
+
+        
+                    // Secondary Text
+                    if (userDetails && userDetails && userDetails.productName)
+                    secondaryText= configuration.orderText + ' ' + userDetails.productName
+                    else
+                    secondaryText= configuration.otherText + ' ' + configuration.contentText;
         } else if(ACTIVE_NOTIFICATION_TYPE == "review"){
             res_img = userReview && userReview.profileImg ? userReview.profileImg :(userReview ? 'https://lh3.ggpht.com/-HiICnzrd7xo/AAAAAAAAAAI/AAAAAAAAAAA/GcUbxXrSSYg/s128-c0x00000000-cc-rp-mo/photo.jpg': "")
         } else if( ACTIVE_NOTIFICATION_TYPE == "identification"){
@@ -3056,7 +3064,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
             }
         }
         
-        const rightSideTextCreator = (type, upperText) => {
+        const rightSideTextCreator = (type, upperText, secondaryText) => {
             const styleClass = ["live", "bulk", "custom"].includes(type)
             ? "singleLineContent"
             : "twoLineContent"
@@ -3066,7 +3074,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
             let span2Element = divCreator(
             "span",
             "span2Element",
-            "signed up for influence in last 2 days"
+            secondaryText
             )
             lineElement.appendChild(span1Element)
             lineElement.appendChild(span2Element)
@@ -3227,7 +3235,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         // "https://s3.wasabisys.com/influencelogo/logo/click.svg"
         
         leftSideCreator(ACTIVE_NOTIFICATION_TYPE, res_img )
-        rightSideTextCreator(ACTIVE_NOTIFICATION_TYPE, res_name)
+        rightSideTextCreator(ACTIVE_NOTIFICATION_TYPE, res_name, secondaryText)
         footerCreator(ACTIVE_NOTIFICATION_TYPE)
         
         rightFlexContainer.appendChild(rightSideElement)

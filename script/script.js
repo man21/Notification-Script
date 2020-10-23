@@ -2918,17 +2918,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
         if(ACTIVE_NOTIFICATION_TYPE == "live"){
             res_name = liveVisitorCount == 0 ? 1 : liveVisitorCount + ' ' + ` ${configuration.visitorText}`      //"21 People"
             secondaryText = `${configuration && configuration.liveText ? configuration.liveText : 'verified by '}`  //"Verified by"
-            
-                 // if (configuration && configuration.panelStyle && configuration.panelStyle.color) {
-                    //  liveNotificationSecondText.style = `color: rgb(${configuration.panelStyle.color.r},${configuration.panelStyle.color.g},${configuration.panelStyle.color.b});`
-                    // }
-
+        
                 secondaryText = ` ${configuration.liveVisitorText}`;
-                if(config.liveViewer)
-                secondaryText = ` ${configuration.liveViewerText}`;
-                else if(config.liveFollower)
-                secondaryText =` ${configuration.liveFollowerText}`;
-
             
             verifiedBy = `${configuration && configuration.recentText2 ? configuration.recentText2 : 'verified by'}`;   //"Verified by"
             poweredByLink=   configuration.poweredByLink
@@ -3184,6 +3175,10 @@ var Note = function Note(config, containerStyle, iconStyle) {
             let mainTextWrapper = divCreator("div", activeClassNameGenerator('lineWrapper'))
             let lineElement = divCreator("p", activeClassNameGenerator(styleClass))
             let span1Element = divCreator("span",activeClassNameGenerator('span1Element') ) //, upperText + ' HELO' )
+
+            if (configuration && configuration.panelStyle && configuration.panelStyle.color) {
+                span1Element.style = `color: rgb(${configuration.panelStyle.color.r},${configuration.panelStyle.color.g},${configuration.panelStyle.color.b});`
+            }
 
             if(type === "identification"){
                 

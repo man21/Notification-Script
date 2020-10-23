@@ -3141,50 +3141,52 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
             // console.log(type+ "-------------------"+ imageSrc, "+++++++++++++++++++++++++++++++++")
             if (type === "live") {
-            const animationWrapper = divCreator("div", "animation-wrapper")
-            const animationClass = divCreator("div", "animationClass")
-            let circle_2 = divCreator("div", "circle-2")
+                const animationWrapper = divCreator("div", "animation-wrapper")
+                const animationClass = divCreator("div", "animationClass")
+                let circle_2 = divCreator("div", "circle-2")
 
-                let dynamicStyles = null
+                    //------------ Live Dynamic css pulse animation-------
+                    let dynamicStyles = null
 
-                function addAnimation(r, g, b) {
-                    if (!dynamicStyles) {
-                        dynamicStyles = document.createElement("style")
-                        dynamicStyles.type = "text/css"
-                        document.head.appendChild(dynamicStyles)
+                    
+                    /**
+                     * Dynamically generates the animation `@keyframes` of name `dynamicPulseAnimation` for Live css 
+                     * pulse animation and inserts it in style tag of head element
+                     * @param {String} r red value
+                     * @param {String} g green value
+                     * @param {String} b blue value
+                     */
+                    function addAnimation(r, g, b) {
+                        if (!dynamicStyles) {
+                            dynamicStyles = document.createElement("style")
+                            dynamicStyles.type = "text/css"
+                            document.head.appendChild(dynamicStyles)
+                        }
+
+                        animationStyle = `
+                            @keyframes dynamicPulseAnimation { 
+                                0% { box-shadow: 0 0 0 0 rgba(${r},${g},${b},.4); }
+                                100% {  box-shadow: 0 0 0 19px rgba(${r},${g},${b},0); }
+                            }
+                            `
+
+                        dynamicStyles.sheet.insertRule(animationStyle, dynamicStyles.length)
                     }
 
-                    animationStyle = `
-                        @keyframes dynamicPulseAnimation { 
-                            0% { box-shadow: 0 0 0 0 rgba(${r},${g},${b},.4); }
-                            100% {  box-shadow: 0 0 0 19px rgba(${r},${g},${b},0); }
-                        }
-                        `
-
-                    dynamicStyles.sheet.insertRule(animationStyle, dynamicStyles.length)
+                if(configuration.panelStyle.iconBGColor){
+                    circle_2.style= `background: rgb(${configuration.panelStyle.iconBGColor.r},${configuration.panelStyle.iconBGColor.g},${configuration.panelStyle.iconBGColor.b});`
+                    addAnimation(configuration.panelStyle.iconBGColor.r, configuration.panelStyle.iconBGColor.g, configuration.panelStyle.iconBGColor.b)
+                    circle_2.style.animation = "dynamicPulseAnimation linear infinite 1.5s"
+                    animationClass.style.animation = "dynamicPulseAnimation 3s linear infinite"
                 }
-
-            if(configuration.panelStyle.iconBGColor){
-                circle_2.style= `background: rgb(${configuration.panelStyle.iconBGColor.r},${configuration.panelStyle.iconBGColor.g},${configuration.panelStyle.iconBGColor.b});`
-                addAnimation(configuration.panelStyle.iconBGColor.r, configuration.panelStyle.iconBGColor.g, configuration.panelStyle.iconBGColor.b)
-                circle_2.style.animation = "dynamicPulseAnimation linear infinite 1.5s"
-                animationClass.style.animation = "dynamicPulseAnimation 3s linear infinite"
-            }
-        
-            animationClass.appendChild(circle_2)
-            animationWrapper.appendChild(animationClass)
-            leftSideElement.appendChild(animationWrapper)
+            
+                animationClass.appendChild(circle_2)
+                animationWrapper.appendChild(animationClass)
+                leftSideElement.appendChild(animationWrapper)
             } else {
-            const imageElement = divCreator("img", `imageStyle ${type + "-imageStyle"}`)
-            imageElement.setAttribute(
-                "src",
-                imageSrc
-                )
-
-            leftSideElement.appendChild(imageElement)
-
-            // console.log(leftSideElement, "leftSideElement !!!!!!!!!!!!!!!!!!!!!!!!11")
-
+                const imageElement = divCreator("img", `imageStyle ${type + "-imageStyle"}`)
+                imageElement.setAttribute("src",imageSrc)
+                leftSideElement.appendChild(imageElement)
             }
         }
         

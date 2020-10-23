@@ -3207,6 +3207,10 @@ var Note = function Note(config, containerStyle, iconStyle) {
             activeClassNameGenerator('span2Element'),
             secondaryText
             )
+
+            if(configuration.panelStyle.secondaryColor){
+                span2Element.style = `color: rgb(${configuration.panelStyle.secondaryColor.r},${configuration.panelStyle.secondaryColor.g},${configuration.panelStyle.secondaryColor.b});`
+            }
             lineElement.appendChild(span1Element)
             lineElement.appendChild(span2Element)
             mainTextWrapper.appendChild(lineElement)

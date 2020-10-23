@@ -3327,7 +3327,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
             mainContainer.style = "justify-content: space-between; flex-direction:row-reverse"
             mainContainer.appendChild(slugBtn)
             } else if(type === "review"){
-            let reviewStars = reviewStarCreator('stamped', 3)
+            let reviewStars = reviewStarCreator(fromAppType, userReview.rating)
             mainContainer.style = "justify-content: space-between"
             mainContainer.appendChild(reviewStars)
             } else {

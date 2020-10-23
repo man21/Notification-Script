@@ -2893,6 +2893,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
 
 
+        var fromApptype ;
 
         var res_img;
 
@@ -2991,6 +2992,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
             secondaryText = userReview && userReview.review_text ? userReview.review_text : `Reviewed us on ${fromAppType}`; 
 
 
+         fromAppType = userReview ? userReview.fromApp :'';
+         
             verifiedBy = `${configuration && configuration.recentText2 ? configuration.recentText2 : 'verified by'}`;   //"Verified by"
             poweredByLink=   configuration.poweredByLink
             poweredBy=  configuration.poweredBy ? configuration.poweredBy : 'Influence'; 

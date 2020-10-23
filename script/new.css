@@ -318,9 +318,8 @@
   }
 
 
-  .journey-span1Element, .journey-span2Element{
+  .journey-twoLineContent{
     margin: 0;
-    align-self: center;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     line-height: 1;

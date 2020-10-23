@@ -3142,9 +3142,13 @@ var Note = function Note(config, containerStyle, iconStyle) {
             let lineElement = divCreator("p", styleClass)
             let span1Element = divCreator("span", "span1Element", upperText)
 
-            if(type === "identification")
+            if(type === "identification"){
              numAnim = new CountUp(span1Element, 0, upperText, 0, 3);
+            
+             let visitorTextElement = divCreator("span", "visitorTextElement", configuration.visitorText)
 
+             span1Element.insertAdjacentElement(visitorTextElement)
+            }
             // numAnim = new CountUp(bulkNotificationFirstText, 0, numberOfUsers, 0, 3);
 
             let span2Element = divCreator(

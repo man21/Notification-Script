@@ -185,7 +185,6 @@
     font-family: sans-serif;
     color: #077fff;
     letter-spacing: .25px;
-    text-transform:capitalize;
   }
   
   .customSlugBtn{
@@ -245,12 +244,12 @@
   }
   
   .animation-wrapper .animationClass {
-      animation: animationClass 3s linear infinite;
+      animation: livePulseAnimation 3s linear infinite;
   }
   .animation-wrapper .circle-2 {
-      animation: animationClass 3s linear infinite 1.5s;
+      animation: livePulseAnimation 3s linear infinite 1.5s;
   }
-  @keyframes animationClass {
+  @keyframes livePulseAnimation {
     0% {
       box-shadow: 0 0 0 0 rgba(0,149,247,.4);
     }

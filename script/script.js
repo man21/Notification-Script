@@ -3135,7 +3135,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         
         const rightSideTextCreator = (type, upperText, secondaryText) => {
 
-            console.log(configuration.visitorText, "=========================")
+            console.log(configuration.visitorText, "========================= " + type)
             const styleClass = ["live", "identification", "custom"].includes(type)
             ? "singleLineContent"
             : "twoLineContent"
@@ -3153,7 +3153,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
                 span1Element.appendChild(numberText)
                 span1Element.appendChild(visitorTextElement)
 
-             numAnim = new CountUp(span1Element, 0, upperText, 0, 3);             
+                numAnim = new CountUp(numberText, 0, upperText, 0, 3);             
             }else
                 span1Element.innerHTML = upperText
                 

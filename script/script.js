@@ -5041,9 +5041,9 @@ var Note = function Note(config, containerStyle, iconStyle) {
    
     mainContainer.appendChild(influenceSocialProof)
 
-    innerDiv.appendChild(mainContainer);
-    innerContainer.appendChild(innerDiv);
-    container.appendChild(innerContainer);
+    // innerDiv.appendChild(mainContainer);
+    // innerContainer.appendChild(innerDiv);
+    // container.appendChild(innerContainer);
 
 
     // console.log(mainContainer,"Main Container Data")

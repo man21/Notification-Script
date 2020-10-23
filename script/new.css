@@ -7,12 +7,6 @@
   }
   
   .influence-social-proof {
-    position: absolute;
-    box-sizing: border-box;
-    bottom: 100px;
-    left: 30px;
-    font-size: 15px;
-    line-height: 24px;
     box-sizing: border-box;
     height: 85px !important;
     padding: 2px 5px 2px 8px;

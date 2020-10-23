@@ -3255,6 +3255,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
             }
         
             const reviewStarCreator = (fromAppType, starCount) => {
+
+                console.log({fromAppType, starCount}, " ++++++++++++++++++++++++++++")
             const reviewMainContainer = divCreator("div", `reviewMainContainer ${fromAppType}-reviewMainContainer`)
             const reviewTypeLogo = divCreator("img", `reviewTypeLogo ${fromAppType}-reviewTypeLogo`)
             const starIconContainer = divCreator("span", "starIconContainer")
@@ -3286,6 +3288,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
                 }
                 starIconContainer.innerHTML = totalStars
             } else {
+
                 reviewTypeLogo.setAttribute("src", imageAssets.googleLogo)
                 let totalStars = ""
                 for (let i = 0; i < starCount; i++) {

@@ -3134,7 +3134,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         }
         
         const rightSideTextCreator = (type, upperText, secondaryText) => {
-            console.log(upperText, "--------------------------")
+            console.log( configuration.visitorText, "--------------------------")
             const styleClass = ["live", "identification", "custom"].includes(type)
             ? "singleLineContent"
             : "twoLineContent"

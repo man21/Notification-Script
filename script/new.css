@@ -303,6 +303,7 @@
     border-radius: 0 4px 4px 0;
     color: rgb(54, 54, 96);
     padding-left: 0px;
+    background-color: transparent;
   }
 
   .journey-span2Element{
@@ -316,6 +317,17 @@
     word-break: break-word;
   }
 
+
+  .journey-span1Element, .journey-span2Element{
+    margin: 0;
+    align-self: center;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    line-height: 1;
+    overflow: hidden;
+    display: -webkit-box;
+    direction: inherit;
+  }
   
   @media only screen and (max-width: 600px){
   

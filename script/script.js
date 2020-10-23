@@ -3142,8 +3142,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
             let lineElement = divCreator("p", styleClass)
             let span1Element = divCreator("span", "span1Element", upperText)
 
-            // if(type === "identification")
-            //  numAnim = new CountUp(span1Element, 0, upperText, 0, 3);
+            if(type === "identification")
+             numAnim = new CountUp(span1Element, 0, upperText, 0, 3);
 
             // numAnim = new CountUp(bulkNotificationFirstText, 0, numberOfUsers, 0, 3);
 

@@ -3147,7 +3147,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
             
              let visitorTextElement = divCreator("span", "visitorTextElement", configuration.visitorText)
 
-             span1Element.insertAdjacentElement(visitorTextElement)
+             span1Element.insertAdjacentElement(span1Element, visitorTextElement)
             }
             // numAnim = new CountUp(bulkNotificationFirstText, 0, numberOfUsers, 0, 3);
 

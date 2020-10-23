@@ -2900,33 +2900,57 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         var res_img;
 
-        var rightSideUpperText = "DUMMY DATA"
+        var res_name = "Someone"
 
 
         if(ACTIVE_NOTIFICATION_TYPE == "journey"){    
          res_img = "https://s3.wasabisys.com/insidescript.com/maps/world.jpeg"
         const bucketUrl = "https://s3.wasabisys.com/insidescript.com/maps/"
-        if (userDetails && userDetails) {
-            if (userDetails.productImg) {
-                res_img = userDetails.productImg;
-            }
-            else if (configuration && configuration.toggleMap == 'map') {
-                if (userDetails.city && userDetails.country) {
-                    res_img = bucketUrl +userDetails.city + '_' + userDetails.country + '.jpeg'
+            if (userDetails && userDetails) {
+                if (userDetails.productImg) {
+                    res_img = userDetails.productImg;
                 }
-                else if (userDetails.city) {
-                    res_img = bucketUrl +  userDetails.city + '.jpeg'
+                else if (configuration && configuration.toggleMap == 'map') {
+                    if (userDetails.city && userDetails.country) {
+                        res_img = bucketUrl +userDetails.city + '_' + userDetails.country + '.jpeg'
+                    }
+                    else if (userDetails.city) {
+                        res_img = bucketUrl +  userDetails.city + '.jpeg'
+                    }
+                    else if (userDetails.country) {
+                        res_img = bucketUrl + userDetails.country + '.jpeg'
+                    }
                 }
-                else if (userDetails.country) {
-                    res_img = bucketUrl + userDetails.country + '.jpeg'
+                else if (configuration && configuration.panelStyle) {
+                    res_img = configuration.panelStyle.image;
                 }
-            }
-            else if (configuration && configuration.panelStyle) {
-                res_img = configuration.panelStyle.image;
-            }
 
-          res_img =  res_img ? res_img : "https://storage.googleapis.com/influence-197607.appspot.com/user_icon.png"
-        }
+            res_img =  res_img ? res_img : "https://storage.googleapis.com/influence-197607.appspot.com/user_icon.png"
+            }
+             res_name = userDetails && userDetails ? userDetails.username ? userDetails.username : userDetails.response.json.value.form.firstname : null;
+                if (res_name && res_name.trim().length == 0) res_name = 'Someone';
+                res_name = res_name ? res_name.replace(/[0-9]/g, '').toLowerCase().split('.').join(' ').split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ') : res_name;
+                if (res_name && res_name.split(' ').length > 1 && configuration.isHideLastname == true) {
+                    res_name = res_name.split(' ')[0];
+                }
+                if (configuration && configuration.toggleHideName) {
+                    res_name = configuration.usernameText;
+                }
+                var user_details = userDetails && userDetails ?
+                    userDetails.city && userDetails.country && res_name && !configuration.isHideFullLocation ?
+                        `${res_name} ${(!configuration.isHideCityLocation || !configuration.isHideCountryLocation) ? configuration && configuration.recentText1 ? configuration.recentText1 : 'from' : ''} ${!configuration.isHideCityLocation ? userDetails.city : ''}${!configuration.isHideCityLocation && !configuration.isHideCountryLocation ? ', ' : ''} ${!configuration.isHideCountryLocation ? userDetails.country : ''}`
+                        :
+                        userDetails.city && res_name && !configuration.isHideFullLocation && !configuration.isHideCityLocation?
+                            `${res_name} ${configuration && configuration.recentText1 ? configuration.recentText1 : 'from'} ${userDetails.city}`
+                            :
+                            userDetails.country && res_name && !configuration.isHideFullLocation && !configuration.isHideCountryLocation?
+                                `${res_name} ${configuration && configuration.recentText1 ? configuration.recentText1 : 'from'} ${userDetails.country}`
+                                :
+                                res_name ?
+                                    `${res_name}`
+                                    :
+                                    "Anonymous"
+                    : "Anonymous";
         } else if(ACTIVE_NOTIFICATION_TYPE == "review"){
             res_img = userReview && userReview.profileImg ? userReview.profileImg :(userReview ? 'https://lh3.ggpht.com/-HiICnzrd7xo/AAAAAAAAAAI/AAAAAAAAAAA/GcUbxXrSSYg/s128-c0x00000000-cc-rp-mo/photo.jpg': "")
         } else if( ACTIVE_NOTIFICATION_TYPE == "identification"){
@@ -3203,7 +3227,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         // "https://s3.wasabisys.com/influencelogo/logo/click.svg"
         
         leftSideCreator(ACTIVE_NOTIFICATION_TYPE, res_img )
-        rightSideTextCreator(ACTIVE_NOTIFICATION_TYPE, rightSideUpperText)
+        rightSideTextCreator(ACTIVE_NOTIFICATION_TYPE, res_name)
         footerCreator(ACTIVE_NOTIFICATION_TYPE)
         
         rightFlexContainer.appendChild(rightSideElement)

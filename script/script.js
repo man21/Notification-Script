@@ -3391,7 +3391,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         }
         
         const influenceSocialProof = divCreator("div", "influence-social-proof")
-        influenceSocialProof.style =containerStyle
+        influenceSocialProof.style = containerStyle
         const parentContentWrapper = divCreator("div", "parentContentWrapper")
         const rightFlexContainer = divCreator("div", "rightFlexContainer")
         
@@ -5041,6 +5041,10 @@ var Note = function Note(config, containerStyle, iconStyle) {
    
     mainContainer.appendChild(influenceSocialProof)
 
+    innerDiv.appendChild(mainContainer);
+    innerContainer.appendChild(innerDiv);
+    container.appendChild(innerContainer);
+
 
     // console.log(mainContainer,"Main Container Data")
 
@@ -5053,7 +5057,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
 
 
-        // console.log(container, "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@222")
+         console.log(container, "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@222")
        
 
         if (type == 'journey' && userDetails && userDetails.length > k_c6ba2870) {

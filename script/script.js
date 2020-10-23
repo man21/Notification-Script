@@ -3006,6 +3006,12 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
             secondaryText = ` ${configuration ? configuration.otherText : ''} ${configuration ? configuration.contentText : ''} ${configuration && configuration.bulkText ? configuration.bulkText : 'in the last'} ${configuration.panelStyle.bulkData} ${configuration && configuration.bulkDaysLable ? configuration.bulkDaysLable : 'days'}`  //"signed up for influence in the last 7 days"
      
+            verifiedBy = `${configuration && configuration.recentText2 ? configuration.recentText2 : 'verified by'}`;   //"Verified by"
+
+                    poweredByLink=   configuration.poweredByLink
+
+                    poweredBy=  configuration.poweredBy ? configuration.poweredBy : 'Influence'; 
+    
 
         } else if(ACTIVE_NOTIFICATION_TYPE == "announcement"){
            res_img = configuration.panelStyle.image ? configuration.panelStyle.image : 'https://s3.wasabisys.com/influencelogo/logo/announcement.svg'

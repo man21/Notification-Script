@@ -98,6 +98,10 @@
     background-color: rgb(243, 247, 255);
   }
   
+  .visitorTextElement{
+    margin-left: 5px;
+  }
+
   .span2Element{
     line-height: 1;
     box-sizing: border-box;

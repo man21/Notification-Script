@@ -2905,7 +2905,16 @@ var Note = function Note(config, containerStyle, iconStyle) {
         var poweredBy = ""
         var poweredByLink = ""
 
-        // var brandingNameHide= ""
+        // var brandingNameHide= "
+
+
+        const trackingClassNames = {
+            identification: ["foc2x3WbXB" , "aiqUT4q94o", "VyDVZdCWdx", "A4S38Y254X","qQ6LvxoYlp", "knaKnioVnl" ],
+            journey: ["sisbMFuEGu", "CTTTs8uT13", "XIwR5JMPFF", "YgksSelqbb", "YDR83P698y"],
+            announcement: ["Zn5De9iJFM", "iIdFziYOKB", "TsebdJUQvt", "bm6LvHbM56", "close-btn-container"],
+            live:["oiuytretg", "jihuygtfrdes", "jhgfdfghb" ],
+            review:["y2UXzO2spo", "DyWfFTHh9R", "sD1KBJgziO", "wIwWxk318I" ,"bnvt6niIjl" ]
+        }
 
         
 
@@ -3123,16 +3132,19 @@ var Note = function Note(config, containerStyle, iconStyle) {
          */
         const leftSideContainer = () => {
             const leftContainer = divCreator("div", `leftContainer ${ACTIVE_NOTIFICATION_TYPE}-leftContainer`)
+            leftContainer.classList.add(trackingClassNames[ACTIVE_NOTIFICATION_TYPE].join(" "))
             return leftContainer
         }
         
         const rightSideContainer = () => {
             let div = divCreator("div", `rightSideContainer ${ACTIVE_NOTIFICATION_TYPE}-rightSideContainer`)
+            div.classList.add(trackingClassNames[ACTIVE_NOTIFICATION_TYPE].join(" "))
             return div
         }
         
         const footerContainer = () => {
             let div = divCreator("div", `footerContainer ${ACTIVE_NOTIFICATION_TYPE}-footerContainer`)
+            div.classList.add(trackingClassNames[ACTIVE_NOTIFICATION_TYPE].join(" "))
             return div
         }
         

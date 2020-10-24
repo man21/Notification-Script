@@ -3357,11 +3357,6 @@ var Note = function Note(config, containerStyle, iconStyle) {
             */
             let mainContainer = divCreator("div", "footerWrapper")
 
-            // mainContainer.style=`width:${345 - configuration.panelStyle.radius}px`
-
-            console.log('-------------------------ddddddddddddd----',`width:${258 - configuration.panelStyle.radius}px`)
-
-            console.log('--------configratoin', configuration)
 
                 let brandingElement = brandingElementCreator(
                     verifiedByText,

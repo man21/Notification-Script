@@ -3404,6 +3404,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         }
         
         const influenceSocialProof = divCreator("div", "influence-social-proof")
+        influenceSocialProof.classList.add(...trackingClassNames[ACTIVE_NOTIFICATION_TYPE])
         influenceSocialProof.style = containerStyle
         console.log('contianerstyle------------', containerStyle)
         const parentContentWrapper = divCreator("div", "parentContentWrapper")

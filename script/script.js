@@ -3132,19 +3132,19 @@ var Note = function Note(config, containerStyle, iconStyle) {
          */
         const leftSideContainer = () => {
             const leftContainer = divCreator("div", `leftContainer ${ACTIVE_NOTIFICATION_TYPE}-leftContainer`)
-            leftContainer.classList.add(trackingClassNames[ACTIVE_NOTIFICATION_TYPE].join(" "))
+            leftContainer.classList.add(...trackingClassNames[ACTIVE_NOTIFICATION_TYPE])
             return leftContainer
         }
         
         const rightSideContainer = () => {
             let div = divCreator("div", `rightSideContainer ${ACTIVE_NOTIFICATION_TYPE}-rightSideContainer`)
-            div.classList.add(trackingClassNames[ACTIVE_NOTIFICATION_TYPE].join(" "))
+            div.classList.add(...trackingClassNames[ACTIVE_NOTIFICATION_TYPE])
             return div
         }
         
         const footerContainer = () => {
             let div = divCreator("div", `footerContainer ${ACTIVE_NOTIFICATION_TYPE}-footerContainer`)
-            div.classList.add(trackingClassNames[ACTIVE_NOTIFICATION_TYPE].join(" "))
+            div.classList.add(...trackingClassNames[ACTIVE_NOTIFICATION_TYPE])
             return div
         }
         

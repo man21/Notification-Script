@@ -3357,6 +3357,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
             */
             let mainContainer = divCreator("div", "footerWrapper")
 
+            // mainContainer.style=``
+
                 let brandingElement = brandingElementCreator(
                     verifiedByText,
                     poweredByText,
@@ -3392,6 +3394,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         
         const influenceSocialProof = divCreator("div", "influence-social-proof")
         influenceSocialProof.style = containerStyle
+        console.log('contianerstyle------------', containerStyle)
         const parentContentWrapper = divCreator("div", "parentContentWrapper")
         const rightFlexContainer = divCreator("div", "rightFlexContainer")
         

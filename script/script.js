@@ -3357,7 +3357,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
             */
             let mainContainer = divCreator("div", "footerWrapper")
 
-            mainContainer.style.width=`${345 - configuration.panelStyle.radius}px`
+            // mainContainer.style=`width:${345 - configuration.panelStyle.radius}px`
 
             console.log('-------------------------ddddddddddddd----',`width:${345 - configuration.panelStyle.radius}px`)
 
@@ -3373,21 +3373,21 @@ var Note = function Note(config, containerStyle, iconStyle) {
                 // "https://useinfluence.co"
         
             if (type == "journey") {
-            var timeStamp = userDetails && userDetails ? userDetails.timestamp : new Date();
-            var footerTimeStamped=  'updated ' +timeStamp ? timeSince(new Date(new Date(timeStamp) - aDay).toISOString(),configuration) : "Not available ";
-            let timeElement = timeElementCreator(footerTimeStamped) //"9 min(s) ago"
-            mainContainer.style = "justify-content: space-between"
-            mainContainer.appendChild(timeElement)
+                var timeStamp = userDetails && userDetails ? userDetails.timestamp : new Date();
+                var footerTimeStamped=  'updated ' +timeStamp ? timeSince(new Date(new Date(timeStamp) - aDay).toISOString(),configuration) : "Not available ";
+                let timeElement = timeElementCreator(footerTimeStamped) //"9 min(s) ago"
+                mainContainer.style = `justify-content: space-between; width:${345 - configuration.panelStyle.radius}px`
+                mainContainer.appendChild(timeElement)
             } else if( type === "custom"){
-            let slugBtn = customSlugBtnCreator()
-            mainContainer.style = "justify-content: space-between; flex-direction:row-reverse"
-            mainContainer.appendChild(slugBtn)
+                let slugBtn = customSlugBtnCreator()
+                mainContainer.style = `justify-content: space-between; flex-direction:row-reverse; width:${345 - configuration.panelStyle.radius}px`
+                mainContainer.appendChild(slugBtn)
             } else if(type === "review"){
-            let reviewStars = reviewStarCreator(fromAppType, userReview.rating)
-            mainContainer.style = "justify-content: space-between"
-            mainContainer.appendChild(reviewStars)
+                let reviewStars = reviewStarCreator(fromAppType, userReview.rating)
+                mainContainer.style = `justify-content: space-between; width:${345 - configuration.panelStyle.radius}px`
+                mainContainer.appendChild(reviewStars)
             } else {
-            mainContainer.style = "justify-content: center"
+                mainContainer.style = `justify-content: center; width:${345 - configuration.panelStyle.radius}px`
             }
         
             if (configuration.togglePoweredBy)

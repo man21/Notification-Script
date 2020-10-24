@@ -3359,7 +3359,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
             // mainContainer.style=`width:${345 - configuration.panelStyle.radius}px`
 
-            console.log('-------------------------ddddddddddddd----',`width:${345 - configuration.panelStyle.radius}px`)
+            console.log('-------------------------ddddddddddddd----',`width:${258 - configuration.panelStyle.radius}px`)
 
             console.log('--------configratoin', configuration)
 
@@ -3376,18 +3376,18 @@ var Note = function Note(config, containerStyle, iconStyle) {
                 var timeStamp = userDetails && userDetails ? userDetails.timestamp : new Date();
                 var footerTimeStamped=  'updated ' +timeStamp ? timeSince(new Date(new Date(timeStamp) - aDay).toISOString(),configuration) : "Not available ";
                 let timeElement = timeElementCreator(footerTimeStamped) //"9 min(s) ago"
-                mainContainer.style = `justify-content: space-between; width:${345 - configuration.panelStyle.radius}px`
+                mainContainer.style = `justify-content: space-between; width:${258 - configuration.panelStyle.radius}px`
                 mainContainer.appendChild(timeElement)
             } else if( type === "custom"){
                 let slugBtn = customSlugBtnCreator()
-                mainContainer.style = `justify-content: space-between; flex-direction:row-reverse; width:${345 - configuration.panelStyle.radius}px`
+                mainContainer.style = `justify-content: space-between; flex-direction:row-reverse; width:${258 - configuration.panelStyle.radius}px`
                 mainContainer.appendChild(slugBtn)
             } else if(type === "review"){
                 let reviewStars = reviewStarCreator(fromAppType, userReview.rating)
-                mainContainer.style = `justify-content: space-between; width:${345 - configuration.panelStyle.radius}px`
+                mainContainer.style = `justify-content: space-between; width:${258 - configuration.panelStyle.radius}px`
                 mainContainer.appendChild(reviewStars)
             } else {
-                mainContainer.style = `justify-content: center; width:${345 - configuration.panelStyle.radius}px`
+                mainContainer.style = `justify-content: center; width:${258 - configuration.panelStyle.radius}px`
             }
         
             if (configuration.togglePoweredBy)

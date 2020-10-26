@@ -2959,7 +2959,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
             journey: ["sisbMFuEGu", "CTTTs8uT13", "XIwR5JMPFF", "YgksSelqbb", "YDR83P698y"],
             announcement: ["Zn5De9iJFM", "iIdFziYOKB", "TsebdJUQvt", "bm6LvHbM56", "close-btn-container"],
             live:["oiuytretg", "jihuygtfrdes", "jhgfdfghb" ],
-            review:["y2UXzO2spo", "DyWfFTHh9R", "sD1KBJgziO", "wIwWxk318I" ,"bnvt6niIjl" ]
+            review:["y2UXzO2spo", "DyWfFTHh9R", "sD1KBJgziO", "wIwWxk318I" ,"bnvt6niIjl" ],
+            custom:[" "]
         }
 
         var finalResult= {}

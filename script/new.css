@@ -366,7 +366,7 @@
   /* -------------- Live notif styles ------------- */
 
   .live-influence-social-proof{
-    height: 85px !important;
+    height: 80px !important;
   }
 
   .parentContentWrapper .live-rightSideContainer {
@@ -398,7 +398,8 @@
     border-radius: 3px;
     word-spacing: 1.5px;
     letter-spacing: .02px;
-    background-color: rgba(200,218,255,.31);  
+    background-color: rgba(200,218,255,.31);
+    text-transform: capitalize;
   }
 
   .live-span2Element{

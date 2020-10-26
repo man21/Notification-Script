@@ -3008,28 +3008,28 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
                 finalResult.res_img =  res_img ? res_img : "https://storage.googleapis.com/influence-197607.appspot.com/user_icon.png"
             }
-             res_name = userDetails && userDetails ? userDetails.username ? userDetails.username : userDetails.response.json.value.form.firstname : null;
-                if (res_name && res_name.trim().length == 0) res_name = 'Someone';
-                res_name = res_name ? res_name.replace(/[0-9]/g, '').toLowerCase().split('.').join(' ').split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ') : res_name;
-                if (res_name && res_name.split(' ').length > 1 && configuration.isHideLastname == true) {
-                    res_name = res_name.split(' ')[0];
+            var recentName = userDetails && userDetails ? userDetails.username ? userDetails.username : userDetails.response.json.value.form.firstname : null;
+                if (recentName && recentName.trim().length == 0) recentName = 'Someone';
+                recentName = recentName ? recentName.replace(/[0-9]/g, '').toLowerCase().split('.').join(' ').split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ') : recentName;
+                if (recentName && recentName.split(' ').length > 1 && configuration.isHideLastname == true) {
+                    recentName = recentName.split(' ')[0];
                 }
                 if (configuration && configuration.toggleHideName) {
-                    res_name = configuration.usernameText;
+                    recentName = configuration.usernameText;
                 }
             
                 res_name = userDetails && userDetails ?
-                    userDetails.city && userDetails.country && res_name && !configuration.isHideFullLocation ?
-                        `${res_name} ${(!configuration.isHideCityLocation || !configuration.isHideCountryLocation) ? configuration && configuration.recentText1 ? configuration.recentText1 : 'from' : ''} ${!configuration.isHideCityLocation ? userDetails.city : ''}${!configuration.isHideCityLocation && !configuration.isHideCountryLocation ? ', ' : ''} ${!configuration.isHideCountryLocation ? userDetails.country : ''}`
+                    userDetails.city && userDetails.country && recentName && !configuration.isHideFullLocation ?
+                        `${recentName} ${(!configuration.isHideCityLocation || !configuration.isHideCountryLocation) ? configuration && configuration.recentText1 ? configuration.recentText1 : 'from' : ''} ${!configuration.isHideCityLocation ? userDetails.city : ''}${!configuration.isHideCityLocation && !configuration.isHideCountryLocation ? ', ' : ''} ${!configuration.isHideCountryLocation ? userDetails.country : ''}`
                         :
-                        userDetails.city && res_name && !configuration.isHideFullLocation && !configuration.isHideCityLocation?
-                            `${res_name} ${configuration && configuration.recentText1 ? configuration.recentText1 : 'from'} ${userDetails.city}`
+                        userDetails.city && recentName && !configuration.isHideFullLocation && !configuration.isHideCityLocation?
+                            `${recentName} ${configuration && configuration.recentText1 ? configuration.recentText1 : 'from'} ${userDetails.city}`
                             :
-                            userDetails.country && res_name && !configuration.isHideFullLocation && !configuration.isHideCountryLocation?
-                                `${res_name} ${configuration && configuration.recentText1 ? configuration.recentText1 : 'from'} ${userDetails.country}`
+                            userDetails.country && recentName && !configuration.isHideFullLocation && !configuration.isHideCountryLocation?
+                                `${recentName} ${configuration && configuration.recentText1 ? configuration.recentText1 : 'from'} ${userDetails.country}`
                                 :
-                                res_name ?
-                                    `${res_name}`
+                                recentName ?
+                                    `${recentName}`
                                     :
                                     "Anonymous"
                     : "Anonymous";
@@ -3037,9 +3037,9 @@ var Note = function Note(config, containerStyle, iconStyle) {
         
                     // Secondary Text
                     if (userDetails && userDetails && userDetails.productName)
-                    secondaryText= configuration.orderText + ' ' + userDetails.productName
+                    finalResult.secondaryText= configuration.orderText + ' ' + userDetails.productName
                     else
-                    secondaryText= configuration.otherText + ' ' + configuration.contentText;
+                    finalResult.secondaryText= configuration.otherText + ' ' + configuration.contentText;
        
                     var timeStamp = userDetails && userDetails ? userDetails.timestamp : new Date();
                     footerTimeStamped=  'updated ' +timeStamp ? timeSince(new Date(new Date(timeStamp) - aDay).toISOString(),configuration) : "Not available ";

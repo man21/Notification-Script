@@ -363,7 +363,15 @@
     overflow: hidden;
     direction: inherit;
   }
-  /* -------------- */
+  /* -------------- Live notif styles ------------- */
+
+  .live-influence-social-proof{
+    height: 85px !important;
+  }
+
+  .parentContentWrapper .live-rightSideContainer {
+    height:61px;
+  }
 
   .live-singleLineContent{
     background: transparent;
@@ -406,7 +414,7 @@
   /* -------------------- Announcement notif styles --------------*/
 
   .announcement-influence-social-proof{
-    width:95px !important;
+    height:95px !important;
   }
 
   .parentContentWrapper .leftContainer .announcement-imageStyle{

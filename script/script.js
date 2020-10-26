@@ -3371,7 +3371,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
                 reviewTypeLogo.setAttribute("src", imageAssets.capterra.logo)
                 let totalStars = ""
                 for (let i = 0; i < starCount; i++) {
-                    totalStars += imageAssets.capterra.star
+                    totalStars += imageAssets.googleYellowStar //capterra.star
                 }
                 starIconContainer.innerHTML = totalStars
             } else if (fromAppType === "trustpilot") {

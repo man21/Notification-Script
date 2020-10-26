@@ -286,7 +286,9 @@
   /* ------------------- Review notif styles ------------------ */
 
   .review-influence-social-proof{
-    border-radius: 5px;
+    border-radius: 5px !important;
+    height: 96px !important
+
   }
 
   .parentContentWrapper > .review-leftContainer{
@@ -295,8 +297,13 @@
     margin-right: 5px;
   }
 
+  .parentContentWrapper .review-rightSideContainer{
+    height: 96px !important
+  }
+
   .parentContentWrapper > .review-rightFlexContainer{
     width:277px;
+    /* height: 96px !important */
   }
 
   .parentContentWrapper .leftContainer .review-imageStyle{
@@ -311,6 +318,7 @@
 
   .parentContentWrapper .leftContainer .trustpilot-imageStyle{
     background-color: rgba(16, 94, 250, 0.1);
+    border-radius: 50px !important;
   }
 
   .parentContentWrapper .leftContainer .stamped-imageStyle{
@@ -359,11 +367,7 @@
   .reviewMainContainer .trustpilot-reviewTypeLogo{
     height: 15px;
     opacity: 0.8;
-  }
-
-  .reviewMainContainer .trustpilot-reviewTypeLogo{
-    height: 12px;
-    width: 46px;
+    width: auto;
   }
   
   .review-footerWrapper .stamped-reviewMainContainer .starIconContainer > svg{
@@ -372,6 +376,14 @@
 
   .review-footerWrapper .google-reviewMainContainer .starIconContainer > svg{
     margin:-0.7px;
+  }
+
+  .review-footerWrapper .trustpilot-reviewMainContainer .starIconContainer > svg{
+    margin-top: 3px;
+  }
+
+  .brandContainer  .review-verifiedBySpan{
+    display:none;
   }
 
 

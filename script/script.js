@@ -3372,7 +3372,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
                 reviewTypeLogo.setAttribute("src", imageAssets.stampedLogo)
                 let totalStars = ""
                 for (let i = 0; i < starCount; i++) {
-                totalStars += imageAssets.trustPilotStarSVG
+                totalStars += imageAssets.googleYellowStar
                 }
                 starIconContainer.innerHTML = totalStars
             } else {
@@ -3380,7 +3380,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
                 reviewTypeLogo.setAttribute("src", imageAssets.googleLogo)
                 let totalStars = ""
                 for (let i = 0; i < starCount; i++) {
-                totalStars += imageAssets.googleYellowStar
+                    totalStars += imageAssets.googleYellowStar
                 }
                 starIconContainer.innerHTML = totalStars
             }

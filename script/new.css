@@ -30,13 +30,14 @@
   }
   
   .parentContentWrapper > .leftContainer{
-      width:72px;
-      height:72px;
-      /* background-color: green; */
-      margin: auto;
-      display: flex;
-      align-items: center;
-      justify-content:center
+    width:72px;
+    height:72px;
+    /* background-color: green; */
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    margin-right: 3px;
   }
   
   .parentContentWrapper .leftContainer  .imageStyle{
@@ -60,7 +61,7 @@
   }
   
   .parentContentWrapper .rightFlexContainer{
-      width: 258px;
+      width: 255px;
       height:100%;
   }
   

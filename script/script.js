@@ -3202,9 +3202,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         }
         
         const rightSideTextCreator = (type, upperText, secondaryText) => {
-            const styleClass = ["live", "identification", "custom"].includes(type)
-            ? "singleLineContent"
-            : "twoLineContent"
+            const styleClass = ["live", "identification", "custom"].includes(type) ? "singleLineContent" : "twoLineContent"
             let mainTextWrapper = divCreator("div", activeClassNameGenerator('lineWrapper'))
             let lineElement = divCreator("p", activeClassNameGenerator(styleClass))
             let span1Element = divCreator("span",activeClassNameGenerator('span1Element') ) //, upperText + ' HELO' )

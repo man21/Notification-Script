@@ -2905,6 +2905,42 @@ var Note = function Note(config, containerStyle, iconStyle) {
         var poweredBy = ""
         var poweredByLink = ""
 
+        const imageAssets = {
+            googleLogo: "https://storage.googleapis.com/influence-197607.appspot.com/googlereview.png",
+            googleYellowStar: `<svg focusable="false" style="width:15px; fill:#ffc136" viewBox="0 0 24 24" aria-hidden="true"><path transform="scale(1.33, 1.33)" d="M9 11.3l3.71 2.7-1.42-4.36L15 7h-4.55L9 2.5 7.55 7H3l3.71 2.64L5.29 14z"></path></svg>`,
+            trustPilotLogo: "https://api.useinfluence.co/images/trustpilot.png",
+            trustPilotLogo:'https://s3.wasabisys.com/influencelogo/logo/tp-assets.png',
+            trustPilotStarSVG: `<svg style="width:10px" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 24 24">
+                    <g class="toast-svg-fill" fill="#105efb" fill-opacity="1">
+                        <path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"/>
+                    </g>
+                </svg>`,
+            trurstPilotRatingStartSVG:`<svg style="height:12px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 96 96" version="1.1">
+                    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+                    <g id="Trustpilot_ratings_5star-RGB" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <g fill-rule="nonzero">
+                        <rect id="Rectangle-path" fill="#00B67A" x="0" y="0" width="96" height="96"></rect>
+                        <path d="M48,64.7 L62.6,61 L68.7,79.8 L48,64.7 Z M81.6,40.4 L55.9,40.4 L48,16.2 L40.1,40.4 L14.4,40.4 L35.2,55.4 L27.3,79.6 L48.1,64.6 L60.9,55.4 L81.6,40.4 L81.6,40.4 L81.6,40.4 L81.6,40.4 Z" id="Shape" fill="#FFFFFF"></path>    
+                        </g>
+                    </g>
+                </svg>`,
+            stampedLogo: "https://api.useinfluence.co/images/stamped.png",
+            stampedStar: "https://app.useinfluence.co/static/media/stamped.3eca7fdc.png",
+            trsutpilot:{
+                logo1:'https://s3.wasabisys.com/influencelogo/logo/tp-assets.png',
+                star:'https://s3.wasabisys.com/influencelogo/logo/star-tp.svg',
+                ratingStarSVG:`<svg style="height:12px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 96 96" version="1.1">
+                        <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+                        <g id="Trustpilot_ratings_5star-RGB" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <g fill-rule="nonzero">
+                            <rect id="Rectangle-path" fill="#00B67A" x="0" y="0" width="96" height="96"></rect>
+                            <path d="M48,64.7 L62.6,61 L68.7,79.8 L48,64.7 Z M81.6,40.4 L55.9,40.4 L48,16.2 L40.1,40.4 L14.4,40.4 L35.2,55.4 L27.3,79.6 L48.1,64.6 L60.9,55.4 L81.6,40.4 L81.6,40.4 L81.6,40.4 L81.6,40.4 Z" id="Shape" fill="#FFFFFF"></path>    
+                            </g>
+                        </g>
+                    </svg>`
+            }
+        }
+
         // var brandingNameHide= "
 
 
@@ -3115,41 +3151,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         </svg>`
         
         
-        const imageAssets = {
-            googleLogo: "https://storage.googleapis.com/influence-197607.appspot.com/googlereview.png",
-            googleYellowStar: `<svg focusable="false" style="width:15px; fill:#ffc136" viewBox="0 0 24 24" aria-hidden="true"><path transform="scale(1.33, 1.33)" d="M9 11.3l3.71 2.7-1.42-4.36L15 7h-4.55L9 2.5 7.55 7H3l3.71 2.64L5.29 14z"></path></svg>`,
-            trustPilotLogo: "https://api.useinfluence.co/images/trustpilot.png",
-            trustPilotLogo:'https://s3.wasabisys.com/influencelogo/logo/tp-assets.png',
-            trustPilotStarSVG: `<svg style="width:10px" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 24 24">
-                    <g class="toast-svg-fill" fill="#105efb" fill-opacity="1">
-                        <path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"/>
-                    </g>
-                </svg>`,
-            trurstPilotRatingStartSVG:`<svg style="height:12px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 96 96" version="1.1">
-                    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
-                    <g id="Trustpilot_ratings_5star-RGB" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                        <g fill-rule="nonzero">
-                        <rect id="Rectangle-path" fill="#00B67A" x="0" y="0" width="96" height="96"></rect>
-                        <path d="M48,64.7 L62.6,61 L68.7,79.8 L48,64.7 Z M81.6,40.4 L55.9,40.4 L48,16.2 L40.1,40.4 L14.4,40.4 L35.2,55.4 L27.3,79.6 L48.1,64.6 L60.9,55.4 L81.6,40.4 L81.6,40.4 L81.6,40.4 L81.6,40.4 Z" id="Shape" fill="#FFFFFF"></path>    
-                        </g>
-                    </g>
-                </svg>`,
-            stampedLogo: "https://api.useinfluence.co/images/stamped.png",
-            stampedStar: "https://app.useinfluence.co/static/media/stamped.3eca7fdc.png",
-            trsutpilot:{
-                logo1:'https://s3.wasabisys.com/influencelogo/logo/tp-assets.png',
-                star:'https://s3.wasabisys.com/influencelogo/logo/star-tp.svg',
-                ratingStarSVG:`<svg style="height:12px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 96 96" version="1.1">
-                        <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
-                        <g id="Trustpilot_ratings_5star-RGB" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                            <g fill-rule="nonzero">
-                            <rect id="Rectangle-path" fill="#00B67A" x="0" y="0" width="96" height="96"></rect>
-                            <path d="M48,64.7 L62.6,61 L68.7,79.8 L48,64.7 Z M81.6,40.4 L55.9,40.4 L48,16.2 L40.1,40.4 L14.4,40.4 L35.2,55.4 L27.3,79.6 L48.1,64.6 L60.9,55.4 L81.6,40.4 L81.6,40.4 L81.6,40.4 L81.6,40.4 Z" id="Shape" fill="#FFFFFF"></path>    
-                            </g>
-                        </g>
-                    </svg>`
-            }
-        }
+        
         
         /**
          * Create and return element left side container of the notification
@@ -3219,8 +3221,6 @@ var Note = function Note(config, containerStyle, iconStyle) {
                 animationClass.appendChild(circle_2)
                 animationWrapper.appendChild(animationClass)
                 leftSideElement.appendChild(animationWrapper)
-            } else if(true){
-
             } else {
                 const imageElement = divCreator("img", activeClassNameGenerator('imageStyle'))
                 imageElement.setAttribute("src",imageSrc)

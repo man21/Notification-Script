@@ -2938,6 +2938,9 @@ var Note = function Note(config, containerStyle, iconStyle) {
                             </g>
                         </g>
                     </svg>`
+            },
+            stamped:{
+                footerLogo: 'https://s3.wasabisys.com/influencelogo/logo/stamped_logo.png'
             }
         }
 
@@ -3222,7 +3225,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
                 animationWrapper.appendChild(animationClass)
                 leftSideElement.appendChild(animationWrapper)
             } else {
-                const imageElement = divCreator("img", activeClassNameGenerator('imageStyle'))
+                const imageElement = divCreator("img", `${activeClassNameGenerator('imageStyle')} ${userReview && userReview.fromApp ? `${userReview.fromApp}-imageStyle` : ''}`)
                 imageElement.setAttribute("src",imageSrc)
                 leftSideElement.appendChild(imageElement)
             }

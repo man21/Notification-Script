@@ -3306,49 +3306,49 @@ var Note = function Note(config, containerStyle, iconStyle) {
         
             const reviewStarCreator = (fromAppType, starCount) => {
 
-            const reviewMainContainer = divCreator("div", `reviewMainContainer ${fromAppType}-reviewMainContainer`)
-            const reviewTypeLogo = divCreator("img", `reviewTypeLogo ${fromAppType}-reviewTypeLogo`)
-            const starIconContainer = divCreator("span", "starIconContainer")
-        
-            if (fromAppType === "facebook") {
-                reviewTypeLogo.setAttribute("src", "https://api.useinfluence.co/images/recurly.png")
-                const fbRecommendIcon = divCreator("img", "fbRecommendIcon")
-                fbRecommendIcon.setAttribute("src", "https://app.useinfluence.co/static/media/fbRecommendation.88544430.png")
-                starIconContainer.appendChild(fbRecommendIcon)
-            } else if (fromAppType === "capterra") {
-                reviewTypeLogo.setAttribute("src", imageAssets.capterra.logo)
-                let totalStars = ""
-                for (let i = 0; i < starCount; i++) {
-                    totalStars += imageAssets.googleYellowStar //capterra.star
-                }
-                starIconContainer.innerHTML = totalStars
-            } else if (fromAppType === "trustpilot") {
-                reviewTypeLogo.setAttribute("src", imageAssets.trustpilot.logo1)
-                let totalStars = ""
-                for (let i = 0; i < starCount; i++) {
-                    totalStars += imageAssets.trustpilot.ratingStarSVG
-                }
-                starIconContainer.innerHTML = totalStars
-            } else if (fromAppType === "stamped") {
-                reviewTypeLogo.setAttribute("src", imageAssets.stamped.footerLogo)
-                let totalStars = ""
-                for (let i = 0; i < starCount; i++) {
-                totalStars += imageAssets.googleYellowStar
-                }
-                starIconContainer.innerHTML = totalStars
-            } else {
-
-                reviewTypeLogo.setAttribute("src", imageAssets.googleLogo)
-                let totalStars = ""
-                for (let i = 0; i < starCount; i++) {
+                const reviewMainContainer = divCreator("div", `reviewMainContainer ${fromAppType}-reviewMainContainer`)
+                const reviewTypeLogo = divCreator("img", `reviewTypeLogo ${fromAppType}-reviewTypeLogo`)
+                const starIconContainer = divCreator("span", "starIconContainer")
+            
+                if (fromAppType === "facebook") {
+                    reviewTypeLogo.setAttribute("src", "https://api.useinfluence.co/images/recurly.png")
+                    const fbRecommendIcon = divCreator("img", "fbRecommendIcon")
+                    fbRecommendIcon.setAttribute("src", "https://app.useinfluence.co/static/media/fbRecommendation.88544430.png")
+                    starIconContainer.appendChild(fbRecommendIcon)
+                } else if (fromAppType === "capterra") {
+                    reviewTypeLogo.setAttribute("src", imageAssets.capterra.logo)
+                    let totalStars = ""
+                    for (let i = 0; i < starCount; i++) {
+                        totalStars += imageAssets.googleYellowStar //capterra.star
+                    }
+                    starIconContainer.innerHTML = totalStars
+                } else if (fromAppType === "trustpilot") {
+                    reviewTypeLogo.setAttribute("src", imageAssets.trustpilot.logo1)
+                    let totalStars = ""
+                    for (let i = 0; i < starCount; i++) {
+                        totalStars += imageAssets.trustpilot.ratingStarSVG
+                    }
+                    starIconContainer.innerHTML = totalStars
+                } else if (fromAppType === "stamped") {
+                    reviewTypeLogo.setAttribute("src", imageAssets.stamped.footerLogo)
+                    let totalStars = ""
+                    for (let i = 0; i < starCount; i++) {
                     totalStars += imageAssets.googleYellowStar
+                    }
+                    starIconContainer.innerHTML = totalStars
+                } else {
+
+                    reviewTypeLogo.setAttribute("src", imageAssets.googleLogo)
+                    let totalStars = ""
+                    for (let i = 0; i < starCount; i++) {
+                        totalStars += imageAssets.googleYellowStar
+                    }
+                    starIconContainer.innerHTML = totalStars
                 }
-                starIconContainer.innerHTML = totalStars
-            }
-        
-            reviewMainContainer.appendChild(reviewTypeLogo)
-            reviewMainContainer.appendChild(starIconContainer)
-            return reviewMainContainer
+            
+                reviewMainContainer.appendChild(reviewTypeLogo)
+                reviewMainContainer.appendChild(starIconContainer)
+                return reviewMainContainer
             }
         
             /**
@@ -3372,7 +3372,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
                 mainContainer.style = `justify-content: space-between; flex-direction:row-reverse; width:${258 - configuration.panelStyle.radius}px`
                 mainContainer.appendChild(slugBtn)
             } else if(type === "review"){
-                let reviewStars = reviewStarCreator(fromAppType, userReview.rating)
+                let reviewStars = reviewStarCreator(finalResult.fromAppType, userReview.rating)
                 mainContainer.style = `justify-content: space-between; width:${258 - configuration.panelStyle.radius}px`
                 mainContainer.appendChild(reviewStars)
             } else {

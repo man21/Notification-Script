@@ -3265,13 +3265,13 @@ var Note = function Note(config, containerStyle, iconStyle) {
                 span1Element.appendChild(numberText)
                 span1Element.appendChild(visitorTextElement)
 
+                numAnim = new CountUp(numberText, 0, upperText, 0, 3);   
+                
                 if (!numAnim.error) {
                     numAnim.start();
                 } else {
                     console.error(numAnim.error);
                 }
-
-                numAnim = new CountUp(numberText, 0, upperText, 0, 3);             
             }else
                 span1Element.innerHTML = upperText
                 

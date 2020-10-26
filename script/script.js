@@ -2941,6 +2941,16 @@ var Note = function Note(config, containerStyle, iconStyle) {
             },
             stamped:{
                 footerLogo: 'https://s3.wasabisys.com/influencelogo/logo/stamped_logo.png'
+            },
+            capterra:{
+                logo:'https://s3.wasabisys.com/influencelogo/logo/capterra_logo.svg',
+                star:`<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+                        width="12.000000pt" height="12.000000pt" viewBox="0 0 12.000000 12.000000"
+                        preserveAspectRatio="xMidYMid meet">
+                            <g transform="translate(0.000000,12.000000) scale(0.100000,-0.100000)"
+                            fill="#000000" stroke="none">
+                            </g>
+                    </svg>`
             }
         }
 
@@ -3358,10 +3368,10 @@ var Note = function Note(config, containerStyle, iconStyle) {
                 fbRecommendIcon.setAttribute("src", "https://app.useinfluence.co/static/media/fbRecommendation.88544430.png")
                 starIconContainer.appendChild(fbRecommendIcon)
             } else if (fromAppType === "capterra") {
-                reviewTypeLogo.setAttribute("src", "https://s3.wasabisys.com/influencelogo/logo/capterra_logo.svg")
+                reviewTypeLogo.setAttribute("src", imageAssets.capterra.logo)
                 let totalStars = ""
                 for (let i = 0; i < starCount; i++) {
-                totalStars += starSVG
+                    totalStars += imageAssets.capterra.star
                 }
                 starIconContainer.innerHTML = totalStars
             } else if (fromAppType === "trustpilot") {

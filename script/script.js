@@ -2891,18 +2891,12 @@ var Note = function Note(config, containerStyle, iconStyle) {
         const ACTIVE_NOTIFICATION_TYPE = type
 
 
-
-        var fromApptype ;
-
         var res_img;
-
-        var res_name = "Someone"
-
-        var secondaryText = ''
-
-        var verifiedBy =""
-        var poweredBy = ""
-        var poweredByLink = ""
+        // var res_name = "Someone"
+        // var secondaryText = ''        
+        // var verifiedBy =""
+        // var poweredBy = ""
+        // var poweredByLink = ""
 
         const imageAssets = {
             googleLogo: "https://storage.googleapis.com/influence-197607.appspot.com/googlereview.png",
@@ -2925,7 +2919,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
                 </svg>`,
             stampedLogo: "https://api.useinfluence.co/images/stamped.png",
             stampedStar: "https://app.useinfluence.co/static/media/stamped.3eca7fdc.png",
-            trsutpilot:{
+            trustpilot:{
                 logo1:'https://s3.wasabisys.com/influencelogo/logo/tp-assets.png',
                 star:'https://s3.wasabisys.com/influencelogo/logo/star-tp.svg',
                 ratingStarSVG:`<svg style="height:12px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 96 96" version="1.1">
@@ -2952,8 +2946,6 @@ var Note = function Note(config, containerStyle, iconStyle) {
                     </svg>`
             }
         }
-
-
         const trackingClassNames = {
             identification: ["foc2x3WbXB" , "aiqUT4q94o", "VyDVZdCWdx", "A4S38Y254X","qQ6LvxoYlp", "knaKnioVnl" ],
             journey: ["sisbMFuEGu", "CTTTs8uT13", "XIwR5JMPFF", "YgksSelqbb", "YDR83P698y"],
@@ -3056,7 +3048,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         
         } else if(ACTIVE_NOTIFICATION_TYPE == "review"){
             finalResult.res_img = userReview && userReview.profileImg ? userReview.profileImg :(userReview ? 'https://lh3.ggpht.com/-HiICnzrd7xo/AAAAAAAAAAI/AAAAAAAAAAA/GcUbxXrSSYg/s128-c0x00000000-cc-rp-mo/photo.jpg': "")
-            if(userReview.fromApp == "trustpilot") res_img = imageAssets.trsutpilot.star
+            if(userReview.fromApp == "trustpilot") res_img = imageAssets.trustpilot.star
 
 
             finalResult.res_name = userReview.username;
@@ -3080,17 +3072,17 @@ var Note = function Note(config, containerStyle, iconStyle) {
             }
 
 
-             var today = new Date();
-            var dd = today.getDate();
-            var mm = today.getMonth() + 1; //January is 0!
-            var yyyy = today.getFullYear();     
-            if (dd < 10) { dd = '0' + dd }
-            if (mm < 10) { mm = '0' + mm }
-            today = yyyy + '/' + mm + '/' + dd;
-            var date2 = new Date(today);
-            var date1 = new Date(config.rule.createdAt);
-            var timeDiff = Math.abs(date2.getTime() - date1.getTime());
-            var dayDifference = Math.ceil(timeDiff / (1000 * 3600 * 24));
+            //  var today = new Date();
+            // var dd = today.getDate();
+            // var mm = today.getMonth() + 1; //January is 0!
+            // var yyyy = today.getFullYear();     
+            // if (dd < 10) { dd = '0' + dd }
+            // if (mm < 10) { mm = '0' + mm }
+            // today = yyyy + '/' + mm + '/' + dd;
+            // var date2 = new Date(today);
+            // var date1 = new Date(config.rule.createdAt);
+            // var timeDiff = Math.abs(date2.getTime() - date1.getTime());
+            // var dayDifference = Math.ceil(timeDiff / (1000 * 3600 * 24));
 
             finalResult.secondaryText = ` ${configuration ? configuration.otherText : ''} ${configuration ? configuration.contentText : ''} ${configuration && configuration.bulkText ? configuration.bulkText : 'in the last'} ${configuration.panelStyle.bulkData} ${configuration && configuration.bulkDaysLable ? configuration.bulkDaysLable : 'days'}`  //"signed up for influence in the last 7 days"
      
@@ -3122,17 +3114,17 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
             finalResult.res_name =  linkCount && linkCount.totalCount ?  linkCount.totalCount: 0 //numberOfUsers + "123 " // + configuration.visitorText
 
-                        var today = new Date();
-                        var dd = today.getDate();
-                        var mm = today.getMonth() + 1; //January is 0!
-                        var yyyy = today.getFullYear();     
-                        if (dd < 10) { dd = '0' + dd }
-                        if (mm < 10) { mm = '0' + mm }
-                        today = yyyy + '/' + mm + '/' + dd;
-                        var date2 = new Date(today);
-                        var date1 = new Date(config.rule.createdAt);
-                        var timeDiff = Math.abs(date2.getTime() - date1.getTime());
-                        var dayDifference = Math.ceil(timeDiff / (1000 * 3600 * 24));
+                        // var today = new Date();
+                        // var dd = today.getDate();
+                        // var mm = today.getMonth() + 1; //January is 0!
+                        // var yyyy = today.getFullYear();     
+                        // if (dd < 10) { dd = '0' + dd }
+                        // if (mm < 10) { mm = '0' + mm }
+                        // today = yyyy + '/' + mm + '/' + dd;
+                        // var date2 = new Date(today);
+                        // var date1 = new Date(config.rule.createdAt);
+                        // var timeDiff = Math.abs(date2.getTime() - date1.getTime());
+                        // var dayDifference = Math.ceil(timeDiff / (1000 * 3600 * 24));
     
                         finalResult.secondaryText =  ` ${configuration ? configuration.otherText : ''} <b>${configuration ? linkCount && linkCount.slug ? linkCount.slug: "link" : ''} </b> ${configuration && configuration.bulkText ? configuration.bulkText : 'in the last'} ${configuration.panelStyle.bulkData} ${configuration && configuration.bulkDaysLable ? configuration.bulkDaysLable : 'days'}`  //"signed up for influence in the last 7 days"
 
@@ -3141,7 +3133,6 @@ var Note = function Note(config, containerStyle, iconStyle) {
                         finalResult.poweredByLink=   configuration.poweredByLink
                         finalResult.poweredBy=  configuration.poweredBy ? configuration.poweredBy : 'Influence'; 
         }
-
 
 
         /**
@@ -3158,16 +3149,12 @@ var Note = function Note(config, containerStyle, iconStyle) {
             return d
         }
         
-        
         const starSVG = `<svg xmlns="http://www.w3.org/2000/svg" style="width:10px" version="1.1" viewBox="0 0 24 24">
         <g class="toast-svg-fill" fill="#105efb" fill-opacity="1">
             <path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"/>
         </g>
         </svg>`
-        
-        
-        
-        
+           
         /**
          * Create and return element left side container of the notification
          */
@@ -3188,8 +3175,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
             div.classList.add(...trackingClassNames[ACTIVE_NOTIFICATION_TYPE])
             return div
         }
-        
-        
+         
         const leftSideCreator = (type, imageSrc) => {
 
             if (type === "live") {
@@ -3199,8 +3185,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
                     //------------ Live Dynamic css pulse animation-------
                     let dynamicStyles = null
-
-                    
+  
                     /**
                      * Dynamically generates the animation `@keyframes` of name `dynamicPulseAnimation` for Live css 
                      * pulse animation and inserts it in style tag of head element
@@ -3221,7 +3206,6 @@ var Note = function Note(config, containerStyle, iconStyle) {
                                 100% {  box-shadow: 0 0 0 19px rgba(${r},${g},${b},0); }
                             }
                             `
-
                         dynamicStyles.sheet.insertRule(animationStyle, dynamicStyles.length)
                     }
 
@@ -3373,10 +3357,10 @@ var Note = function Note(config, containerStyle, iconStyle) {
                 }
                 starIconContainer.innerHTML = totalStars
             } else if (fromAppType === "trustpilot") {
-                reviewTypeLogo.setAttribute("src", imageAssets.trsutpilot.logo1)
+                reviewTypeLogo.setAttribute("src", imageAssets.trustpilot.logo1)
                 let totalStars = ""
                 for (let i = 0; i < starCount; i++) {
-                    totalStars += imageAssets.trsutpilot.ratingStarSVG
+                    totalStars += imageAssets.trustpilot.ratingStarSVG
                 }
                 starIconContainer.innerHTML = totalStars
             } else if (fromAppType === "stamped") {
@@ -3405,16 +3389,11 @@ var Note = function Note(config, containerStyle, iconStyle) {
             * Main parent container of footer.
             */
             let mainContainer = divCreator("div", activeClassNameGenerator("footerWrapper"))
-
-
                 let brandingElement = brandingElementCreator(
                     verifiedByText,
                     poweredByText,
                     poweredByLink
                 )
-                // "by",
-                // "influence",
-                // "https://useinfluence.co"
         
             if (type == "journey") {
                 var timeStamp = userDetails && userDetails ? userDetails.timestamp : new Date();
@@ -3435,14 +3414,15 @@ var Note = function Note(config, containerStyle, iconStyle) {
             }
         
             if (configuration.togglePoweredBy)
-            mainContainer.appendChild(brandingElement)
-        
-            footerElement.appendChild(mainContainer)
+
+                mainContainer.appendChild(brandingElement)
+                footerElement.appendChild(mainContainer)
         }
         
         const influenceSocialProof = divCreator("div", activeClassNameGenerator("influence-social-proof"))
         influenceSocialProof.classList.add(...trackingClassNames[ACTIVE_NOTIFICATION_TYPE])
         influenceSocialProof.style = containerStyle
+
         const parentContentWrapper = divCreator("div", activeClassNameGenerator("parentContentWrapper"))
         const rightFlexContainer = divCreator("div", activeClassNameGenerator("rightFlexContainer"))
         
@@ -3450,14 +3430,9 @@ var Note = function Note(config, containerStyle, iconStyle) {
         const footerElement = footerContainer()
         const leftSideElement = leftSideContainer()
 
-        
         leftSideCreator(ACTIVE_NOTIFICATION_TYPE, finalResult.res_img )
         rightSideTextCreator(ACTIVE_NOTIFICATION_TYPE, finalResult.res_name, finalResult.secondaryText)
-        
-        
-            // brandingNameHide = 'display: none'
-            footerCreator(ACTIVE_NOTIFICATION_TYPE, finalResult.verifiedBy, finalResult.poweredBy, finalResult.poweredByLink)
-        
+        footerCreator(ACTIVE_NOTIFICATION_TYPE, finalResult.verifiedBy, finalResult.poweredBy, finalResult.poweredByLink)
         
         rightFlexContainer.appendChild(rightSideElement)
         rightFlexContainer.appendChild(footerElement)
@@ -3467,7 +3442,6 @@ var Note = function Note(config, containerStyle, iconStyle) {
         
         influenceSocialProof.appendChild(parentContentWrapper)
         
-
         var innerNotifCTAContainer = document.createElement('div');
         innerNotifCTAContainer.style = configuration.toggleCTA ? 'display:flex;justify-content:flex-end;' : 'display:none';
         innerNotifCTAContainer.setAttribute("id", "cta");
@@ -3505,10 +3479,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
 
     if (configuration.isCTATop)
-   mainContainer.appendChild(innerNotifCTAContainer);
-   
-    mainContainer.appendChild(influenceSocialProof)
-
+        mainContainer.appendChild(innerNotifCTAContainer);
+        mainContainer.appendChild(influenceSocialProof)
 
         if (!configuration.isCTATop)
         mainContainer.appendChild(innerNotifCTAContainer);
@@ -3517,7 +3489,6 @@ var Note = function Note(config, containerStyle, iconStyle) {
         innerContainer.appendChild(innerDiv);
         container.appendChild(innerContainer);
       
-
         if (type == 'journey' && userDetails && userDetails.length > k_c6ba2870) {
             k_c6ba2870++;
             k_c6ba2870 = k_c6ba2870 == userDetails.length ? 0 : k_c6ba2870;
@@ -3535,16 +3506,12 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         displayNotification(container, config);
     }
-
     return {
         notificationdisplay: function notificationdisplay(type, config, containerStyle, iconStyle, alignment) {
             notificationDisplay(type, config, containerStyle, iconStyle, alignment);
         }
     };
 };
-
-
-
 
 if (typeof module !== "undefined" && module.exports) module.exports = Note;
 Influence = typeof Influence === 'undefined' ? require('../server') : Influence;

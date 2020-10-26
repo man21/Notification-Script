@@ -3327,17 +3327,17 @@ var Note = function Note(config, containerStyle, iconStyle) {
              * @param {URL} poweredByLink Powered by link
              */
             const brandingElementCreator = (verifiedBy, brandName, poweredByLink) => {
-            const brandingContainer = divCreator("p", activeClassNameGenerator("brandContainer"))
-            const verifiedBySpan = divCreator("span", activeClassNameGenerator("verifiedBySpan"), verifiedBy)
-            const checkSpan = divCreator("span", activeClassNameGenerator("checkIcon"), checkSVG)
-            const brandNameSpan = divCreator("a", activeClassNameGenerator("brandNameSpan"), brandName)
-            brandNameSpan.setAttribute("href", poweredByLink)
-            brandNameSpan.setAttribute("target", "_blank")
-            brandNameSpan.setAttribute("rel", "no follow")
-            brandingContainer.appendChild(verifiedBySpan)
-            brandingContainer.appendChild(checkSpan)
-            brandingContainer.appendChild(brandNameSpan)
-            return brandingContainer
+                const brandingContainer = divCreator("p", activeClassNameGenerator("brandContainer"))
+                const verifiedBySpan = divCreator("span", activeClassNameGenerator("verifiedBySpan"), verifiedBy)
+                const checkSpan = divCreator("span", activeClassNameGenerator("checkIcon"), checkSVG)
+                const brandNameSpan = divCreator("a", activeClassNameGenerator("brandNameSpan"), brandName)
+                brandNameSpan.setAttribute("href", poweredByLink)
+                brandNameSpan.setAttribute("target", "_blank")
+                brandNameSpan.setAttribute("rel", "no follow")
+                brandingContainer.appendChild(verifiedBySpan)
+                brandingContainer.appendChild(checkSpan)
+                brandingContainer.appendChild(brandNameSpan)
+                return brandingContainer
             }
         
             /**

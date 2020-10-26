@@ -284,10 +284,29 @@
 
 
   /* ------------------- Review notif styles ------------------ */
+
+  .review-influence-social-proof{
+    border-radius: 5px;
+  }
+
+  .parentContentWrapper > .review-leftContainer{
+    width:50px;
+    height:50px;
+    margin-right: 5px;
+  }
+
+  .parentContentWrapper > .review-rightFlexContainer{
+    width:277px;
+  }
+
   .parentContentWrapper .leftContainer .review-imageStyle{
     width:48px;
     height:48px;
     padding: 5px;
+  }
+
+  .parentContentWrapper .leftContainer .google-imageStyle{
+    padding: 0;
   }
 
   .parentContentWrapper .leftContainer .trustpilot-imageStyle{
@@ -313,17 +332,22 @@
   }
 
   .review-span2Element{
-    margin: 0px;
-    font-weight: normal;
-    color: rgb(102, 102, 102);
-    letter-spacing: 0.3px;
+    margin-top: 2px;
     font-size: 10px;
+    font-style: normal;
+    color: #666;
+    line-height: 1.32;
+    font-family: sans-serif;
+    letter-spacing: .13px;
+    padding-left: 0;
+    overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
-    line-height: 1.2;
-    overflow: hidden;
+    max-height: 45px;
     font-style: italic;
+    font-weight: 400;
+    /* word-break: break-all; */
   }
 
   .reviewMainContainer .reviewTypeLogo  {
@@ -344,6 +368,10 @@
   
   .review-footerWrapper .stamped-reviewMainContainer .starIconContainer > svg{
     margin:0
+  }
+
+  .review-footerWrapper .google-reviewMainContainer .starIconContainer > svg{
+    margin:-0.7px;
   }
 
 

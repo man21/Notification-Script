@@ -3018,7 +3018,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
                     recentName = configuration.usernameText;
                 }
             
-                res_name = userDetails && userDetails ?
+                finalResult.res_name = userDetails && userDetails ?
                     userDetails.city && userDetails.country && recentName && !configuration.isHideFullLocation ?
                         `${recentName} ${(!configuration.isHideCityLocation || !configuration.isHideCountryLocation) ? configuration && configuration.recentText1 ? configuration.recentText1 : 'from' : ''} ${!configuration.isHideCityLocation ? userDetails.city : ''}${!configuration.isHideCityLocation && !configuration.isHideCountryLocation ? ', ' : ''} ${!configuration.isHideCountryLocation ? userDetails.country : ''}`
                         :

@@ -3192,7 +3192,6 @@ var Note = function Note(config, containerStyle, iconStyle) {
         
         const leftSideCreator = (type, imageSrc) => {
 
-            // console.log(type+ "-------------------"+ imageSrc, "+++++++++++++++++++++++++++++++++")
             if (type === "live") {
                 const animationWrapper = divCreator("div", "animation-wrapper")
                 const animationClass = divCreator("div", "animationClass")
@@ -3357,7 +3356,6 @@ var Note = function Note(config, containerStyle, iconStyle) {
         
             const reviewStarCreator = (fromAppType, starCount) => {
 
-                console.log({fromAppType, starCount}, " ++++++++++++++++++++++++++++")
             const reviewMainContainer = divCreator("div", `reviewMainContainer ${fromAppType}-reviewMainContainer`)
             const reviewTypeLogo = divCreator("img", `reviewTypeLogo ${fromAppType}-reviewTypeLogo`)
             const starIconContainer = divCreator("span", "starIconContainer")

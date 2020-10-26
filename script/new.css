@@ -55,10 +55,7 @@
     height: 42px;
     width: 42px;
   }
-  .parentContentWrapper .leftContainer  .journey-imageStyle{
-    height: 72px;
-    width: 100%;
-  }
+
   
   .parentContentWrapper .rightFlexContainer{
       width: 255px;
@@ -157,13 +154,15 @@
   }
   
   .brandContainer > .verifiedBySpan{
-    font-size: 9.25px;
+    font-size: 9.5px;
+    font-weight: 500;
     font-style: normal;
     text-align: left;
-    color: #909090;
+    color: #787878;
     font-family: sans-serif;
     word-spacing: 1px;
-    font-weight: 500;
+    vertical-align: middle;
+    line-height: inherit;
     padding-right: 2.5px;
   }
   
@@ -349,30 +348,72 @@
 
 
 
-  /* ------------------ Recent/Journey styles */
+  /* ------------------ Recent/Journey styles ---------------------- */
+
+  .journey-influence-social-proof{
+    padding: 2px 1px 2px 5.05px;
+  }
+
+  .parentContentWrapper .journey-rightFlexContainer{
+    width: 250px;
+    padding-left: 2px;
+
+  }
+
+  .leftContainer > .journey-leftContainer {
+    margin-right: 8px;
+  }
+
+  .parentContentWrapper .leftContainer .journey-imageStyle{
+    height: 72px;
+    width: 100%;
+    box-shadow: 0 0 1px #d0d0d0;
+  }
+
+  .journey-lineWrapper{
+    align-self: center;
+    max-width: 255px;
+    max-height: 66px;
+    position: relative;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    line-height: 1;
+    overflow: hidden;
+    display: -webkit-inline-box;
+    direction: inherit;
+  }
+
 
   .journey-span1Element{
-    font-size: 15px;
-    font-weight: 700;
+    font-size: 13.3px;
+    font-weight: 600;
     font-style: normal;
     text-align: left;
-    padding-right: 5px;
-    letter-spacing: .1px;
-    border-radius: 0 4px 4px 0;
-    color: rgb(54, 54, 96);
-    padding-left: 0px;
-    background-color: transparent;
+    color: #2c66c3;
+    font-family: sans-serif;
+    padding-left: 5px;
+    text-transform: capitalize;
+    background: rgba(240,248,255,.35);
+    line-height: 1.5;
+    overflow: hidden;
+    max-height: 19px;
+    margin-bottom: 1.3px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .journey-span2Element{
-    font-weight: normal;
-    font-size: 11.9px;
+    font-size: 10px;
     font-style: normal;
-    color: #686b82;
-    line-height: 1.3;
-    letter-spacing: -.13px;
-    padding-left: 2px;
+    color: #17193c;
+    line-height: 1.1;
+    font-family: sans-serif;
+    letter-spacing: .3px;
+    padding-left: 5px;
+    overflow: hidden;
+    align-self: center;
     word-break: break-word;
+    font-weight: 500;
     -webkit-line-clamp: 2;
   }
 
@@ -418,9 +459,9 @@
     padding-left: 3px;
     border-radius: 3px;
     word-spacing: 1.5px;
+    text-transform: capitalize;
     letter-spacing: .02px;
     background-color: rgba(200,218,255,.31);
-    text-transform: capitalize;
   }
 
   .live-span2Element{
@@ -430,6 +471,7 @@
     line-height: .8;
     font-family: sans-serif;
     letter-spacing: -.13px;
+    padding-left: 2px;
     font-weight: 500;
   }
 

@@ -2951,7 +2951,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
             journey: ["sisbMFuEGu", "CTTTs8uT13", "XIwR5JMPFF", "YgksSelqbb", "YDR83P698y"],
             announcement: ["Zn5De9iJFM", "iIdFziYOKB", "TsebdJUQvt", "bm6LvHbM56", "close-btn-container"],
             live:["oiuytretg", "jihuygtfrdes", "jhgfdfghb" ],
-            review:["y2UXzO2spo", "DyWfFTHh9R", "sD1KBJgziO", "wIwWxk318I" ,"bnvt6niIjl" ]
+            review:["y2UXzO2spo", "DyWfFTHh9R", "sD1KBJgziO", "wIwWxk318I" ,"bnvt6niIjl" ],
+            custom:["asdfa34"]
         }
 
         var finalResult= {}
@@ -3310,17 +3311,17 @@ var Note = function Note(config, containerStyle, iconStyle) {
              * @param {URL} poweredByLink Powered by link
              */
             const brandingElementCreator = (verifiedBy, brandName, poweredByLink) => {
-            const brandingContainer = divCreator("p", activeClassNameGenerator("brandContainer"))
-            const verifiedBySpan = divCreator("span", activeClassNameGenerator("verifiedBySpan"), verifiedBy)
-            const checkSpan = divCreator("span", activeClassNameGenerator("checkIcon"), checkSVG)
-            const brandNameSpan = divCreator("a", activeClassNameGenerator("brandNameSpan"), brandName)
-            brandNameSpan.setAttribute("href", poweredByLink)
-            brandNameSpan.setAttribute("target", "_blank")
-            brandNameSpan.setAttribute("rel", "no follow")
-            brandingContainer.appendChild(verifiedBySpan)
-            brandingContainer.appendChild(checkSpan)
-            brandingContainer.appendChild(brandNameSpan)
-            return brandingContainer
+                const brandingContainer = divCreator("p", activeClassNameGenerator("brandContainer"))
+                const verifiedBySpan = divCreator("span", activeClassNameGenerator("verifiedBySpan"), verifiedBy)
+                const checkSpan = divCreator("span", activeClassNameGenerator("checkIcon"), checkSVG)
+                const brandNameSpan = divCreator("a", activeClassNameGenerator("brandNameSpan"), brandName)
+                brandNameSpan.setAttribute("href", poweredByLink)
+                brandNameSpan.setAttribute("target", "_blank")
+                brandNameSpan.setAttribute("rel", "no follow")
+                brandingContainer.appendChild(verifiedBySpan)
+                brandingContainer.appendChild(checkSpan)
+                brandingContainer.appendChild(brandNameSpan)
+                return brandingContainer
             }
         
             /**

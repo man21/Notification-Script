@@ -30,13 +30,14 @@
   }
   
   .parentContentWrapper > .leftContainer{
-      width:72px;
-      height:72px;
-      /* background-color: green; */
-      margin: auto;
-      display: flex;
-      align-items: center;
-      justify-content:center
+    width:72px;
+    height:72px;
+    /* background-color: green; */
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    margin-right: 3px;
   }
   
   .parentContentWrapper .leftContainer  .imageStyle{
@@ -60,7 +61,7 @@
   }
   
   .parentContentWrapper .rightFlexContainer{
-      width: 258px;
+      width: 255px;
       height:100%;
   }
   
@@ -362,7 +363,15 @@
     overflow: hidden;
     direction: inherit;
   }
-  /* -------------- */
+  /* -------------- Live notif styles ------------- */
+
+  .live-influence-social-proof{
+    height: 80px !important;
+  }
+
+  .parentContentWrapper .live-rightSideContainer {
+    height:61px;
+  }
 
   .live-singleLineContent{
     background: transparent;
@@ -389,7 +398,8 @@
     border-radius: 3px;
     word-spacing: 1.5px;
     letter-spacing: .02px;
-    background-color: rgba(200,218,255,.31);  
+    background-color: rgba(200,218,255,.31);
+    text-transform: capitalize;
   }
 
   .live-span2Element{
@@ -402,7 +412,11 @@
     font-weight: 500;
   }
 
-  /* -------------------- */
+  /* -------------------- Announcement notif styles --------------*/
+
+  .announcement-influence-social-proof{
+    height:95px !important;
+  }
 
   .parentContentWrapper .leftContainer .announcement-imageStyle{
     width:56px;
@@ -412,8 +426,8 @@
   .announcement-span1Element{
     font-weight: 600;
     color: rgb(32, 46, 72);
-    background-color:transparent;
-    font-size: 14px;
+    background-color:#f0f8ff;
+    font-size: 15px;
     padding: 3px 5px;
     text-align: left;
     text-transform: capitalize;
@@ -422,24 +436,25 @@
     word-break: break-all;
     overflow: hidden;
     max-width: 280px;
+    width: fit-content;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
   }
 
   .announcement-span2Element{
-    font-weight: normal;
-    color: rgb(102, 102, 102);
-    letter-spacing: 0.3px;
-    font-size: 11.5px;
-    padding: 0px 5px;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
+    margin-top: 2px;
+    font-size: 9.5px;
+    font-style: normal;
+    color: #17193c;
     line-height: 1.2;
+    font-family: sans-serif;
+    letter-spacing: .3px;
+    padding-left: 2px;
     overflow: hidden;
     align-self: center;
-    word-break: break-all;
+    word-break: break-word;
+    text-overflow: ellipsis;
   }
 
   /* ---------------- Custom Style-------- */

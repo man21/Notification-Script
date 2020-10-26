@@ -2960,7 +2960,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
             announcement: ["Zn5De9iJFM", "iIdFziYOKB", "TsebdJUQvt", "bm6LvHbM56", "close-btn-container"],
             live:["oiuytretg", "jihuygtfrdes", "jhgfdfghb" ],
             review:["y2UXzO2spo", "DyWfFTHh9R", "sD1KBJgziO", "wIwWxk318I" ,"bnvt6niIjl" ],
-            custom:[" "]
+            custom:["asdfa34"]
         }
 
         var finalResult= {}

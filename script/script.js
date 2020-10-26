@@ -3372,7 +3372,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
                 }
                 starIconContainer.innerHTML = totalStars
             } else if (fromAppType === "stamped") {
-                reviewTypeLogo.setAttribute("src", imageAssets.stampedLogo)
+                reviewTypeLogo.setAttribute("src", imageAssets.stamped.footerLogo)
                 let totalStars = ""
                 for (let i = 0; i < starCount; i++) {
                 totalStars += imageAssets.googleYellowStar

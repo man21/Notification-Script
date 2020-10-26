@@ -268,6 +268,12 @@
     background-color: rgba(16, 94, 250, 0.1);
   }
 
+  .parentContentWrapper .leftContainer .stamped-imageStyle{
+    width:48px;
+    height:48px;
+    padding: 5px;
+  }
+
   .review-span1Element{
     padding: 0;
     margin: 0;
@@ -307,7 +313,7 @@
     opacity: 0.8;
   }
   
-  .review-footerWrapper .stamped-reviewMainContainer > svg{
+  .review-footerWrapper .stamped-reviewMainContainer .starIconContainer > svg{
     margin:0
   }
 

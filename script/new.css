@@ -215,6 +215,11 @@
     display:flex;
     align-items: center;
   }
+
+  .starIconContainer > svg{
+    margin-right: 3px;
+  }
+
   .starIconContainer .fbRecommendIcon{
     width: auto;
     height: 10px;

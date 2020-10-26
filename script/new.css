@@ -267,7 +267,7 @@
     padding: 5px;
     background-color: rgba(16, 94, 250, 0.1);
   }
-  
+
   .review-span1Element{
     padding: 0;
     margin: 0;
@@ -306,7 +306,10 @@
     height: 15px;
     opacity: 0.8;
   }
-
+  
+  .reviewMainContainer .stamped-reviewMainContainer > svg{
+    margin:0
+  }
 
 
 

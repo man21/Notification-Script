@@ -3041,7 +3041,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         
         } else if(ACTIVE_NOTIFICATION_TYPE == "review"){
             res_img = userReview && userReview.profileImg ? userReview.profileImg :(userReview ? 'https://lh3.ggpht.com/-HiICnzrd7xo/AAAAAAAAAAI/AAAAAAAAAAA/GcUbxXrSSYg/s128-c0x00000000-cc-rp-mo/photo.jpg': "")
-            if(fromApptype === "trustpilot") res_img = imageAssets.trsutpilot.star
+            if(userReview.fromApp == "trustpilot") res_img = imageAssets.trsutpilot.star
 
 
             res_name = userReview.username;

@@ -3225,6 +3225,12 @@ var Note = function Note(config, containerStyle, iconStyle) {
                 } else {
                     console.error(numAnim.error);
                 }
+            } else if(type === "custom") {
+                var numberText = divCreator("span", activeClassNameGenerator("visitorTextElement"), upperText)
+                let visitorTextElement = divCreator("span", activeClassNameGenerator("visitorTextElement"), configuration.visitorText)
+
+                span1Element.appendChild(numberText)
+                span1Element.appendChild(visitorTextElement)
             }else
                 span1Element.innerHTML = upperText
             

@@ -591,6 +591,17 @@
     padding-left: 2px;
     word-break: break-word;
   }
+
+  .footerWrapper .custom-footerWrapper {
+    padding-bottom: 6px;
+  }
+
+
+
+
+
+
+
   
   @media only screen and (max-width: 600px){
   

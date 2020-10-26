@@ -3367,13 +3367,13 @@ var Note = function Note(config, containerStyle, iconStyle) {
                 const fbRecommendIcon = divCreator("img", "fbRecommendIcon")
                 fbRecommendIcon.setAttribute("src", "https://app.useinfluence.co/static/media/fbRecommendation.88544430.png")
                 starIconContainer.appendChild(fbRecommendIcon)
-            // } else if (fromAppType === "capterra") {
-            //     reviewTypeLogo.setAttribute("src", imageAssets.capterra.logo)
-            //     let totalStars = ""
-            //     for (let i = 0; i < starCount; i++) {
-            //         totalStars += imageAssets.capterra.star
-            //     }
-            //     starIconContainer.innerHTML = totalStars
+            } else if (fromAppType === "capterra") {
+                reviewTypeLogo.setAttribute("src", imageAssets.capterra.logo)
+                let totalStars = ""
+                for (let i = 0; i < starCount; i++) {
+                    totalStars += imageAssets.capterra.star
+                }
+                starIconContainer.innerHTML = totalStars
             } else if (fromAppType === "trustpilot") {
                 reviewTypeLogo.setAttribute("src", imageAssets.trsutpilot.logo1)
                 let totalStars = ""

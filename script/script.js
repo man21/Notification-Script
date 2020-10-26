@@ -3219,7 +3219,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
                 animationWrapper.appendChild(animationClass)
                 leftSideElement.appendChild(animationWrapper)
             } else {
-                const imageElement = divCreator("img", `imageStyle ${type + "-imageStyle"}`)
+                const imageElement = divCreator("img", activeClassNameGenerator('imageStyle'))
                 imageElement.setAttribute("src",imageSrc)
                 leftSideElement.appendChild(imageElement)
             }
@@ -3241,9 +3241,9 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
             if(type === "identification"){
                 
-                var numberText = divCreator("span", "visitorTextElement", upperText)
+                var numberText = divCreator("span", activeClassNameGenerator("visitorTextElement"), upperText)
 
-                let visitorTextElement = divCreator("span", "visitorTextElement", configuration.visitorText)
+                let visitorTextElement = divCreator("span", activeClassNameGenerator("visitorTextElement"), configuration.visitorText)
                 // span1Element.insertAdjacentElement('beforeend', visitorTextElement)
 
                 span1Element.appendChild(numberText)
@@ -3311,10 +3311,10 @@ var Note = function Note(config, containerStyle, iconStyle) {
              * @param {URL} poweredByLink Powered by link
              */
             const brandingElementCreator = (verifiedBy, brandName, poweredByLink) => {
-            const brandingContainer = divCreator("p", `brandContainer ${type + "-brandContainer"}`)
-            const verifiedBySpan = divCreator("span", "verifiedBySpan", verifiedBy)
-            const checkSpan = divCreator("span", "checkIcon", checkSVG)
-            const brandNameSpan = divCreator("a", "brandNameSpan", brandName)
+            const brandingContainer = divCreator("p", activeClassNameGenerator("brandContainer"))
+            const verifiedBySpan = divCreator("span", activeClassNameGenerator("verifiedBySpan"), verifiedBy)
+            const checkSpan = divCreator("span", activeClassNameGenerator("checkIcon"), checkSVG)
+            const brandNameSpan = divCreator("a", activeClassNameGenerator("brandNameSpan"), brandName)
             brandNameSpan.setAttribute("href", poweredByLink)
             brandNameSpan.setAttribute("target", "_blank")
             brandNameSpan.setAttribute("rel", "no follow")
@@ -3329,14 +3329,14 @@ var Note = function Note(config, containerStyle, iconStyle) {
              * @param {String} time Time text for recent notif
              */
             const timeElementCreator = (time) => {
-            const timeElementContainer = divCreator("p", "timeELementContainer", time)
-            return timeElementContainer
+                const timeElementContainer = divCreator("p", activeClassNameGenerator("timeELementContainer"), time)
+                return timeElementContainer
             }
         
             const customSlugBtnCreator = () => {
-            const slug=  linkCount && linkCount.slug?linkCount.slug : "link"
-            const slugBtn = divCreator("button", "customSlugBtn", slug)
-            return slugBtn
+                const slug=  linkCount && linkCount.slug?linkCount.slug : "link"
+                const slugBtn = divCreator("button", activeClassNameGenerator("customSlugBtn"), slug)
+                return slugBtn
             }
         
             const reviewStarCreator = (fromAppType, starCount) => {
@@ -3390,7 +3390,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
             /**
             * Main parent container of footer.
             */
-            let mainContainer = divCreator("div", "footerWrapper")
+            let mainContainer = divCreator("div", activeClassNameGenerator("footerWrapper"))
 
 
                 let brandingElement = brandingElementCreator(
@@ -3426,12 +3426,12 @@ var Note = function Note(config, containerStyle, iconStyle) {
             footerElement.appendChild(mainContainer)
         }
         
-        const influenceSocialProof = divCreator("div", "influence-social-proof")
+        const influenceSocialProof = divCreator("div", activeClassNameGenerator("influence-social-proof"))
         influenceSocialProof.classList.add(...trackingClassNames[ACTIVE_NOTIFICATION_TYPE])
         influenceSocialProof.style = containerStyle
         console.log('contianerstyle------------', containerStyle)
-        const parentContentWrapper = divCreator("div", "parentContentWrapper")
-        const rightFlexContainer = divCreator("div", "rightFlexContainer")
+        const parentContentWrapper = divCreator("div", activeClassNameGenerator("parentContentWrapper"))
+        const rightFlexContainer = divCreator("div", activeClassNameGenerator("rightFlexContainer"))
         
         const rightSideElement = rightSideContainer()
         const footerElement = footerContainer()

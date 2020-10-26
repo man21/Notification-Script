@@ -205,11 +205,6 @@
     display: flex;
     align-items: center;
   }
-  .reviewMainContainer .reviewTypeLogo  {
-    width: auto;
-    height: 10px;
-    margin-right: 5px;
-  }
   
   .starIconContainer{
     display:flex;
@@ -294,8 +289,26 @@
     font-style: italic;
   }
 
+  .reviewMainContainer .reviewTypeLogo  {
+    width: auto;
+    height: 10px;
+    margin-right: 5px;
+  }
+
+  .reviewMainContainer .trustpilot-reviewTypeLogo{
+    height: 15px;
+    opacity: 0.8;
+  }
+
+  parentContentWrapper .leftContainer .review-imageStyle{
+    width:48px;
+    height:48px;
+    padding: 5px;
+    background-color: rgba(16, 94, 250, 0.1);
+  }
 
 
+  /* ------------------ Recent/Journey styles */
 
   .journey-span1Element{
     font-size: 15px;

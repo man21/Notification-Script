@@ -2187,13 +2187,6 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
     // animationLink.id = "stylesheetID";
     // document.getElementsByTagName("head")[0].appendChild(animationLink);
 
-    // var announcementLink = document.createElement("link");
-    // announcementLink.href = 'https://test2109.herokuapp.com/accouncement.css';
-    // announcementLink.type = "text/css";
-    // announcementLink.rel = "stylesheet";
-    // announcementLink.id = "stylesheetID";
-    // document.getElementsByTagName("head")[0].appendChild(announcementLink);
-
 
     // var fontCSS = document.createElement("link");
     // fontCSS.href = 'https://fonts.googleapis.com/css?family=Lato|Poppins:300,400,500,600,700&display=swap';
@@ -2615,11 +2608,6 @@ InfluenceTracker.prototype.tracker = function (info) {
             data.notificationType = notifType
         }    
 
-       
-
-       
-
-
         //check rule && append campaignid
         // if (configurationPath.rule && configurationPath.rule.displayOnAllPages)
         //     data.value.campaignId = configurationPath.rule.campaign;
@@ -2888,15 +2876,18 @@ var Note = function Note(config, containerStyle, iconStyle) {
         var innerDiv = document.createElement('div');
         var mainContainer = document.createElement('div');
 
+
+
         const ACTIVE_NOTIFICATION_TYPE = type
-
-
         var res_img;
         // var res_name = "Someone"
         // var secondaryText = ''        
         // var verifiedBy =""
         // var poweredBy = ""
         // var poweredByLink = ""
+        var finalResult= {
+            fromAppType :userReview ? userReview.fromApp :''
+        }
 
         const imageAssets = {
             googleLogo: "https://storage.googleapis.com/influence-197607.appspot.com/googlereview.png",
@@ -2954,11 +2945,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
             review:["y2UXzO2spo", "DyWfFTHh9R", "sD1KBJgziO", "wIwWxk318I" ,"bnvt6niIjl" ],
             custom:["asdfa34"]
         }
-
-        var finalResult= {}
-
         
-
         /**
          * Generates classNames for active notifications. Attach another class with active notif type
          * @param {String} styleClass classname
@@ -2966,13 +2953,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
         const activeClassNameGenerator = (styleClass) => (`${styleClass} ${ACTIVE_NOTIFICATION_TYPE}-${styleClass}`)
 
         if(ACTIVE_NOTIFICATION_TYPE == "live"){
-
-            // res_name = liveVisitorCount == 0 ? 1 : liveVisitorCount + ' ' + ` ${configuration.visitorText}`      //"21 People"
-          
-            finalResult.res_name = liveVisitorCount == 0 ? 1 : liveVisitorCount + ' ' + ` ${configuration.visitorText}`      //"21 People"
-                    
+            finalResult.res_name = liveVisitorCount == 0 ? 1 : liveVisitorCount + ' ' + ` ${configuration.visitorText}`      //"21 People"                    
             finalResult.secondaryText = ` ${configuration.liveVisitorText}`;
-            
             finalResult.verifiedBy = `${configuration && configuration.recentText2 ? configuration.recentText2 : 'verified by'}`;   //"Verified by"
             finalResult.poweredByLink=   configuration.poweredByLink
             finalResult.poweredBy=  configuration.poweredBy ? configuration.poweredBy : 'Influence'; 
@@ -3053,11 +3035,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
 
             finalResult.res_name = userReview.username;
+            finalResult.secondaryText = userReview && userReview.review_text ? userReview.review_text : `Reviewed us on ${finalResult.fromAppType}`; 
 
-            finalResult.secondaryText = userReview && userReview.review_text ? userReview.review_text : `Reviewed us on ${fromAppType}`; 
-
-
-         fromAppType = userReview ? userReview.fromApp :'';
          
          finalResult.verifiedBy = `${configuration && configuration.recentText2 ? configuration.recentText2 : 'verified by'}`;   //"Verified by"
          finalResult.poweredByLink=   configuration.poweredByLink
@@ -3071,7 +3050,6 @@ var Note = function Note(config, containerStyle, iconStyle) {
             }else{
                 finalResult.res_img =configuration.panelStyle.image ? configuration.panelStyle.image : 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/C77C11F2-0E34-49DE-97CC-10DF6C848B69.png'
             }
-
 
             //  var today = new Date();
             // var dd = today.getDate();
@@ -3115,26 +3093,22 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
             finalResult.res_name =  linkCount && linkCount.totalCount ?  linkCount.totalCount: 0 //numberOfUsers + "123 " // + configuration.visitorText
 
-                        // var today = new Date();
-                        // var dd = today.getDate();
-                        // var mm = today.getMonth() + 1; //January is 0!
-                        // var yyyy = today.getFullYear();     
-                        // if (dd < 10) { dd = '0' + dd }
-                        // if (mm < 10) { mm = '0' + mm }
-                        // today = yyyy + '/' + mm + '/' + dd;
-                        // var date2 = new Date(today);
-                        // var date1 = new Date(config.rule.createdAt);
-                        // var timeDiff = Math.abs(date2.getTime() - date1.getTime());
-                        // var dayDifference = Math.ceil(timeDiff / (1000 * 3600 * 24));
-    
-                        finalResult.secondaryText =  ` ${configuration ? configuration.otherText : ''} <b>${configuration ? linkCount && linkCount.slug ? linkCount.slug: "link" : ''} </b> ${configuration && configuration.bulkText ? configuration.bulkText : 'in the last'} ${configuration.panelStyle.bulkData} ${configuration && configuration.bulkDaysLable ? configuration.bulkDaysLable : 'days'}`  //"signed up for influence in the last 7 days"
+            // var today = new Date();
+            // var dd = today.getDate();
+            // var mm = today.getMonth() + 1; //January is 0!
+            // var yyyy = today.getFullYear();     
+            // if (dd < 10) { dd = '0' + dd }
+            // if (mm < 10) { mm = '0' + mm }
+            // today = yyyy + '/' + mm + '/' + dd;
+            // var date2 = new Date(today);
+            // var date1 = new Date(config.rule.createdAt);
+            // var timeDiff = Math.abs(date2.getTime() - date1.getTime());
+            // var dayDifference = Math.ceil(timeDiff / (1000 * 3600 * 24));
 
-
-                        finalResult.verifiedBy = `${configuration && configuration.recentText2 ? configuration.recentText2 : 'verified by'}`;   //"Verified by"
-                        finalResult.poweredByLink=   configuration.poweredByLink
-                        finalResult.poweredBy=  configuration.poweredBy ? configuration.poweredBy : 'Influence'; 
+            finalResult.secondaryText =  ` ${configuration ? configuration.otherText : ''} <b>${configuration ? linkCount && linkCount.slug ? linkCount.slug: "link" : ''} </b> ${configuration && configuration.bulkText ? configuration.bulkText : 'in the last'} ${configuration.panelStyle.bulkData} ${configuration && configuration.bulkDaysLable ? configuration.bulkDaysLable : 'days'}`  //"signed up for influence in the last 7 days"            finalResult.verifiedBy = `${configuration && configuration.recentText2 ? configuration.recentText2 : 'verified by'}`;   //"Verified by"
+            finalResult.poweredByLink=   configuration.poweredByLink
+            finalResult.poweredBy=  configuration.poweredBy ? configuration.poweredBy : 'Influence'; 
         }
-
 
         /**
          * Creates HTML Node with given type
@@ -3178,7 +3152,6 @@ var Note = function Note(config, containerStyle, iconStyle) {
         }
          
         const leftSideCreator = (type, imageSrc) => {
-
             if (type === "live") {
                 const animationWrapper = divCreator("div", "animation-wrapper")
                 const animationClass = divCreator("div", "animationClass")
@@ -3228,7 +3201,6 @@ var Note = function Note(config, containerStyle, iconStyle) {
         }
         
         const rightSideTextCreator = (type, upperText, secondaryText) => {
-
             const styleClass = ["live", "identification", "custom"].includes(type)
             ? "singleLineContent"
             : "twoLineContent"
@@ -3239,19 +3211,14 @@ var Note = function Note(config, containerStyle, iconStyle) {
             if (configuration && configuration.panelStyle ) 
                 span1Element.style = `font-family:${configuration.panelStyle.fontFamily}; color: rgb(${configuration.panelStyle.color.r},${configuration.panelStyle.color.g},${configuration.panelStyle.color.b});`
             
-
-            if(type === "identification"){
-                
+            if(type === "identification"){    
                 var numberText = divCreator("span", activeClassNameGenerator("visitorTextElement"), upperText)
-
                 let visitorTextElement = divCreator("span", activeClassNameGenerator("visitorTextElement"), configuration.visitorText)
-                // span1Element.insertAdjacentElement('beforeend', visitorTextElement)
 
                 span1Element.appendChild(numberText)
                 span1Element.appendChild(visitorTextElement)
 
                 numAnim = new CountUp(numberText, 0, upperText, 0, 3);   
-                
                 if (!numAnim.error) {
                     numAnim.start();
                 } else {
@@ -3259,13 +3226,12 @@ var Note = function Note(config, containerStyle, iconStyle) {
                 }
             }else
                 span1Element.innerHTML = upperText
-                
-
-            let span2Element = divCreator(
-            "span",
-            activeClassNameGenerator('span2Element'),
-            secondaryText
-            )
+            
+                let span2Element = divCreator(
+                "span",
+                activeClassNameGenerator('span2Element'),
+                secondaryText
+                )
 
             if(configuration && configuration.panelStyle )
                 span2Element.style = `font-family:${configuration.panelStyle.fontFamily ? configuration.panelStyle.fontFamily: "" }; ${configuration.panelStyle.secondaryColor ? `color: rgb(${configuration.panelStyle.secondaryColor.r},${configuration.panelStyle.secondaryColor.g},${configuration.panelStyle.secondaryColor.b}); ` : ""} `
@@ -3474,6 +3440,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
                 cursor: pointer;
                 opacity: 0.95;
             `;
+       
         var createCTAText = document.createTextNode(configuration.ctaButtonText);
         innerInnerNotifCTAContainer.appendChild(createCTAText);
         innerNotifCTAContainer.appendChild(innerInnerNotifCTAContainer);

@@ -3073,9 +3073,9 @@ var Note = function Note(config, containerStyle, iconStyle) {
         } else if(ACTIVE_NOTIFICATION_TYPE == "announcement"){
 
             if (config.icon)
-            finalResult.res_img =  config.icon 
+                finalResult.res_img =  config.icon 
             else
-            finalResult.res_img =  configuration.panelStyle.image ? configuration.panelStyle.image : 'https://s3.wasabisys.com/influencelogo/logo/announcement.svg'
+                finalResult.res_img =  configuration.panelStyle.image ? configuration.panelStyle.image : 'https://s3.wasabisys.com/influencelogo/logo/announcement.svg'
 
             finalResult.res_name =  configuration.announcementHeaderText ? configuration.announcementHeaderText : 'Updates Available!'
             finalResult.secondaryText = configuration.announcementSubText ?  configuration.announcementSubText : "Know more about the latest updates"  //"Awesome must have tool for every marketer or an online business! Easy to use, great uxui, and most importantly - gets more leads than any other platform."
@@ -3195,6 +3195,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
                 leftSideElement.appendChild(animationWrapper)
             } else {
                 const imageElement = divCreator("img", `${activeClassNameGenerator('imageStyle')} ${userReview && userReview.fromApp ? `${userReview.fromApp}-imageStyle` : ''}`)
+                imageElement.style.borderRadius = `${configuration.panelStyle.radius}px`
                 imageElement.setAttribute("src",imageSrc)
                 leftSideElement.appendChild(imageElement)
             }

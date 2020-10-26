@@ -287,7 +287,7 @@
 
   .review-influence-social-proof{
     border-radius: 5px !important;
-    height: 96px !important
+    height: 102px !important
 
   }
 
@@ -298,7 +298,8 @@
   }
 
   .parentContentWrapper .review-rightSideContainer{
-    height: 96px !important
+    height: 76px !important;
+    overflow:hidden;
   }
 
   .parentContentWrapper > .review-rightFlexContainer{

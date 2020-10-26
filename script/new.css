@@ -217,7 +217,7 @@
   }
 
   .starIconContainer > svg{
-    margin-right: 3px;
+    margin: 0.5px;
   }
 
   .starIconContainer .fbRecommendIcon{

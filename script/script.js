@@ -2962,6 +2962,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
             review:["y2UXzO2spo", "DyWfFTHh9R", "sD1KBJgziO", "wIwWxk318I" ,"bnvt6niIjl" ]
         }
 
+        var finalResult= {}
+
         
 
         /**
@@ -2971,14 +2973,16 @@ var Note = function Note(config, containerStyle, iconStyle) {
         const activeClassNameGenerator = (styleClass) => (`${styleClass} ${ACTIVE_NOTIFICATION_TYPE}-${styleClass}`)
 
         if(ACTIVE_NOTIFICATION_TYPE == "live"){
-            res_name = liveVisitorCount == 0 ? 1 : liveVisitorCount + ' ' + ` ${configuration.visitorText}`      //"21 People"
-            secondaryText = `${configuration && configuration.liveText ? configuration.liveText : 'verified by '}`  //"Verified by"
-        
-                secondaryText = ` ${configuration.liveVisitorText}`;
+
+            // res_name = liveVisitorCount == 0 ? 1 : liveVisitorCount + ' ' + ` ${configuration.visitorText}`      //"21 People"
+          
+            finalResult.res_name = liveVisitorCount == 0 ? 1 : liveVisitorCount + ' ' + ` ${configuration.visitorText}`      //"21 People"
+                    
+            finalResult.secondaryText = ` ${configuration.liveVisitorText}`;
             
-            verifiedBy = `${configuration && configuration.recentText2 ? configuration.recentText2 : 'verified by'}`;   //"Verified by"
-            poweredByLink=   configuration.poweredByLink
-            poweredBy=  configuration.poweredBy ? configuration.poweredBy : 'Influence'; 
+            finalResult.verifiedBy = `${configuration && configuration.recentText2 ? configuration.recentText2 : 'verified by'}`;   //"Verified by"
+            finalResult.poweredByLink=   configuration.poweredByLink
+            finalResult.poweredBy=  configuration.poweredBy ? configuration.poweredBy : 'Influence'; 
 
         }else if(ACTIVE_NOTIFICATION_TYPE == "journey"){    
          res_img = "https://s3.wasabisys.com/insidescript.com/maps/world.jpeg"
@@ -3002,7 +3006,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
                     res_img = configuration.panelStyle.image;
                 }
 
-            res_img =  res_img ? res_img : "https://storage.googleapis.com/influence-197607.appspot.com/user_icon.png"
+                finalResult.res_img =  res_img ? res_img : "https://storage.googleapis.com/influence-197607.appspot.com/user_icon.png"
             }
              res_name = userDetails && userDetails ? userDetails.username ? userDetails.username : userDetails.response.json.value.form.firstname : null;
                 if (res_name && res_name.trim().length == 0) res_name = 'Someone';
@@ -3013,7 +3017,8 @@ var Note = function Note(config, containerStyle, iconStyle) {
                 if (configuration && configuration.toggleHideName) {
                     res_name = configuration.usernameText;
                 }
-                var user_details = userDetails && userDetails ?
+            
+                res_name = userDetails && userDetails ?
                     userDetails.city && userDetails.country && res_name && !configuration.isHideFullLocation ?
                         `${res_name} ${(!configuration.isHideCityLocation || !configuration.isHideCountryLocation) ? configuration && configuration.recentText1 ? configuration.recentText1 : 'from' : ''} ${!configuration.isHideCityLocation ? userDetails.city : ''}${!configuration.isHideCityLocation && !configuration.isHideCountryLocation ? ', ' : ''} ${!configuration.isHideCountryLocation ? userDetails.country : ''}`
                         :
@@ -3042,36 +3047,36 @@ var Note = function Note(config, containerStyle, iconStyle) {
                 // Footer
                     
 
-                    verifiedBy = `${configuration && configuration.recentText2 ? configuration.recentText2 : 'verified by'}`;   //"Verified by"
+                finalResult.verifiedBy = `${configuration && configuration.recentText2 ? configuration.recentText2 : 'verified by'}`;   //"Verified by"
 
-                    poweredByLink=   configuration.poweredByLink
+                finalResult.poweredByLink=   configuration.poweredByLink
 
-                    poweredBy=  configuration.poweredBy ? configuration.poweredBy : 'Influence'; 
+                finalResult.poweredBy=  configuration.poweredBy ? configuration.poweredBy : 'Influence'; 
     
         
         } else if(ACTIVE_NOTIFICATION_TYPE == "review"){
-            res_img = userReview && userReview.profileImg ? userReview.profileImg :(userReview ? 'https://lh3.ggpht.com/-HiICnzrd7xo/AAAAAAAAAAI/AAAAAAAAAAA/GcUbxXrSSYg/s128-c0x00000000-cc-rp-mo/photo.jpg': "")
+            finalResult.res_img = userReview && userReview.profileImg ? userReview.profileImg :(userReview ? 'https://lh3.ggpht.com/-HiICnzrd7xo/AAAAAAAAAAI/AAAAAAAAAAA/GcUbxXrSSYg/s128-c0x00000000-cc-rp-mo/photo.jpg': "")
             if(userReview.fromApp == "trustpilot") res_img = imageAssets.trsutpilot.star
 
 
-            res_name = userReview.username;
+            finalResult.res_name = userReview.username;
 
-            secondaryText = userReview && userReview.review_text ? userReview.review_text : `Reviewed us on ${fromAppType}`; 
+            finalResult.secondaryText = userReview && userReview.review_text ? userReview.review_text : `Reviewed us on ${fromAppType}`; 
 
 
          fromAppType = userReview ? userReview.fromApp :'';
          
-            verifiedBy = `${configuration && configuration.recentText2 ? configuration.recentText2 : 'verified by'}`;   //"Verified by"
-            poweredByLink=   configuration.poweredByLink
-            poweredBy=  configuration.poweredBy ? configuration.poweredBy : 'Influence'; 
+         finalResult.verifiedBy = `${configuration && configuration.recentText2 ? configuration.recentText2 : 'verified by'}`;   //"Verified by"
+         finalResult.poweredByLink=   configuration.poweredByLink
+         finalResult.poweredBy=  configuration.poweredBy ? configuration.poweredBy : 'Influence'; 
         } else if( ACTIVE_NOTIFICATION_TYPE == "identification"){
 
-            res_name = numberOfUsers
+            finalResult.res_name = numberOfUsers
 
             if(config.icon){
-                res_img =config.icon
+                finalResult.res_img =config.icon
             }else{
-                res_img =configuration.panelStyle.image ? configuration.panelStyle.image : 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/C77C11F2-0E34-49DE-97CC-10DF6C848B69.png'
+                finalResult.res_img =configuration.panelStyle.image ? configuration.panelStyle.image : 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/C77C11F2-0E34-49DE-97CC-10DF6C848B69.png'
             }
 
 
@@ -3087,35 +3092,35 @@ var Note = function Note(config, containerStyle, iconStyle) {
             var timeDiff = Math.abs(date2.getTime() - date1.getTime());
             var dayDifference = Math.ceil(timeDiff / (1000 * 3600 * 24));
 
-            secondaryText = ` ${configuration ? configuration.otherText : ''} ${configuration ? configuration.contentText : ''} ${configuration && configuration.bulkText ? configuration.bulkText : 'in the last'} ${configuration.panelStyle.bulkData} ${configuration && configuration.bulkDaysLable ? configuration.bulkDaysLable : 'days'}`  //"signed up for influence in the last 7 days"
+            finalResult.secondaryText = ` ${configuration ? configuration.otherText : ''} ${configuration ? configuration.contentText : ''} ${configuration && configuration.bulkText ? configuration.bulkText : 'in the last'} ${configuration.panelStyle.bulkData} ${configuration && configuration.bulkDaysLable ? configuration.bulkDaysLable : 'days'}`  //"signed up for influence in the last 7 days"
      
-            verifiedBy = `${configuration && configuration.recentText2 ? configuration.recentText2 : 'verified by'}`;   //"Verified by"
-            poweredByLink=   configuration.poweredByLink
-            poweredBy=  configuration.poweredBy ? configuration.poweredBy : 'Influence'; 
+            finalResult.verifiedBy = `${configuration && configuration.recentText2 ? configuration.recentText2 : 'verified by'}`;   //"Verified by"
+            finalResult.poweredByLink=   configuration.poweredByLink
+            finalResult.poweredBy=  configuration.poweredBy ? configuration.poweredBy : 'Influence'; 
     
 
         } else if(ACTIVE_NOTIFICATION_TYPE == "announcement"){
 
             if (config.icon)
-            res_img =  config.icon 
+            finalResult.res_img =  config.icon 
             else
-            res_img =  configuration.panelStyle.image ? configuration.panelStyle.image : 'https://s3.wasabisys.com/influencelogo/logo/announcement.svg'
+            finalResult.res_img =  configuration.panelStyle.image ? configuration.panelStyle.image : 'https://s3.wasabisys.com/influencelogo/logo/announcement.svg'
 
-            res_name =  configuration.announcementHeaderText ? configuration.announcementHeaderText : 'Updates Available!'
-            secondaryText = configuration.announcementSubText ?  configuration.announcementSubText : "Know more about the latest updates"  //"Awesome must have tool for every marketer or an online business! Easy to use, great uxui, and most importantly - gets more leads than any other platform."
+            finalResult.res_name =  configuration.announcementHeaderText ? configuration.announcementHeaderText : 'Updates Available!'
+            finalResult.secondaryText = configuration.announcementSubText ?  configuration.announcementSubText : "Know more about the latest updates"  //"Awesome must have tool for every marketer or an online business! Easy to use, great uxui, and most importantly - gets more leads than any other platform."
           
-            verifiedBy = `${configuration && configuration.recentText2 ? configuration.recentText2 : 'verified by'}`;   //"Verified by"
-            poweredByLink=   configuration.poweredByLink
-            poweredBy=  configuration.poweredBy ? configuration.poweredBy : 'Influence'; 
+            finalResult.verifiedBy = `${configuration && configuration.recentText2 ? configuration.recentText2 : 'verified by'}`;   //"Verified by"
+            finalResult.poweredByLink=   configuration.poweredByLink
+            finalResult.poweredBy=  configuration.poweredBy ? configuration.poweredBy : 'Influence'; 
         }else if(ACTIVE_NOTIFICATION_TYPE == "custom"){
 
             if(config.icon){
-                res_img =config.icon
+                finalResult.res_img =config.icon
             }else{
-                res_img = configuration.panelStyle.image ? configuration.panelStyle.image : 'https://s3.wasabisys.com/influencelogo/logo/click.svg'
+                finalResult.res_img = configuration.panelStyle.image ? configuration.panelStyle.image : 'https://s3.wasabisys.com/influencelogo/logo/click.svg'
             }
 
-            res_name =  linkCount && linkCount.totalCount ?  linkCount.totalCount: 0 //numberOfUsers + "123 " // + configuration.visitorText
+            finalResult.res_name =  linkCount && linkCount.totalCount ?  linkCount.totalCount: 0 //numberOfUsers + "123 " // + configuration.visitorText
 
                         var today = new Date();
                         var dd = today.getDate();
@@ -3129,12 +3134,12 @@ var Note = function Note(config, containerStyle, iconStyle) {
                         var timeDiff = Math.abs(date2.getTime() - date1.getTime());
                         var dayDifference = Math.ceil(timeDiff / (1000 * 3600 * 24));
     
-            secondaryText =  ` ${configuration ? configuration.otherText : ''} <b>${configuration ? linkCount && linkCount.slug ? linkCount.slug: "link" : ''} </b> ${configuration && configuration.bulkText ? configuration.bulkText : 'in the last'} ${configuration.panelStyle.bulkData} ${configuration && configuration.bulkDaysLable ? configuration.bulkDaysLable : 'days'}`  //"signed up for influence in the last 7 days"
+                        finalResult.secondaryText =  ` ${configuration ? configuration.otherText : ''} <b>${configuration ? linkCount && linkCount.slug ? linkCount.slug: "link" : ''} </b> ${configuration && configuration.bulkText ? configuration.bulkText : 'in the last'} ${configuration.panelStyle.bulkData} ${configuration && configuration.bulkDaysLable ? configuration.bulkDaysLable : 'days'}`  //"signed up for influence in the last 7 days"
 
 
-            verifiedBy = `${configuration && configuration.recentText2 ? configuration.recentText2 : 'verified by'}`;   //"Verified by"
-            poweredByLink=   configuration.poweredByLink
-            poweredBy=  configuration.poweredBy ? configuration.poweredBy : 'Influence'; 
+                        finalResult.verifiedBy = `${configuration && configuration.recentText2 ? configuration.recentText2 : 'verified by'}`;   //"Verified by"
+                        finalResult.poweredByLink=   configuration.poweredByLink
+                        finalResult.poweredBy=  configuration.poweredBy ? configuration.poweredBy : 'Influence'; 
         }
 
 
@@ -3448,12 +3453,12 @@ var Note = function Note(config, containerStyle, iconStyle) {
         const leftSideElement = leftSideContainer()
 
         
-        leftSideCreator(ACTIVE_NOTIFICATION_TYPE, res_img )
-        rightSideTextCreator(ACTIVE_NOTIFICATION_TYPE, res_name, secondaryText)
+        leftSideCreator(ACTIVE_NOTIFICATION_TYPE, finalResult.res_img )
+        rightSideTextCreator(ACTIVE_NOTIFICATION_TYPE, finalResult.res_name, finalResult.secondaryText)
         
         
             // brandingNameHide = 'display: none'
-            footerCreator(ACTIVE_NOTIFICATION_TYPE, verifiedBy, poweredBy, poweredByLink)
+            footerCreator(ACTIVE_NOTIFICATION_TYPE, finalResult.verifiedBy, finalResult.poweredBy, finalResult.poweredByLink)
         
         
         rightFlexContainer.appendChild(rightSideElement)

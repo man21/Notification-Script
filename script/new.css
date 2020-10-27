@@ -19,6 +19,7 @@
     background-color: rgb(255, 255, 255);
     font-family: inherit;
     font-weight: normal;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 20px 0px;
   }
   
   
@@ -340,6 +341,13 @@
     background-color:transparent;
   }
 
+
+  .review-span1Element > .reviewSecondaryUpperText{
+    font-size: 14px;
+    color: gray;
+    margin-left: 5px;
+  }
+  
   .review-span2Element{
     margin-top: 2px;
     font-size: 10px;

@@ -3210,11 +3210,11 @@ var Note = function Note(config, containerStyle, iconStyle) {
             let span1Element = divCreator("span",activeClassNameGenerator('span1Element') ) //, upperText + ' HELO' )
 
             if (configuration && configuration.panelStyle ) 
-                span1Element.style = `font-family:${configuration.panelStyle.fontFamily}; color: rgb(${configuration.panelStyle.color.r},${configuration.panelStyle.color.g},${configuration.panelStyle.color.b}); background:rgba(${configuration.panelStyle.color.r},${configuration.panelStyle.color.g},${configuration.panelStyle.color.b}),0.09`
+                span1Element.style = `font-family:${configuration.panelStyle.fontFamily}; color: rgb(${configuration.panelStyle.color.r},${configuration.panelStyle.color.g},${configuration.panelStyle.color.b}); background:rgba(${configuration.panelStyle.color.r},${configuration.panelStyle.color.g},${configuration.panelStyle.color.b},0.09)`
             
             if(type === "identification"){    
                 var numberText = divCreator("span", activeClassNameGenerator("visitorTextElement"), upperText)
-                let visitorTextElement = divCreator("span", activeClassNameGenerator("visitorTextElement"), configuration.visitorText)
+                let visitorTextElement = divCreator("span", activeClassNameGenerator("visitorTextElement2"), configuration.visitorText)
 
                 span1Element.appendChild(numberText)
                 span1Element.appendChild(visitorTextElement)

@@ -2133,8 +2133,6 @@ var Notifications = function (config) {
         response = JSON.parse(res);
 
         if(response && response.error == false){
-
-            console.log("HELLO **********************")
             return
         }
         // configurationPath = JSON.parse(res);

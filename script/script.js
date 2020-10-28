@@ -3213,12 +3213,17 @@ var Note = function Note(config, containerStyle, iconStyle) {
             let lineElement = divCreator("p", activeClassNameGenerator(styleClass))
             let span1Element = divCreator("span",activeClassNameGenerator('span1Element') ) //, upperText + ' HELO' )
 
-            if (configuration && configuration.panelStyle ) 
-                span1Element.style = `font-family:${configuration.panelStyle.fontFamily}; color: rgb(${configuration.panelStyle.color.r},${configuration.panelStyle.color.g},${configuration.panelStyle.color.b});`
+            if (configuration && configuration.panelStyle ){
+                if(type === "review") {
+                    span1Element.style = `font-family:${configuration.panelStyle.fontFamily}; color: rgb(${configuration.panelStyle.color.r},${configuration.panelStyle.color.g},${configuration.panelStyle.color.b});`
+                } else {
+                    span1Element.style = `font-family:${configuration.panelStyle.fontFamily}; color: rgb(${configuration.panelStyle.color.r},${configuration.panelStyle.color.g},${configuration.panelStyle.color.b}); background:rgba(${configuration.panelStyle.color.r},${configuration.panelStyle.color.g},${configuration.panelStyle.color.b},0.05)`
+                }
+            } 
             
             if(type === "identification"){    
                 var numberText = divCreator("span", activeClassNameGenerator("visitorTextElement"), upperText)
-                let visitorTextElement = divCreator("span", activeClassNameGenerator("visitorTextElement"), configuration.visitorText)
+                let visitorTextElement = divCreator("span", activeClassNameGenerator("visitorTextElement2"), configuration.visitorText)
 
                 span1Element.appendChild(numberText)
                 span1Element.appendChild(visitorTextElement)
@@ -3235,14 +3240,20 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
                 span1Element.appendChild(numberText)
                 span1Element.appendChild(visitorTextElement)
-            }else
-                span1Element.innerHTML = upperText
+            } else if(type === "review"){
+                var reviewMainUpperText = divCreator("span", activeClassNameGenerator("reviewMainUpperText"), upperText)
+                var reviewSecondaryUpperText = divCreator("span", activeClassNameGenerator("reviewSecondaryUpperText"))
+
+                if(finalResult.fromAppType === "facebook") reviewSecondaryUpperText.innerHTML = "(recommended us)"
+                    else if (finalResult.fromAppType === "trustpilot") reviewSecondaryUpperText.innerHTML = "(reviewed us)"
+                    else reviewSecondaryUpperText.innerHTML = ""
+
+                span1Element.appendChild(reviewMainUpperText)
+                span1Element.appendChild(reviewSecondaryUpperText)
+
+            }else span1Element.innerHTML = upperText
             
-                let span2Element = divCreator(
-                "span",
-                activeClassNameGenerator('span2Element'),
-                secondaryText
-                )
+            let span2Element = divCreator( "span", activeClassNameGenerator('span2Element'), secondaryText )
 
             if(configuration && configuration.panelStyle )
                 span2Element.style = `font-family:${configuration.panelStyle.fontFamily ? configuration.panelStyle.fontFamily: "" }; ${configuration.panelStyle.secondaryColor ? `color: rgb(${configuration.panelStyle.secondaryColor.r},${configuration.panelStyle.secondaryColor.g},${configuration.panelStyle.secondaryColor.b}); ` : ""} `

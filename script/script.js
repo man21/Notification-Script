@@ -2132,7 +2132,7 @@ var Notifications = function (config) {
     httpGetAsync(rulesUrl, function (res) {
         response = JSON.parse(res);
 
-        if(response && response.error && response.error == false){
+        if(response && response.error == false){
 
             console.log("HELLO **********************")
             return

@@ -111,6 +111,10 @@
     font-family: sans-serif;
     font-weight: normal;
     color: rgb(102, 102, 102);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
   }
   
   .twoLineContent{
@@ -129,6 +133,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    max-width: 230px;
   }
   
   .timeELementContainer{
@@ -449,7 +454,7 @@
     color: #2c66c3;
     font-family: sans-serif;
     padding-left: 5px;
-    text-transform: capitalize;
+    text-transform: none;
     background: rgba(240,248,255,.35);
     line-height: 1.5;
     overflow: hidden;

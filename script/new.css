@@ -97,6 +97,7 @@
 
   .singleLineContent{
     margin:0;
+    line-height: 1.2;
   }
 
   .span2Element{
@@ -115,7 +116,8 @@
   .twoLineContent{
     display:flex;
     flex-direction: column;
-    margin:0
+    margin:0;
+    flex-flow: wrap;
   }
   
   .footerWrapper{
@@ -269,6 +271,7 @@
   .parentContentWrapper .leftContainer .identification-imageStyle{
     width: 51px;
     height: 51px;
+    box-shadow: none;
   }
 
   .identification-span2Element{
@@ -408,6 +411,10 @@
     width: 250px;
     padding-left: 2px;
 
+  }
+
+  .parentContentWrapper .leftContainer.journey-leftContainer{
+    margin-left:2px;
   }
 
   .leftContainer > .journey-leftContainer {

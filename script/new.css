@@ -22,19 +22,19 @@
     box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 20px 0px;
   }
 
-  .bounceBottomUp-enter-animation{
+  .bounceIn{
     animation: bounceBottomUp 1.1s linear both;
   }
 
-  .bounceBottomDown-leave-animation{
+  .bounceOut{
     animation:bounceBottomDown 2s linear both
   }
 
-  .fadeIn-enter-animation {
+  .fadeIn{
     animation: fadein 800ms  ease-in
   }
   
-  .fadeOut-leave-animation {
+  .fadeOut{
     animation: fadeout 600ms ease-out
   }
   

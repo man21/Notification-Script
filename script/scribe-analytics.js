@@ -5020,7 +5020,7 @@ Influence = typeof Influence === 'undefined' ? require('../server') : Influence;
             "dataUsage": []
         }, {
             "useCookie": true,
-            "essentialPolicy": true,
+            "essentialPolicy": false,
             "cookieWidgets": true,
             "_id": "5f9ceaaab42930001d1ad923",
             "name": "cdn.dashly.app",

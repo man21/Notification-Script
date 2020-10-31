@@ -3,7 +3,7 @@ var exclued_button_text = 'login, signin, loginnow, memberlogin, accountlogin, p
 var __pathname = window.location.pathname;
 __pathname = '/' + __pathname.split('/')[1];
 
-var influenceScript = 'scrip_ copy.js';
+var influenceScript = 'scriptCopy.js';
 var BASE_URL = "https://strapi.useinfluence.co";
 
 document.addEventListener('visibilitychange', function (e) {

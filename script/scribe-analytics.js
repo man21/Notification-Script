@@ -4224,7 +4224,7 @@ function CookieFn() {
                 footer.href = "https://app.useinfluence.co"
                 footer.className = "footer"
                 var brand = document.createElement('p')
-                brand.style = "color:#072fff ;font-size:12px;font-weight:500;margin-bottom:0px"
+                brand.style = "color:#097FFF ;font-size:12px;font-weight:500;margin-bottom:0px"
                 brand.innerHTML = "Verified by Influence"
 
                 var blueTick = document.createElement('span')
@@ -4493,7 +4493,7 @@ function CookieFn() {
                 footer.href="https://app.useinfluence.co"
                 footer.className = "footer"
                 var brand = document.createElement('p')
-                brand.style = "color:#072fff;font-size:12px;font-weight:500;margin-bottom:0px"
+                brand.style = "color:#097fff;font-size:12px;font-weight:500;margin-bottom:0px"
                 brand.innerHTML = "Verified by Influence"
 
                 var blueTick = document.createElement('span')

@@ -1,9 +1,9 @@
 var isTabVisibility = true,flagMouseOver= false;
 var exclued_button_text = 'login, signin, loginnow, memberlogin, accountlogin, post comment';
-var __pathname = window.location.href
-__pathname = '/' + __pathname.split('/')[3];
+var __pathname = window.location.pathname;
+__pathname = '/' + __pathname.split('/')[1];  
 
-console.log(__pathname,  "+++++++++++++++++")
+
 var influenceScript = 'testScript.js';
 var BASE_URL = "https://api.useinfluence.co";
 
@@ -2137,11 +2137,7 @@ var Notifications = function (config) {
             return
          }
         // configurationPath = JSON.parse(res);
-        configurationPath = response.find(obj=> obj.notificationPath.find(ojb1 => ojb1.type == "lead"))  //(ojb1.url === __pathname || ojb1.url === window.location.pathname)
-        
-
-        console.log(configurationPath, " ++++++++++++++++++++++++++11111111111111")
-        
+        configurationPath = response.find(obj=> obj.notificationPath.find(ojb1 => (ojb1.url === __pathname || ojb1.url === window.location.pathname) && ojb1.type == "lead"))
         activeNotification = Math.max.apply(null,response.map(obj=> obj.rule.activeNotification))
         var enableLoopNotification = response.find(obj=> obj.rule.loopNotification) ? true : false
     
@@ -2160,9 +2156,7 @@ var Notifications = function (config) {
         var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
         var disabledOnMobile =  response.find(obj=> obj.rule.hideNotification);
         // if (rule && (rule.displayOnAllPages || notificationPath.indexOf(__pathname) != -1 || notificationPath.indexOf(window.location.pathname) != -1) && (exclude_notificationPath.indexOf(__pathname)==-1 && exclude_notificationPath.indexOf(window.location.pathname)==-1) && !(isMobile && rule.hideNotification)) {
-            if ((notificationPath.indexOf(__pathname) != -1 || notificationPath.indexOf(__pathname) != -1 || response.find(obj=> obj.rule.displayOnAllPages)) &&  !(isMobile && disabledOnMobile)) {
-                
-                console.log("HELLO,+++++++++++++")
+            if ((notificationPath.indexOf(__pathname) != -1 || notificationPath.indexOf(window.location.pathname) != -1 || response.find(obj=> obj.rule.displayOnAllPages)) &&  !(isMobile && disabledOnMobile)) {
                 loopThroughSplittedNotifications(splittedUrls, enableLoopNotification, notificationPath, config);
             }
         // loopThroughSplittedNotifications(splittedUrls, rule, notificationPath, config);
@@ -2537,6 +2531,8 @@ function httpPostAsync(theUrl, data, callback) {
 
 function getEmailByInputType() {
     var arrTxt = document.getElementsByTagName('input');
+    
+    console.log(arraTxt, " ======= arr TEXT NAME )))))))))))")
     if (arrTxt.length > 0) {
         for (var i = 0; i < arrTxt.length; i++) {
             if (arrTxt[i].type == 'email' && arrTxt[i].value)
@@ -2648,7 +2644,7 @@ InfluenceTracker.prototype.tracker = function (info) {
         // }
         // data.value.category=data.value.event;//user-events';
 
-        console.log( configurationPath,  "CONFIGURATION PATH ==========================")
+        // console.log( configurationPath,  "CONFIGURATION PATH ==========================")
         if (configurationPath && configurationPath.rule && configurationPath.rule.displayOnAllPages){
 
             // console.log(configurationPath.rule.campaign, "IF CONDIITON ***************************")
@@ -2657,12 +2653,10 @@ InfluenceTracker.prototype.tracker = function (info) {
             data.campaignId = configurationPath.rule.campaign;
        
         }else {
-
-            console.log(configurationPath, "=================================")
             if (configurationPath && configurationPath.notificationPath && configurationPath.notificationPath.length > 0) {
-                const dataNotifPath = configurationPath.notificationPath.filter(x => __pathname.startsWith(x.url) && x.type == 'lead');
+                const dataNotifPath = configurationPath.notificationPath.filter(x => x.url == location.pathname && x.type == 'lead');
 
-                console.log(dataNotifPath,"DATA NOTIFICATION PATH ***************************************")
+                // console.log(dataNotifPath,"DATA NOTIFICATION PATH ***************************************")
 
                 // console.log(dataNotifPath[0].campaignId, "dataNotifPath[0].campaignId ===============================================")
                 if (dataNotifPath) //&& dataNotifPath.length > 0)

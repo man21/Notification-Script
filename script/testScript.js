@@ -3,7 +3,7 @@ var exclued_button_text = 'login, signin, loginnow, memberlogin, accountlogin, p
 
 var __pathname = window.location.pathname;
 
-var split = path.split('/')
+var split = __pathname.split('/')
 
  __pathname = split[2]? "/"+split[1]+"/"+split[2]: "/"+split[1]
 // __pathname = '/' + __pathname.split('/');  

@@ -2161,6 +2161,8 @@ var Notifications = function (config) {
         var disabledOnMobile =  response.find(obj=> obj.rule.hideNotification);
         // if (rule && (rule.displayOnAllPages || notificationPath.indexOf(__pathname) != -1 || notificationPath.indexOf(window.location.pathname) != -1) && (exclude_notificationPath.indexOf(__pathname)==-1 && exclude_notificationPath.indexOf(window.location.pathname)==-1) && !(isMobile && rule.hideNotification)) {
             if ((notificationPath.indexOf(__pathname) != -1 || notificationPath.indexOf(__pathname) != -1 || response.find(obj=> obj.rule.displayOnAllPages)) &&  !(isMobile && disabledOnMobile)) {
+                
+                console.log("HELLO,+++++++++++++")
                 loopThroughSplittedNotifications(splittedUrls, enableLoopNotification, notificationPath, config);
             }
         // loopThroughSplittedNotifications(splittedUrls, rule, notificationPath, config);

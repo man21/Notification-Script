@@ -2136,7 +2136,7 @@ var Notifications = function (config) {
             return
          }
         // configurationPath = JSON.parse(res);
-        configurationPath = response.find(obj=> obj.notificationPath.find(ojb1 =>  window.location.pathname.startsWith(ojb1) && ojb1.type == "lead"))  //(ojb1.url === __pathname || ojb1.url === window.location.pathname)
+        configurationPath = response.find(obj=> obj.notificationPath.find(ojb1 => ojb1.type == "lead"))  //(ojb1.url === __pathname || ojb1.url === window.location.pathname)
         
 
         console.log(configurationPath, " ++++++++++++++++++++++++++11111111111111")

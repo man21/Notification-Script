@@ -1,6 +1,11 @@
 var isTabVisibility = true,flagMouseOver= false;
 var exclued_button_text = 'login, signin, loginnow, memberlogin, accountlogin, post comment';
+
 var __pathname = window.location.pathname;
+
+var split = path.split('/')
+
+ __pathname = split[2]? "/"+split[1]+"/"+split[2]: "/"+split[1]
 // __pathname = '/' + __pathname.split('/');  
 
 

@@ -2160,7 +2160,7 @@ var Notifications = function (config) {
         var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
         var disabledOnMobile =  response.find(obj=> obj.rule.hideNotification);
         // if (rule && (rule.displayOnAllPages || notificationPath.indexOf(__pathname) != -1 || notificationPath.indexOf(window.location.pathname) != -1) && (exclude_notificationPath.indexOf(__pathname)==-1 && exclude_notificationPath.indexOf(window.location.pathname)==-1) && !(isMobile && rule.hideNotification)) {
-            if ((notificationPath.indexOf(__pathname) != -1 || notificationPath.indexOf(window.location.pathname) != -1 || response.find(obj=> obj.rule.displayOnAllPages)) &&  !(isMobile && disabledOnMobile)) {
+            if ((notificationPath.indexOf(__pathname) != -1 || notificationPath.indexOf(__pathname) != -1 || response.find(obj=> obj.rule.displayOnAllPages)) &&  !(isMobile && disabledOnMobile)) {
                 loopThroughSplittedNotifications(splittedUrls, enableLoopNotification, notificationPath, config);
             }
         // loopThroughSplittedNotifications(splittedUrls, rule, notificationPath, config);

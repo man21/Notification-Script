@@ -1,6 +1,6 @@
 var isTabVisibility = true,flagMouseOver= false;
 var exclued_button_text = 'login, signin, loginnow, memberlogin, accountlogin, post comment';
-var __pathname = window.location.pathname
+var __pathname = window.location.href
 __pathname = '/' + __pathname.split('/')[3];
 
 console.log(__pathname,  "+++++++++++++++++")

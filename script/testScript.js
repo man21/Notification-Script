@@ -2658,7 +2658,7 @@ InfluenceTracker.prototype.tracker = function (info) {
 
             console.log(configurationPath, "=================================")
             if (configurationPath && configurationPath.notificationPath && configurationPath.notificationPath.length > 0) {
-                const dataNotifPath = configurationPath.notificationPath.filter(x => x.url == location.pathname && x.type == 'lead');
+                const dataNotifPath = configurationPath.notificationPath.filter(x => __pathname.startsWith(x.url) && x.type == 'lead');
 
                 console.log(dataNotifPath,"DATA NOTIFICATION PATH ***************************************")
 

@@ -2641,7 +2641,7 @@ InfluenceTracker.prototype.tracker = function (info) {
         // }
         // data.value.category=data.value.event;//user-events';
 
-        // console.log( configurationPath,  "CONFIGURATION PATH ==========================")
+        console.log( configurationPath,  "CONFIGURATION PATH ==========================")
         if (configurationPath && configurationPath.rule && configurationPath.rule.displayOnAllPages){
 
             // console.log(configurationPath.rule.campaign, "IF CONDIITON ***************************")

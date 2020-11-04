@@ -2136,7 +2136,9 @@ var Notifications = function (config) {
             return
          }
         // configurationPath = JSON.parse(res);
-        configurationPath = response.find(obj=> obj.notificationPath.find(ojb1 => (ojb1.url === __pathname || ojb1.url === window.location.pathname) && ojb1.type == "lead"))
+        configurationPath = response.find(obj=> obj.notificationPath.find(ojb1 =>  window.location.pathname.startsWith(obj1) && ojb1.type == "lead"))  //(ojb1.url === __pathname || ojb1.url === window.location.pathname)
+        
+        co
         activeNotification = Math.max.apply(null,response.map(obj=> obj.rule.activeNotification))
         var enableLoopNotification = response.find(obj=> obj.rule.loopNotification) ? true : false
     

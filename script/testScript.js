@@ -1,7 +1,7 @@
 var isTabVisibility = true,flagMouseOver= false;
 var exclued_button_text = 'login, signin, loginnow, memberlogin, accountlogin, post comment';
-var __pathname = window.location
-__pathname = '/'+ __pathname.split('/')[1];
+var __pathname = window.location.pathname
+__pathname = '/'// + __pathname.split('/')[1];
 
 console.log(__pathname,  "+++++++++++++++++")
 var influenceScript = 'testScript.js';

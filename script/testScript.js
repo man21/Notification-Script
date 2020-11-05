@@ -3,9 +3,11 @@ var exclued_button_text = 'login, signin, loginnow, memberlogin, accountlogin, p
 
 var __pathname = window.location.pathname;
 
-var split = __pathname.split('/')
+// var split = __pathname.split('/')
 
- __pathname = split[2]? "/"+split[1]+"/"+split[2]: "/"+split[1]
+//  __pathname = split[2]? "/"+split[1]+"/"+split[2]: "/"+split[1]
+
+
 // __pathname = '/' + __pathname.split('/');  
 
 
@@ -2142,7 +2144,7 @@ var Notifications = function (config) {
             return
          }
         // configurationPath = JSON.parse(res);
-        configurationPath = response.find(obj=> obj.notificationPath.find(ojb1 => (ojb1.url === __pathname || ojb1.url === window.location.pathname) && ojb1.type == "lead"))
+        configurationPath = response.find(obj=> obj.notificationPath.find(ojb1 => __pathname.startsWith(ojb1.url) && ojb1.type == "lead"))
         activeNotification = Math.max.apply(null,response.map(obj=> obj.rule.activeNotification))
         var enableLoopNotification = response.find(obj=> obj.rule.loopNotification) ? true : false
     
@@ -2659,7 +2661,7 @@ InfluenceTracker.prototype.tracker = function (info) {
        
         }else {
             if (configurationPath && configurationPath.notificationPath && configurationPath.notificationPath.length > 0) {
-                const dataNotifPath = configurationPath.notificationPath.filter(x => x.url == location.pathname && x.type == 'lead');
+                const dataNotifPath = configurationPath.notificationPath.filter(x => __pathname.startsWith(x.url) && x.type == 'lead');
 
                 // console.log(dataNotifPath,"DATA NOTIFICATION PATH ***************************************")
 

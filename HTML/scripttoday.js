@@ -3087,6 +3087,28 @@ var Note = function Note(config, containerStyle, iconStyle) {
             notifReviewContentSpan.appendChild(text_span);
             notifReviewContentImg.innerHTML = userReview ? userReview.rating : 0;
             notifReviewContentImg.className = 'FPqhfnrkSnf34gkt_0 FPqhfnrfhrTngkt_0';
+        } 
+        else if( fromAppType == 'stamped' || fromAppType == 'capterra'){
+
+            notifReviewContentSpan.className = "FPqR1Jr6qJeA1Jr67MM9_0 FPquyrhbf78FNR_ggl_0";
+            var star = '';
+            if (userReview && userReview.rating) {
+                for (let star_i = 0; star_i < userReview.rating; star_i++) {
+                    star += `<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+                    width="12.000000pt" height="12.000000pt" viewBox="0 0 12.000000 12.000000"
+                    preserveAspectRatio="xMidYMid meet">
+                   <g transform="translate(0.000000,12.000000) scale(0.100000,-0.100000)"
+                   fill="#000000" stroke="none">
+                   </g>
+                   </svg>`
+                }
+            }
+            var text_span = document.createElement('div');
+            text_span.innerHTML=star;
+            notifReviewContentSpan.appendChild(text_span);
+            notifReviewContentImg.innerHTML = userReview ? userReview.rating : 0;
+            notifReviewContentImg.className = 'FPqhfnrkSnf34gkt_0 FPqhfnrfhrTngkt_0';
+
         }
 
         // var text_span1 = document.createElement('span');

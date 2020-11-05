@@ -3632,6 +3632,11 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
 
 
+        // 
+
+
+
+
         var innerNotifCTAContainer = document.createElement('div');
         innerNotifCTAContainer.style = configuration.toggleCTA ? 'display:flex;justify-content:flex-end;' : 'display:none';
         innerNotifCTAContainer.setAttribute("id", "cta");

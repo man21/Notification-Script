@@ -3,7 +3,7 @@ var exclued_button_text = 'login,signin,loginnow,memberlogin,accountlogin';
 var __pathname = window.location.pathname;
 __pathname = '/' + __pathname.split('/')[1];
 
-var influenceScript = '18may.js';
+var influenceScript = '18may1.js';
 var BASE_URL = "https://api.useinfluence.co";
 
 document.addEventListener('visibilitychange', function (e) {
@@ -30,11 +30,9 @@ if (typeof Influence === 'undefined') {
             tracker = new InfluenceTracker(options.trackingId);
             // res.isActive= true; // remove this code after implimantation
 
-            console.log(res.isActive, " isActive ********************************************")
             if (err)
                 return;
             if (res.isActive) {
-                console.log("ENTERED **************************")
                 /**
                  * New InfluenceNotification()
                  * @type {{Notifications}}
@@ -572,7 +570,7 @@ if (typeof Influence === 'undefined') {
               const formObj = Util.parseQueryString(queryString)
               const objValue = Object.values(formObj)
               const email=objValue.find(o=>o.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi));
-              const firstname = formObj["customerFirstName"] || formObj["firstname"] || formObj["form_fields[name]"] || formObj["form_fields[firstname]"] || formObj["your-name"] || formObj["name"]  || formObj["NAMA"]|| formObj["FNAME"]  || formObj["customerFirstName"] || formObj["Fname"]  || formObj["nama"] || formObj["NAME"]  || formObj["FIRSTNAME"] || formObj["username"]  || formObj["FIRST NAME"] || formObj["UserName"]  || formObj["USERNAME"] || formObj["userName"]  || formObj["Username"] || formObj["user_id"] || formObj["ctl19$txtName"] || formObj["form_submission[name]"]
+              const firstname = formObj["customerFirstName"] || formObj["firstname"] || formObj["form_fields[name]"] || formObj["form_fields[firstname]"] || formObj["your-name"] || formObj["name"]  || formObj["NAMA"]|| formObj["FNAME"]  || formObj["customerFirstName"] || formObj["Fname"]  || formObj["nama"] || formObj["NAME"]  || formObj["FIRSTNAME"] || formObj["username"]  || formObj["FIRST NAME"] || formObj["UserName"]  || formObj["USERNAME"] || formObj["userName"]  || formObj["Username"] || formObj["user_id"] || formObj["ctl19$txtName"] || formObj["form_submission[name]"] || formObj["wpforms[fields][12]"] || formObj["checkout_offer[extra_contact_information][custom_14]"]
               const lastname = formObj["customerLastName"] || formObj["lastname"] || formObj["form_fields[lastname]"] || formObj["last-name"] || formObj["lname"] || formObj["LNAME"]  || formObj["customerLastName"] || formObj["Lname"]  || formObj["lnama"] || formObj["LNAME"]  || formObj["LASTNAME"] || formObj["LAST NAME"] 
               
               return({firstname: firstname ? firstname.replace('+',' '):'',lastname:lastname ? lastname.replace('+',' '):'',email})
@@ -1882,7 +1880,6 @@ var checkCampaignActive = function (config, cb) {
     var url = BASE_URL + '/campaign/track/' + config;
     httpGetAsync(url, function (res) {
         response = JSON.parse(res);
-        console.log(response,"resposne .*********************************")
         if (response)
             cb(null, response);
         else
@@ -1900,7 +1897,7 @@ var InfluenceTracker = function (config) {
 
 /*
 
-	countUp.js
+    countUp.js
     by @inorganik
 
 */
@@ -2160,14 +2157,14 @@ var Notifications = function (config) {
     httpGetAsync(rulesUrl, function (res) {
         response = JSON.parse(res);
         // configurationPath = JSON.parse(res);
-        configurationPath = response.find(obj=> obj.notificationPath.find(ojb1=>ojb1.url === __pathname && ojb1.type == "lead"))
+        configurationPath = response.find(obj=> obj.notificationPath.find(ojb1 => (ojb1.url === __pathname || ojb1.url === window.location.pathname) && ojb1.type == "lead"))
         activeNotification = Math.max.apply(null,response.map(obj=> obj.rule.activeNotification))
         var enableLoopNotification = response.find(obj=> obj.rule.loopNotification) ? true : false
     
         JSON.parse(res||"[]").map(obj=> {
             var notificationList = notificationPath.concat(obj.notificationPath)
            notificationPath = notificationList
-           excludeCampaign=notificationList.filter(obj=> obj.type === "display_exclude" &&  obj.url === __pathname).map(cmId=> cmId.campaignId)
+           excludeCampaign=notificationList.filter(obj=> obj.type === "display_exclude" &&  (obj.url === __pathname || obj.url === window.location.pathname)).map(cmId=> cmId.campaignId)
         })
 
         // notificationPath = response.notificationPath;
@@ -2177,8 +2174,9 @@ var Notifications = function (config) {
         notificationPath = notificationPath.filter(notifPath => notifPath.type == 'display');
         notificationPath = notificationPath.map(notifPath => notifPath.url);
         var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        var disabledOnMobile =  response.find(obj=> obj.rule.hideNotification);
         // if (rule && (rule.displayOnAllPages || notificationPath.indexOf(__pathname) != -1 || notificationPath.indexOf(window.location.pathname) != -1) && (exclude_notificationPath.indexOf(__pathname)==-1 && exclude_notificationPath.indexOf(window.location.pathname)==-1) && !(isMobile && rule.hideNotification)) {
-            if ((notificationPath.indexOf(__pathname) != -1 || notificationPath.indexOf(window.location.pathname) != -1 || response.find(obj=> obj.rule.displayOnAllPages)) &&  !isMobile) {
+            if ((notificationPath.indexOf(__pathname) != -1 || notificationPath.indexOf(window.location.pathname) != -1 || response.find(obj=> obj.rule.displayOnAllPages)) &&  !(isMobile && disabledOnMobile)) {
                 loopThroughSplittedNotifications(splittedUrls, enableLoopNotification, notificationPath, config);
             }
         // loopThroughSplittedNotifications(splittedUrls, rule, notificationPath, config);
@@ -2200,7 +2198,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
     // document.getElementsByTagName("head")[0].appendChild(link);
 
     var newDesignCSS = document.createElement("link");
-    newDesignCSS.href = 'https://storage.googleapis.com/influence-197607.appspot.com/design5.css';
+    newDesignCSS.href = 'https://storage.googleapis.com/influence-197607.appspot.com/design6.css';
     // newDesignCSS.href = 'https://test2109.herokuapp.com/newDesignCSS.css';
     newDesignCSS.type = "text/css";
     newDesignCSS.rel = "stylesheet";
@@ -2277,6 +2275,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
                     if (i == splittedUrls.length - 1) {
                         i = -1;
                     }
+                    return
                 }
                 startSecondLoop= startSecondLoop+result.length
                 for (let inff = 0; inff < infos.length; inff++) {
@@ -2552,13 +2551,26 @@ InfluenceTracker.prototype.tracker = function (info) {
         // }
         // data.value.category=data.value.event;//user-events';
 
-        if (configurationPath && configurationPath.rule && configurationPath.rule.displayOnAllPages)
+        // console.log( configurationPath,  "CONFIGURATION PATH ==========================")
+        if (configurationPath && configurationPath.rule && configurationPath.rule.displayOnAllPages){
+
+            // console.log(configurationPath.rule.campaign, "IF CONDIITON ***************************")
+            
+            data.value.campaignId = configurationPath.rule.campaign;
             data.campaignId = configurationPath.rule.campaign;
-        else {
+       
+        }else {
             if (configurationPath && configurationPath.notificationPath && configurationPath.notificationPath.length > 0) {
-                const dataNotifPath = configurationPath.notificationPath.filter(x => x.url == location.pathname && x.type == 'display');
-                if (dataNotifPath && dataNotifPath.length > 0)
-                    data.campaignId = dataNotifPath[0].campaignId;
+                const dataNotifPath = configurationPath.notificationPath.filter(x => x.url == location.pathname && x.type == 'lead');
+
+                // console.log(dataNotifPath,"DATA NOTIFICATION PATH ***************************************")
+
+                // console.log(dataNotifPath[0].campaignId, "dataNotifPath[0].campaignId ===============================================")
+                if (dataNotifPath) //&& dataNotifPath.length > 0)
+                    {
+                        data.value.campaignId = dataNotifPath[0].campaignId;
+                        data.campaignId = dataNotifPath[0].campaignId
+                    }
             }
         }
 
@@ -2809,15 +2821,15 @@ var Note = function Note(config, containerStyle, iconStyle) {
             }
             else if (configuration && configuration.toggleMap == 'map') {
                 if (userDetails.city && userDetails.country) {
-                    res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=eVtq1iOX1kyYqLeYpd1W&app_code=CblgM4dq4wHQykVEBfa0Ww&ci=${userDetails.city}&co=${userDetails.country}&z=10&h=200&w=200`;
+                    res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=ZsjaYz1YG8oZNDAlxvKO&app_code=Bd9Gt9S_uPFm8bYuiHlAxA&ci=${userDetails.city}&co=${userDetails.country}&z=10&h=200&w=200`;
                     // res_img = `https://image.maps.ls.hereapi.com/mia/1.6/mapview?co=${userDetails.country}&z=10&ci=${userDetails.city}&h=200&w=200&apiKey=GnxMRg61uO4_XgMs5cSR8wZej8Bf-fiqtbngQ6pmLtg`;
                 }
                 else if (userDetails.city) {
-                    res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=eVtq1iOX1kyYqLeYpd1W&app_code=CblgM4dq4wHQykVEBfa0Ww&ci=${userDetails.city}&z=10&h=200&w=200`;
+                    res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=ZsjaYz1YG8oZNDAlxvKO&app_code=Bd9Gt9S_uPFm8bYuiHlAxA&ci=${userDetails.city}&z=10&h=200&w=200`;
                     // res_img = `https://image.maps.ls.hereapi.com/mia/1.6/mapview?z=10&ci=${userDetails.city}&h=200&w=200&apiKey=GnxMRg61uO4_XgMs5cSR8wZej8Bf-fiqtbngQ6pmLtg`;
                 }
                 else if (userDetails.country) {
-                    res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=eVtq1iOX1kyYqLeYpd1W&app_code=CblgM4dq4wHQykVEBfa0Ww&co=${userDetails.country}&z=10&h=200&w=200`;
+                    res_img = `https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=ZsjaYz1YG8oZNDAlxvKO&app_code=Bd9Gt9S_uPFm8bYuiHlAxA&co=${userDetails.country}&z=10&h=200&w=200`;
                     // res_img = `https://image.maps.ls.hereapi.com/mia/1.6/mapview?co=${userDetails.country}&z=10&h=200&w=200&apiKey=GnxMRg61uO4_XgMs5cSR8wZej8Bf-fiqtbngQ6pmLtg`;
                 }
             }
@@ -3032,6 +3044,9 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
                 var liveNotificationAnimationCircle2= document.createElement('div')
                 liveNotificationAnimationCircle2.className= 'circle-2'
+                if(configuration.panelStyle.iconBGColor){
+                    liveNotificationAnimationCircle2.style= `background: rgb(${configuration.panelStyle.iconBGColor.r},${configuration.panelStyle.iconBGColor.g},${configuration.panelStyle.iconBGColor.b});`
+                }
 
                 liveNotificationAnimationCircle.appendChild(liveNotificationAnimationCircle2)
 
@@ -3102,7 +3117,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         liveNotificationFirstText.className= 'oiuyftgc'
         //liveNotificationFirstText.style.backgroundColor = "black";
         if (configuration && configuration.panelStyle && configuration.panelStyle.color) {
-        	liveNotificationFirstText.style = `color: rgb(${configuration.panelStyle.color.r},${configuration.panelStyle.color.g},${configuration.panelStyle.color.b});`
+            liveNotificationFirstText.style = `color: rgb(${configuration.panelStyle.color.r},${configuration.panelStyle.color.g},${configuration.panelStyle.color.b});`
         }
         liveNotificationFirstText.innerHTML = liveVisitorCount == 0 ? 1 : liveVisitorCount + ' ' + ` ${configuration.visitorText}`      //"21 People"
     
@@ -3110,7 +3125,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         liveNotificationSecondText.className= 'jhjfdrtfgvgj'
 
         // if (configuration && configuration.panelStyle && configuration.panelStyle.color) {
-        // 	liveNotificationSecondText.style = `color: rgb(${configuration.panelStyle.color.r},${configuration.panelStyle.color.g},${configuration.panelStyle.color.b});`
+        //  liveNotificationSecondText.style = `color: rgb(${configuration.panelStyle.color.r},${configuration.panelStyle.color.g},${configuration.panelStyle.color.b});`
         // }
 
         liveNotificationSecondText.innerHTML = ` ${configuration.liveVisitorText}`;
@@ -3224,7 +3239,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         reviewNotificationImage.className = 'wIwWxk318I'
        // reviewNotificationImage.setAttribute('src', 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/5FCE8400-0616-426F-8BEA-F53136305123.png')
 
-        reviewNotificationImage.setAttribute('src', userReview ? userReview.profileImg :'');
+        reviewNotificationImage.setAttribute('src', userReview ? userReview.profileImg :'https://lh3.ggpht.com/-HiICnzrd7xo/AAAAAAAAAAI/AAAAAAAAAAA/GcUbxXrSSYg/s128-c0x00000000-cc-rp-mo/photo.jpg');
         //reviewNotificationImage.setAttribute('src', 'https://storage.googleapis.com/influence-197607.appspot.com/googlereview.png');
        // notifReviewImgContent.style = `padding: 11px; border-radius: 0; height: 50px; width: 50px;`;
 
@@ -3293,7 +3308,17 @@ var Note = function Note(config, containerStyle, iconStyle) {
         reviewNotificationUpperStar.innerHTML= star
     }else {
 
+        
+
+        // var reviewNotificationUpperLogo2 = document.createElement('img')
+        // reviewNotificationUpperLogo2.className = 'bXZsh24SLi'
+        // reviewNotificationUpperLogo2.setAttribute('src', 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/79341C01-B8BF-4484-AD66-B9314BAE4121.png')
+       
+        // console.log(reviewNotificationUpperLogo2, "********************************")
+
     }
+    reviewNotificationUpperStarContainer.appendChild(reviewNotificationUpperLogo2)
+
     reviewNotificationUpperStarContainer.appendChild(reviewNotificationUpperStar)
 
 
@@ -3380,9 +3405,12 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
         var reviewNotificationFooterLogo = document.createElement('img')
 
-        if(fromAppType == 'google'){
+        if(fromAppType === 'google'){
         reviewNotificationFooterLogo.className = 'bXZsh24SLi'
         reviewNotificationFooterLogo.setAttribute('src', 'https://cdn.zeplin.io/5de290feb524497c4a9c9959/assets/79341C01-B8BF-4484-AD66-B9314BAE4121.png')
+       } else{
+            reviewNotificationFooterLogo.className = 'bXZsh24SLi'
+            reviewNotificationFooterLogo.setAttribute('src', "https://storage.googleapis.com/influence-197607.appspot.com/fbreview.jpg")
        }
 
         reviewNotificationFooterLogoContainer.appendChild(reviewNotificationFooterLogo)
@@ -3408,6 +3436,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         }
         reviwNotificationFooterStar1.innerHTML= star
     }
+    
         reviewNotificationFooterStarContainer.appendChild(reviwNotificationFooterStar1)
 
         reviewNotificationFooterLogoContainer.appendChild(reviewNotificationFooterStarContainer)

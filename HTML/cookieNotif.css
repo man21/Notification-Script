@@ -1,0 +1,428 @@
+
+.hidePanel1 {
+    transform: translateY(1000px);
+    transform-origin: top;
+    transition: transform 0.3s;
+    overflow: hidden;
+    width: 350px;
+}
+
+.hidePanel2 {
+    transform: translateY(1000px);
+    transform-origin: top;
+    transition: transform 0.3s;
+    overflow: hidden;
+    width: 350px;
+}
+
+.showPanel {
+    transform: translateY(0px);
+    transform-origin: top;
+    transition: transform 0.3s;
+    overflow: hidden;
+}
+
+.showDetailsPanel{
+transform: translateY(0px);
+-webkit-animation: slide 0.5s forwards;
+-webkit-animation-delay: 2s;
+animation: slide 0.5s forwards;
+animation-delay: 2s;
+transition: transform 0.3s;
+overflow: hidden;
+}
+
+
+.mainBoxStyle {
+    display: flex;
+    flex-direction: column;
+    width: 315px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 4px 14px;
+    position: relative;
+    padding: 20px 20px 18px 17px;
+    background: white;
+    border-radius: 5px;
+    margin: 15px auto;
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+    font-family:
+        -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+.childContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.upperLine {
+    font-style: normal;
+    font-weight: bold;
+    color: rgb(104, 104, 104);
+    font-size: 12px;
+    line-height: 1.2;
+  
+}
+
+.middleLine {
+    line-height: 1.5;
+    margin: 12px 0px;
+    overflow: hidden;
+    font-size: 11.5px;
+    color: rgb(3, 3, 3);
+    text-decoration: none;
+}
+
+.generalBtnStyle {
+    appearance: none;
+    min-width: 72px;
+    min-height: 31px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-bo-pack: center;
+    justify-content: center;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 13.333px;
+    box-sizing: border-box;
+    user-select: none;
+    padding: 0px 12px;
+    border-radius: 3px;
+    border-width: initial;
+    border-style: none;
+    border-color: initial;
+    border-image: initial;
+    transition: 'background-color 250ms ease 0';
+    margin-left: 7px;
+
+}
+
+.generalBtnStyle:focus {
+    outline: "none"
+}
+
+.leftBtn {
+    color: rgb(151, 151, 151);
+    background: transparent;
+    padding: 0%;
+    margin: 0%;
+
+}
+
+.leftBtn:hover {
+    color: "rgb(131, 131, 131);"
+}
+
+.leftBtn:focus {
+    outline: none;
+}
+
+.filledBtn {
+    background: rgb(84, 92, 164);
+    color: #fff;
+}
+
+.filledBtn:hover {
+    background: rgb(64, 72, 144);
+}
+
+/*
+*/
+.backNav {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    padding-left: 12px;
+    padding-right: 12px;
+    width: 68px;
+    z-index: 1;
+    user-select: none;
+    color: rgb(151, 151, 151);
+    font-size: 12px;
+    cursor: pointer;
+
+}
+
+.navBarParent {
+    display: flex;
+    position: relative;
+    width: 100%;
+    min-height: 50px;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    z-index: 1;
+    box-shadow: rgba(0, 0, 0, 0.024) 0px 4px 14px 0px;
+}
+
+.mainHeading {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-aligh: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 12px;
+    z-index: "0";
+    left: 0px;
+    color: rgb(104, 104, 104);
+    margin: 0%;
+    padding: 0;
+}
+
+.doneNav {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    padding-left: 12px;
+    padding-right: 12px;
+    color: rgb(151, 151, 151);
+    user-select: none;
+    font-size: 12px;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.mainBoxStyle2 {
+    display: flex;
+    flex-direction: column;
+    width: 315px;
+    height: 398px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 4px 14px;
+    position: relative;
+    background: white;
+    border-radius: 5px;
+    margin: 15px auto;
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+    font-family:
+        -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+.bodyParent1 {
+    position: relative;
+    flex: 1 1 0%;
+    overflow: scroll;
+    border-radius: 5px;
+}
+
+.bodyParent2 {
+    position: absolute;
+    animation-fill-mode: both;
+    animation-duration: 350ms;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background: white
+}
+
+.bodyParent3 {
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    overflow: scroll;
+}
+
+.listItem {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: flex-start;
+    -webkit-box-pack: center;
+    justify-content: center;
+    padding: 0%;
+    margin-top: 5%;
+    -webkit-font-smoothing: antialiased;
+    border-bottom: 1px solid;
+    border-image: radial-gradient(rgba(0, 0, 0, 0.3), transparent 90%) 0 0 1 / 1 / 0 stretch;
+}
+
+.headerText {
+    font-weight: 600;
+    font-size: 13px;
+    line-height: inherit;
+    color: rgb(104, 104, 104);
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    flex: 1 1 0%;
+    font-style: normal;
+    text-decoration: none;
+    line-height: 1;
+    text-transform: capitalize;
+}
+
+.subText {
+    color: rgb(104, 104, 104);
+    font-size: 12px;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: none;
+    margin: auto;
+}
+
+.upperPart {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: flex-start;
+    color: rgb(104, 104, 104);
+    line-height: 22px;
+    width: 100%;
+    margin-top:'5%';
+}
+
+.footer {
+    display: flex;
+    min-height: 36px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px -4px 14px;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.moreDetailsButton {
+    appearance: none;
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    margin-left: -5px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    line-height: 150%;
+    color: rgb(88, 70, 109);
+    border-width: initial;
+    border-style: none;
+    border-color: initial;
+    border-image: initial;
+    background: none;
+    padding: 7px 5px;
+    outline: none
+}
+
+.moreDetailsButton:hover {
+    color: rgb(68, 50, 89);
+    outline: none;
+}
+
+.moreDetailsButton:focus {
+    outline: 'none'
+}
+
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 34px;
+    height: 18px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 28px;
+    width: 28px;
+    left: 0px;
+    bottom: 0px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked+.slider {
+    background-color: #20c997;
+}
+input:disabled+.slider {
+    background-color: #71debd;
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px #20c997;
+}
+
+input:checked+.slider:before {
+    -webkit-transform: translateX(16px);
+    -ms-transform: translateX(16px);
+    transform: translateX(16px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 30px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+    width: 14px;
+    height: 14px;
+    left: 2px;
+    bottom: 2px;
+}
+
+.listItemDetail {
+    width: 100%;
+    margin-top: 5%;
+    align-items: flex-start;
+    -webkit-box-pack: center;
+    justify-content: center;
+    padding: 0%;
+    -webkit-font-smoothing: antialiased;
+    border-image:
+        'radialGradient(rgba(0, 0, 0, 0.3), transparent 90%) 0 0 1 / 1 / 0 stretch'
+}
+
+.chipsContainer .chipStyle{
+    color: rgb(104, 104, 104);
+    margin: 0;
+    display: inline-block;
+    padding: 5px 8px;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 150%;
+    margin-right: 5px !important;
+    border-radius: 24px;
+    margin-bottom: 5px !important;
+    text-decoration: none;
+    background-color: rgba(242,242,242);
+    cursor: default;
+}

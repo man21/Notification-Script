@@ -3822,7 +3822,8 @@ function CookieFn() {
 
 
         var cookieIcon = document.createElement('img')
-        cookieIcon.src  = 'lock.png' 
+        //cookieIcon.src  = 'lock.png' 
+        cookieIcon.src  = '1-01.svg' 
         cookieIcon.style="bottom:0;left:0;width:25px;height:25px;box-shadow: rgba(84, 92, 164, 0.5) 0px 4px 24px;border-radius: 50%;"
         cookieIcon.onclick = ()=>{
             // panelCall(0,0)
@@ -3841,7 +3842,8 @@ function CookieFn() {
         var innerDiv = document.createElement('div');
         var mainContainer = document.createElement('div');
         var lockImg = document.createElement('img')
-        lockImg.src  = 'lock.png' 
+        // lockImg.src  = 'lock.png' 
+        lockImg.src  = '1-01.svg' 
         lockImg.style="bottom:0;left:0;width:55px;height:55px;box-shadow: rgba(84, 92, 164, 0.5) 0px 4px 24px;border-radius: 50%;"
         lockImg.onclick = ()=>{
             panelCall(0,0)
@@ -3916,7 +3918,11 @@ function CookieFn() {
 
                     container.appendChild(innerContainer)
 
-                    container.removeChild(cookieIcon)
+                    lockImg.src  = '1-02.svg'
+
+                    if(container.contains(cookieIcon)) {
+                        container.removeChild(cookieIcon)
+                    }
                   
                 }
                 

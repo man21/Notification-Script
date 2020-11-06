@@ -2167,6 +2167,7 @@ var Notifications = function (config) {
         // console.log("Exclued Path--------->>",exclude_notificationPath)
 
 
+
     });
 };
 
@@ -2175,7 +2176,7 @@ var CookieFunc = function (config) {
     this.config = config;
 
     var cookieNotif = document.createElement("link");
-    cookieNotif.href = './cookieNotif.css'
+    cookieNotif.href = 'https://test2109.herokuapp.com/cookieNotif.css'
     cookieNotif.type = "text/css";
     cookieNotif.rel = "stylesheet";
     cookieNotif.id = "stylesheetID";
@@ -3821,8 +3822,7 @@ function CookieFn() {
 
 
         var cookieIcon = document.createElement('img')
-        //cookieIcon.src  = 'lock.png' 
-        cookieIcon.src  = '1-01.svg' 
+        cookieIcon.src  = 'lock.png' 
         cookieIcon.style="bottom:0;left:0;width:25px;height:25px;box-shadow: rgba(84, 92, 164, 0.5) 0px 4px 24px;border-radius: 50%;"
         cookieIcon.onclick = ()=>{
             // panelCall(0,0)
@@ -3841,8 +3841,7 @@ function CookieFn() {
         var innerDiv = document.createElement('div');
         var mainContainer = document.createElement('div');
         var lockImg = document.createElement('img')
-        // lockImg.src  = 'lock.png' 
-        lockImg.src  = '1-01.svg' 
+        lockImg.src  = 'lock.png' 
         lockImg.style="bottom:0;left:0;width:55px;height:55px;box-shadow: rgba(84, 92, 164, 0.5) 0px 4px 24px;border-radius: 50%;"
         lockImg.onclick = ()=>{
             panelCall(0,0)
@@ -3863,7 +3862,6 @@ function CookieFn() {
         
                 var uLine = document.createElement('p');
                 uLine.className = "upperLine";
-                uLine.style.marginBottom = "0px";
         
                 if (activePanel === 0 && sourcePanel === 1) {
                     var uLinenode = document.createTextNode("Save Preferences");
@@ -3875,7 +3873,6 @@ function CookieFn() {
                 p1Child.appendChild(uLine);
                 /*Inf*/
                 var aLine = document.createElement('a');
-                aLine.style.cursor = "pointer";
                 aLine.className = "upperLine";
                 var aLinenode = document.createTextNode("Inf");
                 aLine.appendChild(aLinenode);
@@ -3917,11 +3914,7 @@ function CookieFn() {
 
                     container.appendChild(innerContainer)
 
-                    lockImg.src  = '1-02.svg'
-
-                    if(container.contains(cookieIcon)) {
-                        container.removeChild(cookieIcon)
-                    }
+                    container.removeChild(cookieIcon)
                   
                 }
                 
@@ -3940,9 +3933,7 @@ function CookieFn() {
         
                 var NoB = document.createElement('button');
                 NoB.className = "generalBtnStyle filledBtn";
-                NoB.style.cssText = "font-size: 13px; min-width: unset; padding: 0px 8px;"
-                //NoB.innerHTML = "No";
-                NoB.innerHTML = "Allow Selected";
+                NoB.innerHTML = "No";
                 NoB.onclick = () =>{
 
                     finalCookieArr.map(data =>setCookies(data.id, data.status))
@@ -3963,9 +3954,7 @@ function CookieFn() {
 
                 var YesB = document.createElement('button');
                 YesB.className = "generalBtnStyle filledBtn";
-                YesB.style.cssText = "font-size: 13px; min-width: unset; padding: 0px 8px;"
-                //YesB.innerHTML = "Yes";
-                YesB.innerHTML = "Accept All";
+                YesB.innerHTML = "Yes";
                 YesB.onclick = () =>{
                     // microPolicies.map(policy =>{
 
@@ -3977,8 +3966,7 @@ function CookieFn() {
                     //     }
                     // })
 
-                    //finalCookieArr.map(data =>setCookies(data.id, data.status))
-                    finalCookieArr.map(data =>setCookies(data.id, true))
+                    finalCookieArr.map(data =>setCookies(data.id, data.status))
 
 
                 // window.localStorage.setItem('influencepermission',`{enable:true}`)
@@ -4143,11 +4131,6 @@ function CookieFn() {
                 var headerText = document.createElement('p');
                 headerText.className = "headerText"
                 headerText.innerHTML =  policy.name //"Essential"
-                
-                var toolTipText = document.createElement('span');
-                toolTipText.className = "tooltiptext";
-                toolTipText.style.textTransform = "capitalize"; 
-                toolTipText.innerText = `${policy.slug} Policy`;
         
                 var switchContainer = document.createElement('div');
                 switchContainer.style="position:relative;"
@@ -4185,7 +4168,6 @@ function CookieFn() {
                 checkboxSpan.className = "slider round";
                 switchLabel.appendChild(checkboxInput)
                 switchLabel.appendChild(checkboxSpan)
-                switchLabel.appendChild(toolTipText);
                 switchContainer.appendChild(switchLabel)
                upperPart.appendChild(headerText)
                upperPart.appendChild(switchContainer)
@@ -4197,12 +4179,6 @@ function CookieFn() {
                var para =document.createElement('p')
                para.className = "subText"
                para.innerHTML =  policy.description //"This includes key features like page navigation and logging you in. The website cannot function without this"
-
-               var listSlugElement = document.createElement('span');
-               listSlugElement.style.cssText = "text-transform: capitalize; float: right; margin-top: 12px;"
-               listSlugElement.innerHTML = policy.slug;
-
-
                var more = document.createElement('button')
                more.className="moreDetailsButton"
                
@@ -4220,7 +4196,7 @@ function CookieFn() {
                imagesvg.innerHTML = ` <svg
                            width=16
                            height=16
-                           viewBox= "0 -3 16 16"
+                           viewBox= "0 0 16 16"
                            fill=none
                            xmlns=http://www.w3.org/2000/svg
                            class="Icon__StyledIcon-sc-1fw5m9z-0 PolicyList__Arrow-avna3w-0 jqvij"
@@ -4235,7 +4211,6 @@ function CookieFn() {
                          more.appendChild(imagesvg)
                          lowerDiv.appendChild(para)
                          lowerDiv.appendChild(more)
-                         lowerDiv.appendChild(listSlugElement)
                          listItem.appendChild(lowerDiv)
                  
                 ulist.appendChild(listItem)
@@ -4253,7 +4228,7 @@ function CookieFn() {
                 brand.innerHTML = "Verified by Influence"
 
                 var blueTick = document.createElement('span')
-                blueTick.innerHTML=`<svg style="margin-top:3px;margin-right:4px;" width="12" height="12" viewBox="0 0 524 524" xmlns="http://www.w3.org/2000/svg">
+                blueTick.innerHTML=`<svg style="margin-top:0px;margin-right:4px;" width="12" height="12" viewBox="0 0 524 524" xmlns="http://www.w3.org/2000/svg">
                 <defs>
                 <style>.cls-1 {
                         fill: #5d93fe;

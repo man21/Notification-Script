@@ -2180,7 +2180,7 @@ var CookieFunc = function (config) {
     this.config = config;
 
     var cookieNotif = document.createElement("link");
-    cookieNotif.href = './cookieNotif.css'
+    cookieNotif.href = 'https://test2109.herokuapp.com/cookieNotif.css'
     cookieNotif.type = "text/css";
     cookieNotif.rel = "stylesheet";
     cookieNotif.id = "stylesheetID";
@@ -3835,7 +3835,7 @@ function CookieFn() {
 
         var cookieIcon = document.createElement('img')
         //cookieIcon.src  = 'lock.png' 
-        cookieIcon.src  = '1-01.svg' 
+        cookieIcon.src  = 'https://test2109.herokuapp.com/1-01.svg' 
         cookieIcon.style="bottom:0;left:0;width:25px;height:25px;box-shadow: rgba(84, 92, 164, 0.5) 0px 4px 24px;border-radius: 50%;"
         cookieIcon.onclick = ()=>{
             // panelCall(0,0)
@@ -3855,7 +3855,7 @@ function CookieFn() {
         var mainContainer = document.createElement('div');
         var lockImg = document.createElement('img')
         // lockImg.src  = 'lock.png' 
-        lockImg.src  = '1-01.svg' 
+        lockImg.src  = 'https://test2109.herokuapp.com/1-01.svg' 
         lockImg.style="bottom:0;left:0;width:55px;height:55px;box-shadow: rgba(84, 92, 164, 0.5) 0px 4px 24px;border-radius: 50%; transform: rotate(-78deg); cursor: pointer"
         lockImg.onclick = ()=>{
             panelCall(0,0)
@@ -3930,7 +3930,7 @@ function CookieFn() {
 
                     container.appendChild(innerContainer)
 
-                    lockImg.src  = '1-02.svg'
+                    lockImg.src  = 'https://test2109.herokuapp.com/1-02.svg'
 
                     if(container.contains(cookieIcon)) {
                         container.removeChild(cookieIcon)

@@ -6,6 +6,8 @@ __pathname = '/' + __pathname.split('/')[1];
 var influenceScript = 'scribe-analytics.js';
 var BASE_URL = "https://strapi.useinfluence.co";
 
+var cookieCampaignData; 
+
 document.addEventListener('visibilitychange', function (e) {
     document.hidden ? isTabVisibility = false : isTabVisibility = true;
 });
@@ -1865,7 +1867,7 @@ if (typeof Influence === 'undefined') {
 //     });
 // }
 
-var InfluenceTracker = function (config) {
+var InfluenceTracker = function (config,) {
     if (!(this instanceof InfluenceTracker)) return new InfluenceTracker(config);
 
     this.config = config;
@@ -2126,6 +2128,9 @@ var notificationPath = [];
 var configurationPath = '';
 var excludeCampaign = []
 var activeNotification = 6
+
+var cookieCampaignStatus ;
+
 var Notifications = function (config) {
     if (!(this instanceof Notifications)) return new Notifications(config);
     this.config = config;
@@ -2554,6 +2559,7 @@ InfluenceTracker.prototype.tracker = function (info) {
     var path = info.path;
 
     var value = info.value;
+
     // if(info.value && info.value.target){
     //     delete info.value['target'];
     //     value = info.value;
@@ -2678,6 +2684,7 @@ InfluenceTracker.prototype.tracker = function (info) {
         data.timestamp = data && data.value ? data.value.timestamp : '';
         data.category = data && data.value ? data.value.event : '';
 
+
         //Send the proper header information along with the request
         var url = BASE_URL + '/ws/log';
         if(configurationPath && data.category === 'formsubmit'){
@@ -2685,6 +2692,12 @@ InfluenceTracker.prototype.tracker = function (info) {
              });
         } else if(data.category === 'click' || data.category === 'mouseover' || data.category === 'notificationview' || data.category === 'pageview' || data.category ==='linkClick'  ){
             httpPostAsync(url, JSON.stringify(data), function (res) {
+            });
+        }
+
+        if(data.category == "pageview" && cookieCampaignData.isActive){
+            var cookieUrl = BASE_URL + '/ws/cookie/log';
+            httpPostAsync(cookieUrl, JSON.stringify(data), function (res) {
             });
         }
 
@@ -3843,7 +3856,7 @@ function CookieFn() {
         var lockImg = document.createElement('img')
         // lockImg.src  = 'lock.png' 
         lockImg.src  = '1-01.svg' 
-        lockImg.style="bottom:0;left:0;width:55px;height:55px;box-shadow: rgba(84, 92, 164, 0.5) 0px 4px 24px;border-radius: 50%;"
+        lockImg.style="bottom:0;left:0;width:55px;height:55px;box-shadow: rgba(84, 92, 164, 0.5) 0px 4px 24px;border-radius: 50%; transform: rotate(-78deg); cursor: pointer"
         lockImg.onclick = ()=>{
             panelCall(0,0)
             
@@ -5080,6 +5093,7 @@ Influence = typeof Influence === 'undefined' ? require('../server') : Influence;
         }]
     };
     
+    cookieCampaignStatus = apiDataResponse.campaign
 
 var cookieFn = new CookieFn({})
 
@@ -5371,6 +5385,7 @@ function getCookieById (name){
 
 
     if (params.trackingId) {
+
         new Influence({
             trackingId: params.trackingId
         });

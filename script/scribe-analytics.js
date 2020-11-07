@@ -3836,7 +3836,7 @@ function CookieFn() {
         var cookieIcon = document.createElement('img')
         //cookieIcon.src  = 'lock.png' 
         cookieIcon.src  = '1-01.svg' 
-        cookieIcon.style="bottom:0;left:0;width:25px;height:25px;box-shadow: rgba(84, 92, 164, 0.5) 0px 4px 24px;border-radius: 50%;"
+        cookieIcon.style="bottom:0;left:0;width:25px;height:25px;border-radius: 50%; cursor: pointer"
         cookieIcon.onclick = ()=>{
             // panelCall(0,0)
             container.appendChild(innerContainer)
@@ -3856,7 +3856,7 @@ function CookieFn() {
         var lockImg = document.createElement('img')
         // lockImg.src  = 'lock.png' 
         lockImg.src  = '1-01.svg' 
-        lockImg.style="bottom:0;left:0;width:55px;height:55px;box-shadow: rgba(84, 92, 164, 0.5) 0px 4px 24px;border-radius: 50%; transform: rotate(-78deg); cursor: pointer"
+        lockImg.style="bottom:0;left:0;width:55px;height:55px;border-radius: 50%; transform: rotate(-78deg); cursor: pointer"
         lockImg.onclick = ()=>{
             panelCall(0,0)
             

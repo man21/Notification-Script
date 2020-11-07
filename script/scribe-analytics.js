@@ -3953,7 +3953,7 @@ function CookieFn() {
         
                 var NoB = document.createElement('button');
                 NoB.className = "generalBtnStyle filledBtn";
-                NoB.style.cssText = "font-size: 13px; min-width: unset; padding: 0px 8px;"
+                NoB.style.cssText = "min-width: unset; padding: 0px 8px;"
                 //NoB.innerHTML = "No";
                 NoB.innerHTML = "Allow Selected";
                 NoB.onclick = () =>{
@@ -3976,7 +3976,7 @@ function CookieFn() {
 
                 var YesB = document.createElement('button');
                 YesB.className = "generalBtnStyle filledBtn";
-                YesB.style.cssText = "font-size: 13px; min-width: unset; padding: 0px 8px;"
+                YesB.style.cssText = "min-width: unset; padding: 0px 8px;"
                 //YesB.innerHTML = "Yes";
                 YesB.innerHTML = "Accept All";
                 YesB.onclick = () =>{

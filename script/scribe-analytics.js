@@ -3836,7 +3836,7 @@ function CookieFn() {
         var cookieIcon = document.createElement('img')
         //cookieIcon.src  = 'lock.png' 
         cookieIcon.src  = 'https://test2109.herokuapp.com/1-01.svg' 
-        cookieIcon.style="bottom:0;left:0;width:25px;height:25px;box-shadow: rgba(84, 92, 164, 0.5) 0px 4px 24px;border-radius: 50%;"
+        cookieIcon.style="bottom:0;left:0;width:25px;height:25px;border-radius: 50%; cursor: pointer"
         cookieIcon.onclick = ()=>{
             // panelCall(0,0)
             container.appendChild(innerContainer)
@@ -3856,7 +3856,7 @@ function CookieFn() {
         var lockImg = document.createElement('img')
         // lockImg.src  = 'lock.png' 
         lockImg.src  = 'https://test2109.herokuapp.com/1-01.svg' 
-        lockImg.style="bottom:0;left:0;width:55px;height:55px;box-shadow: rgba(84, 92, 164, 0.5) 0px 4px 24px;border-radius: 50%; transform: rotate(-78deg); cursor: pointer"
+        lockImg.style="bottom:0;left:0;width:55px;height:55px;border-radius: 50%; transform: rotate(-78deg); cursor: pointer"
         lockImg.onclick = ()=>{
             panelCall(0,0)
             
@@ -3953,7 +3953,7 @@ function CookieFn() {
         
                 var NoB = document.createElement('button');
                 NoB.className = "generalBtnStyle filledBtn";
-                NoB.style.cssText = "font-size: 13px; min-width: unset; padding: 0px 8px;"
+                NoB.style.cssText = "min-width: unset; padding: 0px 8px;"
                 //NoB.innerHTML = "No";
                 NoB.innerHTML = "Allow Selected";
                 NoB.onclick = () =>{
@@ -3976,7 +3976,7 @@ function CookieFn() {
 
                 var YesB = document.createElement('button');
                 YesB.className = "generalBtnStyle filledBtn";
-                YesB.style.cssText = "font-size: 13px; min-width: unset; padding: 0px 8px;"
+                YesB.style.cssText = "min-width: unset; padding: 0px 8px;"
                 //YesB.innerHTML = "Yes";
                 YesB.innerHTML = "Accept All";
                 YesB.onclick = () =>{

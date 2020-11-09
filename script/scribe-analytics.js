@@ -3824,7 +3824,7 @@ function CookieFn() {
         var cookieIcon = document.createElement('img')
         //cookieIcon.src  = 'lock.png' 
         cookieIcon.src  = '1-01.svg' 
-        cookieIcon.style="bottom:0;left:0;width:25px;height:25px;box-shadow: rgba(84, 92, 164, 0.5) 0px 4px 24px;border-radius: 50%;"
+        cookieIcon.style="bottom:0;left:0;width:55px;height:55px;"
         cookieIcon.onclick = ()=>{
             // panelCall(0,0)
             container.appendChild(innerContainer)
@@ -3844,7 +3844,7 @@ function CookieFn() {
         var lockImg = document.createElement('img')
         // lockImg.src  = 'lock.png' 
         lockImg.src  = '1-01.svg' 
-        lockImg.style="bottom:0;left:0;width:55px;height:55px;box-shadow: rgba(84, 92, 164, 0.5) 0px 4px 24px;border-radius: 50%;"
+        lockImg.style="bottom:0;left:0;width:55px;height:55px;"
         lockImg.onclick = ()=>{
             panelCall(0,0)
             
@@ -3917,8 +3917,6 @@ function CookieFn() {
                     panelCall(1,0)
 
                     container.appendChild(innerContainer)
-
-                    lockImg.src  = '1-02.svg'
 
                     if(container.contains(cookieIcon)) {
                         container.removeChild(cookieIcon)
@@ -4181,6 +4179,11 @@ function CookieFn() {
                    finalCookieArr = finalCookieArr.filter(data =>(data.id !== policy._id))
                     finalCookieArr.push({id: policy._id, status: checkboxInput.checked})
                     setCookies(policy._id, checkboxInput.checked)
+                    
+                    cookieIcon.src = lockImg.src  = '1-02.svg'
+                    if(container.contains(cookieIcon)) {
+                        container.removeChild(cookieIcon)
+                    }
                 }
                 var checkboxSpan = document.createElement('span');
                 checkboxSpan.className = "slider round";

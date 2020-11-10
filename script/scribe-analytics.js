@@ -4735,371 +4735,380 @@ Influence = typeof Influence === 'undefined' ? require('../server') : Influence;
 
 (async function () {
 
-    var response = {
-        "host":"test2109.herokuapp.com",
-        "campaign":{
-           "onBoarding":true,
-           "uniqueVisitors":0,
-           "_id":"5f7db8482b3590001c052f21",
-           "campaignName":"test2109",
-           "protocol":"https:",
-           "websiteUrl":"test2109.herokuapp.com",
-           "profile":"5c6d4b8b98948500132d07e9",
-           "isActive":true,
-           "trackingId":"INF-3gbfcjjsd6vhvo",
-           "createdAt":"2020-10-07T12:44:56.141Z",
-           "updatedAt":"2020-10-07T12:45:17.336Z",
-           "__v":0,
-           "id":"5f7db8482b3590001c052f21"
-        },
-        "configuration":{
-           "_id":"5f7db8482b3590001c052f22",
-           "panelStyle":{
-              "color":{
-                 "r":0,
-                 "g":0,
-                 "b":0,
-                 "a":1
-              },
-              "noButtonStyle":"outline"
-           },
-           "langName":{
-              "name":{
-                 "language":"en",
-                 "name":"English"
-              }
-           },
-           "scrollToConsent":true,
-           "position":"left",
-           "customPromptText":"jjujriofjriojfiorjfiojfoijrf",
-           "customAcceptText":"customAcceptText",
-           "poweredBy":"Influence",
-           "poweredByLink":"https://useinfluence.co",
-           "cookiecampaign":"5f7db8482b3590001c052f21",
-           "trackingId":"INF-3gbfcjjsd6vhvo",
-           "createdAt":"2020-10-07T12:44:56.160Z",
-           "updatedAt":"2020-10-08T09:51:01.745Z",
-           "__v":0,
-           "id":"5f7db8482b3590001c052f22"
-        },
-        "microPolicies":[
-           {
-              "useCookie":false,
-              "essentialPolicy":false,
-              "cookieWidgets":false,
-              "_id":"5f7db85d2b3590001c052f27",
-              "name":"maxcdn.bootstrapcdn.com",
-              "description":"",
-              "websiteUrl":"test2109.herokuapp.com",
-              "slug":"marketing",
-              "trackingId":"INF-3gbfcjjsd6vhvo",
-              "cookieCampaign":"5f7db8482b3590001c052f21",
-              "profile":"5c6d4b8698948500132d07e7",
-              "createdAt":"2020-10-07T12:45:17.330Z",
-              "updatedAt":"2020-10-07T12:45:17.330Z",
-              "__v":0,
-              "id":"5f7db85d2b3590001c052f27",
-              "provider":[
-                 {
-                    "_id":"5f7db85d2b3590001c052f2a",
-                    "name":"test2109.herokuapp.com",
-                    "provider":"maxcdn.bootstrapcdn.com",
-                    "type":"marketing",
-                    "trackingId":"INF-3gbfcjjsd6vhvo",
-                    "createdAt":"2020-10-07T12:45:17.387Z",
-                    "updatedAt":"2020-10-07T12:45:17.387Z",
-                    "id":"5f7db85d2b3590001c052f2a"
-                 }
-              ]
-           },
-           {
-              "useCookie":false,
-              "essentialPolicy":false,
-              "cookieWidgets":false,
-              "_id":"5f7db85d2b3590001c052f24",
-              "name":"ajax.googleapis.com",
-              "description":"",
-              "websiteUrl":"test2109.herokuapp.com",
-              "slug":"essential",
-              "trackingId":"INF-3gbfcjjsd6vhvo",
-              "cookieCampaign":"5f7db8482b3590001c052f21",
-              "profile":"5c6d4b8698948500132d07e7",
-              "createdAt":"2020-10-07T12:45:17.327Z",
-              "updatedAt":"2020-10-07T12:45:17.327Z",
-              "__v":0,
-              "id":"5f7db85d2b3590001c052f24",
-              "provider":[
-                 {
-                    "_id":"5f7db85d2b3590001c052f2b",
-                    "name":"test2109.herokuapp.com",
-                    "provider":"ajax.googleapis.com",
-                    "type":"essential",
-                    "trackingId":"INF-3gbfcjjsd6vhvo",
-                    "createdAt":"2020-10-07T12:45:17.390Z",
-                    "updatedAt":"2020-10-07T12:45:17.390Z",
-                    "id":"5f7db85d2b3590001c052f2b"
-                 }
-              ]
-           },
-           {
-              "useCookie":false,
-              "essentialPolicy":true,
-              "cookieWidgets":false,
-              "_id":"5f7db85d2b3590001c052f23",
-              "name":"Dashly",
-              "description":"Test Description for Dashly 23",
-              "websiteUrl":"test2109.herokuapp.com",
-              "slug":"essential",
-              "trackingId":"INF-3gbfcjjsd6vhvo",
-              "cookieCampaign":"5f7db8482b3590001c052f21",
-              "profile":"5c6d4b8698948500132d07e7",
-              "createdAt":"2020-10-07T12:45:17.326Z",
-              "updatedAt":"2020-10-08T09:49:17.323Z",
-              "__v":0,
-              "id":"5f7db85d2b3590001c052f23",
-              "provider":[
-                 {
-                    "_id":"5f7db85d2b3590001c052f29",
-                    "name":"cdn.dashly.app",
-                    "provider":"cdn.dashly.app",
-                    "type":"essential",
-                    "trackingId":"INF-3gbfcjjsd6vhvo",
-                    "createdAt":"2020-10-07T12:45:17.385Z",
-                    "updatedAt":"2020-10-07T12:45:17.385Z",
-                    "id":"5f7db85d2b3590001c052f29"
-                 }
-              ]
-           },
-           {
-              "useCookie":false,
-              "essentialPolicy":false,
-              "cookieWidgets":false,
-              "_id":"5f7db85d2b3590001c052f25",
-              "name":"s3.amazonaws.com",
-              "description":"",
-              "websiteUrl":"test2109.herokuapp.com",
-              "slug":"essential",
-              "trackingId":"INF-3gbfcjjsd6vhvo",
-              "cookieCampaign":"5f7db8482b3590001c052f21",
-              "profile":"5c6d4b8698948500132d07e7",
-              "createdAt":"2020-10-07T12:45:17.328Z",
-              "updatedAt":"2020-10-07T12:45:17.328Z",
-              "__v":0,
-              "id":"5f7db85d2b3590001c052f25",
-              "provider":[
-                 {
-                    "_id":"5f7db85d2b3590001c052f2c",
-                    "name":"test2109.herokuapp.com",
-                    "provider":"s3.amazonaws.com",
-                    "type":"essential",
-                    "trackingId":"INF-3gbfcjjsd6vhvo",
-                    "createdAt":"2020-10-07T12:45:17.392Z",
-                    "updatedAt":"2020-10-07T12:45:17.392Z",
-                    "id":"5f7db85d2b3590001c052f2c"
-                 }
-              ]
-           }
-        ]
-     }
+    // var response = {
+    //     "host":"test2109.herokuapp.com",
+    //     "campaign":{
+    //        "onBoarding":true,
+    //        "uniqueVisitors":0,
+    //        "_id":"5f7db8482b3590001c052f21",
+    //        "campaignName":"test2109",
+    //        "protocol":"https:",
+    //        "websiteUrl":"test2109.herokuapp.com",
+    //        "profile":"5c6d4b8b98948500132d07e9",
+    //        "isActive":true,
+    //        "trackingId":"INF-3gbfcjjsd6vhvo",
+    //        "createdAt":"2020-10-07T12:44:56.141Z",
+    //        "updatedAt":"2020-10-07T12:45:17.336Z",
+    //        "__v":0,
+    //        "id":"5f7db8482b3590001c052f21"
+    //     },
+    //     "configuration":{
+    //        "_id":"5f7db8482b3590001c052f22",
+    //        "panelStyle":{
+    //           "color":{
+    //              "r":0,
+    //              "g":0,
+    //              "b":0,
+    //              "a":1
+    //           },
+    //           "noButtonStyle":"outline"
+    //        },
+    //        "langName":{
+    //           "name":{
+    //              "language":"en",
+    //              "name":"English"
+    //           }
+    //        },
+    //        "scrollToConsent":true,
+    //        "position":"left",
+    //        "customPromptText":"jjujriofjriojfiorjfiojfoijrf",
+    //        "customAcceptText":"customAcceptText",
+    //        "poweredBy":"Influence",
+    //        "poweredByLink":"https://useinfluence.co",
+    //        "cookiecampaign":"5f7db8482b3590001c052f21",
+    //        "trackingId":"INF-3gbfcjjsd6vhvo",
+    //        "createdAt":"2020-10-07T12:44:56.160Z",
+    //        "updatedAt":"2020-10-08T09:51:01.745Z",
+    //        "__v":0,
+    //        "id":"5f7db8482b3590001c052f22"
+    //     },
+    //     "microPolicies":[
+    //        {
+    //           "useCookie":false,
+    //           "essentialPolicy":false,
+    //           "cookieWidgets":false,
+    //           "_id":"5f7db85d2b3590001c052f27",
+    //           "name":"maxcdn.bootstrapcdn.com",
+    //           "description":"",
+    //           "websiteUrl":"test2109.herokuapp.com",
+    //           "slug":"marketing",
+    //           "trackingId":"INF-3gbfcjjsd6vhvo",
+    //           "cookieCampaign":"5f7db8482b3590001c052f21",
+    //           "profile":"5c6d4b8698948500132d07e7",
+    //           "createdAt":"2020-10-07T12:45:17.330Z",
+    //           "updatedAt":"2020-10-07T12:45:17.330Z",
+    //           "__v":0,
+    //           "id":"5f7db85d2b3590001c052f27",
+    //           "provider":[
+    //              {
+    //                 "_id":"5f7db85d2b3590001c052f2a",
+    //                 "name":"test2109.herokuapp.com",
+    //                 "provider":"maxcdn.bootstrapcdn.com",
+    //                 "type":"marketing",
+    //                 "trackingId":"INF-3gbfcjjsd6vhvo",
+    //                 "createdAt":"2020-10-07T12:45:17.387Z",
+    //                 "updatedAt":"2020-10-07T12:45:17.387Z",
+    //                 "id":"5f7db85d2b3590001c052f2a"
+    //              }
+    //           ]
+    //        },
+    //        {
+    //           "useCookie":false,
+    //           "essentialPolicy":false,
+    //           "cookieWidgets":false,
+    //           "_id":"5f7db85d2b3590001c052f24",
+    //           "name":"ajax.googleapis.com",
+    //           "description":"",
+    //           "websiteUrl":"test2109.herokuapp.com",
+    //           "slug":"essential",
+    //           "trackingId":"INF-3gbfcjjsd6vhvo",
+    //           "cookieCampaign":"5f7db8482b3590001c052f21",
+    //           "profile":"5c6d4b8698948500132d07e7",
+    //           "createdAt":"2020-10-07T12:45:17.327Z",
+    //           "updatedAt":"2020-10-07T12:45:17.327Z",
+    //           "__v":0,
+    //           "id":"5f7db85d2b3590001c052f24",
+    //           "provider":[
+    //              {
+    //                 "_id":"5f7db85d2b3590001c052f2b",
+    //                 "name":"test2109.herokuapp.com",
+    //                 "provider":"ajax.googleapis.com",
+    //                 "type":"essential",
+    //                 "trackingId":"INF-3gbfcjjsd6vhvo",
+    //                 "createdAt":"2020-10-07T12:45:17.390Z",
+    //                 "updatedAt":"2020-10-07T12:45:17.390Z",
+    //                 "id":"5f7db85d2b3590001c052f2b"
+    //              }
+    //           ]
+    //        },
+    //        {
+    //           "useCookie":false,
+    //           "essentialPolicy":true,
+    //           "cookieWidgets":false,
+    //           "_id":"5f7db85d2b3590001c052f23",
+    //           "name":"Dashly",
+    //           "description":"Test Description for Dashly 23",
+    //           "websiteUrl":"test2109.herokuapp.com",
+    //           "slug":"essential",
+    //           "trackingId":"INF-3gbfcjjsd6vhvo",
+    //           "cookieCampaign":"5f7db8482b3590001c052f21",
+    //           "profile":"5c6d4b8698948500132d07e7",
+    //           "createdAt":"2020-10-07T12:45:17.326Z",
+    //           "updatedAt":"2020-10-08T09:49:17.323Z",
+    //           "__v":0,
+    //           "id":"5f7db85d2b3590001c052f23",
+    //           "provider":[
+    //              {
+    //                 "_id":"5f7db85d2b3590001c052f29",
+    //                 "name":"cdn.dashly.app",
+    //                 "provider":"cdn.dashly.app",
+    //                 "type":"essential",
+    //                 "trackingId":"INF-3gbfcjjsd6vhvo",
+    //                 "createdAt":"2020-10-07T12:45:17.385Z",
+    //                 "updatedAt":"2020-10-07T12:45:17.385Z",
+    //                 "id":"5f7db85d2b3590001c052f29"
+    //              }
+    //           ]
+    //        },
+    //        {
+    //           "useCookie":false,
+    //           "essentialPolicy":false,
+    //           "cookieWidgets":false,
+    //           "_id":"5f7db85d2b3590001c052f25",
+    //           "name":"s3.amazonaws.com",
+    //           "description":"",
+    //           "websiteUrl":"test2109.herokuapp.com",
+    //           "slug":"essential",
+    //           "trackingId":"INF-3gbfcjjsd6vhvo",
+    //           "cookieCampaign":"5f7db8482b3590001c052f21",
+    //           "profile":"5c6d4b8698948500132d07e7",
+    //           "createdAt":"2020-10-07T12:45:17.328Z",
+    //           "updatedAt":"2020-10-07T12:45:17.328Z",
+    //           "__v":0,
+    //           "id":"5f7db85d2b3590001c052f25",
+    //           "provider":[
+    //              {
+    //                 "_id":"5f7db85d2b3590001c052f2c",
+    //                 "name":"test2109.herokuapp.com",
+    //                 "provider":"s3.amazonaws.com",
+    //                 "type":"essential",
+    //                 "trackingId":"INF-3gbfcjjsd6vhvo",
+    //                 "createdAt":"2020-10-07T12:45:17.392Z",
+    //                 "updatedAt":"2020-10-07T12:45:17.392Z",
+    //                 "id":"5f7db85d2b3590001c052f2c"
+    //              }
+    //           ]
+    //        }
+    //     ]
+    //  }
 
-     var apiDataResponse = {
-        "host": "test2109.herokuapp.com",
-        "campaign": {
-            "onBoarding": !0,
-            "uniqueVisitors": 0,
-            "_id": "5f9cea44b42930001d1ad920",
-            "campaignName": "Test2109",
-            "protocol": "http:",
-            "websiteUrl": "test2109.herokuapp.com",
-            "profile": "5c6d4b8b98948500132d07e9",
-            "isActive": !0,
-            "trackingId": "INF-3gbfcjjsd6vhvo",
-            "createdAt": "2020-10-31T04:38:28.079Z",
-            "updatedAt": "2020-10-31T04:40:10.048Z",
-            "__v": 0,
-            "id": "5f9cea44b42930001d1ad920"
-        },
-        "configuration": {
-            "_id": "5f9cea44b42930001d1ad921",
-            "panelStyle": {
-                "noButtonStyle": "outline",
-                "color": {
-                    "r": 0,
-                    "g": 0,
-                    "b": 0,
-                    "a": 1
-                },
-                "backgroundColor": {
-                    "r": 0,
-                    "g": 0,
-                    "b": 0,
-                    "a": 1
-                }
-            },
-            "langName": {
-                "language": "en",
-                "name": "English"
-            },
-            "scrollToConsent": !0,
-            "position": "left",
-            "customPromptText": "customPromptText",
-            "customAcceptText": "customAcceptText",
-            "poweredBy": "Influence",
-            "poweredByLink": "https://useinfluence.co",
-            "cookiecampaign": "5f9cea44b42930001d1ad920",
-            "trackingId": "INF-3gbfcjjsd6vhvo",
-            "createdAt": "2020-10-31T04:38:28.109Z",
-            "updatedAt": "2020-10-31T04:38:28.109Z",
-            "__v": 0,
-            "id": "5f9cea44b42930001d1ad921"
-        },
-        "microPolicies": [
-            {
-            "useCookie": !1,
-            "essentialPolicy": !0,
-            "cookieWidgets": !1,
-            "_id": "5f9ceaaab42930001d1ad924",
-            "name": "tywmp.activehosted.com",
-            "description": "This includes key features like page navigation and logging you in. The website cannot function without this.",
-            "websiteUrl": "test2109.herokuapp.com",
-            "slug": "essential",
-            "trackingId": "INF-3gbfcjjsd6vhvo",
-            "cookieCampaign": "5f9cea44b42930001d1ad920",
-            "profile": "5c6d4b8698948500132d07e7",
-            "createdAt": "2020-10-31T04:40:10.083Z",
-            "updatedAt": "2020-10-31T04:40:10.083Z",
-            "__v": 0,
-            "id": "5f9ceaaab42930001d1ad924",
-            "provider": [{
-                "_id": "5f9ceaaab42930001d1ad929",
-                "name": "test2109.herokuapp.com",
-                "provider": "tywmp.activehosted.com",
-                "type": "essential",
-                "trackingId": "INF-3gbfcjjsd6vhvo",
-                "createdAt": "2020-10-31T04:40:10.141Z",
-                "updatedAt": "2020-10-31T04:40:10.141Z",
-                "id": "5f9ceaaab42930001d1ad929"
-            }],
-            "thirdParty": [{
-                "_id": "5f9ceaaab42930001d1ad92a",
-                "name": "tywmp.activehosted.com",
-                "policyUrl": "",
-                "trackingId": "INF-3gbfcjjsd6vhvo",
-                "id": "5f9ceaaab42930001d1ad92a"
-            }],
-            "dataUsage": []
-        }, {
-            "useCookie": !1,
-            "essentialPolicy": !0,
-            "cookieWidgets": !1,
-            "_id": "5f9ceaaab42930001d1ad922",
-            "name": "www.googletagmanager.com",
-            "description": "This includes key features like page navigation and logging you in. The website cannot function without this.",
-            "websiteUrl": "test2109.herokuapp.com",
-            "slug": "essential",
-            "trackingId": "INF-3gbfcjjsd6vhvo",
-            "cookieCampaign": "5f9cea44b42930001d1ad920",
-            "profile": "5c6d4b8698948500132d07e7",
-            "createdAt": "2020-10-31T04:40:10.068Z",
-            "updatedAt": "2020-10-31T04:40:10.068Z",
-            "__v": 0,
-            "id": "5f9ceaaab42930001d1ad922",
-            "provider": [{
-                "_id": "5f9ceaaab42930001d1ad927",
-                "name": "test2109.herokuapp.com",
-                "provider": "www.googletagmanager.com",
-                "type": "essential",
-                "trackingId": "INF-3gbfcjjsd6vhvo",
-                "createdAt": "2020-10-31T04:40:10.125Z",
-                "updatedAt": "2020-10-31T04:40:10.125Z",
-                "id": "5f9ceaaab42930001d1ad927"
-            }],
-            "thirdParty": [{
-                "_id": "5f9ceaaab42930001d1ad92d",
-                "name": "www.googletagmanager.com",
-                "policyUrl": "",
-                "trackingId": "INF-3gbfcjjsd6vhvo",
-                "id": "5f9ceaaab42930001d1ad92d"
-            }],
-            "dataUsage": []
-        }, {
-            "useCookie": !1,
-            "essentialPolicy": !0,
-            "cookieWidgets": !1,
-            "_id": "5f9ceaaab42930001d1ad925",
-            "name": "s3.amazonaws.com",
-            "description": "This includes key features like page navigation and logging you in. The website cannot function without this.",
-            "websiteUrl": "test2109.herokuapp.com",
-            "slug": "essential",
-            "trackingId": "INF-3gbfcjjsd6vhvo",
-            "cookieCampaign": "5f9cea44b42930001d1ad920",
-            "profile": "5c6d4b8698948500132d07e7",
-            "createdAt": "2020-10-31T04:40:10.084Z",
-            "updatedAt": "2020-10-31T04:40:10.084Z",
-            "__v": 0,
-            "id": "5f9ceaaab42930001d1ad925",
-            "provider": [{
-                "_id": "5f9ceaaab42930001d1ad928",
-                "name": "test2109.herokuapp.com",
-                "provider": "s3.amazonaws.com",
-                "type": "essential",
-                "trackingId": "INF-3gbfcjjsd6vhvo",
-                "createdAt": "2020-10-31T04:40:10.130Z",
-                "updatedAt": "2020-10-31T04:40:10.130Z",
-                "id": "5f9ceaaab42930001d1ad928"
-            }],
-            "thirdParty": [{
-                "_id": "5f9ceaaab42930001d1ad92b",
-                "name": "s3.amazonaws.com",
-                "policyUrl": "",
-                "trackingId": "INF-3gbfcjjsd6vhvo",
-                "id": "5f9ceaaab42930001d1ad92b"
-            }],
-            "dataUsage": []
-        }, {
-            "useCookie": true,
-            "essentialPolicy": false,
-            "cookieWidgets": true,
-            "_id": "5f9ceaaab42930001d1ad923",
-            "name": "cdn.dashly.app",
-            "description": "his tells us it's okay for us to use your information for marketing specifically. This makes ads more personalized.",
-            "websiteUrl": "test2109.herokuapp.com",
-            "slug": "marketing",
-            "trackingId": "INF-3gbfcjjsd6vhvo",
-            "cookieCampaign": "5f9cea44b42930001d1ad920",
-            "profile": "5c6d4b8698948500132d07e7",
-            "createdAt": "2020-10-31T04:40:10.083Z",
-            "updatedAt": "2020-10-31T05:07:12.130Z",
-            "__v": 0,
-            "id": "5f9ceaaab42930001d1ad923",
-            "provider": [{
-                "_id": "5f9ceaaab42930001d1ad926",
-                "name": "test2109.herokuapp.com",
-                "provider": "cdn.dashly.app",
-                "type": "marketing",
-                "trackingId": "INF-3gbfcjjsd6vhvo",
-                "createdAt": "2020-10-31T04:40:10.119Z",
-                "updatedAt": "2020-10-31T04:40:10.119Z",
-                "id": "5f9ceaaab42930001d1ad926"
-            }],
-            "thirdParty": [{
-                "_id": "5f9ceaaab42930001d1ad92c",
-                "name": "cdn.dashly.app",
-                "policyUrl": "",
-                "trackingId": "INF-3gbfcjjsd6vhvo",
-                "id": "5f9ceaaab42930001d1ad92c"
-            }],
-            "dataUsage": []
-        }]
-    };
+    //  var apiDataResponse1 = {
+    //     "host": "test2109.herokuapp.com",
+    //     "campaign": {
+    //         "onBoarding": !0,
+    //         "uniqueVisitors": 0,
+    //         "_id": "5f9cea44b42930001d1ad920",
+    //         "campaignName": "Test2109",
+    //         "protocol": "http:",
+    //         "websiteUrl": "test2109.herokuapp.com",
+    //         "profile": "5c6d4b8b98948500132d07e9",
+    //         "isActive": !0,
+    //         "trackingId": "INF-3gbfcjjsd6vhvo",
+    //         "createdAt": "2020-10-31T04:38:28.079Z",
+    //         "updatedAt": "2020-10-31T04:40:10.048Z",
+    //         "__v": 0,
+    //         "id": "5f9cea44b42930001d1ad920"
+    //     },
+    //     "configuration": {
+    //         "_id": "5f9cea44b42930001d1ad921",
+    //         "panelStyle": {
+    //             "noButtonStyle": "outline",
+    //             "color": {
+    //                 "r": 0,
+    //                 "g": 0,
+    //                 "b": 0,
+    //                 "a": 1
+    //             },
+    //             "backgroundColor": {
+    //                 "r": 0,
+    //                 "g": 0,
+    //                 "b": 0,
+    //                 "a": 1
+    //             }
+    //         },
+    //         "langName": {
+    //             "language": "en",
+    //             "name": "English"
+    //         },
+    //         "scrollToConsent": !0,
+    //         "position": "left",
+    //         "customPromptText": "customPromptText",
+    //         "customAcceptText": "customAcceptText",
+    //         "poweredBy": "Influence",
+    //         "poweredByLink": "https://useinfluence.co",
+    //         "cookiecampaign": "5f9cea44b42930001d1ad920",
+    //         "trackingId": "INF-3gbfcjjsd6vhvo",
+    //         "createdAt": "2020-10-31T04:38:28.109Z",
+    //         "updatedAt": "2020-10-31T04:38:28.109Z",
+    //         "__v": 0,
+    //         "id": "5f9cea44b42930001d1ad921"
+    //     },
+    //     "microPolicies": [
+    //         {
+    //             "useCookie": !1,
+    //             "essentialPolicy": !0,
+    //             "cookieWidgets": !1,
+    //             "_id": "5f9ceaaab42930001d1ad924",
+    //             "name": "tywmp.activehosted.com",
+    //             "description": "This includes key features like page navigation and logging you in. The website cannot function without this.",
+    //             "websiteUrl": "test2109.herokuapp.com",
+    //             "slug": "essential",
+    //             "trackingId": "INF-3gbfcjjsd6vhvo",
+    //             "cookieCampaign": "5f9cea44b42930001d1ad920",
+    //             "profile": "5c6d4b8698948500132d07e7",
+    //             "createdAt": "2020-10-31T04:40:10.083Z",
+    //             "updatedAt": "2020-10-31T04:40:10.083Z",
+    //             "__v": 0,
+    //             "id": "5f9ceaaab42930001d1ad924",
+    //             "provider": [{
+    //                 "_id": "5f9ceaaab42930001d1ad929",
+    //                 "name": "test2109.herokuapp.com",
+    //                 "provider": "tywmp.activehosted.com",
+    //                 "type": "essential",
+    //                 "trackingId": "INF-3gbfcjjsd6vhvo",
+    //                 "createdAt": "2020-10-31T04:40:10.141Z",
+    //                 "updatedAt": "2020-10-31T04:40:10.141Z",
+    //                 "id": "5f9ceaaab42930001d1ad929"
+    //             }],
+    //             "thirdParty": [{
+    //                 "_id": "5f9ceaaab42930001d1ad92a",
+    //                 "name": "tywmp.activehosted.com",
+    //                 "policyUrl": "",
+    //                 "trackingId": "INF-3gbfcjjsd6vhvo",
+    //                 "id": "5f9ceaaab42930001d1ad92a"
+    //             }],
+    //             "dataUsage": []
+    //         }, {
+    //             "useCookie": !1,
+    //             "essentialPolicy": !0,
+    //             "cookieWidgets": !1,
+    //             "_id": "5f9ceaaab42930001d1ad922",
+    //             "name": "www.googletagmanager.com",
+    //             "description": "This includes key features like page navigation and logging you in. The website cannot function without this.",
+    //             "websiteUrl": "test2109.herokuapp.com",
+    //             "slug": "essential",
+    //             "trackingId": "INF-3gbfcjjsd6vhvo",
+    //             "cookieCampaign": "5f9cea44b42930001d1ad920",
+    //             "profile": "5c6d4b8698948500132d07e7",
+    //             "createdAt": "2020-10-31T04:40:10.068Z",
+    //             "updatedAt": "2020-10-31T04:40:10.068Z",
+    //             "__v": 0,
+    //             "id": "5f9ceaaab42930001d1ad922",
+    //             "provider": [{
+    //                 "_id": "5f9ceaaab42930001d1ad927",
+    //                 "name": "test2109.herokuapp.com",
+    //                 "provider": "www.googletagmanager.com",
+    //                 "type": "essential",
+    //                 "trackingId": "INF-3gbfcjjsd6vhvo",
+    //                 "createdAt": "2020-10-31T04:40:10.125Z",
+    //                 "updatedAt": "2020-10-31T04:40:10.125Z",
+    //                 "id": "5f9ceaaab42930001d1ad927"
+    //             }],
+    //             "thirdParty": [{
+    //                 "_id": "5f9ceaaab42930001d1ad92d",
+    //                 "name": "www.googletagmanager.com",
+    //                 "policyUrl": "",
+    //                 "trackingId": "INF-3gbfcjjsd6vhvo",
+    //                 "id": "5f9ceaaab42930001d1ad92d"
+    //             }],
+    //             "dataUsage": []
+    //         }, {
+    //             "useCookie": !1,
+    //             "essentialPolicy": !0,
+    //             "cookieWidgets": !1,
+    //             "_id": "5f9ceaaab42930001d1ad925",
+    //             "name": "s3.amazonaws.com",
+    //             "description": "This includes key features like page navigation and logging you in. The website cannot function without this.",
+    //             "websiteUrl": "test2109.herokuapp.com",
+    //             "slug": "essential",
+    //             "trackingId": "INF-3gbfcjjsd6vhvo",
+    //             "cookieCampaign": "5f9cea44b42930001d1ad920",
+    //             "profile": "5c6d4b8698948500132d07e7",
+    //             "createdAt": "2020-10-31T04:40:10.084Z",
+    //             "updatedAt": "2020-10-31T04:40:10.084Z",
+    //             "__v": 0,
+    //             "id": "5f9ceaaab42930001d1ad925",
+    //             "provider": [{
+    //                 "_id": "5f9ceaaab42930001d1ad928",
+    //                 "name": "test2109.herokuapp.com",
+    //                 "provider": "s3.amazonaws.com",
+    //                 "type": "essential",
+    //                 "trackingId": "INF-3gbfcjjsd6vhvo",
+    //                 "createdAt": "2020-10-31T04:40:10.130Z",
+    //                 "updatedAt": "2020-10-31T04:40:10.130Z",
+    //                 "id": "5f9ceaaab42930001d1ad928"
+    //             }],
+    //             "thirdParty": [{
+    //                 "_id": "5f9ceaaab42930001d1ad92b",
+    //                 "name": "s3.amazonaws.com",
+    //                 "policyUrl": "",
+    //                 "trackingId": "INF-3gbfcjjsd6vhvo",
+    //                 "id": "5f9ceaaab42930001d1ad92b"
+    //             }],
+    //             "dataUsage": []
+    //         }, {
+    //             "useCookie": true,
+    //             "essentialPolicy": false,
+    //             "cookieWidgets": true,
+    //             "_id": "5f9ceaaab42930001d1ad923",
+    //             "name": "cdn.dashly.app",
+    //             "description": "his tells us it's okay for us to use your information for marketing specifically. This makes ads more personalized.",
+    //             "websiteUrl": "test2109.herokuapp.com",
+    //             "slug": "marketing",
+    //             "trackingId": "INF-3gbfcjjsd6vhvo",
+    //             "cookieCampaign": "5f9cea44b42930001d1ad920",
+    //             "profile": "5c6d4b8698948500132d07e7",
+    //             "createdAt": "2020-10-31T04:40:10.083Z",
+    //             "updatedAt": "2020-10-31T05:07:12.130Z",
+    //             "__v": 0,
+    //             "id": "5f9ceaaab42930001d1ad923",
+    //             "provider": [{
+    //                 "_id": "5f9ceaaab42930001d1ad926",
+    //                 "name": "test2109.herokuapp.com",
+    //                 "provider": "cdn.dashly.app",
+    //                 "type": "marketing",
+    //                 "trackingId": "INF-3gbfcjjsd6vhvo",
+    //                 "createdAt": "2020-10-31T04:40:10.119Z",
+    //                 "updatedAt": "2020-10-31T04:40:10.119Z",
+    //                 "id": "5f9ceaaab42930001d1ad926"
+    //             }],
+    //             "thirdParty": [{
+    //                 "_id": "5f9ceaaab42930001d1ad92c",
+    //                 "name": "cdn.dashly.app",
+    //                 "policyUrl": "",
+    //                 "trackingId": "INF-3gbfcjjsd6vhvo",
+    //                 "id": "5f9ceaaab42930001d1ad92c"
+    //             }],
+    //             "dataUsage": []
+    //         }
+    // ]
+    //  };
+
+
+    var apiDataResponse = []
     
-    cookieCampaignStatus = apiDataResponse.campaign
+    cookieCampaignData = apiDataResponse.campaign
 
 var cookieFn = new CookieFn({})
 
 cookieFn.notificationdisplay( apiDataResponse.configuration, apiDataResponse.microPolicies);
 
 var m =[]
+
+
+
+if(apiDataResponse.microPolicies.length>0){
+
 
 apiDataResponse.microPolicies.map(e=>{
 
@@ -5125,6 +5134,7 @@ apiDataResponse.microPolicies.map(e=>{
     
 })
 
+}
 
 window.YETT_BLACKLIST = m 
 

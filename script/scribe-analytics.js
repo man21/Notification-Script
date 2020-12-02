@@ -2672,7 +2672,7 @@ InfluenceTracker.prototype.tracker = function (info) {
 
         if(notifType && notifType != 'undefined'){
             data.notificationType = notifType
-        }    
+       }    
 
         //check rule && append campaignid
         // if (configurationPath.rule && configurationPath.rule.displayOnAllPages)
@@ -2725,20 +2725,29 @@ InfluenceTracker.prototype.tracker = function (info) {
 
 
         if(data && data.value.microPolicies)
-            console.log(data, "================================")
 
         //Send the proper header information along with the request
-        var url = BASE_URL + '/ws/log';
         if(configurationPath && data.category === 'formsubmit'){
+            var url = BASE_URL + '/ws/log';
+
             httpPostAsync(url, JSON.stringify(data), function (res) {
              });
         } else if(data.category === 'click' || data.category === 'mouseover' || data.category === 'notificationview' || data.category === 'pageview' || data.category ==='linkClick'  ){
+           
+            var url = BASE_URL + '/ws/log';
+
+            data.hello = "FINE!!!!!!!!!"
+
             httpPostAsync(url, JSON.stringify(data), function (res) {
             });
         }
 
-        if(data.category == "pageview" && cookieCampaignData.isActive){
+        if((data.category == "pageview" || data.category== "cookieconsent") && cookieCampaignData.isActive){
+
             var cookieUrl = BASE_URL + '/ws/cookie/log';
+            
+            data.hello = "FINE"
+
             httpPostAsync(cookieUrl, JSON.stringify(data), function (res) {
             });
         }      
@@ -3545,7 +3554,6 @@ var Note = function Note(config, containerStyle, iconStyle) {
         innerInnerNotifCTAContainer.appendChild(createCTAText);
         innerNotifCTAContainer.appendChild(innerInnerNotifCTAContainer);
 
-
     if (configuration.isCTATop)
         mainContainer.appendChild(innerNotifCTAContainer);
         mainContainer.appendChild(influenceSocialProof)
@@ -4150,7 +4158,6 @@ function CookieFn() {
 
                 doneNav.addEventListener("click", function(){
                     // finalCookieArr.map(data =>{ setCookies(data.id, data.status) })
-
 
                     cookieFinalArr = finalCookieArr
                 //  storeDataInDB(finalCookieArr);
@@ -4980,7 +4987,7 @@ Influence = typeof Influence === 'undefined' ? require('../server') : Influence;
             "protocol": "http:",
             "websiteUrl": "test2109.herokuapp.com",
             "profile": "5c6d4b8b98948500132d07e9",
-            "isActive": !0,
+            "isActive": true,
             "trackingId": "INF-3gbfcjjsd6vhvo",
             "createdAt": "2020-10-31T04:38:28.079Z",
             "updatedAt": "2020-10-31T04:40:10.048Z",

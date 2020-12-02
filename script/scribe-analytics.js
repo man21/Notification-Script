@@ -8,6 +8,8 @@ var BASE_URL = "https://strapi.useinfluence.co";
 
 var cookieCampaignData; 
 
+var socialProofData;
+
 var cookieFinalArr;
 document.addEventListener('visibilitychange', function (e) {
     document.hidden ? isTabVisibility = false : isTabVisibility = true;
@@ -2281,6 +2283,8 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
             await httpGetAsync(url, function (res) {
                   response = JSON.parse(res);
 
+                  socialProofData = true
+
                 responseNotifications = response.message;
                 if (!enableLoopNotification && response.totalCampaign) loopCheckValue = activeNotification * response.totalCampaign;
                 // console.log('-------cal-----')
@@ -2724,28 +2728,32 @@ InfluenceTracker.prototype.tracker = function (info) {
         data.category = data && data.value ? data.value.event : '';
 
 
-        if(data && data.value.microPolicies)
+        // if(data && data.value.microPolicies)
 
         //Send the proper header information along with the request
 
 
-        if(configurationPath && data.category === 'formsubmit'){
-            var url = BASE_URL + '/ws/log';
 
 
-            httpPostAsync(url, JSON.stringify(data), function (res) {
-             });
-        } else if(data.category === 'click' || data.category === 'mouseover' || data.category === 'notificationview' || data.category === 'pageview' || data.category ==='linkClick'  ){
-           
-            var url = BASE_URL + '/ws/log';
-
-
-            data.hello = "FINE!!!!!!!!!"
-
-            httpPostAsync(url, JSON.stringify(data), function (res) {
-            });
-            
-        } 
+        if(socialProofData == true){
+            if(configurationPath && data.category === 'formsubmit'){
+                var url = BASE_URL + '/ws/log';
+    
+    
+                httpPostAsync(url, JSON.stringify(data), function (res) {
+                 });
+            } else if(data.category === 'click' || data.category === 'mouseover' || data.category === 'notificationview' || data.category === 'pageview' || data.category ==='linkClick'  ){
+               
+                var url = BASE_URL + '/ws/log';
+    
+    
+                data.hello = "FINE!!!!!!!!!"
+    
+                httpPostAsync(url, JSON.stringify(data), function (res) {
+                });
+                
+            } 
+        }
 
         if(cookieCampaignData.isActive){
 

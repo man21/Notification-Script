@@ -2727,8 +2727,11 @@ InfluenceTracker.prototype.tracker = function (info) {
         if(data && data.value.microPolicies)
 
         //Send the proper header information along with the request
+
+
         if(configurationPath && data.category === 'formsubmit'){
             var url = BASE_URL + '/ws/log';
+
 
             httpPostAsync(url, JSON.stringify(data), function (res) {
              });
@@ -2736,25 +2739,23 @@ InfluenceTracker.prototype.tracker = function (info) {
            
             var url = BASE_URL + '/ws/log';
 
+
             data.hello = "FINE!!!!!!!!!"
 
             httpPostAsync(url, JSON.stringify(data), function (res) {
             });
-
-            if((data.category == "pageview" || data.category== "cookieconsent") && cookieCampaignData.isActive){
-
-                var cookieUrl = BASE_URL + '/ws/cookie/log';
-                
-                data.hello = "FINE"
-    
-                httpPostAsync(cookieUrl, JSON.stringify(data), function (res) {
-                });
-            }  
-
-        
-        }
-
             
+        } 
+
+        if(cookieCampaignData.isActive){
+
+            var cookieUrl = BASE_URL + '/ws/cookie/log';
+            
+            data.hello = "FINE"
+
+            httpPostAsync(cookieUrl, JSON.stringify(data), function (res) {
+            });
+        }      
 
         
 

@@ -1449,9 +1449,10 @@ if (typeof Influence === 'undefined') {
                         var url = document.location;
                         self.track('notificationview', Util.merge(Env.getPageloadData(), { url: Util.parseUrl(url + '') }));
                     
-                    }else if(document.getElementsByClassName("#donehello")){
-                        self.track('cookieconsent', {microPolicies: cookieFinalArr} )
                     }
+                    // else if(document.getElementsByClassName("#donehello")){
+                    //     self.track('cookieconsent', {microPolicies: cookieFinalArr} )
+                    // }
     
                     attachNotifcationListener(element, self);
                 })
@@ -1466,7 +1467,7 @@ if (typeof Influence === 'undefined') {
             var obj1=  new MutationObserver(function(mutations, observer) {
 
                 var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_1');
-                
+
                 // var in_dom = document.body.contains(element);
                 if(document.getElementsByClassName("#donehello")){
                     self.track('cookieconsent', {microPolicies: cookieFinalArr} )
@@ -3933,7 +3934,7 @@ function CookieFn() {
 
         container.style =  "z-index: 99999999999; position: fixed; bottom: 2%; left: 2% " //alignment;
         var innerContainer = document.createElement('div');
-        innerContainer.setAttribute("id", "FPqR3tRBqJeA3tRB7MM9_0");
+        innerContainer.setAttribute("id", "FPqR3tRBqJeA3tRB7MM9_1");
         var innerDiv = document.createElement('div');
         var mainContainer = document.createElement('div');
         var lockImg = document.createElement('img')

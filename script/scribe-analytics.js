@@ -1440,24 +1440,48 @@ if (typeof Influence === 'undefined') {
                 });
             }
             //notification view
-           var obj=  new MutationObserver(function(mutations, observer) {
 
+                var obj=  new MutationObserver(function(mutations, observer) {
+
+                    var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_0');
+                    var in_dom = document.body.contains(element);
+                    if(in_dom){
+                        var url = document.location;
+                        self.track('notificationview', Util.merge(Env.getPageloadData(), { url: Util.parseUrl(url + '') }));
+                    
+                    }else if(document.getElementsByClassName("#donehello")){
+                        self.track('cookieconsent', {microPolicies: cookieFinalArr} )
+                    }
+    
+                    attachNotifcationListener(element, self);
+                })
+    
                 var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_0');
-                var in_dom = document.body.contains(element);
-                if(in_dom){
-                    var url = document.location;
-                    self.track('notificationview', Util.merge(Env.getPageloadData(), { url: Util.parseUrl(url + '') }));
+    
+                obj.observe(element, {childList: true, subtree:true});
+        
+
+            if(cookieCampaignData.isActive){
+
+            var obj1=  new MutationObserver(function(mutations, observer) {
+
+                var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_1');
                 
-                }else if(document.getElementsByClassName("#donehello")){
+                // var in_dom = document.body.contains(element);
+                if(document.getElementsByClassName("#donehello")){
                     self.track('cookieconsent', {microPolicies: cookieFinalArr} )
                 }
+                // else if(document.getElementsByClassName("#donehello")){
+                //     self.track('cookieconsent', {microPolicies: cookieFinalArr} )
+                // }
 
                 attachNotifcationListener(element, self);
             })
 
-            var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_0');
+                var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_1');
 
-            obj.observe(element, {childList: true, subtree:true});
+                obj1.observe(element, {childList: true, subtree:true});
+            }
         };
 
         /**

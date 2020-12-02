@@ -2740,17 +2740,21 @@ InfluenceTracker.prototype.tracker = function (info) {
 
             httpPostAsync(url, JSON.stringify(data), function (res) {
             });
+
+            if((data.category == "pageview" || data.category== "cookieconsent") && cookieCampaignData.isActive){
+
+                var cookieUrl = BASE_URL + '/ws/cookie/log';
+                
+                data.hello = "FINE"
+    
+                httpPostAsync(cookieUrl, JSON.stringify(data), function (res) {
+                });
+            }  
+
+        
         }
 
-        if((data.category == "pageview" || data.category== "cookieconsent") && cookieCampaignData.isActive){
-
-            var cookieUrl = BASE_URL + '/ws/cookie/log';
             
-            data.hello = "FINE"
-
-            httpPostAsync(cookieUrl, JSON.stringify(data), function (res) {
-            });
-        }      
 
         
 

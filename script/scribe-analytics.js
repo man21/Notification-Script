@@ -2807,14 +2807,6 @@ InfluenceTracker.prototype.tracker = function (info) {
 };
 
 
-function storeDataInDB(data){
-
-    let btnAdd = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_1');
-
-// console.log(btnAdd, "%%%%%%%%%%%")
-
-}
-
 var timeSince = function (date,configuration) {
     if (typeof date !== 'object') {
         date = new Date(new Date(date).toISOString());
@@ -3913,7 +3905,7 @@ function CookieFn() {
         }
 
         var container = document.createElement('div');
-        container.setAttribute("id", "FPqR2DbIqJeA2DbI7MM9_0");
+        container.setAttribute("id", "FPqR2DbIqJeA2DbI7MM9_1");
 
         container.style =  "z-index: 99999999999; position: fixed; bottom: 2%; left: 2% " //alignment;
         var innerContainer = document.createElement('div');

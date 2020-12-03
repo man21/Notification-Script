@@ -1402,7 +1402,26 @@ if (typeof Influence === 'undefined') {
                 });
             }
             //notification view
-            new MutationObserver(function(mutations) {
+            // new MutationObserver(function(mutations) {
+            //     var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_0');
+            //     var in_dom = document.body.contains(element);
+            //     if(in_dom){
+            //         var url = document.location;
+            //         self.track('notificationview', Util.merge(Env.getPageloadData(), { url: Util.parseUrl(url + '') }));
+            //     }
+            //     attachNotifcationListener(element, self);
+            // }).observe(document.body, {childList: true, subtree: true});
+
+
+            var target = document.getElementById('#FPqR2DbIqJeA2DbI7MM9_0');
+
+            observer.observe(target, { childList: true,
+                subtree: true,
+                attributes: true,
+                characterData: true});
+
+
+            var observer = new MutationObserver(function(mutations, observer) {
                 var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_0');
                 var in_dom = document.body.contains(element);
                 if(in_dom){
@@ -1410,7 +1429,8 @@ if (typeof Influence === 'undefined') {
                     self.track('notificationview', Util.merge(Env.getPageloadData(), { url: Util.parseUrl(url + '') }));
                 }
                 attachNotifcationListener(element, self);
-            }).observe(document.body, {childList: true, subtree: true});
+            })
+            
         };
 
         /**

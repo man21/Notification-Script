@@ -4,7 +4,7 @@ var __pathname = window.location.pathname;
 __pathname = '/' + __pathname.split('/')[1];
 
 var influenceScript = 'oldScript.js';
-var BASE_URL = "https://strapi.useinfluence.co";
+var BASE_URL = "https://api.useinfluence.co";
 
 var cookieCampaignData; 
 

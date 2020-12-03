@@ -1442,7 +1442,7 @@ if (typeof Influence === 'undefined') {
             }
             //notification view
 
-                var obj=  new MutationObserver(function(mutations, observer) {
+                 new MutationObserver(function(mutations, observer) {
 
                     var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_0');
                     var in_dom = document.body.contains(element);
@@ -1456,11 +1456,11 @@ if (typeof Influence === 'undefined') {
                     // }
     
                     attachNotifcationListener(element, self);
-                })
+                }).observe(element, {childList: true, subtree:true});
     
                 // var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_0');
     
-                obj.observe(element, {childList: true, subtree:true});
+                //obj.observe(element, {childList: true, subtree:true});
         
 
             // if(cookieCampaignData.isActive){

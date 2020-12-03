@@ -1402,15 +1402,15 @@ if (typeof Influence === 'undefined') {
                 });
             }
             //notification view
-            // new MutationObserver(function(mutations) {
-            //     var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_0');
-            //     var in_dom = document.body.contains(element);
-            //     if(in_dom){
-            //         var url = document.location;
-            //         self.track('notificationview', Util.merge(Env.getPageloadData(), { url: Util.parseUrl(url + '') }));
-            //     }
-            //     attachNotifcationListener(element, self);
-            // }).observe(document.body, {childList: true, subtree: true});
+            new MutationObserver(function(mutations) {
+                var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_0');
+                var in_dom = document.body.contains(element);
+                if(in_dom){
+                    var url = document.location;
+                    self.track('notificationview', Util.merge(Env.getPageloadData(), { url: Util.parseUrl(url + '') }));
+                }
+                attachNotifcationListener(element, self);
+            }).observe(document.body, {childList: true, subtree: true});
 
 
             // var observer = new MutationObserver(function(mutations, observer) {
@@ -1429,34 +1429,7 @@ if (typeof Influence === 'undefined') {
 
 
 
-            const targetNode = document.getElementById('FPqR2DbIqJeA2DbI7MM9_0');
-
-
-            console.log(targetNode, " ---------------------")
-
-            const config = { attributes: true, childList: true, subtree: true };
-
-            const callback = function(mutationsList, observer) {
-                for(const mutation of mutationsList) {
-
-                    console.log(mutation, " ===========================")
-                    if (mutation.type === 'childList') {
-                        console.log('A child node has been added or removed.');
-                    }
-                    else if (mutation.type === 'attributes') {
-                        console.log('The ' + mutation.attributeName + ' attribute was modified.');
-                    }
-                }
-            };
-
-            // Create an observer instance linked to the callback function
-            const observer = new MutationObserver(callback);
-
-            // Start observing the target node for configured mutations
-            observer.observe(targetNode, config);
-
-            // Later, you can stop observing
-            observer.disconnect();
+            
 
         };
 

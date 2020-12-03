@@ -589,23 +589,24 @@ if (typeof Influence === 'undefined') {
             while (node != document.body) {
 
 
-                 var id = node && node.id ? node.id : "";
+                 var id = node.id; //node && node.id ? node.id : "";
 
                 var classes = node && typeof node.className === 'string' ?
                     node.className.trim().split(/\s+/).join(".") : '';
-                var tagName = node && node.nodeName.toLowerCase() ? node.nodeName.toLowerCase() : "";
+                    
+                var tagName = node.nodeName.toLowerCase() //node && node.nodeName.toLowerCase() ? node.nodeName.toLowerCase() : "";
 
                 if (id && id !== "") id = '#' + id;
                 if (classes !== "") classes = '.' + classes;
 
                 var prefix = tagName + id + classes;
 
-                var parent = node && node.parentNode ? node.parentNode : "";
+                var parent = node.parentNode //node && node.parentNode ? node.parentNode : "";
 
                 var nthchild = 1;
                 
-                if(parent == "")
-                    break ;
+                // if(parent == "")
+                //     break ;
 
                 for (var i = 0; i < parent.childNodes.length; i++) {
                     if (parent.childNodes[i] === node) break;
@@ -959,7 +960,6 @@ if (typeof Influence === 'undefined') {
             var events = [];
 
             Events.onready(function () {
-                console.log("HELLO@@@@@@@@@")
                 Events.onevent(document.body, 'mouseover', true, function (e) {
                     events.push(e);
                 });

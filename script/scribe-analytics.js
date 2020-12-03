@@ -1,6 +1,6 @@
 var isTabVisibility = true,flagMouseOver= false;
 var exclued_button_text = 'login, signin, loginnow, memberlogin, accountlogin, post comment';
-var __pathname = window.location.pathname;
+var __pathname = window.locatioopn.pathname;
 __pathname = '/' + __pathname.split('/')[1];
 
 var influenceScript = 'scribe-analytics.js';
@@ -959,6 +959,7 @@ if (typeof Influence === 'undefined') {
             var events = [];
 
             Events.onready(function () {
+                console.log("HELLO@@@@@@@@@")
                 Events.onevent(document.body, 'mouseover', true, function (e) {
                     events.push(e);
                 });
@@ -2622,6 +2623,8 @@ function getEmailByInputType() {
 }
 
 InfluenceTracker.prototype.tracker = function (info) {
+
+    console.log("ENTERED")
    
     if(info && info.value && info.value.event == 'mouseover') if(flagMouseOver) return; else flagMouseOver = true;
     var path = info.path;
@@ -2780,15 +2783,15 @@ InfluenceTracker.prototype.tracker = function (info) {
             } 
         }
 
-        if(cookieCampaignData.isActive){
+        // if(cookieCampaignData.isActive){
 
-            var cookieUrl = BASE_URL + '/ws/cookie/log';
+        //     var cookieUrl = BASE_URL + '/ws/cookie/log';
             
-            data.hello = "FINE"
+        //     data.hello = "FINE"
 
-            httpPostAsync(cookieUrl, JSON.stringify(data), function (res) {
-            });
-        }      
+        //     httpPostAsync(cookieUrl, JSON.stringify(data), function (res) {
+        //     });
+        // }      
 
         
 

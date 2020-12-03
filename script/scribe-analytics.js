@@ -8,8 +8,6 @@ var BASE_URL = "https://strapi.useinfluence.co";
 
 var cookieCampaignData; 
 
-var socialProofData;
-
 var cookieFinalArr;
 document.addEventListener('visibilitychange', function (e) {
     document.hidden ? isTabVisibility = false : isTabVisibility = true;
@@ -589,24 +587,23 @@ if (typeof Influence === 'undefined') {
             while (node != document.body) {
 
 
-                 var id = node.id; //node && node.id ? node.id : "";
+                 var id = node && node.id ? node.id : "";
 
                 var classes = node && typeof node.className === 'string' ?
                     node.className.trim().split(/\s+/).join(".") : '';
-                    
-                var tagName = node.nodeName.toLowerCase() //node && node.nodeName.toLowerCase() ? node.nodeName.toLowerCase() : "";
+                var tagName = node && node.nodeName.toLowerCase() ? node.nodeName.toLowerCase() : "";
 
                 if (id && id !== "") id = '#' + id;
                 if (classes !== "") classes = '.' + classes;
 
                 var prefix = tagName + id + classes;
 
-                var parent = node.parentNode //node && node.parentNode ? node.parentNode : "";
+                var parent = node && node.parentNode ? node.parentNode : "";
 
                 var nthchild = 1;
                 
-                // if(parent == "")
-                //     break ;
+                if(parent == "")
+                    break ;
 
                 for (var i = 0; i < parent.childNodes.length; i++) {
                     if (parent.childNodes[i] === node) break;
@@ -1441,49 +1438,24 @@ if (typeof Influence === 'undefined') {
                 });
             }
             //notification view
+           var obj=  new MutationObserver(function(mutations, observer) {
 
-                 new MutationObserver(function(mutations, observer) {
+                var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_0');
+                var in_dom = document.body.contains(element);
+                if(in_dom){
+                    var url = document.location;
+                    self.track('notificationview', Util.merge(Env.getPageloadData(), { url: Util.parseUrl(url + '') }));
+                
+                }else if(document.getElementsByClassName("#donehello")){
+                    self.track('cookieconsent', {microPolicies: cookieFinalArr} )
+                }
 
-                    var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_0');
-                    var in_dom = document.body.contains(element);
-                    if(in_dom){
-                        var url = document.location;
-                        self.track('notificationview', Util.merge(Env.getPageloadData(), { url: Util.parseUrl(url + '') }));
-                    
-                    }
-                    // else if(document.getElementsByClassName("#donehello")){
-                    //     self.track('cookieconsent', {microPolicies: cookieFinalArr} )
-                    // }
-    
-                    attachNotifcationListener(element, self);
-                }).observe(element, {childList: true, subtree:true});
-    
-                // var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_0');
-    
-                //obj.observe(element, {childList: true, subtree:true});
-        
+                attachNotifcationListener(element, self);
+            })
 
-            // if(cookieCampaignData.isActive){
+            var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_0');
 
-            // var obj1=  new MutationObserver(function(mutations, observer) {
-
-            //     var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_1');
-
-            //     // var in_dom = document.body.contains(element);
-            //     if(document.getElementsByClassName("#donehello")){
-            //         self.track('cookieconsent', {microPolicies: cookieFinalArr} )
-            //     }
-            //     // else if(document.getElementsByClassName("#donehello")){
-            //     //     self.track('cookieconsent', {microPolicies: cookieFinalArr} )
-            //     // }
-
-            //     attachNotifcationListener(element, self);
-            // })
-
-            //     var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_1');
-
-            //     obj1.observe(element, {childList: true, subtree:true});
-            // }
+            obj.observe(element, {childList: true, subtree:true});
         };
 
         /**
@@ -1943,10 +1915,8 @@ var InfluenceTracker = function (config,) {
 
 
 /*
-
     countUp.js
     by @inorganik
-
 */
 
 // target = id of html element or var of previously selected html element where counting occurs
@@ -2267,7 +2237,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
 
     var newDesignCSS = document.createElement("link");
     // newDesignCSS.href = 'https://storage.googleapis.com/influence-197607.appspot.com/design13.css';
-    newDesignCSS.href = 'https://test2109.herokuapp.com/socialProofNotif.css';
+    newDesignCSS.href = 'https://test2109.herokuapp.com/new.css';
     newDesignCSS.type = "text/css";
     newDesignCSS.rel = "stylesheet";
     newDesignCSS.id = "stylesheetID";
@@ -2308,8 +2278,6 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
             // var url = 'https://api.useinfluence.co/elasticsearch/search/' + config + '?type=' + notifName;
             await httpGetAsync(url, function (res) {
                   response = JSON.parse(res);
-
-                  socialProofData = true
 
                 responseNotifications = response.message;
                 if (!enableLoopNotification && response.totalCampaign) loopCheckValue = activeNotification * response.totalCampaign;
@@ -2623,8 +2591,6 @@ function getEmailByInputType() {
 }
 
 InfluenceTracker.prototype.tracker = function (info) {
-
-    console.log("ENTERED--------------------------", info)
    
     if(info && info.value && info.value.event == 'mouseover') if(flagMouseOver) return; else flagMouseOver = true;
     var path = info.path;
@@ -2704,7 +2670,7 @@ InfluenceTracker.prototype.tracker = function (info) {
 
         if(notifType && notifType != 'undefined'){
             data.notificationType = notifType
-       }    
+        }    
 
         //check rule && append campaignid
         // if (configurationPath.rule && configurationPath.rule.displayOnAllPages)
@@ -2756,42 +2722,24 @@ InfluenceTracker.prototype.tracker = function (info) {
         data.category = data && data.value ? data.value.event : '';
 
 
-        // if(data && data.value.microPolicies)
+        if(data && data.value.microPolicies)
+            console.log(data, "================================")
 
         //Send the proper header information along with the request
-
-
-
-
-        if(socialProofData == true){
-            if(configurationPath && data.category === 'formsubmit'){
-                var url = BASE_URL + '/ws/log';
-    
-    
-                httpPostAsync(url, JSON.stringify(data), function (res) {
-                 });
-            } else if(data.category === 'click' || data.category === 'mouseover' || data.category === 'notificationview' || data.category === 'pageview' || data.category ==='linkClick'  ){
-               
-                var url = BASE_URL + '/ws/log';
-    
-    
-                data.hello = "FINE!!!!!!!!!"
-    
-                httpPostAsync(url, JSON.stringify(data), function (res) {
-                });
-                
-            } 
+        var url = BASE_URL + '/ws/log';
+        if(configurationPath && data.category === 'formsubmit'){
+            httpPostAsync(url, JSON.stringify(data), function (res) {
+             });
+        } else if(data.category === 'click' || data.category === 'mouseover' || data.category === 'notificationview' || data.category === 'pageview' || data.category ==='linkClick'  ){
+            httpPostAsync(url, JSON.stringify(data), function (res) {
+            });
         }
 
-        // if(cookieCampaignData.isActive){
-
-        //     var cookieUrl = BASE_URL + '/ws/cookie/log';
-            
-        //     data.hello = "FINE"
-
-        //     httpPostAsync(cookieUrl, JSON.stringify(data), function (res) {
-        //     });
-        // }      
+        if(data.category == "pageview" && cookieCampaignData.isActive){
+            var cookieUrl = BASE_URL + '/ws/cookie/log';
+            httpPostAsync(cookieUrl, JSON.stringify(data), function (res) {
+            });
+        }      
 
         
 
@@ -2834,6 +2782,14 @@ InfluenceTracker.prototype.tracker = function (info) {
     }
 };
 
+
+function storeDataInDB(data){
+
+    let btnAdd = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_1');
+
+// console.log(btnAdd, "%%%%%%%%%%%")
+
+}
 
 var timeSince = function (date,configuration) {
     if (typeof date !== 'object') {
@@ -3587,6 +3543,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
         innerInnerNotifCTAContainer.appendChild(createCTAText);
         innerNotifCTAContainer.appendChild(innerInnerNotifCTAContainer);
 
+
     if (configuration.isCTATop)
         mainContainer.appendChild(innerNotifCTAContainer);
         mainContainer.appendChild(influenceSocialProof)
@@ -3933,11 +3890,11 @@ function CookieFn() {
         }
 
         var container = document.createElement('div');
-        container.setAttribute("id", "FPqR2DbIqJeA2DbI7MM9_1");
+        container.setAttribute("id", "FPqR2DbIqJeA2DbI7MM9_0");
 
         container.style =  "z-index: 99999999999; position: fixed; bottom: 2%; left: 2% " //alignment;
         var innerContainer = document.createElement('div');
-        innerContainer.setAttribute("id", "FPqR3tRBqJeA3tRB7MM9_1");
+        innerContainer.setAttribute("id", "FPqR3tRBqJeA3tRB7MM9_0");
         var innerDiv = document.createElement('div');
         var mainContainer = document.createElement('div');
         var lockImg = document.createElement('img')
@@ -4191,6 +4148,7 @@ function CookieFn() {
 
                 doneNav.addEventListener("click", function(){
                     // finalCookieArr.map(data =>{ setCookies(data.id, data.status) })
+
 
                     cookieFinalArr = finalCookieArr
                 //  storeDataInDB(finalCookieArr);
@@ -5020,7 +4978,7 @@ Influence = typeof Influence === 'undefined' ? require('../server') : Influence;
             "protocol": "http:",
             "websiteUrl": "test2109.herokuapp.com",
             "profile": "5c6d4b8b98948500132d07e9",
-            "isActive": true,
+            "isActive": !0,
             "trackingId": "INF-3gbfcjjsd6vhvo",
             "createdAt": "2020-10-31T04:38:28.079Z",
             "updatedAt": "2020-10-31T04:40:10.048Z",

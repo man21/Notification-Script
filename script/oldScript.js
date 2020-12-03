@@ -1049,6 +1049,8 @@ if (typeof Influence === 'undefined') {
                 // Intercept clicks on any buttons:
                 Events.onevent(document.body, 'click', false, function (e) {
                     var target = e.target;
+
+                    console.log(target, "=======================")
                     var targetType = (target.type || '').toLowerCase();
                 
                 if (e && e.target && (e.target.innerText || e.target.defaultValue) && exclued_button_text.indexOf(e.target.innerText.toLowerCase().replace(/\s/g, "") || e.target.defaultValue.toLowerCase().replace(/\s/g, "")) !== -1) return;

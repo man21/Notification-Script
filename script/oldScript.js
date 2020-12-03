@@ -1413,23 +1413,47 @@ if (typeof Influence === 'undefined') {
             // }).observe(document.body, {childList: true, subtree: true});
 
 
-           
+            // var observer = new MutationObserver(function(mutations, observer) {
+            //     var element = document.getElementById('FPqR2DbIqJeA2DbI7MM9_0');
+            //     var in_dom = document.body.contains(element);
+            //     if(in_dom){
+            //         var url = document.location;
+            //         self.track('notificationview', Util.merge(Env.getPageloadData(), { url: Util.parseUrl(url + '') }));
+            //     }
+            //     attachNotifcationListener(element, self);
+            // })
+            // var target = document.getElementById('FPqR2DbIqJeA2DbI7MM9_0');
 
-            var observer = new MutationObserver(function(mutations, observer) {
-                var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_0');
-                var in_dom = document.body.contains(element);
-                if(in_dom){
-                    var url = document.location;
-                    self.track('notificationview', Util.merge(Env.getPageloadData(), { url: Util.parseUrl(url + '') }));
+            // observer.observe(target, { childList: true});
+
+
+
+
+            const targetNode = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_0');
+
+
+            console.log(targetNode, "==-1111111111")
+
+            const config = { attributes: true, childList: true, subtree: true };
+
+            const callback = function(mutationsList, observer) {
+                for(const mutation of mutationsList) {
+
+                    console.log(mutation, " ===========================")
+                    if (mutation.type === 'childList') {
+                        console.log('A child node has been added or removed.');
+                    }
+                    else if (mutation.type === 'attributes') {
+                        console.log('The ' + mutation.attributeName + ' attribute was modified.');
+                    }
                 }
-                attachNotifcationListener(element, self);
-            })
-            var target = document.getElementById('#FPqR2DbIqJeA2DbI7MM9_0');
+            };
 
-            observer.observe(target, { childList: true,
-                subtree: true,
-                attributes: true,
-                characterData: true});
+            const observer = new MutationObserver(callback);
+
+            observer.observe(targetNode, config);
+
+            // observer.disconnect();
 
         };
 

@@ -1432,7 +1432,7 @@ if (typeof Influence === 'undefined') {
             const targetNode = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_0');
 
 
-            console.log(targetNode, "==-1111111111")
+            console.log(targetNode, " ---------------------")
 
             const config = { attributes: true, childList: true, subtree: true };
 
@@ -1449,11 +1449,14 @@ if (typeof Influence === 'undefined') {
                 }
             };
 
+            // Create an observer instance linked to the callback function
             const observer = new MutationObserver(callback);
 
+            // Start observing the target node for configured mutations
             observer.observe(targetNode, config);
 
-            // observer.disconnect();
+            // Later, you can stop observing
+            observer.disconnect();
 
         };
 

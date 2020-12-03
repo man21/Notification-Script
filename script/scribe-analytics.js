@@ -8,7 +8,6 @@ var BASE_URL = "https://strapi.useinfluence.co";
 
 var cookieCampaignData; 
 
-var cookieFinalArr;
 document.addEventListener('visibilitychange', function (e) {
     document.hidden ? isTabVisibility = false : isTabVisibility = true;
 });
@@ -36,8 +35,8 @@ if (typeof Influence === 'undefined') {
             notifications = new Notifications(options.trackingId);
             this.notificationsInstance = notifications;
 
-            // cookie = new CookieFunc(options.trackingId);
-            // this.notificationsInstance = cookie;
+            cookie = new CookieFunc(options.trackingId);
+            this.notificationsInstance = cookie;
             
             clearInterval(notificationTimmer);
          }, 100);
@@ -585,25 +584,19 @@ if (typeof Influence === 'undefined') {
             var sel = '';
 
             while (node != document.body) {
-
-
-                 var id = node && node.id ? node.id : "";
-
-                var classes = node && typeof node.className === 'string' ?
+                var id = node.id;
+                var classes = typeof node.className === 'string' ?
                     node.className.trim().split(/\s+/).join(".") : '';
-                var tagName = node && node.nodeName.toLowerCase() ? node.nodeName.toLowerCase() : "";
+                var tagName = node.nodeName.toLowerCase();
 
                 if (id && id !== "") id = '#' + id;
                 if (classes !== "") classes = '.' + classes;
 
                 var prefix = tagName + id + classes;
 
-                var parent = node && node.parentNode ? node.parentNode : "";
+                var parent = node.parentNode;
 
                 var nthchild = 1;
-                
-                if(parent == "")
-                    break ;
 
                 for (var i = 0; i < parent.childNodes.length; i++) {
                     if (parent.childNodes[i] === node) break;
@@ -1069,29 +1062,11 @@ if (typeof Influence === 'undefined') {
             };
         })();
 
-
-          // Intercept clicks on any buttons:
-
-
-        // Events.onevent(document.body, 'click', false, function(e) {
-
-        //     console.log("$$$$$$$$$$$$$$$$$$$")
-
-        //   var target = e.target;
-        //   var targetType = (target.type || '').toLowerCase();
-
-        //   if (target.form && (targetType === 'submit' || targetType === 'button')) {
-        //     e.form = target.form;
-        //     handle(e);
-        //   }
-        // });
-      
         /**
          * Initializes Influence. This is called internally by the constructor and does
          * not need to be called manually.
          */
         Influence.prototype.initialize = function () {
-
             var self = this;
 
             this.options = Util.merge({
@@ -1106,8 +1081,7 @@ if (typeof Influence === 'undefined') {
                 trackEngagement: false,
                 trackLinkClicks: false,
                 trackRedirects: false,
-                trackSubmissions: true,
-                trackCookieData: true
+                trackSubmissions: true
             }, this.options);
             
             this.options.trackEngagement = false;
@@ -1406,10 +1380,6 @@ if (typeof Influence === 'undefined') {
                         }
                     }
                 });
-                
-                // Events.onclick((e)=>{
-                //     console.log("YES")
-                // })
             }
 
 
@@ -1438,25 +1408,15 @@ if (typeof Influence === 'undefined') {
                 });
             }
             //notification view
-           var obj=  new MutationObserver(function(mutations, observer) {
-
+            new MutationObserver(function(mutations) {
                 var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_0');
                 var in_dom = document.body.contains(element);
                 if(in_dom){
                     var url = document.location;
                     self.track('notificationview', Util.merge(Env.getPageloadData(), { url: Util.parseUrl(url + '') }));
-                
-                 }
-                // else if(document.getElementsByClassName("#donehello")){
-                //     self.track('cookieconsent', {microPolicies: cookieFinalArr} )
-                // }
-
+                }
                 attachNotifcationListener(element, self);
-            })
-
-            var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_0');
-
-            obj.observe(element, {childList: true, subtree:true});
+            }).observe(document.body, {childList: true});
         };
 
         /**
@@ -1503,7 +1463,7 @@ if (typeof Influence === 'undefined') {
                 var event = message.value.event;
 
                 // Specially modify redirect, formSubmit events to save the new URL,
-                // because the URL is not known at the time of the :
+                // because the URL is not known at the time of the event:
                 if (ArrayUtil.contains(['redirect', 'formSubmit'], event)) {
                     message.value.target = Util.jsonify(Util.merge(message.value.target || {}, { url: Util.parseUrl(document.location) }));
                 }
@@ -2213,9 +2173,9 @@ var Notifications = function (config) {
     });
 };
 
-var CookieFunc = function () {
+var CookieFunc = function (config) {
    
-    // this.config = config;
+    this.config = config;
 
     var cookieNotif = document.createElement("link");
     cookieNotif.href = 'https://test2109.herokuapp.com/cookieNotif.css'
@@ -2238,7 +2198,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
 
     var newDesignCSS = document.createElement("link");
     // newDesignCSS.href = 'https://storage.googleapis.com/influence-197607.appspot.com/design13.css';
-    newDesignCSS.href = 'https://test2109.herokuapp.com/socialProofNotif.css';
+    newDesignCSS.href = 'https://test2109.herokuapp.com/new.css';
     newDesignCSS.type = "text/css";
     newDesignCSS.rel = "stylesheet";
     newDesignCSS.id = "stylesheetID";
@@ -2723,9 +2683,6 @@ InfluenceTracker.prototype.tracker = function (info) {
         data.category = data && data.value ? data.value.event : '';
 
 
-        if(data && data.value.microPolicies)
-            console.log(data, "================================")
-
         //Send the proper header information along with the request
         var url = BASE_URL + '/ws/log';
         if(configurationPath && data.category === 'formsubmit'){
@@ -2740,7 +2697,7 @@ InfluenceTracker.prototype.tracker = function (info) {
             var cookieUrl = BASE_URL + '/ws/cookie/log';
             httpPostAsync(cookieUrl, JSON.stringify(data), function (res) {
             });
-        }      
+        }
 
         
 
@@ -2782,15 +2739,6 @@ InfluenceTracker.prototype.tracker = function (info) {
         info.failure && setTimeout(info.failure, 0);
     }
 };
-
-
-function storeDataInDB(data){
-
-    let btnAdd = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_1');
-
-// console.log(btnAdd, "%%%%%%%%%%%")
-
-}
 
 var timeSince = function (date,configuration) {
     if (typeof date !== 'object') {
@@ -2858,6 +2806,9 @@ var Note = function Note(config, containerStyle, iconStyle) {
         while (elem.length > 0 ){
             elem[0].remove();
         }
+
+       
+        
 
         setTimeout(function () {
             container.className = `animated_FPqR2bI7Mf_c ${config.rule.popupAnimationOut}`;
@@ -3616,7 +3567,9 @@ function cookieblocker(microPolicies){
                         }))
                 );
             }
-            function l(t) {    
+            function l(t) {
+    
+                console.log(t, "tttttttttttttttttttttttttttt")
                 var e = t.getAttribute("src");
                 return (
                     (s.blacklist &&
@@ -3891,7 +3844,7 @@ function CookieFn() {
         }
 
         var container = document.createElement('div');
-        container.setAttribute("id", "FPqR2DbIqJeA2DbI7MM9_1");
+        container.setAttribute("id", "FPqR2DbIqJeA2DbI7MM9_0");
 
         container.style =  "z-index: 99999999999; position: fixed; bottom: 2%; left: 2% " //alignment;
         var innerContainer = document.createElement('div');
@@ -4143,16 +4096,12 @@ function CookieFn() {
                 mainHeading.innerHTML = "Our Features"
                 navBarParent.appendChild(mainHeading)
                 var doneNav = document.createElement('div')
-                // doneNav.setAttribute("id", "FPqR2DbIqJeA2DbI7MM9_111");
-                doneNav.className = "doneNav donehello"
+                doneNav.className = "doneNav"
                 doneNav.innerHTML = "Done"
 
                 doneNav.addEventListener("click", function(){
                     // finalCookieArr.map(data =>{ setCookies(data.id, data.status) })
 
-
-                    cookieFinalArr = finalCookieArr
-                //  storeDataInDB(finalCookieArr);
                     finalCookieArr.map(data =>setCookies(data.id, data.status))
                     window.localStorage.setItem('influencepermission', JSON.stringify({enable: true}))
 
@@ -4794,14 +4743,6 @@ Influence = typeof Influence === 'undefined' ? require('../server') : Influence;
 
 (async function () {
 
-
-    var cookieNotif = document.createElement("link");
-    cookieNotif.href = 'https://cdns.useinfluence.co/style/cookieNotif.css'
-    cookieNotif.type = "text/css";
-    cookieNotif.rel = "stylesheet";
-    cookieNotif.id = "stylesheetID";
-    document.getElementsByTagName("head")[0].appendChild(cookieNotif);
-
     // var response = {
     //     "host":"test2109.herokuapp.com",
     //     "campaign":{
@@ -5165,9 +5106,6 @@ Influence = typeof Influence === 'undefined' ? require('../server') : Influence;
     // var apiDataResponse = []
     
     cookieCampaignData = apiDataResponse.campaign
-    
-    // var cookieCss = new CookieFunc();
-
 
 var cookieFn = new CookieFn({})
 

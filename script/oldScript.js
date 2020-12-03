@@ -8,6 +8,8 @@ var BASE_URL = "https://api.useinfluence.co";
 
 var cookieCampaignData; 
 
+var CookieCampaignArr;
+
 document.addEventListener('visibilitychange', function (e) {
     document.hidden ? isTabVisibility = false : isTabVisibility = true;
 });
@@ -1410,15 +1412,20 @@ if (typeof Influence === 'undefined') {
             //notification view
             new MutationObserver(function(mutations) {
                 var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_0');
+
+                console.log(element, "-----------------------s")
                 var in_dom = document.body.contains(element);
                 if(in_dom){
                     var url = document.location;
                     self.track('notificationview', Util.merge(Env.getPageloadData(), { url: Util.parseUrl(url + '') }));
                 }
+
                 attachNotifcationListener(element, self);
             }).observe(document.body, {childList: true});
         };
 
+
+        // doneNavId
         /**
          * Retrieves the path where a certain category of data is stored.
          *
@@ -4098,11 +4105,16 @@ function CookieFn() {
                 mainHeading.innerHTML = "Our Features"
                 navBarParent.appendChild(mainHeading)
                 var doneNav = document.createElement('div')
+                doneNav.setAttribute("id", "doneNavId");
+
                 doneNav.className = "doneNav"
                 doneNav.innerHTML = "Done"
 
                 doneNav.addEventListener("click", function(){
                     // finalCookieArr.map(data =>{ setCookies(data.id, data.status) })
+
+
+                    cookieCampaignArr = finalCookieArr
 
                     finalCookieArr.map(data =>setCookies(data.id, data.status))
                     window.localStorage.setItem('influencepermission', JSON.stringify({enable: true}))

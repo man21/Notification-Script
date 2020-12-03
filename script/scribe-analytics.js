@@ -1458,7 +1458,7 @@ if (typeof Influence === 'undefined') {
                     attachNotifcationListener(element, self);
                 })
     
-                var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_0');
+                // var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_0');
     
                 obj.observe(element, {childList: true, subtree:true});
         

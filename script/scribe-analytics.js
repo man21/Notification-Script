@@ -3757,962 +3757,962 @@ function cookieblocker(microPolicies){
 }
 
 
-function CookieFn() {
+// function CookieFn() {
 
-    var numAnim;
+//     var numAnim;
    
-    function displayNotification(container, config) {
+//     function displayNotification(container, config) {
 
 
-        let className = `animated_FPqR2bI7Mf_c `; //${config.rule.popupAnimationIn}
-        container.className =  className;
-        const elem = document.getElementsByClassName(className);
-        while (elem.length > 0 ){
-            elem[0].remove();
-        }
-        // if (!numAnim.error) {
-        //     numAnim.start();
-        // } else {
-        //     console.error(numAnim.error);
-        // }
+//         let className = `animated_FPqR2bI7Mf_c `; //${config.rule.popupAnimationIn}
+//         container.className =  className;
+//         const elem = document.getElementsByClassName(className);
+//         while (elem.length > 0 ){
+//             elem[0].remove();
+//         }
+//         // if (!numAnim.error) {
+//         //     numAnim.start();
+//         // } else {
+//         //     console.error(numAnim.error);
+//         // }
 
-        // setTimeout(function () {
-        //     container.className = `animated_FPqR2bI7Mf_c `; //${config.rule.popupAnimationOut}
-        // }, ((1) * 1000) + 3000);
+//         // setTimeout(function () {
+//         //     container.className = `animated_FPqR2bI7Mf_c `; //${config.rule.popupAnimationOut}
+//         // }, ((1) * 1000) + 3000);
 
-        // setTimeout(function () {
-        //     if(container && container.parentNode)
-        //         container.parentNode.removeChild(container)
-        // }, ((1) * 1000 + 4000));
+//         // setTimeout(function () {
+//         //     if(container && container.parentNode)
+//         //         container.parentNode.removeChild(container)
+//         // }, ((1) * 1000 + 4000));
 
 
-        // document.body.appendChild(container);
+//         // document.body.appendChild(container);
 
-        document.documentElement.appendChild(container);
+//         document.documentElement.appendChild(container);
 
-        flagMouseOver = false;
-    };
+//         flagMouseOver = false;
+//     };
 
-  async function notificationDisplay(configuration, microPolicies) {
+//   async function notificationDisplay(configuration, microPolicies) {
 
-    var cookieData ;
+//     var cookieData ;
 
-    var finalCookieArr= [];
+//     var finalCookieArr= [];
     
-     cookieData = getCookies();
+//      cookieData = getCookies();
     
-    microPolicies.map(policy =>{
+//     microPolicies.map(policy =>{
 
-        if(cookieData.length>0){
-            cookieData.map(data=>{
-                if(data.name == policy._id){
-                    finalCookieArr.push({id: data.name, status: data.key})
-                } else if(policy.essentialPolicy){
-                    finalCookieArr.push({id: policy._id, status: true})
-                }else{
-                    finalCookieArr.push({id: policy._id, status: false})
-                }
-            })
-         }else{
-            if(policy.essentialPolicy){
-                finalCookieArr.push({id: policy._id, status: true})
-            }else{
-                finalCookieArr.push({id: policy._id, status: false})
-            }
-         }
+//         if(cookieData.length>0){
+//             cookieData.map(data=>{
+//                 if(data.name == policy._id){
+//                     finalCookieArr.push({id: data.name, status: data.key})
+//                 } else if(policy.essentialPolicy){
+//                     finalCookieArr.push({id: policy._id, status: true})
+//                 }else{
+//                     finalCookieArr.push({id: policy._id, status: false})
+//                 }
+//             })
+//          }else{
+//             if(policy.essentialPolicy){
+//                 finalCookieArr.push({id: policy._id, status: true})
+//             }else{
+//                 finalCookieArr.push({id: policy._id, status: false})
+//             }
+//          }
 
-            // if(policy.essentialPolicy){
-            //     finalCookieArr.push({id: policy._id, status: true})
-            // }else{
-            //     finalCookieArr.push({id: policy._id, status: false})
+//             // if(policy.essentialPolicy){
+//             //     finalCookieArr.push({id: policy._id, status: true})
+//             // }else{
+//             //     finalCookieArr.push({id: policy._id, status: false})
 
-            // }
-        })
+//             // }
+//         })
 
 
 
-        var cookieIcon = document.createElement('img')
-        //cookieIcon.src  = 'lock.png' 
-        cookieIcon.src  = 'https://test2109.herokuapp.com/1-01.svg' 
-        cookieIcon.style="bottom:0;left:0;width:25px;height:25px;border-radius: 50%; cursor: pointer"
-        cookieIcon.onclick = ()=>{
-            // panelCall(0,0)
-            container.appendChild(innerContainer)
+//         var cookieIcon = document.createElement('img')
+//         //cookieIcon.src  = 'lock.png' 
+//         cookieIcon.src  = 'https://test2109.herokuapp.com/1-01.svg' 
+//         cookieIcon.style="bottom:0;left:0;width:25px;height:25px;border-radius: 50%; cursor: pointer"
+//         cookieIcon.onclick = ()=>{
+//             // panelCall(0,0)
+//             container.appendChild(innerContainer)
 
-            container.removeChild(cookieIcon)
+//             container.removeChild(cookieIcon)
                         
-        }
+//         }
 
-        var container = document.createElement('div');
-        container.setAttribute("id", "FPqR2DbIqJeA2DbI7MM9_0");
+//         var container = document.createElement('div');
+//         container.setAttribute("id", "FPqR2DbIqJeA2DbI7MM9_0");
 
-        container.style =  "z-index: 99999999999; position: fixed; bottom: 2%; left: 2% " //alignment;
-        var innerContainer = document.createElement('div');
-        innerContainer.setAttribute("id", "FPqR3tRBqJeA3tRB7MM9_0");
-        var innerDiv = document.createElement('div');
-        var mainContainer = document.createElement('div');
-        var lockImg = document.createElement('img')
-        // lockImg.src  = 'lock.png' 
-        lockImg.src  = 'https://test2109.herokuapp.com/1-01.svg' 
-        lockImg.style="bottom:0;left:0;width:55px;height:55px;border-radius: 50%; transform: rotate(-78deg); cursor: pointer"
-        lockImg.onclick = ()=>{
-            panelCall(0,0)
+//         container.style =  "z-index: 99999999999; position: fixed; bottom: 2%; left: 2% " //alignment;
+//         var innerContainer = document.createElement('div');
+//         innerContainer.setAttribute("id", "FPqR3tRBqJeA3tRB7MM9_0");
+//         var innerDiv = document.createElement('div');
+//         var mainContainer = document.createElement('div');
+//         var lockImg = document.createElement('img')
+//         // lockImg.src  = 'lock.png' 
+//         lockImg.src  = 'https://test2109.herokuapp.com/1-01.svg' 
+//         lockImg.style="bottom:0;left:0;width:55px;height:55px;border-radius: 50%; transform: rotate(-78deg); cursor: pointer"
+//         lockImg.onclick = ()=>{
+//             panelCall(0,0)
             
-        }
+//         }
         
-        function Parent1(activePanel,sourcePanel){
+//         function Parent1(activePanel,sourcePanel){
     
-            cookieData = getCookies();
+//             cookieData = getCookies();
 
-            var p1Parent = document.createElement('div');
+//             var p1Parent = document.createElement('div');
         
-                p1Parent.className =
-                    activePanel === 0 ? `showPanel mainBoxStyle` : 'hidePanel1';
+//                 p1Parent.className =
+//                     activePanel === 0 ? `showPanel mainBoxStyle` : 'hidePanel1';
         
-                var p1Child = document.createElement('div');
-                p1Child.className = "childContainer";
+//                 var p1Child = document.createElement('div');
+//                 p1Child.className = "childContainer";
         
-                var uLine = document.createElement('p');
-                uLine.className = "upperLine";
-                uLine.style.marginBottom = "0px";
+//                 var uLine = document.createElement('p');
+//                 uLine.className = "upperLine";
+//                 uLine.style.marginBottom = "0px";
         
-                if (activePanel === 0 && sourcePanel === 1) {
-                    var uLinenode = document.createTextNode("Save Preferences");
-                }
-                else {
-                    var uLinenode = document.createTextNode("Can we store Cookie?");
-                }
-                uLine.appendChild(uLinenode);
-                p1Child.appendChild(uLine);
-                /*Inf*/
-                var aLine = document.createElement('a');
-                aLine.style.cursor = "pointer";
-                aLine.className = "upperLine";
-                var aLinenode = document.createTextNode("Inf");
-                aLine.appendChild(aLinenode);
-                p1Child.appendChild(aLine);
-                p1Parent.appendChild(p1Child);
+//                 if (activePanel === 0 && sourcePanel === 1) {
+//                     var uLinenode = document.createTextNode("Save Preferences");
+//                 }
+//                 else {
+//                     var uLinenode = document.createTextNode("Can we store Cookie?");
+//                 }
+//                 uLine.appendChild(uLinenode);
+//                 p1Child.appendChild(uLine);
+//                 /*Inf*/
+//                 var aLine = document.createElement('a');
+//                 aLine.style.cursor = "pointer";
+//                 aLine.className = "upperLine";
+//                 var aLinenode = document.createTextNode("Inf");
+//                 aLine.appendChild(aLinenode);
+//                 p1Child.appendChild(aLine);
+//                 p1Parent.appendChild(p1Child);
         
-                var mLine = document.createElement('p');
-                mLine.className = "middleLine";
+//                 var mLine = document.createElement('p');
+//                 mLine.className = "middleLine";
         
-                if (activePanel === 0 && sourcePanel === 1) {
+//                 if (activePanel === 0 && sourcePanel === 1) {
 
-                    var dummy = []
+//                     var dummy = []
 
                    
-                    cookieData.map(data=>{
-                            if(data.key){
-                             var dataa =   microPolicies.find(o => o._id === data.name);
-                                dummy.push(dataa.name)
-                            } 
-                    })
-                    var mLinenode = document.createTextNode( dummy.length >0 ?  "You'll be accepting: "+ dummy.join(",") : "You havn't select anything");
+//                     cookieData.map(data=>{
+//                             if(data.key){
+//                              var dataa =   microPolicies.find(o => o._id === data.name);
+//                                 dummy.push(dataa.name)
+//                             } 
+//                     })
+//                     var mLinenode = document.createTextNode( dummy.length >0 ?  "You'll be accepting: "+ dummy.join(",") : "You havn't select anything");
                     
         
-                }
-                else {
+//                 }
+//                 else {
 
-                    var allProvider =[]
+//                     var allProvider =[]
 
-                    microPolicies.map(policy => {
-                        policy.provider.map(providerName =>{
+//                     microPolicies.map(policy => {
+//                         policy.provider.map(providerName =>{
 
-                           allProvider.push(providerName.provider)
-                        })
+//                            allProvider.push(providerName.provider)
+//                         })
 
-                    })
-                    var mLinenode = document.createTextNode("These will be used to "+ allProvider.join(', ') );
-                }
+//                     })
+//                     var mLinenode = document.createTextNode("These will be used to "+ allProvider.join(', ') );
+//                 }
         
-                mLine.appendChild(mLinenode);
-                p1Parent.appendChild(mLine);
-                //footer
-                var p1Footer = document.createElement('div');
-                p1Footer.style = "display:flex;justify-content:space-between;margin-top:36px;"
+//                 mLine.appendChild(mLinenode);
+//                 p1Parent.appendChild(mLine);
+//                 //footer
+//                 var p1Footer = document.createElement('div');
+//                 p1Footer.style = "display:flex;justify-content:space-between;margin-top:36px;"
         
-                var customizeB = document.createElement('button');
-                customizeB.className = "generalBtnStyle leftBtn";
-                customizeB.onclick = ()=>{
-                    panelCall(1,0)
+//                 var customizeB = document.createElement('button');
+//                 customizeB.className = "generalBtnStyle leftBtn";
+//                 customizeB.onclick = ()=>{
+//                     panelCall(1,0)
 
-                    container.appendChild(innerContainer)
+//                     container.appendChild(innerContainer)
 
-                    lockImg.src  = 'https://test2109.herokuapp.com/1-02.svg'
+//                     lockImg.src  = 'https://test2109.herokuapp.com/1-02.svg'
 
-                    if(container.contains(cookieIcon)) {
-                        container.removeChild(cookieIcon)
-                    }
+//                     if(container.contains(cookieIcon)) {
+//                         container.removeChild(cookieIcon)
+//                     }
                   
-                }
+//                 }
                 
-                if (activePanel === 0 && sourcePanel === 1) {
-                    customizeB.innerHTML = "No, Customize";
-                }
-                else {
-                    customizeB.innerHTML = "Customize";
+//                 if (activePanel === 0 && sourcePanel === 1) {
+//                     customizeB.innerHTML = "No, Customize";
+//                 }
+//                 else {
+//                     customizeB.innerHTML = "Customize";
         
-                }
+//                 }
         
         
-                p1Footer.appendChild(customizeB)
-                var rightdiv = document.createElement('div');
-                rightdiv.style = "display:flex";
+//                 p1Footer.appendChild(customizeB)
+//                 var rightdiv = document.createElement('div');
+//                 rightdiv.style = "display:flex";
         
-                var NoB = document.createElement('button');
-                NoB.className = "generalBtnStyle filledBtn";
-                NoB.style.cssText = "min-width: unset; padding: 0px 8px;"
-                //NoB.innerHTML = "No";
-                NoB.innerHTML = "Allow Selected";
-                NoB.onclick = () =>{
+//                 var NoB = document.createElement('button');
+//                 NoB.className = "generalBtnStyle filledBtn";
+//                 NoB.style.cssText = "min-width: unset; padding: 0px 8px;"
+//                 //NoB.innerHTML = "No";
+//                 NoB.innerHTML = "Allow Selected";
+//                 NoB.onclick = () =>{
 
-                    finalCookieArr.map(data =>setCookies(data.id, data.status))
+//                     finalCookieArr.map(data =>setCookies(data.id, data.status))
                     
-                    // window.localStorage.setItem('influencepermission',`{enable: false}`)
-                    window.localStorage.setItem('influencepermission', JSON.stringify({enable: false}))
-                    // while(mainContainer.hasChildNodes()) {
-                    //     mainContainer.removeChild(mainContainer.childNodes[0]);
+//                     // window.localStorage.setItem('influencepermission',`{enable: false}`)
+//                     window.localStorage.setItem('influencepermission', JSON.stringify({enable: false}))
+//                     // while(mainContainer.hasChildNodes()) {
+//                     //     mainContainer.removeChild(mainContainer.childNodes[0]);
 
-                    //     // container.removeChild(container.childNodes[0]);
-                    //     // container.appendChild(cookieIcon)
-                    //   }
-                    container.removeChild(container.childNodes[0]);
+//                     //     // container.removeChild(container.childNodes[0]);
+//                     //     // container.appendChild(cookieIcon)
+//                     //   }
+//                     container.removeChild(container.childNodes[0]);
 
-                    container.appendChild(cookieIcon)
+//                     container.appendChild(cookieIcon)
                     
-                 }
+//                  }
 
-                var YesB = document.createElement('button');
-                YesB.className = "generalBtnStyle filledBtn";
-                YesB.style.cssText = "min-width: unset; padding: 0px 8px;"
-                //YesB.innerHTML = "Yes";
-                YesB.innerHTML = "Accept All";
-                YesB.onclick = () =>{
-                    // microPolicies.map(policy =>{
+//                 var YesB = document.createElement('button');
+//                 YesB.className = "generalBtnStyle filledBtn";
+//                 YesB.style.cssText = "min-width: unset; padding: 0px 8px;"
+//                 //YesB.innerHTML = "Yes";
+//                 YesB.innerHTML = "Accept All";
+//                 YesB.onclick = () =>{
+//                     // microPolicies.map(policy =>{
 
-                    //     if(policy.essentialPolicy){
-                    //         finalCookieArr.push({id: policy._id, status: false})
-                    //     }else{
-                    //         finalCookieArr.push({id: policy._id, status: false})
+//                     //     if(policy.essentialPolicy){
+//                     //         finalCookieArr.push({id: policy._id, status: false})
+//                     //     }else{
+//                     //         finalCookieArr.push({id: policy._id, status: false})
                 
-                    //     }
-                    // })
+//                     //     }
+//                     // })
 
-                    //finalCookieArr.map(data =>setCookies(data.id, data.status))
-                    finalCookieArr.map(data =>setCookies(data.id, true))
+//                     //finalCookieArr.map(data =>setCookies(data.id, data.status))
+//                     finalCookieArr.map(data =>setCookies(data.id, true))
 
 
-                // window.localStorage.setItem('influencepermission',`{enable:true}`)
-                window.localStorage.setItem('influencepermission', JSON.stringify({enable: true}))
+//                 // window.localStorage.setItem('influencepermission',`{enable:true}`)
+//                 window.localStorage.setItem('influencepermission', JSON.stringify({enable: true}))
 
-                // while(mainContainer.hasChildNodes()) {
-                //     mainContainer.removeChild(mainContainer.childNodes[0]);
+//                 // while(mainContainer.hasChildNodes()) {
+//                 //     mainContainer.removeChild(mainContainer.childNodes[0]);
 
-                //     // container.removeChild(container.childNodes[0]);
+//                 //     // container.removeChild(container.childNodes[0]);
 
-                //   }
+//                 //   }
 
             
-                container.removeChild(container.childNodes[0]);
+//                 container.removeChild(container.childNodes[0]);
 
-                container.appendChild(cookieIcon)
+//                 container.appendChild(cookieIcon)
 
-                }
+//                 }
         
-                var ThatsOkayB = document.createElement('button');
-                ThatsOkayB.className = "generalBtnStyle filledBtn";
-                ThatsOkayB.innerHTML = "That's Okay";
-                ThatsOkayB.onclick = ()=>{
+//                 var ThatsOkayB = document.createElement('button');
+//                 ThatsOkayB.className = "generalBtnStyle filledBtn";
+//                 ThatsOkayB.innerHTML = "That's Okay";
+//                 ThatsOkayB.onclick = ()=>{
                 
-                    // while(mainContainer.hasChildNodes()) {
-                    //     mainContainer.removeChild(mainContainer.childNodes[0]);
-                    //   }
+//                     // while(mainContainer.hasChildNodes()) {
+//                     //     mainContainer.removeChild(mainContainer.childNodes[0]);
+//                     //   }
 
-                    container.removeChild(container.childNodes[0]);
+//                     container.removeChild(container.childNodes[0]);
 
-                    container.appendChild(cookieIcon)
+//                     container.appendChild(cookieIcon)
                   
-                }
-                if (activePanel === 0 && sourcePanel === 1) {
-                    rightdiv.appendChild(ThatsOkayB)
+//                 }
+//                 if (activePanel === 0 && sourcePanel === 1) {
+//                     rightdiv.appendChild(ThatsOkayB)
                     
-                }
-                else {
-                    rightdiv.appendChild(YesB)
-                    rightdiv.appendChild(NoB)
-                }
-                p1Footer.appendChild(rightdiv)
-                p1Parent.appendChild(p1Footer);
-                //    var element = document.getElementById("div1");
+//                 }
+//                 else {
+//                     rightdiv.appendChild(YesB)
+//                     rightdiv.appendChild(NoB)
+//                 }
+//                 p1Footer.appendChild(rightdiv)
+//                 p1Parent.appendChild(p1Footer);
+//                 //    var element = document.getElementById("div1");
           
-        //  element.appendChild(p1Parent)
-        while(mainContainer.hasChildNodes()) {
-            mainContainer.removeChild(mainContainer.childNodes[0]);
-          }
-         mainContainer.appendChild(p1Parent);  
+//         //  element.appendChild(p1Parent)
+//         while(mainContainer.hasChildNodes()) {
+//             mainContainer.removeChild(mainContainer.childNodes[0]);
+//           }
+//          mainContainer.appendChild(p1Parent);  
         
           
-        }
+//         }
         
-        function Parent2(activePanel,sourcePanel){
+//         function Parent2(activePanel,sourcePanel){
 
-             cookieData = getCookies();
+//              cookieData = getCookies();
           
-                var p2Parent = document.createElement('div');
+//                 var p2Parent = document.createElement('div');
         
-                p2Parent.className =
-                    activePanel === 1 ? `showPanel mainBoxStyle2` : 'hidePanel1';
+//                 p2Parent.className =
+//                     activePanel === 1 ? `showPanel mainBoxStyle2` : 'hidePanel1';
         
-                var navBarParent = document.createElement('div')
-                navBarParent.className = "navBarParent"
-                var backNav = document.createElement("div");
-                backNav.className = "backNav"
-                backNav.innerHTML = `<svg
-                 width="16"
-                 height="16"
-                 viewBox="0 0 16 16"
-                 fill="none"
-                 xmlns="http://www.w3.org/2000/svg"
-               >
-                 <rect
-                   width="1.33333"
-                   height="9.33333"
-                   rx="0.666667"
-                   transform="matrix(0 -1 -1 0 12.6667 8.6665)"
-                   fill="#979797"
-                 ></rect>
-                 <path
-                   d="M8.47132 11.5284C8.73167 11.7888 8.73167 12.2109 8.47132 12.4712C8.21097 12.7316 7.78886 12.7316 7.52851 12.4712L3.52851 8.47124C3.27613 8.21886 3.2673 7.81246 3.50848 7.54935L7.17515 3.54935C7.42394 3.27794 7.84566 3.25961 8.11707 3.5084C8.38848 3.7572 8.40682 4.17891 8.15802 4.45032L4.92268 7.97979L8.47132 11.5284Z"
-                   fill="currentColor"
-                 ></path>
-               </svg> Back`
-                navBarParent.appendChild(backNav)
-                backNav.addEventListener("click",()=>{
-                  p2Parent.className = "hidePanel1"
-                    panelCall(0,1)
-                })
-                var mainHeading = document.createElement('h1')
-                mainHeading.className = "mainHeading"
-                mainHeading.innerHTML = "Our Features"
-                navBarParent.appendChild(mainHeading)
-                var doneNav = document.createElement('div')
-                doneNav.className = "doneNav"
-                doneNav.innerHTML = "Done"
+//                 var navBarParent = document.createElement('div')
+//                 navBarParent.className = "navBarParent"
+//                 var backNav = document.createElement("div");
+//                 backNav.className = "backNav"
+//                 backNav.innerHTML = `<svg
+//                  width="16"
+//                  height="16"
+//                  viewBox="0 0 16 16"
+//                  fill="none"
+//                  xmlns="http://www.w3.org/2000/svg"
+//                >
+//                  <rect
+//                    width="1.33333"
+//                    height="9.33333"
+//                    rx="0.666667"
+//                    transform="matrix(0 -1 -1 0 12.6667 8.6665)"
+//                    fill="#979797"
+//                  ></rect>
+//                  <path
+//                    d="M8.47132 11.5284C8.73167 11.7888 8.73167 12.2109 8.47132 12.4712C8.21097 12.7316 7.78886 12.7316 7.52851 12.4712L3.52851 8.47124C3.27613 8.21886 3.2673 7.81246 3.50848 7.54935L7.17515 3.54935C7.42394 3.27794 7.84566 3.25961 8.11707 3.5084C8.38848 3.7572 8.40682 4.17891 8.15802 4.45032L4.92268 7.97979L8.47132 11.5284Z"
+//                    fill="currentColor"
+//                  ></path>
+//                </svg> Back`
+//                 navBarParent.appendChild(backNav)
+//                 backNav.addEventListener("click",()=>{
+//                   p2Parent.className = "hidePanel1"
+//                     panelCall(0,1)
+//                 })
+//                 var mainHeading = document.createElement('h1')
+//                 mainHeading.className = "mainHeading"
+//                 mainHeading.innerHTML = "Our Features"
+//                 navBarParent.appendChild(mainHeading)
+//                 var doneNav = document.createElement('div')
+//                 doneNav.className = "doneNav"
+//                 doneNav.innerHTML = "Done"
 
-                doneNav.addEventListener("click", function(){
-                    // finalCookieArr.map(data =>{ setCookies(data.id, data.status) })
+//                 doneNav.addEventListener("click", function(){
+//                     // finalCookieArr.map(data =>{ setCookies(data.id, data.status) })
 
-                    finalCookieArr.map(data =>setCookies(data.id, data.status))
-                    window.localStorage.setItem('influencepermission', JSON.stringify({enable: true}))
+//                     finalCookieArr.map(data =>setCookies(data.id, data.status))
+//                     window.localStorage.setItem('influencepermission', JSON.stringify({enable: true}))
 
 
-                    container.removeChild(container.childNodes[0]);
+//                     container.removeChild(container.childNodes[0]);
 
-                    container.appendChild(cookieIcon)
+//                     container.appendChild(cookieIcon)
 
-                    // while(mainContainer.hasChildNodes()) {
-                    //     mainContainer.removeChild(mainContainer.childNodes[0]);
-                    //   }
+//                     // while(mainContainer.hasChildNodes()) {
+//                     //     mainContainer.removeChild(mainContainer.childNodes[0]);
+//                     //   }
 
-                })
+//                 })
 
 
         
-                var div1 = document.createElement('div')
-                div1.className = "bodyParent1"
-                var div2 = document.createElement('div')
-                div1.className = "bodyParent2"
-                var div3 = document.createElement('div')
-                div1.className = "bodyParent3"
-                var ulist = document.createElement('ul')
-                ulist.setAttribute("id", "qwe");
+//                 var div1 = document.createElement('div')
+//                 div1.className = "bodyParent1"
+//                 var div2 = document.createElement('div')
+//                 div1.className = "bodyParent2"
+//                 var div3 = document.createElement('div')
+//                 div1.className = "bodyParent3"
+//                 var ulist = document.createElement('ul')
+//                 ulist.setAttribute("id", "qwe");
 
-                ulist.style = "list-style-type:none; margin: 0%; padding: 5%;"
+//                 ulist.style = "list-style-type:none; margin: 0%; padding: 5%;"
                 
-                microPolicies.map(policy =>{
+//                 microPolicies.map(policy =>{
                                    
-                var listItem = document.createElement('li')
-                listItem.className = "listItem"
-                var upperPart = document.createElement('div');
-                upperPart.className = "upperPart";
-                upperPart.innerHTML = 
-                `<svg
-                         style="
-                           color: rgb(88, 70, 109);
-                           transition: color 250ms ease 0s;
-                           margin-right: 12px;
-                           margin-top:0px;
-                           width: 16px;
-                           height: 16px;
-                           flex: 0 0 auto;
-                         "
-                         width=22
-                         height=22
-                         viewBox= "0 0 22 22"
-                         fill=none
-                         xmlns="http://www.w3.org/2000/svg"
-                         class="Icon__StyledIcon-sc-1fw5m9z-0 fkqTFd"
-                       >
-                         <path
-                           fill-rule="evenodd"
-                           clip-rule="evenodd"
-                           fill="currentColor"
-                           d="M9.67336 15.9639C9.67336 16.6963 10.6154 16.9944 11.0368 16.3954L15.8773 9.51496C16.2269 9.01804 15.8715 8.33341 15.2639 8.33341H12.4322C11.8799 8.33341 11.4322 7.8857 11.4322 7.33341V4.03628C11.4322 3.3039 10.4901 3.00574 10.0687 3.60474L5.22821 10.4852C4.87862 10.9821 5.23404 11.6667 5.84162 11.6667H8.67336C9.22564 11.6667 9.67336 12.1145 9.67336 12.6667V15.9639Z"
-                         ></path>
-                       </svg>`;
+//                 var listItem = document.createElement('li')
+//                 listItem.className = "listItem"
+//                 var upperPart = document.createElement('div');
+//                 upperPart.className = "upperPart";
+//                 upperPart.innerHTML = 
+//                 `<svg
+//                          style="
+//                            color: rgb(88, 70, 109);
+//                            transition: color 250ms ease 0s;
+//                            margin-right: 12px;
+//                            margin-top:0px;
+//                            width: 16px;
+//                            height: 16px;
+//                            flex: 0 0 auto;
+//                          "
+//                          width=22
+//                          height=22
+//                          viewBox= "0 0 22 22"
+//                          fill=none
+//                          xmlns="http://www.w3.org/2000/svg"
+//                          class="Icon__StyledIcon-sc-1fw5m9z-0 fkqTFd"
+//                        >
+//                          <path
+//                            fill-rule="evenodd"
+//                            clip-rule="evenodd"
+//                            fill="currentColor"
+//                            d="M9.67336 15.9639C9.67336 16.6963 10.6154 16.9944 11.0368 16.3954L15.8773 9.51496C16.2269 9.01804 15.8715 8.33341 15.2639 8.33341H12.4322C11.8799 8.33341 11.4322 7.8857 11.4322 7.33341V4.03628C11.4322 3.3039 10.4901 3.00574 10.0687 3.60474L5.22821 10.4852C4.87862 10.9821 5.23404 11.6667 5.84162 11.6667H8.67336C9.22564 11.6667 9.67336 12.1145 9.67336 12.6667V15.9639Z"
+//                          ></path>
+//                        </svg>`;
         
-                var headerText = document.createElement('p');
-                headerText.className = "headerText"
-                headerText.innerHTML =  policy.name //"Essential"
+//                 var headerText = document.createElement('p');
+//                 headerText.className = "headerText"
+//                 headerText.innerHTML =  policy.name //"Essential"
                 
-                var toolTipText = document.createElement('span');
-                toolTipText.className = "tooltiptext";
-                toolTipText.style.textTransform = "capitalize"; 
-                toolTipText.innerText = `${policy.slug} Policy`;
+//                 var toolTipText = document.createElement('span');
+//                 toolTipText.className = "tooltiptext";
+//                 toolTipText.style.textTransform = "capitalize"; 
+//                 toolTipText.innerText = `${policy.slug} Policy`;
         
-                var switchContainer = document.createElement('div');
-                switchContainer.style="position:relative;"
-                var switchLabel  = document.createElement('label');
-                switchLabel.className = "switch";
-                var checkboxInput = document.createElement('input');
-                checkboxInput.type = "checkbox";
-                checkboxInput.id= "idData"
-                checkboxInput.className = "generalInputCheckboxClass"
+//                 var switchContainer = document.createElement('div');
+//                 switchContainer.style="position:relative;"
+//                 var switchLabel  = document.createElement('label');
+//                 switchLabel.className = "switch";
+//                 var checkboxInput = document.createElement('input');
+//                 checkboxInput.type = "checkbox";
+//                 checkboxInput.id= "idData"
+//                 checkboxInput.className = "generalInputCheckboxClass"
 
-                // checkboxInput.disabled= policy.essentialPolicy
+//                 // checkboxInput.disabled= policy.essentialPolicy
 
-                if(policy.essentialPolicy == true){
-                    checkboxInput.checked = true
-                    checkboxInput.disabled = true
-                }
+//                 if(policy.essentialPolicy == true){
+//                     checkboxInput.checked = true
+//                     checkboxInput.disabled = true
+//                 }
 
 
-                    cookieData.map(data=>{
-                        if(data.name == policy._id){
-                            if(data.key){
-                                checkboxInput.checked = true
-                            }else{
-                                checkboxInput.checked = false
-                            }                            
-                        }
-                    })
+//                     cookieData.map(data=>{
+//                         if(data.name == policy._id){
+//                             if(data.key){
+//                                 checkboxInput.checked = true
+//                             }else{
+//                                 checkboxInput.checked = false
+//                             }                            
+//                         }
+//                     })
               
-                checkboxInput.onchange = () =>{
-                   finalCookieArr = finalCookieArr.filter(data =>(data.id !== policy._id))
-                    finalCookieArr.push({id: policy._id, status: checkboxInput.checked})
-                    setCookies(policy._id, checkboxInput.checked)
-                }
-                var checkboxSpan = document.createElement('span');
-                checkboxSpan.className = "slider round";
-                switchLabel.appendChild(checkboxInput)
-                switchLabel.appendChild(checkboxSpan)
-                switchLabel.appendChild(toolTipText);
-                switchContainer.appendChild(switchLabel)
-               upperPart.appendChild(headerText)
-               upperPart.appendChild(switchContainer)
-               listItem.appendChild(upperPart)
+//                 checkboxInput.onchange = () =>{
+//                    finalCookieArr = finalCookieArr.filter(data =>(data.id !== policy._id))
+//                     finalCookieArr.push({id: policy._id, status: checkboxInput.checked})
+//                     setCookies(policy._id, checkboxInput.checked)
+//                 }
+//                 var checkboxSpan = document.createElement('span');
+//                 checkboxSpan.className = "slider round";
+//                 switchLabel.appendChild(checkboxInput)
+//                 switchLabel.appendChild(checkboxSpan)
+//                 switchLabel.appendChild(toolTipText);
+//                 switchContainer.appendChild(switchLabel)
+//                upperPart.appendChild(headerText)
+//                upperPart.appendChild(switchContainer)
+//                listItem.appendChild(upperPart)
 
 
-               var lowerDiv =document.createElement('div')
-               lowerDiv.style ="padding-left:28px;margin-top:0%;"
-               var para =document.createElement('p')
-               para.className = "subText"
-               para.innerHTML =  policy.description //"This includes key features like page navigation and logging you in. The website cannot function without this"
+//                var lowerDiv =document.createElement('div')
+//                lowerDiv.style ="padding-left:28px;margin-top:0%;"
+//                var para =document.createElement('p')
+//                para.className = "subText"
+//                para.innerHTML =  policy.description //"This includes key features like page navigation and logging you in. The website cannot function without this"
 
-               var listSlugElement = document.createElement('span');
-               listSlugElement.style.cssText = "text-transform: capitalize; float: right; margin-top: 12px;"
-               listSlugElement.innerHTML = policy.slug;
+//                var listSlugElement = document.createElement('span');
+//                listSlugElement.style.cssText = "text-transform: capitalize; float: right; margin-top: 12px;"
+//                listSlugElement.innerHTML = policy.slug;
 
 
-               var more = document.createElement('button')
-               more.className="moreDetailsButton"
+//                var more = document.createElement('button')
+//                more.className="moreDetailsButton"
                
 
-            //    function test(){
-            //      return cookieData.filter(e=>(e.name === policy._id))[0]
+//             //    function test(){
+//             //      return cookieData.filter(e=>(e.name === policy._id))[0]
 
-            //    }
-               more.onclick = ()=>{
-                p2Parent.classname = "hidePanel1"
-                panelCall(2,1,policy, policy._id)
-                };
-               more.innerHTML = "More Details"
-               var imagesvg = document.createElement('span')
-               imagesvg.innerHTML = ` <svg
-                           width=16
-                           height=16
-                           viewBox= "0 -3 16 16"
-                           fill=none
-                           xmlns=http://www.w3.org/2000/svg
-                           class="Icon__StyledIcon-sc-1fw5m9z-0 PolicyList__Arrow-avna3w-0 jqvij"
-                         >
-                           <path
-                             fill-rule="evenodd"
-                             clip-rule="evenodd"
-                             fill="currentColor"
-                             d="M5.52843 4.47145C5.26808 4.2111 5.26808 3.78899 5.52843 3.52864C5.78878 3.26829 6.21089 3.26829 6.47124 3.52864L10.4712 7.52864C10.7236 7.78102 10.7325 8.18741 10.4913 8.45052L6.82461 12.4505C6.57581 12.7219 6.1541 12.7403 5.88269 12.4915C5.61127 12.2427 5.59294 11.821 5.84173 11.5496L9.07708 8.02009L5.52843 4.47145Z"
-                           ></path>
-                         </svg>`
-                         more.appendChild(imagesvg)
-                         lowerDiv.appendChild(para)
-                         lowerDiv.appendChild(more)
-                         lowerDiv.appendChild(listSlugElement)
-                         listItem.appendChild(lowerDiv)
+//             //    }
+//                more.onclick = ()=>{
+//                 p2Parent.classname = "hidePanel1"
+//                 panelCall(2,1,policy, policy._id)
+//                 };
+//                more.innerHTML = "More Details"
+//                var imagesvg = document.createElement('span')
+//                imagesvg.innerHTML = ` <svg
+//                            width=16
+//                            height=16
+//                            viewBox= "0 -3 16 16"
+//                            fill=none
+//                            xmlns=http://www.w3.org/2000/svg
+//                            class="Icon__StyledIcon-sc-1fw5m9z-0 PolicyList__Arrow-avna3w-0 jqvij"
+//                          >
+//                            <path
+//                              fill-rule="evenodd"
+//                              clip-rule="evenodd"
+//                              fill="currentColor"
+//                              d="M5.52843 4.47145C5.26808 4.2111 5.26808 3.78899 5.52843 3.52864C5.78878 3.26829 6.21089 3.26829 6.47124 3.52864L10.4712 7.52864C10.7236 7.78102 10.7325 8.18741 10.4913 8.45052L6.82461 12.4505C6.57581 12.7219 6.1541 12.7403 5.88269 12.4915C5.61127 12.2427 5.59294 11.821 5.84173 11.5496L9.07708 8.02009L5.52843 4.47145Z"
+//                            ></path>
+//                          </svg>`
+//                          more.appendChild(imagesvg)
+//                          lowerDiv.appendChild(para)
+//                          lowerDiv.appendChild(more)
+//                          lowerDiv.appendChild(listSlugElement)
+//                          listItem.appendChild(lowerDiv)
                  
-                ulist.appendChild(listItem)
-                })
-                div3.appendChild(ulist);
-                div2.appendChild(div3);
-                div1.appendChild(div2);
-                //footer
+//                 ulist.appendChild(listItem)
+//                 })
+//                 div3.appendChild(ulist);
+//                 div2.appendChild(div3);
+//                 div1.appendChild(div2);
+//                 //footer
         
-                var footer = document.createElement('a')
-                footer.href = "https://app.useinfluence.co"
-                footer.className = "footer"
-                var brand = document.createElement('p')
-                brand.style = "color:#097FFF ;font-size:12px;font-weight:500;margin-bottom:0px"
-                brand.innerHTML = "Verified by Influence"
+//                 var footer = document.createElement('a')
+//                 footer.href = "https://app.useinfluence.co"
+//                 footer.className = "footer"
+//                 var brand = document.createElement('p')
+//                 brand.style = "color:#097FFF ;font-size:12px;font-weight:500;margin-bottom:0px"
+//                 brand.innerHTML = "Verified by Influence"
 
-                var blueTick = document.createElement('span')
-                blueTick.innerHTML=`<svg style="margin-top:3px;margin-right:4px;" width="12" height="12" viewBox="0 0 524 524" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                <style>.cls-1 {
-                        fill: #5d93fe;
-                    }
-                    .cls-2 {
-                        fill: #5d93fe;
-                        filter: url(#a);
-                    }
-                    .cls-3 {
-                        fill: #fff;
-                        fill-rule: evenodd;
-                    }</style>
-                <filter id="a" x="51" y="51" width="423" height="423" filterUnits="userSpaceOnUse">
-                <feOffset in="SourceAlpha" result="offset"/>
-                <feGaussianBlur result="blur" stdDeviation="2.236"/>
-                <feFlood flood-opacity=".06" result="flood"/>
-                <feComposite in2="blur" operator="in" result="composite"/>
-                <feBlend in="SourceGraphic" result="blend"/>
-                </filter>
-                </defs>
-                <circle class="cls-1" cx="262" cy="262" r="262"/>
-                <circle class="cls-2" cx="262" cy="262" r="207"/>
-                <path class="cls-3" transform="translate(-640 -238)" d="m833.89 478.95 81.132 65.065a9 9 0 0 1 1.391 12.652l-25.651 31.985a9 9 0 0 1-12.652 1.39l-81.132-65.065a9 9 0 0 1-1.391-12.652l25.651-31.985a9 9 0 0 1 12.652-1.39z"/>
-                <path class="cls-3" transform="translate(-640 -238)" d="m846.25 552.7 127.39-144.5a9.721 9.721 0 0 1 13.35-1.047l29.679 24.286a8.9 8.9 0 0 1 1.08 12.862l-127.39 144.5a9.721 9.721 0 0 1-13.35 1.047l-29.675-24.286a8.9 8.9 0 0 1-1.087-12.861z"/>
-                </svg>`
-                footer.appendChild(blueTick)
-                footer.appendChild(brand)
+//                 var blueTick = document.createElement('span')
+//                 blueTick.innerHTML=`<svg style="margin-top:3px;margin-right:4px;" width="12" height="12" viewBox="0 0 524 524" xmlns="http://www.w3.org/2000/svg">
+//                 <defs>
+//                 <style>.cls-1 {
+//                         fill: #5d93fe;
+//                     }
+//                     .cls-2 {
+//                         fill: #5d93fe;
+//                         filter: url(#a);
+//                     }
+//                     .cls-3 {
+//                         fill: #fff;
+//                         fill-rule: evenodd;
+//                     }</style>
+//                 <filter id="a" x="51" y="51" width="423" height="423" filterUnits="userSpaceOnUse">
+//                 <feOffset in="SourceAlpha" result="offset"/>
+//                 <feGaussianBlur result="blur" stdDeviation="2.236"/>
+//                 <feFlood flood-opacity=".06" result="flood"/>
+//                 <feComposite in2="blur" operator="in" result="composite"/>
+//                 <feBlend in="SourceGraphic" result="blend"/>
+//                 </filter>
+//                 </defs>
+//                 <circle class="cls-1" cx="262" cy="262" r="262"/>
+//                 <circle class="cls-2" cx="262" cy="262" r="207"/>
+//                 <path class="cls-3" transform="translate(-640 -238)" d="m833.89 478.95 81.132 65.065a9 9 0 0 1 1.391 12.652l-25.651 31.985a9 9 0 0 1-12.652 1.39l-81.132-65.065a9 9 0 0 1-1.391-12.652l25.651-31.985a9 9 0 0 1 12.652-1.39z"/>
+//                 <path class="cls-3" transform="translate(-640 -238)" d="m846.25 552.7 127.39-144.5a9.721 9.721 0 0 1 13.35-1.047l29.679 24.286a8.9 8.9 0 0 1 1.08 12.862l-127.39 144.5a9.721 9.721 0 0 1-13.35 1.047l-29.675-24.286a8.9 8.9 0 0 1-1.087-12.861z"/>
+//                 </svg>`
+//                 footer.appendChild(blueTick)
+//                 footer.appendChild(brand)
         
         
-                navBarParent.appendChild(doneNav)
-                p2Parent.appendChild(navBarParent)
-                p2Parent.appendChild(div1)
-                p2Parent.appendChild(footer)
-        //    var element = document.getElementById("div1");
-        //         element.appendChild(p2Parent)
-        while(mainContainer.hasChildNodes()) {
-            mainContainer.removeChild(mainContainer.childNodes[0]);
-          }
-                mainContainer.appendChild(p2Parent);  
+//                 navBarParent.appendChild(doneNav)
+//                 p2Parent.appendChild(navBarParent)
+//                 p2Parent.appendChild(div1)
+//                 p2Parent.appendChild(footer)
+//         //    var element = document.getElementById("div1");
+//         //         element.appendChild(p2Parent)
+//         while(mainContainer.hasChildNodes()) {
+//             mainContainer.removeChild(mainContainer.childNodes[0]);
+//           }
+//                 mainContainer.appendChild(p2Parent);  
 
-        }
+//         }
         
-        function Parent3(activePanel,sourcePane,arr, policyData){
+//         function Parent3(activePanel,sourcePane,arr, policyData){
          
-            var p3Parent = document.createElement('div');
+//             var p3Parent = document.createElement('div');
         
-                p3Parent.className =
-                    activePanel === 2 ? `showPanel mainBoxStyle2` : 'hidePanel1';
+//                 p3Parent.className =
+//                     activePanel === 2 ? `showPanel mainBoxStyle2` : 'hidePanel1';
         
-                var navBarParent = document.createElement('div')
-                navBarParent.className = "navBarParent"
-                var backNav = document.createElement("div");
-                backNav.className = "backNav"
-                backNav.onclick = () =>{
+//                 var navBarParent = document.createElement('div')
+//                 navBarParent.className = "navBarParent"
+//                 var backNav = document.createElement("div");
+//                 backNav.className = "backNav"
+//                 backNav.onclick = () =>{
                     
-                //   p3Parent.classname="hidePanel1"
-                  panelCall(1,2)
+//                 //   p3Parent.classname="hidePanel1"
+//                   panelCall(1,2)
                   
-                }
-                backNav.innerHTML = `<svg
-                 width="16"
-                 height="16"
-                 viewBox="0 0 16 16"
-                 fill="none"
-                 xmlns="http://www.w3.org/2000/svg"
-               >
-                 <rect
-                   width="1.33333"
-                   height="9.33333"
-                   rx="0.666667"
-                   transform="matrix(0 -1 -1 0 12.6667 8.6665)"
-                   fill="#979797"
-                 ></rect>
-                 <path
-                   d="M8.47132 11.5284C8.73167 11.7888 8.73167 12.2109 8.47132 12.4712C8.21097 12.7316 7.78886 12.7316 7.52851 12.4712L3.52851 8.47124C3.27613 8.21886 3.2673 7.81246 3.50848 7.54935L7.17515 3.54935C7.42394 3.27794 7.84566 3.25961 8.11707 3.5084C8.38848 3.7572 8.40682 4.17891 8.15802 4.45032L4.92268 7.97979L8.47132 11.5284Z"
-                   fill="currentColor"
-                 ></path>
-               </svg> Back`
+//                 }
+//                 backNav.innerHTML = `<svg
+//                  width="16"
+//                  height="16"
+//                  viewBox="0 0 16 16"
+//                  fill="none"
+//                  xmlns="http://www.w3.org/2000/svg"
+//                >
+//                  <rect
+//                    width="1.33333"
+//                    height="9.33333"
+//                    rx="0.666667"
+//                    transform="matrix(0 -1 -1 0 12.6667 8.6665)"
+//                    fill="#979797"
+//                  ></rect>
+//                  <path
+//                    d="M8.47132 11.5284C8.73167 11.7888 8.73167 12.2109 8.47132 12.4712C8.21097 12.7316 7.78886 12.7316 7.52851 12.4712L3.52851 8.47124C3.27613 8.21886 3.2673 7.81246 3.50848 7.54935L7.17515 3.54935C7.42394 3.27794 7.84566 3.25961 8.11707 3.5084C8.38848 3.7572 8.40682 4.17891 8.15802 4.45032L4.92268 7.97979L8.47132 11.5284Z"
+//                    fill="currentColor"
+//                  ></path>
+//                </svg> Back`
 
-                navBarParent.appendChild(backNav)
-                var mainHeading = document.createElement('h1')
-                mainHeading.className = "mainHeading"
-                mainHeading.innerHTML = "Our Features"
-                navBarParent.appendChild(mainHeading)
-                var doneNav = document.createElement('div')
-                doneNav.className = "doneNav"
-                var switchLabel  = document.createElement('label');
-                switchLabel.className = "switch";
-                var checkboxInput = document.createElement('input');
-                checkboxInput.type = "checkbox";
+//                 navBarParent.appendChild(backNav)
+//                 var mainHeading = document.createElement('h1')
+//                 mainHeading.className = "mainHeading"
+//                 mainHeading.innerHTML = "Our Features"
+//                 navBarParent.appendChild(mainHeading)
+//                 var doneNav = document.createElement('div')
+//                 doneNav.className = "doneNav"
+//                 var switchLabel  = document.createElement('label');
+//                 switchLabel.className = "switch";
+//                 var checkboxInput = document.createElement('input');
+//                 checkboxInput.type = "checkbox";
 
-                checkboxInput.className = "generalInputCheckboxClass"
-                // checkboxInput.disabled= arr.essentialPolicy
+//                 checkboxInput.className = "generalInputCheckboxClass"
+//                 // checkboxInput.disabled= arr.essentialPolicy
 
-                console.log(arr.essentialPolicy, "----------------")
+//                 console.log(arr.essentialPolicy, "----------------")
 
-                if(arr.essentialPolicy == true){
-                    checkboxInput.checked = true
-                    checkboxInput.disabled = true
-                }
-                var d = getCookieById(policyData)
+//                 if(arr.essentialPolicy == true){
+//                     checkboxInput.checked = true
+//                     checkboxInput.disabled = true
+//                 }
+//                 var d = getCookieById(policyData)
                 
-                // checkboxInput.checked = d && d.key? true : true
+//                 // checkboxInput.checked = d && d.key? true : true
 
-                checkboxInput.checked = d == null && arr.essentialPolicy == true ? true : d && d.key ? true: false
+//                 checkboxInput.checked = d == null && arr.essentialPolicy == true ? true : d && d.key ? true: false
 
-                // if(arr.slug == "Essential1"){
-                //     checkboxInput.checked = true
-                //     checkboxInput.disabled= true
-                // }
-                checkboxInput.onchange = (e) =>{
+//                 // if(arr.slug == "Essential1"){
+//                 //     checkboxInput.checked = true
+//                 //     checkboxInput.disabled= true
+//                 // }
+//                 checkboxInput.onchange = (e) =>{
 
-                    setCookies(arr._id, e.target.checked)
+//                     setCookies(arr._id, e.target.checked)
 
-                    // document.cookie = "key1 = value1;key2 = value2;expires = date";
+//                     // document.cookie = "key1 = value1;key2 = value2;expires = date";
 
-                 }
-                var checkboxSpan = document.createElement('span');
-                checkboxSpan.className = "slider round";
+//                  }
+//                 var checkboxSpan = document.createElement('span');
+//                 checkboxSpan.className = "slider round";
         
-        switchLabel.appendChild(checkboxInput)
-        switchLabel.appendChild(checkboxSpan)
-        doneNav.appendChild(switchLabel)
-        navBarParent.appendChild(doneNav)
-                var div1 = document.createElement('div')
-                div1.className = "bodyParent1"
-                var div2 = document.createElement('div')
-                div1.className = "bodyParent2"
-                var div3 = document.createElement('div')
-                div1.className = "bodyParent3"
-                var ulist = document.createElement('ul')
-                ulist.style = "list-style-type:none; margin: 0%; padding: 5%;"
+//         switchLabel.appendChild(checkboxInput)
+//         switchLabel.appendChild(checkboxSpan)
+//         doneNav.appendChild(switchLabel)
+//         navBarParent.appendChild(doneNav)
+//                 var div1 = document.createElement('div')
+//                 div1.className = "bodyParent1"
+//                 var div2 = document.createElement('div')
+//                 div1.className = "bodyParent2"
+//                 var div3 = document.createElement('div')
+//                 div1.className = "bodyParent3"
+//                 var ulist = document.createElement('ul')
+//                 ulist.style = "list-style-type:none; margin: 0%; padding: 5%;"
 
-               // arr.map(policy => {
+//                // arr.map(policy => {
 
                
-                var listItem = document.createElement('div')
-                listItem.classList = "listItemDetail"
+//                 var listItem = document.createElement('div')
+//                 listItem.classList = "listItemDetail"
         
-                var upperPart = document.createElement('div')
-                upperPart.className = "upperPart"
+//                 var upperPart = document.createElement('div')
+//                 upperPart.className = "upperPart"
             
         
-               var headerText = document.createElement('p')
-               headerText.className = "headerText"
-               headerText.innerHTML = arr.slug
+//                var headerText = document.createElement('p')
+//                headerText.className = "headerText"
+//                headerText.innerHTML = arr.slug
         
-               upperPart.appendChild(headerText)
+//                upperPart.appendChild(headerText)
         
-               var lowerDiv =document.createElement('div')
-               lowerDiv.style ="margin-top:0%;"
-               var para =document.createElement('p')
-               para.className = "subText"
-               para.innerHTML = arr.description// "This includes key features like page navigation and logging you in. The website cannot function without this"
-               lowerDiv.appendChild(para)
-               listItem.appendChild(upperPart)
-               listItem.appendChild(lowerDiv)
-                ulist.appendChild(listItem)
+//                var lowerDiv =document.createElement('div')
+//                lowerDiv.style ="margin-top:0%;"
+//                var para =document.createElement('p')
+//                para.className = "subText"
+//                para.innerHTML = arr.description// "This includes key features like page navigation and logging you in. The website cannot function without this"
+//                lowerDiv.appendChild(para)
+//                listItem.appendChild(upperPart)
+//                listItem.appendChild(lowerDiv)
+//                 ulist.appendChild(listItem)
 
 
-                  //------------------------------------------- Cookie panel 3 desing thirdparty -----------------------------------------------
+//                   //------------------------------------------- Cookie panel 3 desing thirdparty -----------------------------------------------
 
 
-      if(arr.thirdParty !== undefined && arr.thirdParty !== null && arr.thirdParty.length !==0){
+//       if(arr.thirdParty !== undefined && arr.thirdParty !== null && arr.thirdParty.length !==0){
 
       
-        var listItem = document.createElement('div')
-        listItem.classList = "listItemDetail"
+//         var listItem = document.createElement('div')
+//         listItem.classList = "listItemDetail"
   
-        var upperPart = document.createElement('div')
-        upperPart.className = "upperPart"
-  
-  
-        var headerText = document.createElement('p')
-        headerText.className = "headerText"
-        headerText.innerHTML = "Who do we share data with?"
-  
-        upperPart.appendChild(headerText)
-  
-        var lowerDiv = document.createElement('div')
-        lowerDiv.style = "margin-top:0%;"
-        var para = document.createElement('div')
-        para.className = "chipsContainer"
-        // para.innerHTML = arr.description // "This includes key features like page navigation and logging you in. The website cannot function without this"
-  
-        arr.thirdParty.map((thirdparty)=>{
-          var chip = document.createElement('a')
-          chip.className = "chipStyle"
-          chip.style.cursor = "pointer"
-          chip.innerHTML=thirdparty.name
-          chip.href = thirdparty.policyUrl
-          chip.target="_blank"
-          para.appendChild(chip)
-        })
+//         var upperPart = document.createElement('div')
+//         upperPart.className = "upperPart"
   
   
+//         var headerText = document.createElement('p')
+//         headerText.className = "headerText"
+//         headerText.innerHTML = "Who do we share data with?"
+  
+//         upperPart.appendChild(headerText)
+  
+//         var lowerDiv = document.createElement('div')
+//         lowerDiv.style = "margin-top:0%;"
+//         var para = document.createElement('div')
+//         para.className = "chipsContainer"
+//         // para.innerHTML = arr.description // "This includes key features like page navigation and logging you in. The website cannot function without this"
+  
+//         arr.thirdParty.map((thirdparty)=>{
+//           var chip = document.createElement('a')
+//           chip.className = "chipStyle"
+//           chip.style.cursor = "pointer"
+//           chip.innerHTML=thirdparty.name
+//           chip.href = thirdparty.policyUrl
+//           chip.target="_blank"
+//           para.appendChild(chip)
+//         })
   
   
-        lowerDiv.appendChild(para)
+  
+  
+//         lowerDiv.appendChild(para)
       
         
-        listItem.appendChild(upperPart)
-        listItem.appendChild(lowerDiv)
+//         listItem.appendChild(upperPart)
+//         listItem.appendChild(lowerDiv)
   
-        ulist.appendChild(listItem)
+//         ulist.appendChild(listItem)
   
-        }
+//         }
         
   
-        // ------------------------ Cookie 3 panel data usage---------------------------
+//         // ------------------------ Cookie 3 panel data usage---------------------------
   
-        if(arr.dataUsage !== undefined && arr.dataUsage !== null && arr.dataUsage.length !==0){
+//         if(arr.dataUsage !== undefined && arr.dataUsage !== null && arr.dataUsage.length !==0){
   
         
-          var listItem = document.createElement('div')
-          listItem.classList = "listItemDetail"
+//           var listItem = document.createElement('div')
+//           listItem.classList = "listItemDetail"
     
-          var upperPart = document.createElement('div')
-          upperPart.className = "upperPart"
+//           var upperPart = document.createElement('div')
+//           upperPart.className = "upperPart"
     
     
-          var headerText = document.createElement('p')
-          headerText.className = "headerText"
-          headerText.innerHTML = "What data do we share?"
+//           var headerText = document.createElement('p')
+//           headerText.className = "headerText"
+//           headerText.innerHTML = "What data do we share?"
     
-          upperPart.appendChild(headerText)
+//           upperPart.appendChild(headerText)
     
-          var lowerDiv = document.createElement('div')
-          lowerDiv.style = "margin-top:0%;"
-          var para = document.createElement('div')
-          para.className = "chipsContainer"
-          // para.innerHTML = arr.description // "This includes key features like page navigation and logging you in. The website cannot function without this"
+//           var lowerDiv = document.createElement('div')
+//           lowerDiv.style = "margin-top:0%;"
+//           var para = document.createElement('div')
+//           para.className = "chipsContainer"
+//           // para.innerHTML = arr.description // "This includes key features like page navigation and logging you in. The website cannot function without this"
     
-          arr.dataUsage.map((data)=>{
-            var chip = document.createElement('span')
-            chip.className = "chipStyle"
-            chip.innerHTML=data.name
-            chip.title = data.description
-            chip.target="_blank"
-            para.appendChild(chip)
-          })
-          lowerDiv.appendChild(para)
+//           arr.dataUsage.map((data)=>{
+//             var chip = document.createElement('span')
+//             chip.className = "chipStyle"
+//             chip.innerHTML=data.name
+//             chip.title = data.description
+//             chip.target="_blank"
+//             para.appendChild(chip)
+//           })
+//           lowerDiv.appendChild(para)
         
           
-          listItem.appendChild(upperPart)
-          listItem.appendChild(lowerDiv)
+//           listItem.appendChild(upperPart)
+//           listItem.appendChild(lowerDiv)
     
-          ulist.appendChild(listItem)
+//           ulist.appendChild(listItem)
     
-          }
+//           }
 
 
 
 
-            //})
-                div3.appendChild(ulist);
-                div2.appendChild(div3);
-                div1.appendChild(div2);
-                //footer
+//             //})
+//                 div3.appendChild(ulist);
+//                 div2.appendChild(div3);
+//                 div1.appendChild(div2);
+//                 //footer
         
-                var footer = document.createElement('a')
-                footer.href="https://app.useinfluence.co"
-                footer.className = "footer"
-                var brand = document.createElement('p')
-                brand.style = "color:#097fff;font-size:12px;font-weight:500;margin-bottom:0px"
-                brand.innerHTML = "Verified by Influence"
+//                 var footer = document.createElement('a')
+//                 footer.href="https://app.useinfluence.co"
+//                 footer.className = "footer"
+//                 var brand = document.createElement('p')
+//                 brand.style = "color:#097fff;font-size:12px;font-weight:500;margin-bottom:0px"
+//                 brand.innerHTML = "Verified by Influence"
 
-                var blueTick = document.createElement('span')
-                blueTick.innerHTML=`<svg style="margin-top:0px;margin-right:4px;" width=12 height="12" viewBox="0 0 524 524" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                <style>.cls-1 {
-                        fill: #5d93fe;
-                    }
-                    .cls-2 {
-                        fill: #5d93fe;
-                        filter: url(#a);
-                    }
-                    .cls-3 {
-                        fill: #fff;
-                        fill-rule: evenodd;
-                    }</style>
-                <filter id="a" x="51" y="51" width="423" height="423" filterUnits="userSpaceOnUse">
-                <feOffset in="SourceAlpha" result="offset"/>
-                <feGaussianBlur result="blur" stdDeviation="2.236"/>
-                <feFlood flood-opacity=".06" result="flood"/>
-                <feComposite in2="blur" operator="in" result="composite"/>
-                <feBlend in="SourceGraphic" result="blend"/>
-                </filter>
-                </defs>
-                <circle class="cls-1" cx="262" cy="262" r="262"/>
-                <circle class="cls-2" cx="262" cy="262" r="207"/>
-                <path class="cls-3" transform="translate(-640 -238)" d="m833.89 478.95 81.132 65.065a9 9 0 0 1 1.391 12.652l-25.651 31.985a9 9 0 0 1-12.652 1.39l-81.132-65.065a9 9 0 0 1-1.391-12.652l25.651-31.985a9 9 0 0 1 12.652-1.39z"/>
-                <path class="cls-3" transform="translate(-640 -238)" d="m846.25 552.7 127.39-144.5a9.721 9.721 0 0 1 13.35-1.047l29.679 24.286a8.9 8.9 0 0 1 1.08 12.862l-127.39 144.5a9.721 9.721 0 0 1-13.35 1.047l-29.675-24.286a8.9 8.9 0 0 1-1.087-12.861z"/>
-                </svg>`
-                footer.appendChild(blueTick)
-                footer.appendChild(brand)
-                navBarParent.appendChild(doneNav)
-                p3Parent.appendChild(navBarParent)
-                p3Parent.appendChild(div1)
-                p3Parent.appendChild(footer)
+//                 var blueTick = document.createElement('span')
+//                 blueTick.innerHTML=`<svg style="margin-top:0px;margin-right:4px;" width=12 height="12" viewBox="0 0 524 524" xmlns="http://www.w3.org/2000/svg">
+//                 <defs>
+//                 <style>.cls-1 {
+//                         fill: #5d93fe;
+//                     }
+//                     .cls-2 {
+//                         fill: #5d93fe;
+//                         filter: url(#a);
+//                     }
+//                     .cls-3 {
+//                         fill: #fff;
+//                         fill-rule: evenodd;
+//                     }</style>
+//                 <filter id="a" x="51" y="51" width="423" height="423" filterUnits="userSpaceOnUse">
+//                 <feOffset in="SourceAlpha" result="offset"/>
+//                 <feGaussianBlur result="blur" stdDeviation="2.236"/>
+//                 <feFlood flood-opacity=".06" result="flood"/>
+//                 <feComposite in2="blur" operator="in" result="composite"/>
+//                 <feBlend in="SourceGraphic" result="blend"/>
+//                 </filter>
+//                 </defs>
+//                 <circle class="cls-1" cx="262" cy="262" r="262"/>
+//                 <circle class="cls-2" cx="262" cy="262" r="207"/>
+//                 <path class="cls-3" transform="translate(-640 -238)" d="m833.89 478.95 81.132 65.065a9 9 0 0 1 1.391 12.652l-25.651 31.985a9 9 0 0 1-12.652 1.39l-81.132-65.065a9 9 0 0 1-1.391-12.652l25.651-31.985a9 9 0 0 1 12.652-1.39z"/>
+//                 <path class="cls-3" transform="translate(-640 -238)" d="m846.25 552.7 127.39-144.5a9.721 9.721 0 0 1 13.35-1.047l29.679 24.286a8.9 8.9 0 0 1 1.08 12.862l-127.39 144.5a9.721 9.721 0 0 1-13.35 1.047l-29.675-24.286a8.9 8.9 0 0 1-1.087-12.861z"/>
+//                 </svg>`
+//                 footer.appendChild(blueTick)
+//                 footer.appendChild(brand)
+//                 navBarParent.appendChild(doneNav)
+//                 p3Parent.appendChild(navBarParent)
+//                 p3Parent.appendChild(div1)
+//                 p3Parent.appendChild(footer)
           
-                // var element = document.getElementById("div1");
-                // element.appendChild(p3Parent)
-                while(mainContainer.hasChildNodes()) {
-                    mainContainer.removeChild(mainContainer.childNodes[0]);
-                  }
+//                 // var element = document.getElementById("div1");
+//                 // element.appendChild(p3Parent)
+//                 while(mainContainer.hasChildNodes()) {
+//                     mainContainer.removeChild(mainContainer.childNodes[0]);
+//                   }
 
-                mainContainer.appendChild(p3Parent);  
+//                 mainContainer.appendChild(p3Parent);  
 
           
-        }
+//         }
         
-           function panelCall(to, source,arr, policyId){
+//            function panelCall(to, source,arr, policyId){
               
             
-                  activePanel = to
-                  sourcePanel = source
+//                   activePanel = to
+//                   sourcePanel = source
                
-                activePanel === 0 ?
-              Parent1(activePanel,sourcePanel)
-                :
-                activePanel === 1 ?
-               Parent2(activePanel,sourcePanel)
-                :
-                activePanel === 2 ?
-                Parent3(activePanel,sourcePanel,arr,policyId )
-                :
-                Parent1(activePanel,sourcePanel)
-            }
+//                 activePanel === 0 ?
+//               Parent1(activePanel,sourcePanel)
+//                 :
+//                 activePanel === 1 ?
+//                Parent2(activePanel,sourcePanel)
+//                 :
+//                 activePanel === 2 ?
+//                 Parent3(activePanel,sourcePanel,arr,policyId )
+//                 :
+//                 Parent1(activePanel,sourcePanel)
+//             }
         
-        panelCall(0,0)
-           //till here
-    // mainContainer.appendChild(element);  
+//         panelCall(0,0)
+//            //till here
+//     // mainContainer.appendChild(element);  
         
     
-    // JSON.parse(localStorage.getItem('influencepermission')).enable == false ?  innerDiv.appendChild(mainContainer) : " "
-      innerDiv.appendChild(mainContainer);
-        innerDiv.appendChild(lockImg)
-        innerContainer.appendChild(innerDiv);
-        // container.appendChild(innerContainer);
+//     // JSON.parse(localStorage.getItem('influencepermission')).enable == false ?  innerDiv.appendChild(mainContainer) : " "
+//       innerDiv.appendChild(mainContainer);
+//         innerDiv.appendChild(lockImg)
+//         innerContainer.appendChild(innerDiv);
+//         // container.appendChild(innerContainer);
 
-        var influencePermission = JSON.parse(localStorage.getItem('influencepermission'))
+//         var influencePermission = JSON.parse(localStorage.getItem('influencepermission'))
 
-        if(influencePermission && influencePermission.enable == true ){
+//         if(influencePermission && influencePermission.enable == true ){
 
-            container.appendChild(cookieIcon)
+//             container.appendChild(cookieIcon)
 
-        }else{
-            container.appendChild(innerContainer)
-        }
+//         }else{
+//             container.appendChild(innerContainer)
+//         }
      
-        // JSON.parse(localStorage.getItem('influencepermission')).enable == false ?  container.appendChild(innerContainer) : container.appendChild(lockImg)
+//         // JSON.parse(localStorage.getItem('influencepermission')).enable == false ?  container.appendChild(innerContainer) : container.appendChild(lockImg)
     
         
-        displayNotification(container, "config");
-    }
+//         displayNotification(container, "config");
+//     }
 
 
-    function setCookies(name, value){
+//     function setCookies(name, value){
 
-        console.log(name, value, "$$$$$$$$$$$")
+//         console.log(name, value, "$$$$$$$$$$$")
 
-        const COOKIE_PREFIX = "Influence_";
+//         const COOKIE_PREFIX = "Influence_";
 
-             name= COOKIE_PREFIX + name
-                    var d = new Date();
-                    d.setTime(d.setTime() + (1*24*60*60*1000))
+//              name= COOKIE_PREFIX + name
+//                     var d = new Date();
+//                     d.setTime(d.setTime() + (1*24*60*60*1000))
 
-                    let expires = "expires="+ d.toUTCString();
+//                     let expires = "expires="+ d.toUTCString();
 
-                    let sec= '';
+//                     let sec= '';
 
-                    if(this._cookie_secure ==2){
-                        if(location.protocol){
-                            if(location.protocol == "https:"){ 
-                                sec= ';secure';
-                            }
-                        }
-                    } else if(this._cookie_secure == true){
+//                     if(this._cookie_secure ==2){
+//                         if(location.protocol){
+//                             if(location.protocol == "https:"){ 
+//                                 sec= ';secure';
+//                             }
+//                         }
+//                     } else if(this._cookie_secure == true){
 
-                        sec= ';secure';
+//                         sec= ';secure';
 
-                    }
+//                     }
 
-                    document.cookie = name+ "="+ JSON.stringify(value)+ ";" +expires //+ "; path=" + path + sec
+//                     document.cookie = name+ "="+ JSON.stringify(value)+ ";" +expires //+ "; path=" + path + sec
                 
-    }
+//     }
 
 
 
-    /**
-     * retrieve data from user's Cookie storage
-     * @return ``` [{name: "NAME", key: true/false}] ```
-     */
-    function getCookies(){
-        const COOKIE_PREFIX = "Influence_";
-        name = name+"="
-        const cookies = document.cookie.split(";")
+//     /**
+//      * retrieve data from user's Cookie storage
+//      * @return ``` [{name: "NAME", key: true/false}] ```
+//      */
+//     function getCookies(){
+//         const COOKIE_PREFIX = "Influence_";
+//         name = name+"="
+//         const cookies = document.cookie.split(";")
 
-        var getCookieArr= []
+//         var getCookieArr= []
 
-        for(var i = 0; i < cookies.length; i++) {
-            var cookie = cookies[i]
+//         for(var i = 0; i < cookies.length; i++) {
+//             var cookie = cookies[i]
 
-           if(cookie.indexOf(COOKIE_PREFIX) == 1){
+//            if(cookie.indexOf(COOKIE_PREFIX) == 1){
 
-            name = cookie.split('=')[0].trim().substring(COOKIE_PREFIX.length);
-            value = cookie.split('=')[1];
+//             name = cookie.split('=')[0].trim().substring(COOKIE_PREFIX.length);
+//             value = cookie.split('=')[1];
 
-            getCookieArr.push({name: name, key : value == "true"? true : false})
-         }
-        }
-        return getCookieArr;
-    }
+//             getCookieArr.push({name: name, key : value == "true"? true : false})
+//          }
+//         }
+//         return getCookieArr;
+//     }
 
-    function getCookieById (name){
-        const COOKIE_PREFIX = "Influence_";    
-        name = name+"="
-        const cookies = document.cookie.split(";")
+//     function getCookieById (name){
+//         const COOKIE_PREFIX = "Influence_";    
+//         name = name+"="
+//         const cookies = document.cookie.split(";")
 
-        for(var i = 0; i < cookies.length; i++) {
-            var cookie = cookies[i]
-           if(cookie.indexOf(COOKIE_PREFIX+name) == 1){
-                name = cookie.split('=')[0].trim().substring(COOKIE_PREFIX.length);
-                value = cookie.split('=')[1];
+//         for(var i = 0; i < cookies.length; i++) {
+//             var cookie = cookies[i]
+//            if(cookie.indexOf(COOKIE_PREFIX+name) == 1){
+//                 name = cookie.split('=')[0].trim().substring(COOKIE_PREFIX.length);
+//                 value = cookie.split('=')[1];
 
-            return {name: name, key: value}
-         }
-        }
-        return null;
-    }
+//             return {name: name, key: value}
+//          }
+//         }
+//         return null;
+//     }
 
-    return {
-        notificationdisplay: function notificationdisplay(type, config, containerStyle, iconStyle, alignment) {
-            notificationDisplay(type, config, containerStyle, iconStyle, alignment);
-        }
-    };
-};
+//     return {
+//         notificationdisplay: function notificationdisplay(type, config, containerStyle, iconStyle, alignment) {
+//             notificationDisplay(type, config, containerStyle, iconStyle, alignment);
+//         }
+//     };
+// };
 
 function getCookieById (name){
     const COOKIE_PREFIX = "Influence_";    
@@ -4737,8 +4737,8 @@ function getCookieById (name){
 if (typeof module !== "undefined" && module.exports) module.exports = Note;
 Influence = typeof Influence === 'undefined' ? require('../server') : Influence;
 
-if (typeof module !== "undefined" && module.exports) module.exports = CookieFn;
-Influence = typeof Influence === 'undefined' ? require('../server') : Influence;
+// if (typeof module !== "undefined" && module.exports) module.exports = CookieFn;
+// Influence = typeof Influence === 'undefined' ? require('../server') : Influence;
 
 
 (async function () {
@@ -5107,9 +5107,9 @@ Influence = typeof Influence === 'undefined' ? require('../server') : Influence;
     
     cookieCampaignData = apiDataResponse.campaign
 
-var cookieFn = new CookieFn({})
+// var cookieFn = new CookieFn({})
 
-cookieFn.notificationdisplay( apiDataResponse.configuration, apiDataResponse.microPolicies);
+// cookieFn.notificationdisplay( apiDataResponse.configuration, apiDataResponse.microPolicies);
 
 var m =[]
 

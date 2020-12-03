@@ -2237,7 +2237,7 @@ async function loopThroughSplittedNotifications(splittedUrls, enableLoopNotifica
 
     var newDesignCSS = document.createElement("link");
     // newDesignCSS.href = 'https://storage.googleapis.com/influence-197607.appspot.com/design13.css';
-    newDesignCSS.href = 'https://test2109.herokuapp.com/new.css';
+    newDesignCSS.href = 'https://test2109.herokuapp.com/socialProofNotif.css';
     newDesignCSS.type = "text/css";
     newDesignCSS.rel = "stylesheet";
     newDesignCSS.id = "stylesheetID";

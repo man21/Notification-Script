@@ -1446,7 +1446,7 @@ if (typeof Influence === 'undefined') {
                     var url = document.location;
                     self.track('notificationview', Util.merge(Env.getPageloadData(), { url: Util.parseUrl(url + '') }));
                 
-                // }
+                 }
                 // else if(document.getElementsByClassName("#donehello")){
                 //     self.track('cookieconsent', {microPolicies: cookieFinalArr} )
                 // }

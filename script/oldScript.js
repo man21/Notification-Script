@@ -1429,7 +1429,7 @@ if (typeof Influence === 'undefined') {
 
 
 
-            const targetNode = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_0');
+            const targetNode = document.getElementById('FPqR2DbIqJeA2DbI7MM9_0');
 
 
             console.log(targetNode, " ---------------------")

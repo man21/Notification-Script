@@ -1218,6 +1218,17 @@ if (typeof Influence === 'undefined') {
                                 
                             });
                         }
+
+                        var doneClick = document.querySelector('#doneNavId')
+
+                        console.log(doneClick, "@@@@@@@@@@@@@@@")
+                        var in_dom1 = document.body.contains(doneClick);
+        
+                        if(in_dom1) {
+
+                            console.log("hello111111111111111")
+                            self.track('cookieConsent', {microPolicies: cookieCampaignArr});
+                        }
                     });
 
                 })

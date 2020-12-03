@@ -1413,13 +1413,7 @@ if (typeof Influence === 'undefined') {
             // }).observe(document.body, {childList: true, subtree: true});
 
 
-            var target = document.getElementById('#FPqR2DbIqJeA2DbI7MM9_0');
-
-            observer.observe(target, { childList: true,
-                subtree: true,
-                attributes: true,
-                characterData: true});
-
+           
 
             var observer = new MutationObserver(function(mutations, observer) {
                 var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_0');
@@ -1430,7 +1424,13 @@ if (typeof Influence === 'undefined') {
                 }
                 attachNotifcationListener(element, self);
             })
-            
+            var target = document.getElementById('#FPqR2DbIqJeA2DbI7MM9_0');
+
+            observer.observe(target, { childList: true,
+                subtree: true,
+                attributes: true,
+                characterData: true});
+
         };
 
         /**

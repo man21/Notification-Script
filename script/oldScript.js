@@ -1417,15 +1417,6 @@ if (typeof Influence === 'undefined') {
                     var url = document.location;
                     self.track('notificationview', Util.merge(Env.getPageloadData(), { url: Util.parseUrl(url + '') }));
                 }
-                
-                var doneClick = document.querySelector('#doneNavId')
-
-                console.log(doneClick, "@@@@@@@@@@@@@@@")
-                var in_dom1 = document.body.contains(doneClick);
-
-                if(in_dom1) {
-                    self.track('cookieConsent', {microPolicies: cookieCampaignArr});
-                }
                 attachNotifcationListener(element, self);
             }).observe(document.body, {childList: true});
         };

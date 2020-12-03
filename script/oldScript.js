@@ -1412,20 +1412,25 @@ if (typeof Influence === 'undefined') {
             //notification view
             new MutationObserver(function(mutations) {
                 var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_0');
-
-                console.log(element, "-----------------------s")
                 var in_dom = document.body.contains(element);
                 if(in_dom){
                     var url = document.location;
                     self.track('notificationview', Util.merge(Env.getPageloadData(), { url: Util.parseUrl(url + '') }));
                 }
+                
+                var doneClick = document.querySelector('#doneNavId')
 
+                console.log(doneClick, "@@@@@@@@@@@@@@@")
+                var in_dom1 = document.body.contains(doneClick);
+
+                if(in_dom1) {
+                    self.track('cookieConsent', {microPolicies: cookieCampaignArr});
+                }
                 attachNotifcationListener(element, self);
             }).observe(document.body, {childList: true});
         };
 
 
-        // doneNavId
         /**
          * Retrieves the path where a certain category of data is stored.
          *

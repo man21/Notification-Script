@@ -1203,8 +1203,9 @@ if (typeof Influence === 'undefined') {
             if (this.options.trackClicks) {
                 Events.onready(function () {
 
-                    console.log(document.body, "######################################")
                     Events.onevent(document.body, 'click', true, function (e) {
+
+                        console.log(document.body, "!11111111111111111111111111111111111111")
 
                         var ancestors = DomUtil.getAncestors(e.target);
 

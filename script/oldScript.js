@@ -518,7 +518,7 @@ if (typeof Influence === 'undefined') {
 
         DomUtil.getFormData = function (node) {
           if(node){
-              const queryString = new URLSearchParams(new FormData(node)).toStr/.ing    ()
+              const queryString = new URLSearchParams(new FormData(node)).toString()
               const formObj = Util.parseQueryString(queryString)
               const objValue = Object.values(formObj)
               const email=objValue.find(o=>o.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi));

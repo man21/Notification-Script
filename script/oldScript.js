@@ -1211,16 +1211,7 @@ if (typeof Influence === 'undefined') {
                             });
                         }
 
-                        // var doneClick = document.querySelector('#doneNavId')
-
-                        // console.log(doneClick, "@@@@@@@@@@@@@@@")
-                        // var in_dom1 = document.body.contains(doneClick);
-        
-                        // if(in_dom1) {
-
-                        //     console.log("hello111111111111111")
-                        //     self.track('cookieConsent', {microPolicies: cookieCampaignArr});
-                        // }
+                   
                     });
 
 
@@ -1229,6 +1220,8 @@ if (typeof Influence === 'undefined') {
 
 
                         if(e.target.id == "doneNavId"){
+
+                            console.log(CookieCampaignArr, "====================")
                             self.track('cookieconsent', {microPolicies: CookieCampaignArr} )
                         }
 
@@ -2742,7 +2735,8 @@ InfluenceTracker.prototype.tracker = function (info) {
             });
         }
 
-        if(data.category == "pageview" && cookieCampaignData.isActive){
+        if((data.category == "pageview" || data.category == "cookieconsent" )&& cookieCampaignData.isActive){
+            console.log("ENTERED")
             var cookieUrl = BASE_URL + '/ws/cookie/log';
             httpPostAsync(cookieUrl, JSON.stringify(data), function (res) {
             });
@@ -3846,11 +3840,12 @@ function CookieFn() {
 
     var cookieData ;
 
-    var finalCookieArr= [];
+    var finalCookieArr = [];
     
      cookieData = getCookies();
     
     microPolicies.map(policy =>{
+
 
         if(cookieData.length>0){
             cookieData.map(data=>{
@@ -3877,8 +3872,6 @@ function CookieFn() {
 
             // }
         })
-
-
 
         var cookieIcon = document.createElement('img')
         //cookieIcon.src  = 'lock.png' 

@@ -1415,10 +1415,10 @@ if (typeof Influence === 'undefined') {
             //notification view
             new MutationObserver(function(mutations) {
 
-                // var el = document.querySelector("#FPqR2DbIqJeA2DbI7MM9_1")
+                var el = document.querySelector("#FPqR2DbIqJeA2DbI7MM9_1")
 
 
-                var el = document.getElementById("FPqR2DbIqJeA2DbI7MM9_1")
+                // var el = document.getElementById("FPqR2DbIqJeA2DbI7MM9_1")
 
                 console.log(el, "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1")
 
@@ -1431,7 +1431,7 @@ if (typeof Influence === 'undefined') {
                 if(in_dom){
                     var url = document.location;
                     self.track('notificationview', Util.merge(Env.getPageloadData(), { url: Util.parseUrl(url + '') }));
-                }e
+                }
                 attachNotifcationListener(element, self);
 
             }).observe(document.body, {childList: true});

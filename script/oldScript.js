@@ -1203,6 +1203,8 @@ if (typeof Influence === 'undefined') {
             if (this.options.trackClicks) {
                 Events.onready(function () {
                     Events.onevent(document.body, 'click', true, function (e) {
+
+                        console.log("##############################33")
                         var ancestors = DomUtil.getAncestors(e.target);
                         if(e.target.tagName === 'A' && ancestors[0].href){
                             self.track('linkClick', {
@@ -1415,14 +1417,6 @@ if (typeof Influence === 'undefined') {
             //notification view
             new MutationObserver(function(mutations) {
 
-                var el = document.querySelector("#FPqR2DbIqJeA2DbI7MM9_1")
-
-
-                // var el = document.getElementById("FPqR2DbIqJeA2DbI7MM9_1")
-
-                console.log(el, "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1")
-
-
                 // self.track('cookieconsent', {microPolicies: finalCookieArr} )
 
 
@@ -1432,30 +1426,25 @@ if (typeof Influence === 'undefined') {
                     var url = document.location;
                     self.track('notificationview', Util.merge(Env.getPageloadData(), { url: Util.parseUrl(url + '') }));
                 }
-
-                else if(document.querySelector("#FPqR2DbIqJeA2DbI7MM9_1")){
-                    console.log("ENTERED")
-                    // self.track('cookieconsent', {microPolicies: finalCookieArr} )
-                }
                 attachNotifcationListener(element, self);
 
             }).observe(document.body, {childList: true});
 
-            // new MutationObserver(function(mutations) {
-            //     var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_1');
+            new MutationObserver(function(mutations) {
+                var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_1');
 
-            //     console.log("HELLO!!!!!!!!!!!!!!!!!!!!!")
-            //     var in_dom = document.body.contains(element);
-            //     if(in_dom){
-            //         var url = document.location;
-            //         self.track('notificationview', Util.merge(Env.getPageloadData(), { url: Util.parseUrl(url + '') }));
-            //     }
-            //     // attachNotifcationListener(element, self);
+                console.log("HELLO!!!!!!!!!!!!!!!!!!!!!")
+                var in_dom = document.body.contains(element);
+                // if(in_dom){
+                //     var url = document.location;
+                //     self.track('notificationview', Util.merge(Env.getPageloadData(), { url: Util.parseUrl(url + '') }));
+                // }
+                // attachNotifcationListener(element, self);
 
-            //     // if(document.querySelector("#FPqR2DbIqJeA2DbI7MM9_1")){
-            //     //     console.log("HELLO")
-            //     // }
-            // }).observe(document.body, {childList: true});
+                // if(document.querySelector("#FPqR2DbIqJeA2DbI7MM9_1")){
+                //     console.log("HELLO")
+                // }
+            }).observe(document.body, {childList: true});
         };
 
 

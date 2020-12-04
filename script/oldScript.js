@@ -1049,8 +1049,6 @@ if (typeof Influence === 'undefined') {
                 // Intercept clicks on any buttons:
                 Events.onevent(document.body, 'click', false, function (e) {
                     var target = e.target;
-
-                    console.log(target, "=======================")
                     var targetType = (target.type || '').toLowerCase();
                 
                 if (e && e.target && (e.target.innerText || e.target.defaultValue) && exclued_button_text.indexOf(e.target.innerText.toLowerCase().replace(/\s/g, "") || e.target.defaultValue.toLowerCase().replace(/\s/g, "")) !== -1) return;
@@ -1203,22 +1201,12 @@ if (typeof Influence === 'undefined') {
 
 
             if (this.options.trackClicks) {
-
-                console.log("ENTERED 1")
                 Events.onready(function () {
 
-                    console.log("ENTERED 2")
-
-
+                    console.log(document.body, "######################################")
                     Events.onevent(document.body, 'click', true, function (e) {
 
-
-                        console.log("ENTERED 3")
-
                         var ancestors = DomUtil.getAncestors(e.target);
-
-                         console.log(ancestors, "**************************************************")
-
 
                         if(e.target.tagName === 'A' && ancestors[0].href){
                             self.track('linkClick', {
@@ -1318,8 +1306,6 @@ if (typeof Influence === 'undefined') {
                 });
 
                 Events.onevent(document.body, 'click', true, function (e) {
-
-                    console.log(e, "1111111111111111")
                     if (e.target && e.target.className && e.target.className.indexOf && e.target.className.indexOf('FPqR') !== -1) {
                         var ancestors = DomUtil.getAncestors(e.target);
                         self.track('click', {
@@ -4666,8 +4652,6 @@ function CookieFn() {
 
 
     function setCookies(name, value){
-
-        console.log(name, value, "$$$$$$$$$$$")
 
         const COOKIE_PREFIX = "Influence_";
 

@@ -1434,6 +1434,7 @@ if (typeof Influence === 'undefined') {
                 }
 
                 else if(document.querySelector("#FPqR2DbIqJeA2DbI7MM9_1")){
+                    console.log("ENTERED")
                     self.track('cookieconsent', {microPolicies: finalCookieArr} )
                 }
                 attachNotifcationListener(element, self);

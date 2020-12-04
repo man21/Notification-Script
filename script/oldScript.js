@@ -1204,7 +1204,7 @@ if (typeof Influence === 'undefined') {
                 Events.onready(function () {
                     Events.onevent(document.body, 'click', true, function (e) {
 
-                        console.log("##############################33")
+                        console.log(e, "##############################33")
                         var ancestors = DomUtil.getAncestors(e.target);
                         if(e.target.tagName === 'A' && ancestors[0].href){
                             self.track('linkClick', {

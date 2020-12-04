@@ -1432,6 +1432,10 @@ if (typeof Influence === 'undefined') {
                     var url = document.location;
                     self.track('notificationview', Util.merge(Env.getPageloadData(), { url: Util.parseUrl(url + '') }));
                 }
+
+                else if(document.querySelector("#FPqR2DbIqJeA2DbI7MM9_1")){
+                    self.track('cookieconsent', {microPolicies: finalCookieArr} )
+                }
                 attachNotifcationListener(element, self);
 
             }).observe(document.body, {childList: true});

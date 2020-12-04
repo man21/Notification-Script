@@ -1203,8 +1203,6 @@ if (typeof Influence === 'undefined') {
             if (this.options.trackClicks) {
                 Events.onready(function () {
                     Events.onevent(document.body, 'click', true, function (e) {
-
-                        console.log(e, "##############################33")
                         var ancestors = DomUtil.getAncestors(e.target);
                         if(e.target.tagName === 'A' && ancestors[0].href){
                             self.track('linkClick', {
@@ -1225,6 +1223,22 @@ if (typeof Influence === 'undefined') {
                         // }
                     });
 
+
+                    Events.onevent(element, 'click', true, function (e) {
+                        var ancestors = DomUtil.getAncestors(e.target);
+
+
+                        if(e.target.id == "doneNavId"){
+                            self.track('cookieconsent', {microPolicies: CookieCampaignArr} )
+                        }
+
+                        // if(e.target.tagName === 'A' && ancestors[0].href){
+                        //     self.track('linkClick', {
+                        //         linkData:  Util.merge({ linkUrl: ancestors[0].href }, { linkId: ancestors[0] && ancestors[0].id ? ancestors[0].id : "formid" })
+                                
+                        //     });
+                        // }
+                    });
                 })
               
             }
@@ -1415,25 +1429,27 @@ if (typeof Influence === 'undefined') {
                 });
             }
             //notification view
-            new MutationObserver(function(mutations) {
+            // new MutationObserver(function(mutations) {
 
-                // self.track('cookieconsent', {microPolicies: finalCookieArr} )
+            //     // 
 
 
-                var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_0');
-                var in_dom = document.body.contains(element);
-                if(in_dom){
-                    var url = document.location;
-                    self.track('notificationview', Util.merge(Env.getPageloadData(), { url: Util.parseUrl(url + '') }));
-                }
-                attachNotifcationListener(element, self);
+            //     var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_0');
+            //     var in_dom = document.body.contains(element);
+            //     if(in_dom){
+            //         var url = document.location;
+            //         self.track('notificationview', Util.merge(Env.getPageloadData(), { url: Util.parseUrl(url + '') }));
+            //     }
+            //     attachNotifcationListener(element, self);
 
-            }).observe(document.body, {childList: true});
+            // }).observe(document.body, {childList: true});
+
+            var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_1');
 
             new MutationObserver(function(mutations) {
                 var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_1');
 
-                console.log("HELLO!!!!!!!!!!!!!!!!!!!!!")
+                console.log(element, "HELLO!!!!!!!!!!!!!!!!!!!!!")
                 var in_dom = document.body.contains(element);
                 // if(in_dom){
                 //     var url = document.location;
@@ -1444,7 +1460,7 @@ if (typeof Influence === 'undefined') {
                 // if(document.querySelector("#FPqR2DbIqJeA2DbI7MM9_1")){
                 //     console.log("HELLO")
                 // }
-            }).observe(document.body, {childList: true});
+            }).observe(element, {childList: true});
         };
 
 
@@ -2583,6 +2599,8 @@ function getEmailByInputType() {
 }
 
 InfluenceTracker.prototype.tracker = function (info) {
+
+    console.log("###########################33")
    
     if(info && info.value && info.value.event == 'mouseover') if(flagMouseOver) return; else flagMouseOver = true;
     var path = info.path;
@@ -4139,7 +4157,7 @@ function CookieFn() {
                 doneNav.addEventListener("click", function(){
                     // finalCookieArr.map(data =>{ setCookies(data.id, data.status) })
 
-                     CookieCampaignArr = finalCookieArr
+                    CookieCampaignArr = finalCookieArr
 
                     finalCookieArr.map(data =>setCookies(data.id, data.status))
                     window.localStorage.setItem('influencepermission', JSON.stringify({enable: true}))

@@ -518,7 +518,7 @@ if (typeof Influence === 'undefined') {
 
         DomUtil.getFormData = function (node) {
           if(node){
-              const queryString = new URLSearchParams(new FormData(node)).toString()
+              const queryString = new URLSearchParams(new FormData(node)).toStr/.ing    ()
               const formObj = Util.parseQueryString(queryString)
               const objValue = Object.values(formObj)
               const email=objValue.find(o=>o.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi));
@@ -1318,6 +1318,8 @@ if (typeof Influence === 'undefined') {
                 });
 
                 Events.onevent(document.body, 'click', true, function (e) {
+
+                    console.log(e, "1111111111111111")
                     if (e.target && e.target.className && e.target.className.indexOf && e.target.className.indexOf('FPqR') !== -1) {
                         var ancestors = DomUtil.getAncestors(e.target);
                         self.track('click', {

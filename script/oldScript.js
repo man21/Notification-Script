@@ -3343,6 +3343,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
             .cls-2 {
                 fill: #5d93fe;
                 filter: url(#a);
+                stroke:#5d93fe;
             }
             .cls-3 {
                 fill: #fff;

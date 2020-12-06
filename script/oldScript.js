@@ -1178,10 +1178,6 @@ if (typeof Influence === 'undefined') {
                 });
             }
 
-
-
-
-
             // Track clicks
             // if (this.options.trackClicks) {
             //     Events.onready(function () {
@@ -1217,13 +1213,13 @@ if (typeof Influence === 'undefined') {
 
                     Events.onevent(element, 'click', true, function (e) {
                         var ancestors = DomUtil.getAncestors(e.target);
+                        setTimeout( () =>{
+                            if(e.target.id == "doneNavId"){
+                                self.track('cookieconsent', {microPolicies: CookieCampaignArr} )
+                            }
+                        }, 1000)
 
-
-                        if(e.target.id == "doneNavId"){
-
-                            console.log(CookieCampaignArr, "====================")
-                            self.track('cookieconsent', {microPolicies: CookieCampaignArr} )
-                        }
+                       
 
                         // if(e.target.tagName === 'A' && ancestors[0].href){
                         //     self.track('linkClick', {
@@ -1245,9 +1241,6 @@ if (typeof Influence === 'undefined') {
             }
 
             //Set Tracking Id
-
-
-
 
             // Track all engagement:
             if (this.options.trackEngagement) {
@@ -1422,27 +1415,23 @@ if (typeof Influence === 'undefined') {
                 });
             }
             //notification view
-            // new MutationObserver(function(mutations) {
-
-            //     // 
+            new MutationObserver(function(mutations) {
 
 
-            //     var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_0');
-            //     var in_dom = document.body.contains(element);
-            //     if(in_dom){
-            //         var url = document.location;
-            //         self.track('notificationview', Util.merge(Env.getPageloadData(), { url: Util.parseUrl(url + '') }));
-            //     }
-            //     attachNotifcationListener(element, self);
+                var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_0');
+                var in_dom = document.body.contains(element);
+                if(in_dom){
+                    var url = document.location;
+                    self.track('notificationview', Util.merge(Env.getPageloadData(), { url: Util.parseUrl(url + '') }));
+                }
+                attachNotifcationListener(element, self);
 
-            // }).observe(document.body, {childList: true});
+            }).observe(document.body, {childList: true});
 
             var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_1');
 
             new MutationObserver(function(mutations) {
                 var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_1');
-
-                console.log(element, "HELLO!!!!!!!!!!!!!!!!!!!!!")
                 var in_dom = document.body.contains(element);
                 // if(in_dom){
                 //     var url = document.location;
@@ -2592,8 +2581,6 @@ function getEmailByInputType() {
 }
 
 InfluenceTracker.prototype.tracker = function (info) {
-
-    console.log("###########################33")
    
     if(info && info.value && info.value.event == 'mouseover') if(flagMouseOver) return; else flagMouseOver = true;
     var path = info.path;
@@ -2736,7 +2723,6 @@ InfluenceTracker.prototype.tracker = function (info) {
         }
 
         if((data.category == "pageview" || data.category == "cookieconsent" )&& cookieCampaignData.isActive){
-            console.log("ENTERED")
             var cookieUrl = BASE_URL + '/ws/cookie/log';
             httpPostAsync(cookieUrl, JSON.stringify(data), function (res) {
             });
@@ -4147,11 +4133,15 @@ function CookieFn() {
                 doneNav.className = "doneNav"
                 doneNav.innerHTML = "Done"
 
-
+                
                 doneNav.addEventListener("click", function(){
                     // finalCookieArr.map(data =>{ setCookies(data.id, data.status) })
 
+                    console.log(finalCookieArr, " ======================")
+                    
                     CookieCampaignArr = finalCookieArr
+
+                    console.log(CookieCampaignArr, " ++++++++++++++++++++++++++++")
 
                     finalCookieArr.map(data =>setCookies(data.id, data.status))
                     window.localStorage.setItem('influencepermission', JSON.stringify({enable: true}))

@@ -1206,28 +1206,25 @@ if (typeof Influence === 'undefined') {
                                 
                             });
                         }
-
-                   
                     });
 
-
-                    Events.onevent(element, 'click', true, function (e) {
-                        var ancestors = DomUtil.getAncestors(e.target);
-                        setTimeout( () =>{
-                            if(e.target.id == "doneNavId"){
-                                self.track('cookieconsent', {microPolicies: CookieCampaignArr} )
-                            }
-                        }, 1000)
+                    // Events.onevent(element, 'click', true, function (e) {
+                    //     var ancestors = DomUtil.getAncestors(e.target);
+                    //     setTimeout( () =>{
+                    //         if(e.target.id == "doneNavId"){
+                    //             self.track('cookieconsent', {microPolicies: CookieCampaignArr} )
+                    //         }
+                    //     }, 1000)
 
                        
 
-                        // if(e.target.tagName === 'A' && ancestors[0].href){
-                        //     self.track('linkClick', {
-                        //         linkData:  Util.merge({ linkUrl: ancestors[0].href }, { linkId: ancestors[0] && ancestors[0].id ? ancestors[0].id : "formid" })
+                    //     if(e.target.tagName === 'A' && ancestors[0].href){
+                    //         self.track('linkClick', {
+                    //             linkData:  Util.merge({ linkUrl: ancestors[0].href }, { linkId: ancestors[0] && ancestors[0].id ? ancestors[0].id : "formid" })
                                 
-                        //     });
-                        // }
-                    });
+                    //         });
+                    //     }
+                    // });
                 })
               
             }

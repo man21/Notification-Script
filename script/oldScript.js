@@ -1206,13 +1206,21 @@ if (typeof Influence === 'undefined') {
                                 
                             });
                         }
+
+                        if(e.target.id == "doneNavId"){
+
+                            setTimeout( () => {
+                                self.track('cookieconsent', {microPolicies: CookieCampaignArr} )
+                            }, 1000)
+
+                        }
                     });
 
-                    // Events.onevent(element, 'click', true, function (e) {
+                    // Events.onevent(document.body, 'click', true, function (e) {
                     //     var ancestors = DomUtil.getAncestors(e.target);
                     //     setTimeout( () =>{
                     //         if(e.target.id == "doneNavId"){
-                    //             self.track('cookieconsent', {microPolicies: CookieCampaignArr} )
+                    //             
                     //         }
                     //     }, 1000)
 

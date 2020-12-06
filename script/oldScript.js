@@ -907,7 +907,7 @@ if (typeof Influence === 'undefined') {
 
             console.log(el, "===============")
 
-            if (el.addEventListener) {
+            if (el && el.addEventListener) {
                 el.addEventListener(type, f, capture);
             } else if (el.attachEvent) {
                 el.attachEvent('on' + type, f);

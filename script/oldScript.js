@@ -1417,7 +1417,6 @@ if (typeof Influence === 'undefined') {
             //notification view
             new MutationObserver(function(mutations) {
 
-
                 var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_0');
                 var in_dom = document.body.contains(element);
                 if(in_dom){
@@ -1428,21 +1427,13 @@ if (typeof Influence === 'undefined') {
 
             }).observe(document.body, {childList: true});
 
-            var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_1');
+            // var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_1');
 
-            new MutationObserver(function(mutations) {
-                var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_1');
-                var in_dom = document.body.contains(element);
-                // if(in_dom){
-                //     var url = document.location;
-                //     self.track('notificationview', Util.merge(Env.getPageloadData(), { url: Util.parseUrl(url + '') }));
-                // }
-                // attachNotifcationListener(element, self);
-
-                // if(document.querySelector("#FPqR2DbIqJeA2DbI7MM9_1")){
-                //     console.log("HELLO")
-                // }
-            }).observe(element, {childList: true});
+            // new MutationObserver(function(mutations) {
+            //     var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_1');
+            //     var in_dom = document.body.contains(element);
+                
+            // }).observe(element, {childList: true});
         };
 
 

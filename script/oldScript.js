@@ -1207,13 +1207,6 @@ if (typeof Influence === 'undefined') {
                             });
                         }
 
-                        if(e.target.id == "doneNavId"){
-
-                            setTimeout( () => {
-                                self.track('cookieconsent', {microPolicies: CookieCampaignArr} )
-                            }, 1000)
-
-                        }
                     });
 
                     // Events.onevent(document.body, 'click', true, function (e) {
@@ -1430,8 +1423,8 @@ if (typeof Influence === 'undefined') {
                 }
                 attachNotifcationListener(element, self);
 
-                var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_1');
-               var in_dom = document.body.contains(element);
+                var element1 = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_1');
+               var in_dom1 = document.body.contains(element1);
                
 
             }).observe(document.body, {childList: true});

@@ -1199,6 +1199,8 @@ if (typeof Influence === 'undefined') {
             if (this.options.trackClicks) {
                 Events.onready(function () {
                     Events.onevent(document.body, 'click', true, function (e) {
+
+                        console.log("ENTERED ***************************ss")
                         var ancestors = DomUtil.getAncestors(e.target);
                         if(e.target.tagName === 'A' && ancestors[0].href){
                             self.track('linkClick', {

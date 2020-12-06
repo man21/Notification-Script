@@ -1422,6 +1422,10 @@ if (typeof Influence === 'undefined') {
                 }
                 attachNotifcationListener(element, self);
 
+                var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_1');
+               var in_dom = document.body.contains(element);
+               
+
             }).observe(document.body, {childList: true});
 
             // var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_1');

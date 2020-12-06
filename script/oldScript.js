@@ -1419,6 +1419,8 @@ if (typeof Influence === 'undefined') {
             //notification view
             new MutationObserver(function(mutations) {
 
+                console.log("111111111111")
+
                 var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_0');
                 var in_dom = document.body.contains(element);
                 if(in_dom){
@@ -1436,6 +1438,8 @@ if (typeof Influence === 'undefined') {
             // var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_1');
 
             new MutationObserver(function(mutations) {
+
+                console.log("hel;;;;;;;;;;;;;;;")
                 var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_1');
                 var in_dom = document.body.contains(element);
                 

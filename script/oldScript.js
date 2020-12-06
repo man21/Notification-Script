@@ -905,11 +905,9 @@ if (typeof Influence === 'undefined') {
 
             var f = fixup(f_);
 
-            console.log(el, "===============")
-
-            if (el && el.addEventListener) {
+            if (el.addEventListener) {
                 el.addEventListener(type, f, capture);
-            } else if (el&& el.attachEvent) {
+            } else if (el.attachEvent) {
                 el.attachEvent('on' + type, f);
             }
         };

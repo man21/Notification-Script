@@ -1200,24 +1200,26 @@ if (typeof Influence === 'undefined') {
                 Events.onready(function () {
                     Events.onevent(document.body, 'click', true, function (e) {
 
-                        console.log("ENTERED ***************************ss")
                         var ancestors = DomUtil.getAncestors(e.target);
                         if(e.target.tagName === 'A' && ancestors[0].href){
                             self.track('linkClick', {
-                                linkData:  Util.merge({ linkUrl: ancestors[0].href }, { linkId: ancestors[0] && ancestors[0].id ? ancestors[0].id : "formid" })
-                                
+                                linkData:  Util.merge({ linkUrl: ancestors[0].href }, { linkId: ancestors[0] && ancestors[0].id ? ancestors[0].id : "formid" })    
                             });
                         }
 
                     });
 
-                    // Events.onevent(document.body, 'click', true, function (e) {
-                    //     var ancestors = DomUtil.getAncestors(e.target);
-                    //     setTimeout( () =>{
-                    //         if(e.target.id == "doneNavId"){
-                    //             
-                    //         }
-                    //     }, 1000)
+                    Events.onevent(document.body, 'click', true, function (e) {
+
+                        console.log("ENTERED &&&&&&&&&&&&&&&&&&")
+                        var ancestors = DomUtil.getAncestors(e.target);
+                        setTimeout( () =>{
+                            if(e.target.id == "doneNavId"){
+                                
+                            }
+                        }, 1000)
+
+                    })
 
                        
 
@@ -1228,7 +1230,7 @@ if (typeof Influence === 'undefined') {
                     //         });
                     //     }
                     // });
-                })
+               })
               
             }
 
@@ -1425,19 +1427,19 @@ if (typeof Influence === 'undefined') {
                 }
                 attachNotifcationListener(element, self);
 
-                var element1 = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_1');
-               var in_dom1 = document.body.contains(element1);
+            //     var element1 = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_1');
+            //    var in_dom1 = document.body.contains(element1);
                
 
             }).observe(document.body, {childList: true});
 
             // var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_1');
 
-            // new MutationObserver(function(mutations) {
-            //     var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_1');
-            //     var in_dom = document.body.contains(element);
+            new MutationObserver(function(mutations) {
+                var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_1');
+                var in_dom = document.body.contains(element);
                 
-            // }).observe(element, {childList: true});
+            }).observe(document.body, {childList: true});
         };
 
 

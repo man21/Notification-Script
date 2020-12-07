@@ -1443,6 +1443,8 @@ if (typeof Influence === 'undefined') {
 
             new MutationObserver(function(mutations) {
 
+                console.log(" ++++++++++@@@@@@@@@@@@@@@@@@@@@@@2222+++++++++++++++++++++")
+
                 var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_1');
                 var in_dom = document.body.contains(element);
                 

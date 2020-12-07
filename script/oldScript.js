@@ -1198,14 +1198,10 @@ if (typeof Influence === 'undefined') {
 
             if (this.options.trackClicks) {
                 Events.onready(function () {
-                    console.log(document.body, " %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5")
                     Events.onevent(document.body, 'click', true, function (e) {
-
-                        console.log(e.target.id, " $$$$$$$$$$$$$$$$$$$$44444444444")
 
                         var ancestors = DomUtil.getAncestors(e.target);
 
-                        console.log(ancestors, "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&")
 
                         if(e.target.tagName === 'A' && ancestors[0].href){
                             self.track('linkClick', {
@@ -1218,19 +1214,21 @@ if (typeof Influence === 'undefined') {
 
                     });
 
-                    // Events.onevent(element, 'click', true, function (e) {
 
-                    //     console.log("ENTERED &&&&&&&&&&&&&&&&&&")
-                    //     var ancestors = DomUtil.getAncestors(e.target);
-                    //     setTimeout( () =>{
-                    //         if(e.target.id == "doneNavId"){
+                    console.log(element, "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%55")
+                    Events.onevent(element, 'click', true, function (e) {
 
-                    //             console.log("HELLOOOOOOOOOOOOOOOOOOOOO")
+                        console.log(element, "ENTERED &&&&&&&&&&&&&&&&&&")
+                        var ancestors = DomUtil.getAncestors(e.target);
+                        setTimeout( () =>{
+                            if(e.target.id == "doneNavId"){
+
+                                console.log("HELLOOOOOOOOOOOOOOOOOOOOO")
                                 
-                    //         }
-                    //     }, 1000)
+                            }
+                        }, 1000)
 
-                    // })
+                    })
 
                        
 
@@ -1445,7 +1443,7 @@ if (typeof Influence === 'undefined') {
 
             }).observe(document.body, {childList: true});
 
-            // var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_1');
+            var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_1');
 
             new MutationObserver(function(mutations) {
 
@@ -1456,7 +1454,7 @@ if (typeof Influence === 'undefined') {
                 console.log(element, "!!!!!!---------------------------!!!!!!!!!!!!!!!!")
                 var in_dom = document.body.contains(element);
                 
-            }).observe(document.body, {childList: true});
+            }).observe(element, {childList: true});
         };
 
 

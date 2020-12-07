@@ -1417,33 +1417,32 @@ if (typeof Influence === 'undefined') {
                 });
             }
             //notification view
-            // new MutationObserver(function(mutations) {
+            new MutationObserver(function(mutations) {
 
-            //     console.log("111111111111")
+                console.log("111111111111")
 
-            //     var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_0');
-            //     var in_dom = document.body.contains(element);
-            //     if(in_dom){
-            //         var url = document.location;
-            //         self.track('notificationview', Util.merge(Env.getPageloadData(), { url: Util.parseUrl(url + '') }));
-            //     }
-            //     attachNotifcationListener(element, self);
+                var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_0');
+                var in_dom = document.body.contains(element);
+                if(in_dom){
+                    var url = document.location;
+                    self.track('notificationview', Util.merge(Env.getPageloadData(), { url: Util.parseUrl(url + '') }));
+                }
+                attachNotifcationListener(element, self);
 
-            // //     var element1 = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_1');
-            // //    var in_dom1 = document.body.contains(element1);
+            //     var element1 = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_1');
+            //    var in_dom1 = document.body.contains(element1);
                
 
-            // }).observe(document.body, {childList: true});
+            }).observe(document.body, {childList: true});
 
             // var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_1');
 
-            new MutationObserver(function(mutations) {
+            // new MutationObserver(function(mutations) {
 
-                console.log("hel;;;;;;;;;;;;;;;")
-                var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_1');
-                var in_dom = document.body.contains(element);
+            //     var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_1');
+            //     var in_dom = document.body.contains(element);
                 
-            }).observe(document.body, {childList: true});
+            // }).observe(document.body, {childList: true});
         };
 
 

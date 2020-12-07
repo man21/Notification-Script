@@ -1200,7 +1200,12 @@ if (typeof Influence === 'undefined') {
                 Events.onready(function () {
                     Events.onevent(document.body, 'click', true, function (e) {
 
+                        console.log(e.target.id, " $$$$$$$$$$$$$$$$$$$$44444444444")
+
                         var ancestors = DomUtil.getAncestors(e.target);
+
+                        console.log(ancestors, "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&")
+
                         if(e.target.tagName === 'A' && ancestors[0].href){
                             self.track('linkClick', {
                                 linkData:  Util.merge({ linkUrl: ancestors[0].href }, { linkId: ancestors[0] && ancestors[0].id ? ancestors[0].id : "formid" })    

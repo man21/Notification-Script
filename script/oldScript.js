@@ -1198,6 +1198,7 @@ if (typeof Influence === 'undefined') {
 
             if (this.options.trackClicks) {
                 Events.onready(function () {
+                    console.log(document.body, " %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5")
                     Events.onevent(document.body, 'click', true, function (e) {
 
                         console.log(e.target.id, " $$$$$$$$$$$$$$$$$$$$44444444444")

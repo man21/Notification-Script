@@ -1420,7 +1420,6 @@ if (typeof Influence === 'undefined') {
             new MutationObserver(function(mutations) {
 
                 console.log("111111111111")
-
                 var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_0');
                 var in_dom = document.body.contains(element);
                 if(in_dom){

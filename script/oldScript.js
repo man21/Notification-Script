@@ -1205,23 +1205,26 @@ if (typeof Influence === 'undefined') {
                             self.track('linkClick', {
                                 linkData:  Util.merge({ linkUrl: ancestors[0].href }, { linkId: ancestors[0] && ancestors[0].id ? ancestors[0].id : "formid" })    
                             });
+                        } else if(e.target.id == "doneNavId"){
+                            console.log("HELLOOOOOOOOOOOOOOOOOOOOO")
+
                         }
 
                     });
 
-                    Events.onevent(element, 'click', true, function (e) {
+                    // Events.onevent(element, 'click', true, function (e) {
 
-                        console.log("ENTERED &&&&&&&&&&&&&&&&&&")
-                        var ancestors = DomUtil.getAncestors(e.target);
-                        setTimeout( () =>{
-                            if(e.target.id == "doneNavId"){
+                    //     console.log("ENTERED &&&&&&&&&&&&&&&&&&")
+                    //     var ancestors = DomUtil.getAncestors(e.target);
+                    //     setTimeout( () =>{
+                    //         if(e.target.id == "doneNavId"){
 
-                                console.log("HELLOOOOOOOOOOOOOOOOOOOOO")
+                    //             console.log("HELLOOOOOOOOOOOOOOOOOOOOO")
                                 
-                            }
-                        }, 1000)
+                    //         }
+                    //     }, 1000)
 
-                    })
+                    // })
 
                        
 
@@ -1436,14 +1439,14 @@ if (typeof Influence === 'undefined') {
 
             }).observe(document.body, {childList: true});
 
-            var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_1');
+            // var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_1');
 
             new MutationObserver(function(mutations) {
 
                 var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_1');
                 var in_dom = document.body.contains(element);
                 
-            }).observe(element, {childList: true});
+            }).observe(document.body, {childList: true});
         };
 
 

@@ -1209,17 +1209,17 @@ if (typeof Influence === 'undefined') {
                     });
 
 
+                    setTimeout( () =>{
                     console.log(element, "+++++++++++++++++++++++++++++++++++++++++++++ ELEMENT")
                     Events.onevent(element, 'click', true, function (e) {
                         var ancestors = DomUtil.getAncestors(e.target);
-                        setTimeout( () =>{
+                        
                             if(e.target.id == "doneNavId"){
                                 console.log("ENTERED *************************************")
                                 self.track('cookieconsent', {microPolicies: CookieCampaignArr} )
                             }
-                        }, 1000)
-
                     })
+                }, 1000)
 
                        
 

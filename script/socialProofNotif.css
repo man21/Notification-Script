@@ -141,6 +141,9 @@
     flex-direction: column;
     margin:0;
     flex-flow: wrap;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;  
   }
   
   .footerWrapper{

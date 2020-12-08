@@ -714,6 +714,7 @@
     letter-spacing: -.13px;
     padding-left: 2px;
     word-break: break-word;
+    display: inline
   }
 
   .footerWrapper .custom-footerWrapper {

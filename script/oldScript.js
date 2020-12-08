@@ -1199,32 +1199,23 @@ if (typeof Influence === 'undefined') {
             if (this.options.trackClicks) {
                 Events.onready(function () {
                     Events.onevent(document.body, 'click', true, function (e) {
-
                         var ancestors = DomUtil.getAncestors(e.target);
-
-
                         if(e.target.tagName === 'A' && ancestors[0].href){
                             self.track('linkClick', {
                                 linkData:  Util.merge({ linkUrl: ancestors[0].href }, { linkId: ancestors[0] && ancestors[0].id ? ancestors[0].id : "formid" })    
                             });
-                        } else if(e.target.id == "doneNavId"){
-                            console.log("HELLOOOOOOOOOOOOOOOOOOOOO")
-
                         }
 
                     });
 
 
-                    console.log(element, "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%55")
+                    console.log(element, "+++++++++++++++++++++++++++++++++++++++++++++ ELEMENT")
                     Events.onevent(element, 'click', true, function (e) {
-
-                        console.log(element, "ENTERED &&&&&&&&&&&&&&&&&&")
                         var ancestors = DomUtil.getAncestors(e.target);
                         setTimeout( () =>{
                             if(e.target.id == "doneNavId"){
-
-                                console.log("HELLOOOOOOOOOOOOOOOOOOOOO")
-                                
+                                console.log("ENTERED *************************************")
+                                self.track('cookieconsent', {microPolicies: CookieCampaignArr} )
                             }
                         }, 1000)
 
@@ -1426,6 +1417,8 @@ if (typeof Influence === 'undefined') {
                 });
             }
             var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_1');
+            new MutationObserver(function(mutations) {                
+            }).observe(element, {childList: true});
             //notification view
             new MutationObserver(function(mutations) {
 
@@ -1443,14 +1436,6 @@ if (typeof Influence === 'undefined') {
                
 
             }).observe(document.body, {childList: true});
-
-
-            new MutationObserver(function(mutations) {
-                var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_1');
-
-                var in_dom = document.body.contains(element);
-                
-            }).observe(element, {childList: true});
         };
 
 

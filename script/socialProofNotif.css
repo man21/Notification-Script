@@ -479,6 +479,10 @@
     opacity: 0.8;
     width: auto;
   }
+
+  p.twoLineContent.review-twoLineContent{
+    flex-flow: column;
+  }
   
   .review-footerWrapper .stamped-reviewMainContainer .starIconContainer > svg{
     margin:0

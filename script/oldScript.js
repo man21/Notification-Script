@@ -1425,6 +1425,7 @@ if (typeof Influence === 'undefined') {
                     });
                 });
             }
+            var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_1');
             //notification view
             new MutationObserver(function(mutations) {
 
@@ -1443,15 +1444,10 @@ if (typeof Influence === 'undefined') {
 
             }).observe(document.body, {childList: true});
 
-            var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_1');
 
             new MutationObserver(function(mutations) {
-
-                // console.log(" ++++++++++@@@@@@@@@@@@@@@@@@@@@@@2222+++++++++++++++++++++")
-
                 var element = document.querySelector('#FPqR2DbIqJeA2DbI7MM9_1');
 
-                console.log(element, "!!!!!!---------------------------!!!!!!!!!!!!!!!!")
                 var in_dom = document.body.contains(element);
                 
             }).observe(element, {childList: true});
@@ -2848,9 +2844,6 @@ var Note = function Note(config, containerStyle, iconStyle) {
             elem[0].remove();
         }
 
-       
-        
-
         setTimeout(function () {
             container.className = `animated_FPqR2bI7Mf_c ${config.rule.popupAnimationOut}`;
         }, ((config.rule.displayTime) * 1000) + 3000);
@@ -2865,7 +2858,6 @@ var Note = function Note(config, containerStyle, iconStyle) {
     };
 
     function notificationDisplay(type, config, containerStyle, iconStyle, alignment) {
-
 
     
         if (notifClosr_c4rF9Effgt985n7v4y5h)

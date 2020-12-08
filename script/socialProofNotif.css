@@ -705,6 +705,9 @@
     color: rgb(0, 149, 247);
     padding-left: 0px;
   }
+  .custom-span1Element > span:first-child{
+    margin-right: 5px
+  }
 
   .custom-span2Element{
     font-size: 11.9px;
@@ -715,6 +718,10 @@
     padding-left: 2px;
     word-break: break-word;
     display: inline
+  }
+
+  .custom-footerContainer{
+    margin-top: -2px
   }
 
   .footerWrapper .custom-footerWrapper {

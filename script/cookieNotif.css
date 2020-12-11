@@ -121,12 +121,14 @@ overflow: hidden;
 .filledBtn {
     background: #097fff;
     color: #fff;
+    font-size: 11px;
+    font-weight: 400;
 }
 /* rgb(84, 92, 164); */
 
-.filledBtn:hover {
+/* .filledBtn:hover {
     background: rgb(64, 72, 144);
-}
+} */
 
 /*
 */
@@ -428,8 +430,12 @@ input:checked+.slider:before {
     cursor: default;
 }
 
+
+/* visibility: hidden; */
+/* bottom: -30%; */
+/* left: -200%; */
+/*
 .switch .tooltiptext {
-    /* visibility: hidden; */
     display: none;
 	width: 120px;
 	background-color: black;
@@ -439,10 +445,28 @@ input:checked+.slider:before {
 	padding: 5px 0;
 	position: absolute;
 	z-index: 1;
-	/* bottom: -30%; */
-	/* left: -200%; */
+	
     margin-left: -126px;
     margin-top: -34px;
+} */
+
+.switch .tooltiptext{
+    display: none;
+    width: fit-content;
+    background-color: #000000;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 1px 9px;
+    position: absolute;
+    z-index: 1;
+    /* bottom: -30%; */
+    /* left: -200%; */
+    margin-left: -95px;
+    margin-top: -26px;
+    opacity: 0.7;
+    right:39px;
+
 }
 
 .switch .tooltiptext::after {
@@ -452,6 +476,7 @@ input:checked+.slider:before {
     left: 100%; /* To the right of the tooltip */
     margin-top: -5px;
     border-width: 5px;
+    opacity: 0.7;
     border-style: solid;
     border-color: transparent transparent transparent black;
   }

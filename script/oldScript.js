@@ -3959,6 +3959,7 @@ function CookieFn() {
                     container.appendChild(innerContainer)
 
                     lockImg.src  = 'https://test2109.herokuapp.com/1-02.svg'
+                    lockImg.src = "transform: rotate(-145deg);"
 
                     if(container.contains(cookieIcon)) {
                         container.removeChild(cookieIcon)

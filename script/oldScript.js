@@ -3854,7 +3854,7 @@ function CookieFn() {
         var cookieIcon = document.createElement('img')
         //cookieIcon.src  = 'lock.png' 
         cookieIcon.src  = 'https://test2109.herokuapp.com/1-02.svg' 
-        cookieIcon.style="bottom:0;left:0;width:55px;height:55px; border-radius: 50%; cursor: pointer; transform: rotate(-78adeg);"
+        cookieIcon.style="bottom:0;left:0;width:55px;height:55px; border-radius: 50%; cursor: pointer; transform: rotate(-78deg);"
         cookieIcon.onclick = ()=>{
             // panelCall(0,0)
             container.appendChild(innerContainer)

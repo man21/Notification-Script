@@ -4254,7 +4254,7 @@ function CookieFn() {
                para.innerHTML =  policy.description //"This includes key features like page navigation and logging you in. The website cannot function without this"
 
                var listSlugElement = document.createElement('span');
-               listSlugElement.style.cssText = "text-transform: capitalize; float: right; margin-top: 12px; font-size: 12px; "
+               listSlugElement.style.cssText = "text-transform: capitalize; float: right; margin-top: 12px; font-size: 12px; color: #6f6f6f
                listSlugElement.innerHTML = policy.slug;
 
 

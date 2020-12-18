@@ -3874,7 +3874,7 @@ function CookieFn() {
         var lockImg = document.createElement('img')
         // lockImg.src  = 'lock.png' 
         lockImg.src  = 'https://test2109.herokuapp.com/1-01.svg' 
-        lockImg.style="bottom:0;left:0;width:55px;height:55px;border-radius: 50%; transform: rotate(-129deg); cursor: pointer"
+        lockImg.style="bottom:0;left:0;width:55px;height:55px;border-radius: 50%; transform: rotate(-124deg); cursor: pointer"
         lockImg.onclick = ()=>{
             panelCall(0,0)
             
@@ -3959,7 +3959,7 @@ function CookieFn() {
                     container.appendChild(innerContainer)
 
                     lockImg.src  = 'https://test2109.herokuapp.com/1-02.svg'
-                    lockImg.src = "transform: rotate(-145deg);"
+                    lockImg.style = "bottom:0;left:0;width:55px;height:55px;border-radius: 50%; cursor: pointer; transform: rotate(-78deg);"
 
                     if(container.contains(cookieIcon)) {
                         container.removeChild(cookieIcon)
@@ -4196,6 +4196,7 @@ function CookieFn() {
         
                 var headerText = document.createElement('p');
                 headerText.className = "headerText"
+                headerText.style = "margin: 0px"
                 headerText.innerHTML =  policy.name //"Essential"
                 
                 var toolTipText = document.createElement('span');
@@ -4253,7 +4254,7 @@ function CookieFn() {
                para.innerHTML =  policy.description //"This includes key features like page navigation and logging you in. The website cannot function without this"
 
                var listSlugElement = document.createElement('span');
-               listSlugElement.style.cssText = "text-transform: capitalize; float: right; margin-top: 12px;"
+               listSlugElement.style.cssText = "text-transform: capitalize; float: right; margin-top: 12px; font-size: 12px; "
                listSlugElement.innerHTML = policy.slug;
 
 

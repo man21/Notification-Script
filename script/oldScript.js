@@ -3874,7 +3874,7 @@ function CookieFn() {
         var lockImg = document.createElement('img')
         // lockImg.src  = 'lock.png' 
         lockImg.src  = 'https://test2109.herokuapp.com/1-01.svg' 
-        lockImg.style="bottom:0;left:0;width:55px;height:55px;border-radius: 50%; transform: rotate(-78deg); cursor: pointer"
+        lockImg.style="bottom:0;left:0;width:55px;height:55px;border-radius: 50%; transform: rotate(-129deg); cursor: pointer"
         lockImg.onclick = ()=>{
             panelCall(0,0)
             

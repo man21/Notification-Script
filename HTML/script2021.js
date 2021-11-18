@@ -3378,10 +3378,13 @@ InfluenceTracker.prototype.tracker = function (info) {
       data.category === "pageview" ||
       data.category === "linkClick"
     ) {
-      if (rulesData) {
-        console.log("Entered HERE -----------");
-        httpPostAsync(url, JSON.stringify(data), function (res) {});
-      }
+      setTimeout(() => {
+        console.log("Helo");
+        if (rulesData) {
+          console.log("Entered HERE -----------");
+          httpPostAsync(url, JSON.stringify(data), function (res) {});
+        }
+      }, 2000);
     }
 
     // if ("WebSocket" in window) {

@@ -5298,12 +5298,12 @@ function getCookieById (name){
 }
 
 if (typeof module !== "undefined" && module.exports) module.exports = Note;
-Influence = typeof Influence === 'undefined' ? require('../server') : Influence;
+Influence = typeof Influence === 'undefined' ? require('../../server') : Influence;
 
 
 
 if (typeof module !== "undefined" && module.exports) module.exports = CookieFn;
-Influence = typeof Influence === 'undefined' ? require('../server') : Influence;
+Influence = typeof Influence === 'undefined' ? require('../../server') : Influence;
 
 
 (async function () {

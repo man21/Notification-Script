@@ -8,6 +8,8 @@ __pathname = "/" + __pathname.split("/")[1];
 var influenceScript = "script2021.js";
 var BASE_URL = "https://api.useinfluence.co";
 
+var rulesData = null;
+
 document.addEventListener("visibilitychange", function (e) {
   document.hidden ? (isTabVisibility = false) : (isTabVisibility = true);
 });
@@ -2653,6 +2655,8 @@ var Notifications = function (config) {
     if (response && response.error == false) {
       return;
     }
+
+    rulesData = response;
     // configurationPath = JSON.parse(res);
     configurationPath = response.find((obj) =>
       obj.notificationPath.find(
@@ -3374,7 +3378,10 @@ InfluenceTracker.prototype.tracker = function (info) {
       data.category === "pageview" ||
       data.category === "linkClick"
     ) {
-      httpPostAsync(url, JSON.stringify(data), function (res) {});
+      if (rulesData) {
+        console.log("Entered HERE -----------");
+        httpPostAsync(url, JSON.stringify(data), function (res) {});
+      }
     }
 
     // if ("WebSocket" in window) {

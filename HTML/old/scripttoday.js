@@ -3431,7 +3431,7 @@ var Note = function Note(config, containerStyle, iconStyle) {
 
 
 if (typeof module !== "undefined" && module.exports) module.exports = Note;
-Influence = typeof Influence === 'undefined' ? require('../server') : Influence;
+Influence = typeof Influence === 'undefined' ? require('../../server') : Influence;
 
 
 (async function () {

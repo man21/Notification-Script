@@ -1234,6 +1234,12 @@ if (typeof Influence === "undefined") {
 
         sessionStorage.setItem("influence_sid", sessionId);
 
+        if (!sessionStorage.getItem("influence_obj"))
+          sessionStorage.setItem(
+            "influence_obj",
+            JSON.stringify({ pv: false })
+          );
+
         return sessionId;
       })();
 
@@ -3379,11 +3385,15 @@ InfluenceTracker.prototype.tracker = function (info) {
     ) {
       httpPostAsync(url, JSON.stringify(data), function (res) {});
     } else if (data.category === "pageview") {
-      setTimeout(() => {
-        if (rulesData.length !== 0) {
-          httpPostAsync(url, JSON.stringify(data), function (res) {});
-        }
-      }, 2000);
+      var sessionData = JSON.parse(sessionStorage.getItem("influence_obj"));
+
+      if (sessionData?.pv == false) {
+        setTimeout(() => {
+          if (rulesData.length !== 0) {
+            httpPostAsync(url, JSON.stringify(data), function (res) {});
+          }
+        }, 2000);
+      }
     }
 
     // if ("WebSocket" in window) {

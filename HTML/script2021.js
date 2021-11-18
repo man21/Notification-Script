@@ -3375,13 +3375,12 @@ InfluenceTracker.prototype.tracker = function (info) {
       data.category === "click" ||
       data.category === "mouseover" ||
       data.category === "notificationview" ||
-      data.category === "pageview" ||
       data.category === "linkClick"
     ) {
+      httpPostAsync(url, JSON.stringify(data), function (res) {});
+    } else if (data.category === "pageview") {
       setTimeout(() => {
-        console.log("Helo");
-        if (rulesData) {
-          console.log("Entered HERE -----------");
+        if (rulesData.length !== 0) {
           httpPostAsync(url, JSON.stringify(data), function (res) {});
         }
       }, 2000);

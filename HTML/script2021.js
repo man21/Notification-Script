@@ -1234,9 +1234,9 @@ if (typeof Influence === "undefined") {
 
         sessionStorage.setItem("influence_sid", sessionId);
 
-        if (!sessionStorage.getItem("influence_obj"))
+        if (!sessionStorage.getItem("influence_data"))
           sessionStorage.setItem(
-            "influence_obj",
+            "influence_data",
             JSON.stringify({ pv: false })
           );
 
@@ -3385,14 +3385,14 @@ InfluenceTracker.prototype.tracker = function (info) {
     ) {
       httpPostAsync(url, JSON.stringify(data), function (res) {});
     } else if (data.category === "pageview") {
-      var sessionData = JSON.parse(sessionStorage.getItem("influence_obj"));
+      var sessionData = JSON.parse(sessionStorage.getItem("influence_data"));
 
       if (sessionData?.pv == false) {
         setTimeout(() => {
           if (rulesData.length !== 0) {
             httpPostAsync(url, JSON.stringify(data), function (res) {});
             sessionStorage.setItem(
-              "influence_obj",
+              "influence_data",
               JSON.stringify({ pv: true })
             );
           }

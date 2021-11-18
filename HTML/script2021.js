@@ -3391,6 +3391,10 @@ InfluenceTracker.prototype.tracker = function (info) {
         setTimeout(() => {
           if (rulesData.length !== 0) {
             httpPostAsync(url, JSON.stringify(data), function (res) {});
+            sessionStorage.setItem(
+              "influence_obj",
+              JSON.stringify({ pv: true })
+            );
           }
         }, 2000);
       }
